@@ -1,0 +1,20 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+<channel>
+    <title>Swift on server</title>
+    <description>Articles about server-side Swift development. Created by Joannis Orlandos and Tibor Bödecs.</description>
+    <link>https://swiftonserver.com/</link>
+    <language>en-US</language>
+    <lastBuildDate>Wed, 17 Jan 2024 19:31:58 +0000</lastBuildDate>
+    <pubDate>Mon, 15 Jan 2024 23:00:00 +0000</pubDate>
+    <ttl>250</ttl>
+    <atom:link href="https://swiftonserver.com/rss.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+       <guid isPermaLink="true">https://swiftonserver.com/developing-with-swift-in-visual-studio-code/</guid>
+       <title><![CDATA[ Developing with Swift in Visual Studio Code ]]></title>
+       <description><![CDATA[ Learn how to set up your Visual Studio Code for Swift development using Docker, Dev Containers and the Swift for VS Code extension. ]]></description>
+       <link>https://swiftonserver.com/developing-with-swift-in-visual-studio-code/</link>
+       <pubDate>Mon, 15 Jan 2024 23:00:00 +0000</pubDate>
+    </item>
+</channel>
+</rss>
