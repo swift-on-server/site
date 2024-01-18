@@ -10,46 +10,46 @@
     
     <meta property="og:title" content="Developing with Swift in Visual Studio Code - Swift on server">
     <meta property="og:description" content="Learn how to set up your Visual Studio Code for Swift development using Docker, Dev Containers and the Swift for VS Code extension.">
-    <meta property="og:url" content="/developing-with-swift-in-visual-studio-code/">
-    <meta property="og:image" content="/images/assets/developing-with-swift-in-visual-studio-code/cover.jpg">
+    <meta property="og:url" content="https://swiftonserver.com/developing-with-swift-in-visual-studio-code/">
+    <meta property="og:image" content="https://swiftonserver.com/images/assets/developing-with-swift-in-visual-studio-code/cover.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Developing with Swift in Visual Studio Code - Swift on server">
     <meta name="twitter:description" content="Learn how to set up your Visual Studio Code for Swift development using Docker, Dev Containers and the Swift for VS Code extension.">
-    <meta name="twitter:image" content="/images/assets/developing-with-swift-in-visual-studio-code/cover.jpg">
+    <meta name="twitter:image" content="https://swiftonserver.com/images/assets/developing-with-swift-in-visual-studio-code/cover.jpg">
     
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/style.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/syntax.css">
 
-    <link rel="shortcut icon" href="/images/icons/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="/images/icons/icon-320.png" type="image/png">
+    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/icon-320.png" type="image/png">
     
-    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/images/icons/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon-180x180.png">
+    <link rel="apple-touch-icon" href="https://swiftonserver.com/images/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://swiftonserver.com/images/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://swiftonserver.com/images/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://swiftonserver.com/images/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://swiftonserver.com/images/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://swiftonserver.com/images/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://swiftonserver.com/images/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://swiftonserver.com/images/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://swiftonserver.com/images/icons/apple-touch-icon-180x180.png">
     
 </head>
 
 <body>
     <header id="page-header">
-        <a href="/">
+        <a href="https://swiftonserver.com/">
             <figure>
                 <picture>
                     <source 
-                        srcset="/images/logos/logo~dark.png" 
+                        srcset="https://swiftonserver.com/images/logos/logo~dark.png" 
                         media="(prefers-color-scheme: dark)"
                     >
                     <img 
                         id="logo-image"
                         width="150"
                         height="150"
-                        src="/images/logos/logo.png"
+                        src="https://swiftonserver.com/images/logos/logo.png"
                         alt="Logo of Swift on server"
                         title="Swift on server"
                     >
@@ -84,18 +84,18 @@
 
     <section id="contents" class="content-wrapper">
     
-    <p>Swift is a great language for developing applications for Apple platforms, and is easily set up using Xcode. However, Xcode is only available for macOS, and does not support a wide variety of extensions. For this reason, many Server-Side Swift developers prefer to use Visual Studio Code for their development.</p><p>Visual Studio Code is a free and open-source code editor developed by Microsoft for Windows, Linux and macOS.</p><h2>What are Dev Containers?</h2><p>Dev Containers are a way to develop in a containerized environment. Containers are a way to package software in a format that can be run on any platform, such as Linux, macOS or Windows. You can think of them as a lightweight alternative to virtual machines. In most of our tutorials, we'll provide a dev container for you to use. This allows you to set up all prerequisites for a tutorial in a single step.</p><h3>Prerequisites</h3><p>First, download Visual Studio Code from <a href="https://code.visualstudio.com/download/">https://code.visualstudio.com/download/</a> and install it for your platform.</p><p>Then, once Visual Studio Code is installed, download and install Docker. The easiest way is to use the Docker Desktop installer for your platform: <a href="https://www.docker.com/products/docker-desktop/">https://www.docker.com/products/docker-desktop/</a></p><p>Finally, you'll need to install the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers">Dev Containers</a> plugin for VSCode. This will allow you to open a project inside a Docker container, if it has a devcontainer bundled with it.</p><h2>Opening a Project</h2><p>Make sure Docker (Desktop) is running, ready, and has sufficient resources allocated. You can do this by opening the Docker Desktop application and going to the "Resources" tab. Swift needs at least 4GB of memory to compile, so make sure you have at least 4GB of memory allocated to Docker.</p><p>Open Visual Studio Code and click on the "Open Folder" button in the welcome screen. Select the folder containing the starter project. In the bottom-right of the window, you'll see a blue button with the text "Reopen in Container". Click on it to reopen the project in a Dev Container.</p><p>If you don't see the button, you can also open the command palette (<code>Ctrl+Shift+P</code> on Windows/Linux, <code>Cmd+Shift+P</code> on macOS) and search for "Reopen in Container".</p></section><section class="wrapper">
+    <p>Swift is a great language for developing applications for Apple platforms, and is easily set up using Xcode. However, Xcode is only available for macOS, and does not support a wide variety of extensions. For this reason, many Server-Side Swift developers prefer to use Visual Studio Code for their development.</p><p>Visual Studio Code is a free and open-source code editor developed by Microsoft for Windows, Linux and macOS.</p><h2>What are Dev Containers?</h2><p>Dev Containers are a way to develop in a containerized environment. Containers are a way to package software in a format that can be run on any platform, such as Linux, macOS or Windows. You can think of them as a lightweight alternative to virtual machines. In most of our tutorials, we'll provide a dev container for you to use. This allows you to set up all prerequisites for a tutorial in a single step.</p><h3>Prerequisites</h3><p>First, download Visual Studio Code from <a href="https://code.visualstudio.com/download/" target="_blank">https://code.visualstudio.com/download/</a> and install it for your platform.</p><p>Then, once Visual Studio Code is installed, download and install Docker. The easiest way is to use the Docker Desktop installer for your platform: <a href="https://www.docker.com/products/docker-desktop/" target="_blank">https://www.docker.com/products/docker-desktop/</a></p><p>Finally, you'll need to install the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers" target="_blank">Dev Containers</a> plugin for VSCode. This will allow you to open a project inside a Docker container, if it has a devcontainer bundled with it.</p><h2>Opening a Project</h2><p>Make sure Docker (Desktop) is running, ready, and has sufficient resources allocated. You can do this by opening the Docker Desktop application and going to the "Resources" tab. Swift needs at least 4GB of memory to compile, so make sure you have at least 4GB of memory allocated to Docker.</p><p>Open Visual Studio Code and click on the "Open Folder" button in the welcome screen. Select the folder containing the starter project. In the bottom-right of the window, you'll see a blue button with the text "Reopen in Container". Click on it to reopen the project in a Dev Container.</p><p>If you don't see the button, you can also open the command palette (<code>Ctrl+Shift+P</code> on Windows/Linux, <code>Cmd+Shift+P</code> on macOS) and search for "Reopen in Container".</p></section><section class="wrapper">
 <figure>
     <picture>
-        <source srcset="/images/assets/developing-with-swift-in-visual-studio-code/images/open-in-container~dark.png" media="(prefers-color-scheme: dark)">
-		<img class="post-image" src="/images/assets/developing-with-swift-in-visual-studio-code/images/open-in-container.png" alt="Reopen in Container">
+        <source srcset="https://swiftonserver.com/images/assets/developing-with-swift-in-visual-studio-code/images/open-in-container~dark.png" media="(prefers-color-scheme: dark)">
+		<img class="post-image" src="https://swiftonserver.com/images/assets/developing-with-swift-in-visual-studio-code/images/open-in-container.png" alt="Reopen in Container">
     </picture>
 </figure>
 </section><section class="content-wrapper"><p><strong>Note:</strong> The image shows the "Update" button instead of the "Reopen in Container" button. This is because I already have the project open in a Dev Container.</p><p>Visual Studio Code will now start downloading or building the Dev Container. This may take a while, as it needs to download the Swift toolchain and other dependencies.</p><p>Once it's done, you'll see a new window with the project open. You can now start developing!</p><h3>Running the Code</h3><p>In the left sidebar, you'll see a "Run and Debug" tab. Click on it to open the Run view. You'll see a "Run" button with a green arrow. Click on it to run the project.</p><p><strong>Tip:</strong> Press <code>Cmd + Shift + D</code> on macOS or <code>Ctrl + Shift + D</code> on Windows/Linux to open the Run view.</p><p>On the bottom-right of the window, you'll see a terminal window pop up. This is the terminal inside the Dev Container, and shows the output of the program. You can also find the debugger right next to that terminal window, which has LLDB integration.</p><p>Once the program is done running, you'll see the output in the terminal window:</p></section><section class="wrapper">
 <figure>
     <picture>
-        <source srcset="/images/assets/developing-with-swift-in-visual-studio-code/images/program-output~dark.png" media="(prefers-color-scheme: dark)">
-		<img class="post-image" src="/images/assets/developing-with-swift-in-visual-studio-code/images/program-output.png" alt="Program Output">
+        <source srcset="https://swiftonserver.com/images/assets/developing-with-swift-in-visual-studio-code/images/program-output~dark.png" media="(prefers-color-scheme: dark)">
+		<img class="post-image" src="https://swiftonserver.com/images/assets/developing-with-swift-in-visual-studio-code/images/program-output.png" alt="Program Output">
     </picture>
 </figure>
 </section><section class="content-wrapper"><p>If it's not visible for you, open the Output tab on the bottom of the window. You can open it using <code>Cmd + Shift + U</code> on macOS or <code>Ctrl + Shift + U</code> on Windows/Linux.</p><p>The output pane should be a split view, with a Terminal section on the right. If it's minimized, you'll see a small arrow on the right side of the window. Click on it to expand the window.</p><p>If you see the above output, congratulations! You've successfully set up your development environment for Swift development using Visual Studio Code and Dev Containers.</p>
@@ -111,14 +111,14 @@
             <figure>
                 <picture>
                     <source 
-                        srcset="/images/logos/logo~dark.png" 
+                        srcset="https://swiftonserver.com/images/logos/logo~dark.png" 
                         media="(prefers-color-scheme: dark)"
                     >
                     <img 
                         id="logo-image"
                         width="80"
                         height="80"
-                        src="/images/logos/logo.png"
+                        src="https://swiftonserver.com/images/logos/logo.png"
                         alt="Logo of Swift on server"
                         title="Swift on server"
                     >
@@ -130,8 +130,8 @@
 
             <p> 
                 <a href="https://swiftonserver.com/">Home</a> ·
-                <a href="/rss.xml" target="_blank">RSS</a> ·
-                <a href="/sitemap.xml" target="_blank">Sitemap</a>
+                <a href="https://swiftonserver.com/rss.xml" target="_blank">RSS</a> ·
+                <a href="https://swiftonserver.com/sitemap.xml" target="_blank">Sitemap</a>
             </p>
             
             
