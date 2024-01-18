@@ -30,6 +30,8 @@ Then, once Visual Studio Code is installed, download and install Docker. The eas
 
 Finally, you'll need to install the [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) plugin for VSCode. This will allow you to open a project inside a Docker container, if it has a devcontainer bundled with it.
 
+This tutorial has a [sample project](https://github.com/swift-on-server/developing-with-swift-in-visual-studio-code-sample) that you can use to test your setup.
+
 ## Opening a Project
 
 Make sure Docker (Desktop) is running, ready, and has sufficient resources allocated. You can do this by opening the Docker Desktop application and going to the "Resources" tab.
