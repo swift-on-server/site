@@ -36,7 +36,7 @@ Before we dive into the specifics of events further, let's cover how networking,
 
 I/O, or Input/Output, refers to the ability to *read* and *write* information.
 
-In a traditional Unix (POSIX) system, such as Linux or macOS, your standard library provides a couple very important functions. These are `open`, `read`, `write` and `close`.
+In a traditional Unix (POSIX) system, such as Linux or macOS, your standard library provides a few very important functions. These are `open`, `read`, `write` and `close`.
 
 The *open* function allows you to open a file, such as a `note.txt` on your desktop. The result of this function is an integer called the "file descriptor". When reading information from this file, rather than referencing the path to `note.txt`, you'll reference this file descriptor instead. Likewise, when we're done reading or writing a file, we can `close` it as well, passing the file descriptor as a handle.
 
@@ -64,11 +64,11 @@ There are a variety of tools, specific to platforms, that help with nonblocking 
 
 DispatchIO can also notify you when there's an opportunity to _write_ more data to a filesystem or socket.
 
-Closer to the operating system, and a more efficient approach, is to use `epoll`, `uring` or `kqueue` for polling for events. These frameworks can all notify your application of I/O opportunities, and also have means to notify your application at certain a _time_. This is the approach that SwiftNIO takes.
+Closer to the operating system, and a more efficient approach, is to use `epoll`, `uring` or `kqueue` for polling for events. These frameworks can all notify your application of I/O opportunities, and also have means to notify your application at a certain _time_. This is the approach that SwiftNIO takes.
 
 ### EventLoops
 
-Contrary to what the name implies, nonblocking I/O _does_ actually block execution at times. It's just very good at avoiding this. An EventLoop is generally ran on its own thread. On that thread, it runs a `while` loop that polls for events. When events are receives, it triggers functions that read or write data to the socket when possible. When all I/O operations are handled, it _blocks_ execution until a new event is received.
+Contrary to what the name implies, nonblocking I/O _does_ actually block execution at times. It's just very good at avoiding this. An EventLoop is generally run on its own thread. On that thread, it runs a `while` loop that polls for events. When events are receives, it triggers functions that read or write data to the socket when possible. When all I/O operations are handled, it _blocks_ execution until a new event is received.
 
 Blocking in this loop is not a bad thing, because the function will wake up whenever the next event happens. At the same time, it's not wasting CPU time by running around in circles waiting for a new event. This makes the system extremely efficient when it's built around this EventLoop.
 
