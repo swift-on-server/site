@@ -1,7 +1,7 @@
 ---
 slug: using-swiftnio-channels
 title: Using SwiftNIO - Channels
-description: Learn how to use Channels in SwiftNIO
+description: Create a TCP server using SwiftNIO and structured concurrency
 date: 2024/02/12
 tags: Swift, SwiftNIO, Networking
 author: Joannis Orlandos
