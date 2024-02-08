@@ -13,13 +13,13 @@ duration: 30 minutes
 
 # SwiftNIO Channels
 
-In the [previous tutorial](./using-swiftnio-fundamentals), we've covered the fundamentals of SwiftNIO. You're now familiar with the concept of an `EventLoop`.
+In the [previous tutorial](/using-swiftnio-fundamentals), we've covered the fundamentals of SwiftNIO. You're now familiar with the concept of an `EventLoop`.
 
 In this tutorial, we'll be building a TCP server that echoes back any data that it receives. This is a very common pattern in network applications, and is a great way to get started with SwiftNIO. You'll learn what **Channels** and **Channel Pipelines** are, and how SwiftNIO uses them to represent network connections. You'll also learn about **Channel Handlers** and applying this knowledge using structured concurrency.
 
 In order to start with this tutorial, [Download the Samples](https://github.com/swift-on-server/using-swiftnio-channels-sample). If you're stuck, you can keep at the Finished product within that repo as well.
 
-The samples make use of [VSCode DevContainers](https://swiftonserver.com/developing-with-swift-in-visual-studio-code/) to provide a consistent development environment. If you're not using VSCode, you can also use the latest Xcode.
+The samples make use of [VSCode DevContainers](/developing-with-swift-in-visual-studio-code/) to provide a consistent development environment. If you're not using VSCode, you can also use the latest Xcode.
 
 ## Channels
 
@@ -101,11 +101,11 @@ The above code can create a TCP server, without any logic to accept or communica
 3. The host speciifes the IP address that the server will listen on. `0.0.0.0` is a special IP address that means "all IP addresses", allowing connections from all network interfaces.
 4. Set the port that the server will listen on. This port is what clients will connect to.
 5. This closure is called for every client that connects to the server. This allows us to set up the pipeline for each client. In this case we don't need any configuration. Note that this is one of the few remaining APIs where you can't use `async`/`await`.
-6. We wrap the `Channel` in an `NIOAsyncChannel`. This is a type that's provided by SwiftNIO, and allows interating with Channels in a way that fully embraces structured concurrency.
+6. Wrap the `Channel` in an `NIOAsyncChannel`. This is a type that's provided by SwiftNIO, and allows interating with Channels in a way that fully embraces structured concurrency.
 
 ### Accepting Clients
 
-Now that we've created a server, we can start accepting clients.
+Now that we've created a server, this code can start accepting clients.
 Let's implement that:
 
 ```swift
@@ -127,11 +127,11 @@ try await withThrowingDiscardingTaskGroup { group in
 
 This code is an implementation of the server that we've created in the previous snippet. Let's go over the code step-by-step:
 
-1. We create a task group to manage the lifetime of our server
-2. By calling `executeAndClose`, we receive a sequence of incoming clients. Once this sequence ends, the end of the function is reached and the server is closed.
+1. Create a task group to manage the lifetime of our server
+2. By calling `executeAndClose`, receive a sequence of incoming clients. Once this sequence ends, the end of the function is reached and the server is closed.
 3. A for-loop is used to iterate over each new client, allowing us to handle their traffic.
-4. By adding a task to the task group, we can handle many clients in parallel
-5. We call `handleClient` to handle the client. This will be a separate function that we'll implement in a moment.
+4. By adding a task to the task group, this Swift code can handle many clients in parallel
+5. Call `handleClient` to handle the client. This will be a separate function that we'll implement in a moment.
 
 ### Handling a Client
 
@@ -154,9 +154,9 @@ func handleClient(_ client: NIOAsyncChannel<ByteBuffer, ByteBuffer>) async throw
 
 This code receives messages from a client, and echoes it back. It's functional, efficient and easy to understand. Let's go over the code step-by-step:
 
-1. We call `executeThenClose` on the client. This allows us to receive a sequence of inbound messages, and a handle to write messages back.
-2. We iterate over each inbound message, using a for-loop.
-3. We write the inbound message back to the client.
+1. Call `executeThenClose` on the client. This allows us to receive a sequence of inbound messages, and a handle to write messages back.
+2. Iterate over each inbound message, using a for-loop.
+3. Write the inbound message back to the client.
 
 When the client closes the connection, the sequence of inbound messages will end. This causes the `executeThenClose` function will return, and the client will be cleaned up.
 
@@ -166,8 +166,8 @@ You can try connecting yourself by running the following in your terminal. If a 
  nc localhost 2048
  ```
 
-If you want, we can close the connection from our side as well. I've placed a marker where you can close the connection from our side.
-Because `executeThenClose` will close the connection when the function ends, we can simply place a `return` statement here.
+If you want, close the connection from our side as well. I've placed a marker where you can close the connection from our side.
+Because `executeThenClose` will close the connection when the function ends, simply place a `return` statement here.
 
 ## Conclusion
 
