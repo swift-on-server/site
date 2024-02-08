@@ -96,6 +96,7 @@ p {
     font-size: 1rem;
 }
 ol, ul {
+    font-size: 1rem;
     margin-top: 1.5rem;
     margin-left: 1rem;
 }
@@ -167,8 +168,8 @@ footer img#logo-image {
     margin: 1em auto;
 }
 pre {
-    font-size: 1rem;
-    line-height: 1.5rem;
+    font-size: 0.8rem;
+    line-height: 1.25rem;
     background: var(--primary-background-color);
     padding: 1rem; 
     margin: 3rem auto; 
