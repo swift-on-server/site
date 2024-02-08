@@ -163,8 +163,8 @@ When the client closes the connection, the sequence of inbound messages will end
 You can try connecting yourself by running the following in your terminal. If a connection is successful, you'll get prompt where you can type a message. When you press enter, the message will be echoed back to you.
 
 ```bash
- nc localhost 2048
- ```
+nc localhost 2048
+```
 
 If you want, close the connection from our side as well. I've placed a marker where you can close the connection from our side.
 Because `executeThenClose` will close the connection when the function ends, simply place a `return` statement here.
