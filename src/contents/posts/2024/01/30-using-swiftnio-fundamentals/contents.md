@@ -92,4 +92,4 @@ When this happens, your database driver cannot receive and process the result of
 
 We've now covered the most important elements of SwiftNIO. You've learned about the EventLoop, and how it's used to avoid blocking I/O. You've also learned about the importance of not blocking the EventLoop, and how that can affect your application.
 
-In the next part, we'll cover how sockets are represented in SwiftNIO. And you'll even learn how to write your very own networking application using SwiftNIO!
+In the [next part](./using-swiftnio-channels), we'll cover how sockets are represented in SwiftNIO. And you'll even learn how to write your very own networking application using SwiftNIO!
