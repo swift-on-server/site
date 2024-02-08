@@ -132,18 +132,8 @@
             <span class="comment">// MARK: A</span>
         }
     }
-}</code></pre><p>This code receives messages from a client, and echoes it back. It's functional, efficient and easy to understand. Let's go over the code step-by-step:</p><ol><li>Call <code>executeThenClose</code> on the client. This allows us to receive a sequence of inbound messages, and a handle to write messages back.</li><li>Iterate over each inbound message, using a for-loop.</li><li>Write the inbound message back to the client.</li></ol><p>When the client closes the connection, the sequence of inbound messages will end. This causes the <code>executeThenClose</code> function will return, and the client will be cleaned up.</p><p>You can try connecting yourself by running the following in your terminal. If a connection is successful, you'll get prompt where you can type a message. When you press enter, the message will be echoed back to you.</p><pre><code class="language-bash"> nc localhost 2048
- ```
-
-If you want, close the connection from our side as well. I've placed a marker where you can close the connection from our side.
-Because `executeThenClose` will close the connection when the function ends, simply place a `return` statement here.
-
-## Conclusion
-
-In this tutorial, we've covered the concept of Channels and Pipelines. We've also covered how to create a simple TCP server using SwiftNIO. All with structured concurrency!
-
-&lt;!-- TODO: Reference next tutorial --&gt;
-In the next tutorial, we'll cover how to suppport a protocol (HTTP/1) by using Channel Handlers, by building an HTTP client.</code></pre>
+}</code></pre><p>This code receives messages from a client, and echoes it back. It's functional, efficient and easy to understand. Let's go over the code step-by-step:</p><ol><li>Call <code>executeThenClose</code> on the client. This allows us to receive a sequence of inbound messages, and a handle to write messages back.</li><li>Iterate over each inbound message, using a for-loop.</li><li>Write the inbound message back to the client.</li></ol><p>When the client closes the connection, the sequence of inbound messages will end. This causes the <code>executeThenClose</code> function will return, and the client will be cleaned up.</p><p>You can try connecting yourself by running the following in your terminal. If a connection is successful, you'll get prompt where you can type a message. When you press enter, the message will be echoed back to you.</p><pre><code class="language-bash">nc localhost 2048
+</code></pre><p>If you want, close the connection from our side as well. I've placed a marker where you can close the connection from our side. Because <code>executeThenClose</code> will close the connection when the function ends, simply place a <code>return</code> statement here.</p><h2>Conclusion</h2><p>In this tutorial, we've covered the concept of Channels and Pipelines. We've also covered how to create a simple TCP server using SwiftNIO. All with structured concurrency!</p><!-- TODO: Reference next tutorial --><p>In the next tutorial, we'll cover how to suppport a protocol (HTTP/1) by using Channel Handlers, by building an HTTP client.</p>
         
     </section>
 
