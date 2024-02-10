@@ -13,9 +13,9 @@ duration: 30 minutes
 
 # SwiftNIO Channels
 
-In the [previous tutorial](/using-swiftnio-fundamentals), we've covered the fundamentals of SwiftNIO. You're now familiar with the concept of an `EventLoop`.
+In the [previous tutorial](/using-swiftnio-fundamentals), you've learned the fundamentals of SwiftNIO. You're now familiar with the concept of an `EventLoop`.
 
-In this tutorial, we'll be building a TCP server that echoes back any data that it receives. This is a very common pattern in network applications, and is a great way to get started with SwiftNIO. You'll learn what **Channels** and **Channel Pipelines** are, and how SwiftNIO uses them to represent network connections. You'll also learn about **Channel Handlers** and applying this knowledge using structured concurrency.
+In this tutorial, you'll be building a TCP server that echoes back any data that it receives. This is a very common pattern in network applications, and is a great way to get started with SwiftNIO. You'll learn what **Channels** and **Channel Pipelines** are, and how SwiftNIO uses them to represent network connections. You'll also learn about **Channel Handlers** and applying this knowledge using structured concurrency.
 
 In order to start with this tutorial, [Download the Samples](https://github.com/swift-on-server/using-swiftnio-channels-sample). If you're stuck, you can keep at the Finished product within that repo as well.
 
@@ -23,7 +23,7 @@ The samples make use of [VSCode DevContainers](/developing-with-swift-in-visual-
 
 ## Channels
 
-In the previous aricle, we've covered the concept of an `EventLoop`, Network I/O and sockets. We've also covered that a socket is represented by a file descriptor, and that you can read and write data to it.
+In the previous aricle, you learned the concepts of an `EventLoop`, Network I/O and sockets. You now know that a socket is represented by a file descriptor, and that you can read and write data to it.
 
 The Sockets covered in the previous article are represented as a "Channel" in SwiftNIO. However, a Channel can be anything that is capable of I/O operations. This includes TCP and UDP connections, but can also extend to things such as Unix Domain Sockets, Pipes and even Serial USB connections.
 
@@ -59,11 +59,11 @@ The OutboundHandler works in an identical way to the InboundHandler. The `Outbou
 
 ## Creating a TCP Echo Server
 
-Now that we've covered the basics of Channels and Pipelines, let's apply our knowledge to create a TCP Echo Server. This server, built using structured concurrency, will accept TCP connections. When it receives a message, itll echo back any data that it receives.
+Now that you understand the basics of Channels and Pipelines, let's apply our knowledge to create a TCP Echo Server. This server, built using structured concurrency, will accept TCP connections. When it receives a message, itll echo back any data that it receives.
 
 ### Creating a ServerBootstrap
 
-In order to create a TCP server, we'll need to create a `ServerBootstrap`. This is a type that's provided by SwiftNIO, and is used to create a server Channel that emits client channels.
+In order to create a TCP server, you'll first need to create a `ServerBootstrap`. This is a type that's provided by SwiftNIO, and is used to create a server Channel that emits client channels.
 
 ServerBootstrap requires an `EventLoopGroup` to run on. This is a group of EventLoops that the server will use to run on. Each client will be handled by a single specific `EventLoop`, that is randomly assigned. This helps your server scale to many threads (and cores) without having to worry about thread-safety.
 
@@ -86,8 +86,8 @@ let server = try await ServerBootstrap(group: NIOSingletons.posixEventLoopGroup)
             return try NIOAsyncChannel(
                 wrappingChannelSynchronously: channel,
                 configuration: NIOAsyncChannel.Configuration(
-                    inboundType: ByteBuffer.self, // We'll read the raw bytes from the socket
-                    outboundType: ByteBuffer.self // We'll also write raw bytes to the socket
+                    inboundType: ByteBuffer.self, // Read the raw bytes from the socket
+                    outboundType: ByteBuffer.self // Write raw bytes to the socket
                 )
             )
         }
@@ -105,7 +105,7 @@ The above code can create a TCP server, without any logic to accept or communica
 
 ### Accepting Clients
 
-Now that we've created a server, this code can start accepting clients.
+With this newly created server, this code can start accepting clients.
 Let's implement that:
 
 ```swift
@@ -125,17 +125,17 @@ try await withThrowingDiscardingTaskGroup { group in
 }
 ```
 
-This code is an implementation of the server that we've created in the previous snippet. Let's go over the code step-by-step:
+This code is an implementation of the server bootstrap that was created in the previous snippet. Let's go over the code step-by-step:
 
 1. Create a task group to manage the lifetime of our server
 2. By calling `executeAndClose`, receive a sequence of incoming clients. Once this sequence ends, the end of the function is reached and the server is closed.
 3. A for-loop is used to iterate over each new client, allowing us to handle their traffic.
 4. By adding a task to the task group, this Swift code can handle many clients in parallel
-5. Call `handleClient` to handle the client. This will be a separate function that we'll implement in a moment.
+5. Call `handleClient` to handle the client. This will be a separate function that will be implemented in a moment.
 
 ### Handling a Client
 
-You're now able to accept clients, but we're not yet communicating with them. Let's implement that:
+The server is not able to accept client, but can not yet communicate with them. Let's implement that:
 
 ```swift
 func handleClient(_ client: NIOAsyncChannel<ByteBuffer, ByteBuffer>) async throws {
@@ -171,7 +171,7 @@ Because `executeThenClose` will close the connection when the function ends, sim
 
 ## Conclusion
 
-In this tutorial, we've covered the concept of Channels and Pipelines. We've also covered how to create a simple TCP server using SwiftNIO. All with structured concurrency!
+In this tutorial, you've learned the concept of Channels and Pipelines. You've also created a simple TCP server using SwiftNIO. All with structured concurrency!
 
 <!-- TODO: Reference next tutorial -->
 In the next tutorial, we'll cover how to suppport a protocol (HTTP/1) by using Channel Handlers, by building an HTTP client.
