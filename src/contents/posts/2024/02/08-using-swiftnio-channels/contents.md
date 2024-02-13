@@ -2,7 +2,7 @@
 slug: using-swiftnio-channels
 title: Using SwiftNIO - Channels
 description: Create a TCP server using SwiftNIO and structured concurrency
-date: 2024/02/12
+date: 2024/02/08
 tags: Swift, SwiftNIO, Networking
 author: Joannis Orlandos
 authorLink: https://x.com/JoannisOrlandos
