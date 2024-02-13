@@ -3,7 +3,7 @@ slug: logging-for-server-side-swift-apps
 title: Logging for server-side Swift apps
 description: Discover how to integrate the Logging library into an application, use various log levels, and tailor the unified logging API for backend projects.
 date: 2024/02/13
-tags: Swift, Logging
+tags: Swift, Logging, Observability
 author: Tibor Bödecs
 authorLink: https://x.com/tiborbodecs
 company: Binary Birds Kft.
