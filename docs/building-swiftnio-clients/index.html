@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Building an HTTP client using SwiftNIO - Swift on server</title>
+    
+    <meta name="description" content="Learn how to build a simple HTTP client using SwiftNIO and structured concurrency.">
+    
+    <meta property="og:title" content="Building an HTTP client using SwiftNIO - Swift on server">
+    <meta property="og:description" content="Learn how to build a simple HTTP client using SwiftNIO and structured concurrency.">
+    <meta property="og:url" content="https://swiftonserver.com/building-swiftnio-clients/">
+    <meta property="og:image" content="https://swiftonserver.com/images/assets/building-swiftnio-clients/cover.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Building an HTTP client using SwiftNIO - Swift on server">
+    <meta name="twitter:description" content="Learn how to build a simple HTTP client using SwiftNIO and structured concurrency.">
+    <meta name="twitter:image" content="https://swiftonserver.com/images/assets/building-swiftnio-clients/cover.jpg">
+    
+    <link rel="stylesheet" href="https://swiftonserver.com/css/style.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/syntax.css">
+
+    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/icon-320.png" type="image/png">
+    
+    <link rel="apple-touch-icon" href="https://swiftonserver.com/images/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://swiftonserver.com/images/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://swiftonserver.com/images/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://swiftonserver.com/images/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://swiftonserver.com/images/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://swiftonserver.com/images/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://swiftonserver.com/images/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://swiftonserver.com/images/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://swiftonserver.com/images/icons/apple-touch-icon-180x180.png">
+    
+</head>
+
+<body>
+    <header id="page-header">
+        <a href="https://swiftonserver.com/">
+            <figure>
+                <picture>
+                    <source 
+                        srcset="https://swiftonserver.com/images/logos/logo~dark.png" 
+                        media="(prefers-color-scheme: dark)"
+                    >
+                    <img 
+                        id="logo-image"
+                        width="150"
+                        height="150"
+                        src="https://swiftonserver.com/images/logos/logo.png"
+                        alt="Logo of Swift on server"
+                        title="Swift on server"
+                    >
+                </picture>
+            </figure>
+        </a>
+    </header>
+    
+    <main>
+
+        <article>
+    <header>
+        <section id="post-header" class="content-wrapper">
+            <time datetime="2024/02/20">2024/02/20</time>
+            <h1 class="title">Building an HTTP client using SwiftNIO</h1>
+            <p class="excerpt">Learn how to build a simple HTTP client using SwiftNIO and structured concurrency.</p>
+            <div class="meta">
+                <span class="tag">Swift</span>
+<span class="tag">SwiftNIO</span>
+<span class="tag">Networking</span>
+            </div>
+            <p>
+                <span class="author">Written by: <a href="https://x.com/JoannisOrlandos" target="_blank">Joannis Orlandos</a> @ 
+                <span class="author"><a href="https://unbeatable.software/" target="_blank">Unbeatable Software B.V.</a></span><br>
+                <span class="reading-time">Reading time: 30 minutes</span><br>
+            </p>
+        </section>
+    </header>
+
+    <section class="content-wrapper">
+        <hr>
+    </section>
+
+    <section id="contents" class="content-wrapper">
+    
+    <h1>Building a SwiftNIO HTTP client</h1><p>In the previous <a href="/using-swiftnio-channels" target="_blank">SwiftNIO tutorial</a>, you learned how to use SwiftNIO to build a simple TCP echo server. In this tutorial, you'll build a simple HTTP client using SwiftNIO.</p><p>We'll use the <code>NIOHTTP1</code> package for parsing and serializing HTTP messages. In addition, SwiftNIO's structured concurrency is used to manage the lifecycle of our client.</p><p>By the end of this tutorial, you'll know how to configure a SwiftNIO Channel's pipeline, and are able to send HTTP requests to a server.</p><p><a href="https://github.com/swift-on-server/building-swiftnio-clients-sample" target="_blank">Download the Samples</a> to get started. It has a dev container for a quick start.</p><blockquote><p>Note: This tutorial will emit some <code>Sendable</code> warnings. These are expected, and should be resolved in a production ready client implementation. However, for the purposes of this tutorial, ignore them.</p></blockquote><h2>Creating a Client Channel</h2><p>In SwiftNIO, Channels are created through a bootstrap. For TCP clients, you'd generally use a <code>ClientBootstrap</code>. There are alternative clients as well, such as Apple's Transport Services for Apple platforms. In addition, the <code>NIOHTTP1</code> module is used to simplify the process of creating a client channel.</p><p>Add these dependencies to your executable target in your <code>Package.swift</code> file:</p><pre><code class="language-swift">.<span class="call">executableTarget</span>(
+    name: <span class="string">"swift-nio-part-3"</span>,
+    dependencies: [
+        .<span class="call">product</span>(name: <span class="string">"NIO"</span>, package: <span class="string">"swift-nio"</span>),
+        .<span class="call">product</span>(name: <span class="string">"NIOHTTP1"</span>, package: <span class="string">"swift-nio"</span>),
+    ]
+),</code></pre><p>Now, let's create a <code>ClientBootstrap</code> and configure it to use the <code>NIOHTTP1</code> module's handlers. First, import the necessary modules:</p><pre><code class="language-swift"><span class="keyword">import</span> NIOCore
+<span class="keyword">import</span> NIOPosix
+<span class="keyword">import</span> NIOHTTP1</code></pre><p>Then, create a <code>ClientBootstrap</code>:</p><pre><code class="language-swift"><span class="comment">// 1</span>
+<span class="keyword">let</span> httpClientBootstrap = <span class="type">ClientBootstrap</span>(group: <span class="type">NIOSingletons</span>.<span class="property">posixEventLoopGroup</span>)
+    <span class="comment">// 2</span>
+    .<span class="call">channelOption</span>(<span class="type">ChannelOptions</span>.<span class="call">socketOption</span>(.<span class="dotAccess">so_reuseaddr</span>), value: <span class="number">1</span>)
+    <span class="comment">// 3</span>
+    .<span class="call">channelInitializer</span> { channel <span class="keyword">in</span>
+        <span class="comment">// 4</span>
+        channel.<span class="property">pipeline</span>.<span class="call">addHTTPClientHandlers</span>(
+            position: .<span class="dotAccess">first</span>,
+            leftOverBytesStrategy: .<span class="dotAccess">fireError</span>
+        )
+    }</code></pre><p>This code prepares a template for creating a client channel. Let's break it down:</p><ol><li>Create a <code>ClientBootstrap</code> using the <code>NIOSingletons.posixEventLoopGroup</code> as the event loop group. This is a shared event loop group that can be reused across multiple components of our application.</li><li>NIO Channels can have options set on them. Here, the <code>SO_REUSEADDR</code> option is set to <code>1</code> to allow the reuse of local addresses.</li><li>Then, provide an initializer that is used to configure the pipeline of newly created channels.</li><li>Finally, the <code>channelInitializer</code> adds the necessary HTTP client handlers to the channel's pipeline. This uses a helper function provided by NIOHTTP1.</li></ol><h2>Creating Types</h2><p>Before creating the HTTP client, it's necessary to add a few types that are needed for processing HTTP requests and responses.</p><p>When a <code>connect</code> fails, NIO already throws an error. There is no need to catch or represent those. However, the HTTP Client might encounter errors when processing the response. Create an enum to represent these errors:</p><pre><code class="language-swift"><span class="keyword">enum</span> HTTPClientError: <span class="type">Error</span> {
+    <span class="keyword">case</span> malformedResponse
+    <span class="keyword">case</span> unexpectedEndOfStream
+}</code></pre><p>Finally, add an enum to represent the state of processing the response:</p><pre><code class="language-swift"><span class="keyword">enum</span> HTTPPartialResponse {
+    <span class="keyword">case</span> none
+    <span class="keyword">case</span> receiving(<span class="type">HTTPResponseHead</span>, <span class="type">ByteBuffer</span>)
+}</code></pre><p>The enum if pretty simple, and is not representative of a <em>mature</em> HTTP client implementation such as <a href="https://github.com/swift-server/async-http-client" target="_blank">AsyncHTTPClient</a>. However, it's enough to get started with building a (TCP) client.</p><h2>Implementing the HTTP Client</h2><p>Now that the necessary types have been created, create the <code>HTTPClient</code> type with a simple function that sends a request and returns the response.</p><pre><code class="language-swift"><span class="keyword">struct</span> HTTPClient {
+    <span class="keyword">let</span> host: <span class="type">String</span>
+
+    <span class="keyword">func</span> request(
+        <span class="keyword">_</span> uri: <span class="type">String</span>,
+        method: <span class="type">HTTPMethod</span> = .<span class="dotAccess">GET</span>,
+        headers: <span class="type">HTTPHeaders</span> = [:]
+    ) <span class="keyword">async throws</span> -&gt; (<span class="type">HTTPResponseHead</span>, <span class="type">ByteBuffer</span>) {
+        <span class="comment">// 5</span>
+        <span class="keyword">let</span> clientChannel = <span class="keyword">try await</span> httpClientBootstrap.<span class="call">connect</span>(
+            host: host,
+            port: <span class="number">80</span>
+        ).<span class="call">flatMapThrowing</span> { channel <span class="keyword">in</span>
+            <span class="comment">// 6</span>
+            <span class="keyword">try</span> <span class="type">NIOAsyncChannel</span>(
+                wrappingChannelSynchronously: channel,
+                configuration: <span class="type">NIOAsyncChannel</span>.<span class="type">Configuration</span>(
+                    inboundType: <span class="type">HTTPClientResponsePart</span>.<span class="keyword">self</span>, <span class="comment">// 7</span>
+                    outboundType: <span class="type">HTTPClientRequestPart</span>.<span class="keyword">self</span> <span class="comment">// 8</span>
+                )
+            )
+        }.<span class="call">get</span>() <span class="comment">// 9
+
+        // TODO: Send request &amp; process response</span>
+    }
+}</code></pre><p>Let's break it down:</p><ol><li>Use the <code>httpClientBootstrap</code> to create a new client channel. This returns an <code>EventLoopFuture</code> containing a regular NIO <code>Channel</code>. By using <code>flatMapThrowing</code> to transform the result of this future, it's possible to convert the <code>EventLoopFuture</code> into a <code>NIOAsyncChannel</code>.</li><li>In order to use structured concurrency, it's necessary to wrap the <code>Channel</code> in an <code>NIOAsyncChannel</code>. The inbound and outbound types must be <code>Sendable</code>, and need to be configured to match the pipeline's input and output. This is based on the handlers added in the bootstrap's <code>channelInitializer</code>.</li><li>The <code>NIOAsyncChannel</code> is configured to receive <code>HTTPClientResponsePart</code> objects. This is the type that the HTTP client will receive from the server.</li><li>The <code>NIOAsyncChannel</code> is configured to send <code>SendableHTTPClientRequestPart</code> objects. This is the type that the HTTP client will send to the server.</li><li>The <code>get()</code> method is called to <em>await</em> for the result of the <code>EventLoopFuture</code>.</li></ol><h3>Sending a Request</h3><p>In place of the TODO comment, add the code to send a request and process the response. First, create a <code>HTTPRequestHead</code>. Note that this function does not currently support sending a body with the request. Do so by adding the following code:</p><pre><code class="language-swift"><span class="comment">// 10</span>
+<span class="keyword">return try await</span> clientChannel.<span class="call">executeThenClose</span> { inbound, outbound <span class="keyword">in</span>
+    <span class="comment">// 11</span>
+    <span class="keyword">let</span> requestHead = <span class="type">HTTPRequestHead</span>(version: .<span class="dotAccess">http1_1</span>, method: method, uri: uri, headers: headers)
+    <span class="keyword">try await</span> outbound.<span class="call">write</span>(.<span class="call">head</span>(requestHead))
+    <span class="keyword">try await</span> outbound.<span class="call">write</span>(.<span class="call">end</span>(<span class="keyword">nil</span>))
+
+    <span class="comment">// TODO: Process response</span>
+}</code></pre><p>This is a structured concurrency block that sends the request:</p><ol><li>The <code>executeThenClose</code> method is used to obtain a read and write half of the channel. This function returns the result of it's trailing closure.</li><li>The writer called <code>outbound</code> is used to send the request's part - the head and 'end'. This is also where the request's body would be sent.</li></ol><p>Below that, receive and process the response parts as such:</p><pre><code class="language-swift"><span class="keyword">var</span> partialResponse = <span class="type">HTTPPartialResponse</span>.<span class="property">none</span>
+    
+<span class="comment">// 12</span>
+<span class="keyword">for try await</span> part <span class="keyword">in</span> inbound {
+    <span class="comment">// 13</span>
+    <span class="keyword">switch</span> part {
+    <span class="keyword">case</span> .<span class="dotAccess">head</span>(<span class="keyword">let</span> head):
+        <span class="keyword">guard case</span> .<span class="dotAccess">none</span> = partialResponse <span class="keyword">else</span> {
+            <span class="keyword">throw</span> <span class="type">HTTPClientError</span>.<span class="property">malformedResponse</span>
+        }
+        
+        <span class="keyword">let</span> buffer = clientChannel.<span class="property">channel</span>.<span class="property">allocator</span>.<span class="call">buffer</span>(capacity: <span class="number">0</span>)
+        partialResponse = .<span class="call">receiving</span>(head, buffer)
+    <span class="keyword">case</span> .<span class="dotAccess">body</span>(<span class="keyword">let</span> buffer):
+        <span class="keyword">guard case</span> .<span class="dotAccess">receiving</span>(<span class="keyword">let</span> head, <span class="keyword">var</span> existingBuffer) = partialResponse <span class="keyword">else</span> {
+            <span class="keyword">throw</span> <span class="type">HTTPClientError</span>.<span class="property">malformedResponse</span>
+        }
+
+        existingBuffer.<span class="call">writeImmutableBuffer</span>(buffer)
+        partialResponse = .<span class="call">receiving</span>(head, existingBuffer)
+    <span class="keyword">case</span> .<span class="dotAccess">end</span>:
+        <span class="keyword">guard case</span> .<span class="dotAccess">receiving</span>(<span class="keyword">let</span> head, <span class="keyword">let</span> buffer) = partialResponse <span class="keyword">else</span> {
+            <span class="keyword">throw</span> <span class="type">HTTPClientError</span>.<span class="property">malformedResponse</span>
+        }
+
+        <span class="keyword">return</span> (head, buffer)
+    }
+}
+
+<span class="comment">// 14</span>
+<span class="keyword">throw</span> <span class="type">HTTPClientError</span>.<span class="property">unexpectedEndOfStream</span></code></pre><p>This sets up a state variable to keep track of the response parts received. It then processes the response parts as they come in:</p><ol start="12"><li>A <code>for</code> loop is used to iterate over the response parts. This is a structured concurrency block that will continue to run until the channel is closed by the remote, an error is thrown, or a <code>return</code> statement ends the function.</li><li>The <code>part</code> is matched against the <code>HTTPClientResponsePart</code> enum. If the part is a head, it's stored in the <code>partialResponse</code> variable. If the part is a body, it's appended to the buffer in the <code>partialResponse</code> variable. If the part is an end, the <code>partialResponse</code> is returned.</li><li>If the loop ends without a return, an error is thrown, since the code was unable to receive a complete response.</li></ol><h2>Using the Client</h2><p>Now that the HTTP client is complete, it's time to use it. Add the following code to the <code>main.swift</code> file:</p><pre><code class="language-swift"><span class="keyword">let</span> client = <span class="type">HTTPClient</span>(host: <span class="string">"example.com"</span>)
+<span class="keyword">let</span> (response, body) = <span class="keyword">try await</span> client.<span class="call">request</span>(<span class="string">"/"</span>, headers: [<span class="string">"Host"</span>: <span class="string">"example.com"</span>])
+<span class="call">print</span>(response)
+<span class="call">print</span>(body.<span class="call">getString</span>(at: <span class="number">0</span>, length: body.<span class="property">readableBytes</span>)!)</code></pre><p>This creates a client and sends a GET request to <code>example.com</code>. The response is then printed to the console.</p><p>If everything is set up correctly, you should see roughly the following output:</p><pre><code>HTTPResponseHead { version: HTTP/1.1, status: 200 OK, headers: [("Accept-Ranges", "bytes"), ("Age", "464157"), ("Cache-Control", "max-age=604800"), ("Content-Type", "text/html; charset=UTF-8"), ("Date", "Wed, 07 Feb 2024 21:22:33 GMT"), ("Etag", "\"3147526947\""), ("Expires", "Wed, 14 Feb 2024 21:22:33 GMT"), ("Last-Modified", "Thu, 17 Oct 2019 07:18:26 GMT"), ("Server", "ECS (dce/26CD)"), ("Vary", "Accept-Encoding"), ("X-Cache", "HIT"), ("Content-Length", "1256")] }
+&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Example Domain&lt;/title&gt;
+
+    &lt;meta charset="utf-8" /&gt;
+    &lt;meta http-equiv="Content-type" content="text/html; charset=utf-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;
+    &lt;style type="text/css"&gt;
+    ....
+</code></pre><p>And that's it! You've built a simple HTTP client using SwiftNIO. You can now use this client to send requests to any server that supports HTTP/1.1.</p>
+        
+    </section>
+
+</article>
+        
+    </main>
+
+    <footer>
+        <section class="content-wrapper">
+            <figure>
+                <picture>
+                    <source 
+                        srcset="https://swiftonserver.com/images/logos/logo~dark.png" 
+                        media="(prefers-color-scheme: dark)"
+                    >
+                    <img 
+                        id="logo-image"
+                        width="80"
+                        height="80"
+                        src="https://swiftonserver.com/images/logos/logo.png"
+                        alt="Logo of Swift on server"
+                        title="Swift on server"
+                    >
+                </picture>
+            </figure>
+
+            <p>This site was generated using the <a href="https://swift.org/" target="_blank">Swift</a> programming language.</p>
+            <p class="small">Created by <a href="https://x.com/JoannisOrlandos" target="_blank">Joannis Orlandos</a> & <a href="https://x.com/tiborbodecs">Tibor Bödecs</a> &copy; 2024.</p>
+
+            <p> 
+                <a href="https://swiftonserver.com/">Home</a> ·
+                <a href="https://swiftonserver.com/rss.xml" target="_blank">RSS</a> ·
+                <a href="https://swiftonserver.com/sitemap.xml" target="_blank">Sitemap</a>
+            </p>
+            
+            
+        </section>
+    </footer>
+</body>
+</html>

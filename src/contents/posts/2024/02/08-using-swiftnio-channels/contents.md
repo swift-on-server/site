@@ -173,5 +173,4 @@ Because `executeThenClose` will close the connection when the function ends, sim
 
 In this tutorial, you've learned the concept of Channels and Pipelines. You've also created a simple TCP server using SwiftNIO. All with structured concurrency!
 
-<!-- TODO: Reference next tutorial -->
-In the next tutorial, we'll cover how to suppport a protocol (HTTP/1) by using Channel Handlers, by building an HTTP client.
+In the [next tutorial](/building-swiftnio-clients), we'll cover how to suppport a protocol (HTTP/1) by using Channel Handlers, by building an HTTP client.
