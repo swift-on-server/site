@@ -6,6 +6,7 @@ date: 2024/01/30
 tags: Swift, SwiftNIO, Networking
 author: Joannis Orlandos
 authorLink: https://x.com/JoannisOrlandos
+authorGithub: joannis
 company: Unbeatable Software B.V.
 companyLink: https://unbeatable.software/
 duration: 20 minutes
