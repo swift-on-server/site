@@ -8,6 +8,7 @@ author: Tibor Bödecs
 authorLink: https://x.com/tiborbodecs
 company: Binary Birds Kft.
 companyLink: https://binarybirds.com/
+authorGithub: tib
 duration: 20 minutes
 sample: https://github.com/swift-on-server/logging-for-server-side-swift-apps-sample
 ---
