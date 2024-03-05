@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Using OpenAPI Generator with Hummingbird - Swift on server</title>
+    
+    <meta name="description" content="Learn how to use OpenAPI Generator to create Swift APIs with Hummingbird.">
+    
+    <meta property="og:title" content="Using OpenAPI Generator with Hummingbird - Swift on server">
+    <meta property="og:description" content="Learn how to use OpenAPI Generator to create Swift APIs with Hummingbird.">
+    <meta property="og:url" content="https://swiftonserver.com/using-openapi-with-hummingbird/">
+    <meta property="og:image" content="https://swiftonserver.com/images/assets/using-openapi-with-hummingbird/cover.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Using OpenAPI Generator with Hummingbird - Swift on server">
+    <meta name="twitter:description" content="Learn how to use OpenAPI Generator to create Swift APIs with Hummingbird.">
+    <meta name="twitter:image" content="https://swiftonserver.com/images/assets/using-openapi-with-hummingbird/cover.jpg">
+    
+    <link rel="stylesheet" href="https://swiftonserver.com/css/style.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/syntax.css">
+
+    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/icon-320.png" type="image/png">
+    
+    <link rel="apple-touch-icon" href="https://swiftonserver.com/images/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://swiftonserver.com/images/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://swiftonserver.com/images/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://swiftonserver.com/images/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://swiftonserver.com/images/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://swiftonserver.com/images/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://swiftonserver.com/images/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://swiftonserver.com/images/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://swiftonserver.com/images/icons/apple-touch-icon-180x180.png">
+    
+</head>
+
+<body>
+    <header id="page-header">
+        <a href="https://swiftonserver.com/">
+            <figure>
+                <picture>
+                    <source 
+                        srcset="https://swiftonserver.com/images/logos/logo~dark.png" 
+                        media="(prefers-color-scheme: dark)"
+                    >
+                    <img 
+                        id="logo-image"
+                        width="150"
+                        height="150"
+                        src="https://swiftonserver.com/images/logos/logo.png"
+                        alt="Logo of Swift on server"
+                        title="Swift on server"
+                    >
+                </picture>
+            </figure>
+        </a>
+    </header>
+    
+    <main>
+
+        <article>
+    <header>
+        <section id="post-header" class="content-wrapper">
+            <time datetime="2024/03/05">2024/03/05</time>
+            <h1 class="title">Using OpenAPI Generator with Hummingbird</h1>
+            <p class="excerpt">Learn how to use OpenAPI Generator to create Swift APIs with Hummingbird.</p>
+            <div class="meta">
+                <span class="tag">Hummingbird</span>
+<span class="tag">OpenAPI</span>
+<span class="tag">Documentation</span>
+            </div>
+            <img src="https://github.com/joannis.png" alt="Joannis Orlandos" class="author">
+            <p>
+                <span class="author">Written by: <a href="https://x.com/JoannisOrlandos" target="_blank">Joannis Orlandos</a> @ 
+                <span class="author"><a href="https://unbeatable.software/" target="_blank">Unbeatable Software B.V.</a></span><br>
+                <span class="reading-time">Reading time: 20 minutes</span><br>
+            </p>
+        </section>
+    </header>
+
+    <section class="content-wrapper">
+        <hr>
+    </section>
+
+    <section id="contents" class="content-wrapper">
+    
+    <h1>Using OpenAPI Generator with Hummingbird</h1><p>The <a href="https://github.com/apple/swift-openapi-generator" target="_blank">OpenAPI Generator</a> for Swift is a recent addition to the ecosystem that enables you to generate Swift code from OpenAPI specifications. This documentation-first approach allows you to define your API before starting a project, enabling both client and server code generation across multiple languages.</p><p>OpenAPI specifications can support a variety of content types, such as JSON, XML, Multipart, binary files and streams of data. When using OpenAPI to generate a client, you'll get a spec-compliant client implementation at the push of a button.</p><p>Servers generated from OpenAPI specifications are also spec-compliant. The generator creates an protocol named <code>APIProtocol</code> . Conforming to this type, you'll need to implement all the routes defined in your OpenAPI specification. This ensures that your server is always in sync with your API specification.</p><p>The OpenAPI generator ensures that data is handled efficiently and correctly. It also provides a clear and concise way to define your API, making it easy to understand and maintain. It integrates well with Hummingbird, requiring minimal setup to get started.</p><p>In this tutorial, we'll show you how to use the OpenAPI Generator to create a Swift API with <a href="./whats-new-in-hummingbird-2" target="_blank">Hummingbird</a>. If you're using Hummingbird with AWS Lambda, you can also use the OpenAPI generator for handling routes in your Lambda function.</p><h2>Prerequisites</h2><p>This tutorial has a <a href="https://github.com/swift-on-server/using-openapi-with-hummingbird-sample" target="_blank">sample project</a>, containing a starter and finished project. You can use this to verify your setup.</p><h2>OpenAPI Generation</h2><p>The <a href="https://swagger.io/specification/" target="_blank">OpenAPI Specification</a> is a standard for defining HTTP APIs. It allows you to define the endpoints, request and response bodies, and other relevant details of your API in a machine-readable format.</p><p>When adding the OpenAPI generator to your project, you'll need to add the following dependencies to your <code>Package.swift</code> file:</p><pre><code class="language-swift">.<span class="call">package</span>(url: <span class="string">"https://github.com/apple/swift-openapi-generator.git"</span>, from: <span class="string">"1.2.0"</span>),
+.<span class="call">package</span>(url: <span class="string">"https://github.com/apple/swift-openapi-runtime.git"</span>, from: <span class="string">"1.3.0"</span>),
+.<span class="call">package</span>(url: <span class="string">"https://github.com/apple/swift-argument-parser.git"</span>, from: <span class="string">"1.3.0"</span>),
+.<span class="call">package</span>(url: <span class="string">"https://github.com/hummingbird-project/hummingbird.git"</span>, from: <span class="string">"2.0.0-alpha.3"</span>),
+.<span class="call">package</span>(url: <span class="string">"https://github.com/swift-server/swift-openapi-hummingbird.git"</span>, from: <span class="string">"2.0.0-alpha.2"</span>),</code></pre><p><strong>Note:</strong> <code>swift-argument-parser</code> is not related to Hummingbird or OpenAPI.</p><!-- TODO: Update hummingbird dependency after release --><p>When working with OpenAPI generator, it's helpful to create a separate module (target) for your generated OpenAPI code. First of all, this allows you to import the generated code into a client implementation. But more importantly, it prevents the Swift compiler from getting confusing about the generated code "not existing" at times. When separating the OpenAPI module, it is compiled first, helping avoid these issues.</p><p>In order to complete the setup, add the following to your Package manifest:</p><pre><code class="language-swift">.<span class="call">target</span>(
+    name: <span class="string">"MyOpenAPI"</span>,
+    dependencies: [
+        <span class="comment">// 1</span>
+        .<span class="call">product</span>(name: <span class="string">"OpenAPIRuntime"</span>, package: <span class="string">"swift-openapi-runtime"</span>),
+    ],
+    <span class="comment">// 2</span>
+    plugins: [.<span class="call">plugin</span>(name: <span class="string">"OpenAPIGenerator"</span>, package: <span class="string">"swift-openapi-generator"</span>)]
+),
+.<span class="call">executableTarget</span>(
+    name: <span class="string">"MyApp"</span>,
+    dependencies: [
+        <span class="comment">// 3</span>
+        .<span class="call">target</span>(name: <span class="string">"MyOpenAPI"</span>),
+        .<span class="call">product</span>(name: <span class="string">"Hummingbird"</span>, package: <span class="string">"hummingbird"</span>),
+        .<span class="call">product</span>(name: <span class="string">"OpenAPIHummingbird"</span>, package: <span class="string">"swift-openapi-hummingbird"</span>),
+        .<span class="call">product</span>(name: <span class="string">"ArgumentParser"</span>, package: <span class="string">"swift-argument-parser"</span>),
+    ]
+),</code></pre><ol><li>Add the <code>OpenAPIRuntime</code> dependency to your OpenAPI module, this allows the generated code to make use of the shared OpenAPI types.</li><li>Add the <code>OpenAPIGenerator</code> plugin to your OpenAPI module. The plugin will generate the Swift code from your OpenAPI specification.</li><li>Add the <code>MyOpenAPI</code> target as a dependency to your application target. By importing this module, you can use the generated code in your application.</li></ol><p>OpenAPI generator is setup with a Swift Package Manager (SPM) plugin. The generated code will <em>not</em> be added to your source code, or even be visible in file browser.</p><p>When building the <strong>Finished</strong> project, you can find the generated code in the <code>.build/plugins</code> directory:</p><pre><code>.build/plugins/outputs/finished/MyOpenAPI/OpenAPIGenerator/GeneratedSources
+</code></pre><h2>Creating a specification</h2><p>The OpenAPI specification is a YAML file that describes your API. It contains all public information needed to communicate between your API and clients.</p><p>The specification is written in <code>Sources/MyOpenAPI/openapi.yaml</code>. Here's an example of a simple OpenAPI specification.</p><pre><code class="language-yaml">openapi: 3.0.0
+info:
+  title: My API
+  version: 1.0.0
+
+# The routes on your API
+paths:
+  /hello:
+    # GET /hello
+    get:
+      operationId: greet
+      responses:
+        '200': # When the request is successful
+          description: A hello message
+          content:
+            application/json:
+              schema: # The returned JSON object
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
+</code></pre><p>In order to generate Swift code from this specification, you'll need to add <code>openapi-generator-config.yaml</code> in the same directory as your specification. This file contains the configuration for the OpenAPI generator.</p><pre><code class="language-yaml">generate:
+  - types
+  - server
+accessModifier: public
+</code></pre><p>This configuration file tells the OpenAPI generator to generate types and server code, and to use public access modifiers for all types it generates. This ensures that the generated code is accessible from your application's module. You can alternatively use the <code>package</code> access modifier to make the generated code accessible from the entire package, but not any apps that depend on this package.</p><blockquote><p>Note: If you want to generate the code needed to run an HTTP client, you can add <code>client</code> to the <code>generate</code> list.</p></blockquote><p>Finally, you'll need an empty <code>.swift</code> file in your <code>Sources/MyOpenAPI</code> directory. This file is necessary for SPM to recognize the directory as a Swift module.</p><h2>Implementing the server</h2><p>Now that you have your OpenAPI specification and configuration, you can generate the Swift code. This happens automatically during <code>swift build</code>. In order to use the generated code, you'll need to import the <code>MyOpenAPI</code> module in your application. Let's create a new Hummingbird server that responds to the <code>/hello</code> route.</p><p>First, create a new file called <code>Sources/MyApp/HelloAPI.swift</code> with the following content:</p><pre><code class="language-swift"><span class="keyword">import</span> MyOpenAPI
+
+<span class="keyword">struct</span> HelloAPI: <span class="type">APIProtocol</span> {
+    <span class="comment">// 1</span>
+}</code></pre><p>The <code>APIProtocol</code> conformance refers to the generated <code>APIProtocol</code> from the OpenAPI specification. This protocol contains all the routes and request/response types defined in your OpenAPI specification. By conforming to this protocol, and implementing the required methods, you can create a server that responds to the routes defined in your OpenAPI specification. This guarantees that your server is always in sync with your API specification.</p><p>The <strong>operationId</strong> is used for the operationId and the Input/Output namespace. When conforming to <code>APIProtocol</code>, you'll need to implement all methods that are defined in your OpenAPI specification. This provides compile-time guarantees that you've implemented all the routes defined in your OpenAPI specification.</p><p>Next, you'll need to implement the <code>greet</code> method. This method is called when a client sends a <code>GET</code> request to <code>/hello</code>. Add the following code:</p><pre><code class="language-swift"><span class="keyword">struct</span> HelloAPI: <span class="type">APIProtocol</span> {
+    <span class="keyword">func</span> greet(<span class="keyword">_</span> input: <span class="type">Operations</span>.<span class="property">greet</span>.<span class="type">Input</span>) <span class="keyword">async throws</span> -&gt; <span class="type">Operations</span>.<span class="property">greet</span>.<span class="type">Output</span> {
+        <span class="comment">// 1.</span>
+        <span class="keyword">return</span> .<span class="call">ok</span>(.<span class="keyword">init</span>(body:
+            <span class="comment">// 2.</span>
+            .<span class="call">json</span>(.<span class="keyword">init</span>(
+                <span class="comment">// 3</span>
+                message: <span class="string">"Hello, world!"</span>
+            ))
+        ))
+    }
+}</code></pre><p>As you see, the <code>greet</code> function is a simple generated signature. The <code>Input</code> type is the request, and the <code>Output</code> type is the response.</p><p>Both <code>Input</code> and <code>Output</code> types are very noticably generated types in OpenAPI, and look very verbose. Let's break down what's being returned:</p><ol><li>Return an HTTP 200 (OK) response</li><li>The OK response has a JSON body</li><li>The JSON body contains a <code>message</code> property with the value "Hello, world!"</li></ol><p>Note that the JSON body is not directly set in the body. This is necessary, because OpenAPI generator supports multipart and other types of responses. When working with HTTP bodies in <code>Input</code>, you'll find back the same design.</p><h3>Verbosity and OpenAPI</h3><p>The verbosity of the generated types can be perceived as a downside to OpenAPI generator. It lacks the 'slimness' of most Swift APIs. However, as you work with OpenAPI more you'll find that the verbosity is one of its strenghts in practice. It makes it very clear what the API expects and returns, making it hard or even impossible to overlook important details.</p><p>OpenAPI is a documentation-first approach, with the generated code being a direct reflection of this documentation. This builds a level of reliability and trust to your APIs and client implementations that is hard to achieve otherwise.</p><h2>Hosting the HelloAPI</h2><p>Finally, you'll need to create a Hummingbird server that uses the <code>HelloAPI</code> to respond to the <code>/hello</code> route. Create a new file called <code>Sources/MyApp/App.swift</code> with the following content:</p><pre><code class="language-swift"><span class="keyword">import</span> ArgumentParser
+<span class="keyword">import</span> Hummingbird
+<span class="keyword">import</span> OpenAPIHummingbird
+<span class="keyword">import</span> OpenAPIRuntime
+
+<span class="keyword">@main struct</span> HummingbirdArguments: <span class="type">AsyncParsableCommand</span> {
+    <span class="keyword">@Option</span>(name: .<span class="dotAccess">shortAndLong</span>)
+    <span class="keyword">var</span> hostname: <span class="type">String</span> = <span class="string">"127.0.0.1"</span>
+
+    <span class="keyword">@Option</span>(name: .<span class="dotAccess">shortAndLong</span>)
+    <span class="keyword">var</span> port: <span class="type">Int</span> = <span class="number">8080</span>
+
+    <span class="keyword">func</span> run() <span class="keyword">async throws</span> {
+        <span class="comment">// 1</span>
+        <span class="keyword">let</span> router = <span class="type">HBRouter</span>()
+        router.<span class="property">middlewares</span>.<span class="call">add</span>(<span class="type">HBLogRequestsMiddleware</span>(.<span class="dotAccess">info</span>))
+
+        <span class="comment">// 2</span>
+        <span class="keyword">let</span> api = <span class="type">HelloAPI</span>()
+
+        <span class="comment">// 3</span>
+        <span class="keyword">try</span> api.<span class="call">registerHandlers</span>(on: router)
+        
+        <span class="comment">// 4</span>
+        <span class="keyword">let</span> app = <span class="type">HBApplication</span>(
+            router: router,
+            configuration: .<span class="keyword">init</span>(address: .<span class="call">hostname</span>(hostname, port: port))
+        )
+
+        <span class="comment">// 5</span>
+        <span class="keyword">try await</span> app.<span class="call">runService</span>()
+    }
+}</code></pre><p>This code registers the <code>HelloAPI</code> routes, defined in your <code>openapi.yaml</code></p><p>Let's break down the above:</p><ol><li>Create a new <code>HBRouter</code> and add a logging middleware to it, allowing you to see the requests in the console.</li><li>Create a new <code>HelloAPI</code> instance. This is also the point where you can inject dependencies into your API implementation.</li><li>Register the HelloAPI's handlers on the router. This will make the <code>HelloAPI</code> respond to the <code>/hello</code> route.</li><li>Create a new <code>HBApplication</code> with the router and a configuration that specifies the hostname and port.</li><li>Run the application. This will make your route available at <a href="http://localhost:8080/hello" target="_blank">http://localhost:8080/hello</a>.</li></ol><p>That's all it takes to create a Hummingbird server that responds to the <code>/hello</code> route using the OpenAPI generator. There are many more features and options available in the OpenAPI generator, such as multipart or generating client code for use with a client transport such as <a href="https://github.com/swift-server/async-http-client" target="_blank">async-http-client</a> and URLSession. We hope this tutorial has given you a good starting point for using the OpenAPI generator with Hummingbird.</p>
+        
+    </section>
+
+</article>
+        
+    </main>
+
+    <footer>
+        <section class="content-wrapper">
+            <figure>
+                <picture>
+                    <source 
+                        srcset="https://swiftonserver.com/images/logos/logo~dark.png" 
+                        media="(prefers-color-scheme: dark)"
+                    >
+                    <img 
+                        id="logo-image"
+                        width="80"
+                        height="80"
+                        src="https://swiftonserver.com/images/logos/logo.png"
+                        alt="Logo of Swift on server"
+                        title="Swift on server"
+                    >
+                </picture>
+            </figure>
+
+            <p>This site was generated using the <a href="https://swift.org/" target="_blank">Swift</a> programming language.</p>
+            <p class="small">Created by <a href="https://x.com/JoannisOrlandos" target="_blank">Joannis Orlandos</a> & <a href="https://x.com/tiborbodecs">Tibor Bödecs</a> &copy; 2024.</p>
+
+            <p> 
+                <a href="https://swiftonserver.com/">Home</a> ·
+                <a href="https://swiftonserver.com/rss.xml" target="_blank">RSS</a> ·
+                <a href="https://swiftonserver.com/sitemap.xml" target="_blank">Sitemap</a>
+            </p>
+            
+            
+        </section>
+    </footer>
+</body>
+</html>
