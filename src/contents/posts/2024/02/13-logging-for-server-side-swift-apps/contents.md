@@ -6,9 +6,9 @@ date: 2024/02/13
 tags: Swift, Logging, Observability
 author: Tibor Bödecs
 authorLink: https://x.com/tiborbodecs
+authorGithub: tib
 company: Binary Birds Kft.
 companyLink: https://binarybirds.com/
-authorGithub: tib
 duration: 20 minutes
 sample: https://github.com/swift-on-server/logging-for-server-side-swift-apps-sample
 ---
