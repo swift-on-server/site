@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Using environment variables in Swift - Swift on server</title>
+    
+    <meta name="description" content="Explore the importance of environment variables in Swift and how to use them.">
+    
+    <meta property="og:title" content="Using environment variables in Swift - Swift on server">
+    <meta property="og:description" content="Explore the importance of environment variables in Swift and how to use them.">
+    <meta property="og:url" content="https://swiftonserver.com/using-environment-variables-in-swift/">
+    <meta property="og:image" content="https://swiftonserver.com/images/assets/using-environment-variables-in-swift/cover.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Using environment variables in Swift - Swift on server">
+    <meta name="twitter:description" content="Explore the importance of environment variables in Swift and how to use them.">
+    <meta name="twitter:image" content="https://swiftonserver.com/images/assets/using-environment-variables-in-swift/cover.jpg">
+    
+    <link rel="stylesheet" href="https://swiftonserver.com/css/style.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/syntax.css">
+
+    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/icon-320.png" type="image/png">
+    
+    <link rel="apple-touch-icon" href="https://swiftonserver.com/images/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://swiftonserver.com/images/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://swiftonserver.com/images/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://swiftonserver.com/images/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://swiftonserver.com/images/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://swiftonserver.com/images/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://swiftonserver.com/images/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://swiftonserver.com/images/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://swiftonserver.com/images/icons/apple-touch-icon-180x180.png">
+    
+</head>
+
+<body>
+    <header id="page-header">
+        <a href="https://swiftonserver.com/">
+            <figure>
+                <picture>
+                    <source 
+                        srcset="https://swiftonserver.com/images/logos/logo~dark.png" 
+                        media="(prefers-color-scheme: dark)"
+                    >
+                    <img 
+                        id="logo-image"
+                        width="150"
+                        height="150"
+                        src="https://swiftonserver.com/images/logos/logo.png"
+                        alt="Logo of Swift on server"
+                        title="Swift on server"
+                    >
+                </picture>
+            </figure>
+        </a>
+    </header>
+    
+    <main>
+
+        <article>
+    <header>
+        <section id="post-header" class="content-wrapper">
+            <time datetime="2024/03/12">2024/03/12</time>
+            <h1 class="title">Using environment variables in Swift</h1>
+            <p class="excerpt">Explore the importance of environment variables in Swift and how to use them.</p>
+            <div class="meta">
+                <span class="tag">Swift</span>
+<span class="tag">Environment</span>
+            </div>
+            <p>
+                <span class="author">Written by: <a href="https://x.com/tiborbodecs" target="_blank">Tibor Bödecs</a> @ 
+                <span class="author"><a href="https://binarybirds.com/" target="_blank">Binary Birds Kft.</a></span><br>
+                <span class="reading-time">Reading time: 5 minutes</span><br>
+            </p>
+        </section>
+    </header>
+
+    <section class="content-wrapper">
+        <hr>
+    </section>
+
+    <section id="contents" class="content-wrapper">
+    
+    <p>Environment variables are key-value pairs that can be used to alter the behavior of an application. The variables are part of the environment in which a process runs. The environment is injected during the runtime of the application. Environment variables can be set at the system level or they can be defined by the end-user.</p><p>Environment variables are commonly used for configuration purposes. It is possible to set different configuration values for development, testing and production environment. It is possible to use env vars as feature flags or to specify secrets and keys and keep them separate from the application codebase.</p><p>For example, an app could take advantage of the <code>LOG_LEVEL=trace</code> environment variable to set the log level using the <a href="https://swiftonserver.com/logging-for-server-side-swift-apps/">Logging library</a> in Swift. By using an env variable developers can get more detailed logs for debugging purposes and less verbose logs for production without changing the source code of the application itself.</p><h2>How to access environment variables in Swift?</h2><p>In Swift, it is possible to access environment variables using the <a href="https://developer.apple.com/documentation/foundation/processinfo" target="_blank">ProcessInfo</a> class. The <em>ProcessInfo</em> class is part of the Foundation framework.</p><p>Here's a quick example how to get the value of the <code>LOG_LEVEL</code> variable:</p><pre><code class="language-swift"><span class="keyword">import</span> Foundation
+
+<span class="keyword">let</span> env = <span class="type">ProcessInfo</span>.<span class="property">processInfo</span>.<span class="property">environment</span>
+
+<span class="keyword">let</span> value = env[<span class="string">"LOG_LEVEL"</span>] ?? <span class="string">"trace"</span>
+
+<span class="call">print</span>(value)</code></pre><p>The process info's environment is represented a <code>[String: String]</code> dictionary. When requesting a specific key, the value is going to be an optional <code>String</code> type.</p><p>The output of this script is <em>trace</em>, if the <code>LOG_LEVEL</code> is not provided explicitly.</p><h2>How to set environment variables?</h2><p>There are several methods for configuring environment variables, and the approach you take depends on the specific tools you're working with.</p><p>Here are some typical scenarios for setting up custom environment variables.</p><h3>Setting env vars using the command line</h3><p>List the desired environment variables before the command when running a Swift package using a terminal window. Key-value pairs should be listed using the <code>key=value</code> format, separated by a single space character.</p><p>Here's how to define an explicit log level by using the <code>swift run</code> command:</p><pre><code class="language-sh">LOG_LEVEL=debug swift run
+
+// output: "debug"
+</code></pre><p>The command above makes the <code>LOG_LEVEL</code> env variable set to <code>trace</code> for the <code>swift run</code> process. Traditionally environment variables are uppercased.</p><p>The export command extends the availability of an environment variable throughout the shell's entire lifecycle. Here's how to use it:</p><pre><code class="language-sh">echo $LOG_LEVEL // output: ""
+
+export LOG_LEVEL=info 
+
+echo $LOG_LEVEL // output: "info"
+
+swift run
+
+// output: "info"
+</code></pre><p>The <code>echo</code> command is used to display variables in a shell script. Use the $ prefix and the name of the variable to access the value of it.</p><h3>Setting env vars using Xcode</h3><p>In Xcode, you can configure environment variables within the Scheme settings. The interface permits enabling or disabling specific key-value pairs for a particular run.</p><p>Here's how to reach the settings:</p><ul><li>Open the project in Xcode.</li></ul><ul><li>Select the "Product" &gt; "Scheme" &gt; "Edit Scheme..." menu item.</li></ul><p>Alternatively, click on the Scheme name and select the "Edit Scheme..." menu item:</p></section><section class="wrapper">
+<figure>
+    <picture>
+        <source srcset="https://swiftonserver.com/images/assets/using-environment-variables-in-swift/images/edit-scheme-in-xcode~dark.png" media="(prefers-color-scheme: dark)">
+		<img class="post-image" src="https://swiftonserver.com/images/assets/using-environment-variables-in-swift/images/edit-scheme-in-xcode.png" alt="Edit Scheme in Xcode">
+    </picture>
+</figure>
+</section><section class="content-wrapper"><p>Inside the popup window:</p><ul><li>Select the "Run" option on the sidebar.</li></ul><ul><li>Select the "Arguments" tab.</li></ul></section><section class="wrapper">
+<figure>
+    <picture>
+        <source srcset="https://swiftonserver.com/images/assets/using-environment-variables-in-swift/images/set-env-in-xcode~dark.png" media="(prefers-color-scheme: dark)">
+		<img class="post-image" src="https://swiftonserver.com/images/assets/using-environment-variables-in-swift/images/set-env-in-xcode.png" alt="Set env in Xcode">
+    </picture>
+</figure>
+</section><section class="content-wrapper"><p>Finally, add a new entry into the "Environment Variables" section.</p><p>Click "Close" to get back to the project and press the "Play" icon to run the app.</p><h3>Setting env vars using Visual Studio Code</h3><p>It is possible to <a href="https://swiftonserver.com/developing-with-swift-in-visual-studio-code/">develop Swift projects with VSCode</a> using the <a href="https://www.swift.org/blog/vscode-extension/" target="_blank">official Swift extension</a>.</p><p>In order to set environment variables in the editor, open the <code>.vscode/launch.json</code> file in your workspace or select the "Debug" &gt; "Open Configurations" menu item.</p><p>Inside the launch configuration file simply add to a new <code>env</code> property, if it's not present, with the desired key-value pairs:</p></section><section class="wrapper">
+<figure>
+    <picture>
+        <source srcset="https://swiftonserver.com/images/assets/using-environment-variables-in-swift/images/set-env-in-vscode~dark.png" media="(prefers-color-scheme: dark)">
+		<img class="post-image" src="https://swiftonserver.com/images/assets/using-environment-variables-in-swift/images/set-env-in-vscode.png" alt="Set env in VSCode">
+    </picture>
+</figure>
+</section><section class="content-wrapper"><p>Save the launch config and run the project using the "Play" icon inside the "Run and Debug" panel or using the "Run" &gt; "Start Debugging" menu item.</p><h2>Using dotenv files</h2><p>A <code>.env</code> file is a text file commonly used to store environment variables for a project. It contains key-value pairs in the form of <code>KEY=VALUE</code>, where each line represents a different variable. Developers use libraries or tools to load the variables from the <em>.env</em> file into the application's environment. This allows the application to access these variables as if they were set directly in the system's environment.</p><p>NOTE: The <em>.env</em> files should be excluded from git using <em>.gitignore</em>.</p><p>The <em>.env</em> file provides a flexible and convenient way to manage environment-specific configuration settings in a project while keeping sensitive information secure and separate from the codebase.</p><p>Various open-source Swift libraries exist for server-side application developers, providing functionality to parse dotenv files. For instance:</p><ul><li><a href="https://github.com/thebarndog/swift-dotenv" target="_blank">thebarndog/swift-dotenv</a></li><li><a href="https://github.com/swiftpackages/DotEnv" target="_blank">swiftpackages/DotEnv</a></li><li><a href="https://github.com/clarkgunn/DotEnv/" target="_blank">clarkgunn/DotEnv/</a></li></ul><p>Most of the modern web frameworks, have excellent support for loading dotenv files. Both <a href="https://docs.vapor.codes/basics/environment/?h=environ#env-dotenv" target="_blank">Vapor</a> and <a href="https://hummingbird-project.github.io/hummingbird-docs/1.0/documentation/hummingbirdauth/hbenvironment/dotenv(_:)" target="_blank">Hummingbird</a> have a built-in solution to load and parse environment variables using these files.</p><h2>Using the environment in Vapor</h2><p>Vapor's <a href="https://docs.vapor.codes/basics/environment/" target="_blank">Environment API</a> enables dynamic configuration of the application:</p><pre><code class="language-swift"><span class="keyword">import</span> Vapor
+
+<span class="comment">// configures your application</span>
+<span class="keyword">public func</span> configure(<span class="keyword">_</span> app: <span class="type">Application</span>) <span class="keyword">async throws</span> {
+    
+    <span class="comment">// 1.</span>
+    <span class="keyword">var</span> logger = <span class="type">Logger</span>(label: <span class="string">"vapor-logger"</span>)
+    logger.<span class="property">logLevel</span> = .<span class="dotAccess">trace</span>
+
+    <span class="comment">// 2.</span>
+    <span class="keyword">let</span> logLevel = <span class="type">Environment</span>.<span class="call">get</span>(<span class="string">"LOG_LEVEL"</span>)
+    
+    <span class="comment">// 3.</span>
+    <span class="keyword">if let</span> logLevel, <span class="keyword">let</span> logLevel = <span class="type">Logger</span>.<span class="type">Level</span>(rawValue: logLevel) {
+        <span class="comment">// 4.</span>
+        logger.<span class="property">logLevel</span> = logLevel
+    }
+    
+    <span class="keyword">try</span> <span class="call">routes</span>(app)
+}</code></pre><ol><li>Set up a new <em>Logger</em> instance, set the default log level to <em>.trace</em></li><li>Get the the raw log level as an optional String using the Environment</li><li>Cast the log level to a <code>Logger.Level</code> enum, if it's a valid input</li><li>Set the log level based on the environment</li></ol><p>Vapor will look for dotenv files in the current working directory. If you're using Xcode, make sure to set the working directory by editing the scheme.</p><h2>Using the environment in Hummingbird 2</h2><p>In Hummingbird, it is possible to use the shared environment or load dotenv files using the static <code>dotEnv()</code> method on the <a href="https://hummingbird-project.github.io/hummingbird-docs/1.0/documentation/hummingbirdauth/hbenvironment" target="_blank">HBEnvironment</a> struct:</p><pre><code class="language-swift"><span class="keyword">import</span> Hummingbird
+<span class="keyword">import</span> Logging
+
+<span class="keyword">func</span> buildApplication(
+    configuration: <span class="type">HBApplicationConfiguration</span>
+) <span class="keyword">async throws</span> -&gt; <span class="keyword">some</span> <span class="type">HBApplicationProtocol</span> {
+
+    <span class="keyword">var</span> logger = <span class="type">Logger</span>(label: <span class="string">"hummingbird-logger"</span>)
+    logger.<span class="property">logLevel</span> = .<span class="dotAccess">trace</span>
+
+    <span class="keyword">let</span> env = <span class="type">HBEnvironment</span>.<span class="property">shared</span>
+    <span class="comment">// let env = try await HBEnvironment.dotEnv()</span>
+    <span class="keyword">let</span> logLevel = env.<span class="call">get</span>(<span class="string">"LOG_LEVEL"</span>)
+    
+    <span class="keyword">if let</span> logLevel, <span class="keyword">let</span> logLevel = <span class="type">Logger</span>.<span class="type">Level</span>(rawValue: logLevel) {
+        logger.<span class="property">logLevel</span> = logLevel
+    }
+
+    <span class="keyword">let</span> router = <span class="type">HBRouter</span>()
+    router.<span class="call">get</span>(<span class="string">"/"</span>) { <span class="keyword">_</span>, <span class="keyword">_ in
+        return</span> <span class="string">"Hello"</span>
+    }
+    
+    <span class="keyword">let</span> app = <span class="type">HBApplication</span>(
+        router: router,
+        configuration: configuration,
+        logger: logger
+    )
+    <span class="keyword">return</span> app
+}</code></pre><p>If you run the project from Xcode, make sure you set a custom working directory, otherwise the framework won't be able to locate your dotenv file.</p><h2>What's next?</h2><p>Environment variables are crucial for modifying application behavior without code changes, offering flexibility across environments. They're commonly used for feature flags, secrets, and other configuration purposes. In our next article we will discover how to store secrets and API credentials in a secure way.</p>
+        
+    </section>
+
+</article>
+        
+    </main>
+
+    <footer>
+        <section class="content-wrapper">
+            <figure>
+                <picture>
+                    <source 
+                        srcset="https://swiftonserver.com/images/logos/logo~dark.png" 
+                        media="(prefers-color-scheme: dark)"
+                    >
+                    <img 
+                        id="logo-image"
+                        width="80"
+                        height="80"
+                        src="https://swiftonserver.com/images/logos/logo.png"
+                        alt="Logo of Swift on server"
+                        title="Swift on server"
+                    >
+                </picture>
+            </figure>
+
+            <p>This site was generated using the <a href="https://swift.org/" target="_blank">Swift</a> programming language.</p>
+            <p class="small">Created by <a href="https://x.com/JoannisOrlandos" target="_blank">Joannis Orlandos</a> & <a href="https://x.com/tiborbodecs">Tibor Bödecs</a> &copy; 2024.</p>
+
+            <p> 
+                <a href="https://swiftonserver.com/">Home</a> ·
+                <a href="https://swiftonserver.com/rss.xml" target="_blank">RSS</a> ·
+                <a href="https://swiftonserver.com/sitemap.xml" target="_blank">Sitemap</a>
+            </p>
+            
+            
+        </section>
+    </footer>
+</body>
+</html>
