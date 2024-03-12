@@ -6,6 +6,7 @@ date: 2024/03/12
 tags: Swift, Environment
 author: Tibor Bödecs
 authorLink: https://x.com/tiborbodecs
+authorGithub: tib
 company: Binary Birds Kft.
 companyLink: https://binarybirds.com/
 duration: 5 minutes
