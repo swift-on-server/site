@@ -6,6 +6,7 @@ date: 2024/01/16
 tags: Swift, VSCode
 author: Joannis Orlandos
 authorLink: https://x.com/JoannisOrlandos
+authorGithub: joannis
 company: Unbeatable Software B.V.
 companyLink: https://unbeatable.software/
 duration: 10 minutes

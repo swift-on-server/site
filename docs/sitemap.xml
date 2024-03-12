@@ -1,26 +1,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://swiftonserver.com/using-environment-variables-in-swift/</loc>
+        <loc>https://swiftonserver.com/using-openapi-with-hummingbird/</loc>
+        <lastmod>2024-03-12</lastmod>
+    </url>
+    <url>
+        <loc>https://swiftonserver.com/whats-new-in-hummingbird-2/</loc>
         <lastmod>2024-03-12</lastmod>
     </url>
     <url>
         <loc>https://swiftonserver.com/building-swiftnio-clients/</loc>
-        <lastmod>2024-02-28</lastmod>
+        <lastmod>2024-03-12</lastmod>
     </url>
     <url>
         <loc>https://swiftonserver.com/logging-for-server-side-swift-apps/</loc>
-        <lastmod>2024-02-28</lastmod>
+        <lastmod>2024-03-12</lastmod>
     </url>
     <url>
         <loc>https://swiftonserver.com/using-swiftnio-channels/</loc>
-        <lastmod>2024-02-28</lastmod>
+        <lastmod>2024-03-12</lastmod>
     </url>
     <url>
         <loc>https://swiftonserver.com/using-swiftnio-fundamentals/</loc>
-        <lastmod>2024-02-28</lastmod>
+        <lastmod>2024-03-12</lastmod>
     </url>
     <url>
         <loc>https://swiftonserver.com/developing-with-swift-in-visual-studio-code/</loc>
-        <lastmod>2024-02-28</lastmod>
+        <lastmod>2024-03-12</lastmod>
+    </url>
+    <url>
+        <loc>https://swiftonserver.com/using-environment-variables-in-swift/</loc>
+        <lastmod>2024-03-12</lastmod>
     </url>
 </urlset>
