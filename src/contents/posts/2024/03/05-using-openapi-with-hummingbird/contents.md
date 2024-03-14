@@ -39,8 +39,8 @@ When adding the OpenAPI generator to your project, you'll need to add the follow
 .package(url: "https://github.com/apple/swift-openapi-generator.git", from: "1.2.0"),
 .package(url: "https://github.com/apple/swift-openapi-runtime.git", from: "1.3.0"),
 .package(url: "https://github.com/apple/swift-argument-parser.git", from: "1.3.0"),
-.package(url: "https://github.com/hummingbird-project/hummingbird.git", from: "2.0.0-alpha.3"),
-.package(url: "https://github.com/swift-server/swift-openapi-hummingbird.git", from: "2.0.0-alpha.2"),
+.package(url: "https://github.com/hummingbird-project/hummingbird.git", from: "2.0.0-beta.1"),
+.package(url: "https://github.com/swift-server/swift-openapi-hummingbird.git", from: "2.0.0-beta.1"),
 ```
 
 **Note:** `swift-argument-parser` is not related to Hummingbird or OpenAPI.
@@ -202,8 +202,8 @@ import OpenAPIRuntime
 
     func run() async throws {
         // 1
-        let router = HBRouter()
-        router.middlewares.add(HBLogRequestsMiddleware(.info))
+        let router = Router()
+        router.middlewares.add(LogRequestsMiddleware(.info))
 
         // 2
         let api = HelloAPI()
@@ -212,7 +212,7 @@ import OpenAPIRuntime
         try api.registerHandlers(on: router)
         
         // 4
-        let app = HBApplication(
+        let app = Application(
             router: router,
             configuration: .init(address: .hostname(hostname, port: port))
         )
@@ -227,10 +227,10 @@ This code registers the `HelloAPI` routes, defined in your `openapi.yaml`
 
 Let's break down the above:
 
-1. Create a new `HBRouter` and add a logging middleware to it, allowing you to see the requests in the console.
+1. Create a new `Router` and add a logging middleware to it, allowing you to see the requests in the console.
 2. Create a new `HelloAPI` instance. This is also the point where you can inject dependencies into your API implementation.
 3. Register the HelloAPI's handlers on the router. This will make the `HelloAPI` respond to the `/hello` route.
-4. Create a new `HBApplication` with the router and a configuration that specifies the hostname and port.
+4. Create a new `Application` with the router and a configuration that specifies the hostname and port.
 5. Run the application. This will make your route available at [http://localhost:8080/hello](http://localhost:8080/hello).
 
 That's all it takes to create a Hummingbird server that responds to the `/hello` route using the OpenAPI generator. There are many more features and options available in the OpenAPI generator, such as multipart or generating client code for use with a client transport such as [async-http-client](https://github.com/swift-server/async-http-client) and URLSession. We hope this tutorial has given you a good starting point for using the OpenAPI generator with Hummingbird.
