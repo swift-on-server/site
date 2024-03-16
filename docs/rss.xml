@@ -4,11 +4,18 @@
     <description>Articles about server-side Swift development. Created by Joannis Orlandos and Tibor Bödecs.</description>
     <link>https://swiftonserver.com/</link>
     <language>en-US</language>
-    <lastBuildDate>Thu, 14 Mar 2024 09:12:02 +0000</lastBuildDate>
-    <pubDate>Mon, 11 Mar 2024 23:00:00 +0000</pubDate>
+    <lastBuildDate>Tue, 19 Mar 2024 11:25:46 +0000</lastBuildDate>
+    <pubDate>Mon, 18 Mar 2024 23:00:00 +0000</pubDate>
     <ttl>250</ttl>
     <atom:link href="https://swiftonserver.com/rss.xml" rel="self" type="application/rss+xml"/>
 
+    <item>
+       <guid isPermaLink="true">https://swiftonserver.com/getting-started-with-structured-concurrency-in-swift/</guid>
+       <title><![CDATA[ Getting Started with Structured Concurrency in Swift ]]></title>
+       <description><![CDATA[ Learn how to apply structured concurrency in your applications, using task groups and other structured concepts. ]]></description>
+       <link>https://swiftonserver.com/getting-started-with-structured-concurrency-in-swift/</link>
+       <pubDate>Mon, 18 Mar 2024 23:00:00 +0000</pubDate>
+    </item>
     <item>
        <guid isPermaLink="true">https://swiftonserver.com/using-environment-variables-in-swift/</guid>
        <title><![CDATA[ Using environment variables in Swift ]]></title>
