@@ -12,7 +12,7 @@ companyLink: https://unbeatable.software/
 duration: 30 minutes
 ---
 
-# Structured Concurreny in Swift
+# Structured Concurrency in Swift
 
 Swift 5.5 introduced structured concurrency. The new way to write concurrent code that is more maintainable and easier to reason about. A lot of developers have been adopting concurrency in Swift. But few people understand what '**structured**' means in this context, and how it helps you.
 
