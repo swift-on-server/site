@@ -22,7 +22,7 @@ This guide will teach you all you need to know about structured concurrency in S
 
 Concurrency is the ability of different parts your code to run out-of-order or in partial order, without affecting the outcome. This allows for parallel execution of the concurrent units, which can improve the overall speed of the execution.
 
-Imagine that you're shopping for groceries with a friend. You both have a list of items to buy, and you decide to split up to save time. You both go to different parts of the store, and pick up the items on your list. You both finish at slightly different times, and meet up at the checkout. Instead of having to go through all the isles together, you're both able to solve part of the puzzle at the same time. The end result is the same, but you've saved time.
+Imagine that you're shopping for groceries with a friend. You both have a list of items to buy, and you decide to split up to save time. You both go to different parts of the store, and pick up the items on your list. You both finish at slightly different times, and meet up at the checkout. Instead of having to go through all the aisles together, you're both able to solve part of the puzzle at the same time. The end result is the same, but you've saved time.
 
 ### Pre-Swift 5.5 Concurrency
 
