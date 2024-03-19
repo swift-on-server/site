@@ -1,5 +1,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
+        <loc>https://swiftonserver.com/getting-started-with-structured-concurrency-in-swift/</loc>
+        <lastmod>2024-03-19</lastmod>
+    </url>
+    <url>
         <loc>https://swiftonserver.com/using-openapi-with-hummingbird/</loc>
         <lastmod>2024-03-14</lastmod>
     </url>
