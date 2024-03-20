@@ -7,6 +7,9 @@ tags: Swift, Logging, Observability
 author: Tibor Bödecs
 authorLink: https://x.com/tiborbodecs
 authorGithub: tib
+authorAbout: Tibor, also known as <a href="https://theswiftdev.com">"The Swift Dev"</a>, is the co-founder of <a href="https://binarybirds.com/">Binary Birds Kft.</a> Tibor provides Server-Side Swift development and consulting.
+cta: Contact Tibor
+ctaLink: mailto:info@binarybirds.com
 company: Binary Birds Kft.
 companyLink: https://binarybirds.com/
 duration: 20 minutes
