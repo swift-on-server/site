@@ -277,3 +277,18 @@ a.button:hover {
 #posts h2, #posts p {
     margin-top: 0;
 }
+
+#about-author {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 2rem 4rem 0 4rem;
+    font-size: 1rem;
+    line-height: 2rem;
+}
+#about-author h4 {
+    margin-top: 0;
+}
+footer img#logo-image {
+    width: 80px;
+    margin: 1em auto;
+}

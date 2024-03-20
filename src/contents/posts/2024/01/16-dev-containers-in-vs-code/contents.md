@@ -7,6 +7,9 @@ tags: Swift, VSCode
 author: Joannis Orlandos
 authorLink: https://x.com/JoannisOrlandos
 authorGithub: joannis
+authorAbout: Joannis is a SSWG member and co-founder of <a href="https://unbeatable.software/">Unbeatable Software B.V.</a> and provides Full-Stack Swift Training and Consultation.
+cta: Get Training or Consultation
+ctaLink: mailto:joannis@unbeatable.software
 company: Unbeatable Software B.V.
 companyLink: https://unbeatable.software/
 duration: 10 minutes
