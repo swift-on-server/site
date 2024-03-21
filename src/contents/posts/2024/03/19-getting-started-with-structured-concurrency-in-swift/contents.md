@@ -107,7 +107,7 @@ Over the years, many patterns and abstractions have emerged to solve these probl
 
 ## Structured Concurrency
 
-Swift has always been focused on safety and maintainability. Common examples are a strong type system, the addition of _guard_ statements, and checks that protect against integer overflows.
+Swift has always been focused on safety and maintainability through _local reasoning_. Common examples are found in the type system, such as the use of value types. Because Array and Dictionary are value types, you can reason about them locally. You don't need to know about other parts of the code, and how those other parts might be modifying a reference to the same array or dictionary. Because value types are copied when passed around, you can reason about them locally.
 
 Similarly, Structured Concurrency is a language feature that is designed to write concurrent code that is more maintainable and easier to reason about. It's designed to solve these problems, and is the recommended to write concurrent code that is maintainable and easy to reason about.
 
