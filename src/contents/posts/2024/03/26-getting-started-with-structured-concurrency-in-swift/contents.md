@@ -554,11 +554,3 @@ As you may notice, the `EventLoopExecutor` type is _manually_ retained and relea
 Previously, we wrote that large workloads should be run outside of structured concurrency. This is necessary, since the _standard_ executor in Swift is designed to run tasks concurrently. In Swift 6, this is executor is the `globalConcurrentExecutor`, which is hidden in previous versions of Swift.
 
 However, heavy workload _can_ be run on a custom executor. Using the pattern shown above, or an executor that is could be provided by SwiftNIO in the future, heavy workloads can run on a custom executor that is designed to handle heavy workloads.
-
-### Actor Isolation Inheritance
-
-In Swift 5, actor isolation is lost when calling another async function. Starting in Swift 6, thanks to [SE-0420](https://github.com/apple/swift-evolution/blob/main/proposals/0420-inheritance-of-actor-isolation.md), actor isolation can be inherited when calling another async function.
-
-```swift
-func 
-```
