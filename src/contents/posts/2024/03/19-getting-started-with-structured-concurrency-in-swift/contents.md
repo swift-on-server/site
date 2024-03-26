@@ -396,4 +396,4 @@ The regular task groups create a collection of results, which you can then itera
 
 Structured concurrency is a powerful feature that was introduced with Swift 5.5. When writing your concurrenct code in a structured way, it's easier to reason about your code and maintain it.
 
-Almost every application that you write will also have some form of shared state. In next week's article, we'll cover how Swift's actors, actor isolation and Sendable checking empower you to write race-condition free code.
+Almost every application that you write will also have some form of shared state. In <a href="/structured-concurrency-and-shared-state-in-swift">the article</a>, we'll cover how Swift's actors, actor isolation and Sendable checking empower you to write race-condition free code.
