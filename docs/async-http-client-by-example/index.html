@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>AsyncHTTPClient by example - Swift on server</title>
+    
+    <meta name="description" content="This article offers practical examples to introduce the Swift AsyncHTTPClient library.">
+    
+    <meta property="og:title" content="AsyncHTTPClient by example - Swift on server">
+    <meta property="og:description" content="This article offers practical examples to introduce the Swift AsyncHTTPClient library.">
+    <meta property="og:url" content="https://swiftonserver.com/async-http-client-by-example/">
+    <meta property="og:image" content="https://swiftonserver.com/images/assets/async-http-client-by-example/cover.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AsyncHTTPClient by example - Swift on server">
+    <meta name="twitter:description" content="This article offers practical examples to introduce the Swift AsyncHTTPClient library.">
+    <meta name="twitter:image" content="https://swiftonserver.com/images/assets/async-http-client-by-example/cover.jpg">
+    
+    <link rel="stylesheet" href="https://swiftonserver.com/css/style.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/syntax.css">
+
+    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/icon-320.png" type="image/png">
+    
+    <link rel="apple-touch-icon" href="https://swiftonserver.com/images/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://swiftonserver.com/images/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://swiftonserver.com/images/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://swiftonserver.com/images/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://swiftonserver.com/images/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://swiftonserver.com/images/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://swiftonserver.com/images/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://swiftonserver.com/images/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://swiftonserver.com/images/icons/apple-touch-icon-180x180.png">
+    
+</head>
+
+<body>
+    <header id="page-header">
+        <a href="https://swiftonserver.com/">
+            <figure>
+                <picture>
+                    <source 
+                        srcset="https://swiftonserver.com/images/logos/logo~dark.png" 
+                        media="(prefers-color-scheme: dark)"
+                    >
+                    <img 
+                        id="logo-image"
+                        width="150"
+                        height="150"
+                        src="https://swiftonserver.com/images/logos/logo.png"
+                        alt="Logo of Swift on server"
+                        title="Swift on server"
+                    >
+                </picture>
+            </figure>
+        </a>
+    </header>
+    
+    <main>
+
+        <article>
+    <header>
+        <section id="post-header" class="content-wrapper">
+            <time datetime="2024/04/03">2024/04/03</time>
+            <h1 class="title">AsyncHTTPClient by example</h1>
+            <p class="excerpt">This article offers practical examples to introduce the Swift AsyncHTTPClient library.</p>
+            <div class="meta">
+                <span class="tag">Swift</span>
+<span class="tag">HTTP</span>
+            </div>
+            <img src="https://github.com/tib.png" alt="Tibor Bödecs" class="author">
+            <p>
+                <span class="author">Written by: <a href="https://x.com/tiborbodecs" target="_blank">Tibor Bödecs</a> @ 
+                <span class="author"><a href="https://binarybirds.com/" target="_blank">Binary Birds Kft.</a></span><br>
+                <span class="reading-time">Reading time: 10 minutes</span><br>
+            </p>
+        </section>
+    </header>
+
+    <section class="content-wrapper">
+        <hr>
+    </section>
+
+    <section id="contents" class="content-wrapper">
+    
+    <p>Swift <a href="https://github.com/swift-server/async-http-client" target="_blank">AsyncHTTPClient</a> is an HTTP client library built on top of SwiftNIO. It provides a solid solution for efficiently managing HTTP requests by leveraging the Swift Concurrency model, thus simplifying networking tasks for developers.</p><p>The library's asynchronous and non-blocking request methods ensure that network operations do not hinder the responsiveness of the application. Additionally, the library offers TLS support, automatic HTTP/2 over HTTPS and several other convenient features. The AsyncHTTPClient library is a comprehensive tool for seamless HTTP communication for server-side Swift applications. Throughout this article, we'll delve into practical <a href="https://github.com/swift-on-server/async-http-client-by-example-sample" target="_blank">examples</a> to showcase the capabilities of this library.</p><h2>Setting up &amp; configuring AsyncHTTPClient</h2><p>Starting with this article, you can utilize a foundational code example as a starting point for integrating the Swift AsyncHTTPClient library into your Swift projects.</p><p>Now, open the <code>Package.swift</code> file in your project directory and add AsyncHTTPClient as a dependency:</p><pre><code class="language-swift"><span class="comment">// swift-tools-version: 5.10</span>
+<span class="keyword">import</span> PackageDescription
+
+<span class="keyword">let</span> package = <span class="type">Package</span>(
+    name: <span class="string">"async-http-client-by-example-sample"</span>,
+    platforms: [
+        .<span class="call">macOS</span>(.<span class="dotAccess">v14</span>),
+    ],
+    dependencies: [
+        .<span class="call">package</span>(url: <span class="string">"https://github.com/swift-server/async-http-client.git"</span>, from: <span class="string">"1.9.0"</span>)
+    ],
+    targets: [
+        .<span class="call">executableTarget</span>(
+            name: <span class="string">"async-http-client-by-example-sample"</span>,
+            dependencies: [
+                .<span class="call">product</span>(name: <span class="string">"AsyncHTTPClient"</span>, package: <span class="string">"async-http-client"</span>),
+            ]
+        ),
+    ]
+)</code></pre><p>In the <code>main.swift</code> file, import the AsyncHTTPClient library and initialize an HTTPClient instance for future use:</p><pre><code class="language-swift"><span class="keyword">import</span> AsyncHTTPClient
+
+<span class="keyword">struct</span> Entrypoint {
+    
+    <span class="keyword">static func</span> main() <span class="keyword">async throws</span> {
+
+        <span class="keyword">let</span> httpClient = <span class="type">HTTPClient</span>(
+            <span class="comment">// 1.</span>
+            eventLoopGroupProvider: .<span class="dotAccess">singleton</span>,
+            <span class="comment">// 2.</span>
+            configuration: .<span class="keyword">init</span>(
+                <span class="comment">// 3.</span>
+                redirectConfiguration: .<span class="call">follow</span>(
+                    max: <span class="number">3</span>,
+                    allowCycles: <span class="keyword">false</span>
+                ),
+                <span class="comment">// 4.</span>
+                timeout: .<span class="keyword">init</span>(
+                    connect: .<span class="keyword">init</span>(.<span class="call">seconds</span>(<span class="number">1</span>)),
+                    read: .<span class="call">seconds</span>(<span class="number">1</span>),
+                    write: .<span class="call">seconds</span>(<span class="number">1</span>)
+                )
+            )
+        )
+        
+        <span class="keyword">do</span> {
+            <span class="comment">// perform HTTP operations</span>
+        }
+        <span class="keyword">catch</span> {
+            <span class="call">print</span>(<span class="string">"</span>\(error)<span class="string">"</span>)
+        }
+
+        <span class="comment">// 5.</span>
+        <span class="keyword">try await</span> httpClient.<span class="call">shutdown</span>()
+    }
+}</code></pre><ol><li>Specify the event loop group provider as <code>.singleton</code>, which manages the underlying event loops for asynchronous operations.</li><li>The configuration parameter is set, defining various aspects of the HTTP client's behavior.</li><li><code>redirectConfiguration</code> is specified to follow redirects up to a maximum of 3 times and disallow redirect cycles.</li><li>Set timeouts for different phases of the HTTP request process, such as connection establishment, reading, and writing.</li><li>Cleanup by calling the <code>shutdown()</code> method on the HTTPClient instance.</li></ol><p>Please be aware that it is essential to properly terminate the HTTP client after executing requests. Forgetting to invoke the <code>shutdown()</code> method may cause the library to issue a warning about a potential memory leak when compiling the application in debug mode.</p><h2>Performing HTTP requests</h2><p>An HTTP request includes the method, a URL, headers providing supplementary details, and optionally, a body containing data transmitted to the server. Conversely, HTTP responses contain a status code, headers providing further details, and a body containing the actual content of the response. Together, these components facilitate the exchange of data between clients and servers over the HTTP protocol.</p><p>Below is an illustration of how to employ the HTTP request and response objects using the AsyncHTTPClient library in Swift:</p><pre><code class="language-swift"><span class="keyword">let</span> httpClient = <span class="type">HTTPClient</span>(eventLoopGroupProvider: .<span class="dotAccess">singleton</span>)
+
+<span class="keyword">do</span> {
+    <span class="comment">// 1.</span>
+    <span class="keyword">var</span> request = <span class="type">HTTPClientRequest</span>(url: <span class="string">"https://httpbin.org/post"</span>)
+    <span class="comment">// 2.</span>
+    request.<span class="property">method</span> = .<span class="dotAccess">POST</span>
+    <span class="comment">// 3.</span>
+    request.<span class="property">headers</span>.<span class="call">add</span>(name: <span class="string">"User-Agent"</span>, value: <span class="string">"Swift AsyncHTTPClient"</span>)
+    <span class="comment">// 4.</span>
+    request.<span class="property">body</span> = .<span class="call">bytes</span>(<span class="type">ByteBuffer</span>(string: <span class="string">"Some data"</span>))
+    
+    <span class="comment">// 5.</span>
+    <span class="keyword">let</span> response = <span class="keyword">try await</span> httpClient.<span class="call">execute</span>(request, timeout: .<span class="call">seconds</span>(<span class="number">5</span>))
+    
+    <span class="comment">// 6.</span>
+    <span class="keyword">if</span> response.<span class="property">status</span> == .<span class="dotAccess">ok</span> {
+        <span class="comment">// 7.</span>
+        <span class="keyword">let</span> contentType = response.<span class="property">headers</span>.<span class="call">first</span>(name: <span class="string">"content-type"</span>)
+
+        <span class="comment">// 8.</span>
+        <span class="keyword">let</span> contentLength = response.<span class="property">headers</span>.<span class="call">first</span>(
+            name: <span class="string">"content-length"</span>
+        ).<span class="call">flatMap</span>(<span class="type">Int</span>.<span class="keyword">init</span>)
+
+        <span class="comment">// 9.</span>
+        <span class="keyword">let</span> buffer = <span class="keyword">try await</span> response.<span class="property">body</span>.<span class="call">collect</span>(upTo: <span class="number">1024</span> * <span class="number">1024</span>)
+
+        <span class="comment">// 10.</span>
+        <span class="keyword">let</span> rawResponseBody = buffer.<span class="call">getString</span>(
+            at: <span class="number">0</span>,
+            length: buffer.<span class="property">readableBytes</span>
+        )
+    }
+}
+<span class="keyword">catch</span> {
+    <span class="call">print</span>(<span class="string">"</span>\(error)<span class="string">"</span>)
+}
+
+<span class="keyword">try await</span> httpClient.<span class="call">shutdown</span>()</code></pre><ol><li>A new HTTP request object is created targeting the specified URL.</li><li>The HTTP request method is set to POST.</li><li>A <code>user-agent</code> header with the value <code>Swift AsyncHTTPClient</code> is added to the request.</li><li>The request body is set to contain the string "Some data".</li><li>The request is executed with a custom timeout of 5 seconds.</li><li>If the response status is <code>.ok</code> (<code>200</code>), further processing is performed.</li><li>The <code>content-type</code> of the response is retrieved from the headers.</li><li>The <code>content-length</code> of the response is obtained from the headers, as an <code>Int</code> value.</li><li>The response body is collected asynchronously, up to a maximum of 1 MiB in size.</li><li>The raw response body is retrieved as a string for further processing.</li></ol><p>Any errors encountered during the execution of the request are caught and printed. If the response body exceeds the 1 MiB limit, a <code>NIOTooManyBytesError</code> error will occur.</p><p>Finally, the HTTP client is shut down to release associated resources.</p><h2>JSON requests</h2><p>JSON requests involve sending and receiving data formatted in JSON to a server. REST API is a style for building networked apps where resources are managed using regular HTTP methods, and the data is encoded and decoded using the JSON format.</p><p>The following code snippet demonstrates how to encode request bodies and decode response bodies using JSON objects:</p><pre><code class="language-swift"><span class="comment">// 1.</span>
+<span class="keyword">struct</span> Input: <span class="type">Codable</span> {
+    <span class="keyword">let</span> id: <span class="type">Int</span>
+    <span class="keyword">let</span> title: <span class="type">String</span>
+    <span class="keyword">let</span> completed: <span class="type">Bool</span>
+}
+
+<span class="keyword">struct</span> Output: <span class="type">Codable</span> {
+    <span class="keyword">let</span> json: <span class="type">Input</span>
+}
+
+
+<span class="keyword">let</span> httpClient = <span class="type">HTTPClient</span>(
+    eventLoopGroupProvider: .<span class="dotAccess">singleton</span>
+)
+<span class="keyword">do</span> {
+    <span class="comment">// 2.</span>
+    <span class="keyword">var</span> request = <span class="type">HTTPClientRequest</span>(
+        url: <span class="string">"https://httpbin.org/post"</span>
+    )
+    request.<span class="property">method</span> = .<span class="dotAccess">POST</span>
+    request.<span class="property">headers</span>.<span class="call">add</span>(name: <span class="string">"content-type"</span>, value: <span class="string">"application/json"</span>)
+    
+    <span class="comment">// 4.</span>
+    <span class="keyword">let</span> input = <span class="type">Input</span>(
+        id: <span class="number">1</span>,
+        title: <span class="string">"foo"</span>,
+        completed: <span class="keyword">false</span>
+    )
+
+    <span class="keyword">let</span> encoder = <span class="type">JSONEncoder</span>()
+    <span class="keyword">let</span> data = <span class="keyword">try</span> encoder.<span class="call">encode</span>(input)
+    <span class="keyword">let</span> buffer = <span class="type">ByteBuffer</span>(bytes: data)
+    request.<span class="property">body</span> = .<span class="call">bytes</span>(buffer)
+    
+    <span class="keyword">let</span> response = <span class="keyword">try await</span> httpClient.<span class="call">execute</span>(
+        request,
+        timeout: .<span class="call">seconds</span>(<span class="number">5</span>)
+    )
+    
+    <span class="keyword">if</span> response.<span class="property">status</span> == .<span class="dotAccess">ok</span> {
+        <span class="comment">// 5.</span>
+        <span class="keyword">if let</span> contentType = response.<span class="property">headers</span>.<span class="call">first</span>(
+            name: <span class="string">"content-type"</span>
+        ), contentType.<span class="call">contains</span>(<span class="string">"application/json"</span>) {
+            <span class="comment">// 6.</span>
+            <span class="keyword">var</span> buffer: <span class="type">ByteBuffer</span> = .<span class="keyword">init</span>()
+            <span class="keyword">for try await var</span> chunk <span class="keyword">in</span> response.<span class="property">body</span> {
+                buffer.<span class="call">writeBuffer</span>(&amp;chunk)
+            }
+            
+            <span class="comment">// 7.</span>
+            <span class="keyword">let</span> decoder = <span class="type">JSONDecoder</span>()
+            <span class="keyword">if let</span> data = buffer.<span class="call">getData</span>(at: <span class="number">0</span>, length: buffer.<span class="property">readableBytes</span>) {
+                <span class="keyword">let</span> output = <span class="keyword">try</span> decoder.<span class="call">decode</span>(<span class="type">Output</span>.<span class="keyword">self</span>, from: data)
+                <span class="call">print</span>(output.<span class="property">json</span>.<span class="property">title</span>)
+            }
+        }
+
+    }
+    <span class="keyword">else</span> {
+        <span class="call">print</span>(<span class="string">"Invalid status code:</span> \(response.<span class="property">status</span>)<span class="string">"</span>)
+    }
+}
+<span class="keyword">catch</span> {
+    <span class="call">print</span>(<span class="string">"</span>\(error)<span class="string">"</span>)
+}
+
+<span class="keyword">try await</span> httpClient.<span class="call">shutdown</span>()</code></pre><ol><li>Two <code>Codable</code> structures are defined: <code>Input</code> for the data to be sent and <code>Output</code> for receiving the JSON response.</li><li>An HTTP request is created using a POST method and a <code>content-type: application/json</code> header.</li><li>The <code>Input</code> data is encoded into JSON data using a <code>ByteBuffer</code> and set as the request body.</li><li>If the response status is ok and the content type is JSON, the response body is processed.</li><li>The response body chunks are collected asynchronously and concatenated into a single buffer.</li><li>The buffer containing the JSON data response is decoded as an <code>Output</code> structure using.</li></ol><p>The code snippet above demonstrates how to use Swift's Codable protocol to handle JSON data in HTTP communication. It defines structures for input and output data, sends a POST request with JSON payload, and processes the response by decoding JSON into a designated output structure.</p><h2>File downloads</h2><p>The AsyncHTTPClient library provides support for file downloads using the <code>FileDownloadDelegate</code>. This feature enables asynchronous streaming of downloaded data while simultaneously reporting the download progress, as demonstrated in the following example:</p><pre><code class="language-swift"><span class="keyword">let</span> httpClient = <span class="type">HTTPClient</span>(
+    eventLoopGroupProvider: .<span class="dotAccess">singleton</span>
+)
+
+<span class="keyword">do</span> {
+    <span class="comment">// 1.</span>
+    <span class="keyword">let</span> delegate = <span class="keyword">try</span> <span class="type">FileDownloadDelegate</span>(
+        <span class="comment">// 2.</span>
+        path: <span class="type">NSTemporaryDirectory</span>() + <span class="string">"600x400.png"</span>,
+        <span class="comment">// 3.</span>
+        reportProgress: {
+            <span class="keyword">if let</span> totalBytes = $0.<span class="property">totalBytes</span> {
+                <span class="call">print</span>(<span class="string">"Total:</span> \(totalBytes)<span class="string">."</span>)
+            }
+            <span class="call">print</span>(<span class="string">"Downloaded:</span> \($0.<span class="property">receivedBytes</span>)<span class="string">."</span>)
+        }
+    )
+    
+    <span class="comment">// 4.</span>
+    <span class="keyword">let</span> fileDownloadResponse = <span class="keyword">try await</span> httpClient.<span class="call">execute</span>(
+        request: .<span class="keyword">init</span>(
+            url: <span class="string">"https://placehold.co/600x400.png"</span>
+        ),
+        delegate: delegate
+    ).<span class="property">futureResult</span>.<span class="call">get</span>()
+    
+    <span class="call">print</span>(fileDownloadResponse)
+}
+<span class="keyword">catch</span> {
+    <span class="call">print</span>(<span class="string">"</span>\(error)<span class="string">"</span>)
+}
+
+<span class="keyword">try await</span> httpClient.<span class="call">shutdown</span>()</code></pre><ol><li>A <code>FileDownloadDelegate</code> is created to manage file downloads.</li><li>Specify the download destination path.</li><li>A progress reporting function is provided to monitor the download progress.</li><li>The file download request is executed using the request URL and the delegate.</li></ol><p>Running this example will display the download progress, indicating the received bytes and the total bytes, with the same information also available within the <code>fileDownloadResponse</code> object.</p><p>There are many more configuration options available for the Swift AsyncHTTPClient library. It is also possible to create custom delegate objects; additional useful examples and code snippets are provided in the project's <a href="https://github.com/swift-server/async-http-client" target="_blank">README on GitHub</a>.</p>
+        
+    </section>
+
+    <section id="about-author" class="content-wrapper">
+        <h4>About Tibor Bödecs</h4>
+        <p>Tibor, also known as <a href="https://theswiftdev.com">"The Swift Dev"</a>, is the co-founder of <a href="https://binarybirds.com/">Binary Birds Kft.</a> Tibor provides Server-Side Swift development and consulting.</p>
+
+        <a href="mailto:info@binarybirds.com" target="_blank" class="author-cta">Contact us</a>
+    </section>
+
+</article>
+        
+    </main>
+
+    <footer>
+        <section class="content-wrapper">
+            <figure>
+                <picture>
+                    <source 
+                        srcset="https://swiftonserver.com/images/logos/logo~dark.png" 
+                        media="(prefers-color-scheme: dark)"
+                    >
+                    <img 
+                        id="logo-image"
+                        width="80"
+                        height="80"
+                        src="https://swiftonserver.com/images/logos/logo.png"
+                        alt="Logo of Swift on server"
+                        title="Swift on server"
+                    >
+                </picture>
+            </figure>
+
+            <p>This site was generated using the <a href="https://swift.org/" target="_blank">Swift</a> programming language.</p>
+            <p class="small">Created by <a href="https://x.com/JoannisOrlandos" target="_blank">Joannis Orlandos</a> & <a href="https://x.com/tiborbodecs">Tibor Bödecs</a> &copy; 2024.</p>
+
+            <p> 
+                <a href="https://swiftonserver.com/">Home</a> ·
+                <a href="https://swiftonserver.com/rss.xml" target="_blank">RSS</a> ·
+                <a href="https://swiftonserver.com/sitemap.xml" target="_blank">Sitemap</a>
+            </p>
+            
+            
+        </section>
+    </footer>
+</body>
+</html>
