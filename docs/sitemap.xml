@@ -1,19 +1,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://swiftonserver.com/using-environment-variables-in-swift/</loc>
-        <lastmod>2024-04-03</lastmod>
-    </url>
-    <url>
-        <loc>https://swiftonserver.com/whats-new-in-hummingbird-2/</loc>
-        <lastmod>2024-04-03</lastmod>
-    </url>
-    <url>
-        <loc>https://swiftonserver.com/logging-for-server-side-swift-apps/</loc>
-        <lastmod>2024-04-03</lastmod>
+        <loc>https://swiftonserver.com/useful-scripts-for-server-side-swift-libraries/</loc>
+        <lastmod>2024-04-10</lastmod>
     </url>
     <url>
         <loc>https://swiftonserver.com/async-http-client-by-example/</loc>
-        <lastmod>2024-04-03</lastmod>
+        <lastmod>2024-04-09</lastmod>
+    </url>
+    <url>
+        <loc>https://swiftonserver.com/using-environment-variables-in-swift/</loc>
+        <lastmod>2024-04-09</lastmod>
+    </url>
+    <url>
+        <loc>https://swiftonserver.com/whats-new-in-hummingbird-2/</loc>
+        <lastmod>2024-04-09</lastmod>
+    </url>
+    <url>
+        <loc>https://swiftonserver.com/logging-for-server-side-swift-apps/</loc>
+        <lastmod>2024-04-09</lastmod>
     </url>
     <url>
         <loc>https://swiftonserver.com/structured-concurrency-and-shared-state-in-swift/</loc>
