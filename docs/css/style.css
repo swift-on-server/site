@@ -1,6 +1,8 @@
 :root {
     --scale: 1rem;
     --link-color: #5856D7;
+    --button-background-color: #5856D7;
+    --button-text-color: #fff;
     --hover-link-color: #AC4200;
     --selected-link-color: #F0782D;
     --active-link-color: #A64306;
@@ -14,6 +16,8 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --link-color: #7D7AFF;
+        --button-background-color: #7D7AFF;
+        --button-text-color: #fff;
         --hover-link-color: #FF924F;
         --selected-link-color: #AC4200;
         --active-link-color: #A64306;
@@ -31,12 +35,28 @@
 html {
     font-size: var(--scale);
 }
+.author-about {
+    margin-bottom: 2rem;
+}
+.author-cta {
+    padding: 1rem;
+    background: var(--button-background-color);
+    color: var(--button-text-color) !important;
+    border-radius: 4px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 4px 10px rgba(0,0,0,0.22);
+    transition: font-size 0.2s;
+}   
+.author-cta:hover {
+    font-size: 1.05rem;
+}
+#post-header img.author {
+    float: right;
+}
 img.author {
     width: 100px;
     height: 100px;
     border-radius: 50%;
     background-color: #555;
-    float: right;
 }
 body {
     font-family: -apple-system, system-ui, BlinkMacSystemFont, "Helvetica", "Segoe UI", Roboto, Ubuntu;
@@ -185,7 +205,7 @@ pre {
     line-height: 1.25rem;
     background: var(--primary-background-color);
     padding: 1rem; 
-    margin: 3rem auto; 
+    margin: 2rem auto; 
     border-radius: 4px;
     border: 1px solid var(--border-color);
 }

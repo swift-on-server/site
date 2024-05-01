@@ -7,9 +7,9 @@ tags: Swift, SwiftNIO, Networking
 author: Joannis Orlandos
 authorLink: https://x.com/JoannisOrlandos
 authorGithub: joannis
-authorAbout: Joannis is a SSWG member and co-founder of <a href="https://unbeatable.software/">Unbeatable Software B.V.</a> and provides Full-Stack Swift Training and Consultation.
-cta: Get Training or Consultation
-ctaLink: mailto:joannis@unbeatable.software
+authorAbout: Joannis is a seasoned member of the Swift Server WorkGroup, and the co-founder of Unbeatable Software B.V. If you're looking to elevate your team's capabilities or need expert guidance on Swift backend development, consider hiring him.
+cta: Get in touch with Joannis
+ctaLink: https://unbeatable.software/mentoring-and-training
 company: Unbeatable Software B.V.
 companyLink: https://unbeatable.software/
 duration: 30 minutes
