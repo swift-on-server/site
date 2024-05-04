@@ -1,3 +1,4 @@
+#if os(macOS)
 import Foundation
 import Yams
 import Mustache
@@ -14,10 +15,10 @@ let output = cwd.appending(components: "docs")
 let dateFormatter = DateFormatter()
 dateFormatter.dateFormat = "yyyy/MM/dd"
 let postTemplate = try MustacheTemplate(
-    string: String(contentsOf: templates.appending(path: "post.html"))
+    string: String(contentsOf: templates.appending(components: "post.html"))
 )
 let indexTemplate = try MustacheTemplate(
-    string: String(contentsOf: templates.appending(path: "index.html"))
+    string: String(contentsOf: templates.appending(components: "index.html"))
 )
 
 // Run on tag through Github Actions
@@ -42,7 +43,7 @@ func openFolder(_ folder: URL) throws {
             return
         }
 
-        metadata.contents = try String(contentsOf: folder.appending(path: "\(folderName).html"))
+        metadata.contents = try String(contentsOf: folder.appending(components: "\(folderName).html"))
         let postHTML = postTemplate.render(metadata)
         let indexHTML = indexTemplate.render(IndexContext(
             baseUrl: baseUrl,
@@ -58,7 +59,7 @@ func openFolder(_ folder: URL) throws {
         )
     } else {
         for item in items {
-            let itemURL = folder.appending(component: item)
+            let itemURL = folder.appending(components: item)
             do {
                 try openFolder(itemURL)
             } catch {
@@ -95,7 +96,7 @@ struct ArticleMetadata: Codable {
 
 func getMetadata(forFolder folder: URL) -> ArticleMetadata? {
     do {
-        let data = try Data(contentsOf: folder.appending(component: "metadata.yml"))
+        let data = try Data(contentsOf: folder.appending(components: "metadata.yml"))
         return try YAMLDecoder().decode(ArticleMetadata.self, from: data)
     } catch {
         print("Error parsing YAML for \(folder.relativePath): \(error)")
@@ -118,3 +119,4 @@ func buildTutorial(_ folder: URL) throws {
     try process.run()
     process.waitUntilExit()
 }
+#endif
