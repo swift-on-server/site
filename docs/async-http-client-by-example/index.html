@@ -4,17 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>AsyncHTTPClient by example - Swift on server</title>
-    
+    <title>AsyncHTTPClient by example - Swift on Server</title>
+
     <meta name="description" content="This article offers practical examples to introduce the Swift AsyncHTTPClient library.">
     
-    <meta property="og:title" content="AsyncHTTPClient by example - Swift on server">
+    <meta property="og:title" content="AsyncHTTPClient by example - Swift on Server">
     <meta property="og:description" content="This article offers practical examples to introduce the Swift AsyncHTTPClient library.">
-    <meta property="og:url" content="https://swiftonserver.com/async-http-client-by-example/">
+    <meta property="og:url" content="https://swiftonserver.com/async-http-client-by-example">
     <meta property="og:image" content="https://swiftonserver.com/images/assets/async-http-client-by-example/cover.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AsyncHTTPClient by example - Swift on server">
+    <meta name="twitter:title" content="AsyncHTTPClient by example - Swift on Server">
     <meta name="twitter:description" content="This article offers practical examples to introduce the Swift AsyncHTTPClient library.">
     <meta name="twitter:image" content="https://swiftonserver.com/images/assets/async-http-client-by-example/cover.jpg">
     
@@ -68,7 +68,7 @@
             <p class="excerpt">This article offers practical examples to introduce the Swift AsyncHTTPClient library.</p>
             <div class="meta">
                 <span class="tag">Swift</span>
-<span class="tag">HTTP</span>
+                <span class="tag">HTTP</span>
             </div>
             <img src="https://github.com/tib.png" alt="Tibor Bödecs" class="author">
             <p>
@@ -85,213 +85,214 @@
 
     <section id="contents" class="content-wrapper">
     
-    <p>Swift <a href="https://github.com/swift-server/async-http-client" target="_blank">AsyncHTTPClient</a> is an HTTP client library built on top of SwiftNIO. It provides a solid solution for efficiently managing HTTP requests by leveraging the Swift Concurrency model, thus simplifying networking tasks for developers.</p><p>The library's asynchronous and non-blocking request methods ensure that network operations do not hinder the responsiveness of the application. Additionally, the library offers TLS support, automatic HTTP/2 over HTTPS and several other convenient features. The AsyncHTTPClient library is a comprehensive tool for seamless HTTP communication for server-side Swift applications. Throughout this article, we'll delve into practical <a href="https://github.com/swift-on-server/async-http-client-by-example-sample" target="_blank">examples</a> to showcase the capabilities of this library.</p><h2>Setting up &amp; configuring AsyncHTTPClient</h2><p>Starting with this article, you can utilize a foundational code example as a starting point for integrating the Swift AsyncHTTPClient library into your Swift projects.</p><p>Now, open the <code>Package.swift</code> file in your project directory and add AsyncHTTPClient as a dependency:</p><pre><code class="language-swift"><span class="comment">// swift-tools-version: 5.10</span>
-<span class="keyword">import</span> PackageDescription
+    <section class='introduction'><h1>AsyncHTTPClient by example</h1></section><section class='details literature'><p>Swift <a target='_blank' rel='external' href='https://github.com/swift-server/async-http-client'>AsyncHTTPClient</a> is an HTTP client library built on top of SwiftNIO. It provides a solid solution for efficiently managing HTTP requests by leveraging the Swift Concurrency model, thus simplifying networking tasks for developers.</p><p>The library’s asynchronous and non-blocking request methods ensure that network operations do not hinder the responsiveness of the application. Additionally, the library offers TLS support, automatic HTTP/2 over HTTPS and several other convenient features.</p><p>The AsyncHTTPClient library is a comprehensive tool for seamless HTTP communication for server-side Swift applications. Throughout this article, we’ll delve into practical <a target='_blank' rel='external' href='https://github.com/swift-on-server/async-http-client-by-example-sample'>examples</a> to showcase the capabilities of this library.</p><h2 id='Setting%20up%20&%20configuring%20AsyncHTTPClient'><a href='#Setting%20up%20&%20configuring%20AsyncHTTPClient'>Setting up &amp; configuring AsyncHTTPClient</a></h2><p>Starting with this article, you can utilize a foundational code example as a starting point for integrating the Swift AsyncHTTPClient library into your Swift projects.</p><p>Now, open the <code>Package.swift</code> file in your project directory and add AsyncHTTPClient as a dependency:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xc'>// swift-tools-version: 5.10</span><span class='newline'>
+</span><span class='xk'>import</span> <span class='xv'>PackageDescription</span><span class='newline'>
 
-<span class="keyword">let</span> package = <span class="type">Package</span>(
-    name: <span class="string">"async-http-client-by-example-sample"</span>,
-    platforms: [
-        .<span class="call">macOS</span>(.<span class="dotAccess">v14</span>),
-    ],
-    dependencies: [
-        .<span class="call">package</span>(url: <span class="string">"https://github.com/swift-server/async-http-client.git"</span>, from: <span class="string">"1.9.0"</span>)
-    ],
-    targets: [
-        .<span class="call">executableTarget</span>(
-            name: <span class="string">"async-http-client-by-example-sample"</span>,
-            dependencies: [
-                .<span class="call">product</span>(name: <span class="string">"AsyncHTTPClient"</span>, package: <span class="string">"async-http-client"</span>),
-            ]
-        ),
-    ]
-)</code></pre><p>In the <code>main.swift</code> file, import the AsyncHTTPClient library and initialize an HTTPClient instance for future use:</p><pre><code class="language-swift"><span class="keyword">import</span> AsyncHTTPClient
+</span><span class='xk'>let</span> <span class='xv'>package</span> = <span class='xv'>Package</span>(<span class='newline'>
+</span>    <span class='xv'>name</span>: <span class='xs'>"async-http-client-by-example-sample"</span>,<span class='newline'>
+</span>    <span class='xv'>platforms</span>: [<span class='newline'>
+</span>        .<span class='xv'>macOS</span>(.<span class='xv'>v14</span>),<span class='newline'>
+</span>    ],<span class='newline'>
+</span>    <span class='xv'>dependencies</span>: [<span class='newline'>
+</span>        .<span class='xv'>package</span>(<span class='xv'>url</span>: <span class='xs'>"https://github.com/swift-server/async-http-client.git"</span>, <span class='xv'>from</span>: <span class='xs'>"1.9.0"</span>)<span class='newline'>
+</span>    ],<span class='newline'>
+</span>    <span class='xv'>targets</span>: [<span class='newline'>
+</span>        .<span class='xv'>executableTarget</span>(<span class='newline'>
+</span>            <span class='xv'>name</span>: <span class='xs'>"async-http-client-by-example-sample"</span>,<span class='newline'>
+</span>            <span class='xv'>dependencies</span>: [<span class='newline'>
+</span>                .<span class='xv'>product</span>(<span class='xv'>name</span>: <span class='xs'>"AsyncHTTPClient"</span>, <span class='xv'>package</span>: <span class='xs'>"async-http-client"</span>),<span class='newline'>
+</span>            ]<span class='newline'>
+</span>        ),<span class='newline'>
+</span>    ]<span class='newline'>
+</span>)</code></pre><p>In the <code>main.swift</code> file, import the AsyncHTTPClient library and initialize an HTTPClient instance for future use:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>import</span> <span class='xv'>AsyncHTTPClient</span><span class='newline'>
 
-<span class="keyword">struct</span> Entrypoint {
-    
-    <span class="keyword">static func</span> main() <span class="keyword">async throws</span> {
+</span><span class='xk'>struct</span> <span class='xv'>Entrypoint</span> {<span class='newline'>
+</span>    <span class='newline'>
+</span>    <span class='xk'>static</span> <span class='xk'>func</span> <span class='xv'>main</span>() <span class='xk'>async</span> <span class='xk'>throws</span> {<span class='newline'>
 
-        <span class="keyword">let</span> httpClient = <span class="type">HTTPClient</span>(
-            <span class="comment">// 1.</span>
-            eventLoopGroupProvider: .<span class="dotAccess">singleton</span>,
-            <span class="comment">// 2.</span>
-            configuration: .<span class="keyword">init</span>(
-                <span class="comment">// 3.</span>
-                redirectConfiguration: .<span class="call">follow</span>(
-                    max: <span class="number">3</span>,
-                    allowCycles: <span class="keyword">false</span>
-                ),
-                <span class="comment">// 4.</span>
-                timeout: .<span class="keyword">init</span>(
-                    connect: .<span class="keyword">init</span>(.<span class="call">seconds</span>(<span class="number">1</span>)),
-                    read: .<span class="call">seconds</span>(<span class="number">1</span>),
-                    write: .<span class="call">seconds</span>(<span class="number">1</span>)
-                )
-            )
-        )
-        
-        <span class="keyword">do</span> {
-            <span class="comment">// perform HTTP operations</span>
-        }
-        <span class="keyword">catch</span> {
-            <span class="call">print</span>(<span class="string">"</span>\(error)<span class="string">"</span>)
-        }
+</span>        <span class='xk'>let</span> <span class='xv'>httpClient</span> = <span class='xv'>HTTPClient</span>(<span class='newline'>
+</span>            <span class='xc'>// 1.</span><span class='newline'>
+</span>            <span class='xv'>eventLoopGroupProvider</span>: .<span class='xv'>singleton</span>,<span class='newline'>
+</span>            <span class='xc'>// 2.</span><span class='newline'>
+</span>            <span class='xv'>configuration</span>: .<span class='xk'>init</span>(<span class='newline'>
+</span>                <span class='xc'>// 3.</span><span class='newline'>
+</span>                <span class='xv'>redirectConfiguration</span>: .<span class='xv'>follow</span>(<span class='newline'>
+</span>                    <span class='xv'>max</span>: <span class='xn'>3</span>,<span class='newline'>
+</span>                    <span class='xv'>allowCycles</span>: <span class='xk'>false</span><span class='newline'>
+</span>                ),<span class='newline'>
+</span>                <span class='xc'>// 4.</span><span class='newline'>
+</span>                <span class='xv'>timeout</span>: .<span class='xk'>init</span>(<span class='newline'>
+</span>                    <span class='xv'>connect</span>: .<span class='xk'>init</span>(.<span class='xv'>seconds</span>(<span class='xn'>1</span>)),<span class='newline'>
+</span>                    <span class='xv'>read</span>: .<span class='xv'>seconds</span>(<span class='xn'>1</span>),<span class='newline'>
+</span>                    <span class='xv'>write</span>: .<span class='xv'>seconds</span>(<span class='xn'>1</span>)<span class='newline'>
+</span>                )<span class='newline'>
+</span>            )<span class='newline'>
+</span>        )<span class='newline'>
+</span>        <span class='newline'>
+</span>        <span class='xk'>do</span> {<span class='newline'>
+</span>            <span class='xc'>// perform HTTP operations</span><span class='newline'>
+</span>        }<span class='newline'>
+</span>        <span class='xk'>catch</span> {<span class='newline'>
+</span>            <span class='xv'>print</span>(<span class='xs'>"</span>\(<span class='xv'>error</span>)<span class='xs'>"</span>)<span class='newline'>
+</span>        }<span class='newline'>
 
-        <span class="comment">// 5.</span>
-        <span class="keyword">try await</span> httpClient.<span class="call">shutdown</span>()
-    }
-}</code></pre><ol><li>Specify the event loop group provider as <code>.singleton</code>, which manages the underlying event loops for asynchronous operations.</li><li>The configuration parameter is set, defining various aspects of the HTTP client's behavior.</li><li><code>redirectConfiguration</code> is specified to follow redirects up to a maximum of 3 times and disallow redirect cycles.</li><li>Set timeouts for different phases of the HTTP request process, such as connection establishment, reading, and writing.</li><li>Cleanup by calling the <code>shutdown()</code> method on the HTTPClient instance.</li></ol><p>Please be aware that it is essential to properly terminate the HTTP client after executing requests. Forgetting to invoke the <code>shutdown()</code> method may cause the library to issue a warning about a potential memory leak when compiling the application in debug mode.</p><h2>Performing HTTP requests</h2><p>An HTTP request includes the method, a URL, headers providing supplementary details, and optionally, a body containing data transmitted to the server. Conversely, HTTP responses contain a status code, headers providing further details, and a body containing the actual content of the response. Together, these components facilitate the exchange of data between clients and servers over the HTTP protocol.</p><p>Below is an illustration of how to employ the HTTP request and response objects using the AsyncHTTPClient library in Swift:</p><pre><code class="language-swift"><span class="keyword">let</span> httpClient = <span class="type">HTTPClient</span>(eventLoopGroupProvider: .<span class="dotAccess">singleton</span>)
+</span>        <span class='xc'>// 5.</span><span class='newline'>
+</span>        <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>httpClient</span>.<span class='xv'>shutdown</span>()<span class='newline'>
+</span>    }<span class='newline'>
+</span>}</code></pre><ol><li><p>Specify the event loop group provider as <code>.singleton</code>, which manages the underlying event loops for asynchronous operations.</p></li><li><p>The configuration parameter is set, defining various aspects of the HTTP client’s behavior.</p></li><li><p><code>redirectConfiguration</code> is specified to follow redirects up to a maximum of 3 times and disallow redirect cycles.</p></li><li><p>Set timeouts for different phases of the HTTP request process, such as connection establishment, reading, and writing.</p></li><li><p>Cleanup by calling the <code>shutdown()</code> method on the HTTPClient instance.</p></li></ol><p>Please be aware that it is essential to properly terminate the HTTP client after executing requests. Forgetting to invoke the <code>shutdown()</code> method may cause the library to issue a warning about a potential memory leak when compiling the application in debug mode.</p><h2 id='Performing%20HTTP%20requests'><a href='#Performing%20HTTP%20requests'>Performing HTTP requests</a></h2><p>An HTTP request includes the method, a URL, headers providing supplementary details, and optionally, a body containing data transmitted to the server. Conversely, HTTP responses contain a status code, headers providing further details, and a body containing the actual content of the response. Together, these components facilitate the exchange of data between clients and servers over the HTTP protocol.</p><p>Below is an illustration of how to employ the HTTP request and response objects using the AsyncHTTPClient library in Swift:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>let</span> <span class='xv'>httpClient</span> = <span class='xv'>HTTPClient</span>(<span class='xv'>eventLoopGroupProvider</span>: .<span class='xv'>singleton</span>)<span class='newline'>
 
-<span class="keyword">do</span> {
-    <span class="comment">// 1.</span>
-    <span class="keyword">var</span> request = <span class="type">HTTPClientRequest</span>(url: <span class="string">"https://httpbin.org/post"</span>)
-    <span class="comment">// 2.</span>
-    request.<span class="property">method</span> = .<span class="dotAccess">POST</span>
-    <span class="comment">// 3.</span>
-    request.<span class="property">headers</span>.<span class="call">add</span>(name: <span class="string">"User-Agent"</span>, value: <span class="string">"Swift AsyncHTTPClient"</span>)
-    <span class="comment">// 4.</span>
-    request.<span class="property">body</span> = .<span class="call">bytes</span>(<span class="type">ByteBuffer</span>(string: <span class="string">"Some data"</span>))
-    
-    <span class="comment">// 5.</span>
-    <span class="keyword">let</span> response = <span class="keyword">try await</span> httpClient.<span class="call">execute</span>(request, timeout: .<span class="call">seconds</span>(<span class="number">5</span>))
-    
-    <span class="comment">// 6.</span>
-    <span class="keyword">if</span> response.<span class="property">status</span> == .<span class="dotAccess">ok</span> {
-        <span class="comment">// 7.</span>
-        <span class="keyword">let</span> contentType = response.<span class="property">headers</span>.<span class="call">first</span>(name: <span class="string">"content-type"</span>)
+</span><span class='xk'>do</span> {<span class='newline'>
+</span>    <span class='xc'>// 1.</span><span class='newline'>
+</span>    <span class='xk'>var</span> <span class='xv'>request</span> = <span class='xv'>HTTPClientRequest</span>(<span class='xv'>url</span>: <span class='xs'>"https://httpbin.org/post"</span>)<span class='newline'>
+</span>    <span class='xc'>// 2.</span><span class='newline'>
+</span>    <span class='xv'>request</span>.<span class='xv'>method</span> = .<span class='xv'>POST</span><span class='newline'>
+</span>    <span class='xc'>// 3.</span><span class='newline'>
+</span>    <span class='xv'>request</span>.<span class='xv'>headers</span>.<span class='xv'>add</span>(<span class='xv'>name</span>: <span class='xs'>"User-Agent"</span>, <span class='xv'>value</span>: <span class='xs'>"Swift AsyncHTTPClient"</span>)<span class='newline'>
+</span>    <span class='xc'>// 4.</span><span class='newline'>
+</span>    <span class='xv'>request</span>.<span class='xv'>body</span> = .<span class='xv'>bytes</span>(<span class='xv'>ByteBuffer</span>(<span class='xv'>string</span>: <span class='xs'>"Some data"</span>))<span class='newline'>
+</span>    <span class='newline'>
+</span>    <span class='xc'>// 5.</span><span class='newline'>
+</span>    <span class='xk'>let</span> <span class='xv'>response</span> = <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>httpClient</span>.<span class='xv'>execute</span>(<span class='xv'>request</span>, <span class='xv'>timeout</span>: .<span class='xv'>seconds</span>(<span class='xn'>5</span>))<span class='newline'>
+</span>    <span class='newline'>
+</span>    <span class='xc'>// 6.</span><span class='newline'>
+</span>    <span class='xk'>if</span> <span class='xv'>response</span>.<span class='xv'>status</span> <span class='xo'>==</span> .<span class='xv'>ok</span> {<span class='newline'>
+</span>        <span class='xc'>// 7.</span><span class='newline'>
+</span>        <span class='xk'>let</span> <span class='xv'>contentType</span> = <span class='xv'>response</span>.<span class='xv'>headers</span>.<span class='xv'>first</span>(<span class='xv'>name</span>: <span class='xs'>"content-type"</span>)<span class='newline'>
 
-        <span class="comment">// 8.</span>
-        <span class="keyword">let</span> contentLength = response.<span class="property">headers</span>.<span class="call">first</span>(
-            name: <span class="string">"content-length"</span>
-        ).<span class="call">flatMap</span>(<span class="type">Int</span>.<span class="keyword">init</span>)
+</span>        <span class='xc'>// 8.</span><span class='newline'>
+</span>        <span class='xk'>let</span> <span class='xv'>contentLength</span> = <span class='xv'>response</span>.<span class='xv'>headers</span>.<span class='xv'>first</span>(<span class='newline'>
+</span>            <span class='xv'>name</span>: <span class='xs'>"content-length"</span><span class='newline'>
+</span>        ).<span class='xv'>flatMap</span>(<span class='xv'>Int</span>.<span class='xk'>init</span>)<span class='newline'>
 
-        <span class="comment">// 9.</span>
-        <span class="keyword">let</span> buffer = <span class="keyword">try await</span> response.<span class="property">body</span>.<span class="call">collect</span>(upTo: <span class="number">1024</span> * <span class="number">1024</span>)
+</span>        <span class='xc'>// 9.</span><span class='newline'>
+</span>        <span class='xk'>let</span> <span class='xv'>buffer</span> = <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>response</span>.<span class='xv'>body</span>.<span class='xv'>collect</span>(<span class='xv'>upTo</span>: <span class='xn'>1024</span> <span class='xo'>*</span> <span class='xn'>1024</span>)<span class='newline'>
 
-        <span class="comment">// 10.</span>
-        <span class="keyword">let</span> rawResponseBody = buffer.<span class="call">getString</span>(
-            at: <span class="number">0</span>,
-            length: buffer.<span class="property">readableBytes</span>
-        )
-    }
-}
-<span class="keyword">catch</span> {
-    <span class="call">print</span>(<span class="string">"</span>\(error)<span class="string">"</span>)
-}
+</span>        <span class='xc'>// 10.</span><span class='newline'>
+</span>        <span class='xk'>let</span> <span class='xv'>rawResponseBody</span> = <span class='xv'>buffer</span>.<span class='xv'>getString</span>(<span class='newline'>
+</span>            <span class='xv'>at</span>: <span class='xn'>0</span>,<span class='newline'>
+</span>            <span class='xv'>length</span>: <span class='xv'>buffer</span>.<span class='xv'>readableBytes</span><span class='newline'>
+</span>        )<span class='newline'>
+</span>    }<span class='newline'>
+</span>}<span class='newline'>
+</span><span class='xk'>catch</span> {<span class='newline'>
+</span>    <span class='xv'>print</span>(<span class='xs'>"</span>\(<span class='xv'>error</span>)<span class='xs'>"</span>)<span class='newline'>
+</span>}<span class='newline'>
 
-<span class="keyword">try await</span> httpClient.<span class="call">shutdown</span>()</code></pre><ol><li>A new HTTP request object is created targeting the specified URL.</li><li>The HTTP request method is set to POST.</li><li>A <code>user-agent</code> header with the value <code>Swift AsyncHTTPClient</code> is added to the request.</li><li>The request body is set to contain the string "Some data".</li><li>The request is executed with a custom timeout of 5 seconds.</li><li>If the response status is <code>.ok</code> (<code>200</code>), further processing is performed.</li><li>The <code>content-type</code> of the response is retrieved from the headers.</li><li>The <code>content-length</code> of the response is obtained from the headers, as an <code>Int</code> value.</li><li>The response body is collected asynchronously, up to a maximum of 1 MiB in size.</li><li>The raw response body is retrieved as a string for further processing.</li></ol><p>Any errors encountered during the execution of the request are caught and printed. If the response body exceeds the 1 MiB limit, a <code>NIOTooManyBytesError</code> error will occur.</p><p>Finally, the HTTP client is shut down to release associated resources.</p><h2>JSON requests</h2><p>JSON requests involve sending and receiving data formatted in JSON to a server. REST API is a style for building networked apps where resources are managed using regular HTTP methods, and the data is encoded and decoded using the JSON format.</p><p>The following code snippet demonstrates how to encode request bodies and decode response bodies using JSON objects:</p><pre><code class="language-swift"><span class="comment">// 1.</span>
-<span class="keyword">struct</span> Input: <span class="type">Codable</span> {
-    <span class="keyword">let</span> id: <span class="type">Int</span>
-    <span class="keyword">let</span> title: <span class="type">String</span>
-    <span class="keyword">let</span> completed: <span class="type">Bool</span>
-}
+</span><span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>httpClient</span>.<span class='xv'>shutdown</span>()</code></pre><ol><li><p>A new HTTP request object is created targeting the specified URL.</p></li><li><p>The HTTP request method is set to POST.</p></li><li><p>A <code>user-agent</code> header with the value <code>"Swift AsyncHTTPClient"</code> is added to the request.</p></li><li><p>The request body is set to contain the string “Some data”.</p></li><li><p>The request is executed with a custom timeout of 5 seconds.</p></li><li><p>If the response status is <code>.ok</code> (<code>200</code>), further processing is performed.</p></li><li><p>The <code>content-type</code> of the response is retrieved from the headers.</p></li><li><p>The <code>content-length</code> of the response is obtained from the headers, as an <code>Int</code> value.</p></li><li><p>The response body is collected asynchronously, up to a maximum of 1 MiB in size.</p></li><li><p>The raw response body is retrieved as a string for further processing.</p></li></ol><p>Any errors encountered during the execution of the request are caught and printed. If the response body exceeds the 1 MiB limit, a <code><a href='https://swiftinit.org/docs/swift-nio/niocore/niotoomanybyteserror'>NIOTooManyBytesError</a></code> error will occur.</p><p>Finally, the HTTP client is shut down to release associated resources.</p><h2 id='JSON%20requests'><a href='#JSON%20requests'>JSON requests</a></h2><p>JSON requests involve sending and receiving data formatted in JSON to a server. REST API is a style for building networked apps where resources are managed using regular HTTP methods, and the data is encoded and decoded using the JSON format.</p><p>The following code snippet demonstrates how to encode request bodies and decode response bodies using JSON objects:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xc'>// 1.</span><span class='newline'>
+</span><span class='xk'>struct</span> <span class='xv'>Input</span>: <span class='xt'>Codable</span> {<span class='newline'>
+</span>    <span class='xk'>let</span> <span class='xv'>id</span>: <span class='xt'>Int</span><span class='newline'>
+</span>    <span class='xk'>let</span> <span class='xv'>title</span>: <span class='xt'>String</span><span class='newline'>
+</span>    <span class='xk'>let</span> <span class='xv'>completed</span>: <span class='xt'>Bool</span><span class='newline'>
+</span>}<span class='newline'>
 
-<span class="keyword">struct</span> Output: <span class="type">Codable</span> {
-    <span class="keyword">let</span> json: <span class="type">Input</span>
-}
+</span><span class='xk'>struct</span> <span class='xv'>Output</span>: <span class='xt'>Codable</span> {<span class='newline'>
+</span>    <span class='xk'>let</span> <span class='xv'>json</span>: <span class='xt'>Input</span><span class='newline'>
+</span>}<span class='newline'>
 
 
-<span class="keyword">let</span> httpClient = <span class="type">HTTPClient</span>(
-    eventLoopGroupProvider: .<span class="dotAccess">singleton</span>
-)
-<span class="keyword">do</span> {
-    <span class="comment">// 2.</span>
-    <span class="keyword">var</span> request = <span class="type">HTTPClientRequest</span>(
-        url: <span class="string">"https://httpbin.org/post"</span>
-    )
-    request.<span class="property">method</span> = .<span class="dotAccess">POST</span>
-    request.<span class="property">headers</span>.<span class="call">add</span>(name: <span class="string">"content-type"</span>, value: <span class="string">"application/json"</span>)
-    
-    <span class="comment">// 4.</span>
-    <span class="keyword">let</span> input = <span class="type">Input</span>(
-        id: <span class="number">1</span>,
-        title: <span class="string">"foo"</span>,
-        completed: <span class="keyword">false</span>
-    )
+</span><span class='xk'>let</span> <span class='xv'>httpClient</span> = <span class='xv'>HTTPClient</span>(<span class='newline'>
+</span>    <span class='xv'>eventLoopGroupProvider</span>: .<span class='xv'>singleton</span><span class='newline'>
+</span>)<span class='newline'>
+</span><span class='xk'>do</span> {<span class='newline'>
+</span>    <span class='xc'>// 2.</span><span class='newline'>
+</span>    <span class='xk'>var</span> <span class='xv'>request</span> = <span class='xv'>HTTPClientRequest</span>(<span class='newline'>
+</span>        <span class='xv'>url</span>: <span class='xs'>"https://httpbin.org/post"</span><span class='newline'>
+</span>    )<span class='newline'>
+</span>    <span class='xv'>request</span>.<span class='xv'>method</span> = .<span class='xv'>POST</span><span class='newline'>
+</span>    <span class='xv'>request</span>.<span class='xv'>headers</span>.<span class='xv'>add</span>(<span class='xv'>name</span>: <span class='xs'>"content-type"</span>, <span class='xv'>value</span>: <span class='xs'>"application/json"</span>)<span class='newline'>
+</span>    <span class='newline'>
+</span>    <span class='xc'>// 4.</span><span class='newline'>
+</span>    <span class='xk'>let</span> <span class='xv'>input</span> = <span class='xv'>Input</span>(<span class='newline'>
+</span>        <span class='xv'>id</span>: <span class='xn'>1</span>,<span class='newline'>
+</span>        <span class='xv'>title</span>: <span class='xs'>"foo"</span>,<span class='newline'>
+</span>        <span class='xv'>completed</span>: <span class='xk'>false</span><span class='newline'>
+</span>    )<span class='newline'>
 
-    <span class="keyword">let</span> encoder = <span class="type">JSONEncoder</span>()
-    <span class="keyword">let</span> data = <span class="keyword">try</span> encoder.<span class="call">encode</span>(input)
-    <span class="keyword">let</span> buffer = <span class="type">ByteBuffer</span>(bytes: data)
-    request.<span class="property">body</span> = .<span class="call">bytes</span>(buffer)
-    
-    <span class="keyword">let</span> response = <span class="keyword">try await</span> httpClient.<span class="call">execute</span>(
-        request,
-        timeout: .<span class="call">seconds</span>(<span class="number">5</span>)
-    )
-    
-    <span class="keyword">if</span> response.<span class="property">status</span> == .<span class="dotAccess">ok</span> {
-        <span class="comment">// 5.</span>
-        <span class="keyword">if let</span> contentType = response.<span class="property">headers</span>.<span class="call">first</span>(
-            name: <span class="string">"content-type"</span>
-        ), contentType.<span class="call">contains</span>(<span class="string">"application/json"</span>) {
-            <span class="comment">// 6.</span>
-            <span class="keyword">var</span> buffer: <span class="type">ByteBuffer</span> = .<span class="keyword">init</span>()
-            <span class="keyword">for try await var</span> chunk <span class="keyword">in</span> response.<span class="property">body</span> {
-                buffer.<span class="call">writeBuffer</span>(&amp;chunk)
-            }
-            
-            <span class="comment">// 7.</span>
-            <span class="keyword">let</span> decoder = <span class="type">JSONDecoder</span>()
-            <span class="keyword">if let</span> data = buffer.<span class="call">getData</span>(at: <span class="number">0</span>, length: buffer.<span class="property">readableBytes</span>) {
-                <span class="keyword">let</span> output = <span class="keyword">try</span> decoder.<span class="call">decode</span>(<span class="type">Output</span>.<span class="keyword">self</span>, from: data)
-                <span class="call">print</span>(output.<span class="property">json</span>.<span class="property">title</span>)
-            }
-        }
+</span>    <span class='xk'>let</span> <span class='xv'>encoder</span> = <span class='xv'>JSONEncoder</span>()<span class='newline'>
+</span>    <span class='xk'>let</span> <span class='xv'>data</span> = <span class='xk'>try</span> <span class='xv'>encoder</span>.<span class='xv'>encode</span>(<span class='xv'>input</span>)<span class='newline'>
+</span>    <span class='xk'>let</span> <span class='xv'>buffer</span> = <span class='xv'>ByteBuffer</span>(<span class='xv'>bytes</span>: <span class='xv'>data</span>)<span class='newline'>
+</span>    <span class='xv'>request</span>.<span class='xv'>body</span> = .<span class='xv'>bytes</span>(<span class='xv'>buffer</span>)<span class='newline'>
+</span>    <span class='newline'>
+</span>    <span class='xk'>let</span> <span class='xv'>response</span> = <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>httpClient</span>.<span class='xv'>execute</span>(<span class='newline'>
+</span>        <span class='xv'>request</span>,<span class='newline'>
+</span>        <span class='xv'>timeout</span>: .<span class='xv'>seconds</span>(<span class='xn'>5</span>)<span class='newline'>
+</span>    )<span class='newline'>
+</span>    <span class='newline'>
+</span>    <span class='xk'>if</span> <span class='xv'>response</span>.<span class='xv'>status</span> <span class='xo'>==</span> .<span class='xv'>ok</span> {<span class='newline'>
+</span>        <span class='xc'>// 5.</span><span class='newline'>
+</span>        <span class='xk'>if</span> <span class='xk'>let</span> <span class='xv'>contentType</span> = <span class='xv'>response</span>.<span class='xv'>headers</span>.<span class='xv'>first</span>(<span class='newline'>
+</span>            <span class='xv'>name</span>: <span class='xs'>"content-type"</span><span class='newline'>
+</span>        ), <span class='xv'>contentType</span>.<span class='xv'>contains</span>(<span class='xs'>"application/json"</span>) {<span class='newline'>
+</span>            <span class='xc'>// 6.</span><span class='newline'>
+</span>            <span class='xk'>var</span> <span class='xv'>buffer</span>: <span class='xt'>ByteBuffer</span> = .<span class='xk'>init</span>()<span class='newline'>
+</span>            <span class='xk'>for</span> <span class='xk'>try</span> <span class='xk'>await</span> <span class='xk'>var</span> <span class='xv'>chunk</span> <span class='xk'>in</span> <span class='xv'>response</span>.<span class='xv'>body</span> {<span class='newline'>
+</span>                <span class='xv'>buffer</span>.<span class='xv'>writeBuffer</span>(&amp;<span class='xv'>chunk</span>)<span class='newline'>
+</span>            }<span class='newline'>
+</span>            <span class='newline'>
+</span>            <span class='xc'>// 7.</span><span class='newline'>
+</span>            <span class='xk'>let</span> <span class='xv'>decoder</span> = <span class='xv'>JSONDecoder</span>()<span class='newline'>
+</span>            <span class='xk'>if</span> <span class='xk'>let</span> <span class='xv'>data</span> = <span class='xv'>buffer</span>.<span class='xv'>getData</span>(<span class='xv'>at</span>: <span class='xn'>0</span>, <span class='xv'>length</span>: <span class='xv'>buffer</span>.<span class='xv'>readableBytes</span>) {<span class='newline'>
+</span>                <span class='xk'>let</span> <span class='xv'>output</span> = <span class='xk'>try</span> <span class='xv'>decoder</span>.<span class='xv'>decode</span>(<span class='xv'>Output</span>.<span class='xk'>self</span>, <span class='xv'>from</span>: <span class='xv'>data</span>)<span class='newline'>
+</span>                <span class='xv'>print</span>(<span class='xv'>output</span>.<span class='xv'>json</span>.<span class='xv'>title</span>)<span class='newline'>
+</span>            }<span class='newline'>
+</span>        }<span class='newline'>
 
-    }
-    <span class="keyword">else</span> {
-        <span class="call">print</span>(<span class="string">"Invalid status code:</span> \(response.<span class="property">status</span>)<span class="string">"</span>)
-    }
-}
-<span class="keyword">catch</span> {
-    <span class="call">print</span>(<span class="string">"</span>\(error)<span class="string">"</span>)
-}
+</span>    }<span class='newline'>
+</span>    <span class='xk'>else</span> {<span class='newline'>
+</span>        <span class='xv'>print</span>(<span class='xs'>"Invalid status code: </span>\(<span class='xv'>response</span>.<span class='xv'>status</span>)<span class='xs'>"</span>)<span class='newline'>
+</span>    }<span class='newline'>
+</span>}<span class='newline'>
+</span><span class='xk'>catch</span> {<span class='newline'>
+</span>    <span class='xv'>print</span>(<span class='xs'>"</span>\(<span class='xv'>error</span>)<span class='xs'>"</span>)<span class='newline'>
+</span>}<span class='newline'>
 
-<span class="keyword">try await</span> httpClient.<span class="call">shutdown</span>()</code></pre><ol><li>Two <code>Codable</code> structures are defined: <code>Input</code> for the data to be sent and <code>Output</code> for receiving the JSON response.</li><li>An HTTP request is created using a POST method and a <code>content-type: application/json</code> header.</li><li>The <code>Input</code> data is encoded into JSON data using a <code>ByteBuffer</code> and set as the request body.</li><li>If the response status is ok and the content type is JSON, the response body is processed.</li><li>The response body chunks are collected asynchronously and concatenated into a single buffer.</li><li>The buffer containing the JSON data response is decoded as an <code>Output</code> structure using.</li></ol><p>The code snippet above demonstrates how to use Swift's Codable protocol to handle JSON data in HTTP communication. It defines structures for input and output data, sends a POST request with JSON payload, and processes the response by decoding JSON into a designated output structure.</p><h2>File downloads</h2><p>The AsyncHTTPClient library provides support for file downloads using the <code>FileDownloadDelegate</code>. This feature enables asynchronous streaming of downloaded data while simultaneously reporting the download progress, as demonstrated in the following example:</p><pre><code class="language-swift"><span class="keyword">let</span> httpClient = <span class="type">HTTPClient</span>(
-    eventLoopGroupProvider: .<span class="dotAccess">singleton</span>
-)
+</span><span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>httpClient</span>.<span class='xv'>shutdown</span>()</code></pre><ol><li><p>Two <code><a href='https://swiftinit.org/docs/swift/swift/codable'>Codable</a></code> structures are defined: <code>Input</code> for the data to be sent and <code>Output</code> for receiving the JSON response.</p></li><li><p>An HTTP request is created using a POST method and a <code>content-type: application/json</code> header.</p></li><li><p>The <code>Input</code> data is encoded into JSON data using a <code><a href='https://swiftinit.org/docs/swift-nio/niocore/bytebuffer'>ByteBuffer</a></code> and set as the request body.</p></li><li><p>If the response status is ok and the content type is JSON, the response body is processed.</p></li><li><p>The response body chunks are collected asynchronously and concatenated into a single buffer.</p></li><li><p>The buffer containing the JSON data response is decoded as an <code>Output</code> structure using.</p></li></ol><p>The code snippet above demonstrates how to use Swift’s Codable protocol to handle JSON data in HTTP communication. It defines structures for input and output data, sends a POST request with JSON payload, and processes the response by decoding JSON into a designated output structure.</p><h2 id='File%20downloads'><a href='#File%20downloads'>File downloads</a></h2><p>The AsyncHTTPClient library provides support for file downloads using the <code>FileDownloadDelegate</code>. This feature enables asynchronous streaming of downloaded data while simultaneously reporting the download progress, as demonstrated in the following example:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>let</span> <span class='xv'>httpClient</span> = <span class='xv'>HTTPClient</span>(<span class='newline'>
+</span>    <span class='xv'>eventLoopGroupProvider</span>: .<span class='xv'>singleton</span><span class='newline'>
+</span>)<span class='newline'>
 
-<span class="keyword">do</span> {
-    <span class="comment">// 1.</span>
-    <span class="keyword">let</span> delegate = <span class="keyword">try</span> <span class="type">FileDownloadDelegate</span>(
-        <span class="comment">// 2.</span>
-        path: <span class="type">NSTemporaryDirectory</span>() + <span class="string">"600x400.png"</span>,
-        <span class="comment">// 3.</span>
-        reportProgress: {
-            <span class="keyword">if let</span> totalBytes = $0.<span class="property">totalBytes</span> {
-                <span class="call">print</span>(<span class="string">"Total:</span> \(totalBytes)<span class="string">."</span>)
-            }
-            <span class="call">print</span>(<span class="string">"Downloaded:</span> \($0.<span class="property">receivedBytes</span>)<span class="string">."</span>)
-        }
-    )
-    
-    <span class="comment">// 4.</span>
-    <span class="keyword">let</span> fileDownloadResponse = <span class="keyword">try await</span> httpClient.<span class="call">execute</span>(
-        request: .<span class="keyword">init</span>(
-            url: <span class="string">"https://placehold.co/600x400.png"</span>
-        ),
-        delegate: delegate
-    ).<span class="property">futureResult</span>.<span class="call">get</span>()
-    
-    <span class="call">print</span>(fileDownloadResponse)
-}
-<span class="keyword">catch</span> {
-    <span class="call">print</span>(<span class="string">"</span>\(error)<span class="string">"</span>)
-}
+</span><span class='xk'>do</span> {<span class='newline'>
+</span>    <span class='xc'>// 1.</span><span class='newline'>
+</span>    <span class='xk'>let</span> <span class='xv'>delegate</span> = <span class='xk'>try</span> <span class='xv'>FileDownloadDelegate</span>(<span class='newline'>
+</span>        <span class='xc'>// 2.</span><span class='newline'>
+</span>        <span class='xv'>path</span>: <span class='xv'>NSTemporaryDirectory</span>() <span class='xo'>+</span> <span class='xs'>"600x400.png"</span>,<span class='newline'>
+</span>        <span class='xc'>// 3.</span><span class='newline'>
+</span>        <span class='xv'>reportProgress</span>: {<span class='newline'>
+</span>            <span class='xk'>if</span> <span class='xk'>let</span> <span class='xv'>totalBytes</span> = <span class='xp'>$0</span>.<span class='xv'>totalBytes</span> {<span class='newline'>
+</span>                <span class='xv'>print</span>(<span class='xs'>"Total: </span>\(<span class='xv'>totalBytes</span>)<span class='xs'>."</span>)<span class='newline'>
+</span>            }<span class='newline'>
+</span>            <span class='xv'>print</span>(<span class='xs'>"Downloaded: </span>\(<span class='xp'>$0</span>.<span class='xv'>receivedBytes</span>)<span class='xs'>."</span>)<span class='newline'>
+</span>        }<span class='newline'>
+</span>    )<span class='newline'>
+</span>    <span class='newline'>
+</span>    <span class='xc'>// 4.</span><span class='newline'>
+</span>    <span class='xk'>let</span> <span class='xv'>fileDownloadResponse</span> = <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>httpClient</span>.<span class='xv'>execute</span>(<span class='newline'>
+</span>        <span class='xv'>request</span>: .<span class='xk'>init</span>(<span class='newline'>
+</span>            <span class='xv'>url</span>: <span class='xs'>"https://placehold.co/600x400.png"</span><span class='newline'>
+</span>        ),<span class='newline'>
+</span>        <span class='xv'>delegate</span>: <span class='xv'>delegate</span><span class='newline'>
+</span>    ).<span class='xv'>futureResult</span>.<span class='xv'>get</span>()<span class='newline'>
+</span>    <span class='newline'>
+</span>    <span class='xv'>print</span>(<span class='xv'>fileDownloadResponse</span>)<span class='newline'>
+</span>}<span class='newline'>
+</span><span class='xk'>catch</span> {<span class='newline'>
+</span>    <span class='xv'>print</span>(<span class='xs'>"</span>\(<span class='xv'>error</span>)<span class='xs'>"</span>)<span class='newline'>
+</span>}<span class='newline'>
 
-<span class="keyword">try await</span> httpClient.<span class="call">shutdown</span>()</code></pre><ol><li>A <code>FileDownloadDelegate</code> is created to manage file downloads.</li><li>Specify the download destination path.</li><li>A progress reporting function is provided to monitor the download progress.</li><li>The file download request is executed using the request URL and the delegate.</li></ol><p>Running this example will display the download progress, indicating the received bytes and the total bytes, with the same information also available within the <code>fileDownloadResponse</code> object.</p><p>There are many more configuration options available for the Swift AsyncHTTPClient library. It is also possible to create custom delegate objects; additional useful examples and code snippets are provided in the project's <a href="https://github.com/swift-server/async-http-client" target="_blank">README on GitHub</a>.</p>
+</span><span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>httpClient</span>.<span class='xv'>shutdown</span>()</code></pre><ol><li><p>A <code>FileDownloadDelegate</code> is created to manage file downloads.</p></li><li><p>Specify the download destination path.</p></li><li><p>A progress reporting function is provided to monitor the download progress.</p></li><li><p>The file download request is executed using the request URL and the delegate.</p></li></ol><p>Running this example will display the download progress, indicating the received bytes and the total bytes, with the same information also available within the <code>fileDownloadResponse</code> object.</p><p>There are many more configuration options available for the Swift AsyncHTTPClient library. It is also possible to create custom delegate objects; additional useful examples and code snippets are provided in the project’s <a target='_blank' rel='external' href='https://github.com/swift-server/async-http-client'>README on GitHub</a>.</p></section>
         
     </section>
 
     <section id="about-author" class="content-wrapper">
         <img src="https://github.com/tib.png" alt="Tibor Bödecs" class="author">
         <h4>About Tibor Bödecs</h4>
-        <p class="author-about">Tibor, also known as <a href="https://theswiftdev.com">"The Swift Dev"</a>, is the co-founder of <a href="https://binarybirds.com/">Binary Birds Kft.</a> Tibor provides Server-Side Swift development and consulting.</p>
+        <p class="author-about">Tibor, also known as &lt;a href=&quot;https://theswiftdev.com&quot;&gt;&quot;The Swift Dev&quot;&lt;/a&gt;, is the co-founder of &lt;a href=&quot;https://binarybirds.com/&quot;&gt;Binary Birds Kft.&lt;/a&gt; Tibor provides Server-Side Swift development and consulting.</p>
 
         <a href="mailto:info@binarybirds.com" target="_blank" class="author-cta">Contact us</a>
     </section>
 
 </article>
-        
+
+
     </main>
 
     <footer>

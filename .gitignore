@@ -1,1 +1,5 @@
 .DS_Store
+.swiftpm
+.vscode
+.build
+Sources/**/*.html

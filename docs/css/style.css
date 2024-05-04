@@ -70,28 +70,32 @@ iframe {
     float: left;
     padding: 0;
     margin: 0 0 0 -8px;
-}   
+}
 a {
     text-decoration: none;
 }
-a:hover, a:active {
+p a:hover, p a:active {
     cursor: pointer;
 }
-a:link, a:visited {
+p a:link, p a:visited {
     color: var(--link-color);
 }
-a.selected {
+p a.selected {
     color: var(--selected-link-color);
 }
-a:hover {
+p a:hover {
     color: var(--hover-link-color);
 }
-a:active {
+p a:active {
     color: var(--active-link-color);
 }
 h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     color: var(--primary-text-color);
+}
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    font-weight: 600;
+    color: var(--primary-text-color) !important;
 }
 h1 {
     font-size: 2.5rem;

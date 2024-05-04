@@ -4,17 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>Building an HTTP client using SwiftNIO - Swift on server</title>
-    
+    <title>Building an HTTP client using SwiftNIO - Swift on Server</title>
+
     <meta name="description" content="Learn how to build a simple HTTP client using SwiftNIO and structured concurrency.">
     
-    <meta property="og:title" content="Building an HTTP client using SwiftNIO - Swift on server">
+    <meta property="og:title" content="Building an HTTP client using SwiftNIO - Swift on Server">
     <meta property="og:description" content="Learn how to build a simple HTTP client using SwiftNIO and structured concurrency.">
-    <meta property="og:url" content="https://swiftonserver.com/building-swiftnio-clients/">
+    <meta property="og:url" content="https://swiftonserver.com/building-swiftnio-clients">
     <meta property="og:image" content="https://swiftonserver.com/images/assets/building-swiftnio-clients/cover.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Building an HTTP client using SwiftNIO - Swift on server">
+    <meta name="twitter:title" content="Building an HTTP client using SwiftNIO - Swift on Server">
     <meta name="twitter:description" content="Learn how to build a simple HTTP client using SwiftNIO and structured concurrency.">
     <meta name="twitter:image" content="https://swiftonserver.com/images/assets/building-swiftnio-clients/cover.jpg">
     
@@ -68,8 +68,8 @@
             <p class="excerpt">Learn how to build a simple HTTP client using SwiftNIO and structured concurrency.</p>
             <div class="meta">
                 <span class="tag">Swift</span>
-<span class="tag">SwiftNIO</span>
-<span class="tag">Networking</span>
+                <span class="tag">SwiftNIO</span>
+                <span class="tag">Networking</span>
             </div>
             <img src="https://github.com/joannis.png" alt="Joannis Orlandos" class="author">
             <p>
@@ -86,122 +86,122 @@
 
     <section id="contents" class="content-wrapper">
     
-    <h1>Building a SwiftNIO HTTP client</h1><p>In the previous <a href="/using-swiftnio-channels" target="_blank">SwiftNIO tutorial</a>, you learned how to use SwiftNIO to build a simple TCP echo server. In this tutorial, you'll build a simple HTTP client using SwiftNIO.</p><p>We'll use the <code>NIOHTTP1</code> package for parsing and serializing HTTP messages. In addition, SwiftNIO's structured concurrency is used to manage the lifecycle of our client.</p><p>By the end of this tutorial, you'll know how to configure a SwiftNIO Channel's pipeline, and are able to send HTTP requests to a server.</p><p><a href="https://github.com/swift-on-server/building-swiftnio-clients-sample" target="_blank">Download the Samples</a> to get started. It has a dev container for a quick start.</p><blockquote><p>Note: This tutorial will emit some <code>Sendable</code> warnings. These are expected, and should be resolved in a production ready client implementation. However, for the purposes of this tutorial, ignore them.</p></blockquote><h2>Creating a Client Channel</h2><p>In SwiftNIO, Channels are created through a bootstrap. For TCP clients, you'd generally use a <code>ClientBootstrap</code>. There are alternative clients as well, such as Apple's Transport Services for Apple platforms. In addition, the <code>NIOHTTP1</code> module is used to simplify the process of creating a client channel.</p><p>Add these dependencies to your executable target in your <code>Package.swift</code> file:</p><pre><code class="language-swift">.<span class="call">executableTarget</span>(
-    name: <span class="string">"swift-nio-part-3"</span>,
-    dependencies: [
-        .<span class="call">product</span>(name: <span class="string">"NIO"</span>, package: <span class="string">"swift-nio"</span>),
-        .<span class="call">product</span>(name: <span class="string">"NIOHTTP1"</span>, package: <span class="string">"swift-nio"</span>),
-    ]
-),</code></pre><p>Now, let's create a <code>ClientBootstrap</code> and configure it to use the <code>NIOHTTP1</code> module's handlers. First, import the necessary modules:</p><pre><code class="language-swift"><span class="keyword">import</span> NIOCore
-<span class="keyword">import</span> NIOPosix
-<span class="keyword">import</span> NIOHTTP1</code></pre><p>Then, create a <code>ClientBootstrap</code>:</p><pre><code class="language-swift"><span class="comment">// 1</span>
-<span class="keyword">let</span> httpClientBootstrap = <span class="type">ClientBootstrap</span>(group: <span class="type">NIOSingletons</span>.<span class="property">posixEventLoopGroup</span>)
-    <span class="comment">// 2</span>
-    .<span class="call">channelOption</span>(<span class="type">ChannelOptions</span>.<span class="call">socketOption</span>(.<span class="dotAccess">so_reuseaddr</span>), value: <span class="number">1</span>)
-    <span class="comment">// 3</span>
-    .<span class="call">channelInitializer</span> { channel <span class="keyword">in</span>
-        <span class="comment">// 4</span>
-        channel.<span class="property">pipeline</span>.<span class="call">addHTTPClientHandlers</span>(
-            position: .<span class="dotAccess">first</span>,
-            leftOverBytesStrategy: .<span class="dotAccess">fireError</span>
-        )
-    }</code></pre><p>This code prepares a template for creating a client channel. Let's break it down:</p><ol><li>Create a <code>ClientBootstrap</code> using the <code>NIOSingletons.posixEventLoopGroup</code> as the event loop group. This is a shared event loop group that can be reused across multiple components of our application.</li><li>NIO Channels can have options set on them. Here, the <code>SO_REUSEADDR</code> option is set to <code>1</code> to allow the reuse of local addresses.</li><li>Then, provide an initializer that is used to configure the pipeline of newly created channels.</li><li>Finally, the <code>channelInitializer</code> adds the necessary HTTP client handlers to the channel's pipeline. This uses a helper function provided by NIOHTTP1.</li></ol><h2>Creating Types</h2><p>Before creating the HTTP client, it's necessary to add a few types that are needed for processing HTTP requests and responses.</p><p>When a <code>connect</code> fails, NIO already throws an error. There is no need to catch or represent those. However, the HTTP Client might encounter errors when processing the response. Create an enum to represent these errors:</p><pre><code class="language-swift"><span class="keyword">enum</span> HTTPClientError: <span class="type">Error</span> {
-    <span class="keyword">case</span> malformedResponse
-    <span class="keyword">case</span> unexpectedEndOfStream
-}</code></pre><p>Finally, add an enum to represent the state of processing the response:</p><pre><code class="language-swift"><span class="keyword">enum</span> HTTPPartialResponse {
-    <span class="keyword">case</span> none
-    <span class="keyword">case</span> receiving(<span class="type">HTTPResponseHead</span>, <span class="type">ByteBuffer</span>)
-}</code></pre><p>The enum if pretty simple, and is not representative of a <em>mature</em> HTTP client implementation such as <a href="https://github.com/swift-server/async-http-client" target="_blank">AsyncHTTPClient</a>. However, it's enough to get started with building a (TCP) client.</p><h2>Implementing the HTTP Client</h2><p>Now that the necessary types have been created, create the <code>HTTPClient</code> type with a simple function that sends a request and returns the response.</p><pre><code class="language-swift"><span class="keyword">struct</span> HTTPClient {
-    <span class="keyword">let</span> host: <span class="type">String</span>
+    <section class='introduction'><h1>Building a SwiftNIO HTTP client</h1></section><section class='details literature'><p>HTTP clients are a common first networking application to build. HTTP is a well known and simple to understand protocol, making it an excellent start.</p><p>In the previous <a>SwiftNIO tutorial</a>, you learned how to use SwiftNIO to build a simple TCP echo server. In this tutorial, you’ll build a simple HTTP client using SwiftNIO.</p><p>We’ll use the <code>NIOHTTP1</code> package for parsing and serializing HTTP messages. In addition, SwiftNIO’s structured concurrency is used to manage the lifecycle of our client.</p><p>By the end of this tutorial, you’ll know how to configure a SwiftNIO Channel’s pipeline, and are able to send HTTP requests to a server.</p><p><a target='_blank' rel='external' href='https://github.com/swift-on-server/building-swiftnio-clients-sample'>Download the Samples</a> to get started. It has a dev container for a quick start.</p><aside class='note'><h3>Note</h3><p>This tutorial will emit some <code><a href='https://swiftinit.org/docs/swift/swift/sendable'>Sendable</a></code> warnings. These are expected, and should be resolved in a production ready client implementation. However, for the purposes of this tutorial, ignore them.</p></aside><h2 id='Creating%20a%20Client%20Channel'><a href='#Creating%20a%20Client%20Channel'>Creating a Client Channel</a></h2><p>In SwiftNIO, Channels are created through a bootstrap. For TCP clients, you’d generally use a <code><a href='https://swiftinit.org/docs/swift-nio/nioposix/clientbootstrap'>ClientBootstrap</a></code>. There are alternative clients as well, such as Apple’s Transport Services for Apple platforms. In addition, the <code>NIOHTTP1</code> module is used to simplify the process of creating a client channel.</p><p>Add these dependencies to your executable target in your <code>Package.swift</code> file:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span>.<span class='xv'>executableTarget</span>(<span class='newline'>
+</span>    <span class='xv'>name</span>: <span class='xs'>"swift-nio-part-3"</span>,<span class='newline'>
+</span>    <span class='xv'>dependencies</span>: [<span class='newline'>
+</span>        .<span class='xv'>product</span>(<span class='xv'>name</span>: <span class='xs'>"NIO"</span>, <span class='xv'>package</span>: <span class='xs'>"swift-nio"</span>),<span class='newline'>
+</span>        .<span class='xv'>product</span>(<span class='xv'>name</span>: <span class='xs'>"NIOHTTP1"</span>, <span class='xv'>package</span>: <span class='xs'>"swift-nio"</span>),<span class='newline'>
+</span>    ]<span class='newline'>
+</span>),</code></pre><p>Now, let’s create a <code><a href='https://swiftinit.org/docs/swift-nio/nioposix/clientbootstrap'>ClientBootstrap</a></code> and configure it to use the <code>NIOHTTP1</code> module’s handlers. First, import the necessary modules:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>import</span> <span class='xv'>NIOCore</span><span class='newline'>
+</span><span class='xk'>import</span> <span class='xv'>NIOPosix</span><span class='newline'>
+</span><span class='xk'>import</span> <span class='xv'>NIOHTTP1</span></code></pre><p>Then, create a <code><a href='https://swiftinit.org/docs/swift-nio/nioposix/clientbootstrap'>ClientBootstrap</a></code>:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xc'>// 1</span><span class='newline'>
+</span><span class='xk'>let</span> <span class='xv'>httpClientBootstrap</span> = <span class='xv'>ClientBootstrap</span>(<span class='xv'>group</span>: <span class='xv'>NIOSingletons</span>.<span class='xv'>posixEventLoopGroup</span>)<span class='newline'>
+</span>    <span class='xc'>// 2</span><span class='newline'>
+</span>    .<span class='xv'>channelOption</span>(<span class='xv'>ChannelOptions</span>.<span class='xv'>socketOption</span>(.<span class='xv'>so_reuseaddr</span>), <span class='xv'>value</span>: <span class='xn'>1</span>)<span class='newline'>
+</span>    <span class='xc'>// 3</span><span class='newline'>
+</span>    .<span class='xv'>channelInitializer</span> { <span class='xv'>channel</span> <span class='xk'>in</span><span class='newline'>
+</span>        <span class='xc'>// 4</span><span class='newline'>
+</span>        <span class='xv'>channel</span>.<span class='xv'>pipeline</span>.<span class='xv'>addHTTPClientHandlers</span>(<span class='newline'>
+</span>            <span class='xv'>position</span>: .<span class='xv'>first</span>,<span class='newline'>
+</span>            <span class='xv'>leftOverBytesStrategy</span>: .<span class='xv'>fireError</span><span class='newline'>
+</span>        )<span class='newline'>
+</span>    }</code></pre><p>This code prepares a template for creating a client channel. Let’s break it down:</p><ol><li><p>Create a <code><a href='https://swiftinit.org/docs/swift-nio/nioposix/clientbootstrap'>ClientBootstrap</a></code> using the <code>NIOSingletons.posixEventLoopGroup</code> as the event loop group. This is a shared event loop group that can be reused across multiple components of our application.</p></li><li><p>NIO Channels can have options set on them. Here, the <code>SO_REUSEADDR</code> option is set to <code>1</code> to allow the reuse of local addresses.</p></li><li><p>Then, provide an initializer that is used to configure the pipeline of newly created channels.</p></li><li><p>Finally, the <code>channelInitializer</code> adds the necessary HTTP client handlers to the channel’s pipeline. This uses a helper function provided by NIOHTTP1.</p></li></ol><h2 id='Creating%20Types'><a href='#Creating%20Types'>Creating Types</a></h2><p>Before creating the HTTP client, it’s necessary to add a few types that are needed for processing HTTP requests and responses.</p><p>When a <code>connect</code> fails, NIO already throws an error. There is no need to catch or represent those. However, the HTTP Client might encounter errors when processing the response. Create an enum to represent these errors:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>enum</span> <span class='xv'>HTTPClientError</span>: <span class='xt'>Error</span> {<span class='newline'>
+</span>    <span class='xk'>case</span> <span class='xv'>malformedResponse</span><span class='newline'>
+</span>    <span class='xk'>case</span> <span class='xv'>unexpectedEndOfStream</span><span class='newline'>
+</span>}</code></pre><p>Finally, add an enum to represent the state of processing the response:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>enum</span> <span class='xv'>HTTPPartialResponse</span> {<span class='newline'>
+</span>    <span class='xk'>case</span> <span class='xv'>none</span><span class='newline'>
+</span>    <span class='xk'>case</span> <span class='xv'>receiving</span>(<span class='xt'>HTTPResponseHead</span>, <span class='xt'>ByteBuffer</span>)<span class='newline'>
+</span>}</code></pre><p>The enum if pretty simple, and is not representative of a <em>mature</em> HTTP client implementation such as <a target='_blank' rel='external' href='https://github.com/swift-server/async-http-client'>AsyncHTTPClient</a>. However, it’s enough to get started with building a (TCP) client.</p><h2 id='Implementing%20the%20HTTP%20Client'><a href='#Implementing%20the%20HTTP%20Client'>Implementing the HTTP Client</a></h2><p>Now that the necessary types have been created, create the <code>HTTPClient</code> type with a simple function that sends a request and returns the response.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>struct</span> <span class='xv'>HTTPClient</span> {<span class='newline'>
+</span>    <span class='xk'>let</span> <span class='xv'>host</span>: <span class='xt'>String</span><span class='newline'>
 
-    <span class="keyword">func</span> request(
-        <span class="keyword">_</span> uri: <span class="type">String</span>,
-        method: <span class="type">HTTPMethod</span> = .<span class="dotAccess">GET</span>,
-        headers: <span class="type">HTTPHeaders</span> = [:]
-    ) <span class="keyword">async throws</span> -&gt; (<span class="type">HTTPResponseHead</span>, <span class="type">ByteBuffer</span>) {
-        <span class="comment">// 5</span>
-        <span class="keyword">let</span> clientChannel = <span class="keyword">try await</span> httpClientBootstrap.<span class="call">connect</span>(
-            host: host,
-            port: <span class="number">80</span>
-        ).<span class="call">flatMapThrowing</span> { channel <span class="keyword">in</span>
-            <span class="comment">// 6</span>
-            <span class="keyword">try</span> <span class="type">NIOAsyncChannel</span>(
-                wrappingChannelSynchronously: channel,
-                configuration: <span class="type">NIOAsyncChannel</span>.<span class="type">Configuration</span>(
-                    inboundType: <span class="type">HTTPClientResponsePart</span>.<span class="keyword">self</span>, <span class="comment">// 7</span>
-                    outboundType: <span class="type">HTTPClientRequestPart</span>.<span class="keyword">self</span> <span class="comment">// 8</span>
-                )
-            )
-        }.<span class="call">get</span>() <span class="comment">// 9
+</span>    <span class='xk'>func</span> <span class='xv'>request</span>(<span class='newline'>
+</span>        _ <span class='xv'>uri</span>: <span class='xt'>String</span>,<span class='newline'>
+</span>        <span class='xv'>method</span>: <span class='xt'>HTTPMethod</span> = .<span class='xv'>GET</span>,<span class='newline'>
+</span>        <span class='xv'>headers</span>: <span class='xt'>HTTPHeaders</span> = [:]<span class='newline'>
+</span>    ) <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; (<span class='xt'>HTTPResponseHead</span>, <span class='xt'>ByteBuffer</span>) {<span class='newline'>
+</span>        <span class='xc'>// 5</span><span class='newline'>
+</span>        <span class='xk'>let</span> <span class='xv'>clientChannel</span> = <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>httpClientBootstrap</span>.<span class='xv'>connect</span>(<span class='newline'>
+</span>            <span class='xv'>host</span>: <span class='xv'>host</span>,<span class='newline'>
+</span>            <span class='xv'>port</span>: <span class='xn'>80</span><span class='newline'>
+</span>        ).<span class='xv'>flatMapThrowing</span> { <span class='xv'>channel</span> <span class='xk'>in</span><span class='newline'>
+</span>            <span class='xc'>// 6</span><span class='newline'>
+</span>            <span class='xk'>try</span> <span class='xv'>NIOAsyncChannel</span>(<span class='newline'>
+</span>                <span class='xv'>wrappingChannelSynchronously</span>: <span class='xv'>channel</span>,<span class='newline'>
+</span>                <span class='xv'>configuration</span>: <span class='xv'>NIOAsyncChannel</span>.<span class='xv'>Configuration</span>(<span class='newline'>
+</span>                    <span class='xv'>inboundType</span>: <span class='xv'>HTTPClientResponsePart</span>.<span class='xk'>self</span>, <span class='xc'>// 7</span><span class='newline'>
+</span>                    <span class='xv'>outboundType</span>: <span class='xv'>HTTPClientRequestPart</span>.<span class='xk'>self</span> <span class='xc'>// 8</span><span class='newline'>
+</span>                )<span class='newline'>
+</span>            )<span class='newline'>
+</span>        }.<span class='xv'>get</span>() <span class='xc'>// 9</span><span class='newline'>
 
-        // TODO: Send request &amp; process response</span>
-    }
-}</code></pre><p>Let's break it down:</p><ol><li>Use the <code>httpClientBootstrap</code> to create a new client channel. This returns an <code>EventLoopFuture</code> containing a regular NIO <code>Channel</code>. By using <code>flatMapThrowing</code> to transform the result of this future, it's possible to convert the <code>EventLoopFuture</code> into a <code>NIOAsyncChannel</code>.</li><li>In order to use structured concurrency, it's necessary to wrap the <code>Channel</code> in an <code>NIOAsyncChannel</code>. The inbound and outbound types must be <code>Sendable</code>, and need to be configured to match the pipeline's input and output. This is based on the handlers added in the bootstrap's <code>channelInitializer</code>.</li><li>The <code>NIOAsyncChannel</code> is configured to receive <code>HTTPClientResponsePart</code> objects. This is the type that the HTTP client will receive from the server.</li><li>The <code>NIOAsyncChannel</code> is configured to send <code>SendableHTTPClientRequestPart</code> objects. This is the type that the HTTP client will send to the server.</li><li>The <code>get()</code> method is called to <em>await</em> for the result of the <code>EventLoopFuture</code>.</li></ol><h3>Sending a Request</h3><p>In place of the TODO comment, add the code to send a request and process the response. First, create a <code>HTTPRequestHead</code>. Note that this function does not currently support sending a body with the request. Do so by adding the following code:</p><pre><code class="language-swift"><span class="comment">// 10</span>
-<span class="keyword">return try await</span> clientChannel.<span class="call">executeThenClose</span> { inbound, outbound <span class="keyword">in</span>
-    <span class="comment">// 11</span>
-    <span class="keyword">let</span> requestHead = <span class="type">HTTPRequestHead</span>(version: .<span class="dotAccess">http1_1</span>, method: method, uri: uri, headers: headers)
-    <span class="keyword">try await</span> outbound.<span class="call">write</span>(.<span class="call">head</span>(requestHead))
-    <span class="keyword">try await</span> outbound.<span class="call">write</span>(.<span class="call">end</span>(<span class="keyword">nil</span>))
+</span>        <span class='xc'>// TODO: Send request &amp; process response</span><span class='newline'>
+</span>    }<span class='newline'>
+</span>}</code></pre><p>Let’s break it down:</p><ol><li><p>Use the <code>httpClientBootstrap</code> to create a new client channel. This returns an <code><a href='https://swiftinit.org/docs/swift-nio/niocore/eventloopfuture'>EventLoopFuture</a></code> containing a regular NIO <code><a href='https://swiftinit.org/docs/swift-nio/niocore/channel'>Channel</a></code>. By using <code>EventLoopFuture\flatMapThrowing</code> to transform the result of this future, it’s possible to convert the <code><a href='https://swiftinit.org/docs/swift-nio/niocore/eventloopfuture'>EventLoopFuture</a></code> into a <code><a href='https://swiftinit.org/docs/swift-nio/niocore/nioasyncchannel'>NIOAsyncChannel</a></code>.</p></li><li><p>In order to use structured concurrency, it’s necessary to wrap the <code><a href='https://swiftinit.org/docs/swift-nio/niocore/channel'>Channel</a></code> in an <code><a href='https://swiftinit.org/docs/swift-nio/niocore/nioasyncchannel'>NIOAsyncChannel</a></code>. The inbound and outbound types must be <code><a href='https://swiftinit.org/docs/swift/swift/sendable'>Sendable</a></code>, and need to be configured to match the pipeline’s input and output. This is based on the handlers added in the bootstrap’s <code>channelInitializer</code>.</p></li><li><p>The <code><a href='https://swiftinit.org/docs/swift-nio/niocore/nioasyncchannel'>NIOAsyncChannel</a></code> is configured to receive <code><a href='https://swiftinit.org/docs/swift-nio/niohttp1/httpclientresponsepart'>HTTPClientResponsePart</a></code> objects. This is the type that the HTTP client will receive from the server.</p></li><li><p>The <code><a href='https://swiftinit.org/docs/swift-nio/niocore/nioasyncchannel'>NIOAsyncChannel</a></code> is configured to send <code>SendableHTTPClientRequestPart</code> objects. This is the type that the HTTP client will send to the server.</p></li><li><p>The <code>get()</code> method is called to <em>await</em> for the result of the <code><a href='https://swiftinit.org/docs/swift-nio/niocore/eventloopfuture'>EventLoopFuture</a></code>.</p></li></ol><h3 id='Sending%20a%20Request'><a href='#Sending%20a%20Request'>Sending a Request</a></h3><p>In place of the TODO comment, add the code to send a request and process the response. First, create a <code><a href='https://swiftinit.org/docs/swift-nio/niohttp1/httprequesthead'>HTTPRequestHead</a></code>. Note that this function does not currently support sending a body with the request. Do so by adding the following code:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xc'>// 10</span><span class='newline'>
+</span><span class='xk'>return</span> <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>clientChannel</span>.<span class='xv'>executeThenClose</span> { <span class='xv'>inbound</span>, <span class='xv'>outbound</span> <span class='xk'>in</span><span class='newline'>
+</span>    <span class='xc'>// 11</span><span class='newline'>
+</span>    <span class='xk'>let</span> <span class='xv'>requestHead</span> = <span class='xv'>HTTPRequestHead</span>(<span class='xv'>version</span>: .<span class='xv'>http1_1</span>, <span class='xv'>method</span>: <span class='xv'>method</span>, <span class='xv'>uri</span>: <span class='xv'>uri</span>, <span class='xv'>headers</span>: <span class='xv'>headers</span>)<span class='newline'>
+</span>    <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>outbound</span>.<span class='xv'>write</span>(.<span class='xv'>head</span>(<span class='xv'>requestHead</span>))<span class='newline'>
+</span>    <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>outbound</span>.<span class='xv'>write</span>(.<span class='xv'>end</span>(<span class='xk'>nil</span>))<span class='newline'>
 
-    <span class="comment">// TODO: Process response</span>
-}</code></pre><p>This is a structured concurrency block that sends the request:</p><ol><li>The <code>executeThenClose</code> method is used to obtain a read and write half of the channel. This function returns the result of it's trailing closure.</li><li>The writer called <code>outbound</code> is used to send the request's part - the head and 'end'. This is also where the request's body would be sent.</li></ol><p>Below that, receive and process the response parts as such:</p><pre><code class="language-swift"><span class="keyword">var</span> partialResponse = <span class="type">HTTPPartialResponse</span>.<span class="property">none</span>
-    
-<span class="comment">// 12</span>
-<span class="keyword">for try await</span> part <span class="keyword">in</span> inbound {
-    <span class="comment">// 13</span>
-    <span class="keyword">switch</span> part {
-    <span class="keyword">case</span> .<span class="dotAccess">head</span>(<span class="keyword">let</span> head):
-        <span class="keyword">guard case</span> .<span class="dotAccess">none</span> = partialResponse <span class="keyword">else</span> {
-            <span class="keyword">throw</span> <span class="type">HTTPClientError</span>.<span class="property">malformedResponse</span>
-        }
-        
-        <span class="keyword">let</span> buffer = clientChannel.<span class="property">channel</span>.<span class="property">allocator</span>.<span class="call">buffer</span>(capacity: <span class="number">0</span>)
-        partialResponse = .<span class="call">receiving</span>(head, buffer)
-    <span class="keyword">case</span> .<span class="dotAccess">body</span>(<span class="keyword">let</span> buffer):
-        <span class="keyword">guard case</span> .<span class="dotAccess">receiving</span>(<span class="keyword">let</span> head, <span class="keyword">var</span> existingBuffer) = partialResponse <span class="keyword">else</span> {
-            <span class="keyword">throw</span> <span class="type">HTTPClientError</span>.<span class="property">malformedResponse</span>
-        }
+</span>    <span class='xc'>// TODO: Process response</span><span class='newline'>
+</span>}</code></pre><p>This is a structured concurrency block that sends the request:</p><ol><li><p>The <code>executeThenClose</code> method is used to obtain a read and write half of the channel. This function returns the result of it’s trailing closure.</p></li><li><p>The writer called <code>outbound</code> is used to send the request’s part - the head and ‘end’. This is also where the request’s body would be sent.</p></li></ol><p>Below that, receive and process the response parts as such:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>var</span> <span class='xv'>partialResponse</span> = <span class='xv'>HTTPPartialResponse</span>.<span class='xv'>none</span><span class='newline'>
+</span>    <span class='newline'>
+</span><span class='xc'>// 12</span><span class='newline'>
+</span><span class='xk'>for</span> <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>part</span> <span class='xk'>in</span> <span class='xv'>inbound</span> {<span class='newline'>
+</span>    <span class='xc'>// 13</span><span class='newline'>
+</span>    <span class='xk'>switch</span> <span class='xv'>part</span> {<span class='newline'>
+</span>    <span class='xk'>case</span> .<span class='xv'>head</span>(<span class='xk'>let</span> <span class='xv'>head</span>):<span class='newline'>
+</span>        <span class='xk'>guard</span> <span class='xk'>case</span> .<span class='xv'>none</span> = <span class='xv'>partialResponse</span> <span class='xk'>else</span> {<span class='newline'>
+</span>            <span class='xk'>throw</span> <span class='xv'>HTTPClientError</span>.<span class='xv'>malformedResponse</span><span class='newline'>
+</span>        }<span class='newline'>
+</span>        <span class='newline'>
+</span>        <span class='xk'>let</span> <span class='xv'>buffer</span> = <span class='xv'>clientChannel</span>.<span class='xv'>channel</span>.<span class='xv'>allocator</span>.<span class='xv'>buffer</span>(<span class='xv'>capacity</span>: <span class='xn'>0</span>)<span class='newline'>
+</span>        <span class='xv'>partialResponse</span> = .<span class='xv'>receiving</span>(<span class='xv'>head</span>, <span class='xv'>buffer</span>)<span class='newline'>
+</span>    <span class='xk'>case</span> .<span class='xv'>body</span>(<span class='xk'>let</span> <span class='xv'>buffer</span>):<span class='newline'>
+</span>        <span class='xk'>guard</span> <span class='xk'>case</span> .<span class='xv'>receiving</span>(<span class='xk'>let</span> <span class='xv'>head</span>, <span class='xk'>var</span> <span class='xv'>existingBuffer</span>) = <span class='xv'>partialResponse</span> <span class='xk'>else</span> {<span class='newline'>
+</span>            <span class='xk'>throw</span> <span class='xv'>HTTPClientError</span>.<span class='xv'>malformedResponse</span><span class='newline'>
+</span>        }<span class='newline'>
 
-        existingBuffer.<span class="call">writeImmutableBuffer</span>(buffer)
-        partialResponse = .<span class="call">receiving</span>(head, existingBuffer)
-    <span class="keyword">case</span> .<span class="dotAccess">end</span>:
-        <span class="keyword">guard case</span> .<span class="dotAccess">receiving</span>(<span class="keyword">let</span> head, <span class="keyword">let</span> buffer) = partialResponse <span class="keyword">else</span> {
-            <span class="keyword">throw</span> <span class="type">HTTPClientError</span>.<span class="property">malformedResponse</span>
-        }
+</span>        <span class='xv'>existingBuffer</span>.<span class='xv'>writeImmutableBuffer</span>(<span class='xv'>buffer</span>)<span class='newline'>
+</span>        <span class='xv'>partialResponse</span> = .<span class='xv'>receiving</span>(<span class='xv'>head</span>, <span class='xv'>existingBuffer</span>)<span class='newline'>
+</span>    <span class='xk'>case</span> .<span class='xv'>end</span>:<span class='newline'>
+</span>        <span class='xk'>guard</span> <span class='xk'>case</span> .<span class='xv'>receiving</span>(<span class='xk'>let</span> <span class='xv'>head</span>, <span class='xk'>let</span> <span class='xv'>buffer</span>) = <span class='xv'>partialResponse</span> <span class='xk'>else</span> {<span class='newline'>
+</span>            <span class='xk'>throw</span> <span class='xv'>HTTPClientError</span>.<span class='xv'>malformedResponse</span><span class='newline'>
+</span>        }<span class='newline'>
 
-        <span class="keyword">return</span> (head, buffer)
-    }
-}
+</span>        <span class='xk'>return</span> (<span class='xv'>head</span>, <span class='xv'>buffer</span>)<span class='newline'>
+</span>    }<span class='newline'>
+</span>}<span class='newline'>
 
-<span class="comment">// 14</span>
-<span class="keyword">throw</span> <span class="type">HTTPClientError</span>.<span class="property">unexpectedEndOfStream</span></code></pre><p>This sets up a state variable to keep track of the response parts received. It then processes the response parts as they come in:</p><ol start="12"><li>A <code>for</code> loop is used to iterate over the response parts. This is a structured concurrency block that will continue to run until the channel is closed by the remote, an error is thrown, or a <code>return</code> statement ends the function.</li><li>The <code>part</code> is matched against the <code>HTTPClientResponsePart</code> enum. If the part is a head, it's stored in the <code>partialResponse</code> variable. If the part is a body, it's appended to the buffer in the <code>partialResponse</code> variable. If the part is an end, the <code>partialResponse</code> is returned.</li><li>If the loop ends without a return, an error is thrown, since the code was unable to receive a complete response.</li></ol><h2>Using the Client</h2><p>Now that the HTTP client is complete, it's time to use it. Add the following code to the <code>main.swift</code> file:</p><pre><code class="language-swift"><span class="keyword">let</span> client = <span class="type">HTTPClient</span>(host: <span class="string">"example.com"</span>)
-<span class="keyword">let</span> (response, body) = <span class="keyword">try await</span> client.<span class="call">request</span>(<span class="string">"/"</span>, headers: [<span class="string">"Host"</span>: <span class="string">"example.com"</span>])
-<span class="call">print</span>(response)
-<span class="call">print</span>(body.<span class="call">getString</span>(at: <span class="number">0</span>, length: body.<span class="property">readableBytes</span>)!)</code></pre><p>This creates a client and sends a GET request to <code>example.com</code>. The response is then printed to the console.</p><p>If everything is set up correctly, you should see roughly the following output:</p><pre><code>HTTPResponseHead { version: HTTP/1.1, status: 200 OK, headers: [("Accept-Ranges", "bytes"), ("Age", "464157"), ("Cache-Control", "max-age=604800"), ("Content-Type", "text/html; charset=UTF-8"), ("Date", "Wed, 07 Feb 2024 21:22:33 GMT"), ("Etag", "\"3147526947\""), ("Expires", "Wed, 14 Feb 2024 21:22:33 GMT"), ("Last-Modified", "Thu, 17 Oct 2019 07:18:26 GMT"), ("Server", "ECS (dce/26CD)"), ("Vary", "Accept-Encoding"), ("X-Cache", "HIT"), ("Content-Length", "1256")] }
-&lt;!doctype html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Example Domain&lt;/title&gt;
+</span><span class='xc'>// 14</span><span class='newline'>
+</span><span class='xk'>throw</span> <span class='xv'>HTTPClientError</span>.<span class='xv'>unexpectedEndOfStream</span></code></pre><p>This sets up a state variable to keep track of the response parts received. It then processes the response parts as they come in:</p><ol><li><p>A <code>for</code> loop is used to iterate over the response parts. This is a structured concurrency block that will continue to run until the channel is closed by the remote, an error is thrown, or a <code>return</code> statement ends the function.</p></li><li><p>The <code>part</code> is matched against the ``HTTPClientResponsePart<code>enum. If the part is a head, it's stored in the</code>partialResponse` variable. If the part is a body, it’s appended to the buffer in the `partialResponse` variable. If the part is an end, the `partialResponse` is returned.</p></li><li><p>If the loop ends without a return, an error is thrown, since the code was unable to receive a complete response.</p></li></ol><h2 id='Using%20the%20Client'><a href='#Using%20the%20Client'>Using the Client</a></h2><p>Now that the HTTP client is complete, it’s time to use it. Add the following code to the <code>main.swift</code> file:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>let</span> <span class='xv'>client</span> = <span class='xv'>HTTPClient</span>(<span class='xv'>host</span>: <span class='xs'>"example.com"</span>)<span class='newline'>
+</span><span class='xk'>let</span> (<span class='xv'>response</span>, <span class='xv'>body</span>) = <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>client</span>.<span class='xv'>request</span>(<span class='xs'>"/"</span>, <span class='xv'>headers</span>: [<span class='xs'>"Host"</span>: <span class='xs'>"example.com"</span>])<span class='newline'>
+</span><span class='xv'>print</span>(<span class='xv'>response</span>)<span class='newline'>
+</span><span class='xv'>print</span>(<span class='xv'>body</span>.<span class='xv'>getString</span>(<span class='xv'>at</span>: <span class='xn'>0</span>, <span class='xv'>length</span>: <span class='xv'>body</span>.<span class='xv'>readableBytes</span>)!)</code></pre><p>This creates a client and sends a GET request to <code>example.com</code>. The response is then printed to the console.</p><p>If everything is set up correctly, you should see roughly the following output:</p><pre class='snippet'><code><span class='newline'></span>HTTPResponseHead { version: HTTP/1.1, status: 200 OK, headers: [("Accept-Ranges", "bytes"), ("Age", "464157"), ("Cache-Control", "max-age=604800"), ("Content-Type", "text/html; charset=UTF-8"), ("Date", "Wed, 07 Feb 2024 21:22:33 GMT"), ("Etag", "\"3147526947\""), ("Expires", "Wed, 14 Feb 2024 21:22:33 GMT"), ("Last-Modified", "Thu, 17 Oct 2019 07:18:26 GMT"), ("Server", "ECS (dce/26CD)"), ("Vary", "Accept-Encoding"), ("X-Cache", "HIT"), ("Content-Length", "1256")] }<span class='newline'>
+</span>&lt;!doctype html&gt;<span class='newline'>
+</span>&lt;html&gt;<span class='newline'>
+</span>&lt;head&gt;<span class='newline'>
+</span>    &lt;title&gt;Example Domain&lt;/title&gt;<span class='newline'>
 
-    &lt;meta charset="utf-8" /&gt;
-    &lt;meta http-equiv="Content-type" content="text/html; charset=utf-8" /&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;
-    &lt;style type="text/css"&gt;
-    ....
-</code></pre><p>And that's it! You've built a simple HTTP client using SwiftNIO. You can now use this client to send requests to any server that supports HTTP/1.1.</p>
+</span>    &lt;meta charset="utf-8" /&gt;<span class='newline'>
+</span>    &lt;meta http-equiv="Content-type" content="text/html; charset=utf-8" /&gt;<span class='newline'>
+</span>    &lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;<span class='newline'>
+</span>    &lt;style type="text/css"&gt;<span class='newline'>
+</span>    ....</code></pre><p>And that’s it! You’ve built a simple HTTP client using SwiftNIO. You can now use this client to send requests to any server that supports HTTP/1.1.</p></section>
         
     </section>
 
     <section id="about-author" class="content-wrapper">
         <img src="https://github.com/joannis.png" alt="Joannis Orlandos" class="author">
         <h4>About Joannis Orlandos</h4>
-        <p class="author-about">Joannis is a seasoned member of the Swift Server WorkGroup, and the co-founder of Unbeatable Software B.V. If you're looking to elevate your team's capabilities or need expert guidance on Swift backend development, consider hiring him.</p>
+        <p class="author-about">Joannis is a seasoned member of the Swift Server WorkGroup, and the co-founder of Unbeatable Software B.V. If you&#39;re looking to elevate your team&#39;s capabilities or need expert guidance on Swift backend development, consider hiring him.</p>
 
         <a href="https://unbeatable.software/mentoring-and-training" target="_blank" class="author-cta">Get in touch with Joannis</a>
     </section>
 
 </article>
-        
+
+
     </main>
 
     <footer>
