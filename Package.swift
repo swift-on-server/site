@@ -5,10 +5,14 @@ import PackageDescription
 
 let package = Package(
     name: "site",
+    products: [
+        .library(name: "__SwiftOnServer_org", targets: ["__SwiftOnServer_org"])
+    ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
-        .executableTarget(
-            name: "site"),
+        .target(
+            name: "__SwiftOnServer_org"
+        ),
     ]
 )
