@@ -137,7 +137,7 @@ try await httpClient.shutdown()
 
 1. A new HTTP request object is created targeting the specified URL.
 2. The HTTP request method is set to POST.
-3. A `user-agent` header with the value `Swift AsyncHTTPClient` is added to the request.
+3. A `user-agent` header with the value `"Swift AsyncHTTPClient"` is added to the request.
 4. The request body is set to contain the string "Some data".
 5. The request is executed with a custom timeout of 5 seconds.
 6. If the response status is `.ok` (`200`), further processing is performed.
@@ -146,7 +146,7 @@ try await httpClient.shutdown()
 9. The response body is collected asynchronously, up to a maximum of 1 MiB in size.
 10. The raw response body is retrieved as a string for further processing.
 
-Any errors encountered during the execution of the request are caught and printed. If the response body exceeds the 1 MiB limit, a `NIOTooManyBytesError` error will occur.
+Any errors encountered during the execution of the request are caught and printed. If the response body exceeds the 1 MiB limit, a ``NIOTooManyBytesError`` error will occur.
 
 Finally, the HTTP client is shut down to release associated resources.
 
@@ -229,9 +229,9 @@ catch {
 try await httpClient.shutdown()
 ```
 
-1. Two `Codable` structures are defined: `Input` for the data to be sent and `Output` for receiving the JSON response.
+1. Two ``Codable`` structures are defined: `Input` for the data to be sent and `Output` for receiving the JSON response.
 2. An HTTP request is created using a POST method and a `content-type: application/json` header.
-4. The `Input` data is encoded into JSON data using a `ByteBuffer` and set as the request body.
+4. The `Input` data is encoded into JSON data using a ``ByteBuffer`` and set as the request body.
 5. If the response status is ok and the content type is JSON, the response body is processed.
 6. The response body chunks are collected asynchronously and concatenated into a single buffer.
 7. The buffer containing the JSON data response is decoded as an `Output` structure using.

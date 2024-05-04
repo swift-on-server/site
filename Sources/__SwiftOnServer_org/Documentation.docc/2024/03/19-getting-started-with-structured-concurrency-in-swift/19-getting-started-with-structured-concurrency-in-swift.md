@@ -268,7 +268,7 @@ In structured concurrency, tasks are automatically cancelled when their parent t
 
 Let's say you're writing a web server, where your route generates a huge excel file. If the client cancels the request, you'll want to cancel the generation of the excel file. Continuing to generate the file is a waste of resources, and can lead to intentional and unintentional denial of service attacks.
 
-In structured concurrency, you can use the `Task` object to cancel a task. This is a structured way to cancel a task, and it's clear when the task is cancelled. You can also use the `Task` object to check if a task is cancelled, and to handle the cancellation.
+In structured concurrency, you can use the ``Task`` object to cancel a task. This is a structured way to cancel a task, and it's clear when the task is cancelled. You can also use the ``Task`` object to check if a task is cancelled, and to handle the cancellation.
 
 ```swift
 if Task.isCancelled {
@@ -278,17 +278,17 @@ if Task.isCancelled {
 
 This is a structured way to check if a task is cancelled, and to handle the cancellation. It's clear when the task is cancelled, and you can handle the cancellation in a structured way.
 
-You can also check if a task is cancelled using the `Task.checkCancellation` method. This is a structured way to check if a task is cancelled, and to handle the cancellation. It's clear when the task is cancelled, and you can handle the cancellation in a structured way.
+You can also check if a task is cancelled using the ``Task\checkCancellation()`` method. This is a structured way to check if a task is cancelled, and to handle the cancellation. It's clear when the task is cancelled, and you can handle the cancellation in a structured way.
 
 ```swift
 try Task.checkCancellation()
 ```
 
-This will throw a `CancellationError` if the task is cancelled. You can catch this error and handle the cancellation in a structured way.
+This will throw a ``CancellationError`` if the task is cancelled. You can catch this error and handle the cancellation in a structured way.
 
 ### Blocking and Sleeping Tasks
 
-If you have blocking or heavy work that you want to run concurrently, you'll need to do so outside of the structured concurrency model. This is because blocking or heavy work can cause a performance bottleneck in the global concurrent executor. SwiftNIO has the `NIOThreadPool` that you can use to run blocking work concurrently. For iOS users, it may be wise to use a `DispatchQueue` for these scenarios.
+If you have blocking or heavy work that you want to run concurrently, you'll need to do so outside of the structured concurrency model. This is because blocking or heavy work can cause a performance bottleneck in the global concurrent executor. SwiftNIO has the ``NIOThreadPool`` that you can use to run blocking work concurrently. For iOS users, it may be wise to use a ``DispatchQueue`` for these scenarios.
 
 If you do decide to add computationally heavy code in structured concurrency, you can use `await Task.yield()` to yield the current task. This will allow your Task Executor to run other tasks. Doing so can prevent lag spikes, such as UI freezes those that happen on iOS when blocking the main thread.
 
@@ -301,7 +301,7 @@ try await Task.sleep(for: .seconds(10))
 ```
 
 An extra feature of `Task.sleep` is that it can be cancelled. If the task is 
-cancelled while it's sleeping, the sleep will be interrupted and throw a `CancellationError`.
+cancelled while it's sleeping, the sleep will be interrupted and throw a ``CancellationError``.
 
 ### Cancellation Handlers
 
@@ -328,7 +328,7 @@ func getData() async throws -> HTTPResponse {
 
 ## Task Groups
 
-One can order ten items off your favourite book store. But in the real world, you don't want to `await` for the first book before ordering the next one. For that, we can use a `TaskGroup`:
+One can order ten items off your favourite book store. But in the real world, you don't want to `await` for the first book before ordering the next one. For that, we can use a ``TaskGroup``:
 
 ```swift
 func buyBooks() async throws {
@@ -346,7 +346,7 @@ func buyBooks() async throws {
 
 This is a structured way to run multiple pieces of work concurrently. It's clear when the tasks start and when they end. You can run many pieces of work in parallel. And you can await all tasks being completed, and get an error if any one of them fails.
 
-The above task group can throw errors, but not all task groups need to throw. If you use `withTaskGroup`, you'll be able to run tasks that don't throw, and you won't need to handle errors.
+The above task group can throw errors, but not all task groups need to throw. If you use ``withTaskGroup``, you'll be able to run tasks that don't throw, and you won't need to handle errors.
 
 In the above example, `withThrowingTaskGroup(of: Book.self)` specifies that each task _must_ produce a `Book` result if successful. In some cases, the result of the task is not necessary. In this case however, the results are helpful to collect the books that were bought.
 
@@ -371,7 +371,7 @@ func buyBooks() async throws -> [Book] {
 
 ### Discarding Task Groups
 
-In some cases, you might not be interested in the result of the task group. For example, you might want to run a number of tasks concurrently, but these tasks don't return results. In that case, you can use `withDiscardingTaskGroup` and `withThrowingDiscardingTaskGroup` from iOS 17 and macOS 14. This is a structured way to run multiple pieces of work concurrently, without needing to retain results.
+In some cases, you might not be interested in the result of the task group. For example, you might want to run a number of tasks concurrently, but these tasks don't return results. In that case, you can use ``withDiscardingTaskGroup`` and ``withThrowingDiscardingTaskGroup`` from iOS 17 and macOS 14. This is a structured way to run multiple pieces of work concurrently, without needing to retain results.
 
 The regular task groups create a collection of results, which you can then iterate over. In some cases, such as a TCP server, this collection of results is not needed and grow indefinitely. In that case, you'll want to use a discarding task group to prevent an ever-growing collection of results. Note that `Void` results are still stored and occupy a small amount of memory!
 

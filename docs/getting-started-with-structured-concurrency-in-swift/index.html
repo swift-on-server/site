@@ -4,52 +4,52 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>Getting Started with Structured Concurrency in Swift - Swift on server</title>
-    
+    <title>Getting Started with Structured Concurrency in Swift - Swift on Server</title>
+
     <meta name="description" content="Learn how to apply structured concurrency in your applications, using task groups and other structured concepts.">
     
-    <meta property="og:title" content="Getting Started with Structured Concurrency in Swift - Swift on server">
+    <meta property="og:title" content="Getting Started with Structured Concurrency in Swift - Swift on Server">
     <meta property="og:description" content="Learn how to apply structured concurrency in your applications, using task groups and other structured concepts.">
-    <meta property="og:url" content="https://swiftonserver.com/getting-started-with-structured-concurrency-in-swift/">
-    <meta property="og:image" content="https://swiftonserver.com/images/assets/getting-started-with-structured-concurrency-in-swift/cover.jpg">
+    <meta property="og:url" content="https://swiftonserver.com/">
+    <meta property="og:image" content="/">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Getting Started with Structured Concurrency in Swift - Swift on server">
+    <meta name="twitter:title" content="Getting Started with Structured Concurrency in Swift - Swift on Server">
     <meta name="twitter:description" content="Learn how to apply structured concurrency in your applications, using task groups and other structured concepts.">
-    <meta name="twitter:image" content="https://swiftonserver.com/images/assets/getting-started-with-structured-concurrency-in-swift/cover.jpg">
+    <meta name="twitter:image" content="/">
     
-    <link rel="stylesheet" href="https://swiftonserver.com/css/style.css">
-    <link rel="stylesheet" href="https://swiftonserver.com/css/syntax.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/syntax.css">
 
-    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/icon-320.png" type="image/png">
+    <link rel="shortcut icon" href="/images/icons/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/images/icons/icon-320.png" type="image/png">
     
-    <link rel="apple-touch-icon" href="https://swiftonserver.com/images/icons/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="57x57" href="https://swiftonserver.com/images/icons/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="https://swiftonserver.com/images/icons/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="https://swiftonserver.com/images/icons/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="https://swiftonserver.com/images/icons/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="https://swiftonserver.com/images/icons/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="https://swiftonserver.com/images/icons/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="https://swiftonserver.com/images/icons/apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://swiftonserver.com/images/icons/apple-touch-icon-180x180.png">
+    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon-180x180.png">
     
 </head>
 
 <body>
     <header id="page-header">
-        <a href="https://swiftonserver.com/">
+        <a href="/">
             <figure>
                 <picture>
                     <source 
-                        srcset="https://swiftonserver.com/images/logos/logo~dark.png" 
+                        srcset="/images/logos/logo~dark.png" 
                         media="(prefers-color-scheme: dark)"
                     >
                     <img 
                         id="logo-image"
                         width="150"
                         height="150"
-                        src="https://swiftonserver.com/images/logos/logo.png"
+                        src="/images/logos/logo.png"
                         alt="Logo of Swift on server"
                         title="Swift on server"
                     >
@@ -60,197 +60,166 @@
     
     <main>
 
-        <article>
-    <header>
-        <section id="post-header" class="content-wrapper">
-            <time datetime="2024/03/19">2024/03/19</time>
-            <h1 class="title">Getting Started with Structured Concurrency in Swift</h1>
-            <p class="excerpt">Learn how to apply structured concurrency in your applications, using task groups and other structured concepts.</p>
-            <div class="meta">
-                <span class="tag">Swift</span>
-<span class="tag">Structured Concurrency</span>
-            </div>
-            <img src="https://github.com/joannis.png" alt="Joannis Orlandos" class="author">
-            <p>
-                <span class="author">Written by: <a href="https://x.com/JoannisOrlandos" target="_blank">Joannis Orlandos</a> @ 
-                <span class="author"><a href="https://unbeatable.software/" target="_blank">Unbeatable Software B.V.</a></span><br>
-                <span class="reading-time">Reading time: 30 minutes</span><br>
-            </p>
-        </section>
-    </header>
+        &lt;article&gt;
+    &lt;header&gt;
+        &lt;section id=&quot;post-header&quot; class=&quot;content-wrapper&quot;&gt;
+            &lt;time datetime=&quot;2024/03/19&quot;&gt;2024/03/19&lt;/time&gt;
+            &lt;h1 class=&quot;title&quot;&gt;Getting Started with Structured Concurrency in Swift&lt;/h1&gt;
+            &lt;p class=&quot;excerpt&quot;&gt;Learn how to apply structured concurrency in your applications, using task groups and other structured concepts.&lt;/p&gt;
+            &lt;div class=&quot;meta&quot;&gt;
+                Swift, Structured Concurrency
+            &lt;/div&gt;
+            &lt;img src=&quot;https://github.com/joannis.png&quot; alt=&quot;&quot; class=&quot;author&quot;&gt;
+            &lt;p&gt;
+                &lt;span class=&quot;author&quot;&gt;Written by: &lt;a href=&quot;https://x.com/JoannisOrlandos&quot; target=&quot;_blank&quot;&gt;&lt;/a&gt; @ 
+                &lt;span class=&quot;author&quot;&gt;&lt;a href=&quot;https://unbeatable.software/&quot; target=&quot;_blank&quot;&gt;Unbeatable Software B.V.&lt;/a&gt;&lt;/span&gt;&lt;br&gt;
+                &lt;span class=&quot;reading-time&quot;&gt;Reading time: 30 minutes&lt;/span&gt;&lt;br&gt;
+            &lt;/p&gt;
+        &lt;/section&gt;
+    &lt;/header&gt;
 
-    <section class="content-wrapper">
-        <hr>
-    </section>
+    &lt;section class=&quot;content-wrapper&quot;&gt;
+        &lt;hr&gt;
+    &lt;/section&gt;
 
-    <section id="contents" class="content-wrapper">
+    &lt;section id=&quot;contents&quot; class=&quot;content-wrapper&quot;&gt;
     
-    <h1>Structured Concurrency in Swift</h1><p>Swift 5.5 introduced structured concurrency. The new way to write concurrent code that is more maintainable and easier to reason about. A lot of developers have been adopting concurrency in Swift. But few people understand what '<strong>structured</strong>' means in this context, and how it helps you.</p><p>This guide will teach you all you need to know about structured concurrency in Swift. We'll cover the basics of concurrency, and how structured concurrency is different from other concurrency models. By the end of this guide, you'll be able to write any application in Swift using structured concurrency.</p><h2>What is Concurrency?</h2><p>Concurrency is the ability of different parts your code to run out-of-order or in partial order, without affecting the outcome. This allows for parallel execution of the concurrent units, which can improve the overall speed of the execution.</p><p>Imagine that you're shopping for groceries with a friend. You both have a list of items to buy, and you decide to split up to save time. You both go to different parts of the store, and pick up the items on your list. You both finish at slightly different times, and meet up at the checkout. Instead of having to go through all the aisles together, you're both able to solve part of the puzzle at the same time. The end result is the same, but you've saved time.</p><h3>Pre-Swift 5.5 Concurrency</h3><p>Concurrency has been a part of Swift for a long time, for example, through the use of <code>DispatchQueue</code> and <code>OperationQueue</code>. In these models, you can submit work to a queue, and the queue will execute the work in the background. Often times, you'll have to wait for the work to finish, either successfully or with an error.</p><pre><code class="language-swift"><span class="type">DispatchQueue</span>.<span class="call">global</span>().<span class="call">async</span> {
-    <span class="comment">// Offload some (heavy) work</span>
-}</code></pre><p>In these models, you're responsible for managing the lifecycle of the work. You'll need to ensure that work is properly cancelled when it's no longer needed.</p><p>When implementing a function that has callbacks, you're responsible for calling the completion handler when the work is done. This can make it hard to debug and reason about the code, especially when you're working with concurrent units.</p><p>Take the following example:</p><pre><code class="language-swift"><span class="keyword">func</span> fetchImage(at url: <span class="type">URL</span>, completion: <span class="keyword">@escaping</span> (<span class="type">Result</span>&lt;<span class="type">UIImage</span>, <span class="type">Error</span>&gt;) -&gt; <span class="type">Void</span>) {
-    <span class="type">URLSession</span>.<span class="property">shared</span>.<span class="call">dataTask</span>(with: url) { data, response, error <span class="keyword">in
-        if let</span> error {
-            <span class="call">completion</span>(.<span class="call">failure</span>(error))
-            <span class="keyword">return</span>
-        }
-        <span class="keyword">guard let</span> data = data, <span class="keyword">let</span> image = <span class="type">UIImage</span>(data: data) <span class="keyword">else</span> {
-            <span class="call">completion</span>(.<span class="call">failure</span>(<span class="type">NetworkError</span>.<span class="property">missingImage</span>))
-            <span class="keyword">return</span>
-        }
-        <span class="call">completion</span>(.<span class="call">success</span>(image))
-    }
-}</code></pre><p>In this example, various bugs can arise. For example, in <code>if let error</code>, omitting the <code>return</code> statement will cause the completion handler to be called twice.</p><h3>Race Conditions</h3><p>When accessing shared state from concurrently running code, it's critical to ensure that the state is accessed in a safe way. If the same value is accessed and modified at the same time, you can run into crashes called 'race conditions'.</p><p>Race conditions need to be carefully and correctly solved. When using a mutex/lock to protect shared state, you need to ensure that this lock starts and ends at the right time. And when working with locks in long running calls such as network calls, you need to be careful to avoid performance bottlenecks. Finally, you can cause deadlocks when multiple functions that call each other access the same lock. Take the following example:</p><pre><code class="language-swift"><span class="keyword">final class</span> ImageCache {
-    <span class="keyword">private var</span> cache: [<span class="type">URL</span>: <span class="type">UIImage</span>] = [:]
-    <span class="keyword">private let</span> lock = <span class="type">NSLock</span>()
+    &lt;section class=&#39;introduction&#39;&gt;&lt;h1&gt;NIO and Swift Concurrency&lt;/h1&gt;&lt;/section&gt;&lt;section class=&#39;details literature&#39;&gt;&lt;p&gt;This article explains how to interface between NIO and Swift Concurrency.&lt;/p&gt;&lt;p&gt;NIO was created before native Concurrency support in Swift existed, hence, NIO had to solve a few problems that have solutions in the language today. Since the introduction of Swift Concurrency, NIO has added numerous features to make the interop between NIO’s &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channel&#39;&gt;Channel&lt;/a&gt;&lt;/code&gt; eventing system and Swift’s Concurrency primitives as easy as possible.&lt;/p&gt;&lt;h3 id=&#39;EventLoopFuture/Promise%20bridges&#39;&gt;&lt;a href=&#39;#EventLoopFuture/Promise%20bridges&#39;&gt;EventLoopFuture/Promise bridges&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The first bridges that NIO introduced added methods on &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/eventloopfuture&#39;&gt;EventLoopFuture&lt;/a&gt;&lt;/code&gt; and &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/eventlooppromise&#39;&gt;EventLoopPromise&lt;/a&gt;&lt;/code&gt; to enable communication between Concurrency and NIO. These methods are &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/eventloopfuture.get&#39;&gt;get&lt;/a&gt;&lt;/code&gt; and &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/eventlooppromise.completewithtask(_:)&#39;&gt;completeWithTask(_:)&lt;/a&gt;&lt;/code&gt;.&lt;/p&gt;&lt;aside class=&#39;warning&#39;&gt;&lt;h3&gt;Warning&lt;/h3&gt;&lt;p&gt;The future &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/eventloopfuture.get&#39;&gt;get&lt;/a&gt;&lt;/code&gt; method does not support task cancellation.&lt;/p&gt;&lt;/aside&gt;&lt;p&gt;Here is a small example of how these work:&lt;/p&gt;&lt;pre class=&#39;snippet&#39;&gt;&lt;code class=&#39;language-swift&#39;&gt;&lt;span class=&#39;newline&#39;&gt;&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;eventLoop&lt;/span&gt;: &lt;span class=&#39;xt&#39;&gt;EventLoop&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
 
-    <span class="keyword">func</span> image(for url: <span class="type">URL</span>) -&gt; <span class="type">UIImage</span>? {
-        lock.<span class="call">lock</span>()
-        <span class="keyword">defer</span> { lock.<span class="call">unlock</span>() }
-        <span class="keyword">return</span> cache[url]
-    }
+&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;promise&lt;/span&gt; = &lt;span class=&#39;xv&#39;&gt;eventLoop&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;makePromise&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;of&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;Bool&lt;/span&gt;.&lt;span class=&#39;xk&#39;&gt;self&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
 
-    <span class="keyword">func</span> loadImage(for url: <span class="type">URL</span>) {
-        lock.<span class="call">lock</span>()
-        <span class="keyword">defer</span> { lock.<span class="call">unlock</span>() }
-        <span class="comment">// This is covered by the lock</span>
-        <span class="keyword">if</span> cache.<span class="property">keys</span>.<span class="call">contains</span>(url) { 
-            <span class="keyword">return</span>
-        }
-        <span class="call">fetchImage</span>(at: url) { image <span class="keyword">in
-            guard case</span> .<span class="dotAccess">success</span>(<span class="keyword">let</span> image) = image <span class="keyword">else</span> { <span class="keyword">return</span> }
-            <span class="comment">// This is not covered by the lock</span>
-            cache[url] = image
-        }
-    }
-}</code></pre><p>The above example is non-trivial. It's not always obvious that you need to lock access to <code>image</code> twice. There are not one, but four traps here.</p><ol><li>It's easy to forget to lock access to the cache.</li><li>One might lock access to the cache, but omit either the check for an existing image - or the assignment of the image.</li><li>When locking access to the cache, one might forget to unlock the lock. When returning a value, as seen in the <code>image(for:)</code> function, the lock should be unlocked after accessing the value, but before returning.</li><li>Finally, when locking access to the cache, unlocking could be implemented only after the fetching has completed.</li></ol><p>These are all common mistakes, and they're hard to debug and reason about. This is where structured concurrency comes in.</p><p>Over the years, many patterns and abstractions have emerged to solve these problems. For example, the <code>Future</code> and <code>Promise</code> pattern is a common way to solve the problem of waiting for a value to be available. These abstractions are not part of the standard library, and are not always easy to work with or reason about. They're also not part of the standard library, leading to a fragmented ecosystem.</p><h2>Structured Concurrency</h2><p>Swift has always been focused on safety and maintainability through <em>local reasoning</em>. Common examples are found in the type system, such as the use of value types. Because Array and Dictionary are value types, you can reason about them locally. You don't need to know about other parts of the code, and how those other parts might be modifying a reference to the same array or dictionary. Because value types are copied when passed around, you can reason about them locally.</p><p>Similarly, Structured Concurrency is a language feature that is designed to write concurrent code that is more maintainable and easier to reason about. It's designed to solve these problems, and is the recommended to write concurrent code that is maintainable and easy to reason about.</p><p>You're probably familiar with structured programming, as it's a paradigm that every Swift developer uses. By making use of a <em>structured control flow</em> through constructs such as if-statements, for-loops and switch-statements, you're able to write code that is easy to reason about and maintain.</p><p>Structured Concurrency is the same concept, but applied to concurrent code. Functions in structured concurrency still have a clear entry and exit point. In Swift, this is done through the use of <code>async</code> functions and the <code>await</code> keyword.</p><h3>Async Functions</h3><p>An <code>async</code> function is a function that can pause and resume. Think of it as a function that can be split up into multiple parts.</p><p>When you order a pizza, you don't have to wait for the pizza to be made and delivered. You can continue watching your favourite show, while the pizza is delivered to your doorstep. Just like async functions. Should you need to know when the pizza is delivered, you can <code>await</code> the delivery.</p><pre><code class="language-swift"><span class="keyword">func</span> watchTelevision() <span class="keyword">async throws</span> {
-    <span class="keyword">let</span> store = <span class="keyword">await</span> <span class="type">PizzaStore</span>.<span class="call">discover</span>()
-    <span class="keyword">let</span> pizza = <span class="keyword">await</span> store.<span class="call">orderPizza</span>()
-    <span class="keyword">let</span> show = <span class="call">startWatchingTV</span>()
-    <span class="keyword">try await</span> pizza.<span class="call">eat</span>()
-    <span class="keyword">await</span> show.<span class="call">watchUntilDone</span>()
-    show.<span class="call">stopWatchingTV</span>()
-}</code></pre><p>Since structured concurrency leverages the structured programming paradigm, handling errors works the same as in synchronous code.</p><pre><code class="language-swift"><span class="keyword">func</span> watchTelevision() <span class="keyword">async throws</span> {
-    <span class="keyword">let</span> pizza = <span class="keyword">await</span> store.<span class="call">orderPizza</span>()
-    <span class="keyword">let</span> show = <span class="call">startWatchingTV</span>()
-    <span class="keyword">do</span> {
-        <span class="keyword">let</span> show = <span class="call">startWatchingTV</span>()
-        <span class="keyword">try await</span> pizza.<span class="call">eat</span>()
-        <span class="keyword">await</span> show.<span class="call">watchUntilDone</span>()
-    } <span class="keyword">catch</span> <span class="type">PizzaError</span>.<span class="call">notHungry</span> {
-        <span class="comment">// No problem, we'll eat it later</span>
-    } <span class="keyword">catch</span> <span class="type">PizzaError</span>.<span class="call">burnt</span> {
-        <span class="comment">// Something went wrong, we'll have to stop watching TV</span>
-        show.<span class="call">stopWatchingTV</span>()
-        <span class="keyword">await</span> store.<span class="call">complain</span>(about: pizza)
-        <span class="keyword">throw</span> error
-    }
-    show.<span class="call">stopWatchingTV</span>()
-}</code></pre><h2>Structured Tasks</h2><p>The <code>Task</code> object is not the only way to run concurrent work. The simplest way of running an <code>async</code> function in parallel is using the <code>async let</code> construct. This is a <em>structured</em> way to start a task and let it run until you need the result:</p><pre><code class="language-swift"><span class="keyword">func</span> buyBooks(from bankAccount: <span class="type">BankAccount</span>) <span class="keyword">async throws</span> -&gt; [<span class="type">Book</span>] {
-    <span class="comment">// Resolve this concurrently</span>
-    <span class="keyword">async let</span> balance = <span class="keyword">await</span> bankAccount.<span class="call">checkBalance</span>()
+&lt;/span&gt;&lt;span class=&#39;xv&#39;&gt;promise&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;completeWithTask&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;Task&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;sleep&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;for&lt;/span&gt;: .&lt;span class=&#39;xv&#39;&gt;seconds&lt;/span&gt;(&lt;span class=&#39;xn&#39;&gt;1&lt;/span&gt;))&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;return&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;true&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;}&lt;span class=&#39;newline&#39;&gt;
 
-    <span class="keyword">let</span> store = <span class="keyword">await</span> <span class="type">BookStore</span>.<span class="call">discover</span>()
-    <span class="keyword">var</span> budget = <span class="keyword">await</span> balance
-    <span class="keyword">var</span> boughtBooks: [<span class="type">Book</span>] = []
-    <span class="keyword">for await</span> book <span class="keyword">in</span> store.<span class="call">broweBooks</span>() <span class="keyword">where</span> book.<span class="property">price</span> &lt;= budget {
-        <span class="keyword">let</span> order = <span class="keyword">try await</span> book.<span class="call">buy</span>()
-        <span class="keyword">let</span> book = <span class="keyword">await</span> order.<span class="call">delivery</span>()
-        budget -= book.<span class="property">price</span>
-        boughtBooks.<span class="call">append</span>(book)
-    }
-    <span class="keyword">return</span> boughtBooks
-}</code></pre><p>When this <code>async let</code> is not <code>await</code>ed for, it will continue to run in the background until the end of the function. If the function returns without awaiting the <code>async let</code>, the task will be cancelled.</p><p>The <code>async let</code> pattern is helpful for individual pieces of work that need to run concurrently. But it doesn't help when needing to run multiple pieces of work concurrently in a structured way. For that, there are <strong>task groups</strong>.</p><h3>Sequences</h3><p>Like how a for-loop iterates over a sequence of items, a for-await-in loop iterates over a sequence of async items.</p><pre><code class="language-swift"><span class="keyword">struct</span> Books: <span class="type">AsyncSequence</span> {
-    <span class="keyword">typealias</span> Element = <span class="type">Book</span>
-    ...
-}
+&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;result&lt;/span&gt; = &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;promise&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;futureResult&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;get&lt;/span&gt;()&lt;/code&gt;&lt;/pre&gt;&lt;aside class=&#39;note&#39;&gt;&lt;h3&gt;Note&lt;/h3&gt;&lt;p&gt;The &lt;code&gt;completeWithTask&lt;/code&gt; method creates an unstructured task under the hood.&lt;/p&gt;&lt;/aside&gt;&lt;h3 id=&#39;Channel%20bridges&#39;&gt;&lt;a href=&#39;#Channel%20bridges&#39;&gt;Channel bridges&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/eventloopfuture&#39;&gt;EventLoopFuture&lt;/a&gt;&lt;/code&gt; and &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/eventlooppromise&#39;&gt;EventLoopPromise&lt;/a&gt;&lt;/code&gt; bridges already allow async code to interact with some of NIO’s types. However, they only work where we have request-response-like interfaces. On the other hand, NIO’s &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channel&#39;&gt;Channel&lt;/a&gt;&lt;/code&gt; type contains a &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channelpipeline&#39;&gt;ChannelPipeline&lt;/a&gt;&lt;/code&gt; which can be roughly described as a bi-directional streaming pipeline. To bridge such a pipeline into Concurrency required new types. Importantly, these types need to uphold the channel’s back pressure and writability guarantees. NIO introduced the &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/niothrowingasyncsequenceproducer&#39;&gt;NIOThrowingAsyncSequenceProducer&lt;/a&gt;&lt;/code&gt;, &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/nioasyncsequenceproducer&#39;&gt;NIOAsyncSequenceProducer&lt;/a&gt;&lt;/code&gt; and the &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/nioasyncchanneloutboundwriter&#39;&gt;NIOAsyncChannelOutboundWriter&lt;/a&gt;&lt;/code&gt; which form the foundation to bridge a &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channel&#39;&gt;Channel&lt;/a&gt;&lt;/code&gt;. On top of these foundational types, NIO provides the &lt;code&gt;NIOAsyncChannel&lt;/code&gt; which is used to wrap a &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channel&#39;&gt;Channel&lt;/a&gt;&lt;/code&gt; to produce an interface that can be consumed directly from Swift Concurrency. The following sections cover the details of the foundational types and how the &lt;code&gt;NIOAsyncChannel&lt;/code&gt; works.&lt;/p&gt;&lt;h4&gt;NIOThrowingAsyncSequenceProducer and NIOAsyncSequenceProducer&lt;/h4&gt;&lt;p&gt;The &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/niothrowingasyncsequenceproducer&#39;&gt;NIOThrowingAsyncSequenceProducer&lt;/a&gt;&lt;/code&gt; and &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/nioasyncsequenceproducer&#39;&gt;NIOAsyncSequenceProducer&lt;/a&gt;&lt;/code&gt; are asynchronous sequences similar to Swift’s &lt;code&gt;AsyncStream&lt;/code&gt;. Their purpose is to provide a back pressured bridge between a synchronous producer and an asynchronous consumer. These types are highly configurable and generic which makes them usable in a lot of places with very good performance; however, at the same time they are not the easiest types to hold. We recommend that you &lt;strong&gt;never&lt;/strong&gt; expose them in public API but rather wrap them in your own async sequence.&lt;/p&gt;&lt;h4&gt;NIOAsyncWriter&lt;/h4&gt;&lt;p&gt;The &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/nioasyncchanneloutboundwriter&#39;&gt;NIOAsyncChannelOutboundWriter&lt;/a&gt;&lt;/code&gt; is used for bridging from an asynchronous producer to a synchronous consumer. It also has back pressure support which allows the consumer to stop the producer by suspending the &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/nioasyncwriter.yield(contentsof:)&#39;&gt;yield(contentsOf:)&lt;/a&gt;&lt;/code&gt; method.&lt;/p&gt;&lt;h4&gt;NIOAsyncChannel&lt;/h4&gt;&lt;p&gt;The above types are used to bridge both the read and write side of a &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channel&#39;&gt;Channel&lt;/a&gt;&lt;/code&gt; into Swift Concurrency. This can be done by wrapping a &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channel&#39;&gt;Channel&lt;/a&gt;&lt;/code&gt; via the &lt;code&gt;NIOAsyncChannel/init(synchronouslyWrapping:configuration:)&lt;/code&gt; initializer. Under the hood, this initializer adds two channel handlers to the end of the channel’s pipeline. These handlers bridge the read and write side of the channel. Additionally, the handlers work together to close the channel once both the reading and the writing have finished.&lt;/p&gt;&lt;p&gt;This is how you can wrap an existing channel into a &lt;code&gt;NIOAsyncChannel&lt;/code&gt;, consume the inbound data and echo it back outbound.&lt;/p&gt;&lt;pre class=&#39;snippet&#39;&gt;&lt;code class=&#39;language-swift&#39;&gt;&lt;span class=&#39;newline&#39;&gt;&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt; = &lt;span class=&#39;xo&#39;&gt;...&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;asyncChannel&lt;/span&gt; = &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;NIOAsyncChannel&lt;/span&gt;&amp;lt;&lt;span class=&#39;xt&#39;&gt;ByteBuffer&lt;/span&gt;, &lt;span class=&#39;xt&#39;&gt;ByteBuffer&lt;/span&gt;&amp;gt;(&lt;span class=&#39;xv&#39;&gt;wrappingChannelSynchronously&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
 
-<span class="keyword">func</span> browseBooks() -&gt; <span class="type">Books</span> {}
+&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;asyncChannel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;executeThenClose&lt;/span&gt; { &lt;span class=&#39;xv&#39;&gt;inbound&lt;/span&gt;, &lt;span class=&#39;xv&#39;&gt;outbound&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;for&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;inboundData&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;inbound&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;outbound&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;write&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;inboundData&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The above code works nicely; however, you must be very careful at what point you wrap your channel otherwise you might lose some reads. For example your channel might be created by a &lt;code&gt;ServerBootstrap&lt;/code&gt; for a new inbound connection. The channel might start to produce reads as soon as it registered its IO which happens after your channel initializer ran. To avoid potentially losing reads the channel must be wrapped before it registered its IO. Another example is when the channel contains a handler that does protocol negotiation. Protocol negotiation handlers are usually waiting for some data to be exchanged before deciding what protocol to chose. Afterwards, they often modify the channel’s pipeline and add the protocol appropriate handlers to it. This is another case where wrapping of the &lt;code&gt;Channel&lt;/code&gt; into a &lt;code&gt;NIOAsyncChannel&lt;/code&gt; needs to happen at the right time to avoid losing reads.&lt;/p&gt;&lt;h3 id=&#39;Asynchronous%20bootstrap%20methods&#39;&gt;&lt;a href=&#39;#Asynchronous%20bootstrap%20methods&#39;&gt;Asynchronous bootstrap methods&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;NIO offers a multitude of bootstraps. To avoid the above problems and enable a seamless experience when using NIO from Swift Concurrency, the bootstraps gained new generic asynchronous methods.&lt;/p&gt;&lt;p&gt;The next section is going to focus on how to use the methods to boostrap a TCP server and client.&lt;/p&gt;&lt;h4&gt;ServerBootstrap&lt;/h4&gt;&lt;p&gt;The server bootstrap is used to create a new TCP based server. Once any of the bind methods on the &lt;code&gt;ServerBootstrap&lt;/code&gt; is called, a new listening socket is created to handle new inbound TCP connections. Let’s use the new methods to setup a TCP server and configure a &lt;code&gt;NIOAsyncChannel&lt;/code&gt; for each inbound connection.&lt;/p&gt;&lt;pre class=&#39;snippet&#39;&gt;&lt;code class=&#39;language-swift&#39;&gt;&lt;span class=&#39;newline&#39;&gt;&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;serverChannel&lt;/span&gt; = &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;ServerBootstrap&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;group&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;eventLoopGroup&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    .&lt;span class=&#39;xv&#39;&gt;bind&lt;/span&gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;host&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;127.0.0.1&quot;&lt;/span&gt;,&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;port&lt;/span&gt;: &lt;span class=&#39;xn&#39;&gt;1234&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    ) { &lt;span class=&#39;xv&#39;&gt;childChannel&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xc&#39;&gt;// This closure is called for every inbound connection&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;childChannel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;eventLoop&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;makeCompletedFuture&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;return&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;NIOAsyncChannel&lt;/span&gt;&amp;lt;&lt;span class=&#39;xt&#39;&gt;ByteBuffer&lt;/span&gt;, &lt;span class=&#39;xt&#39;&gt;ByteBuffer&lt;/span&gt;&amp;gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;synchronouslyWrapping&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;childChannel&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            )&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    }&lt;span class=&#39;newline&#39;&gt;
 
-<span class="keyword">func</span> buyAllBooks() <span class="keyword">async throws</span> {
-    <span class="keyword">for await</span> book <span class="keyword">in</span> <span class="call">browseBooks</span>() {
-        <span class="keyword">let</span> order = <span class="keyword">try await</span> book.<span class="call">buy</span>()
-        <span class="keyword">await</span> order.<span class="call">delivery</span>()
-    }
-}</code></pre><p>This is a powerful feature, as it allows you to easily reason about <em>streams</em> of data. On iOS, this can be a stream of keyboard events, StoreKit purchases, notifications or sensor data. For backend developers, this can be a WebSocket, a database query or the incoming connections on a TCP server. If you're interested in that, please check out our tutorial on <a href="/using-swiftnio-channels" target="_blank">writing a SwiftNIO TCP Server</a>.</p><p>If you're familiar with the Combine framework, this might sound similar to a <code>Publisher</code>. AsyncSequences have many of the same features as Combine's Publishers. Especially with <a href="https://github.com/apple/swift-async-algorithms" target="_blank">swift-async-algorithms</a>, AsyncSequence receive many of the same perks that a Publisher has.</p><p>AsyncSequences are part of the standard library, and are designed similarly to the existing <code>Sequence</code> protocol. You can create an <code>AsyncIterator</code> from them. The iterator has a <code>mutating func next() async throws -&gt; Element?</code>.</p><p>This allows you to write a longer control flow that expect multiple results, such as the head and body of an HTTP request. You can use a <code>for-await-in</code> loop to iterate over the sequence of results, or manually iterate over the sequence using the <code>next()</code> method.</p><p>Now, a common request; "How can I await the delivery of these books concurrently?"</p><h2>Tasks</h2><p>A task is a concurrent unit of work. In concurrency, many tasks can run in parallel.</p><p>The <em>easiest</em> way to create a task is using the <strong>unstructured</strong> <code>Task</code> type. It's used to run a piece of code concurrently in the background, similar to <code>DispatchQueue.global().async {}</code>. In addition, you can manage it's lifecycle by <code>cancel()</code>ing it. Finally, you can also <code>await</code> its <code>value</code> for it to finish.</p><pre><code class="language-swift"><span class="keyword">func</span> buyBooks() {
-    <span class="keyword">let</span> store = <span class="keyword">await</span> <span class="type">BookStore</span>.<span class="call">discover</span>()
-    <span class="keyword">for await</span> book <span class="keyword">in</span> store.<span class="call">browseBooks</span>() {
-        <span class="type">Task</span> {
-            <span class="keyword">let</span> order = <span class="keyword">try await</span> book.<span class="call">buy</span>()
-            <span class="keyword">await</span> order.<span class="call">delivery</span>()
-        }
-    }
-}</code></pre><p>This looks great in theory, but the <code>Task</code> object is <em>not</em> structured. It's not clear when the task starts, when it ends, and what happens when it's cancelled. You're required to manage the lifecycle of the task yourself, and don't even need to await the result or handle errors. This is inherently unsafe and re-introduces the problems that structured concurrency is designed to solve.</p><p>It is very much a part of the structured concurrency model. But think of it as an "escape hatch" when there's no other context or task in which your code can run. In almost every application, you'll have <em>some</em> entrypoint at which you can start with a task. For example, your <code>@main</code> annotated entrypoint can be marked as <code>static func main() async throws</code> and you can start your application from there.</p><p>In SwiftUI apps, concurrent work can be started from within the <code>.task { }</code> view modifier. Not only does this allow running <code>async</code> work, but it also cancels that task when the view is no longer needed. That way your dependencies can discard heavy work initiated by the view that the user is no longer interested in.</p><h3>The Task Hierarchy</h3><p>Tasks in structured concurrency are part of a hierarchy. This means that a task can create child tasks, and that the child tasks are automatically cancelled when the parent task is cancelled. Both structured and unstructured tasks are part of this hierarchy. Unstructured tasks do not reap all of the same benefits as structured tasks.</p><p>Like in structured programming, structured concurrency has a stack. This allows reading a stack trace to understand the flow of the program. This is especially helpful when debugging, or when reading a crash or error report.</p><p>When using unstructured tasks, you're not able to see the stack trace outside of the spawned task. This makes it harder to debug, and loses your ability to leverage some Xcode Instruments.</p><h3>Task Local Values</h3><p>Since tasks can run on many different threads, there is (generally) no guarantee that a task will run on the same thread between suspension points. This means that thread-local is not available to store values that are specific to a task in structured concurrency.</p><p>A replacement for thread-local storage is task-local storage. This is a way to store values that are specific to a task. By using the <code>TaskLocal</code> property wrapper to store values that are specific to a task.</p><p>Here's an example of how a <code>TaskLocal</code> stores the currently authenticated user in a web server:</p><pre><code class="language-swift"><span class="keyword">struct</span> UserMiddleware: <span class="type">Middleware</span> {
-    <span class="keyword">@TaskLocal static var</span> currentUser: <span class="type">User</span>?
-    <span class="keyword">let</span> db: <span class="type">Database</span>
+&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;withThrowingDiscardingTaskGroup&lt;/span&gt; { &lt;span class=&#39;xv&#39;&gt;group&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;serverChannel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;executeThenClose&lt;/span&gt; { &lt;span class=&#39;xv&#39;&gt;serverChannelInbound&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xk&#39;&gt;for&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;connectionChannel&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;serverChannelInbound&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            &lt;span class=&#39;xv&#39;&gt;group&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;addTask&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xk&#39;&gt;do&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;connectionChannel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;executeThenClose&lt;/span&gt; { &lt;span class=&#39;xv&#39;&gt;connectionChannelInbound&lt;/span&gt;, &lt;span class=&#39;xv&#39;&gt;connectionChannelOutbound&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                        &lt;span class=&#39;xk&#39;&gt;for&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;inboundData&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;connectionChannelInbound&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                            &lt;span class=&#39;xc&#39;&gt;// Let&#39;s echo back all inbound data&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                            &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;connectionChannelOutbound&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;write&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;inboundData&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                        }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                } &lt;span class=&#39;xk&#39;&gt;catch&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    &lt;span class=&#39;xc&#39;&gt;// Handle errors&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;In the above code, we are bootstrapping a new TCP server which we assign to &lt;code&gt;serverChannel&lt;/code&gt;. Furthermore, in the trailing closure of &lt;code&gt;bind&lt;/code&gt; we are configuring the pipeline of each inbound connection. In our example, we are wrapping each child channel in a &lt;code&gt;NIOAsyncChannel&lt;/code&gt;. The resulting &lt;code&gt;serverChannel&lt;/code&gt; is a &lt;code&gt;NIOAsyncChannel&lt;/code&gt; whose inbound type is a &lt;code&gt;NIOAsyncChannel&lt;/code&gt; and  whose outbound type is &lt;code&gt;Never&lt;/code&gt;. This is due to the fact that each inbound connection gets its own separate child channel. The inbound and outbound types of each inbound connection is &lt;code&gt;ByteBuffer&lt;/code&gt; as specified in the bootstrap. Afterwards, we handle each inbound connection in separate child tasks and echo the data back.&lt;/p&gt;&lt;aside class=&#39;important&#39;&gt;&lt;h3&gt;Important&lt;/h3&gt;&lt;p&gt;Make sure to use discarding task groups which automatically reap finished child tasks. Normal task groups will result in a memory leak since they do not reap their child tasks automatically.&lt;/p&gt;&lt;/aside&gt;&lt;h4&gt;ClientBootstrap&lt;/h4&gt;&lt;p&gt;The client bootstrap is used to create a new TCP based client. Let’s take a look how to bootstrap a TCP connection and send some data to the server.&lt;/p&gt;&lt;pre class=&#39;snippet&#39;&gt;&lt;code class=&#39;language-swift&#39;&gt;&lt;span class=&#39;newline&#39;&gt;&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;clientChannel&lt;/span&gt; = &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;ClientBootstrap&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;group&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;eventLoopGroup&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    .&lt;span class=&#39;xv&#39;&gt;connect&lt;/span&gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;host&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;127.0.0.1&quot;&lt;/span&gt;,&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;port&lt;/span&gt;: &lt;span class=&#39;xn&#39;&gt;1234&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    ) { &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;eventLoop&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;makeCompletedFuture&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;return&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;NIOAsyncChannel&lt;/span&gt;&amp;lt;&lt;span class=&#39;xt&#39;&gt;ByteBuffer&lt;/span&gt;, &lt;span class=&#39;xt&#39;&gt;ByteBuffer&lt;/span&gt;&amp;gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;wrappingChannelSynchronously&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            )&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    }&lt;span class=&#39;newline&#39;&gt;
 
-    <span class="keyword">func</span> handleRequest(
-        <span class="keyword">_</span> request: <span class="type">HTTPRequest</span>,
-        next: <span class="type">HTTPResponder</span>
-    ) <span class="keyword">async throws</span> -&gt; <span class="type">HTTPResponse</span> {
-        <span class="keyword">let</span> token = <span class="keyword">try</span> request.<span class="call">parseJWT</span>()
-        <span class="keyword">let</span> user = <span class="keyword">try await</span> db.<span class="call">getUser</span>(byId: token.<span class="property">sub</span>)
-        <span class="keyword">return try await</span> <span class="type">HTTPServer</span>.<span class="property">$currentUser</span>.<span class="call">withValue</span>(user) {
-            <span class="keyword">return try await</span> next.<span class="call">respond</span>(to: request)
-        }
-    }
-}</code></pre><p>Now that the TaskLocal variable is set, it's accessible from any code called within the <code>withValue</code> block. For example:</p><pre><code class="language-swift"><span class="keyword">func</span> respond(to request: <span class="type">HTTPRequest</span>) <span class="keyword">async throws</span> -&gt; <span class="type">HTTPResponse</span> {
-    <span class="keyword">guard let</span> currentUser = <span class="type">UserMiddleware</span>.<span class="property">currentUser</span> <span class="keyword">else</span> {
-        <span class="keyword">throw</span> <span class="type">HTTPError</span>.<span class="property">unauthorized</span>
-    }
-    <span class="comment">// ...</span>
-}</code></pre><h3>Task Cancellation</h3><p>In structured concurrency, tasks are automatically cancelled when their parent task is cancelled. This is a powerful feature, as it allows you to cancel all of a task's dependencies at once. This is especially helpful when you're writing a server.</p><p>Let's say you're writing a web server, where your route generates a huge excel file. If the client cancels the request, you'll want to cancel the generation of the excel file. Continuing to generate the file is a waste of resources, and can lead to intentional and unintentional denial of service attacks.</p><p>In structured concurrency, you can use the <code>Task</code> object to cancel a task. This is a structured way to cancel a task, and it's clear when the task is cancelled. You can also use the <code>Task</code> object to check if a task is cancelled, and to handle the cancellation.</p><pre><code class="language-swift"><span class="keyword">if</span> <span class="type">Task</span>.<span class="property">isCancelled</span> {
-    <span class="keyword">return</span>
-}</code></pre><p>This is a structured way to check if a task is cancelled, and to handle the cancellation. It's clear when the task is cancelled, and you can handle the cancellation in a structured way.</p><p>You can also check if a task is cancelled using the <code>Task.checkCancellation</code> method. This is a structured way to check if a task is cancelled, and to handle the cancellation. It's clear when the task is cancelled, and you can handle the cancellation in a structured way.</p><pre><code class="language-swift"><span class="keyword">try</span> <span class="type">Task</span>.<span class="call">checkCancellation</span>()</code></pre><p>This will throw a <code>CancellationError</code> if the task is cancelled. You can catch this error and handle the cancellation in a structured way.</p><h3>Blocking and Sleeping Tasks</h3><p>If you have blocking or heavy work that you want to run concurrently, you'll need to do so outside of the structured concurrency model. This is because blocking or heavy work can cause a performance bottleneck in the global concurrent executor. SwiftNIO has the <code>NIOThreadPool</code> that you can use to run blocking work concurrently. For iOS users, it may be wise to use a <code>DispatchQueue</code> for these scenarios.</p><p>If you do decide to add computationally heavy code in structured concurrency, you can use <code>await Task.yield()</code> to yield the current task. This will allow your Task Executor to run other tasks. Doing so can prevent lag spikes, such as UI freezes those that happen on iOS when blocking the main thread.</p><p><strong>Note:</strong> Swift 6 will be able to address these issues, through the addition of custom Task Executors. More on that later.</p><p>When finding yourself in a situation where you need to delay a task, you can use the <code>Task.sleep</code> method. It's similar to your regular <code>sleep</code> function, but rather than blocking the entire thread, it only suspends the task.</p><pre><code class="language-swift"><span class="keyword">try await</span> <span class="type">Task</span>.<span class="call">sleep</span>(for: .<span class="call">seconds</span>(<span class="number">10</span>))</code></pre><p>An extra feature of <code>Task.sleep</code> is that it can be cancelled. If the task is cancelled while it's sleeping, the sleep will be interrupted and throw a <code>CancellationError</code>.</p><h3>Cancellation Handlers</h3><p>When a task is cancelled, you might want to clean up resources or perform some other action to handle the cancellation. You can use a cancellation handler to do this. A cancellation handler is a piece of code that is run when a task is cancelled.</p><pre><code class="language-swift"><span class="keyword">func</span> getData() <span class="keyword">async throws</span> -&gt; <span class="type">HTTPResponse</span> {
-    <span class="keyword">let</span> httpClient = <span class="keyword">try await</span> <span class="type">HTTPClient</span>.<span class="call">connect</span>(to: <span class="string">"https://api.example.com"</span>)
-    <span class="keyword">return try await</span> <span class="call">withTaskCancellationHandler</span> {
-        <span class="comment">// This will run normally, and does the actual work
-        // On cancellation, it will still find that `Task.isCancelled == true`
-        // In addition, Task.sleep will throw a CancellationError
-        // But if the HTTPClient doens't support cancellation,
-        // it will continue to run until it's done</span>
-        <span class="keyword">return try await</span> httpClient.<span class="call">get</span>(<span class="string">"/data"</span>)
-    } onCancel: {
-        <span class="comment">// If the task is cancelled, this callback will run
-        // and clean up the HTTP client
-        // This allows users to implement cancellation manunally if needed</span>
-        httpClient.<span class="call">shutdown</span>()
-    }
-}</code></pre><h2>Task Groups</h2><p>One can order ten items off your favourite book store. But in the real world, you don't want to <code>await</code> for the first book before ordering the next one. For that, we can use a <code>TaskGroup</code>:</p><pre><code class="language-swift"><span class="keyword">func</span> buyBooks() <span class="keyword">async throws</span> {
-    <span class="keyword">let</span> store = <span class="keyword">await</span> <span class="type">BookStore</span>.<span class="call">discover</span>()
-    <span class="keyword">try await</span> <span class="call">withThrowingTaskGroup</span>(of: <span class="type">Book</span>.<span class="keyword">self</span>) { taskGroup <span class="keyword">in
-        for await</span> book <span class="keyword">in</span> store.<span class="call">browseBooks</span>() {
-            taskGroup.<span class="call">addTask</span> {
-                <span class="keyword">try await</span> book.<span class="call">buy</span>()
-            }
-        }
-        <span class="comment">// The task group will automatically await all tasks</span>
-    }
-}</code></pre><p>This is a structured way to run multiple pieces of work concurrently. It's clear when the tasks start and when they end. You can run many pieces of work in parallel. And you can await all tasks being completed, and get an error if any one of them fails.</p><p>The above task group can throw errors, but not all task groups need to throw. If you use <code>withTaskGroup</code>, you'll be able to run tasks that don't throw, and you won't need to handle errors.</p><p>In the above example, <code>withThrowingTaskGroup(of: Book.self)</code> specifies that each task <em>must</em> produce a <code>Book</code> result if successful. In some cases, the result of the task is not necessary. In this case however, the results are helpful to collect the books that were bought.</p><p>To solve that, use the <code>reduce</code> function on the task group. This is a structured way to run multiple pieces of work concurrently, and to reduce the results into a single value.</p><pre><code class="language-swift"><span class="keyword">func</span> buyBooks() <span class="keyword">async throws</span> -&gt; [<span class="type">Book</span>] {
-    <span class="keyword">let</span> store = <span class="keyword">await</span> <span class="type">BookStore</span>.<span class="call">discover</span>()
-    <span class="keyword">return try await</span> <span class="call">withThrowingTaskGroup</span>(of: <span class="type">Book</span>.<span class="keyword">self</span>) { taskGroup <span class="keyword">in
-        for await</span> book <span class="keyword">in</span> store.<span class="call">browseBooks</span>() {
-            taskGroup.<span class="call">addTask</span> {
-                <span class="keyword">try await</span> book.<span class="call">buy</span>()
-            }
-        }
-        <span class="comment">// Completes when all tasks have completed</span>
-        <span class="keyword">return try await</span> taskGroup.<span class="call">reduce</span>(into: []) { books, book <span class="keyword">in</span>
-            books.<span class="call">append</span>(book)
-        }
-    }
-}</code></pre><h3>Discarding Task Groups</h3><p>In some cases, you might not be interested in the result of the task group. For example, you might want to run a number of tasks concurrently, but these tasks don't return results. In that case, you can use <code>withDiscardingTaskGroup</code> and <code>withThrowingDiscardingTaskGroup</code> from iOS 17 and macOS 14. This is a structured way to run multiple pieces of work concurrently, without needing to retain results.</p><p>The regular task groups create a collection of results, which you can then iterate over. In some cases, such as a TCP server, this collection of results is not needed and grow indefinitely. In that case, you'll want to use a discarding task group to prevent an ever-growing collection of results. Note that <code>Void</code> results are still stored and occupy a small amount of memory!</p><h2>Conclusion</h2><p>Structured concurrency is a powerful feature that was introduced with Swift 5.5. When writing your concurrenct code in a structured way, it's easier to reason about your code and maintain it.</p><p>Almost every application that you write will also have some form of shared state. In <a href="/structured-concurrency-and-shared-state-in-swift">the article</a>, we'll cover how Swift's actors, actor isolation and Sendable checking empower you to write race-condition free code.</p>
+&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;clientChannel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;executeThenClose&lt;/span&gt; { &lt;span class=&#39;xv&#39;&gt;inbound&lt;/span&gt;, &lt;span class=&#39;xv&#39;&gt;outbound&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;outbound&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;write&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;ByteBuffer&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;string&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;hello&quot;&lt;/span&gt;))&lt;span class=&#39;newline&#39;&gt;
+
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;for&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;inboundData&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;inbound&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;print&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;inboundData&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;}&lt;/code&gt;&lt;/pre&gt;&lt;h4&gt;Dynamic pipeline modifications&lt;/h4&gt;&lt;p&gt;The above bootstrap methods work great in the case where we know the types of the resulting channels at compile time. However, there are some scenarios where the type is only determined at runtime. Such cases include &lt;a target=&#39;_blank&#39; rel=&#39;external&#39; href=&#39;https://en.wikipedia.org/wiki/Application-Layer_Protocol_Negotiation&#39;&gt;Application-Layer-Protocol-Negotiation&lt;/a&gt; or &lt;a target=&#39;_blank&#39; rel=&#39;external&#39; href=&#39;https://en.wikipedia.org/wiki/HTTP/1.1_Upgrade_header&#39;&gt;HTTP protocol upgrades&lt;/a&gt;. To support those scenarios it is essential that channel handlers that dynamically configure the pipeline carry type information which allows us to runtime to determine how the pipeline was configured at runtime. To support this NIO introduced multiple new &lt;code&gt;ChannelHandler&lt;/code&gt; and corresponding pipeline configuration methods. Those types are:&lt;/p&gt;&lt;ol&gt;&lt;li&gt;&lt;p&gt;&lt;code&gt;NIOTypedApplicationProtocolNegotiationHandler&lt;/code&gt; for TLS based ALPN&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;code&gt;NIOTypedHTTPServerUpgradeHandler&lt;/code&gt; and &lt;code&gt;configureUpgradableHTTPServerPipeline&lt;/code&gt; for server-side HTTP protocol upgrades&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;code&gt;NIOTypedHTTPClientUpgradeHandler&lt;/code&gt; and &lt;code&gt;configureUpgradableHTTPClientPipeline&lt;/code&gt; for client-side HTTP protocol upgrades&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;All of those types have one thing in common - they are generic over the result of the dynamic pipeline configuration. This allows users to exhaustively switch over the result and correctly handle each case. The following example demonstrates how this works for a client-side websocket upgrade.&lt;/p&gt;&lt;pre class=&#39;snippet&#39;&gt;&lt;code class=&#39;language-swift&#39;&gt;&lt;span class=&#39;newline&#39;&gt;&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;enum&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;UpgradeResult&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;case&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;websocket&lt;/span&gt;(&lt;span class=&#39;xt&#39;&gt;NIOAsyncChannel&lt;/span&gt;&amp;lt;&lt;span class=&#39;xt&#39;&gt;WebSocketFrame&lt;/span&gt;, &lt;span class=&#39;xt&#39;&gt;WebSocketFrame&lt;/span&gt;&amp;gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;case&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;notUpgraded&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;}&lt;span class=&#39;newline&#39;&gt;
+
+&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;upgradeResult&lt;/span&gt;: &lt;span class=&#39;xt&#39;&gt;EventLoopFuture&lt;/span&gt;&amp;lt;&lt;span class=&#39;xt&#39;&gt;UpgradeResult&lt;/span&gt;&amp;gt; = &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;ClientBootstrap&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;group&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;eventLoopGroup&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    .&lt;span class=&#39;xv&#39;&gt;connect&lt;/span&gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;host&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;127.0.0.1&quot;&lt;/span&gt;,&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;port&lt;/span&gt;: &lt;span class=&#39;xn&#39;&gt;1234&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    ) { &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;eventLoop&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;makeCompletedFuture&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            &lt;span class=&#39;xc&#39;&gt;// Configure the websocket upgrader&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;upgrader&lt;/span&gt; = &lt;span class=&#39;xv&#39;&gt;NIOTypedWebSocketClientUpgrader&lt;/span&gt;&amp;lt;&lt;span class=&#39;xt&#39;&gt;UpgradeResult&lt;/span&gt;&amp;gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;upgradePipelineHandler&lt;/span&gt;: { &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;, _ &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    &lt;span class=&#39;xc&#39;&gt;// This configures the pipeline after the websocket upgrade was successful.&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    &lt;span class=&#39;xc&#39;&gt;// We are wrapping the pipeline in a NIOAsyncChannel.&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;eventLoop&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;makeCompletedFuture&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                        &lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;asyncChannel&lt;/span&gt; = &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;NIOAsyncChannel&lt;/span&gt;&amp;lt;&lt;span class=&#39;xt&#39;&gt;WebSocketFrame&lt;/span&gt;, &lt;span class=&#39;xt&#39;&gt;WebSocketFrame&lt;/span&gt;&amp;gt;(&lt;span class=&#39;xv&#39;&gt;wrappingChannelSynchronously&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                        &lt;span class=&#39;xk&#39;&gt;return&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;UpgradeResult&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;websocket&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;asyncChannel&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            )&lt;span class=&#39;newline&#39;&gt;
+
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;var&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;headers&lt;/span&gt; = &lt;span class=&#39;xv&#39;&gt;HTTPHeaders&lt;/span&gt;()&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            &lt;span class=&#39;xv&#39;&gt;headers&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;add&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;name&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;Content-Type&quot;&lt;/span&gt;, &lt;span class=&#39;xv&#39;&gt;value&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;text/plain; charset=utf-8&quot;&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            &lt;span class=&#39;xv&#39;&gt;headers&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;add&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;name&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;Content-Length&quot;&lt;/span&gt;, &lt;span class=&#39;xv&#39;&gt;value&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;0&quot;&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;requestHead&lt;/span&gt; = &lt;span class=&#39;xv&#39;&gt;HTTPRequestHead&lt;/span&gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;version&lt;/span&gt;: .&lt;span class=&#39;xv&#39;&gt;http1_1&lt;/span&gt;,&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;method&lt;/span&gt;: .&lt;span class=&#39;xv&#39;&gt;GET&lt;/span&gt;,&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;uri&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;/&quot;&lt;/span&gt;,&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;headers&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;headers&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            )&lt;span class=&#39;newline&#39;&gt;
+
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;clientUpgradeConfiguration&lt;/span&gt; = &lt;span class=&#39;xv&#39;&gt;NIOTypedHTTPClientUpgradeConfiguration&lt;/span&gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;upgradeRequestHead&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;requestHead&lt;/span&gt;,&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;upgraders&lt;/span&gt;: [&lt;span class=&#39;xv&#39;&gt;upgrader&lt;/span&gt;],&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;notUpgradingCompletionHandler&lt;/span&gt;: { &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;eventLoop&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;makeCompletedFuture&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                        &lt;span class=&#39;xk&#39;&gt;return&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;UpgradeResult&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;notUpgraded&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            )&lt;span class=&#39;newline&#39;&gt;
+
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;upgradeResult&lt;/span&gt; = &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;pipeline&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;syncOperations&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;configureUpgradableHTTPClientPipeline&lt;/span&gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;configuration&lt;/span&gt;: .&lt;span class=&#39;xk&#39;&gt;init&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;upgradeConfiguration&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;clientUpgradeConfiguration&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            )&lt;span class=&#39;newline&#39;&gt;
+
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;return&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;upgradeResult&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    }&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After having configured the pipeline to negotiate a websocket upgrade. We can switch over the the &lt;code&gt;upgradeResult&lt;/code&gt;. Importantly, we have to &lt;code&gt;await&lt;/code&gt; the &lt;code&gt;upgradeResult&lt;/code&gt; first since it has to be negotiated on the connection.&lt;/p&gt;&lt;pre class=&#39;snippet&#39;&gt;&lt;code&gt;&lt;span class=&#39;newline&#39;&gt;&lt;/span&gt;switch try await upgradeResult.get() {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;case .websocket(let websocketChannel):&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    print(&quot;Handling websocket connection&quot;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    try await self.handleWebsocketChannel(websocketChannel)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    print(&quot;Done handling websocket connection&quot;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;case .notUpgraded:&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    // The upgrade to websocket did not succeed.&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    print(&quot;Upgrade declined&quot;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;}&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#39;General%20guidance&#39;&gt;&lt;a href=&#39;#General%20guidance&#39;&gt;General guidance&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;Where should your code live?&lt;/h4&gt;&lt;p&gt;Before the introduction of Swift Concurrency both implementations of network protocols and business logic were often written inside &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channelhandler&#39;&gt;ChannelHandler&lt;/a&gt;&lt;/code&gt;s. This made it easier to get started; however, it came with some downsides. First, implementing business logic inside channel handlers requires the business logic to also handle all of the invariants that the &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channelhandler&#39;&gt;ChannelHandler&lt;/a&gt;&lt;/code&gt; protocol brings with it. This often requires writing complex state machines. Additionally, the business logic becomes very tied to NIO and hard to port between different systems. Because of the above reasons we recommend to implement your business logic using Swift Concurrency primitives and the &lt;code&gt;NIOAsyncChannel&lt;/code&gt; based bootstraps. Network protocol implementation should still be implemented as &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channelhandler&#39;&gt;ChannelHandler&lt;/a&gt;&lt;/code&gt;s.&lt;/p&gt;&lt;/section&gt;
         
-    </section>
+    &lt;/section&gt;
 
-    <section id="about-author" class="content-wrapper">
-        <img src="https://github.com/joannis.png" alt="Joannis Orlandos" class="author">
-        <h4>About Joannis Orlandos</h4>
-        <p class="author-about">Joannis is a seasoned member of the Swift Server WorkGroup, and the co-founder of Unbeatable Software B.V. If you're looking to elevate your team's capabilities or need expert guidance on Swift backend development, consider hiring him.</p>
+    &lt;section id=&quot;about-author&quot; class=&quot;content-wrapper&quot;&gt;
+        &lt;img src=&quot;https://github.com/joannis.png&quot; alt=&quot;&quot; class=&quot;author&quot;&gt;
+        &lt;h4&gt;About &lt;/h4&gt;
+        &lt;p class=&quot;author-about&quot;&gt;Joannis is a seasoned member of the Swift Server WorkGroup, and the co-founder of Unbeatable Software B.V. If you&amp;#39;re looking to elevate your team&amp;#39;s capabilities or need expert guidance on Swift backend development, consider hiring him.&lt;/p&gt;
 
-        <a href="https://unbeatable.software/mentoring-and-training" target="_blank" class="author-cta">Get in touch with Joannis</a>
-    </section>
+        &lt;a href=&quot;https://unbeatable.software/mentoring-and-training&quot; target=&quot;_blank&quot; class=&quot;author-cta&quot;&gt;Get in touch with Joannis&lt;/a&gt;
+    &lt;/section&gt;
 
-</article>
+&lt;/article&gt;
+
         
     </main>
 
@@ -259,14 +228,14 @@
             <figure>
                 <picture>
                     <source 
-                        srcset="https://swiftonserver.com/images/logos/logo~dark.png" 
+                        srcset="/images/logos/logo~dark.png" 
                         media="(prefers-color-scheme: dark)"
                     >
                     <img 
                         id="logo-image"
                         width="80"
                         height="80"
-                        src="https://swiftonserver.com/images/logos/logo.png"
+                        src="/images/logos/logo.png"
                         alt="Logo of Swift on server"
                         title="Swift on server"
                     >
@@ -278,8 +247,8 @@
 
             <p> 
                 <a href="https://swiftonserver.com/">Home</a> ·
-                <a href="https://swiftonserver.com/rss.xml" target="_blank">RSS</a> ·
-                <a href="https://swiftonserver.com/sitemap.xml" target="_blank">Sitemap</a>
+                <a href="/rss.xml" target="_blank">RSS</a> ·
+                <a href="/sitemap.xml" target="_blank">Sitemap</a>
             </p>
             
             

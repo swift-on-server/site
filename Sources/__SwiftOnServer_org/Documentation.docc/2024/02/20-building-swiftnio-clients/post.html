@@ -1,0 +1,159 @@
+<article>
+    <header>
+        <section id="post-header" class="content-wrapper">
+            <time datetime="2024/02/20">2024/02/20</time>
+            <h1 class="title">Building an HTTP client using SwiftNIO</h1>
+            <p class="excerpt">Learn how to build a simple HTTP client using SwiftNIO and structured concurrency.</p>
+            <div class="meta">
+                Swift, SwiftNIO, Networking
+            </div>
+            <img src="https://github.com/joannis.png" alt="" class="author">
+            <p>
+                <span class="author">Written by: <a href="https://x.com/JoannisOrlandos" target="_blank"></a> @ 
+                <span class="author"><a href="https://unbeatable.software/" target="_blank">Unbeatable Software B.V.</a></span><br>
+                <span class="reading-time">Reading time: 30 minutes</span><br>
+            </p>
+        </section>
+    </header>
+
+    <section class="content-wrapper">
+        <hr>
+    </section>
+
+    <section id="contents" class="content-wrapper">
+    
+    <section class='introduction'><h1>NIO and Swift Concurrency</h1></section><section class='details literature'><p>This article explains how to interface between NIO and Swift Concurrency.</p><p>NIO was created before native Concurrency support in Swift existed, hence, NIO had to solve a few problems that have solutions in the language today. Since the introduction of Swift Concurrency, NIO has added numerous features to make the interop between NIO’s <code><a href='https://swiftinit.org/docs/swift-nio/niocore/channel'>Channel</a></code> eventing system and Swift’s Concurrency primitives as easy as possible.</p><h3 id='EventLoopFuture/Promise%20bridges'><a href='#EventLoopFuture/Promise%20bridges'>EventLoopFuture/Promise bridges</a></h3><p>The first bridges that NIO introduced added methods on <code><a href='https://swiftinit.org/docs/swift-nio/niocore/eventloopfuture'>EventLoopFuture</a></code> and <code><a href='https://swiftinit.org/docs/swift-nio/niocore/eventlooppromise'>EventLoopPromise</a></code> to enable communication between Concurrency and NIO. These methods are <code><a href='https://swiftinit.org/docs/swift-nio/niocore/eventloopfuture.get'>get</a></code> and <code><a href='https://swiftinit.org/docs/swift-nio/niocore/eventlooppromise.completewithtask(_:)'>completeWithTask(_:)</a></code>.</p><aside class='warning'><h3>Warning</h3><p>The future <code><a href='https://swiftinit.org/docs/swift-nio/niocore/eventloopfuture.get'>get</a></code> method does not support task cancellation.</p></aside><p>Here is a small example of how these work:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>let</span> <span class='xv'>eventLoop</span>: <span class='xt'>EventLoop</span><span class='newline'>
+
+</span><span class='xk'>let</span> <span class='xv'>promise</span> = <span class='xv'>eventLoop</span>.<span class='xv'>makePromise</span>(<span class='xv'>of</span>: <span class='xv'>Bool</span>.<span class='xk'>self</span>)<span class='newline'>
+
+</span><span class='xv'>promise</span>.<span class='xv'>completeWithTask</span> {<span class='newline'>
+</span>    <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>Task</span>.<span class='xv'>sleep</span>(<span class='xv'>for</span>: .<span class='xv'>seconds</span>(<span class='xn'>1</span>))<span class='newline'>
+</span>    <span class='xk'>return</span> <span class='xk'>true</span><span class='newline'>
+</span>}<span class='newline'>
+
+</span><span class='xk'>let</span> <span class='xv'>result</span> = <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>promise</span>.<span class='xv'>futureResult</span>.<span class='xv'>get</span>()</code></pre><aside class='note'><h3>Note</h3><p>The <code>completeWithTask</code> method creates an unstructured task under the hood.</p></aside><h3 id='Channel%20bridges'><a href='#Channel%20bridges'>Channel bridges</a></h3><p>The <code><a href='https://swiftinit.org/docs/swift-nio/niocore/eventloopfuture'>EventLoopFuture</a></code> and <code><a href='https://swiftinit.org/docs/swift-nio/niocore/eventlooppromise'>EventLoopPromise</a></code> bridges already allow async code to interact with some of NIO’s types. However, they only work where we have request-response-like interfaces. On the other hand, NIO’s <code><a href='https://swiftinit.org/docs/swift-nio/niocore/channel'>Channel</a></code> type contains a <code><a href='https://swiftinit.org/docs/swift-nio/niocore/channelpipeline'>ChannelPipeline</a></code> which can be roughly described as a bi-directional streaming pipeline. To bridge such a pipeline into Concurrency required new types. Importantly, these types need to uphold the channel’s back pressure and writability guarantees. NIO introduced the <code><a href='https://swiftinit.org/docs/swift-nio/niocore/niothrowingasyncsequenceproducer'>NIOThrowingAsyncSequenceProducer</a></code>, <code><a href='https://swiftinit.org/docs/swift-nio/niocore/nioasyncsequenceproducer'>NIOAsyncSequenceProducer</a></code> and the <code><a href='https://swiftinit.org/docs/swift-nio/niocore/nioasyncchanneloutboundwriter'>NIOAsyncChannelOutboundWriter</a></code> which form the foundation to bridge a <code><a href='https://swiftinit.org/docs/swift-nio/niocore/channel'>Channel</a></code>. On top of these foundational types, NIO provides the <code>NIOAsyncChannel</code> which is used to wrap a <code><a href='https://swiftinit.org/docs/swift-nio/niocore/channel'>Channel</a></code> to produce an interface that can be consumed directly from Swift Concurrency. The following sections cover the details of the foundational types and how the <code>NIOAsyncChannel</code> works.</p><h4>NIOThrowingAsyncSequenceProducer and NIOAsyncSequenceProducer</h4><p>The <code><a href='https://swiftinit.org/docs/swift-nio/niocore/niothrowingasyncsequenceproducer'>NIOThrowingAsyncSequenceProducer</a></code> and <code><a href='https://swiftinit.org/docs/swift-nio/niocore/nioasyncsequenceproducer'>NIOAsyncSequenceProducer</a></code> are asynchronous sequences similar to Swift’s <code>AsyncStream</code>. Their purpose is to provide a back pressured bridge between a synchronous producer and an asynchronous consumer. These types are highly configurable and generic which makes them usable in a lot of places with very good performance; however, at the same time they are not the easiest types to hold. We recommend that you <strong>never</strong> expose them in public API but rather wrap them in your own async sequence.</p><h4>NIOAsyncWriter</h4><p>The <code><a href='https://swiftinit.org/docs/swift-nio/niocore/nioasyncchanneloutboundwriter'>NIOAsyncChannelOutboundWriter</a></code> is used for bridging from an asynchronous producer to a synchronous consumer. It also has back pressure support which allows the consumer to stop the producer by suspending the <code><a href='https://swiftinit.org/docs/swift-nio/niocore/nioasyncwriter.yield(contentsof:)'>yield(contentsOf:)</a></code> method.</p><h4>NIOAsyncChannel</h4><p>The above types are used to bridge both the read and write side of a <code><a href='https://swiftinit.org/docs/swift-nio/niocore/channel'>Channel</a></code> into Swift Concurrency. This can be done by wrapping a <code><a href='https://swiftinit.org/docs/swift-nio/niocore/channel'>Channel</a></code> via the <code>NIOAsyncChannel/init(synchronouslyWrapping:configuration:)</code> initializer. Under the hood, this initializer adds two channel handlers to the end of the channel’s pipeline. These handlers bridge the read and write side of the channel. Additionally, the handlers work together to close the channel once both the reading and the writing have finished.</p><p>This is how you can wrap an existing channel into a <code>NIOAsyncChannel</code>, consume the inbound data and echo it back outbound.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>let</span> <span class='xv'>channel</span> = <span class='xo'>...</span><span class='newline'>
+</span><span class='xk'>let</span> <span class='xv'>asyncChannel</span> = <span class='xk'>try</span> <span class='xv'>NIOAsyncChannel</span>&lt;<span class='xt'>ByteBuffer</span>, <span class='xt'>ByteBuffer</span>&gt;(<span class='xv'>wrappingChannelSynchronously</span>: <span class='xv'>channel</span>)<span class='newline'>
+
+</span><span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>asyncChannel</span>.<span class='xv'>executeThenClose</span> { <span class='xv'>inbound</span>, <span class='xv'>outbound</span> <span class='xk'>in</span><span class='newline'>
+</span>    <span class='xk'>for</span> <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>inboundData</span> <span class='xk'>in</span> <span class='xv'>inbound</span> {<span class='newline'>
+</span>        <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>outbound</span>.<span class='xv'>write</span>(<span class='xv'>inboundData</span>)<span class='newline'>
+</span>    }<span class='newline'>
+</span>}</code></pre><p>The above code works nicely; however, you must be very careful at what point you wrap your channel otherwise you might lose some reads. For example your channel might be created by a <code>ServerBootstrap</code> for a new inbound connection. The channel might start to produce reads as soon as it registered its IO which happens after your channel initializer ran. To avoid potentially losing reads the channel must be wrapped before it registered its IO. Another example is when the channel contains a handler that does protocol negotiation. Protocol negotiation handlers are usually waiting for some data to be exchanged before deciding what protocol to chose. Afterwards, they often modify the channel’s pipeline and add the protocol appropriate handlers to it. This is another case where wrapping of the <code>Channel</code> into a <code>NIOAsyncChannel</code> needs to happen at the right time to avoid losing reads.</p><h3 id='Asynchronous%20bootstrap%20methods'><a href='#Asynchronous%20bootstrap%20methods'>Asynchronous bootstrap methods</a></h3><p>NIO offers a multitude of bootstraps. To avoid the above problems and enable a seamless experience when using NIO from Swift Concurrency, the bootstraps gained new generic asynchronous methods.</p><p>The next section is going to focus on how to use the methods to boostrap a TCP server and client.</p><h4>ServerBootstrap</h4><p>The server bootstrap is used to create a new TCP based server. Once any of the bind methods on the <code>ServerBootstrap</code> is called, a new listening socket is created to handle new inbound TCP connections. Let’s use the new methods to setup a TCP server and configure a <code>NIOAsyncChannel</code> for each inbound connection.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>let</span> <span class='xv'>serverChannel</span> = <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>ServerBootstrap</span>(<span class='xv'>group</span>: <span class='xv'>eventLoopGroup</span>)<span class='newline'>
+</span>    .<span class='xv'>bind</span>(<span class='newline'>
+</span>        <span class='xv'>host</span>: <span class='xs'>"127.0.0.1"</span>,<span class='newline'>
+</span>        <span class='xv'>port</span>: <span class='xn'>1234</span><span class='newline'>
+</span>    ) { <span class='xv'>childChannel</span> <span class='xk'>in</span><span class='newline'>
+</span>        <span class='xc'>// This closure is called for every inbound connection</span><span class='newline'>
+</span>        <span class='xv'>childChannel</span>.<span class='xv'>eventLoop</span>.<span class='xv'>makeCompletedFuture</span> {<span class='newline'>
+</span>            <span class='xk'>return</span> <span class='xk'>try</span> <span class='xv'>NIOAsyncChannel</span>&lt;<span class='xt'>ByteBuffer</span>, <span class='xt'>ByteBuffer</span>&gt;(<span class='newline'>
+</span>                <span class='xv'>synchronouslyWrapping</span>: <span class='xv'>childChannel</span><span class='newline'>
+</span>            )<span class='newline'>
+</span>        }<span class='newline'>
+</span>    }<span class='newline'>
+
+</span><span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>withThrowingDiscardingTaskGroup</span> { <span class='xv'>group</span> <span class='xk'>in</span><span class='newline'>
+</span>    <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>serverChannel</span>.<span class='xv'>executeThenClose</span> { <span class='xv'>serverChannelInbound</span> <span class='xk'>in</span><span class='newline'>
+</span>        <span class='xk'>for</span> <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>connectionChannel</span> <span class='xk'>in</span> <span class='xv'>serverChannelInbound</span> {<span class='newline'>
+</span>            <span class='xv'>group</span>.<span class='xv'>addTask</span> {<span class='newline'>
+</span>                <span class='xk'>do</span> {<span class='newline'>
+</span>                    <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>connectionChannel</span>.<span class='xv'>executeThenClose</span> { <span class='xv'>connectionChannelInbound</span>, <span class='xv'>connectionChannelOutbound</span> <span class='xk'>in</span><span class='newline'>
+</span>                        <span class='xk'>for</span> <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>inboundData</span> <span class='xk'>in</span> <span class='xv'>connectionChannelInbound</span> {<span class='newline'>
+</span>                            <span class='xc'>// Let's echo back all inbound data</span><span class='newline'>
+</span>                            <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>connectionChannelOutbound</span>.<span class='xv'>write</span>(<span class='xv'>inboundData</span>)<span class='newline'>
+</span>                        }<span class='newline'>
+</span>                    }<span class='newline'>
+</span>                } <span class='xk'>catch</span> {<span class='newline'>
+</span>                    <span class='xc'>// Handle errors</span><span class='newline'>
+</span>                }<span class='newline'>
+</span>            }<span class='newline'>
+</span>        }<span class='newline'>
+</span>    }<span class='newline'>
+</span>}</code></pre><p>In the above code, we are bootstrapping a new TCP server which we assign to <code>serverChannel</code>. Furthermore, in the trailing closure of <code>bind</code> we are configuring the pipeline of each inbound connection. In our example, we are wrapping each child channel in a <code>NIOAsyncChannel</code>. The resulting <code>serverChannel</code> is a <code>NIOAsyncChannel</code> whose inbound type is a <code>NIOAsyncChannel</code> and  whose outbound type is <code>Never</code>. This is due to the fact that each inbound connection gets its own separate child channel. The inbound and outbound types of each inbound connection is <code>ByteBuffer</code> as specified in the bootstrap. Afterwards, we handle each inbound connection in separate child tasks and echo the data back.</p><aside class='important'><h3>Important</h3><p>Make sure to use discarding task groups which automatically reap finished child tasks. Normal task groups will result in a memory leak since they do not reap their child tasks automatically.</p></aside><h4>ClientBootstrap</h4><p>The client bootstrap is used to create a new TCP based client. Let’s take a look how to bootstrap a TCP connection and send some data to the server.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>let</span> <span class='xv'>clientChannel</span> = <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>ClientBootstrap</span>(<span class='xv'>group</span>: <span class='xv'>eventLoopGroup</span>)<span class='newline'>
+</span>    .<span class='xv'>connect</span>(<span class='newline'>
+</span>        <span class='xv'>host</span>: <span class='xs'>"127.0.0.1"</span>,<span class='newline'>
+</span>        <span class='xv'>port</span>: <span class='xn'>1234</span><span class='newline'>
+</span>    ) { <span class='xv'>channel</span> <span class='xk'>in</span><span class='newline'>
+</span>        <span class='xv'>channel</span>.<span class='xv'>eventLoop</span>.<span class='xv'>makeCompletedFuture</span> {<span class='newline'>
+</span>            <span class='xk'>return</span> <span class='xk'>try</span> <span class='xv'>NIOAsyncChannel</span>&lt;<span class='xt'>ByteBuffer</span>, <span class='xt'>ByteBuffer</span>&gt;(<span class='newline'>
+</span>                <span class='xv'>wrappingChannelSynchronously</span>: <span class='xv'>channel</span><span class='newline'>
+</span>            )<span class='newline'>
+</span>        }<span class='newline'>
+</span>    }<span class='newline'>
+
+</span><span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>clientChannel</span>.<span class='xv'>executeThenClose</span> { <span class='xv'>inbound</span>, <span class='xv'>outbound</span> <span class='xk'>in</span><span class='newline'>
+</span>    <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>outbound</span>.<span class='xv'>write</span>(<span class='xv'>ByteBuffer</span>(<span class='xv'>string</span>: <span class='xs'>"hello"</span>))<span class='newline'>
+
+</span>    <span class='xk'>for</span> <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>inboundData</span> <span class='xk'>in</span> <span class='xv'>inbound</span> {<span class='newline'>
+</span>        <span class='xv'>print</span>(<span class='xv'>inboundData</span>)<span class='newline'>
+</span>    }<span class='newline'>
+</span>}</code></pre><h4>Dynamic pipeline modifications</h4><p>The above bootstrap methods work great in the case where we know the types of the resulting channels at compile time. However, there are some scenarios where the type is only determined at runtime. Such cases include <a target='_blank' rel='external' href='https://en.wikipedia.org/wiki/Application-Layer_Protocol_Negotiation'>Application-Layer-Protocol-Negotiation</a> or <a target='_blank' rel='external' href='https://en.wikipedia.org/wiki/HTTP/1.1_Upgrade_header'>HTTP protocol upgrades</a>. To support those scenarios it is essential that channel handlers that dynamically configure the pipeline carry type information which allows us to runtime to determine how the pipeline was configured at runtime. To support this NIO introduced multiple new <code>ChannelHandler</code> and corresponding pipeline configuration methods. Those types are:</p><ol><li><p><code>NIOTypedApplicationProtocolNegotiationHandler</code> for TLS based ALPN</p></li><li><p><code>NIOTypedHTTPServerUpgradeHandler</code> and <code>configureUpgradableHTTPServerPipeline</code> for server-side HTTP protocol upgrades</p></li><li><p><code>NIOTypedHTTPClientUpgradeHandler</code> and <code>configureUpgradableHTTPClientPipeline</code> for client-side HTTP protocol upgrades</p></li></ol><p>All of those types have one thing in common - they are generic over the result of the dynamic pipeline configuration. This allows users to exhaustively switch over the result and correctly handle each case. The following example demonstrates how this works for a client-side websocket upgrade.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>enum</span> <span class='xv'>UpgradeResult</span> {<span class='newline'>
+</span>    <span class='xk'>case</span> <span class='xv'>websocket</span>(<span class='xt'>NIOAsyncChannel</span>&lt;<span class='xt'>WebSocketFrame</span>, <span class='xt'>WebSocketFrame</span>&gt;)<span class='newline'>
+</span>    <span class='xk'>case</span> <span class='xv'>notUpgraded</span><span class='newline'>
+</span>}<span class='newline'>
+
+</span><span class='xk'>let</span> <span class='xv'>upgradeResult</span>: <span class='xt'>EventLoopFuture</span>&lt;<span class='xt'>UpgradeResult</span>&gt; = <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>ClientBootstrap</span>(<span class='xv'>group</span>: <span class='xv'>eventLoopGroup</span>)<span class='newline'>
+</span>    .<span class='xv'>connect</span>(<span class='newline'>
+</span>        <span class='xv'>host</span>: <span class='xs'>"127.0.0.1"</span>,<span class='newline'>
+</span>        <span class='xv'>port</span>: <span class='xn'>1234</span><span class='newline'>
+</span>    ) { <span class='xv'>channel</span> <span class='xk'>in</span><span class='newline'>
+</span>        <span class='xv'>channel</span>.<span class='xv'>eventLoop</span>.<span class='xv'>makeCompletedFuture</span> {<span class='newline'>
+</span>            <span class='xc'>// Configure the websocket upgrader</span><span class='newline'>
+</span>            <span class='xk'>let</span> <span class='xv'>upgrader</span> = <span class='xv'>NIOTypedWebSocketClientUpgrader</span>&lt;<span class='xt'>UpgradeResult</span>&gt;(<span class='newline'>
+</span>                <span class='xv'>upgradePipelineHandler</span>: { <span class='xv'>channel</span>, _ <span class='xk'>in</span><span class='newline'>
+</span>                    <span class='xc'>// This configures the pipeline after the websocket upgrade was successful.</span><span class='newline'>
+</span>                    <span class='xc'>// We are wrapping the pipeline in a NIOAsyncChannel.</span><span class='newline'>
+</span>                    <span class='xv'>channel</span>.<span class='xv'>eventLoop</span>.<span class='xv'>makeCompletedFuture</span> {<span class='newline'>
+</span>                        <span class='xk'>let</span> <span class='xv'>asyncChannel</span> = <span class='xk'>try</span> <span class='xv'>NIOAsyncChannel</span>&lt;<span class='xt'>WebSocketFrame</span>, <span class='xt'>WebSocketFrame</span>&gt;(<span class='xv'>wrappingChannelSynchronously</span>: <span class='xv'>channel</span>)<span class='newline'>
+</span>                        <span class='xk'>return</span> <span class='xv'>UpgradeResult</span>.<span class='xv'>websocket</span>(<span class='xv'>asyncChannel</span>)<span class='newline'>
+</span>                    }<span class='newline'>
+</span>                }<span class='newline'>
+</span>            )<span class='newline'>
+
+</span>            <span class='xk'>var</span> <span class='xv'>headers</span> = <span class='xv'>HTTPHeaders</span>()<span class='newline'>
+</span>            <span class='xv'>headers</span>.<span class='xv'>add</span>(<span class='xv'>name</span>: <span class='xs'>"Content-Type"</span>, <span class='xv'>value</span>: <span class='xs'>"text/plain; charset=utf-8"</span>)<span class='newline'>
+</span>            <span class='xv'>headers</span>.<span class='xv'>add</span>(<span class='xv'>name</span>: <span class='xs'>"Content-Length"</span>, <span class='xv'>value</span>: <span class='xs'>"0"</span>)<span class='newline'>
+
+</span>            <span class='xk'>let</span> <span class='xv'>requestHead</span> = <span class='xv'>HTTPRequestHead</span>(<span class='newline'>
+</span>                <span class='xv'>version</span>: .<span class='xv'>http1_1</span>,<span class='newline'>
+</span>                <span class='xv'>method</span>: .<span class='xv'>GET</span>,<span class='newline'>
+</span>                <span class='xv'>uri</span>: <span class='xs'>"/"</span>,<span class='newline'>
+</span>                <span class='xv'>headers</span>: <span class='xv'>headers</span><span class='newline'>
+</span>            )<span class='newline'>
+
+</span>            <span class='xk'>let</span> <span class='xv'>clientUpgradeConfiguration</span> = <span class='xv'>NIOTypedHTTPClientUpgradeConfiguration</span>(<span class='newline'>
+</span>                <span class='xv'>upgradeRequestHead</span>: <span class='xv'>requestHead</span>,<span class='newline'>
+</span>                <span class='xv'>upgraders</span>: [<span class='xv'>upgrader</span>],<span class='newline'>
+</span>                <span class='xv'>notUpgradingCompletionHandler</span>: { <span class='xv'>channel</span> <span class='xk'>in</span><span class='newline'>
+</span>                    <span class='xv'>channel</span>.<span class='xv'>eventLoop</span>.<span class='xv'>makeCompletedFuture</span> {<span class='newline'>
+</span>                        <span class='xk'>return</span> <span class='xv'>UpgradeResult</span>.<span class='xv'>notUpgraded</span><span class='newline'>
+</span>                    }<span class='newline'>
+</span>                }<span class='newline'>
+</span>            )<span class='newline'>
+
+</span>            <span class='xk'>let</span> <span class='xv'>upgradeResult</span> = <span class='xk'>try</span> <span class='xv'>channel</span>.<span class='xv'>pipeline</span>.<span class='xv'>syncOperations</span>.<span class='xv'>configureUpgradableHTTPClientPipeline</span>(<span class='newline'>
+</span>                <span class='xv'>configuration</span>: .<span class='xk'>init</span>(<span class='xv'>upgradeConfiguration</span>: <span class='xv'>clientUpgradeConfiguration</span>)<span class='newline'>
+</span>            )<span class='newline'>
+
+</span>            <span class='xk'>return</span> <span class='xv'>upgradeResult</span><span class='newline'>
+</span>        }<span class='newline'>
+</span>    }</code></pre><p>After having configured the pipeline to negotiate a websocket upgrade. We can switch over the the <code>upgradeResult</code>. Importantly, we have to <code>await</code> the <code>upgradeResult</code> first since it has to be negotiated on the connection.</p><pre class='snippet'><code><span class='newline'></span>switch try await upgradeResult.get() {<span class='newline'>
+</span>case .websocket(let websocketChannel):<span class='newline'>
+</span>    print("Handling websocket connection")<span class='newline'>
+</span>    try await self.handleWebsocketChannel(websocketChannel)<span class='newline'>
+</span>    print("Done handling websocket connection")<span class='newline'>
+</span>case .notUpgraded:<span class='newline'>
+</span>    // The upgrade to websocket did not succeed.<span class='newline'>
+</span>    print("Upgrade declined")<span class='newline'>
+</span>}</code></pre><h3 id='General%20guidance'><a href='#General%20guidance'>General guidance</a></h3><h4>Where should your code live?</h4><p>Before the introduction of Swift Concurrency both implementations of network protocols and business logic were often written inside <code><a href='https://swiftinit.org/docs/swift-nio/niocore/channelhandler'>ChannelHandler</a></code>s. This made it easier to get started; however, it came with some downsides. First, implementing business logic inside channel handlers requires the business logic to also handle all of the invariants that the <code><a href='https://swiftinit.org/docs/swift-nio/niocore/channelhandler'>ChannelHandler</a></code> protocol brings with it. This often requires writing complex state machines. Additionally, the business logic becomes very tied to NIO and hard to port between different systems. Because of the above reasons we recommend to implement your business logic using Swift Concurrency primitives and the <code>NIOAsyncChannel</code> based bootstraps. Network protocol implementation should still be implemented as <code><a href='https://swiftinit.org/docs/swift-nio/niocore/channelhandler'>ChannelHandler</a></code>s.</p></section>
+        
+    </section>
+
+    <section id="about-author" class="content-wrapper">
+        <img src="https://github.com/joannis.png" alt="" class="author">
+        <h4>About </h4>
+        <p class="author-about">Joannis is a seasoned member of the Swift Server WorkGroup, and the co-founder of Unbeatable Software B.V. If you&#39;re looking to elevate your team&#39;s capabilities or need expert guidance on Swift backend development, consider hiring him.</p>
+
+        <a href="https://unbeatable.software/mentoring-and-training" target="_blank" class="author-cta">Get in touch with Joannis</a>
+    </section>
+
+</article>

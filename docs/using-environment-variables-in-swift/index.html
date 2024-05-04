@@ -4,52 +4,52 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>Using environment variables in Swift - Swift on server</title>
-    
+    <title>Using environment variables in Swift - Swift on Server</title>
+
     <meta name="description" content="Explore the importance of environment variables in Swift and how to use them.">
     
-    <meta property="og:title" content="Using environment variables in Swift - Swift on server">
+    <meta property="og:title" content="Using environment variables in Swift - Swift on Server">
     <meta property="og:description" content="Explore the importance of environment variables in Swift and how to use them.">
-    <meta property="og:url" content="https://swiftonserver.com/using-environment-variables-in-swift/">
-    <meta property="og:image" content="https://swiftonserver.com/images/assets/using-environment-variables-in-swift/cover.jpg">
+    <meta property="og:url" content="https://swiftonserver.com/">
+    <meta property="og:image" content="/">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Using environment variables in Swift - Swift on server">
+    <meta name="twitter:title" content="Using environment variables in Swift - Swift on Server">
     <meta name="twitter:description" content="Explore the importance of environment variables in Swift and how to use them.">
-    <meta name="twitter:image" content="https://swiftonserver.com/images/assets/using-environment-variables-in-swift/cover.jpg">
+    <meta name="twitter:image" content="/">
     
-    <link rel="stylesheet" href="https://swiftonserver.com/css/style.css">
-    <link rel="stylesheet" href="https://swiftonserver.com/css/syntax.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/syntax.css">
 
-    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/icon-320.png" type="image/png">
+    <link rel="shortcut icon" href="/images/icons/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/images/icons/icon-320.png" type="image/png">
     
-    <link rel="apple-touch-icon" href="https://swiftonserver.com/images/icons/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="57x57" href="https://swiftonserver.com/images/icons/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="https://swiftonserver.com/images/icons/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="https://swiftonserver.com/images/icons/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="https://swiftonserver.com/images/icons/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="https://swiftonserver.com/images/icons/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="https://swiftonserver.com/images/icons/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="https://swiftonserver.com/images/icons/apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://swiftonserver.com/images/icons/apple-touch-icon-180x180.png">
+    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon-180x180.png">
     
 </head>
 
 <body>
     <header id="page-header">
-        <a href="https://swiftonserver.com/">
+        <a href="/">
             <figure>
                 <picture>
                     <source 
-                        srcset="https://swiftonserver.com/images/logos/logo~dark.png" 
+                        srcset="/images/logos/logo~dark.png" 
                         media="(prefers-color-scheme: dark)"
                     >
                     <img 
                         id="logo-image"
                         width="150"
                         height="150"
-                        src="https://swiftonserver.com/images/logos/logo.png"
+                        src="/images/logos/logo.png"
                         alt="Logo of Swift on server"
                         title="Swift on server"
                     >
@@ -60,131 +60,166 @@
     
     <main>
 
-        <article>
-    <header>
-        <section id="post-header" class="content-wrapper">
-            <time datetime="2024/03/12">2024/03/12</time>
-            <h1 class="title">Using environment variables in Swift</h1>
-            <p class="excerpt">Explore the importance of environment variables in Swift and how to use them.</p>
-            <div class="meta">
-                <span class="tag">Swift</span>
-<span class="tag">Environment</span>
-            </div>
-            <img src="https://github.com/tib.png" alt="Tibor Bödecs" class="author">
-            <p>
-                <span class="author">Written by: <a href="https://x.com/tiborbodecs" target="_blank">Tibor Bödecs</a> @ 
-                <span class="author"><a href="https://binarybirds.com/" target="_blank">Binary Birds Kft.</a></span><br>
-                <span class="reading-time">Reading time: 5 minutes</span><br>
-            </p>
-        </section>
-    </header>
+        &lt;article&gt;
+    &lt;header&gt;
+        &lt;section id=&quot;post-header&quot; class=&quot;content-wrapper&quot;&gt;
+            &lt;time datetime=&quot;2024/03/12&quot;&gt;2024/03/12&lt;/time&gt;
+            &lt;h1 class=&quot;title&quot;&gt;Using environment variables in Swift&lt;/h1&gt;
+            &lt;p class=&quot;excerpt&quot;&gt;Explore the importance of environment variables in Swift and how to use them.&lt;/p&gt;
+            &lt;div class=&quot;meta&quot;&gt;
+                Swift, Environment
+            &lt;/div&gt;
+            &lt;img src=&quot;https://github.com/tib.png&quot; alt=&quot;&quot; class=&quot;author&quot;&gt;
+            &lt;p&gt;
+                &lt;span class=&quot;author&quot;&gt;Written by: &lt;a href=&quot;https://x.com/tiborbodecs&quot; target=&quot;_blank&quot;&gt;&lt;/a&gt; @ 
+                &lt;span class=&quot;author&quot;&gt;&lt;a href=&quot;https://binarybirds.com/&quot; target=&quot;_blank&quot;&gt;Binary Birds Kft.&lt;/a&gt;&lt;/span&gt;&lt;br&gt;
+                &lt;span class=&quot;reading-time&quot;&gt;Reading time: 5 minutes&lt;/span&gt;&lt;br&gt;
+            &lt;/p&gt;
+        &lt;/section&gt;
+    &lt;/header&gt;
 
-    <section class="content-wrapper">
-        <hr>
-    </section>
+    &lt;section class=&quot;content-wrapper&quot;&gt;
+        &lt;hr&gt;
+    &lt;/section&gt;
 
-    <section id="contents" class="content-wrapper">
+    &lt;section id=&quot;contents&quot; class=&quot;content-wrapper&quot;&gt;
     
-    <p>Environment variables are key-value pairs that can be used to alter the behavior of an application. The variables are part of the environment in which a process runs. The environment is injected during the runtime of the application. Environment variables can be set at the system level or they can be defined by the end-user.</p><p>Environment variables are commonly used for configuration purposes. It is possible to set different configuration values for development, testing and production environment. It is possible to use env vars as feature flags or to specify secrets and keys and keep them separate from the application codebase.</p><p>For example, an app could take advantage of the <code>LOG_LEVEL=trace</code> environment variable to set the log level using the <a href="https://swiftonserver.com/logging-for-server-side-swift-apps/">Logging library</a> in Swift. By using an env variable developers can get more detailed logs for debugging purposes and less verbose logs for production without changing the source code of the application itself.</p><h2>How to access environment variables in Swift?</h2><p>In Swift, it is possible to access environment variables using the <a href="https://developer.apple.com/documentation/foundation/processinfo" target="_blank">ProcessInfo</a> class. The <em>ProcessInfo</em> class is part of the Foundation framework.</p><p>Here's a quick example how to get the value of the <code>LOG_LEVEL</code> variable:</p><pre><code class="language-swift"><span class="keyword">import</span> Foundation
+    &lt;section class=&#39;introduction&#39;&gt;&lt;h1&gt;NIO and Swift Concurrency&lt;/h1&gt;&lt;/section&gt;&lt;section class=&#39;details literature&#39;&gt;&lt;p&gt;This article explains how to interface between NIO and Swift Concurrency.&lt;/p&gt;&lt;p&gt;NIO was created before native Concurrency support in Swift existed, hence, NIO had to solve a few problems that have solutions in the language today. Since the introduction of Swift Concurrency, NIO has added numerous features to make the interop between NIO’s &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channel&#39;&gt;Channel&lt;/a&gt;&lt;/code&gt; eventing system and Swift’s Concurrency primitives as easy as possible.&lt;/p&gt;&lt;h3 id=&#39;EventLoopFuture/Promise%20bridges&#39;&gt;&lt;a href=&#39;#EventLoopFuture/Promise%20bridges&#39;&gt;EventLoopFuture/Promise bridges&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The first bridges that NIO introduced added methods on &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/eventloopfuture&#39;&gt;EventLoopFuture&lt;/a&gt;&lt;/code&gt; and &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/eventlooppromise&#39;&gt;EventLoopPromise&lt;/a&gt;&lt;/code&gt; to enable communication between Concurrency and NIO. These methods are &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/eventloopfuture.get&#39;&gt;get&lt;/a&gt;&lt;/code&gt; and &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/eventlooppromise.completewithtask(_:)&#39;&gt;completeWithTask(_:)&lt;/a&gt;&lt;/code&gt;.&lt;/p&gt;&lt;aside class=&#39;warning&#39;&gt;&lt;h3&gt;Warning&lt;/h3&gt;&lt;p&gt;The future &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/eventloopfuture.get&#39;&gt;get&lt;/a&gt;&lt;/code&gt; method does not support task cancellation.&lt;/p&gt;&lt;/aside&gt;&lt;p&gt;Here is a small example of how these work:&lt;/p&gt;&lt;pre class=&#39;snippet&#39;&gt;&lt;code class=&#39;language-swift&#39;&gt;&lt;span class=&#39;newline&#39;&gt;&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;eventLoop&lt;/span&gt;: &lt;span class=&#39;xt&#39;&gt;EventLoop&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
 
-<span class="keyword">let</span> env = <span class="type">ProcessInfo</span>.<span class="property">processInfo</span>.<span class="property">environment</span>
+&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;promise&lt;/span&gt; = &lt;span class=&#39;xv&#39;&gt;eventLoop&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;makePromise&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;of&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;Bool&lt;/span&gt;.&lt;span class=&#39;xk&#39;&gt;self&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
 
-<span class="keyword">let</span> value = env[<span class="string">"LOG_LEVEL"</span>] ?? <span class="string">"trace"</span>
+&lt;/span&gt;&lt;span class=&#39;xv&#39;&gt;promise&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;completeWithTask&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;Task&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;sleep&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;for&lt;/span&gt;: .&lt;span class=&#39;xv&#39;&gt;seconds&lt;/span&gt;(&lt;span class=&#39;xn&#39;&gt;1&lt;/span&gt;))&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;return&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;true&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;}&lt;span class=&#39;newline&#39;&gt;
 
-<span class="call">print</span>(value)</code></pre><p>The process info's environment is represented a <code>[String: String]</code> dictionary. When requesting a specific key, the value is going to be an optional <code>String</code> type.</p><p>The output of this script is <em>trace</em>, if the <code>LOG_LEVEL</code> is not provided explicitly.</p><h2>How to set environment variables?</h2><p>There are several methods for configuring environment variables, and the approach you take depends on the specific tools you're working with.</p><p>Here are some typical scenarios for setting up custom environment variables.</p><h3>Setting env vars using the command line</h3><p>List the desired environment variables before the command when running a Swift package using a terminal window. Key-value pairs should be listed using the <code>key=value</code> format, separated by a single space character.</p><p>Here's how to define an explicit log level by using the <code>swift run</code> command:</p><pre><code class="language-sh">LOG_LEVEL=debug swift run
+&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;result&lt;/span&gt; = &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;promise&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;futureResult&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;get&lt;/span&gt;()&lt;/code&gt;&lt;/pre&gt;&lt;aside class=&#39;note&#39;&gt;&lt;h3&gt;Note&lt;/h3&gt;&lt;p&gt;The &lt;code&gt;completeWithTask&lt;/code&gt; method creates an unstructured task under the hood.&lt;/p&gt;&lt;/aside&gt;&lt;h3 id=&#39;Channel%20bridges&#39;&gt;&lt;a href=&#39;#Channel%20bridges&#39;&gt;Channel bridges&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/eventloopfuture&#39;&gt;EventLoopFuture&lt;/a&gt;&lt;/code&gt; and &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/eventlooppromise&#39;&gt;EventLoopPromise&lt;/a&gt;&lt;/code&gt; bridges already allow async code to interact with some of NIO’s types. However, they only work where we have request-response-like interfaces. On the other hand, NIO’s &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channel&#39;&gt;Channel&lt;/a&gt;&lt;/code&gt; type contains a &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channelpipeline&#39;&gt;ChannelPipeline&lt;/a&gt;&lt;/code&gt; which can be roughly described as a bi-directional streaming pipeline. To bridge such a pipeline into Concurrency required new types. Importantly, these types need to uphold the channel’s back pressure and writability guarantees. NIO introduced the &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/niothrowingasyncsequenceproducer&#39;&gt;NIOThrowingAsyncSequenceProducer&lt;/a&gt;&lt;/code&gt;, &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/nioasyncsequenceproducer&#39;&gt;NIOAsyncSequenceProducer&lt;/a&gt;&lt;/code&gt; and the &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/nioasyncchanneloutboundwriter&#39;&gt;NIOAsyncChannelOutboundWriter&lt;/a&gt;&lt;/code&gt; which form the foundation to bridge a &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channel&#39;&gt;Channel&lt;/a&gt;&lt;/code&gt;. On top of these foundational types, NIO provides the &lt;code&gt;NIOAsyncChannel&lt;/code&gt; which is used to wrap a &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channel&#39;&gt;Channel&lt;/a&gt;&lt;/code&gt; to produce an interface that can be consumed directly from Swift Concurrency. The following sections cover the details of the foundational types and how the &lt;code&gt;NIOAsyncChannel&lt;/code&gt; works.&lt;/p&gt;&lt;h4&gt;NIOThrowingAsyncSequenceProducer and NIOAsyncSequenceProducer&lt;/h4&gt;&lt;p&gt;The &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/niothrowingasyncsequenceproducer&#39;&gt;NIOThrowingAsyncSequenceProducer&lt;/a&gt;&lt;/code&gt; and &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/nioasyncsequenceproducer&#39;&gt;NIOAsyncSequenceProducer&lt;/a&gt;&lt;/code&gt; are asynchronous sequences similar to Swift’s &lt;code&gt;AsyncStream&lt;/code&gt;. Their purpose is to provide a back pressured bridge between a synchronous producer and an asynchronous consumer. These types are highly configurable and generic which makes them usable in a lot of places with very good performance; however, at the same time they are not the easiest types to hold. We recommend that you &lt;strong&gt;never&lt;/strong&gt; expose them in public API but rather wrap them in your own async sequence.&lt;/p&gt;&lt;h4&gt;NIOAsyncWriter&lt;/h4&gt;&lt;p&gt;The &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/nioasyncchanneloutboundwriter&#39;&gt;NIOAsyncChannelOutboundWriter&lt;/a&gt;&lt;/code&gt; is used for bridging from an asynchronous producer to a synchronous consumer. It also has back pressure support which allows the consumer to stop the producer by suspending the &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/nioasyncwriter.yield(contentsof:)&#39;&gt;yield(contentsOf:)&lt;/a&gt;&lt;/code&gt; method.&lt;/p&gt;&lt;h4&gt;NIOAsyncChannel&lt;/h4&gt;&lt;p&gt;The above types are used to bridge both the read and write side of a &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channel&#39;&gt;Channel&lt;/a&gt;&lt;/code&gt; into Swift Concurrency. This can be done by wrapping a &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channel&#39;&gt;Channel&lt;/a&gt;&lt;/code&gt; via the &lt;code&gt;NIOAsyncChannel/init(synchronouslyWrapping:configuration:)&lt;/code&gt; initializer. Under the hood, this initializer adds two channel handlers to the end of the channel’s pipeline. These handlers bridge the read and write side of the channel. Additionally, the handlers work together to close the channel once both the reading and the writing have finished.&lt;/p&gt;&lt;p&gt;This is how you can wrap an existing channel into a &lt;code&gt;NIOAsyncChannel&lt;/code&gt;, consume the inbound data and echo it back outbound.&lt;/p&gt;&lt;pre class=&#39;snippet&#39;&gt;&lt;code class=&#39;language-swift&#39;&gt;&lt;span class=&#39;newline&#39;&gt;&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt; = &lt;span class=&#39;xo&#39;&gt;...&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;asyncChannel&lt;/span&gt; = &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;NIOAsyncChannel&lt;/span&gt;&amp;lt;&lt;span class=&#39;xt&#39;&gt;ByteBuffer&lt;/span&gt;, &lt;span class=&#39;xt&#39;&gt;ByteBuffer&lt;/span&gt;&amp;gt;(&lt;span class=&#39;xv&#39;&gt;wrappingChannelSynchronously&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
 
-// output: "debug"
-</code></pre><p>The command above makes the <code>LOG_LEVEL</code> env variable set to <code>trace</code> for the <code>swift run</code> process. Traditionally environment variables are uppercased.</p><p>The export command extends the availability of an environment variable throughout the shell's entire lifecycle. Here's how to use it:</p><pre><code class="language-sh">echo $LOG_LEVEL // output: ""
+&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;asyncChannel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;executeThenClose&lt;/span&gt; { &lt;span class=&#39;xv&#39;&gt;inbound&lt;/span&gt;, &lt;span class=&#39;xv&#39;&gt;outbound&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;for&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;inboundData&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;inbound&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;outbound&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;write&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;inboundData&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The above code works nicely; however, you must be very careful at what point you wrap your channel otherwise you might lose some reads. For example your channel might be created by a &lt;code&gt;ServerBootstrap&lt;/code&gt; for a new inbound connection. The channel might start to produce reads as soon as it registered its IO which happens after your channel initializer ran. To avoid potentially losing reads the channel must be wrapped before it registered its IO. Another example is when the channel contains a handler that does protocol negotiation. Protocol negotiation handlers are usually waiting for some data to be exchanged before deciding what protocol to chose. Afterwards, they often modify the channel’s pipeline and add the protocol appropriate handlers to it. This is another case where wrapping of the &lt;code&gt;Channel&lt;/code&gt; into a &lt;code&gt;NIOAsyncChannel&lt;/code&gt; needs to happen at the right time to avoid losing reads.&lt;/p&gt;&lt;h3 id=&#39;Asynchronous%20bootstrap%20methods&#39;&gt;&lt;a href=&#39;#Asynchronous%20bootstrap%20methods&#39;&gt;Asynchronous bootstrap methods&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;NIO offers a multitude of bootstraps. To avoid the above problems and enable a seamless experience when using NIO from Swift Concurrency, the bootstraps gained new generic asynchronous methods.&lt;/p&gt;&lt;p&gt;The next section is going to focus on how to use the methods to boostrap a TCP server and client.&lt;/p&gt;&lt;h4&gt;ServerBootstrap&lt;/h4&gt;&lt;p&gt;The server bootstrap is used to create a new TCP based server. Once any of the bind methods on the &lt;code&gt;ServerBootstrap&lt;/code&gt; is called, a new listening socket is created to handle new inbound TCP connections. Let’s use the new methods to setup a TCP server and configure a &lt;code&gt;NIOAsyncChannel&lt;/code&gt; for each inbound connection.&lt;/p&gt;&lt;pre class=&#39;snippet&#39;&gt;&lt;code class=&#39;language-swift&#39;&gt;&lt;span class=&#39;newline&#39;&gt;&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;serverChannel&lt;/span&gt; = &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;ServerBootstrap&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;group&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;eventLoopGroup&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    .&lt;span class=&#39;xv&#39;&gt;bind&lt;/span&gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;host&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;127.0.0.1&quot;&lt;/span&gt;,&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;port&lt;/span&gt;: &lt;span class=&#39;xn&#39;&gt;1234&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    ) { &lt;span class=&#39;xv&#39;&gt;childChannel&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xc&#39;&gt;// This closure is called for every inbound connection&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;childChannel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;eventLoop&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;makeCompletedFuture&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;return&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;NIOAsyncChannel&lt;/span&gt;&amp;lt;&lt;span class=&#39;xt&#39;&gt;ByteBuffer&lt;/span&gt;, &lt;span class=&#39;xt&#39;&gt;ByteBuffer&lt;/span&gt;&amp;gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;synchronouslyWrapping&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;childChannel&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            )&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    }&lt;span class=&#39;newline&#39;&gt;
 
-export LOG_LEVEL=info 
+&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;withThrowingDiscardingTaskGroup&lt;/span&gt; { &lt;span class=&#39;xv&#39;&gt;group&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;serverChannel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;executeThenClose&lt;/span&gt; { &lt;span class=&#39;xv&#39;&gt;serverChannelInbound&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xk&#39;&gt;for&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;connectionChannel&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;serverChannelInbound&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            &lt;span class=&#39;xv&#39;&gt;group&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;addTask&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xk&#39;&gt;do&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;connectionChannel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;executeThenClose&lt;/span&gt; { &lt;span class=&#39;xv&#39;&gt;connectionChannelInbound&lt;/span&gt;, &lt;span class=&#39;xv&#39;&gt;connectionChannelOutbound&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                        &lt;span class=&#39;xk&#39;&gt;for&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;inboundData&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;connectionChannelInbound&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                            &lt;span class=&#39;xc&#39;&gt;// Let&#39;s echo back all inbound data&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                            &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;connectionChannelOutbound&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;write&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;inboundData&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                        }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                } &lt;span class=&#39;xk&#39;&gt;catch&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    &lt;span class=&#39;xc&#39;&gt;// Handle errors&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;In the above code, we are bootstrapping a new TCP server which we assign to &lt;code&gt;serverChannel&lt;/code&gt;. Furthermore, in the trailing closure of &lt;code&gt;bind&lt;/code&gt; we are configuring the pipeline of each inbound connection. In our example, we are wrapping each child channel in a &lt;code&gt;NIOAsyncChannel&lt;/code&gt;. The resulting &lt;code&gt;serverChannel&lt;/code&gt; is a &lt;code&gt;NIOAsyncChannel&lt;/code&gt; whose inbound type is a &lt;code&gt;NIOAsyncChannel&lt;/code&gt; and  whose outbound type is &lt;code&gt;Never&lt;/code&gt;. This is due to the fact that each inbound connection gets its own separate child channel. The inbound and outbound types of each inbound connection is &lt;code&gt;ByteBuffer&lt;/code&gt; as specified in the bootstrap. Afterwards, we handle each inbound connection in separate child tasks and echo the data back.&lt;/p&gt;&lt;aside class=&#39;important&#39;&gt;&lt;h3&gt;Important&lt;/h3&gt;&lt;p&gt;Make sure to use discarding task groups which automatically reap finished child tasks. Normal task groups will result in a memory leak since they do not reap their child tasks automatically.&lt;/p&gt;&lt;/aside&gt;&lt;h4&gt;ClientBootstrap&lt;/h4&gt;&lt;p&gt;The client bootstrap is used to create a new TCP based client. Let’s take a look how to bootstrap a TCP connection and send some data to the server.&lt;/p&gt;&lt;pre class=&#39;snippet&#39;&gt;&lt;code class=&#39;language-swift&#39;&gt;&lt;span class=&#39;newline&#39;&gt;&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;clientChannel&lt;/span&gt; = &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;ClientBootstrap&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;group&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;eventLoopGroup&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    .&lt;span class=&#39;xv&#39;&gt;connect&lt;/span&gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;host&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;127.0.0.1&quot;&lt;/span&gt;,&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;port&lt;/span&gt;: &lt;span class=&#39;xn&#39;&gt;1234&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    ) { &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;eventLoop&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;makeCompletedFuture&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;return&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;NIOAsyncChannel&lt;/span&gt;&amp;lt;&lt;span class=&#39;xt&#39;&gt;ByteBuffer&lt;/span&gt;, &lt;span class=&#39;xt&#39;&gt;ByteBuffer&lt;/span&gt;&amp;gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;wrappingChannelSynchronously&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            )&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    }&lt;span class=&#39;newline&#39;&gt;
 
-echo $LOG_LEVEL // output: "info"
+&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;clientChannel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;executeThenClose&lt;/span&gt; { &lt;span class=&#39;xv&#39;&gt;inbound&lt;/span&gt;, &lt;span class=&#39;xv&#39;&gt;outbound&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;outbound&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;write&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;ByteBuffer&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;string&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;hello&quot;&lt;/span&gt;))&lt;span class=&#39;newline&#39;&gt;
 
-swift run
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;for&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;inboundData&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;inbound&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;print&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;inboundData&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;}&lt;/code&gt;&lt;/pre&gt;&lt;h4&gt;Dynamic pipeline modifications&lt;/h4&gt;&lt;p&gt;The above bootstrap methods work great in the case where we know the types of the resulting channels at compile time. However, there are some scenarios where the type is only determined at runtime. Such cases include &lt;a target=&#39;_blank&#39; rel=&#39;external&#39; href=&#39;https://en.wikipedia.org/wiki/Application-Layer_Protocol_Negotiation&#39;&gt;Application-Layer-Protocol-Negotiation&lt;/a&gt; or &lt;a target=&#39;_blank&#39; rel=&#39;external&#39; href=&#39;https://en.wikipedia.org/wiki/HTTP/1.1_Upgrade_header&#39;&gt;HTTP protocol upgrades&lt;/a&gt;. To support those scenarios it is essential that channel handlers that dynamically configure the pipeline carry type information which allows us to runtime to determine how the pipeline was configured at runtime. To support this NIO introduced multiple new &lt;code&gt;ChannelHandler&lt;/code&gt; and corresponding pipeline configuration methods. Those types are:&lt;/p&gt;&lt;ol&gt;&lt;li&gt;&lt;p&gt;&lt;code&gt;NIOTypedApplicationProtocolNegotiationHandler&lt;/code&gt; for TLS based ALPN&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;code&gt;NIOTypedHTTPServerUpgradeHandler&lt;/code&gt; and &lt;code&gt;configureUpgradableHTTPServerPipeline&lt;/code&gt; for server-side HTTP protocol upgrades&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;code&gt;NIOTypedHTTPClientUpgradeHandler&lt;/code&gt; and &lt;code&gt;configureUpgradableHTTPClientPipeline&lt;/code&gt; for client-side HTTP protocol upgrades&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;All of those types have one thing in common - they are generic over the result of the dynamic pipeline configuration. This allows users to exhaustively switch over the result and correctly handle each case. The following example demonstrates how this works for a client-side websocket upgrade.&lt;/p&gt;&lt;pre class=&#39;snippet&#39;&gt;&lt;code class=&#39;language-swift&#39;&gt;&lt;span class=&#39;newline&#39;&gt;&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;enum&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;UpgradeResult&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;case&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;websocket&lt;/span&gt;(&lt;span class=&#39;xt&#39;&gt;NIOAsyncChannel&lt;/span&gt;&amp;lt;&lt;span class=&#39;xt&#39;&gt;WebSocketFrame&lt;/span&gt;, &lt;span class=&#39;xt&#39;&gt;WebSocketFrame&lt;/span&gt;&amp;gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;case&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;notUpgraded&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;}&lt;span class=&#39;newline&#39;&gt;
 
-// output: "info"
-</code></pre><p>The <code>echo</code> command is used to display variables in a shell script. Use the $ prefix and the name of the variable to access the value of it.</p><h3>Setting env vars using Xcode</h3><p>In Xcode, you can configure environment variables within the Scheme settings. The interface permits enabling or disabling specific key-value pairs for a particular run.</p><p>Here's how to reach the settings:</p><ul><li>Open the project in Xcode.</li></ul><ul><li>Select the "Product" &gt; "Scheme" &gt; "Edit Scheme..." menu item.</li></ul><p>Alternatively, click on the Scheme name and select the "Edit Scheme..." menu item:</p></section><section class="wrapper">
-<figure>
-    <picture>
-        <source srcset="https://swiftonserver.com/images/assets/using-environment-variables-in-swift/images/edit-scheme-in-xcode~dark.png" media="(prefers-color-scheme: dark)">
-		<img class="post-image" src="https://swiftonserver.com/images/assets/using-environment-variables-in-swift/images/edit-scheme-in-xcode.png" alt="Edit Scheme in Xcode">
-    </picture>
-</figure>
-</section><section class="content-wrapper"><p>Inside the popup window:</p><ul><li>Select the "Run" option on the sidebar.</li></ul><ul><li>Select the "Arguments" tab.</li></ul></section><section class="wrapper">
-<figure>
-    <picture>
-        <source srcset="https://swiftonserver.com/images/assets/using-environment-variables-in-swift/images/set-env-in-xcode~dark.png" media="(prefers-color-scheme: dark)">
-		<img class="post-image" src="https://swiftonserver.com/images/assets/using-environment-variables-in-swift/images/set-env-in-xcode.png" alt="Set env in Xcode">
-    </picture>
-</figure>
-</section><section class="content-wrapper"><p>Finally, add a new entry into the "Environment Variables" section.</p><p>Click "Close" to get back to the project and press the "Play" icon to run the app.</p><h3>Setting env vars using Visual Studio Code</h3><p>It is possible to <a href="https://swiftonserver.com/developing-with-swift-in-visual-studio-code/">develop Swift projects with VSCode</a> using the <a href="https://www.swift.org/blog/vscode-extension/" target="_blank">official Swift extension</a>.</p><p>In order to set environment variables in the editor, open the <code>.vscode/launch.json</code> file in your workspace or select the "Debug" &gt; "Open Configurations" menu item.</p><p>Inside the launch configuration file simply add to a new <code>env</code> property, if it's not present, with the desired key-value pairs:</p></section><section class="wrapper">
-<figure>
-    <picture>
-        <source srcset="https://swiftonserver.com/images/assets/using-environment-variables-in-swift/images/set-env-in-vscode~dark.png" media="(prefers-color-scheme: dark)">
-		<img class="post-image" src="https://swiftonserver.com/images/assets/using-environment-variables-in-swift/images/set-env-in-vscode.png" alt="Set env in VSCode">
-    </picture>
-</figure>
-</section><section class="content-wrapper"><p>Save the launch config and run the project using the "Play" icon inside the "Run and Debug" panel or using the "Run" &gt; "Start Debugging" menu item.</p><h2>Using dotenv files</h2><p>A <code>.env</code> file is a text file commonly used to store environment variables for a project. It contains key-value pairs in the form of <code>KEY=VALUE</code>, where each line represents a different variable. Developers use libraries or tools to load the variables from the <em>.env</em> file into the application's environment. This allows the application to access these variables as if they were set directly in the system's environment.</p><p>NOTE: The <em>.env</em> files should be excluded from git using <em>.gitignore</em>.</p><p>The <em>.env</em> file provides a flexible and convenient way to manage environment-specific configuration settings in a project while keeping sensitive information secure and separate from the codebase.</p><p>Various open-source Swift libraries exist for server-side application developers, providing functionality to parse dotenv files. For instance:</p><ul><li><a href="https://github.com/thebarndog/swift-dotenv" target="_blank">thebarndog/swift-dotenv</a></li><li><a href="https://github.com/swiftpackages/DotEnv" target="_blank">swiftpackages/DotEnv</a></li><li><a href="https://github.com/clarkgunn/DotEnv/" target="_blank">clarkgunn/DotEnv/</a></li></ul><p>Most of the modern web frameworks, have excellent support for loading dotenv files. Both <a href="https://docs.vapor.codes/basics/environment/?h=environ#env-dotenv" target="_blank">Vapor</a> and <a href="https://hummingbird-project.github.io/hummingbird-docs/1.0/documentation/hummingbirdauth/hbenvironment/dotenv(_:)" target="_blank">Hummingbird</a> have a built-in solution to load and parse environment variables using these files.</p><h2>Using the environment in Vapor</h2><p>Vapor's <a href="https://docs.vapor.codes/basics/environment/" target="_blank">Environment API</a> enables dynamic configuration of the application:</p><pre><code class="language-swift"><span class="keyword">import</span> Vapor
+&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;upgradeResult&lt;/span&gt;: &lt;span class=&#39;xt&#39;&gt;EventLoopFuture&lt;/span&gt;&amp;lt;&lt;span class=&#39;xt&#39;&gt;UpgradeResult&lt;/span&gt;&amp;gt; = &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;ClientBootstrap&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;group&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;eventLoopGroup&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    .&lt;span class=&#39;xv&#39;&gt;connect&lt;/span&gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;host&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;127.0.0.1&quot;&lt;/span&gt;,&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;port&lt;/span&gt;: &lt;span class=&#39;xn&#39;&gt;1234&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    ) { &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;eventLoop&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;makeCompletedFuture&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            &lt;span class=&#39;xc&#39;&gt;// Configure the websocket upgrader&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;upgrader&lt;/span&gt; = &lt;span class=&#39;xv&#39;&gt;NIOTypedWebSocketClientUpgrader&lt;/span&gt;&amp;lt;&lt;span class=&#39;xt&#39;&gt;UpgradeResult&lt;/span&gt;&amp;gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;upgradePipelineHandler&lt;/span&gt;: { &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;, _ &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    &lt;span class=&#39;xc&#39;&gt;// This configures the pipeline after the websocket upgrade was successful.&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    &lt;span class=&#39;xc&#39;&gt;// We are wrapping the pipeline in a NIOAsyncChannel.&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;eventLoop&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;makeCompletedFuture&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                        &lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;asyncChannel&lt;/span&gt; = &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;NIOAsyncChannel&lt;/span&gt;&amp;lt;&lt;span class=&#39;xt&#39;&gt;WebSocketFrame&lt;/span&gt;, &lt;span class=&#39;xt&#39;&gt;WebSocketFrame&lt;/span&gt;&amp;gt;(&lt;span class=&#39;xv&#39;&gt;wrappingChannelSynchronously&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                        &lt;span class=&#39;xk&#39;&gt;return&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;UpgradeResult&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;websocket&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;asyncChannel&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            )&lt;span class=&#39;newline&#39;&gt;
 
-<span class="comment">// configures your application</span>
-<span class="keyword">public func</span> configure(<span class="keyword">_</span> app: <span class="type">Application</span>) <span class="keyword">async throws</span> {
-    
-    <span class="comment">// 1.</span>
-    <span class="keyword">var</span> logger = <span class="type">Logger</span>(label: <span class="string">"vapor-logger"</span>)
-    logger.<span class="property">logLevel</span> = .<span class="dotAccess">trace</span>
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;var&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;headers&lt;/span&gt; = &lt;span class=&#39;xv&#39;&gt;HTTPHeaders&lt;/span&gt;()&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            &lt;span class=&#39;xv&#39;&gt;headers&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;add&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;name&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;Content-Type&quot;&lt;/span&gt;, &lt;span class=&#39;xv&#39;&gt;value&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;text/plain; charset=utf-8&quot;&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            &lt;span class=&#39;xv&#39;&gt;headers&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;add&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;name&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;Content-Length&quot;&lt;/span&gt;, &lt;span class=&#39;xv&#39;&gt;value&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;0&quot;&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
 
-    <span class="comment">// 2.</span>
-    <span class="keyword">let</span> logLevel = <span class="type">Environment</span>.<span class="call">get</span>(<span class="string">"LOG_LEVEL"</span>)
-    
-    <span class="comment">// 3.</span>
-    <span class="keyword">if let</span> logLevel, <span class="keyword">let</span> logLevel = <span class="type">Logger</span>.<span class="type">Level</span>(rawValue: logLevel) {
-        <span class="comment">// 4.</span>
-        logger.<span class="property">logLevel</span> = logLevel
-    }
-    
-    <span class="keyword">try</span> <span class="call">routes</span>(app)
-}</code></pre><ol><li>Set up a new <em>Logger</em> instance, set the default log level to <em>.trace</em></li><li>Get the the raw log level as an optional String using the Environment</li><li>Cast the log level to a <code>Logger.Level</code> enum, if it's a valid input</li><li>Set the log level based on the environment</li></ol><p>Vapor will look for dotenv files in the current working directory. If you're using Xcode, make sure to set the working directory by editing the scheme.</p><h2>Using the environment in Hummingbird 2</h2><p>In Hummingbird, it is possible to use the shared environment or load dotenv files using the static <code>dotEnv()</code> method on the <a href="https://hummingbird-project.github.io/hummingbird-docs/1.0/documentation/hummingbirdauth/hbenvironment" target="_blank">HBEnvironment</a> struct:</p><pre><code class="language-swift"><span class="keyword">import</span> Hummingbird
-<span class="keyword">import</span> Logging
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;requestHead&lt;/span&gt; = &lt;span class=&#39;xv&#39;&gt;HTTPRequestHead&lt;/span&gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;version&lt;/span&gt;: .&lt;span class=&#39;xv&#39;&gt;http1_1&lt;/span&gt;,&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;method&lt;/span&gt;: .&lt;span class=&#39;xv&#39;&gt;GET&lt;/span&gt;,&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;uri&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;/&quot;&lt;/span&gt;,&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;headers&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;headers&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            )&lt;span class=&#39;newline&#39;&gt;
 
-<span class="keyword">func</span> buildApplication(
-    configuration: <span class="type">HBApplicationConfiguration</span>
-) <span class="keyword">async throws</span> -&gt; <span class="keyword">some</span> <span class="type">HBApplicationProtocol</span> {
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;clientUpgradeConfiguration&lt;/span&gt; = &lt;span class=&#39;xv&#39;&gt;NIOTypedHTTPClientUpgradeConfiguration&lt;/span&gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;upgradeRequestHead&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;requestHead&lt;/span&gt;,&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;upgraders&lt;/span&gt;: [&lt;span class=&#39;xv&#39;&gt;upgrader&lt;/span&gt;],&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;notUpgradingCompletionHandler&lt;/span&gt;: { &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;eventLoop&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;makeCompletedFuture&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                        &lt;span class=&#39;xk&#39;&gt;return&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;UpgradeResult&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;notUpgraded&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            )&lt;span class=&#39;newline&#39;&gt;
 
-    <span class="keyword">var</span> logger = <span class="type">Logger</span>(label: <span class="string">"hummingbird-logger"</span>)
-    logger.<span class="property">logLevel</span> = .<span class="dotAccess">trace</span>
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;upgradeResult&lt;/span&gt; = &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;pipeline&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;syncOperations&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;configureUpgradableHTTPClientPipeline&lt;/span&gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;configuration&lt;/span&gt;: .&lt;span class=&#39;xk&#39;&gt;init&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;upgradeConfiguration&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;clientUpgradeConfiguration&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            )&lt;span class=&#39;newline&#39;&gt;
 
-    <span class="keyword">let</span> env = <span class="type">HBEnvironment</span>.<span class="property">shared</span>
-    <span class="comment">// let env = try await HBEnvironment.dotEnv()</span>
-    <span class="keyword">let</span> logLevel = env.<span class="call">get</span>(<span class="string">"LOG_LEVEL"</span>)
-    
-    <span class="keyword">if let</span> logLevel, <span class="keyword">let</span> logLevel = <span class="type">Logger</span>.<span class="type">Level</span>(rawValue: logLevel) {
-        logger.<span class="property">logLevel</span> = logLevel
-    }
-
-    <span class="keyword">let</span> router = <span class="type">HBRouter</span>()
-    router.<span class="call">get</span>(<span class="string">"/"</span>) { <span class="keyword">_</span>, <span class="keyword">_ in
-        return</span> <span class="string">"Hello"</span>
-    }
-    
-    <span class="keyword">let</span> app = <span class="type">HBApplication</span>(
-        router: router,
-        configuration: configuration,
-        logger: logger
-    )
-    <span class="keyword">return</span> app
-}</code></pre><p>If you run the project from Xcode, make sure you set a custom working directory, otherwise the framework won't be able to locate your dotenv file.</p><h2>What's next?</h2><p>Environment variables are crucial for modifying application behavior without code changes, offering flexibility across environments. They're commonly used for feature flags, secrets, and other configuration purposes. In our next article we will discover how to store secrets and API credentials in a secure way.</p>
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;return&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;upgradeResult&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    }&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After having configured the pipeline to negotiate a websocket upgrade. We can switch over the the &lt;code&gt;upgradeResult&lt;/code&gt;. Importantly, we have to &lt;code&gt;await&lt;/code&gt; the &lt;code&gt;upgradeResult&lt;/code&gt; first since it has to be negotiated on the connection.&lt;/p&gt;&lt;pre class=&#39;snippet&#39;&gt;&lt;code&gt;&lt;span class=&#39;newline&#39;&gt;&lt;/span&gt;switch try await upgradeResult.get() {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;case .websocket(let websocketChannel):&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    print(&quot;Handling websocket connection&quot;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    try await self.handleWebsocketChannel(websocketChannel)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    print(&quot;Done handling websocket connection&quot;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;case .notUpgraded:&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    // The upgrade to websocket did not succeed.&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    print(&quot;Upgrade declined&quot;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;}&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#39;General%20guidance&#39;&gt;&lt;a href=&#39;#General%20guidance&#39;&gt;General guidance&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;Where should your code live?&lt;/h4&gt;&lt;p&gt;Before the introduction of Swift Concurrency both implementations of network protocols and business logic were often written inside &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channelhandler&#39;&gt;ChannelHandler&lt;/a&gt;&lt;/code&gt;s. This made it easier to get started; however, it came with some downsides. First, implementing business logic inside channel handlers requires the business logic to also handle all of the invariants that the &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channelhandler&#39;&gt;ChannelHandler&lt;/a&gt;&lt;/code&gt; protocol brings with it. This often requires writing complex state machines. Additionally, the business logic becomes very tied to NIO and hard to port between different systems. Because of the above reasons we recommend to implement your business logic using Swift Concurrency primitives and the &lt;code&gt;NIOAsyncChannel&lt;/code&gt; based bootstraps. Network protocol implementation should still be implemented as &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channelhandler&#39;&gt;ChannelHandler&lt;/a&gt;&lt;/code&gt;s.&lt;/p&gt;&lt;/section&gt;
         
-    </section>
+    &lt;/section&gt;
 
-    <section id="about-author" class="content-wrapper">
-        <img src="https://github.com/tib.png" alt="Tibor Bödecs" class="author">
-        <h4>About Tibor Bödecs</h4>
-        <p class="author-about">Tibor, also known as <a href="https://theswiftdev.com">"The Swift Dev"</a>, is the co-founder of <a href="https://binarybirds.com/">Binary Birds Kft.</a> Tibor provides Server-Side Swift development and consulting.</p>
+    &lt;section id=&quot;about-author&quot; class=&quot;content-wrapper&quot;&gt;
+        &lt;img src=&quot;https://github.com/tib.png&quot; alt=&quot;&quot; class=&quot;author&quot;&gt;
+        &lt;h4&gt;About &lt;/h4&gt;
+        &lt;p class=&quot;author-about&quot;&gt;Tibor, also known as &amp;lt;a href=&amp;quot;https://theswiftdev.com&amp;quot;&amp;gt;&amp;quot;The Swift Dev&amp;quot;&amp;lt;/a&amp;gt;, is the co-founder of &amp;lt;a href=&amp;quot;https://binarybirds.com/&amp;quot;&amp;gt;Binary Birds Kft.&amp;lt;/a&amp;gt; Tibor provides Server-Side Swift development and consulting.&lt;/p&gt;
 
-        <a href="mailto:info@binarybirds.com" target="_blank" class="author-cta">Contact us</a>
-    </section>
+        &lt;a href=&quot;mailto:info@binarybirds.com&quot; target=&quot;_blank&quot; class=&quot;author-cta&quot;&gt;Contact us&lt;/a&gt;
+    &lt;/section&gt;
 
-</article>
+&lt;/article&gt;
+
         
     </main>
 
@@ -193,14 +228,14 @@ swift run
             <figure>
                 <picture>
                     <source 
-                        srcset="https://swiftonserver.com/images/logos/logo~dark.png" 
+                        srcset="/images/logos/logo~dark.png" 
                         media="(prefers-color-scheme: dark)"
                     >
                     <img 
                         id="logo-image"
                         width="80"
                         height="80"
-                        src="https://swiftonserver.com/images/logos/logo.png"
+                        src="/images/logos/logo.png"
                         alt="Logo of Swift on server"
                         title="Swift on server"
                     >
@@ -212,8 +247,8 @@ swift run
 
             <p> 
                 <a href="https://swiftonserver.com/">Home</a> ·
-                <a href="https://swiftonserver.com/rss.xml" target="_blank">RSS</a> ·
-                <a href="https://swiftonserver.com/sitemap.xml" target="_blank">Sitemap</a>
+                <a href="/rss.xml" target="_blank">RSS</a> ·
+                <a href="/sitemap.xml" target="_blank">Sitemap</a>
             </p>
             
             

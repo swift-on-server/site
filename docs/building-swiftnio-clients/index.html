@@ -4,52 +4,52 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>Building an HTTP client using SwiftNIO - Swift on server</title>
-    
+    <title>Building an HTTP client using SwiftNIO - Swift on Server</title>
+
     <meta name="description" content="Learn how to build a simple HTTP client using SwiftNIO and structured concurrency.">
     
-    <meta property="og:title" content="Building an HTTP client using SwiftNIO - Swift on server">
+    <meta property="og:title" content="Building an HTTP client using SwiftNIO - Swift on Server">
     <meta property="og:description" content="Learn how to build a simple HTTP client using SwiftNIO and structured concurrency.">
-    <meta property="og:url" content="https://swiftonserver.com/building-swiftnio-clients/">
-    <meta property="og:image" content="https://swiftonserver.com/images/assets/building-swiftnio-clients/cover.jpg">
+    <meta property="og:url" content="https://swiftonserver.com/">
+    <meta property="og:image" content="/">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Building an HTTP client using SwiftNIO - Swift on server">
+    <meta name="twitter:title" content="Building an HTTP client using SwiftNIO - Swift on Server">
     <meta name="twitter:description" content="Learn how to build a simple HTTP client using SwiftNIO and structured concurrency.">
-    <meta name="twitter:image" content="https://swiftonserver.com/images/assets/building-swiftnio-clients/cover.jpg">
+    <meta name="twitter:image" content="/">
     
-    <link rel="stylesheet" href="https://swiftonserver.com/css/style.css">
-    <link rel="stylesheet" href="https://swiftonserver.com/css/syntax.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/syntax.css">
 
-    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/icon-320.png" type="image/png">
+    <link rel="shortcut icon" href="/images/icons/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/images/icons/icon-320.png" type="image/png">
     
-    <link rel="apple-touch-icon" href="https://swiftonserver.com/images/icons/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="57x57" href="https://swiftonserver.com/images/icons/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="https://swiftonserver.com/images/icons/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="https://swiftonserver.com/images/icons/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="https://swiftonserver.com/images/icons/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="https://swiftonserver.com/images/icons/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="https://swiftonserver.com/images/icons/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="https://swiftonserver.com/images/icons/apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://swiftonserver.com/images/icons/apple-touch-icon-180x180.png">
+    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon-180x180.png">
     
 </head>
 
 <body>
     <header id="page-header">
-        <a href="https://swiftonserver.com/">
+        <a href="/">
             <figure>
                 <picture>
                     <source 
-                        srcset="https://swiftonserver.com/images/logos/logo~dark.png" 
+                        srcset="/images/logos/logo~dark.png" 
                         media="(prefers-color-scheme: dark)"
                     >
                     <img 
                         id="logo-image"
                         width="150"
                         height="150"
-                        src="https://swiftonserver.com/images/logos/logo.png"
+                        src="/images/logos/logo.png"
                         alt="Logo of Swift on server"
                         title="Swift on server"
                     >
@@ -60,147 +60,166 @@
     
     <main>
 
-        <article>
-    <header>
-        <section id="post-header" class="content-wrapper">
-            <time datetime="2024/02/20">2024/02/20</time>
-            <h1 class="title">Building an HTTP client using SwiftNIO</h1>
-            <p class="excerpt">Learn how to build a simple HTTP client using SwiftNIO and structured concurrency.</p>
-            <div class="meta">
-                <span class="tag">Swift</span>
-<span class="tag">SwiftNIO</span>
-<span class="tag">Networking</span>
-            </div>
-            <img src="https://github.com/joannis.png" alt="Joannis Orlandos" class="author">
-            <p>
-                <span class="author">Written by: <a href="https://x.com/JoannisOrlandos" target="_blank">Joannis Orlandos</a> @ 
-                <span class="author"><a href="https://unbeatable.software/" target="_blank">Unbeatable Software B.V.</a></span><br>
-                <span class="reading-time">Reading time: 30 minutes</span><br>
-            </p>
-        </section>
-    </header>
+        &lt;article&gt;
+    &lt;header&gt;
+        &lt;section id=&quot;post-header&quot; class=&quot;content-wrapper&quot;&gt;
+            &lt;time datetime=&quot;2024/02/20&quot;&gt;2024/02/20&lt;/time&gt;
+            &lt;h1 class=&quot;title&quot;&gt;Building an HTTP client using SwiftNIO&lt;/h1&gt;
+            &lt;p class=&quot;excerpt&quot;&gt;Learn how to build a simple HTTP client using SwiftNIO and structured concurrency.&lt;/p&gt;
+            &lt;div class=&quot;meta&quot;&gt;
+                Swift, SwiftNIO, Networking
+            &lt;/div&gt;
+            &lt;img src=&quot;https://github.com/joannis.png&quot; alt=&quot;&quot; class=&quot;author&quot;&gt;
+            &lt;p&gt;
+                &lt;span class=&quot;author&quot;&gt;Written by: &lt;a href=&quot;https://x.com/JoannisOrlandos&quot; target=&quot;_blank&quot;&gt;&lt;/a&gt; @ 
+                &lt;span class=&quot;author&quot;&gt;&lt;a href=&quot;https://unbeatable.software/&quot; target=&quot;_blank&quot;&gt;Unbeatable Software B.V.&lt;/a&gt;&lt;/span&gt;&lt;br&gt;
+                &lt;span class=&quot;reading-time&quot;&gt;Reading time: 30 minutes&lt;/span&gt;&lt;br&gt;
+            &lt;/p&gt;
+        &lt;/section&gt;
+    &lt;/header&gt;
 
-    <section class="content-wrapper">
-        <hr>
-    </section>
+    &lt;section class=&quot;content-wrapper&quot;&gt;
+        &lt;hr&gt;
+    &lt;/section&gt;
 
-    <section id="contents" class="content-wrapper">
+    &lt;section id=&quot;contents&quot; class=&quot;content-wrapper&quot;&gt;
     
-    <h1>Building a SwiftNIO HTTP client</h1><p>In the previous <a href="/using-swiftnio-channels" target="_blank">SwiftNIO tutorial</a>, you learned how to use SwiftNIO to build a simple TCP echo server. In this tutorial, you'll build a simple HTTP client using SwiftNIO.</p><p>We'll use the <code>NIOHTTP1</code> package for parsing and serializing HTTP messages. In addition, SwiftNIO's structured concurrency is used to manage the lifecycle of our client.</p><p>By the end of this tutorial, you'll know how to configure a SwiftNIO Channel's pipeline, and are able to send HTTP requests to a server.</p><p><a href="https://github.com/swift-on-server/building-swiftnio-clients-sample" target="_blank">Download the Samples</a> to get started. It has a dev container for a quick start.</p><blockquote><p>Note: This tutorial will emit some <code>Sendable</code> warnings. These are expected, and should be resolved in a production ready client implementation. However, for the purposes of this tutorial, ignore them.</p></blockquote><h2>Creating a Client Channel</h2><p>In SwiftNIO, Channels are created through a bootstrap. For TCP clients, you'd generally use a <code>ClientBootstrap</code>. There are alternative clients as well, such as Apple's Transport Services for Apple platforms. In addition, the <code>NIOHTTP1</code> module is used to simplify the process of creating a client channel.</p><p>Add these dependencies to your executable target in your <code>Package.swift</code> file:</p><pre><code class="language-swift">.<span class="call">executableTarget</span>(
-    name: <span class="string">"swift-nio-part-3"</span>,
-    dependencies: [
-        .<span class="call">product</span>(name: <span class="string">"NIO"</span>, package: <span class="string">"swift-nio"</span>),
-        .<span class="call">product</span>(name: <span class="string">"NIOHTTP1"</span>, package: <span class="string">"swift-nio"</span>),
-    ]
-),</code></pre><p>Now, let's create a <code>ClientBootstrap</code> and configure it to use the <code>NIOHTTP1</code> module's handlers. First, import the necessary modules:</p><pre><code class="language-swift"><span class="keyword">import</span> NIOCore
-<span class="keyword">import</span> NIOPosix
-<span class="keyword">import</span> NIOHTTP1</code></pre><p>Then, create a <code>ClientBootstrap</code>:</p><pre><code class="language-swift"><span class="comment">// 1</span>
-<span class="keyword">let</span> httpClientBootstrap = <span class="type">ClientBootstrap</span>(group: <span class="type">NIOSingletons</span>.<span class="property">posixEventLoopGroup</span>)
-    <span class="comment">// 2</span>
-    .<span class="call">channelOption</span>(<span class="type">ChannelOptions</span>.<span class="call">socketOption</span>(.<span class="dotAccess">so_reuseaddr</span>), value: <span class="number">1</span>)
-    <span class="comment">// 3</span>
-    .<span class="call">channelInitializer</span> { channel <span class="keyword">in</span>
-        <span class="comment">// 4</span>
-        channel.<span class="property">pipeline</span>.<span class="call">addHTTPClientHandlers</span>(
-            position: .<span class="dotAccess">first</span>,
-            leftOverBytesStrategy: .<span class="dotAccess">fireError</span>
-        )
-    }</code></pre><p>This code prepares a template for creating a client channel. Let's break it down:</p><ol><li>Create a <code>ClientBootstrap</code> using the <code>NIOSingletons.posixEventLoopGroup</code> as the event loop group. This is a shared event loop group that can be reused across multiple components of our application.</li><li>NIO Channels can have options set on them. Here, the <code>SO_REUSEADDR</code> option is set to <code>1</code> to allow the reuse of local addresses.</li><li>Then, provide an initializer that is used to configure the pipeline of newly created channels.</li><li>Finally, the <code>channelInitializer</code> adds the necessary HTTP client handlers to the channel's pipeline. This uses a helper function provided by NIOHTTP1.</li></ol><h2>Creating Types</h2><p>Before creating the HTTP client, it's necessary to add a few types that are needed for processing HTTP requests and responses.</p><p>When a <code>connect</code> fails, NIO already throws an error. There is no need to catch or represent those. However, the HTTP Client might encounter errors when processing the response. Create an enum to represent these errors:</p><pre><code class="language-swift"><span class="keyword">enum</span> HTTPClientError: <span class="type">Error</span> {
-    <span class="keyword">case</span> malformedResponse
-    <span class="keyword">case</span> unexpectedEndOfStream
-}</code></pre><p>Finally, add an enum to represent the state of processing the response:</p><pre><code class="language-swift"><span class="keyword">enum</span> HTTPPartialResponse {
-    <span class="keyword">case</span> none
-    <span class="keyword">case</span> receiving(<span class="type">HTTPResponseHead</span>, <span class="type">ByteBuffer</span>)
-}</code></pre><p>The enum if pretty simple, and is not representative of a <em>mature</em> HTTP client implementation such as <a href="https://github.com/swift-server/async-http-client" target="_blank">AsyncHTTPClient</a>. However, it's enough to get started with building a (TCP) client.</p><h2>Implementing the HTTP Client</h2><p>Now that the necessary types have been created, create the <code>HTTPClient</code> type with a simple function that sends a request and returns the response.</p><pre><code class="language-swift"><span class="keyword">struct</span> HTTPClient {
-    <span class="keyword">let</span> host: <span class="type">String</span>
+    &lt;section class=&#39;introduction&#39;&gt;&lt;h1&gt;NIO and Swift Concurrency&lt;/h1&gt;&lt;/section&gt;&lt;section class=&#39;details literature&#39;&gt;&lt;p&gt;This article explains how to interface between NIO and Swift Concurrency.&lt;/p&gt;&lt;p&gt;NIO was created before native Concurrency support in Swift existed, hence, NIO had to solve a few problems that have solutions in the language today. Since the introduction of Swift Concurrency, NIO has added numerous features to make the interop between NIO’s &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channel&#39;&gt;Channel&lt;/a&gt;&lt;/code&gt; eventing system and Swift’s Concurrency primitives as easy as possible.&lt;/p&gt;&lt;h3 id=&#39;EventLoopFuture/Promise%20bridges&#39;&gt;&lt;a href=&#39;#EventLoopFuture/Promise%20bridges&#39;&gt;EventLoopFuture/Promise bridges&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The first bridges that NIO introduced added methods on &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/eventloopfuture&#39;&gt;EventLoopFuture&lt;/a&gt;&lt;/code&gt; and &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/eventlooppromise&#39;&gt;EventLoopPromise&lt;/a&gt;&lt;/code&gt; to enable communication between Concurrency and NIO. These methods are &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/eventloopfuture.get&#39;&gt;get&lt;/a&gt;&lt;/code&gt; and &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/eventlooppromise.completewithtask(_:)&#39;&gt;completeWithTask(_:)&lt;/a&gt;&lt;/code&gt;.&lt;/p&gt;&lt;aside class=&#39;warning&#39;&gt;&lt;h3&gt;Warning&lt;/h3&gt;&lt;p&gt;The future &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/eventloopfuture.get&#39;&gt;get&lt;/a&gt;&lt;/code&gt; method does not support task cancellation.&lt;/p&gt;&lt;/aside&gt;&lt;p&gt;Here is a small example of how these work:&lt;/p&gt;&lt;pre class=&#39;snippet&#39;&gt;&lt;code class=&#39;language-swift&#39;&gt;&lt;span class=&#39;newline&#39;&gt;&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;eventLoop&lt;/span&gt;: &lt;span class=&#39;xt&#39;&gt;EventLoop&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
 
-    <span class="keyword">func</span> request(
-        <span class="keyword">_</span> uri: <span class="type">String</span>,
-        method: <span class="type">HTTPMethod</span> = .<span class="dotAccess">GET</span>,
-        headers: <span class="type">HTTPHeaders</span> = [:]
-    ) <span class="keyword">async throws</span> -&gt; (<span class="type">HTTPResponseHead</span>, <span class="type">ByteBuffer</span>) {
-        <span class="comment">// 5</span>
-        <span class="keyword">let</span> clientChannel = <span class="keyword">try await</span> httpClientBootstrap.<span class="call">connect</span>(
-            host: host,
-            port: <span class="number">80</span>
-        ).<span class="call">flatMapThrowing</span> { channel <span class="keyword">in</span>
-            <span class="comment">// 6</span>
-            <span class="keyword">try</span> <span class="type">NIOAsyncChannel</span>(
-                wrappingChannelSynchronously: channel,
-                configuration: <span class="type">NIOAsyncChannel</span>.<span class="type">Configuration</span>(
-                    inboundType: <span class="type">HTTPClientResponsePart</span>.<span class="keyword">self</span>, <span class="comment">// 7</span>
-                    outboundType: <span class="type">HTTPClientRequestPart</span>.<span class="keyword">self</span> <span class="comment">// 8</span>
-                )
-            )
-        }.<span class="call">get</span>() <span class="comment">// 9
+&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;promise&lt;/span&gt; = &lt;span class=&#39;xv&#39;&gt;eventLoop&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;makePromise&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;of&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;Bool&lt;/span&gt;.&lt;span class=&#39;xk&#39;&gt;self&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
 
-        // TODO: Send request &amp; process response</span>
-    }
-}</code></pre><p>Let's break it down:</p><ol><li>Use the <code>httpClientBootstrap</code> to create a new client channel. This returns an <code>EventLoopFuture</code> containing a regular NIO <code>Channel</code>. By using <code>flatMapThrowing</code> to transform the result of this future, it's possible to convert the <code>EventLoopFuture</code> into a <code>NIOAsyncChannel</code>.</li><li>In order to use structured concurrency, it's necessary to wrap the <code>Channel</code> in an <code>NIOAsyncChannel</code>. The inbound and outbound types must be <code>Sendable</code>, and need to be configured to match the pipeline's input and output. This is based on the handlers added in the bootstrap's <code>channelInitializer</code>.</li><li>The <code>NIOAsyncChannel</code> is configured to receive <code>HTTPClientResponsePart</code> objects. This is the type that the HTTP client will receive from the server.</li><li>The <code>NIOAsyncChannel</code> is configured to send <code>SendableHTTPClientRequestPart</code> objects. This is the type that the HTTP client will send to the server.</li><li>The <code>get()</code> method is called to <em>await</em> for the result of the <code>EventLoopFuture</code>.</li></ol><h3>Sending a Request</h3><p>In place of the TODO comment, add the code to send a request and process the response. First, create a <code>HTTPRequestHead</code>. Note that this function does not currently support sending a body with the request. Do so by adding the following code:</p><pre><code class="language-swift"><span class="comment">// 10</span>
-<span class="keyword">return try await</span> clientChannel.<span class="call">executeThenClose</span> { inbound, outbound <span class="keyword">in</span>
-    <span class="comment">// 11</span>
-    <span class="keyword">let</span> requestHead = <span class="type">HTTPRequestHead</span>(version: .<span class="dotAccess">http1_1</span>, method: method, uri: uri, headers: headers)
-    <span class="keyword">try await</span> outbound.<span class="call">write</span>(.<span class="call">head</span>(requestHead))
-    <span class="keyword">try await</span> outbound.<span class="call">write</span>(.<span class="call">end</span>(<span class="keyword">nil</span>))
+&lt;/span&gt;&lt;span class=&#39;xv&#39;&gt;promise&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;completeWithTask&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;Task&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;sleep&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;for&lt;/span&gt;: .&lt;span class=&#39;xv&#39;&gt;seconds&lt;/span&gt;(&lt;span class=&#39;xn&#39;&gt;1&lt;/span&gt;))&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;return&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;true&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;}&lt;span class=&#39;newline&#39;&gt;
 
-    <span class="comment">// TODO: Process response</span>
-}</code></pre><p>This is a structured concurrency block that sends the request:</p><ol><li>The <code>executeThenClose</code> method is used to obtain a read and write half of the channel. This function returns the result of it's trailing closure.</li><li>The writer called <code>outbound</code> is used to send the request's part - the head and 'end'. This is also where the request's body would be sent.</li></ol><p>Below that, receive and process the response parts as such:</p><pre><code class="language-swift"><span class="keyword">var</span> partialResponse = <span class="type">HTTPPartialResponse</span>.<span class="property">none</span>
-    
-<span class="comment">// 12</span>
-<span class="keyword">for try await</span> part <span class="keyword">in</span> inbound {
-    <span class="comment">// 13</span>
-    <span class="keyword">switch</span> part {
-    <span class="keyword">case</span> .<span class="dotAccess">head</span>(<span class="keyword">let</span> head):
-        <span class="keyword">guard case</span> .<span class="dotAccess">none</span> = partialResponse <span class="keyword">else</span> {
-            <span class="keyword">throw</span> <span class="type">HTTPClientError</span>.<span class="property">malformedResponse</span>
-        }
+&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;result&lt;/span&gt; = &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;promise&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;futureResult&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;get&lt;/span&gt;()&lt;/code&gt;&lt;/pre&gt;&lt;aside class=&#39;note&#39;&gt;&lt;h3&gt;Note&lt;/h3&gt;&lt;p&gt;The &lt;code&gt;completeWithTask&lt;/code&gt; method creates an unstructured task under the hood.&lt;/p&gt;&lt;/aside&gt;&lt;h3 id=&#39;Channel%20bridges&#39;&gt;&lt;a href=&#39;#Channel%20bridges&#39;&gt;Channel bridges&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/eventloopfuture&#39;&gt;EventLoopFuture&lt;/a&gt;&lt;/code&gt; and &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/eventlooppromise&#39;&gt;EventLoopPromise&lt;/a&gt;&lt;/code&gt; bridges already allow async code to interact with some of NIO’s types. However, they only work where we have request-response-like interfaces. On the other hand, NIO’s &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channel&#39;&gt;Channel&lt;/a&gt;&lt;/code&gt; type contains a &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channelpipeline&#39;&gt;ChannelPipeline&lt;/a&gt;&lt;/code&gt; which can be roughly described as a bi-directional streaming pipeline. To bridge such a pipeline into Concurrency required new types. Importantly, these types need to uphold the channel’s back pressure and writability guarantees. NIO introduced the &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/niothrowingasyncsequenceproducer&#39;&gt;NIOThrowingAsyncSequenceProducer&lt;/a&gt;&lt;/code&gt;, &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/nioasyncsequenceproducer&#39;&gt;NIOAsyncSequenceProducer&lt;/a&gt;&lt;/code&gt; and the &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/nioasyncchanneloutboundwriter&#39;&gt;NIOAsyncChannelOutboundWriter&lt;/a&gt;&lt;/code&gt; which form the foundation to bridge a &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channel&#39;&gt;Channel&lt;/a&gt;&lt;/code&gt;. On top of these foundational types, NIO provides the &lt;code&gt;NIOAsyncChannel&lt;/code&gt; which is used to wrap a &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channel&#39;&gt;Channel&lt;/a&gt;&lt;/code&gt; to produce an interface that can be consumed directly from Swift Concurrency. The following sections cover the details of the foundational types and how the &lt;code&gt;NIOAsyncChannel&lt;/code&gt; works.&lt;/p&gt;&lt;h4&gt;NIOThrowingAsyncSequenceProducer and NIOAsyncSequenceProducer&lt;/h4&gt;&lt;p&gt;The &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/niothrowingasyncsequenceproducer&#39;&gt;NIOThrowingAsyncSequenceProducer&lt;/a&gt;&lt;/code&gt; and &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/nioasyncsequenceproducer&#39;&gt;NIOAsyncSequenceProducer&lt;/a&gt;&lt;/code&gt; are asynchronous sequences similar to Swift’s &lt;code&gt;AsyncStream&lt;/code&gt;. Their purpose is to provide a back pressured bridge between a synchronous producer and an asynchronous consumer. These types are highly configurable and generic which makes them usable in a lot of places with very good performance; however, at the same time they are not the easiest types to hold. We recommend that you &lt;strong&gt;never&lt;/strong&gt; expose them in public API but rather wrap them in your own async sequence.&lt;/p&gt;&lt;h4&gt;NIOAsyncWriter&lt;/h4&gt;&lt;p&gt;The &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/nioasyncchanneloutboundwriter&#39;&gt;NIOAsyncChannelOutboundWriter&lt;/a&gt;&lt;/code&gt; is used for bridging from an asynchronous producer to a synchronous consumer. It also has back pressure support which allows the consumer to stop the producer by suspending the &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/nioasyncwriter.yield(contentsof:)&#39;&gt;yield(contentsOf:)&lt;/a&gt;&lt;/code&gt; method.&lt;/p&gt;&lt;h4&gt;NIOAsyncChannel&lt;/h4&gt;&lt;p&gt;The above types are used to bridge both the read and write side of a &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channel&#39;&gt;Channel&lt;/a&gt;&lt;/code&gt; into Swift Concurrency. This can be done by wrapping a &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channel&#39;&gt;Channel&lt;/a&gt;&lt;/code&gt; via the &lt;code&gt;NIOAsyncChannel/init(synchronouslyWrapping:configuration:)&lt;/code&gt; initializer. Under the hood, this initializer adds two channel handlers to the end of the channel’s pipeline. These handlers bridge the read and write side of the channel. Additionally, the handlers work together to close the channel once both the reading and the writing have finished.&lt;/p&gt;&lt;p&gt;This is how you can wrap an existing channel into a &lt;code&gt;NIOAsyncChannel&lt;/code&gt;, consume the inbound data and echo it back outbound.&lt;/p&gt;&lt;pre class=&#39;snippet&#39;&gt;&lt;code class=&#39;language-swift&#39;&gt;&lt;span class=&#39;newline&#39;&gt;&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt; = &lt;span class=&#39;xo&#39;&gt;...&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;asyncChannel&lt;/span&gt; = &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;NIOAsyncChannel&lt;/span&gt;&amp;lt;&lt;span class=&#39;xt&#39;&gt;ByteBuffer&lt;/span&gt;, &lt;span class=&#39;xt&#39;&gt;ByteBuffer&lt;/span&gt;&amp;gt;(&lt;span class=&#39;xv&#39;&gt;wrappingChannelSynchronously&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+
+&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;asyncChannel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;executeThenClose&lt;/span&gt; { &lt;span class=&#39;xv&#39;&gt;inbound&lt;/span&gt;, &lt;span class=&#39;xv&#39;&gt;outbound&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;for&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;inboundData&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;inbound&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;outbound&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;write&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;inboundData&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The above code works nicely; however, you must be very careful at what point you wrap your channel otherwise you might lose some reads. For example your channel might be created by a &lt;code&gt;ServerBootstrap&lt;/code&gt; for a new inbound connection. The channel might start to produce reads as soon as it registered its IO which happens after your channel initializer ran. To avoid potentially losing reads the channel must be wrapped before it registered its IO. Another example is when the channel contains a handler that does protocol negotiation. Protocol negotiation handlers are usually waiting for some data to be exchanged before deciding what protocol to chose. Afterwards, they often modify the channel’s pipeline and add the protocol appropriate handlers to it. This is another case where wrapping of the &lt;code&gt;Channel&lt;/code&gt; into a &lt;code&gt;NIOAsyncChannel&lt;/code&gt; needs to happen at the right time to avoid losing reads.&lt;/p&gt;&lt;h3 id=&#39;Asynchronous%20bootstrap%20methods&#39;&gt;&lt;a href=&#39;#Asynchronous%20bootstrap%20methods&#39;&gt;Asynchronous bootstrap methods&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;NIO offers a multitude of bootstraps. To avoid the above problems and enable a seamless experience when using NIO from Swift Concurrency, the bootstraps gained new generic asynchronous methods.&lt;/p&gt;&lt;p&gt;The next section is going to focus on how to use the methods to boostrap a TCP server and client.&lt;/p&gt;&lt;h4&gt;ServerBootstrap&lt;/h4&gt;&lt;p&gt;The server bootstrap is used to create a new TCP based server. Once any of the bind methods on the &lt;code&gt;ServerBootstrap&lt;/code&gt; is called, a new listening socket is created to handle new inbound TCP connections. Let’s use the new methods to setup a TCP server and configure a &lt;code&gt;NIOAsyncChannel&lt;/code&gt; for each inbound connection.&lt;/p&gt;&lt;pre class=&#39;snippet&#39;&gt;&lt;code class=&#39;language-swift&#39;&gt;&lt;span class=&#39;newline&#39;&gt;&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;serverChannel&lt;/span&gt; = &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;ServerBootstrap&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;group&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;eventLoopGroup&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    .&lt;span class=&#39;xv&#39;&gt;bind&lt;/span&gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;host&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;127.0.0.1&quot;&lt;/span&gt;,&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;port&lt;/span&gt;: &lt;span class=&#39;xn&#39;&gt;1234&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    ) { &lt;span class=&#39;xv&#39;&gt;childChannel&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xc&#39;&gt;// This closure is called for every inbound connection&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;childChannel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;eventLoop&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;makeCompletedFuture&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;return&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;NIOAsyncChannel&lt;/span&gt;&amp;lt;&lt;span class=&#39;xt&#39;&gt;ByteBuffer&lt;/span&gt;, &lt;span class=&#39;xt&#39;&gt;ByteBuffer&lt;/span&gt;&amp;gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;synchronouslyWrapping&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;childChannel&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            )&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    }&lt;span class=&#39;newline&#39;&gt;
+
+&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;withThrowingDiscardingTaskGroup&lt;/span&gt; { &lt;span class=&#39;xv&#39;&gt;group&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;serverChannel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;executeThenClose&lt;/span&gt; { &lt;span class=&#39;xv&#39;&gt;serverChannelInbound&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xk&#39;&gt;for&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;connectionChannel&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;serverChannelInbound&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            &lt;span class=&#39;xv&#39;&gt;group&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;addTask&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xk&#39;&gt;do&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;connectionChannel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;executeThenClose&lt;/span&gt; { &lt;span class=&#39;xv&#39;&gt;connectionChannelInbound&lt;/span&gt;, &lt;span class=&#39;xv&#39;&gt;connectionChannelOutbound&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                        &lt;span class=&#39;xk&#39;&gt;for&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;inboundData&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;connectionChannelInbound&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                            &lt;span class=&#39;xc&#39;&gt;// Let&#39;s echo back all inbound data&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                            &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;connectionChannelOutbound&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;write&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;inboundData&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                        }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                } &lt;span class=&#39;xk&#39;&gt;catch&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    &lt;span class=&#39;xc&#39;&gt;// Handle errors&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;In the above code, we are bootstrapping a new TCP server which we assign to &lt;code&gt;serverChannel&lt;/code&gt;. Furthermore, in the trailing closure of &lt;code&gt;bind&lt;/code&gt; we are configuring the pipeline of each inbound connection. In our example, we are wrapping each child channel in a &lt;code&gt;NIOAsyncChannel&lt;/code&gt;. The resulting &lt;code&gt;serverChannel&lt;/code&gt; is a &lt;code&gt;NIOAsyncChannel&lt;/code&gt; whose inbound type is a &lt;code&gt;NIOAsyncChannel&lt;/code&gt; and  whose outbound type is &lt;code&gt;Never&lt;/code&gt;. This is due to the fact that each inbound connection gets its own separate child channel. The inbound and outbound types of each inbound connection is &lt;code&gt;ByteBuffer&lt;/code&gt; as specified in the bootstrap. Afterwards, we handle each inbound connection in separate child tasks and echo the data back.&lt;/p&gt;&lt;aside class=&#39;important&#39;&gt;&lt;h3&gt;Important&lt;/h3&gt;&lt;p&gt;Make sure to use discarding task groups which automatically reap finished child tasks. Normal task groups will result in a memory leak since they do not reap their child tasks automatically.&lt;/p&gt;&lt;/aside&gt;&lt;h4&gt;ClientBootstrap&lt;/h4&gt;&lt;p&gt;The client bootstrap is used to create a new TCP based client. Let’s take a look how to bootstrap a TCP connection and send some data to the server.&lt;/p&gt;&lt;pre class=&#39;snippet&#39;&gt;&lt;code class=&#39;language-swift&#39;&gt;&lt;span class=&#39;newline&#39;&gt;&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;clientChannel&lt;/span&gt; = &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;ClientBootstrap&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;group&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;eventLoopGroup&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    .&lt;span class=&#39;xv&#39;&gt;connect&lt;/span&gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;host&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;127.0.0.1&quot;&lt;/span&gt;,&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;port&lt;/span&gt;: &lt;span class=&#39;xn&#39;&gt;1234&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    ) { &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;eventLoop&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;makeCompletedFuture&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;return&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;NIOAsyncChannel&lt;/span&gt;&amp;lt;&lt;span class=&#39;xt&#39;&gt;ByteBuffer&lt;/span&gt;, &lt;span class=&#39;xt&#39;&gt;ByteBuffer&lt;/span&gt;&amp;gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;wrappingChannelSynchronously&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            )&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    }&lt;span class=&#39;newline&#39;&gt;
+
+&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;clientChannel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;executeThenClose&lt;/span&gt; { &lt;span class=&#39;xv&#39;&gt;inbound&lt;/span&gt;, &lt;span class=&#39;xv&#39;&gt;outbound&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;outbound&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;write&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;ByteBuffer&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;string&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;hello&quot;&lt;/span&gt;))&lt;span class=&#39;newline&#39;&gt;
+
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;for&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;inboundData&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;inbound&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;print&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;inboundData&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;}&lt;/code&gt;&lt;/pre&gt;&lt;h4&gt;Dynamic pipeline modifications&lt;/h4&gt;&lt;p&gt;The above bootstrap methods work great in the case where we know the types of the resulting channels at compile time. However, there are some scenarios where the type is only determined at runtime. Such cases include &lt;a target=&#39;_blank&#39; rel=&#39;external&#39; href=&#39;https://en.wikipedia.org/wiki/Application-Layer_Protocol_Negotiation&#39;&gt;Application-Layer-Protocol-Negotiation&lt;/a&gt; or &lt;a target=&#39;_blank&#39; rel=&#39;external&#39; href=&#39;https://en.wikipedia.org/wiki/HTTP/1.1_Upgrade_header&#39;&gt;HTTP protocol upgrades&lt;/a&gt;. To support those scenarios it is essential that channel handlers that dynamically configure the pipeline carry type information which allows us to runtime to determine how the pipeline was configured at runtime. To support this NIO introduced multiple new &lt;code&gt;ChannelHandler&lt;/code&gt; and corresponding pipeline configuration methods. Those types are:&lt;/p&gt;&lt;ol&gt;&lt;li&gt;&lt;p&gt;&lt;code&gt;NIOTypedApplicationProtocolNegotiationHandler&lt;/code&gt; for TLS based ALPN&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;code&gt;NIOTypedHTTPServerUpgradeHandler&lt;/code&gt; and &lt;code&gt;configureUpgradableHTTPServerPipeline&lt;/code&gt; for server-side HTTP protocol upgrades&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;code&gt;NIOTypedHTTPClientUpgradeHandler&lt;/code&gt; and &lt;code&gt;configureUpgradableHTTPClientPipeline&lt;/code&gt; for client-side HTTP protocol upgrades&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;All of those types have one thing in common - they are generic over the result of the dynamic pipeline configuration. This allows users to exhaustively switch over the result and correctly handle each case. The following example demonstrates how this works for a client-side websocket upgrade.&lt;/p&gt;&lt;pre class=&#39;snippet&#39;&gt;&lt;code class=&#39;language-swift&#39;&gt;&lt;span class=&#39;newline&#39;&gt;&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;enum&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;UpgradeResult&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;case&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;websocket&lt;/span&gt;(&lt;span class=&#39;xt&#39;&gt;NIOAsyncChannel&lt;/span&gt;&amp;lt;&lt;span class=&#39;xt&#39;&gt;WebSocketFrame&lt;/span&gt;, &lt;span class=&#39;xt&#39;&gt;WebSocketFrame&lt;/span&gt;&amp;gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;case&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;notUpgraded&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;}&lt;span class=&#39;newline&#39;&gt;
+
+&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;upgradeResult&lt;/span&gt;: &lt;span class=&#39;xt&#39;&gt;EventLoopFuture&lt;/span&gt;&amp;lt;&lt;span class=&#39;xt&#39;&gt;UpgradeResult&lt;/span&gt;&amp;gt; = &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;ClientBootstrap&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;group&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;eventLoopGroup&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    .&lt;span class=&#39;xv&#39;&gt;connect&lt;/span&gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;host&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;127.0.0.1&quot;&lt;/span&gt;,&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;port&lt;/span&gt;: &lt;span class=&#39;xn&#39;&gt;1234&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    ) { &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;eventLoop&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;makeCompletedFuture&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            &lt;span class=&#39;xc&#39;&gt;// Configure the websocket upgrader&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;upgrader&lt;/span&gt; = &lt;span class=&#39;xv&#39;&gt;NIOTypedWebSocketClientUpgrader&lt;/span&gt;&amp;lt;&lt;span class=&#39;xt&#39;&gt;UpgradeResult&lt;/span&gt;&amp;gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;upgradePipelineHandler&lt;/span&gt;: { &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;, _ &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    &lt;span class=&#39;xc&#39;&gt;// This configures the pipeline after the websocket upgrade was successful.&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    &lt;span class=&#39;xc&#39;&gt;// We are wrapping the pipeline in a NIOAsyncChannel.&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;eventLoop&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;makeCompletedFuture&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                        &lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;asyncChannel&lt;/span&gt; = &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;NIOAsyncChannel&lt;/span&gt;&amp;lt;&lt;span class=&#39;xt&#39;&gt;WebSocketFrame&lt;/span&gt;, &lt;span class=&#39;xt&#39;&gt;WebSocketFrame&lt;/span&gt;&amp;gt;(&lt;span class=&#39;xv&#39;&gt;wrappingChannelSynchronously&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                        &lt;span class=&#39;xk&#39;&gt;return&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;UpgradeResult&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;websocket&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;asyncChannel&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            )&lt;span class=&#39;newline&#39;&gt;
+
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;var&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;headers&lt;/span&gt; = &lt;span class=&#39;xv&#39;&gt;HTTPHeaders&lt;/span&gt;()&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            &lt;span class=&#39;xv&#39;&gt;headers&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;add&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;name&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;Content-Type&quot;&lt;/span&gt;, &lt;span class=&#39;xv&#39;&gt;value&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;text/plain; charset=utf-8&quot;&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            &lt;span class=&#39;xv&#39;&gt;headers&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;add&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;name&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;Content-Length&quot;&lt;/span&gt;, &lt;span class=&#39;xv&#39;&gt;value&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;0&quot;&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;requestHead&lt;/span&gt; = &lt;span class=&#39;xv&#39;&gt;HTTPRequestHead&lt;/span&gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;version&lt;/span&gt;: .&lt;span class=&#39;xv&#39;&gt;http1_1&lt;/span&gt;,&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;method&lt;/span&gt;: .&lt;span class=&#39;xv&#39;&gt;GET&lt;/span&gt;,&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;uri&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;/&quot;&lt;/span&gt;,&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;headers&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;headers&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            )&lt;span class=&#39;newline&#39;&gt;
+
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;clientUpgradeConfiguration&lt;/span&gt; = &lt;span class=&#39;xv&#39;&gt;NIOTypedHTTPClientUpgradeConfiguration&lt;/span&gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;upgradeRequestHead&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;requestHead&lt;/span&gt;,&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;upgraders&lt;/span&gt;: [&lt;span class=&#39;xv&#39;&gt;upgrader&lt;/span&gt;],&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;notUpgradingCompletionHandler&lt;/span&gt;: { &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;eventLoop&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;makeCompletedFuture&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                        &lt;span class=&#39;xk&#39;&gt;return&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;UpgradeResult&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;notUpgraded&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            )&lt;span class=&#39;newline&#39;&gt;
+
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;upgradeResult&lt;/span&gt; = &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;pipeline&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;syncOperations&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;configureUpgradableHTTPClientPipeline&lt;/span&gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;configuration&lt;/span&gt;: .&lt;span class=&#39;xk&#39;&gt;init&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;upgradeConfiguration&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;clientUpgradeConfiguration&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            )&lt;span class=&#39;newline&#39;&gt;
+
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;return&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;upgradeResult&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    }&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After having configured the pipeline to negotiate a websocket upgrade. We can switch over the the &lt;code&gt;upgradeResult&lt;/code&gt;. Importantly, we have to &lt;code&gt;await&lt;/code&gt; the &lt;code&gt;upgradeResult&lt;/code&gt; first since it has to be negotiated on the connection.&lt;/p&gt;&lt;pre class=&#39;snippet&#39;&gt;&lt;code&gt;&lt;span class=&#39;newline&#39;&gt;&lt;/span&gt;switch try await upgradeResult.get() {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;case .websocket(let websocketChannel):&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    print(&quot;Handling websocket connection&quot;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    try await self.handleWebsocketChannel(websocketChannel)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    print(&quot;Done handling websocket connection&quot;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;case .notUpgraded:&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    // The upgrade to websocket did not succeed.&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    print(&quot;Upgrade declined&quot;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;}&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#39;General%20guidance&#39;&gt;&lt;a href=&#39;#General%20guidance&#39;&gt;General guidance&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;Where should your code live?&lt;/h4&gt;&lt;p&gt;Before the introduction of Swift Concurrency both implementations of network protocols and business logic were often written inside &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channelhandler&#39;&gt;ChannelHandler&lt;/a&gt;&lt;/code&gt;s. This made it easier to get started; however, it came with some downsides. First, implementing business logic inside channel handlers requires the business logic to also handle all of the invariants that the &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channelhandler&#39;&gt;ChannelHandler&lt;/a&gt;&lt;/code&gt; protocol brings with it. This often requires writing complex state machines. Additionally, the business logic becomes very tied to NIO and hard to port between different systems. Because of the above reasons we recommend to implement your business logic using Swift Concurrency primitives and the &lt;code&gt;NIOAsyncChannel&lt;/code&gt; based bootstraps. Network protocol implementation should still be implemented as &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channelhandler&#39;&gt;ChannelHandler&lt;/a&gt;&lt;/code&gt;s.&lt;/p&gt;&lt;/section&gt;
         
-        <span class="keyword">let</span> buffer = clientChannel.<span class="property">channel</span>.<span class="property">allocator</span>.<span class="call">buffer</span>(capacity: <span class="number">0</span>)
-        partialResponse = .<span class="call">receiving</span>(head, buffer)
-    <span class="keyword">case</span> .<span class="dotAccess">body</span>(<span class="keyword">let</span> buffer):
-        <span class="keyword">guard case</span> .<span class="dotAccess">receiving</span>(<span class="keyword">let</span> head, <span class="keyword">var</span> existingBuffer) = partialResponse <span class="keyword">else</span> {
-            <span class="keyword">throw</span> <span class="type">HTTPClientError</span>.<span class="property">malformedResponse</span>
-        }
+    &lt;/section&gt;
 
-        existingBuffer.<span class="call">writeImmutableBuffer</span>(buffer)
-        partialResponse = .<span class="call">receiving</span>(head, existingBuffer)
-    <span class="keyword">case</span> .<span class="dotAccess">end</span>:
-        <span class="keyword">guard case</span> .<span class="dotAccess">receiving</span>(<span class="keyword">let</span> head, <span class="keyword">let</span> buffer) = partialResponse <span class="keyword">else</span> {
-            <span class="keyword">throw</span> <span class="type">HTTPClientError</span>.<span class="property">malformedResponse</span>
-        }
+    &lt;section id=&quot;about-author&quot; class=&quot;content-wrapper&quot;&gt;
+        &lt;img src=&quot;https://github.com/joannis.png&quot; alt=&quot;&quot; class=&quot;author&quot;&gt;
+        &lt;h4&gt;About &lt;/h4&gt;
+        &lt;p class=&quot;author-about&quot;&gt;Joannis is a seasoned member of the Swift Server WorkGroup, and the co-founder of Unbeatable Software B.V. If you&amp;#39;re looking to elevate your team&amp;#39;s capabilities or need expert guidance on Swift backend development, consider hiring him.&lt;/p&gt;
 
-        <span class="keyword">return</span> (head, buffer)
-    }
-}
+        &lt;a href=&quot;https://unbeatable.software/mentoring-and-training&quot; target=&quot;_blank&quot; class=&quot;author-cta&quot;&gt;Get in touch with Joannis&lt;/a&gt;
+    &lt;/section&gt;
 
-<span class="comment">// 14</span>
-<span class="keyword">throw</span> <span class="type">HTTPClientError</span>.<span class="property">unexpectedEndOfStream</span></code></pre><p>This sets up a state variable to keep track of the response parts received. It then processes the response parts as they come in:</p><ol start="12"><li>A <code>for</code> loop is used to iterate over the response parts. This is a structured concurrency block that will continue to run until the channel is closed by the remote, an error is thrown, or a <code>return</code> statement ends the function.</li><li>The <code>part</code> is matched against the <code>HTTPClientResponsePart</code> enum. If the part is a head, it's stored in the <code>partialResponse</code> variable. If the part is a body, it's appended to the buffer in the <code>partialResponse</code> variable. If the part is an end, the <code>partialResponse</code> is returned.</li><li>If the loop ends without a return, an error is thrown, since the code was unable to receive a complete response.</li></ol><h2>Using the Client</h2><p>Now that the HTTP client is complete, it's time to use it. Add the following code to the <code>main.swift</code> file:</p><pre><code class="language-swift"><span class="keyword">let</span> client = <span class="type">HTTPClient</span>(host: <span class="string">"example.com"</span>)
-<span class="keyword">let</span> (response, body) = <span class="keyword">try await</span> client.<span class="call">request</span>(<span class="string">"/"</span>, headers: [<span class="string">"Host"</span>: <span class="string">"example.com"</span>])
-<span class="call">print</span>(response)
-<span class="call">print</span>(body.<span class="call">getString</span>(at: <span class="number">0</span>, length: body.<span class="property">readableBytes</span>)!)</code></pre><p>This creates a client and sends a GET request to <code>example.com</code>. The response is then printed to the console.</p><p>If everything is set up correctly, you should see roughly the following output:</p><pre><code>HTTPResponseHead { version: HTTP/1.1, status: 200 OK, headers: [("Accept-Ranges", "bytes"), ("Age", "464157"), ("Cache-Control", "max-age=604800"), ("Content-Type", "text/html; charset=UTF-8"), ("Date", "Wed, 07 Feb 2024 21:22:33 GMT"), ("Etag", "\"3147526947\""), ("Expires", "Wed, 14 Feb 2024 21:22:33 GMT"), ("Last-Modified", "Thu, 17 Oct 2019 07:18:26 GMT"), ("Server", "ECS (dce/26CD)"), ("Vary", "Accept-Encoding"), ("X-Cache", "HIT"), ("Content-Length", "1256")] }
-&lt;!doctype html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Example Domain&lt;/title&gt;
+&lt;/article&gt;
 
-    &lt;meta charset="utf-8" /&gt;
-    &lt;meta http-equiv="Content-type" content="text/html; charset=utf-8" /&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;
-    &lt;style type="text/css"&gt;
-    ....
-</code></pre><p>And that's it! You've built a simple HTTP client using SwiftNIO. You can now use this client to send requests to any server that supports HTTP/1.1.</p>
-        
-    </section>
-
-    <section id="about-author" class="content-wrapper">
-        <img src="https://github.com/joannis.png" alt="Joannis Orlandos" class="author">
-        <h4>About Joannis Orlandos</h4>
-        <p class="author-about">Joannis is a seasoned member of the Swift Server WorkGroup, and the co-founder of Unbeatable Software B.V. If you're looking to elevate your team's capabilities or need expert guidance on Swift backend development, consider hiring him.</p>
-
-        <a href="https://unbeatable.software/mentoring-and-training" target="_blank" class="author-cta">Get in touch with Joannis</a>
-    </section>
-
-</article>
         
     </main>
 
@@ -209,14 +228,14 @@
             <figure>
                 <picture>
                     <source 
-                        srcset="https://swiftonserver.com/images/logos/logo~dark.png" 
+                        srcset="/images/logos/logo~dark.png" 
                         media="(prefers-color-scheme: dark)"
                     >
                     <img 
                         id="logo-image"
                         width="80"
                         height="80"
-                        src="https://swiftonserver.com/images/logos/logo.png"
+                        src="/images/logos/logo.png"
                         alt="Logo of Swift on server"
                         title="Swift on server"
                     >
@@ -228,8 +247,8 @@
 
             <p> 
                 <a href="https://swiftonserver.com/">Home</a> ·
-                <a href="https://swiftonserver.com/rss.xml" target="_blank">RSS</a> ·
-                <a href="https://swiftonserver.com/sitemap.xml" target="_blank">Sitemap</a>
+                <a href="/rss.xml" target="_blank">RSS</a> ·
+                <a href="/sitemap.xml" target="_blank">Sitemap</a>
             </p>
             
             

@@ -1,6 +1,7 @@
 slug: whats-new-in-hummingbird-2
 title: What's new in Hummingbird 2?
-description: Discover Hummingbird 2: a Swift-based HTTP server framework, with modern concurrency and customizable request contexts.
+description: |
+    Discover Hummingbird 2: a Swift-based HTTP server framework, with modern concurrency and customizable request contexts.
 date: 2024/02/27
 tags: Swift, Hummingbird, Server
 author: Tibor Bödecs

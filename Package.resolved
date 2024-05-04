@@ -1,0 +1,24 @@
+{
+  "originHash" : "8d6f2034c67650ae9fae44f0fcd54cde624927e438c64c62366bbfc33fdc0fab",
+  "pins" : [
+    {
+      "identity" : "swift-mustache",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hummingbird-project/swift-mustache.git",
+      "state" : {
+        "revision" : "2663d13ea7c50a8ee2178732895283246fd91b4e",
+        "version" : "2.0.0-beta.1"
+      }
+    },
+    {
+      "identity" : "yams",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jpsim/Yams.git",
+      "state" : {
+        "revision" : "9234124cff5e22e178988c18d8b95a8ae8007f76",
+        "version" : "5.1.2"
+      }
+    }
+  ],
+  "version" : 3
+}

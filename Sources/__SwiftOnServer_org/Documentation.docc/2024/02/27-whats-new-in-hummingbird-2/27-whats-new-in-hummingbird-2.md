@@ -4,9 +4,9 @@ Hummingbird is a lightweight, flexible HTTP server framework written in Swift. T
 
 ## Swift concurrency
 
-Hummingbird 2 was built using the modern Swift concurrency APIs. Most of the NIO event loop references are replaced with async / await functions and calls. Structured concurrency is present all around the codebase and the project components, such as `HBRequest`, are thread safe thanks to the `Sendable` conformance. 
+Hummingbird 2 was built using the modern Swift concurrency APIs. Most of the NIO event loop references are replaced with async / await functions and calls. Structured concurrency is present all around the codebase and the project components, such as ``Request``, are thread safe thanks to the ``Sendable`` conformance. 
 
-Before the async / await feature adoption, some components had a `HBAsync` prefix. Those are now removed from the v2 library. For example`HBAsyncMiddleware` is now `MiddlewareProtocol` or `HBAsyncResponder` is simply called `HTTPResponder`.
+Before the async / await feature adoption, some components had a `HBAsync` prefix. Those are now removed from the v2 library. For example`HBAsyncMiddleware` is now ``MiddlewareProtocol`` or `HBAsyncResponder` is simply called ``HTTPResponder``.
 
 It is worth to mention that HB2 is prepared for Swift 6, the project also compiles against the experimental `StrictConcurrency=complete` feature flag. 
 
@@ -20,7 +20,7 @@ The [HummingbirdCore](https://github.com/hummingbird-project/hummingbird-core) r
 
 ## Jobs framework updates
 
-The HummingbirdJobs framework can be used to push work onto a queue, so that is  processed outside of a request. Job handlers were restructured to use `TaskGroup` and conform to the `Service` protocol from the Swift service lifecycle framework. A `JobQueue` can also define it's own `JobID` type, which helps when integrating with various database/driver implementations.
+The HummingbirdJobs framework can be used to push work onto a queue, so that is  processed outside of a request. Job handlers were restructured to use ``TaskGroup`` and conform to the ``Service`` protocol from the Swift service lifecycle framework. A ``JobQueue`` can also define it's own ``JobID`` type, which helps when integrating with various database/driver implementations.
 
 ## Connection pools
 
@@ -34,7 +34,7 @@ Hummingbird 2 takes advantage of the brand new [Swift HTTP Types library](https:
 
 Hummingbird 2 features a brand new routing library, based on Swift result builders. This is a standalone project, the old route building mechanism still works, but if you prefer result builders you can try the new method by importing this lib.
 
-Here's a little sneak-peak about the usage of the new `RouterBuilder` object:
+Here's a little sneak-peak about the usage of the new ``RouterBuilder`` object:
 
 ```swift
 import HummingbirdRouter
@@ -60,7 +60,7 @@ There are more examples available inside the Hummingbird [RouterTests](https://g
 
 The biggest change to the framework is definitely the introduction of the generic request context. Hummingbird 2.0 separates contextual objects from the `Request` type and users can define custom properties as custom `RequestContext` protocol implementations. 
 
-The request context is associated with the reworked _Router_, which a generic class, featuring a _Context_ type. The `BasicRequestContext` type is the default _Context_ implementation for the _Router_. The request decoder and encoder defaults to a JSON-based solution when using the base context. You can provide a custom decoder through a custom router context. 
+The request context is associated with the reworked ``Router``, which a generic class, featuring a _Context_ type. The `BasicRequestContext` type is the default _Context_ implementation for the _Router_. The request decoder and encoder defaults to a JSON-based solution when using the base context. You can provide a custom decoder through a custom router context.
 
 Let me show you how this new contextual router system works in practice.
 
@@ -145,9 +145,9 @@ struct MyRequestDecoder: RequestDecoder {
 
 ```
 
-1. Define the custom decoder by implementing the `RequestDecoder` protocol.
+1. Define the custom decoder by implementing the ``RequestDecoder`` protocol.
 2. Make sure that the incoming request has a `Content-Type` HTTP header field.
-3. Construct a valid `MediaType` object from the header field.
+3. Construct a valid ``MediaType`` object from the header field.
 4. Setup a custom decoder based on the media type.
 5. Return the decoded object using the decoder, with the request and the context.
 
@@ -189,7 +189,7 @@ struct MyBaseRequestContext: MyRequestContext {
 3. Implement custom properties, configure them using the init method, if needed.
 4. Return the custom `MyRequestDecoder` as a default request decoder implementation.
 
-The [HummingbirdAuth](https://github.com/hummingbird-project/hummingbird-auth) library also defines a custom context (`AuthRequestContext`) in a similar way to store user auth information.
+The [HummingbirdAuth](https://github.com/hummingbird-project/hummingbird-auth) library also defines a custom context (``AuthRequestContext``) in a similar way to store user auth information.
 
 It is possible to compose multiple protocols such as _AuthRequestContext_ by conforming to all of them. This makes it easy to integrate the context with various libraries. This also allows libraries to provide middleware that accept a custom context as input, or that modify a custom context, to enrich requests. For example, enriching a request by adding the authenticated user.
 

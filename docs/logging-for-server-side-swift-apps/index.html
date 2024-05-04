@@ -4,52 +4,52 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>Logging for server-side Swift apps - Swift on server</title>
-    
+    <title>Logging for server-side Swift apps - Swift on Server</title>
+
     <meta name="description" content="Discover how to integrate the Logging library into an application, use various log levels, and tailor the unified logging API for backend projects.">
     
-    <meta property="og:title" content="Logging for server-side Swift apps - Swift on server">
+    <meta property="og:title" content="Logging for server-side Swift apps - Swift on Server">
     <meta property="og:description" content="Discover how to integrate the Logging library into an application, use various log levels, and tailor the unified logging API for backend projects.">
-    <meta property="og:url" content="https://swiftonserver.com/logging-for-server-side-swift-apps/">
-    <meta property="og:image" content="https://swiftonserver.com/images/assets/logging-for-server-side-swift-apps/cover.jpg">
+    <meta property="og:url" content="https://swiftonserver.com/">
+    <meta property="og:image" content="/">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Logging for server-side Swift apps - Swift on server">
+    <meta name="twitter:title" content="Logging for server-side Swift apps - Swift on Server">
     <meta name="twitter:description" content="Discover how to integrate the Logging library into an application, use various log levels, and tailor the unified logging API for backend projects.">
-    <meta name="twitter:image" content="https://swiftonserver.com/images/assets/logging-for-server-side-swift-apps/cover.jpg">
+    <meta name="twitter:image" content="/">
     
-    <link rel="stylesheet" href="https://swiftonserver.com/css/style.css">
-    <link rel="stylesheet" href="https://swiftonserver.com/css/syntax.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/syntax.css">
 
-    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/icon-320.png" type="image/png">
+    <link rel="shortcut icon" href="/images/icons/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/images/icons/icon-320.png" type="image/png">
     
-    <link rel="apple-touch-icon" href="https://swiftonserver.com/images/icons/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="57x57" href="https://swiftonserver.com/images/icons/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="https://swiftonserver.com/images/icons/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="https://swiftonserver.com/images/icons/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="https://swiftonserver.com/images/icons/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="https://swiftonserver.com/images/icons/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="https://swiftonserver.com/images/icons/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="https://swiftonserver.com/images/icons/apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://swiftonserver.com/images/icons/apple-touch-icon-180x180.png">
+    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon-180x180.png">
     
 </head>
 
 <body>
     <header id="page-header">
-        <a href="https://swiftonserver.com/">
+        <a href="/">
             <figure>
                 <picture>
                     <source 
-                        srcset="https://swiftonserver.com/images/logos/logo~dark.png" 
+                        srcset="/images/logos/logo~dark.png" 
                         media="(prefers-color-scheme: dark)"
                     >
                     <img 
                         id="logo-image"
                         width="150"
                         height="150"
-                        src="https://swiftonserver.com/images/logos/logo.png"
+                        src="/images/logos/logo.png"
                         alt="Logo of Swift on server"
                         title="Swift on server"
                     >
@@ -60,379 +60,166 @@
     
     <main>
 
-        <article>
-    <header>
-        <section id="post-header" class="content-wrapper">
-            <time datetime="2024/02/13">2024/02/13</time>
-            <h1 class="title">Logging for server-side Swift apps</h1>
-            <p class="excerpt">Discover how to integrate the Logging library into an application, use various log levels, and tailor the unified logging API for backend projects.</p>
-            <div class="meta">
-                <span class="tag">Swift</span>
-<span class="tag">Logging</span>
-<span class="tag">Observability</span>
-            </div>
-            <img src="https://github.com/tib.png" alt="Tibor Bödecs" class="author">
-            <p>
-                <span class="author">Written by: <a href="https://x.com/tiborbodecs" target="_blank">Tibor Bödecs</a> @ 
-                <span class="author"><a href="https://binarybirds.com/" target="_blank">Binary Birds Kft.</a></span><br>
-                <span class="reading-time">Reading time: 20 minutes</span><br>
-            </p>
-        </section>
-    </header>
+        &lt;article&gt;
+    &lt;header&gt;
+        &lt;section id=&quot;post-header&quot; class=&quot;content-wrapper&quot;&gt;
+            &lt;time datetime=&quot;2024/02/13&quot;&gt;2024/02/13&lt;/time&gt;
+            &lt;h1 class=&quot;title&quot;&gt;Logging for server-side Swift apps&lt;/h1&gt;
+            &lt;p class=&quot;excerpt&quot;&gt;Discover how to integrate the Logging library into an application, use various log levels, and tailor the unified logging API for backend projects.&lt;/p&gt;
+            &lt;div class=&quot;meta&quot;&gt;
+                Swift, Logging, Observability
+            &lt;/div&gt;
+            &lt;img src=&quot;https://github.com/tib.png&quot; alt=&quot;&quot; class=&quot;author&quot;&gt;
+            &lt;p&gt;
+                &lt;span class=&quot;author&quot;&gt;Written by: &lt;a href=&quot;https://x.com/tiborbodecs&quot; target=&quot;_blank&quot;&gt;&lt;/a&gt; @ 
+                &lt;span class=&quot;author&quot;&gt;&lt;a href=&quot;https://binarybirds.com/&quot; target=&quot;_blank&quot;&gt;Binary Birds Kft.&lt;/a&gt;&lt;/span&gt;&lt;br&gt;
+                &lt;span class=&quot;reading-time&quot;&gt;Reading time: 20 minutes&lt;/span&gt;&lt;br&gt;
+            &lt;/p&gt;
+        &lt;/section&gt;
+    &lt;/header&gt;
 
-    <section class="content-wrapper">
-        <hr>
-    </section>
+    &lt;section class=&quot;content-wrapper&quot;&gt;
+        &lt;hr&gt;
+    &lt;/section&gt;
 
-    <section id="contents" class="content-wrapper">
+    &lt;section id=&quot;contents&quot; class=&quot;content-wrapper&quot;&gt;
     
-    <h1>Logging for server-side Swift apps</h1><p>The <a href="https://github.com/apple/swift-log" target="_blank">swift-log</a> open-source project is developed by Apple. It provides a unified logging solution for server-side Swift applications. The API closely mirrors the functionality of <a href="https://developer.apple.com/documentation/os/logging" target="_blank">os_log</a>, but it also offers cross-platform compatibility. This means that it is possible to use the Logging library on Linux and Windows too. This tutorial aims to provide a simple, but comprehensive overview of the logger API.</p><h2>How to use the Logging library</h2><p>Incorporating Logging into a backend Swift project is straightforward. Swift Package Manager provides an easy way to add the Logging framework as a package dependency using the <code>Package.swift</code> file.</p><pre><code class="language-swift"><span class="comment">// swift-tools-version: 5.9</span>
-<span class="keyword">import</span> PackageDescription
+    &lt;section class=&#39;introduction&#39;&gt;&lt;h1&gt;NIO and Swift Concurrency&lt;/h1&gt;&lt;/section&gt;&lt;section class=&#39;details literature&#39;&gt;&lt;p&gt;This article explains how to interface between NIO and Swift Concurrency.&lt;/p&gt;&lt;p&gt;NIO was created before native Concurrency support in Swift existed, hence, NIO had to solve a few problems that have solutions in the language today. Since the introduction of Swift Concurrency, NIO has added numerous features to make the interop between NIO’s &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channel&#39;&gt;Channel&lt;/a&gt;&lt;/code&gt; eventing system and Swift’s Concurrency primitives as easy as possible.&lt;/p&gt;&lt;h3 id=&#39;EventLoopFuture/Promise%20bridges&#39;&gt;&lt;a href=&#39;#EventLoopFuture/Promise%20bridges&#39;&gt;EventLoopFuture/Promise bridges&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The first bridges that NIO introduced added methods on &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/eventloopfuture&#39;&gt;EventLoopFuture&lt;/a&gt;&lt;/code&gt; and &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/eventlooppromise&#39;&gt;EventLoopPromise&lt;/a&gt;&lt;/code&gt; to enable communication between Concurrency and NIO. These methods are &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/eventloopfuture.get&#39;&gt;get&lt;/a&gt;&lt;/code&gt; and &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/eventlooppromise.completewithtask(_:)&#39;&gt;completeWithTask(_:)&lt;/a&gt;&lt;/code&gt;.&lt;/p&gt;&lt;aside class=&#39;warning&#39;&gt;&lt;h3&gt;Warning&lt;/h3&gt;&lt;p&gt;The future &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/eventloopfuture.get&#39;&gt;get&lt;/a&gt;&lt;/code&gt; method does not support task cancellation.&lt;/p&gt;&lt;/aside&gt;&lt;p&gt;Here is a small example of how these work:&lt;/p&gt;&lt;pre class=&#39;snippet&#39;&gt;&lt;code class=&#39;language-swift&#39;&gt;&lt;span class=&#39;newline&#39;&gt;&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;eventLoop&lt;/span&gt;: &lt;span class=&#39;xt&#39;&gt;EventLoop&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
 
-<span class="keyword">let</span> package = <span class="type">Package</span>(
-    name: <span class="string">"logging-for-server-side-swift-apps-sample"</span>,
-    platforms: [
-        .<span class="call">macOS</span>(.<span class="dotAccess">v10_15</span>),
-    ],
-    products: [
-        .<span class="call">library</span>(name: <span class="string">"MyLibrary"</span>, targets: [<span class="string">"MyLibrary"</span>]),
-        .<span class="call">executable</span>(name: <span class="string">"MyApp"</span>, targets: [<span class="string">"MyApp"</span>]),
-    ],
-    dependencies: [
-        .<span class="call">package</span>(url: <span class="string">"https://github.com/apple/swift-log.git"</span>, from: <span class="string">"1.5.0"</span>),
-    ],
-    targets: [
-        .<span class="call">target</span>(
-            name: <span class="string">"MyLibrary"</span>,
-            dependencies: [
-                .<span class="call">product</span>(name: <span class="string">"Logging"</span>, package: <span class="string">"swift-log"</span>),
-            ]
-        ),
-        .<span class="call">executableTarget</span>(
-            name: <span class="string">"MyApp"</span>,
-            dependencies: [
-                .<span class="call">target</span>(name: <span class="string">"MyLibrary"</span>),
-                .<span class="call">product</span>(name: <span class="string">"Logging"</span>, package: <span class="string">"swift-log"</span>),
-            ]
-        ),
-    ]
-)</code></pre><p>This article offers a <a href="https://github.com/swift-on-server/logging-for-server-side-swift-apps-sample" target="_blank">sample project</a> that you can use as a starting point.</p><p>In this tutorial, we are going to create a basic library and an executable target. These simulate a virtual meeting room including participants and their ability to join and leave the room. We're going to use the <code>MyLibrary</code> target, which will take advantage of the logging framework.</p><p>Inside the <code>MyApp</code> target , we'll add more log messages as well. The starter sample project has no logs at all, but relies on the <code>print</code> function to display the desired output. We're going to improve the project to provide debug messages for developers through the Logging API.</p><h3>The basics</h3><p>The Logging library defines a public <code>Logger</code> struct that developers can instantiate and customize.</p><p>The Logger's label serves as an identifier or name for a specific logger instance. It helps distinguish log messages originating from different parts of an application or system. Additionally, the label can be useful for categorizing and organizing log entries, especially in large-scale projects with multiple components or modules. It provides context for where the log messages are coming from, aiding in debugging, monitoring, and analyzing the behavior of the software.</p><p>Log levels allow developers to specify the level of detail they want to log, ranging from very specific debugging information to high-level summaries of system activity. This granularity enables developers to tailor logging output according to their specific needs.</p><p>Through extra metadata, developers can get even more details about the circumstances surrounding a log event. This contextual information helps developers understand why a log event occurred, making it easier to diagnose issues and trace the flow of execution within a system.</p><p>The following snippet demonstrates how to use a basic <code>Logger</code> instance:</p><pre><code class="language-swift"><span class="comment">// 1.</span> 
-<span class="keyword">import</span> Logging 
+&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;promise&lt;/span&gt; = &lt;span class=&#39;xv&#39;&gt;eventLoop&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;makePromise&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;of&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;Bool&lt;/span&gt;.&lt;span class=&#39;xk&#39;&gt;self&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
 
-<span class="comment">// 2.</span>
-<span class="keyword">var</span> logger: <span class="type">Logger</span> = .<span class="keyword">init</span>(label: <span class="string">"my-app"</span>)
+&lt;/span&gt;&lt;span class=&#39;xv&#39;&gt;promise&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;completeWithTask&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;Task&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;sleep&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;for&lt;/span&gt;: .&lt;span class=&#39;xv&#39;&gt;seconds&lt;/span&gt;(&lt;span class=&#39;xn&#39;&gt;1&lt;/span&gt;))&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;return&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;true&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;}&lt;span class=&#39;newline&#39;&gt;
 
-<span class="comment">// 3.</span>
-logger.<span class="property">logLevel</span> = .<span class="dotAccess">trace</span>
+&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;result&lt;/span&gt; = &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;promise&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;futureResult&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;get&lt;/span&gt;()&lt;/code&gt;&lt;/pre&gt;&lt;aside class=&#39;note&#39;&gt;&lt;h3&gt;Note&lt;/h3&gt;&lt;p&gt;The &lt;code&gt;completeWithTask&lt;/code&gt; method creates an unstructured task under the hood.&lt;/p&gt;&lt;/aside&gt;&lt;h3 id=&#39;Channel%20bridges&#39;&gt;&lt;a href=&#39;#Channel%20bridges&#39;&gt;Channel bridges&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/eventloopfuture&#39;&gt;EventLoopFuture&lt;/a&gt;&lt;/code&gt; and &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/eventlooppromise&#39;&gt;EventLoopPromise&lt;/a&gt;&lt;/code&gt; bridges already allow async code to interact with some of NIO’s types. However, they only work where we have request-response-like interfaces. On the other hand, NIO’s &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channel&#39;&gt;Channel&lt;/a&gt;&lt;/code&gt; type contains a &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channelpipeline&#39;&gt;ChannelPipeline&lt;/a&gt;&lt;/code&gt; which can be roughly described as a bi-directional streaming pipeline. To bridge such a pipeline into Concurrency required new types. Importantly, these types need to uphold the channel’s back pressure and writability guarantees. NIO introduced the &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/niothrowingasyncsequenceproducer&#39;&gt;NIOThrowingAsyncSequenceProducer&lt;/a&gt;&lt;/code&gt;, &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/nioasyncsequenceproducer&#39;&gt;NIOAsyncSequenceProducer&lt;/a&gt;&lt;/code&gt; and the &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/nioasyncchanneloutboundwriter&#39;&gt;NIOAsyncChannelOutboundWriter&lt;/a&gt;&lt;/code&gt; which form the foundation to bridge a &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channel&#39;&gt;Channel&lt;/a&gt;&lt;/code&gt;. On top of these foundational types, NIO provides the &lt;code&gt;NIOAsyncChannel&lt;/code&gt; which is used to wrap a &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channel&#39;&gt;Channel&lt;/a&gt;&lt;/code&gt; to produce an interface that can be consumed directly from Swift Concurrency. The following sections cover the details of the foundational types and how the &lt;code&gt;NIOAsyncChannel&lt;/code&gt; works.&lt;/p&gt;&lt;h4&gt;NIOThrowingAsyncSequenceProducer and NIOAsyncSequenceProducer&lt;/h4&gt;&lt;p&gt;The &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/niothrowingasyncsequenceproducer&#39;&gt;NIOThrowingAsyncSequenceProducer&lt;/a&gt;&lt;/code&gt; and &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/nioasyncsequenceproducer&#39;&gt;NIOAsyncSequenceProducer&lt;/a&gt;&lt;/code&gt; are asynchronous sequences similar to Swift’s &lt;code&gt;AsyncStream&lt;/code&gt;. Their purpose is to provide a back pressured bridge between a synchronous producer and an asynchronous consumer. These types are highly configurable and generic which makes them usable in a lot of places with very good performance; however, at the same time they are not the easiest types to hold. We recommend that you &lt;strong&gt;never&lt;/strong&gt; expose them in public API but rather wrap them in your own async sequence.&lt;/p&gt;&lt;h4&gt;NIOAsyncWriter&lt;/h4&gt;&lt;p&gt;The &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/nioasyncchanneloutboundwriter&#39;&gt;NIOAsyncChannelOutboundWriter&lt;/a&gt;&lt;/code&gt; is used for bridging from an asynchronous producer to a synchronous consumer. It also has back pressure support which allows the consumer to stop the producer by suspending the &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/nioasyncwriter.yield(contentsof:)&#39;&gt;yield(contentsOf:)&lt;/a&gt;&lt;/code&gt; method.&lt;/p&gt;&lt;h4&gt;NIOAsyncChannel&lt;/h4&gt;&lt;p&gt;The above types are used to bridge both the read and write side of a &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channel&#39;&gt;Channel&lt;/a&gt;&lt;/code&gt; into Swift Concurrency. This can be done by wrapping a &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channel&#39;&gt;Channel&lt;/a&gt;&lt;/code&gt; via the &lt;code&gt;NIOAsyncChannel/init(synchronouslyWrapping:configuration:)&lt;/code&gt; initializer. Under the hood, this initializer adds two channel handlers to the end of the channel’s pipeline. These handlers bridge the read and write side of the channel. Additionally, the handlers work together to close the channel once both the reading and the writing have finished.&lt;/p&gt;&lt;p&gt;This is how you can wrap an existing channel into a &lt;code&gt;NIOAsyncChannel&lt;/code&gt;, consume the inbound data and echo it back outbound.&lt;/p&gt;&lt;pre class=&#39;snippet&#39;&gt;&lt;code class=&#39;language-swift&#39;&gt;&lt;span class=&#39;newline&#39;&gt;&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt; = &lt;span class=&#39;xo&#39;&gt;...&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;asyncChannel&lt;/span&gt; = &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;NIOAsyncChannel&lt;/span&gt;&amp;lt;&lt;span class=&#39;xt&#39;&gt;ByteBuffer&lt;/span&gt;, &lt;span class=&#39;xt&#39;&gt;ByteBuffer&lt;/span&gt;&amp;gt;(&lt;span class=&#39;xv&#39;&gt;wrappingChannelSynchronously&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
 
-<span class="comment">// 4.</span>
-logger[metadataKey: <span class="string">"foo"</span>] = <span class="string">"bar"</span>
+&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;asyncChannel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;executeThenClose&lt;/span&gt; { &lt;span class=&#39;xv&#39;&gt;inbound&lt;/span&gt;, &lt;span class=&#39;xv&#39;&gt;outbound&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;for&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;inboundData&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;inbound&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;outbound&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;write&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;inboundData&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The above code works nicely; however, you must be very careful at what point you wrap your channel otherwise you might lose some reads. For example your channel might be created by a &lt;code&gt;ServerBootstrap&lt;/code&gt; for a new inbound connection. The channel might start to produce reads as soon as it registered its IO which happens after your channel initializer ran. To avoid potentially losing reads the channel must be wrapped before it registered its IO. Another example is when the channel contains a handler that does protocol negotiation. Protocol negotiation handlers are usually waiting for some data to be exchanged before deciding what protocol to chose. Afterwards, they often modify the channel’s pipeline and add the protocol appropriate handlers to it. This is another case where wrapping of the &lt;code&gt;Channel&lt;/code&gt; into a &lt;code&gt;NIOAsyncChannel&lt;/code&gt; needs to happen at the right time to avoid losing reads.&lt;/p&gt;&lt;h3 id=&#39;Asynchronous%20bootstrap%20methods&#39;&gt;&lt;a href=&#39;#Asynchronous%20bootstrap%20methods&#39;&gt;Asynchronous bootstrap methods&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;NIO offers a multitude of bootstraps. To avoid the above problems and enable a seamless experience when using NIO from Swift Concurrency, the bootstraps gained new generic asynchronous methods.&lt;/p&gt;&lt;p&gt;The next section is going to focus on how to use the methods to boostrap a TCP server and client.&lt;/p&gt;&lt;h4&gt;ServerBootstrap&lt;/h4&gt;&lt;p&gt;The server bootstrap is used to create a new TCP based server. Once any of the bind methods on the &lt;code&gt;ServerBootstrap&lt;/code&gt; is called, a new listening socket is created to handle new inbound TCP connections. Let’s use the new methods to setup a TCP server and configure a &lt;code&gt;NIOAsyncChannel&lt;/code&gt; for each inbound connection.&lt;/p&gt;&lt;pre class=&#39;snippet&#39;&gt;&lt;code class=&#39;language-swift&#39;&gt;&lt;span class=&#39;newline&#39;&gt;&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;serverChannel&lt;/span&gt; = &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;ServerBootstrap&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;group&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;eventLoopGroup&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    .&lt;span class=&#39;xv&#39;&gt;bind&lt;/span&gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;host&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;127.0.0.1&quot;&lt;/span&gt;,&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;port&lt;/span&gt;: &lt;span class=&#39;xn&#39;&gt;1234&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    ) { &lt;span class=&#39;xv&#39;&gt;childChannel&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xc&#39;&gt;// This closure is called for every inbound connection&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;childChannel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;eventLoop&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;makeCompletedFuture&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;return&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;NIOAsyncChannel&lt;/span&gt;&amp;lt;&lt;span class=&#39;xt&#39;&gt;ByteBuffer&lt;/span&gt;, &lt;span class=&#39;xt&#39;&gt;ByteBuffer&lt;/span&gt;&amp;gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;synchronouslyWrapping&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;childChannel&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            )&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    }&lt;span class=&#39;newline&#39;&gt;
 
-<span class="comment">// 5.</span>
-logger.<span class="call">info</span>(<span class="string">"log-message"</span>, metadata: [
-    <span class="string">"custom"</span>: <span class="string">"example"</span>
-])</code></pre><p>Let's go over the sample code, step-by-step:</p><ol><li>Import the <code>Logging</code> framework</li><li>Initiate a Logger instance using the label <code>my-app</code>, which can be used to identify logs.</li><li>Set the log level for the logger instance to <code>.trace</code>, which provides the most detailed log output.</li><li>Set custom metadata key-value pair on the logger instance: <code>foo:bar</code></li><li>Display an <code>info</code> message with extra metadata: <code>custom:example</code></li></ol><p>The console output of the snippet above, should be something like this:</p><pre><code>2024-01-24T11:12:28+0100 info my-app : foo=bar custom=example [MyApp] log-message
-</code></pre><p>The default Logger output contains these sections:</p><ul><li>The date of the log generation event.</li><li>The log level.</li><li>The custom label of the logger instance.</li><li>All the provided metadata key-value pairs combined together.</li><li>The name of the application, which triggered the log message.</li></ul><p>The output format of the logger can be customized and it is also possible to write logs into files.</p><h3>Log levels</h3><p>The SwiftLog library defines 7 standard log levels. All the possible values are defined on the <code>Logger.Level</code> enum. The complete list is arranged in order of increasingly higher severity:</p><ul><li>trace</li><li>debug</li><li>info</li><li>notice</li><li>warning</li><li>error</li><li>critical</li></ul><p>According to the Log Levels article on <a href="https://www.swift.org/server/guides/libraries/log-levels.html" target="_blank">swift.org</a>, framework authors should mostly use <em>trace</em> and <em>debug</em> to display log messages. Developers should keep their framework logs quiet and, if needed, throw errors that can be caught and logged by end-users.</p><p>Application developers can take advantage of the <code>info</code> and <code>notice</code> levels to differentiate log messages.</p><p>The <code>warning</code>, <code>error</code> and <code>critical</code> levels shouldn't be overused. Those are also intended to be used inside apps, but sometimes frameworks also use them to let other developers know about problematic use-cases. (e.g.: bad configuration)</p><h3>Log Metadata</h3><p>Additional information can be attached to log messages, called Metadata. Metadata can include contextual information such as identifiers, keys, names, and any other relevant information.</p><p>Providing extra metadata for the log messages can be helpful for debugging, monitoring, and analyzing the behavior of an application.</p><p>The Swift Logging library, has built-in metadata support. All the log message functions feature a metadata parameter. A Logger instance can also have associated metadata objects through subscripts. It's also possible to create a custom metadata provider during bootstrapping.</p><p>When using structured concurrency in Swift, use a <a href="https://developer.apple.com/documentation/swift/tasklocal" target="_blank">TaskLocal</a> value to provide contextual data for your log messages. Your Metadata Provider can read these TaskLocal values.</p><p>Here's a quick example how to use a task local value with a metadata provider:</p><pre><code class="language-swift"><span class="comment">// 1.</span>
-<span class="keyword">enum</span> Request {
-    <span class="keyword">@TaskLocal static var</span> id: <span class="type">String</span>?
-}
+&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;withThrowingDiscardingTaskGroup&lt;/span&gt; { &lt;span class=&#39;xv&#39;&gt;group&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;serverChannel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;executeThenClose&lt;/span&gt; { &lt;span class=&#39;xv&#39;&gt;serverChannelInbound&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xk&#39;&gt;for&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;connectionChannel&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;serverChannelInbound&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            &lt;span class=&#39;xv&#39;&gt;group&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;addTask&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xk&#39;&gt;do&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;connectionChannel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;executeThenClose&lt;/span&gt; { &lt;span class=&#39;xv&#39;&gt;connectionChannelInbound&lt;/span&gt;, &lt;span class=&#39;xv&#39;&gt;connectionChannelOutbound&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                        &lt;span class=&#39;xk&#39;&gt;for&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;inboundData&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;connectionChannelInbound&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                            &lt;span class=&#39;xc&#39;&gt;// Let&#39;s echo back all inbound data&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                            &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;connectionChannelOutbound&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;write&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;inboundData&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                        }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                } &lt;span class=&#39;xk&#39;&gt;catch&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    &lt;span class=&#39;xc&#39;&gt;// Handle errors&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;In the above code, we are bootstrapping a new TCP server which we assign to &lt;code&gt;serverChannel&lt;/code&gt;. Furthermore, in the trailing closure of &lt;code&gt;bind&lt;/code&gt; we are configuring the pipeline of each inbound connection. In our example, we are wrapping each child channel in a &lt;code&gt;NIOAsyncChannel&lt;/code&gt;. The resulting &lt;code&gt;serverChannel&lt;/code&gt; is a &lt;code&gt;NIOAsyncChannel&lt;/code&gt; whose inbound type is a &lt;code&gt;NIOAsyncChannel&lt;/code&gt; and  whose outbound type is &lt;code&gt;Never&lt;/code&gt;. This is due to the fact that each inbound connection gets its own separate child channel. The inbound and outbound types of each inbound connection is &lt;code&gt;ByteBuffer&lt;/code&gt; as specified in the bootstrap. Afterwards, we handle each inbound connection in separate child tasks and echo the data back.&lt;/p&gt;&lt;aside class=&#39;important&#39;&gt;&lt;h3&gt;Important&lt;/h3&gt;&lt;p&gt;Make sure to use discarding task groups which automatically reap finished child tasks. Normal task groups will result in a memory leak since they do not reap their child tasks automatically.&lt;/p&gt;&lt;/aside&gt;&lt;h4&gt;ClientBootstrap&lt;/h4&gt;&lt;p&gt;The client bootstrap is used to create a new TCP based client. Let’s take a look how to bootstrap a TCP connection and send some data to the server.&lt;/p&gt;&lt;pre class=&#39;snippet&#39;&gt;&lt;code class=&#39;language-swift&#39;&gt;&lt;span class=&#39;newline&#39;&gt;&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;clientChannel&lt;/span&gt; = &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;ClientBootstrap&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;group&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;eventLoopGroup&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    .&lt;span class=&#39;xv&#39;&gt;connect&lt;/span&gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;host&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;127.0.0.1&quot;&lt;/span&gt;,&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;port&lt;/span&gt;: &lt;span class=&#39;xn&#39;&gt;1234&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    ) { &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;eventLoop&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;makeCompletedFuture&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;return&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;NIOAsyncChannel&lt;/span&gt;&amp;lt;&lt;span class=&#39;xt&#39;&gt;ByteBuffer&lt;/span&gt;, &lt;span class=&#39;xt&#39;&gt;ByteBuffer&lt;/span&gt;&amp;gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;wrappingChannelSynchronously&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            )&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    }&lt;span class=&#39;newline&#39;&gt;
 
-<span class="comment">// 2.</span>
-<span class="keyword">var</span> logger = <span class="type">Logger</span>(
-    label: <span class="string">"task-logger"</span>,
-    metadataProvider: .<span class="keyword">init</span>(
-        {
-            <span class="keyword">guard let</span> requestId = <span class="type">Request</span>.<span class="property">id</span> <span class="keyword">else</span> {
-                <span class="keyword">return</span> [:]
-            }
-            <span class="keyword">return</span> [<span class="string">"id"</span>: <span class="string">"</span>\(requestId)<span class="string">"</span>]
-        }
-    )
-)
+&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;clientChannel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;executeThenClose&lt;/span&gt; { &lt;span class=&#39;xv&#39;&gt;inbound&lt;/span&gt;, &lt;span class=&#39;xv&#39;&gt;outbound&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;outbound&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;write&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;ByteBuffer&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;string&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;hello&quot;&lt;/span&gt;))&lt;span class=&#39;newline&#39;&gt;
 
-<span class="comment">// 3.</span>
-logger[metadataKey: <span class="string">"foo"</span>] = <span class="string">"bar"</span>
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;for&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;inboundData&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;inbound&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;print&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;inboundData&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;}&lt;/code&gt;&lt;/pre&gt;&lt;h4&gt;Dynamic pipeline modifications&lt;/h4&gt;&lt;p&gt;The above bootstrap methods work great in the case where we know the types of the resulting channels at compile time. However, there are some scenarios where the type is only determined at runtime. Such cases include &lt;a target=&#39;_blank&#39; rel=&#39;external&#39; href=&#39;https://en.wikipedia.org/wiki/Application-Layer_Protocol_Negotiation&#39;&gt;Application-Layer-Protocol-Negotiation&lt;/a&gt; or &lt;a target=&#39;_blank&#39; rel=&#39;external&#39; href=&#39;https://en.wikipedia.org/wiki/HTTP/1.1_Upgrade_header&#39;&gt;HTTP protocol upgrades&lt;/a&gt;. To support those scenarios it is essential that channel handlers that dynamically configure the pipeline carry type information which allows us to runtime to determine how the pipeline was configured at runtime. To support this NIO introduced multiple new &lt;code&gt;ChannelHandler&lt;/code&gt; and corresponding pipeline configuration methods. Those types are:&lt;/p&gt;&lt;ol&gt;&lt;li&gt;&lt;p&gt;&lt;code&gt;NIOTypedApplicationProtocolNegotiationHandler&lt;/code&gt; for TLS based ALPN&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;code&gt;NIOTypedHTTPServerUpgradeHandler&lt;/code&gt; and &lt;code&gt;configureUpgradableHTTPServerPipeline&lt;/code&gt; for server-side HTTP protocol upgrades&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;code&gt;NIOTypedHTTPClientUpgradeHandler&lt;/code&gt; and &lt;code&gt;configureUpgradableHTTPClientPipeline&lt;/code&gt; for client-side HTTP protocol upgrades&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;All of those types have one thing in common - they are generic over the result of the dynamic pipeline configuration. This allows users to exhaustively switch over the result and correctly handle each case. The following example demonstrates how this works for a client-side websocket upgrade.&lt;/p&gt;&lt;pre class=&#39;snippet&#39;&gt;&lt;code class=&#39;language-swift&#39;&gt;&lt;span class=&#39;newline&#39;&gt;&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;enum&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;UpgradeResult&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;case&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;websocket&lt;/span&gt;(&lt;span class=&#39;xt&#39;&gt;NIOAsyncChannel&lt;/span&gt;&amp;lt;&lt;span class=&#39;xt&#39;&gt;WebSocketFrame&lt;/span&gt;, &lt;span class=&#39;xt&#39;&gt;WebSocketFrame&lt;/span&gt;&amp;gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    &lt;span class=&#39;xk&#39;&gt;case&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;notUpgraded&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;}&lt;span class=&#39;newline&#39;&gt;
 
-<span class="comment">// 4.</span>
-logger.<span class="call">notice</span>(<span class="string">"hi"</span>, metadata: [
-    <span class="string">"hello"</span>: <span class="string">"world"</span>,
-])
+&lt;/span&gt;&lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;upgradeResult&lt;/span&gt;: &lt;span class=&#39;xt&#39;&gt;EventLoopFuture&lt;/span&gt;&amp;lt;&lt;span class=&#39;xt&#39;&gt;UpgradeResult&lt;/span&gt;&amp;gt; = &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;await&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;ClientBootstrap&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;group&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;eventLoopGroup&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    .&lt;span class=&#39;xv&#39;&gt;connect&lt;/span&gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;host&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;127.0.0.1&quot;&lt;/span&gt;,&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;port&lt;/span&gt;: &lt;span class=&#39;xn&#39;&gt;1234&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    ) { &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;eventLoop&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;makeCompletedFuture&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            &lt;span class=&#39;xc&#39;&gt;// Configure the websocket upgrader&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;upgrader&lt;/span&gt; = &lt;span class=&#39;xv&#39;&gt;NIOTypedWebSocketClientUpgrader&lt;/span&gt;&amp;lt;&lt;span class=&#39;xt&#39;&gt;UpgradeResult&lt;/span&gt;&amp;gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;upgradePipelineHandler&lt;/span&gt;: { &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;, _ &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    &lt;span class=&#39;xc&#39;&gt;// This configures the pipeline after the websocket upgrade was successful.&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    &lt;span class=&#39;xc&#39;&gt;// We are wrapping the pipeline in a NIOAsyncChannel.&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;eventLoop&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;makeCompletedFuture&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                        &lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;asyncChannel&lt;/span&gt; = &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;NIOAsyncChannel&lt;/span&gt;&amp;lt;&lt;span class=&#39;xt&#39;&gt;WebSocketFrame&lt;/span&gt;, &lt;span class=&#39;xt&#39;&gt;WebSocketFrame&lt;/span&gt;&amp;gt;(&lt;span class=&#39;xv&#39;&gt;wrappingChannelSynchronously&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                        &lt;span class=&#39;xk&#39;&gt;return&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;UpgradeResult&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;websocket&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;asyncChannel&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            )&lt;span class=&#39;newline&#39;&gt;
 
-<span class="comment">// 5.</span>
-<span class="type">Request</span>.<span class="property">$id</span>.<span class="call">withValue</span>(<span class="string">"my-req"</span>) {
-    logger.<span class="call">info</span>(<span class="string">"bye"</span>, metadata: [
-        <span class="string">"abc"</span>: <span class="string">"123"</span>,
-    ])
-}</code></pre><ol><li>A static task local <code>id</code> property definition on the <code>Request</code> enum.</li><li>Creates the logger with a custom metadata provider using the <code>Request.id</code>.</li><li>Set a metadata key on the logger instance (<code>foo:bar</code>).</li><li>Log a notice (<code>hi</code>), featuring additional metadata (<code>hello:world</code>).</li><li>Set the task local value and log an info message (<code>bye</code>) with more metadata (<code>abc:123</code>).</li></ol><p>The snippet's output is going to be something like this:</p><pre><code class="language-swift"><span class="number">2024</span>-<span class="number">02</span>-09T19:<span class="number">26</span>:<span class="number">43</span>+<span class="number">0100</span> notice task-logger : foo=bar hello=world [<span class="type">MyApp</span>] hi
-<span class="number">2024</span>-<span class="number">02</span>-09T19:<span class="number">26</span>:<span class="number">43</span>+<span class="number">0100</span> info task-logger : abc=<span class="number">123</span> foo=bar id=my-req [<span class="type">MyApp</span>] bye</code></pre><p>Log metadata works like a dictionary, it features key-value pairs to store the context.</p><hr><h2>A practical example</h2><p>Now that we've covered the basics of the Logging framework, it's time to upgrade the <a href="https://github.com/swift-on-server/logging-for-server-side-swift-apps-sample" target="_blank">sample project</a>.</p><h3>Logging in libraries</h3><p>Start integrating the Logging framework by updating the <code>Meeting.swift</code> file as such:</p><pre><code class="language-swift"><span class="keyword">import</span> Foundation
-<span class="keyword">import</span> Logging
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;var&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;headers&lt;/span&gt; = &lt;span class=&#39;xv&#39;&gt;HTTPHeaders&lt;/span&gt;()&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            &lt;span class=&#39;xv&#39;&gt;headers&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;add&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;name&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;Content-Type&quot;&lt;/span&gt;, &lt;span class=&#39;xv&#39;&gt;value&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;text/plain; charset=utf-8&quot;&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            &lt;span class=&#39;xv&#39;&gt;headers&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;add&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;name&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;Content-Length&quot;&lt;/span&gt;, &lt;span class=&#39;xv&#39;&gt;value&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;0&quot;&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
 
-<span class="keyword">public struct</span> Meeting {
-    
-    <span class="comment">// 1.</span>
-    <span class="keyword">public init</span>(
-        id: <span class="type">UUID</span>,    
-        logger: <span class="type">Logger</span> = .<span class="keyword">init</span>(label: <span class="string">"meeting-logger"</span>)
-    ) {
-        <span class="keyword">self</span>.<span class="property">id</span> = id
-        <span class="keyword">self</span>.<span class="property">participants</span> = .<span class="keyword">init</span>()
-        <span class="keyword">self</span>.<span class="property">isInProgress</span> = <span class="keyword">false
-        self</span>.<span class="property">logger</span> = logger
-        <span class="comment">// 2.</span>
-        <span class="keyword">self</span>.<span class="property">logger</span>[metadataKey: <span class="string">"meeting.id"</span>] = <span class="string">"</span>\(id)<span class="string">"</span>
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;requestHead&lt;/span&gt; = &lt;span class=&#39;xv&#39;&gt;HTTPRequestHead&lt;/span&gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;version&lt;/span&gt;: .&lt;span class=&#39;xv&#39;&gt;http1_1&lt;/span&gt;,&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;method&lt;/span&gt;: .&lt;span class=&#39;xv&#39;&gt;GET&lt;/span&gt;,&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;uri&lt;/span&gt;: &lt;span class=&#39;xs&#39;&gt;&quot;/&quot;&lt;/span&gt;,&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;headers&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;headers&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            )&lt;span class=&#39;newline&#39;&gt;
+
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;clientUpgradeConfiguration&lt;/span&gt; = &lt;span class=&#39;xv&#39;&gt;NIOTypedHTTPClientUpgradeConfiguration&lt;/span&gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;upgradeRequestHead&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;requestHead&lt;/span&gt;,&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;upgraders&lt;/span&gt;: [&lt;span class=&#39;xv&#39;&gt;upgrader&lt;/span&gt;],&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;notUpgradingCompletionHandler&lt;/span&gt;: { &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt; &lt;span class=&#39;xk&#39;&gt;in&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;eventLoop&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;makeCompletedFuture&lt;/span&gt; {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                        &lt;span class=&#39;xk&#39;&gt;return&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;UpgradeResult&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;notUpgraded&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                    }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            )&lt;span class=&#39;newline&#39;&gt;
+
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;let&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;upgradeResult&lt;/span&gt; = &lt;span class=&#39;xk&#39;&gt;try&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;channel&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;pipeline&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;syncOperations&lt;/span&gt;.&lt;span class=&#39;xv&#39;&gt;configureUpgradableHTTPClientPipeline&lt;/span&gt;(&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;                &lt;span class=&#39;xv&#39;&gt;configuration&lt;/span&gt;: .&lt;span class=&#39;xk&#39;&gt;init&lt;/span&gt;(&lt;span class=&#39;xv&#39;&gt;upgradeConfiguration&lt;/span&gt;: &lt;span class=&#39;xv&#39;&gt;clientUpgradeConfiguration&lt;/span&gt;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;            )&lt;span class=&#39;newline&#39;&gt;
+
+&lt;/span&gt;            &lt;span class=&#39;xk&#39;&gt;return&lt;/span&gt; &lt;span class=&#39;xv&#39;&gt;upgradeResult&lt;/span&gt;&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;        }&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    }&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After having configured the pipeline to negotiate a websocket upgrade. We can switch over the the &lt;code&gt;upgradeResult&lt;/code&gt;. Importantly, we have to &lt;code&gt;await&lt;/code&gt; the &lt;code&gt;upgradeResult&lt;/code&gt; first since it has to be negotiated on the connection.&lt;/p&gt;&lt;pre class=&#39;snippet&#39;&gt;&lt;code&gt;&lt;span class=&#39;newline&#39;&gt;&lt;/span&gt;switch try await upgradeResult.get() {&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;case .websocket(let websocketChannel):&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    print(&quot;Handling websocket connection&quot;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    try await self.handleWebsocketChannel(websocketChannel)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    print(&quot;Done handling websocket connection&quot;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;case .notUpgraded:&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    // The upgrade to websocket did not succeed.&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;    print(&quot;Upgrade declined&quot;)&lt;span class=&#39;newline&#39;&gt;
+&lt;/span&gt;}&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#39;General%20guidance&#39;&gt;&lt;a href=&#39;#General%20guidance&#39;&gt;General guidance&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;Where should your code live?&lt;/h4&gt;&lt;p&gt;Before the introduction of Swift Concurrency both implementations of network protocols and business logic were often written inside &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channelhandler&#39;&gt;ChannelHandler&lt;/a&gt;&lt;/code&gt;s. This made it easier to get started; however, it came with some downsides. First, implementing business logic inside channel handlers requires the business logic to also handle all of the invariants that the &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channelhandler&#39;&gt;ChannelHandler&lt;/a&gt;&lt;/code&gt; protocol brings with it. This often requires writing complex state machines. Additionally, the business logic becomes very tied to NIO and hard to port between different systems. Because of the above reasons we recommend to implement your business logic using Swift Concurrency primitives and the &lt;code&gt;NIOAsyncChannel&lt;/code&gt; based bootstraps. Network protocol implementation should still be implemented as &lt;code&gt;&lt;a href=&#39;https://swiftinit.org/docs/swift-nio/niocore/channelhandler&#39;&gt;ChannelHandler&lt;/a&gt;&lt;/code&gt;s.&lt;/p&gt;&lt;/section&gt;
         
-        <span class="comment">// 3.</span>
-        <span class="keyword">self</span>.<span class="property">logger</span>.<span class="call">trace</span>(<span class="string">"meeting room is ready"</span>)
-    }
-}</code></pre><ol><li>Add a logger parameter to the init method with a default logger instance (<code>meeting-logger</code>).</li><li>Set the current meeting identifier as a metadata value for the <code>meeting.id</code> key.</li><li>Log a trace message to inform others about the status of the meeting room.</li></ol><p>A default logger instance as an init parameter helps to avoid interface changes.</p><p>The default log level is always set to <em>info</em>, meaning <em>trace</em> and <em>debug</em> log messages won't be visible by default.</p><p>Integrating swift-log won't significantly affect the performance of the project.</p><p>Library consumers can override the logger and provide a custom instance during the instantiation process:</p><pre><code class="language-swift"><span class="keyword">import</span> MyLibrary
-<span class="keyword">import</span> Logging
-<span class="keyword">import</span> Foundation
+    &lt;/section&gt;
 
-<span class="keyword">@main
-struct</span> MyApp {
-    
-    <span class="keyword">static func</span> main() <span class="keyword">async throws</span> {
-        <span class="keyword">var</span> libLogger = <span class="type">Logger</span>(label: <span class="string">"my-library"</span>)
-        libLogger.<span class="property">logLevel</span> = .<span class="dotAccess">trace</span>
+    &lt;section id=&quot;about-author&quot; class=&quot;content-wrapper&quot;&gt;
+        &lt;img src=&quot;https://github.com/tib.png&quot; alt=&quot;&quot; class=&quot;author&quot;&gt;
+        &lt;h4&gt;About &lt;/h4&gt;
+        &lt;p class=&quot;author-about&quot;&gt;Tibor, also known as &amp;lt;a href=&amp;quot;https://theswiftdev.com&amp;quot;&amp;gt;&amp;quot;The Swift Dev&amp;quot;&amp;lt;/a&amp;gt;, is the co-founder of &amp;lt;a href=&amp;quot;https://binarybirds.com/&amp;quot;&amp;gt;Binary Birds Kft.&amp;lt;/a&amp;gt; Tibor provides Server-Side Swift development and consulting.&lt;/p&gt;
 
-        <span class="keyword">let</span> bob = <span class="type">Participant</span>(name: <span class="string">"Bob"</span>)
-        <span class="keyword">let</span> john = <span class="type">Participant</span>(name: <span class="string">"John"</span>)
-        <span class="keyword">let</span> kate = <span class="type">Participant</span>(name: <span class="string">"Kate"</span>)
-        <span class="keyword">let</span> mike = <span class="type">Participant</span>(name: <span class="string">"Mike"</span>)
+        &lt;a href=&quot;mailto:info@binarybirds.com&quot; target=&quot;_blank&quot; class=&quot;author-cta&quot;&gt;Contact us&lt;/a&gt;
+    &lt;/section&gt;
 
-        <span class="keyword">var</span> meeting = <span class="type">Meeting</span>(
-            id: .<span class="keyword">init</span>(),
-            logger: libLogger
-        )
-    }
-}</code></pre><p>This is an extremely powerful debugging feature, since users can filter the console output based on the log levels.</p><pre><code>2024-01-24T11:31:19+0100 trace my-library : meeting.id=B6176BC5-39A0-4141-B50B-B86141CCE4C8 [MyLibrary] meeting room is ready
-</code></pre><p>The next step is to add some useful debug &amp; trace information message to the <code>add</code>, <code>remove</code>, <code>start</code> and <code>end</code> functions.</p><pre><code class="language-swift"><span class="keyword">public mutating func</span> add(<span class="keyword">_</span> participant: <span class="type">Participant</span>) {
-    <span class="comment">// 1.</span> 
-    logger.<span class="call">debug</span>(
-        <span class="string">"trying to add participant"</span>,
-        metadata: participant.<span class="property">loggerMetadata</span>
-    )
-    
-    <span class="keyword">if</span> isInProgress {
-        <span class="call">greet</span>(participant)
-        <span class="comment">// 2.</span>
-        logger.<span class="call">trace</span>(<span class="string">"meeting is in progress"</span>)
-    }
-    
-    <span class="keyword">if</span> participants.<span class="call">contains</span>(participant) {
-        <span class="comment">// 3.</span>
-        logger.<span class="call">trace</span>(
-            <span class="string">"couldn't add participant, already there"</span>,
-            metadata: participant.<span class="property">loggerMetadata</span>
-        )
-        <span class="keyword">return</span>
-    }
+&lt;/article&gt;
 
-    participants.<span class="call">insert</span>(participant)
-
-    <span class="comment">// 4.</span>
-    logger.<span class="call">debug</span>(<span class="string">"participant added"</span>, metadata: [
-        <span class="string">"participants"</span>: <span class="string">"</span>\(participants.<span class="property">count</span>)<span class="string">"</span>
-    ])
-}</code></pre><ol><li>Log a debug message when the operation begins</li><li>Use a trace log when the meeting state is already in progress</li><li>Use a trace log to provide additional feedback if the function returns earlier</li><li>Log a debug message when the operation is complete as it is expected</li></ol><p>Let's apply the exact same pattern for the remove function:</p><pre><code class="language-swift"><span class="keyword">public mutating func</span> remove(<span class="keyword">_</span> participant: <span class="type">Participant</span>) {
-    logger.<span class="call">debug</span>(
-        <span class="string">"trying to remove participant"</span>,
-        metadata: participant.<span class="property">loggerMetadata</span>
-    )
-
-    <span class="keyword">if</span> isInProgress {
-        <span class="call">bye</span>(participant)
-        logger.<span class="call">trace</span>(<span class="string">"meeting is in progress"</span>)
-    }
-    <span class="keyword">guard</span> participants.<span class="call">contains</span>(participant) <span class="keyword">else</span> {
-        logger.<span class="call">trace</span>(
-            <span class="string">"can't remove participant, not there"</span>,
-            metadata: participant.<span class="property">loggerMetadata</span>
-        )
-        <span class="keyword">return</span>
-    }
-
-    participants.<span class="call">remove</span>(participant)
-    
-    logger.<span class="call">debug</span>(<span class="string">"participant removed"</span>, metadata: [
-        <span class="string">"participants"</span>: <span class="string">"</span>\(participants.<span class="property">count</span>)<span class="string">"</span>
-    ])
-}</code></pre><p>By including the participant identifier and the name, as metadata, developers can identify the referenced objects.</p><p>The start function will look very similar:</p><pre><code class="language-swift"><span class="keyword">public mutating func</span> start() <span class="keyword">throws</span> {
-    logger.<span class="call">debug</span>(<span class="string">"trying to start the meeting"</span>)
-    
-    <span class="keyword">if</span> isInProgress {
-        logger.<span class="call">trace</span>(<span class="string">"already in progress"</span>)
-        <span class="keyword">return</span>
-    }
-
-    <span class="keyword">guard</span> hasEnoughParticipants <span class="keyword">else</span> {
-        <span class="keyword">throw</span> <span class="type">Meeting</span>.<span class="type">Issue</span>.<span class="property">notEnoughParticipants</span>
-    }
-
-    isInProgress = <span class="keyword">true
-
-    for</span> participant <span class="keyword">in</span> participants {
-        logger.<span class="call">trace</span>(<span class="string">"participating"</span>, metadata: participant.<span class="property">loggerMetadata</span>)
-        <span class="call">welcome</span>(participant)
-    }
-
-    logger.<span class="call">debug</span>(<span class="string">"meeting started"</span>, metadata: [
-        <span class="string">"participants.count"</span>: <span class="string">"</span>\(participants.<span class="property">count</span>)<span class="string">"</span>,
-    ])
-}</code></pre><p>We should also update the end function using the same technique:</p><pre><code class="language-swift"><span class="keyword">public mutating func</span> end() {
-    logger.<span class="call">debug</span>(<span class="string">"trying to end the meeting"</span>)
-    
-    <span class="keyword">guard</span> isInProgress <span class="keyword">else</span> {
-        logger.<span class="call">trace</span>(<span class="string">"meeting is not in progress yet"</span>)
-        <span class="keyword">return</span>
-    }
-
-    <span class="keyword">for</span> participant <span class="keyword">in</span> participants {
-        logger.<span class="call">trace</span>(
-            <span class="string">"saying goodbye to participant"</span>,
-            metadata: participant.<span class="property">loggerMetadata</span>
-        )
-        <span class="call">thankYou</span>(participant)
-    }
-    participants.<span class="call">removeAll</span>()
-
-    logger.<span class="call">debug</span>(<span class="string">"meeting finished"</span>)
-}</code></pre><p>The debug log level is used to get a brief overview of the internal behavior of the library functions. In addition, the trace log level's purpose is to enable tracking of the entire workflow, by providing more detailed information.</p><p>Try to run the application using different log levels.</p><p>Set the log level to <code>.debug</code>, using the <code>libLogger.logLevel</code> property inside the <code>MyApp.swift</code> file to hide trace messages.</p><h3>Logging in executables</h3><p>Using the Swift Logging library in an application is very similar. App developers can take advantage of the <em>trace</em>, <em>debug</em>, <em>info</em> and <em>notice</em> levels and further distinguish <em>warnings</em>, <em>errors</em> and <em>critical</em> issues if something goes wrong.</p><p>Let's add some new log messages to the main app target:</p><pre><code class="language-swift"><span class="keyword">import</span> MyLibrary
-<span class="keyword">import</span> Logging
-<span class="keyword">import</span> Foundation
-
-<span class="keyword">@main
-struct</span> MyApp {
-    
-    <span class="keyword">static func</span> main() {
-
-        <span class="comment">// 1.</span>
-        <span class="keyword">var</span> appLogger = <span class="type">Logger</span>(label: <span class="string">"my-app"</span>)
-        appLogger.<span class="property">logLevel</span> = .<span class="dotAccess">trace</span>
-
-        <span class="keyword">var</span> libLogger = <span class="type">Logger</span>(label: <span class="string">"my-library"</span>)
-        libLogger.<span class="property">logLevel</span> = .<span class="dotAccess">info</span>
-        
-        <span class="comment">// 2.</span>
-        appLogger.<span class="call">info</span>(<span class="string">"Start a meeting"</span>)
-        <span class="keyword">let</span> bob = <span class="type">Participant</span>(name: <span class="string">"Bob"</span>)
-        <span class="keyword">let</span> john = <span class="type">Participant</span>(name: <span class="string">"John"</span>)
-        <span class="keyword">let</span> kate = <span class="type">Participant</span>(name: <span class="string">"Kate"</span>)
-        <span class="keyword">let</span> mike = <span class="type">Participant</span>(name: <span class="string">"Mike"</span>)
-        
-        <span class="comment">// 3.</span>
-        appLogger.<span class="call">notice</span>(<span class="string">"Preparing the meeting"</span>)
-        <span class="keyword">var</span> meeting = <span class="type">Meeting</span>(
-            id: .<span class="keyword">init</span>(),
-            logger: libLogger
-        )
-        
-        appLogger.<span class="call">notice</span>(<span class="string">"Add the participants, except Mike..."</span>)
-        
-        meeting.<span class="call">add</span>(bob)
-        meeting.<span class="call">add</span>(john)
-        meeting.<span class="call">add</span>(kate)
-        
-        <span class="comment">// 4.</span>
-        appLogger.<span class="call">warning</span>(<span class="string">"Trying to remove Mike from the list, but he is not on the list."</span>)
-        meeting.<span class="call">remove</span>(mike)
-        
-        appLogger.<span class="call">info</span>(<span class="string">"Start the meeting"</span>)
-
-        <span class="keyword">if</span> !meeting.<span class="property">hasEnoughParticipants</span> {
-            appLogger.<span class="call">warning</span>(<span class="string">"the meeting has not enough participants just yet"</span>)
-        }
-        
-        <span class="keyword">do</span> {
-            <span class="keyword">try</span> meeting.<span class="call">start</span>()
-        }
-        <span class="keyword">catch</span> {
-            <span class="comment">// 5.</span>
-            appLogger.<span class="call">error</span>(<span class="string">"</span>\(error)<span class="string">"</span>)
-        }
-        
-        appLogger.<span class="call">notice</span>(<span class="string">"Add Mike to the list"</span>)
-        meeting.<span class="call">add</span>(mike)
-        
-        appLogger.<span class="call">notice</span>(<span class="string">"Remove Bob to the list"</span>)
-        meeting.<span class="call">remove</span>(bob)
-        
-        appLogger.<span class="call">info</span>(<span class="string">"End the meeting"</span>)
-        meeting.<span class="call">end</span>()
-        
-        appLogger.<span class="call">info</span>(<span class="string">"Meeting finished"</span>)
-    }
-}</code></pre><ol><li>Instantiate a standalone logger for the application.</li><li>Log informational messages if necessary, this is the default log level.</li><li>Use a notice when aiming for a log level higher than info.</li><li>Warnings can be used to inform users about potential issues or errors.</li><li>Error log messages can indicate that something has gone wrong.</li></ol><p>Try to set different log levels for each Logger instance and run the application.</p><h3>Environment-based logs</h3><p>It's possible to set the log level for the entire application by defining a <code>LOG_LEVEL</code> environment variable. This will set the log level for all the logger instances, and may bloat the console with quite a lot of messages.</p><p>In an upcoming article, a more detailed explanation will be provided on how to store and define environment variables.</p><p>Apple has a solution for this problem, they provide a way to <a href="https://developer.apple.com/documentation/os/logging/customizing_logging_behavior_while_debugging" target="_blank">customize logging behaviors</a>.</p><p>Currently, this approach is unavailable for server-side Swift applications featuring the Logging library.</p><p>To overcome the issue, we can write a function (<code>subsystem</code>) as an extension for the Logger struct:</p><pre><code class="language-swift"><span class="keyword">import</span> Foundation
-<span class="keyword">import</span> Logging
-
-<span class="keyword">public extension</span> <span class="type">Logger</span> {
-
-    <span class="keyword">static func</span> subsystem(
-        <span class="keyword">_</span> id: <span class="type">String</span>,
-        <span class="keyword">_</span> level: <span class="type">Logger</span>.<span class="type">Level</span> = .<span class="dotAccess">info</span>
-    ) -&gt; <span class="type">Logger</span> {
-        <span class="comment">// 1.</span>
-        <span class="keyword">var</span> logger = <span class="type">Logger</span>(label: id)
-        <span class="comment">// 2.</span>
-        logger.<span class="property">logLevel</span> = level
-
-        <span class="keyword">let</span> env = <span class="type">ProcessInfo</span>.<span class="property">processInfo</span>.<span class="property">environment</span>
-        <span class="comment">// 3.</span>
-        <span class="keyword">if let</span> rawLevel = env[<span class="string">"LOG_LEVEL"</span>]?.<span class="call">lowercased</span>(),
-            <span class="keyword">let</span> level = <span class="type">Logger</span>.<span class="type">Level</span>(rawValue: rawLevel)
-        {
-            logger.<span class="property">logLevel</span> = level
-        }
-        <span class="comment">// 4.</span>
-        <span class="keyword">let</span> envKey =
-            id
-            .<span class="call">appending</span>(<span class="string">"-log-level"</span>)
-            .<span class="call">replacingOccurrences</span>(of: <span class="string">"-"</span>, with: <span class="string">"_"</span>)
-            .<span class="call">uppercased</span>()
-        <span class="keyword">if let</span> rawLevel = env[envKey]?.<span class="call">lowercased</span>(),
-            <span class="keyword">let</span> level = <span class="type">Logger</span>.<span class="type">Level</span>(rawValue: rawLevel)
-        {
-            logger.<span class="property">logLevel</span> = level
-        }
-        <span class="comment">// 5.</span>
-        <span class="keyword">return</span> logger
-    }
-}</code></pre><ol><li>Create a logger instance using the id parameter as a label.</li><li>Set the log level based on the argument, defaults to info.</li><li>Get the <code>LOG_LEVEL</code> env variable if present and update the log level based on that.</li><li>Get the <code>&lt;MY_ID&gt;-LOG_LEVEL</code> env variable if present and set the log level based on that.</li><li>Return the configured logger instance.</li></ol><p>This helper function allows developers to individually set log levels for each subsystem:</p><pre><code class="language-swift"><span class="keyword">import</span> MyLibrary
-<span class="keyword">import</span> Logging
-<span class="keyword">import</span> Foundation
-
-<span class="keyword">@main
-struct</span> MyApp {
-    
-    <span class="keyword">static func</span> main() {
-        <span class="comment">// setenv("MY_APP_LOG_LEVEL", "trace", 1)</span>
-        <span class="keyword">let</span> appLogger = <span class="type">Logger</span>.<span class="call">subsystem</span>(<span class="string">"my-app"</span>, .<span class="dotAccess">trace</span>)
-
-        <span class="comment">// setenv("MY_LIBRARY_LOG_LEVEL", "trace", 1)</span>
-        <span class="keyword">let</span> libLogger = <span class="type">Logger</span>.<span class="call">subsystem</span>(<span class="string">"my-library"</span>, .<span class="dotAccess">trace</span>)
-
-        <span class="comment">// ...</span>
-    }
-}</code></pre><p>Define a custom environment variable based on your identifier:</p><ul><li>add the <code>-log-level</code> suffix to the identifier</li><li>replace the dash characters with underscores</li><li>capitalize the entire string</li></ul><p>e.g.: <code>my-library</code> -&gt; <code>MY_LIBRARY_LOG_LEVEL</code></p><p>The <code>setenv</code> function can be used to define environmental variables from Swift code.</p><p>Important: Avoid utilizing the <code>setenv</code> function. It is intended solely for demonstration purposes.</p><p>Run the project from the command line, using the following command to explicitly set environment variables:</p><pre><code class="language-sh"># single command
-MY_APP_LOG_LEVEL=trace MY_LIBRARY_LOG_LEVEL=trace swift run MyApp
-
-# or export env vars
-export MY_APP_LOG_LEVEL=trace
-export MY_LIBRARY_LOG_LEVEL=trace
-swift run MyApp
-</code></pre><p>Provide the environmental variables using a single command before the <code>swift run MyApp</code> action.</p><p>The <code>export</code> command can be used to export variables, making them available in the environment of subsequently executed commands.</p><h2>Summary</h2><p>That's how you can integrate the Swift Logging library into a framework or application.</p><p>You've learned a lot about logging in this article, including log levels, metadata and custom logging subsystems via environment variables.</p><p>If you want to learn a bit more about other logging and debugging solutions, you can also <a href="https://theswiftdev.com/logging-for-beginners-in-swift/" target="_blank">read this article</a>, which contains some useful snippets &amp; examples.</p>
-        
-    </section>
-
-    <section id="about-author" class="content-wrapper">
-        <img src="https://github.com/tib.png" alt="Tibor Bödecs" class="author">
-        <h4>About Tibor Bödecs</h4>
-        <p class="author-about">Tibor, also known as <a href="https://theswiftdev.com">"The Swift Dev"</a>, is the co-founder of <a href="https://binarybirds.com/">Binary Birds Kft.</a> Tibor provides Server-Side Swift development and consulting.</p>
-
-        <a href="mailto:info@binarybirds.com" target="_blank" class="author-cta">Contact us</a>
-    </section>
-
-</article>
         
     </main>
 
@@ -441,14 +228,14 @@ swift run MyApp
             <figure>
                 <picture>
                     <source 
-                        srcset="https://swiftonserver.com/images/logos/logo~dark.png" 
+                        srcset="/images/logos/logo~dark.png" 
                         media="(prefers-color-scheme: dark)"
                     >
                     <img 
                         id="logo-image"
                         width="80"
                         height="80"
-                        src="https://swiftonserver.com/images/logos/logo.png"
+                        src="/images/logos/logo.png"
                         alt="Logo of Swift on server"
                         title="Swift on server"
                     >
@@ -460,8 +247,8 @@ swift run MyApp
 
             <p> 
                 <a href="https://swiftonserver.com/">Home</a> ·
-                <a href="https://swiftonserver.com/rss.xml" target="_blank">RSS</a> ·
-                <a href="https://swiftonserver.com/sitemap.xml" target="_blank">Sitemap</a>
+                <a href="/rss.xml" target="_blank">RSS</a> ·
+                <a href="/sitemap.xml" target="_blank">Sitemap</a>
             </p>
             
             

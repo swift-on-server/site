@@ -2,7 +2,7 @@
 
 When working with concurrent code, you'll often need to share state between tasks. Using reference types such as a `class` allows you to share state between different threads and tasks. This can lead to race conditions where two tasks are trying to access the same state at the same time.
 
-The Thread Sanitizer in Xcode can help you find race conditions. It's better to avoid them altogether. You can do so by adopting the `Sendable` protocol on your types. This protocol is used to mark types that can be safely sent between tasks.
+The Thread Sanitizer in Xcode can help you find race conditions. It's better to avoid them altogether. You can do so by adopting the ``Sendable`` protocol on your types. This protocol is used to mark types that can be safely sent between tasks.
 
 If the compiler is able to determine that a type is Sendable, the conformance does not require additional work. In other cases, you'll need to provide the conformance yourself.
 
@@ -10,7 +10,7 @@ Sendability is a contract, initiated by the type, that the type is safe to be se
 
 ### Classes
 
-Classes are not automatically Sendable. Since reference types are explicitly not copied but referenced, you can't safely send a class between tasks. You can mark a class as Sendable if all of its properties are marked `Sendable` and a constant (let).
+Classes are not automatically Sendable. Since reference types are explicitly not copied but referenced, you can't safely send a class between tasks. You can mark a class as Sendable if all of its properties are marked ``Sendable`` and a constant (let).
 
 If you're working with a class that is not a set of constants, you can still mark it as Sendable by using the `@unchecked Sendable` conformance. When you use this conformance, you're telling the compiler that you're sure that the class is Sendable, and that you're taking responsibility of isolating the state. In this case, you can adopt your own isolation such as Locks.
 
@@ -62,13 +62,13 @@ print(balance) // 100
 
 Just like any type, you can make an `extension` on an actor. Actors can also conform to protocols, assuming that the protocol's signature can be feasibly implemented with isolation. A common obstacle is that you can't easily conform to a protocol that has properties or methods that are not isolated.
 
-An actor's isolation is inherited by its properties and methods. Actor Isolation is compile-time checked to ensures that only one task can access the actor's state at a time. This is achieved through the `unownedExecutor` of an actor. This is a `SerialExecutor` that the Swift runtime submits tasks to, which provides the isolation in this actor. The SerialExecutor may be a single thread, or multiple. But needs to guarantee that only one task is running on this at a time. Akin to `DispatchQueue.main.async { }` in GCD.
+An actor's isolation is inherited by its properties and methods. Actor Isolation is compile-time checked to ensures that only one task can access the actor's state at a time. This is achieved through the `unownedExecutor` of an actor. This is a ``SerialExecutor`` that the Swift runtime submits tasks to, which provides the isolation in this actor. The SerialExecutor may be a single thread, or multiple. But needs to guarantee that only one task is running on this at a time. Akin to `DispatchQueue.main.async { }` in GCD.
 
 ```swift
 bankAccount.unownedExecutor
 ```
 
-You can create your own `SerialExecutor` for use with your actors. SwiftNIO's EventLoop already has a `serialExecutor` property that you can use. GCD's DispatchQueue can be adapted easily as well.
+You can create your own ``SerialExecutor`` for use with your actors. SwiftNIO's EventLoop already has a `serialExecutor` property that you can use. GCD's DispatchQueue can be adapted easily as well.
 
 Since `unownedExecutor` is not a static member of an actor, an actor's static properties can _not be isolated_ by the actor.
 
@@ -314,9 +314,9 @@ Let's implement a simple continuation that fetches an image:
 
 There are two variations of continuations.
 
-A `CheckedContinuation` is a continuation that checks for correct use. Continuations **must** be resumed exactly once. If you don't resume the continuation or if you resume it more than once, your application will crash. This is a safety feature to prevent worse problems from happening.
+A ``CheckedContinuation`` is a continuation that checks for correct use. Continuations **must** be resumed exactly once. If you don't resume the continuation or if you resume it more than once, your application will crash. This is a safety feature to prevent worse problems from happening.
 
-In contrast, an `UnsafeContinuation` is a continuation that doesn't check for correct use. If you resume the continuation multiple times, or if you don't resume it at all, you'll be sure to run into undefined behaviour - leading to a variety of hard-to-debug problems. However, unsafe continuations can be useful in _extremely_ performance-sensitive code.
+In contrast, an ``UnsafeContinuation`` is a continuation that doesn't check for correct use. If you resume the continuation multiple times, or if you don't resume it at all, you'll be sure to run into undefined behaviour - leading to a variety of hard-to-debug problems. However, unsafe continuations can be useful in _extremely_ performance-sensitive code.
 
 Continuations can be throwing or non-throwing, for example:
 
@@ -376,13 +376,13 @@ final class ImageCache {
 }
 ```
 
-**Note:** When creating a continuation, you're starting a new workload that does not (yet) adopt structured concurrency. When this happens, this code is also responsible for ensuring that Task Cancellation is handled propertly. For that, please refer back to `withTaskCancellationHandler` earlier in this article.
+**Note:** When creating a continuation, you're starting a new workload that does not (yet) adopt structured concurrency. When this happens, this code is also responsible for ensuring that Task Cancellation is handled propertly. For that, please refer back to ``withTaskCancellationHandler`` earlier in this article.
 
 ## Global Actors
 
 We've seen actors being used to isolate state and to share state between tasks. Global actors are singleton-actors that isolate state outside of their type. This allows global actors to be used to isolate state in a global context, such as static members or static functions.
 
-The most commonly known and used global actor is the `MainActor`. This actor is used to isolate state on the main thread, and is commonly used on iOS to ensure that UI updates and relevant state changes are done on the main thread.
+The most commonly known and used global actor is the ``MainActor``. This actor is used to isolate state on the main thread, and is commonly used on iOS to ensure that UI updates and relevant state changes are done on the main thread.
 
 You can use the `@MainActor` attribute to mark a property as being isolated to the main actor:
 
@@ -390,7 +390,7 @@ You can use the `@MainActor` attribute to mark a property as being isolated to t
 @MainActor var view: UIView
 ```
 
-Functions can also apply the `MainActor` by marking it as shown here:
+Functions can also apply the ``MainActor`` by marking it as shown here:
 
 ```swift
 // MainActor isolated
@@ -423,7 +423,7 @@ func rerenderUI(every duration: Duration) async throws {
 
 When calling an `async` function from an _isolated_ context such as the _MainActor_, isolation is _not_ inherited. Swift will use the global concurrent executor to run this function, instead of the executor specified by the (global) actor.
 
-This frees up the actor to continue processing other tasks, and prevents the actor from being blocked by a long-running task. Freeing up the `MainActor` is helpful, as it ensures that the UI remains responsive. However, this is also the reason why _actor re-entrancy_ happens!
+This frees up the actor to continue processing other tasks, and prevents the actor from being blocked by a long-running task. Freeing up the ``MainActor`` is helpful, as it ensures that the UI remains responsive. However, this is also the reason why _actor re-entrancy_ happens!
 
 ### Creating a Global Actor
 
@@ -490,7 +490,7 @@ Starting from Swift 6, you can specify a "task executor" to run tasks on. This i
 
 In Server-Side Swift, all I/O is done asynchronously on the EventLoop. By tying business logic to the same EventLoop as the I/O, you can ensure that there is no unnecessary context switching. This can lead to a significant performance improvement.
 
-You can create a task executor by conforming to the `TaskExecutor` type. This is a part of Swift 6, and is used to run tasks on a specific executor.
+You can create a task executor by conforming to the ``TaskExecutor`` type. This is a part of Swift 6, and is used to run tasks on a specific executor.
 
 ```swift
 final class EventLoopExecutor: TaskExecutor, SerialExecutor {
@@ -530,10 +530,10 @@ taskGroup.addTask(executorPreference: executor) {
 }
 ```
 
-As you may notice, the `EventLoopExecutor` type is _manually_ retained and released. This is becasue the `addTask` method does not retain the executor. If the EventLoopExecutor type is not retained elsewhere, it will be deallocated before the task is done running, causing a crash.
+As you may notice, the `EventLoopExecutor` type is _manually_ retained and released. This is becasue the ``TaskGroup.addTask`` method does not retain the executor. If the EventLoopExecutor type is not retained elsewhere, it will be deallocated before the task is done running, causing a crash.
 
 #### Running Heavy Workloads
 
-Previously, we wrote that large workloads should be run outside of structured concurrency. This is necessary, since the _standard_ executor in Swift is designed to run tasks concurrently. In Swift 6, this is executor is the `globalConcurrentExecutor`, which is hidden in previous versions of Swift.
+Previously, we wrote that large workloads should be run outside of structured concurrency. This is necessary, since the _standard_ executor in Swift is designed to run tasks concurrently. In Swift 6, this is executor is the ``globalConcurrentExecutor``, which is hidden in previous versions of Swift.
 
 However, heavy workload _can_ be run on a custom executor. Using the pattern shown above, or an executor that is could be provided by SwiftNIO in the future, heavy workloads can run on a custom executor that is designed to handle heavy workloads.

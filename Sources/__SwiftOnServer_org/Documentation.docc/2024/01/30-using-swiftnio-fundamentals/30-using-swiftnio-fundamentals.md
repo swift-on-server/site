@@ -49,7 +49,7 @@ This concept is called _nonblocking I/O_.
 
 ## Nonblocking I/O
 
-There are a variety of tools, specific to platforms, that help with nonblocking I/O. `Dispatch` has a type called `DispatchIO`, which calls your function whenever a file descriptor can read new information. This can be when a disk has completed reading the next chunk of data from the disk. But more commonly in network applications, when a remote peer has sent new information to you.
+There are a variety of tools, specific to platforms, that help with nonblocking I/O. `Dispatch` has a type called ``DispatchIO``, which calls your function whenever a file descriptor can read new information. This can be when a disk has completed reading the next chunk of data from the disk. But more commonly in network applications, when a remote peer has sent new information to you.
 
 DispatchIO can also notify you when there's an opportunity to _write_ more data to a filesystem or socket.
 
