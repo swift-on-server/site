@@ -6,16 +6,22 @@ import Mustache
 let fs = FileManager.default
 let repoId = "joannis.swiftonserver-site"
 let module = "__SwiftOnServer_org"
+
 let accountId = ProcessInfo.processInfo.environment["ACCOUNT_ID"] ?? "4296918970"
 let apiKey = ProcessInfo.processInfo.environment["API_KEY"]!
+
+let title = ProcessInfo.processInfo.environment["SITE_TITLE"] ?? "Swift on Server"
+let description = ProcessInfo.processInfo.environment["SITE_DESC"] ?? "Articles about server-side Swift development. Created by Joannis Orlandos and Tibor Bödecs."
 let baseUrl = ProcessInfo.processInfo.environment["BASE_URL"] ?? "/"
 
 let cwd = URL(filePath: fs.currentDirectoryPath)
 let docs = cwd.appending(components: "Sources", module, "Documentation.docc")
 let templates = cwd.appending(components: "src", "templates")
 let output = cwd.appending(components: "docs")
-let dateFormatter = DateFormatter()
-dateFormatter.dateFormat = "yyyy/MM/dd"
+
+let postDateFormatter = DateFormatter()
+postDateFormatter.timeZone = .init(secondsFromGMT: 0)
+postDateFormatter.dateFormat = "yyyy/MM/dd"
 let postTemplate = try MustacheTemplate(
     string: String(contentsOf: templates.appending(components: "post.html"))
 )
@@ -23,11 +29,53 @@ let indexTemplate = try MustacheTemplate(
     string: String(contentsOf: templates.appending(components: "index.html"))
 )
 
+struct Config {
+    let baseUrl: String
+    let title: String
+    let description: String
+    let language: String
+
+    var formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        return formatter
+    }()
+}
+
+let config = Config(
+    baseUrl: baseUrl,
+    title: title,
+    description: description,
+    language: "en-US"
+)
+
+var posts = [RSSTemplate.Item]()
+var pages: [SitemapTemplate.Item] {
+    posts.map {
+        SitemapTemplate.Item(
+            permalink: $0.permalink,
+            date: $0.date
+        )
+    }
+}
+
 // Run on tag through Github Actions
 // TODO: Run Fetch tags on servera
 // TODO: Trigger rebuild of docs on server
 
 try openFolder(docs)
+
+try RSS(
+    config: config,
+    posts: posts,
+    outputUrl: output
+).generate()
+
+try Sitemap(
+    config: config,
+    items: pages,
+    outputUrl: output
+).generate()
 
 func openFolder(_ folder: URL) throws {
     let folderName = folder.lastPathComponent
@@ -49,15 +97,26 @@ func openFolder(_ folder: URL) throws {
         metadata.tagList = metadata.tags.split(separator: ",").map { tag in
             tag.trimmingCharacters(in: .whitespacesAndNewlines)
         }
+        let permalink = "https://swiftonserver.com/\(metadata.slug)"
         let postHTML = postTemplate.render(metadata)
         let indexHTML = indexTemplate.render(IndexContext(
             baseUrl: baseUrl,
             title: metadata.title,
             description: metadata.description,
-            permalink: "https://swiftonserver.com/\(metadata.slug)",
+            permalink: permalink,
             image: "images/assets/\(metadata.slug)/cover.jpg",
             contents: postHTML
         ))
+        if let date = postDateFormatter.date(from: metadata.date) {
+            posts.append(
+                RSSTemplate.Item(
+                    title: metadata.title,
+                    description: metadata.description,
+                    permalink: permalink,
+                    date: date
+                )
+            )
+        }
         try indexHTML.write(
             to: output.appending(components: metadata.slug, "index.html"),
             atomically: true,
