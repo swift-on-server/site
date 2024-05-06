@@ -9,7 +9,7 @@ Servers generated from OpenAPI specifications are also spec-compliant. The gener
 
 The OpenAPI generator ensures that data is handled efficiently and correctly. It also provides a clear and concise way to define your API, making it easy to understand and maintain. It integrates well with Hummingbird, requiring minimal setup to get started.
 
-In this tutorial, we'll show you how to use the OpenAPI Generator to create a Swift API with [Hummingbird](./whats-new-in-hummingbird-2). If you're using Hummingbird with AWS Lambda, you can also use the OpenAPI generator for handling routes in your Lambda function.
+In this tutorial, we'll show you how to use the OpenAPI Generator to create a Swift API with [Hummingbird](https://swiftonserver.com/whats-new-in-hummingbird-2). If you're using Hummingbird with AWS Lambda, you can also use the OpenAPI generator for handling routes in your Lambda function.
 
 ## Prerequisites
 
