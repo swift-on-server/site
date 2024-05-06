@@ -4,15 +4,17 @@ import Yams
 import Mustache
 
 let fs = FileManager.default
+let environment = ProcessInfo.processInfo.environment
+
 let repoId = "joannis.swiftonserver-site"
 let module = "__SwiftOnServer_org"
 
-let accountId = ProcessInfo.processInfo.environment["ACCOUNT_ID"] ?? "4296918970"
-let apiKey = ProcessInfo.processInfo.environment["API_KEY"]!
+let accountId = environment["ACCOUNT_ID"] ?? "4296918970"
+let apiKey = environment["API_KEY"]!
 
-let title = ProcessInfo.processInfo.environment["SITE_TITLE"] ?? "Swift on Server"
-let description = ProcessInfo.processInfo.environment["SITE_DESC"] ?? "Articles about server-side Swift development. Created by Joannis Orlandos and Tibor Bödecs."
-let baseUrl = ProcessInfo.processInfo.environment["BASE_URL"] ?? "/"
+let title = environment["SITE_TITLE"] ?? "Swift on Server"
+let description = environment["SITE_DESC"] ?? "Articles about server-side Swift development. Created by Joannis Orlandos and Tibor Bödecs."
+let baseUrl = environment["BASE_URL"] ?? "/"
 
 let cwd = URL(filePath: fs.currentDirectoryPath)
 let docs = cwd.appending(components: "Sources", module, "Documentation.docc")
@@ -128,7 +130,7 @@ func openFolder(_ folder: URL) throws {
         metadata.tagList = metadata.tags.split(separator: ",").map { tag in
             tag.trimmingCharacters(in: .whitespacesAndNewlines)
         }
-        let permalink = "https://swiftonserver.com/\(metadata.slug)"
+        let permalink = "\(baseUrl)\(metadata.slug)"
         let postHTML = library.render(metadata, withTemplate: "post")!
         let indexHTML = library.render(IndexContext(
             baseUrl: baseUrl,
