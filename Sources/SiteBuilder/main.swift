@@ -22,12 +22,27 @@ let output = cwd.appending(components: "docs")
 let postDateFormatter = DateFormatter()
 postDateFormatter.timeZone = .init(secondsFromGMT: 0)
 postDateFormatter.dateFormat = "yyyy/MM/dd"
-let postTemplate = try MustacheTemplate(
-    string: String(contentsOf: templates.appending(components: "post.html"))
-)
-let indexTemplate = try MustacheTemplate(
-    string: String(contentsOf: templates.appending(components: "index.html"))
-)
+
+let library = MustacheLibrary(templates: [
+    "index": try MustacheTemplate(
+        string: String(contentsOf: templates.appending(components: "index.html"))
+    ),
+    "home": try MustacheTemplate(
+        string: String(contentsOf: templates.appending(components: "home.html"))
+    ),
+    "home-post": try MustacheTemplate(
+        string: String(contentsOf: templates.appending(components: "home-post.html"))
+    ),
+    "post": try MustacheTemplate(
+        string: String(contentsOf: templates.appending(components: "post.html"))
+    ),
+    "page": try MustacheTemplate(
+        string: String(contentsOf: templates.appending(components: "page.html"))
+    ),
+    "404": try MustacheTemplate(
+        string: String(contentsOf: templates.appending(components: "404.html"))
+    )
+])
 
 struct Config {
     let baseUrl: String
@@ -64,6 +79,7 @@ var pages: [SitemapTemplate.Item] {
 // TODO: Trigger rebuild of docs on server
 
 try openFolder(docs)
+posts.sort(by: { $0.date > $1.date })
 
 try RSS(
     config: config,
@@ -76,6 +92,21 @@ try Sitemap(
     items: pages,
     outputUrl: output
 ).generate()
+
+let home = library.render(IndexContext(
+    baseUrl: baseUrl,
+    title: title,
+    description: description,
+    permalink: baseUrl,
+    image: "images/defaults/defaults.png",
+    contents: library.render(HomeContext(posts: posts), withTemplate: "home")!
+), withTemplate: "index")!
+
+try home.write(
+    to: output.appending(component: "index.html"),
+    atomically: true,
+    encoding: .utf8
+)
 
 func openFolder(_ folder: URL) throws {
     let folderName = folder.lastPathComponent
@@ -98,22 +129,23 @@ func openFolder(_ folder: URL) throws {
             tag.trimmingCharacters(in: .whitespacesAndNewlines)
         }
         let permalink = "https://swiftonserver.com/\(metadata.slug)"
-        let postHTML = postTemplate.render(metadata)
-        let indexHTML = indexTemplate.render(IndexContext(
+        let postHTML = library.render(metadata, withTemplate: "post")!
+        let indexHTML = library.render(IndexContext(
             baseUrl: baseUrl,
             title: metadata.title,
             description: metadata.description,
             permalink: permalink,
             image: "images/assets/\(metadata.slug)/cover.jpg",
             contents: postHTML
-        ))
+        ), withTemplate: "index")!
         if let date = postDateFormatter.date(from: metadata.date) {
             posts.append(
                 RSSTemplate.Item(
                     title: metadata.title,
                     description: metadata.description,
                     permalink: permalink,
-                    date: date
+                    date: date,
+                    dateString: metadata.date
                 )
             )
         }
@@ -134,13 +166,17 @@ func openFolder(_ folder: URL) throws {
     }
 }
 
-struct IndexContext: Codable {
+struct IndexContext {
     let baseUrl: String
     let title: String
     let description: String
     let permalink: String
-    let image: String
+    let image: String?
     let contents: String
+}
+
+struct HomeContext {
+    let posts: [RSSTemplate.Item]
 }
 
 struct ArticleMetadata: Codable {
