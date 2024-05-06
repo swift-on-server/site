@@ -117,7 +117,7 @@ try await withThrowingDiscardingTaskGroup { group in
 This code is an implementation of the server bootstrap that was created in the previous snippet. Let's go over the code step-by-step:
 
 1. Create a task group to manage the lifetime of our server
-2. By calling ``NIOAsyncChannel\executeThenClose(_:)``, receive a sequence of incoming clients. Once this sequence ends, the end of the function is reached and the server is closed.
+2. By calling ``NIOAsyncChannel/executeThenClose(_:)``, receive a sequence of incoming clients. Once this sequence ends, the end of the function is reached and the server is closed.
 3. A for-loop is used to iterate over each new client, allowing us to handle their traffic.
 4. By adding a task to the task group, this Swift code can handle many clients in parallel
 5. Call `handleClient` to handle the client. This will be a separate function that will be implemented in a moment.
@@ -143,11 +143,11 @@ func handleClient(_ client: NIOAsyncChannel<ByteBuffer, ByteBuffer>) async throw
 
 This code receives messages from a client, and echoes it back. It's functional, efficient and easy to understand. Let's go over the code step-by-step:
 
-1. Call ``NIOAsyncChannel\executeThenClose(_:)`` on the client. This allows us to receive a sequence of inbound messages, and a handle to write messages back.
+1. Call ``NIOAsyncChannel/executeThenClose(_:)`` on the client. This allows us to receive a sequence of inbound messages, and a handle to write messages back.
 2. Iterate over each inbound message, using a for-loop.
 3. Write the inbound message back to the client.
 
-When the client closes the connection, the sequence of inbound messages will end. This causes the ``NIOAsyncChannel\executeThenClose(_:)`` function will return, and the client will be cleaned up.
+When the client closes the connection, the sequence of inbound messages will end. This causes the ``NIOAsyncChannel/executeThenClose(_:)`` function will return, and the client will be cleaned up.
 
 You can try connecting yourself by running the following in your terminal. If a connection is successful, you'll get prompt where you can type a message. When you press enter, the message will be echoed back to you.
 
@@ -156,7 +156,7 @@ nc localhost 2048
 ```
 
 If you want, close the connection from our side as well. I've placed a marker where you can close the connection from our side.
-Because ``NIOAsyncChannel\executeThenClose(_:)`` will close the connection when the function ends, simply place a `return` statement here.
+Because ``NIOAsyncChannel/executeThenClose(_:)`` will close the connection when the function ends, simply place a `return` statement here.
 
 ## Conclusion
 
