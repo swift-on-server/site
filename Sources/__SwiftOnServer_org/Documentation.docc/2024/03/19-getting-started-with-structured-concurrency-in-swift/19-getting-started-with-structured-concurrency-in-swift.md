@@ -183,7 +183,7 @@ func buyAllBooks() async throws {
 }
 ```
 
-This is a powerful feature, as it allows you to easily reason about _streams_ of data. On iOS, this can be a stream of keyboard events, StoreKit purchases, notifications or sensor data. For backend developers, this can be a WebSocket, a database query or the incoming connections on a TCP server. If you're interested in that, please check out our tutorial on [writing a SwiftNIO TCP Server](/using-swiftnio-channels).
+This is a powerful feature, as it allows you to easily reason about _streams_ of data. On iOS, this can be a stream of keyboard events, StoreKit purchases, notifications or sensor data. For backend developers, this can be a WebSocket, a database query or the incoming connections on a TCP server. If you're interested in that, please check out our tutorial on [writing a SwiftNIO TCP Server](https://swiftonserver.com/using-swiftnio-channels).
 
 If you're familiar with the Combine framework, this might sound similar to a `Publisher`. AsyncSequences have many of the same features as Combine's Publishers. Especially with [swift-async-algorithms](https://github.com/apple/swift-async-algorithms), AsyncSequence receive many of the same perks that a Publisher has.
 

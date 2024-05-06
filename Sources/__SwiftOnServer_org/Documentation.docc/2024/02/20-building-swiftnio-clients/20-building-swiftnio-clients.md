@@ -2,7 +2,7 @@
 
 HTTP clients are a common first networking application to build. HTTP is a well known and simple to understand protocol, making it an excellent start.
 
-In the previous [SwiftNIO tutorial](/using-swiftnio-channels), you learned how to use SwiftNIO to build a simple TCP echo server. In this tutorial, you'll build a simple HTTP client using SwiftNIO.
+In the previous [SwiftNIO tutorial](https://swiftonserver.com/using-swiftnio-channels), you learned how to use SwiftNIO to build a simple TCP echo server. In this tutorial, you'll build a simple HTTP client using SwiftNIO.
 
 We'll use the `NIOHTTP1` package for parsing and serializing HTTP messages. In addition, SwiftNIO's structured concurrency is used to manage the lifecycle of our client.
 
