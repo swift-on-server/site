@@ -12,7 +12,7 @@ Imagine that you're shopping for groceries with a friend. You both have a list o
 
 ### Pre-Swift 5.5 Concurrency
 
-Concurrency has been a part of Swift for a long time, for example, through the use of `DispatchQueue` and `OperationQueue`. In these models, you can submit work to a queue, and the queue will execute the work in the background. Often times, you'll have to wait for the work to finish, either successfully or with an error.
+Concurrency has been a part of Swift for a long time, for example, through the use of ``DispatchQueue`` and ``OperationQueue``. In these models, you can submit work to a queue, and the queue will execute the work in the background. Often times, you'll have to wait for the work to finish, either successfully or with an error.
 
 ```swift
 DispatchQueue.global().async {
