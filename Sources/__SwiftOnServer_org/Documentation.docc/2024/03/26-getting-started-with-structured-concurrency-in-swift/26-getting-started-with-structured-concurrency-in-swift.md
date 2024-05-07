@@ -70,7 +70,7 @@ bankAccount.unownedExecutor
 
 You can create your own ``SerialExecutor`` for use with your actors. SwiftNIO's EventLoop already has a ``eventloop/executor [59PH6]`` property that you can use. ``/Dispatch``'s ``DispatchQueue`` can be adapted easily as well.
 
-Since `unownedExecutor` is not a static member of an actor, an actor's static properties can _not be isolated_ by the actor.
+Since `actor/unownedExecutor` is not a static member of an actor, an actor's static properties can _not be isolated_ by the actor.
 
 ### Nonisolated
 
