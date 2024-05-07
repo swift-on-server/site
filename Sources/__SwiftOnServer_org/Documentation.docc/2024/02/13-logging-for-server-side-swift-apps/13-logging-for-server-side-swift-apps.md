@@ -180,7 +180,7 @@ Request.$id.withValue("my-req") {
 The snippet's output is going to be something like this:
 
 
-```swift
+```
 2024-02-09T19:26:43+0100 notice task-logger : foo=bar hello=world [MyApp] hi
 2024-02-09T19:26:43+0100 info task-logger : abc=123 foo=bar id=my-req [MyApp] bye
 ```
