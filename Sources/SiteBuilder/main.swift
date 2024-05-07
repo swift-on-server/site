@@ -67,14 +67,7 @@ let config = Config(
 )
 
 var posts = [RSSTemplate.Item]()
-var pages: [SitemapTemplate.Item] {
-    posts.map {
-        SitemapTemplate.Item(
-            permalink: $0.permalink,
-            date: $0.date
-        )
-    }
-}
+var pages = [SitemapTemplate.Item]()
 
 // Run on tag through Github Actions
 // TODO: Run Fetch tags on servera
@@ -125,12 +118,20 @@ func openFolder(_ folder: URL) throws {
         guard var metadata = getMetadata(forFolder: folder) else {
             return
         }
+        
+        let attributes = try FileManager.default.attributesOfItem(
+            atPath: folder.appending(component: "\(folderName).md").relativePath
+        )
+
+        guard let modificationDate = attributes[.modificationDate] as? NSDate else {
+            return
+        }
 
         metadata.contents = try String(contentsOf: folder.appending(components: "\(folderName).html"))
         metadata.tagList = metadata.tags.split(separator: ",").map { tag in
             tag.trimmingCharacters(in: .whitespacesAndNewlines)
         }
-        let permalink = "\(baseUrl)\(metadata.slug)"
+        let permalink = "\(baseUrl)\(metadata.slug)/"
         let postHTML = library.render(metadata, withTemplate: "post")!
         let indexHTML = library.render(IndexContext(
             baseUrl: baseUrl,
@@ -148,6 +149,12 @@ func openFolder(_ folder: URL) throws {
                     permalink: permalink,
                     date: date,
                     dateString: metadata.date
+                )
+            )
+            pages.append(
+                SitemapTemplate.Item(
+                    permalink: permalink,
+                    date: modificationDate as Date
                 )
             )
         }

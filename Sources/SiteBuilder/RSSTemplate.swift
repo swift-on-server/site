@@ -8,7 +8,7 @@ struct RSSTemplate {
         let description: String
         let permalink: String
         let date: Date
-        var dateString: String
+        let dateString: String
     }
 
     let formatter: DateFormatter = {
