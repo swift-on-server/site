@@ -62,15 +62,15 @@ print(balance) // 100
 
 Just like any type, you can make an `extension` on an actor. Actors can also conform to protocols, assuming that the protocol's signature can be feasibly implemented with isolation. A common obstacle is that you can't easily conform to a protocol that has properties or methods that are not isolated.
 
-An actor's isolation is inherited by its properties and methods. Actor Isolation is compile-time checked to ensures that only one task can access the actor's state at a time. This is achieved through the ``actor/unownedExecutor`` of an actor. This is a ``SerialExecutor`` that the Swift runtime submits tasks to, which provides the isolation in this actor. The SerialExecutor may be a single thread, or multiple. But needs to guarantee that only one task is running on this at a time. Akin to `DispatchQueue.main.async { }` in GCD.
+An actor's isolation is inherited by its properties and methods. Actor Isolation is compile-time checked to ensures that only one task can access the actor's state at a time. This is achieved through the ``Actor/unownedExecutor`` of an actor. This is a ``SerialExecutor`` that the Swift runtime submits tasks to, which provides the isolation in this actor. The SerialExecutor may be a single thread, or multiple. But needs to guarantee that only one task is running on this at a time. Akin to `DispatchQueue.main.async { }` in GCD.
 
 ```swift
 bankAccount.unownedExecutor
 ```
 
-You can create your own ``SerialExecutor`` for use with your actors. SwiftNIO's EventLoop already has a ``eventloop/executor [59PH6]`` property that you can use. ``/Dispatch``'s ``DispatchQueue`` can be adapted easily as well.
+You can create your own ``SerialExecutor`` for use with your actors. SwiftNIO's EventLoop already has a ``EventLoop/executor [59PH6]`` property that you can use. ``/Dispatch``'s ``DispatchQueue`` can be adapted easily as well.
 
-Since `actor/unownedExecutor` is not a static member of an actor, an actor's static properties can _not be isolated_ by the actor.
+Since ``Actor/unownedExecutor`` is not a static member of an actor, an actor's static properties can _not be isolated_ by the actor.
 
 ### Nonisolated
 
