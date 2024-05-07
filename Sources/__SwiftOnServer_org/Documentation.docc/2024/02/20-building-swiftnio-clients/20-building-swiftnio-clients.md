@@ -4,7 +4,7 @@ HTTP clients are a common first networking application to build. HTTP is a well 
 
 In the previous [SwiftNIO tutorial](https://swiftonserver.com/using-swiftnio-channels), you learned how to use SwiftNIO to build a simple TCP echo server. In this tutorial, you'll build a simple HTTP client using SwiftNIO.
 
-We'll use the `NIOHTTP1` package for parsing and serializing HTTP messages. In addition, SwiftNIO's structured concurrency is used to manage the lifecycle of our client.
+We'll use the ``/NIOHTTP1`` package for parsing and serializing HTTP messages. In addition, SwiftNIO's structured concurrency is used to manage the lifecycle of our client.
 
 By the end of this tutorial, you'll know how to configure a SwiftNIO Channel's pipeline, and are able to send HTTP requests to a server.
 
@@ -14,7 +14,7 @@ By the end of this tutorial, you'll know how to configure a SwiftNIO Channel's p
 
 ## Creating a Client Channel
 
-In SwiftNIO, Channels are created through a bootstrap. For TCP clients, you'd generally use a ``ClientBootstrap``. There are alternative clients as well, such as Apple's Transport Services for Apple platforms. In addition, the `NIOHTTP1` module is used to simplify the process of creating a client channel.
+In SwiftNIO, Channels are created through a bootstrap. For TCP clients, you'd generally use a ``ClientBootstrap``. There are alternative clients as well, such as Apple's Transport Services for Apple platforms. In addition, the ``/NIOHTTP1`` module is used to simplify the process of creating a client channel.
 
 Add these dependencies to your executable target in your `Package.swift` file:
 
@@ -28,7 +28,7 @@ Add these dependencies to your executable target in your `Package.swift` file:
 ),
 ```
 
-Now, let's create a ``ClientBootstrap`` and configure it to use the `NIOHTTP1` module's handlers. First, import the necessary modules:
+Now, let's create a ``ClientBootstrap`` and configure it to use the ``/NIOHTTP1`` module's handlers. First, import the necessary modules:
 
 ```swift
 import NIOCore
@@ -119,7 +119,7 @@ struct HTTPClient {
 
 Let's break it down:
 
-1. Use the `httpClientBootstrap` to create a new client channel. This returns an ``EventLoopFuture`` containing a regular NIO ``Channel``. By using ``EventLoopFuture\flatMapThrowing`` to transform the result of this future, it's possible to convert the ``EventLoopFuture`` into a ``NIOAsyncChannel``.
+1. Use the `httpClientBootstrap` to create a new client channel. This returns an ``EventLoopFuture`` containing a regular NIO ``Channel``. By using ``EventLoopFuture/flatMapThrowing(_:)`` to transform the result of this future, it's possible to convert the ``EventLoopFuture`` into a ``NIOAsyncChannel``.
 2. In order to use structured concurrency, it's necessary to wrap the ``Channel`` in an ``NIOAsyncChannel``. The inbound and outbound types must be ``Sendable``, and need to be configured to match the pipeline's input and output. This is based on the handlers added in the bootstrap's `channelInitializer`.
 3. The ``NIOAsyncChannel`` is configured to receive ``HTTPClientResponsePart`` objects. This is the type that the HTTP client will receive from the server.
 4. The ``NIOAsyncChannel`` is configured to send `SendableHTTPClientRequestPart` objects. This is the type that the HTTP client will send to the server.
@@ -186,7 +186,7 @@ This sets up a state variable to keep track of the response parts received. It t
 processes the response parts as they come in:
 
 12. A `for` loop is used to iterate over the response parts. This is a structured concurrency block that will continue to run until the channel is closed by the remote, an error is thrown, or a `return` statement ends the function.
-13. The `part` is matched against the ``HTTPClientResponsePart` enum. If the part is a head, it's stored in the `partialResponse` variable. If the part is a body, it's appended to the buffer in the `partialResponse` variable. If the part is an end, the `partialResponse` is returned.
+13. The `part` is matched against the ``HTTPClientResponsePart`` enum. If the part is a head, it's stored in the `partialResponse` variable. If the part is a body, it's appended to the buffer in the `partialResponse` variable. If the part is an end, the `partialResponse` is returned.
 14. If the loop ends without a return, an error is thrown, since the code was unable to receive a complete response.
 
 ## Using the Client

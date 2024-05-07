@@ -6,7 +6,7 @@ Hummingbird is a lightweight, flexible HTTP server framework written in Swift. T
 
 Hummingbird 2 was built using the modern Swift concurrency APIs. Most of the NIO event loop references are replaced with async / await functions and calls. Structured concurrency is present all around the codebase and the project components, such as ``Request``, are thread safe thanks to the ``Sendable`` conformance. 
 
-Before the async / await feature adoption, some components had a `HBAsync` prefix. Those are now removed from the v2 library. For example`HBAsyncMiddleware` is now ``MiddlewareProtocol`` or `HBAsyncResponder` is simply called ``HTTPResponder``.
+Before the async / await feature adoption, some components had a `HBAsync` prefix. Those are now removed from the v2 library. For example `HBAsyncMiddleware` is now ``MiddlewareProtocol`` or `HBAsyncResponder` is simply called ``HTTPResponder``.
 
 It is worth to mention that HB2 is prepared for Swift 6, the project also compiles against the experimental `StrictConcurrency=complete` feature flag. 
 

@@ -1,6 +1,6 @@
 # AsyncHTTPClient by example
 
-Swift [AsyncHTTPClient](https://github.com/swift-server/async-http-client) is an HTTP client library built on top of SwiftNIO. It provides a solid solution for efficiently managing HTTP requests by leveraging the Swift Concurrency model, thus simplifying networking tasks for developers.
+Swift ``/AsyncHTTPClient`` is an HTTP client library built on top of SwiftNIO. It provides a solid solution for efficiently managing HTTP requests by leveraging the Swift Concurrency model, thus simplifying networking tasks for developers.
 
 The library's asynchronous and non-blocking request methods ensure that network operations do not hinder the responsiveness of the application. Additionally, the library offers TLS support, automatic HTTP/2 over HTTPS and several other convenient features.
  
