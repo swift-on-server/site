@@ -1,3 +1,4 @@
+#if os(macOS)
 import Foundation
 
 struct RSS {
@@ -23,3 +24,4 @@ struct RSS {
             )
     }
 }
+#endif

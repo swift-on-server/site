@@ -1,3 +1,4 @@
+#if os(macOS)
 import Foundation
 
 struct RSSTemplate {
@@ -65,3 +66,4 @@ struct RSSTemplate {
             """
     }
 }
+#endif

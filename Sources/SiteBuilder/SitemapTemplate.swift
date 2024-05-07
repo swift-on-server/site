@@ -1,3 +1,4 @@
+#if os(macOS)
 import Foundation
 
 struct SitemapTemplate {
@@ -37,3 +38,4 @@ struct SitemapTemplate {
             """
     }
 }
+#endif
