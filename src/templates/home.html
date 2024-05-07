@@ -5,7 +5,9 @@
     </header>
 
     <div class="grid">
-        {contents}
+        {{#posts}}
+            {{> home-post}}
+        {{/posts}}
     </div>
 
     <hr />

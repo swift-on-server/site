@@ -1,75 +1,79 @@
 <!DOCTYPE html>
 <html lang="en-US">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <title>What's new in Hummingbird 2? - Swift on server</title>
-    
-    <meta name="description" content="Discover Hummingbird 2: a Swift-based HTTP server framework, with modern concurrency and customizable request contexts.">
-    
-    <meta property="og:title" content="What's new in Hummingbird 2? - Swift on server">
-    <meta property="og:description" content="Discover Hummingbird 2: a Swift-based HTTP server framework, with modern concurrency and customizable request contexts.">
-    <meta property="og:url" content="https://swiftonserver.com/whats-new-in-hummingbird-2/">
-    <meta property="og:image" content="https://swiftonserver.com/images/assets/whats-new-in-hummingbird-2/cover.jpg">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="What's new in Hummingbird 2? - Swift on server">
-    <meta name="twitter:description" content="Discover Hummingbird 2: a Swift-based HTTP server framework, with modern concurrency and customizable request contexts.">
-    <meta name="twitter:image" content="https://swiftonserver.com/images/assets/whats-new-in-hummingbird-2/cover.jpg">
-    
-    <link rel="stylesheet" href="https://swiftonserver.com/css/style.css">
-    <link rel="stylesheet" href="https://swiftonserver.com/css/syntax.css">
+        <title>What&#39;s new in Hummingbird 2? - Swift on Server</title>
 
-    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/icon-320.png" type="image/png">
-    
-    <link rel="apple-touch-icon" href="https://swiftonserver.com/images/icons/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="57x57" href="https://swiftonserver.com/images/icons/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="https://swiftonserver.com/images/icons/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="https://swiftonserver.com/images/icons/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="https://swiftonserver.com/images/icons/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="https://swiftonserver.com/images/icons/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="https://swiftonserver.com/images/icons/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="https://swiftonserver.com/images/icons/apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://swiftonserver.com/images/icons/apple-touch-icon-180x180.png">
-    
-</head>
+        <meta name="description" content="Discover Hummingbird 2: a Swift-based HTTP server framework, with modern concurrency and customizable request contexts.
+" />
 
-<body>
-    <header id="page-header">
-        <a href="https://swiftonserver.com/">
-            <figure>
-                <picture>
-                    <source 
-                        srcset="https://swiftonserver.com/images/logos/logo~dark.png" 
+        <meta property="og:title" content="What&#39;s new in Hummingbird 2? - Swift on Server" />
+        <meta property="og:description" content="Discover Hummingbird 2: a Swift-based HTTP server framework, with modern concurrency and customizable request contexts.
+" />
+        <meta property="og:url" content="https://swiftonserver.com/whats-new-in-hummingbird-2/" />
+        <meta property="og:image" content="https://swiftonserver.com/images/assets/whats-new-in-hummingbird-2/cover.jpg" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="What&#39;s new in Hummingbird 2? - Swift on Server" />
+        <meta name="twitter:description" content="Discover Hummingbird 2: a Swift-based HTTP server framework, with modern concurrency and customizable request contexts.
+" />
+        <meta name="twitter:image" content="https://swiftonserver.com/images/assets/whats-new-in-hummingbird-2/cover.jpg" />
+
+        <link rel="stylesheet" href="https://swiftonserver.com/css/style.css" />
+        <link rel="stylesheet" href="https://swiftonserver.com/css/syntax.css" />
+
+        <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/icon-320.png" type="image/png" />
+
+        <link rel="apple-touch-icon" href="https://swiftonserver.com/images/icons/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="https://swiftonserver.com/images/icons/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="https://swiftonserver.com/images/icons/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="https://swiftonserver.com/images/icons/apple-touch-icon-76x76.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="https://swiftonserver.com/images/icons/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="https://swiftonserver.com/images/icons/apple-touch-icon-120x120.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="https://swiftonserver.com/images/icons/apple-touch-icon-144x144.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="https://swiftonserver.com/images/icons/apple-touch-icon-152x152.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="https://swiftonserver.com/images/icons/apple-touch-icon-180x180.png" />
+
+    </head>
+
+    <body>
+        <header id="page-header">
+            <a href="https://swiftonserver.com/">
+                <figure>
+                    <picture>
+                        <source
+                        srcset="https://swiftonserver.com/images/logos/logo~dark.png"
                         media="(prefers-color-scheme: dark)"
-                    >
-                    <img 
+                        />
+                        <img
                         id="logo-image"
                         width="150"
                         height="150"
                         src="https://swiftonserver.com/images/logos/logo.png"
                         alt="Logo of Swift on server"
                         title="Swift on server"
-                    >
-                </picture>
-            </figure>
-        </a>
-    </header>
-    
-    <main>
+                        />
+                    </picture>
+                </figure>
+            </a>
+        </header>
 
-        <article>
+        <main>
+
+            <article>
     <header>
         <section id="post-header" class="content-wrapper">
             <time datetime="2024/02/27">2024/02/27</time>
-            <h1 class="title">What's new in Hummingbird 2?</h1>
-            <p class="excerpt">Discover Hummingbird 2: a Swift-based HTTP server framework, with modern concurrency and customizable request contexts.</p>
+            <h1 class="title">What&#39;s new in Hummingbird 2?</h1>
+            <p class="excerpt">Discover Hummingbird 2: a Swift-based HTTP server framework, with modern concurrency and customizable request contexts.
+</p>
             <div class="meta">
                 <span class="tag">Swift</span>
-<span class="tag">Hummingbird</span>
-<span class="tag">Server</span>
+                <span class="tag">Hummingbird</span>
+                <span class="tag">Server</span>
             </div>
             <img src="https://github.com/tib.png" alt="Tibor Bödecs" class="author">
             <p>
@@ -86,238 +90,239 @@
 
     <section id="contents" class="content-wrapper">
     
-    <h1>What's new in Hummingbird 2?</h1><p><a href="https://github.com/hummingbird-project/hummingbird" target="_blank">Hummingbird</a> is a lightweight, flexible HTTP server framework written in Swift. The work on the second major version started last year and the first alpha version was tagged on the 22th of January, 2024. There are quite a lot of significant changes and under the hood improvements. It seems like the new APIs are mostly settled down at this point, so this is a great opportunity to introduce HB2. Let's dive in.</p><h2>Swift concurrency</h2><p>Hummingbird 2 was built using the modern Swift concurrency APIs. Most of the NIO event loop references are replaced with async / await functions and calls. Structured concurrency is present all around the codebase and the project components, such as <code>HBRequest</code>, are thread safe thanks to the <code>Sendable</code> conformance.</p><p>Before the async / await feature adoption, some components had a <code>HBAsync</code> prefix. Those are now removed from the v2 library. For example<code>HBAsyncMiddleware</code> is now <code>MiddlewareProtocol</code> or <code>HBAsyncResponder</code> is simply called <code>HTTPResponder</code>.</p><p>It is worth to mention that HB2 is prepared for Swift 6, the project also compiles against the experimental <code>StrictConcurrency=complete</code> feature flag.</p><h2>Swift service lifecycle v2</h2><p>The <a href="https://github.com/swift-server/swift-service-lifecycle" target="_blank">Swift service lifecycle library</a> provides a clean startup and shutdown mechanism for server applications. Hummingbird 2 uses the latest version of the library including support for graceful shutdown even for custom application services. When Hummingbird is signalled by swift-service-lifecycle to gracefully shut down, any currently running requests continue being handled. New connections and requests will not be accepted, and idle connections are shut down. Once everything's ready, Hummingbird will shut down completely.</p><h2>Hummingbird core and foundation</h2><p>The <a href="https://github.com/hummingbird-project/hummingbird-core" target="_blank">HummingbirdCore</a> repository is merged into main repository. The <code>HummingbirdFoundation</code> target was also removed and now all the Foundation extensions are part of the main Hummingbird Swift package target. This makes Hummingbird ergonomically closer to Vapor, allowing users to get started more quickly. This decision is backed by the upcoming move to the new swift-foundation library.</p><h2>Jobs framework updates</h2><p>The HummingbirdJobs framework can be used to push work onto a queue, so that is processed outside of a request. Job handlers were restructured to use <code>TaskGroup</code> and conform to the <code>Service</code> protocol from the Swift service lifecycle framework. A <code>JobQueue</code> can also define it's own <code>JobID</code> type, which helps when integrating with various database/driver implementations.</p><h2>Connection pools</h2><p>The custom connection pool implementation was removed from the framework. Previously, this component offered connection pooling for PostgreSQL. Since <a href="https://github.com/vapor/postgres-nio" target="_blank">PostgresNIO</a> has built-in support, there's no need for it anymore inside the HB framework.</p><h2>HTTP improvements</h2><p>Hummingbird 2 takes advantage of the brand new <a href="https://github.com/apple/swift-http-types" target="_blank">Swift HTTP Types library</a>. The overall support for HTTP2 and TLS is also improved a lot in the second major version.</p><h2>Router library</h2><p>Hummingbird 2 features a brand new routing library, based on Swift result builders. This is a standalone project, the old route building mechanism still works, but if you prefer result builders you can try the new method by importing this lib.</p><p>Here's a little sneak-peak about the usage of the new <code>RouterBuilder</code> object:</p><pre><code class="language-swift"><span class="keyword">import</span> HummingbirdRouter
+    <section class='introduction'><h1>What’s new in Hummingbird 2?</h1></section><section class='details literature'><p>Hummingbird is a lightweight, flexible HTTP server framework written in Swift. The work on the second major version started last year and the first alpha version was tagged on the 22th of January, 2024. There are quite a lot of significant changes and under the hood improvements. It seems like the new APIs are mostly settled down at this point, so this is a great opportunity to introduce HB2. Let’s dive in.</p><h2 id='Swift%20concurrency'><a href='#Swift%20concurrency'>Swift concurrency</a></h2><p>Hummingbird 2 was built using the modern Swift concurrency APIs. Most of the NIO event loop references are replaced with async / await functions and calls. Structured concurrency is present all around the codebase and the project components, such as <code>Request</code>, are thread safe thanks to the <code><a href='https://swiftinit.org/docs/swift/swift/sendable'>Sendable</a></code> conformance.</p><p>Before the async / await feature adoption, some components had a <code>HBAsync</code> prefix. Those are now removed from the v2 library. For example <code>HBAsyncMiddleware</code> is now <code>MiddlewareProtocol</code> or <code>HBAsyncResponder</code> is simply called <code>HTTPResponder</code>.</p><p>It is worth to mention that HB2 is prepared for Swift 6, the project also compiles against the experimental <code>StrictConcurrency=complete</code> feature flag.</p><h2 id='Swift%20service%20lifecycle%20v2'><a href='#Swift%20service%20lifecycle%20v2'>Swift service lifecycle v2</a></h2><p>The <a target='_blank' rel='external' href='https://github.com/swift-server/swift-service-lifecycle'>Swift service lifecycle library</a> provides a clean startup and shutdown mechanism for server applications. Hummingbird 2 uses the latest version of the library including support for graceful shutdown even for custom application services. When Hummingbird is signalled by swift-service-lifecycle to gracefully shut down, any currently running requests continue being handled. New connections and requests will not be accepted, and idle connections are shut down. Once everything’s ready, Hummingbird will shut down completely.</p><h2 id='Hummingbird%20core%20and%20foundation'><a href='#Hummingbird%20core%20and%20foundation'>Hummingbird core and foundation</a></h2><p>The <a target='_blank' rel='external' href='https://github.com/hummingbird-project/hummingbird-core'>HummingbirdCore</a> repository is merged into main repository. The <code>HummingbirdFoundation</code> target was also removed and now all the Foundation extensions are part of the main Hummingbird Swift package target. This makes Hummingbird ergonomically closer to Vapor, allowing users to get started more quickly. This decision is backed by the upcoming move to the new swift-foundation library.</p><h2 id='Jobs%20framework%20updates'><a href='#Jobs%20framework%20updates'>Jobs framework updates</a></h2><p>The HummingbirdJobs framework can be used to push work onto a queue, so that is  processed outside of a request. Job handlers were restructured to use <code><a href='https://swiftinit.org/docs/swift/_concurrency/taskgroup'>TaskGroup</a></code> and conform to the <code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle/service'>Service</a></code> protocol from the Swift service lifecycle framework. A <code>JobQueue</code> can also define it’s own <code>JobID</code> type, which helps when integrating with various database/driver implementations.</p><h2 id='Connection%20pools'><a href='#Connection%20pools'>Connection pools</a></h2><p>The custom connection pool implementation was removed from the framework. Previously, this component offered connection pooling for PostgreSQL. Since <a target='_blank' rel='external' href='https://github.com/vapor/postgres-nio'>PostgresNIO</a> has built-in support, there’s no need for it anymore inside the HB framework.</p><h2 id='HTTP%20improvements'><a href='#HTTP%20improvements'>HTTP improvements</a></h2><p>Hummingbird 2 takes advantage of the brand new <a target='_blank' rel='external' href='https://github.com/apple/swift-http-types'>Swift HTTP Types library</a>. The overall support for HTTP2 and TLS is also improved a lot in the second major version.</p><h2 id='Router%20library'><a href='#Router%20library'>Router library</a></h2><p>Hummingbird 2 features a brand new routing library, based on Swift result builders. This is a standalone project, the old route building mechanism still works, but if you prefer result builders you can try the new method by importing this lib.</p><p>Here’s a little sneak-peak about the usage of the new <code>RouterBuilder</code> object:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>import</span> <span class='xv'>HummingbirdRouter</span><span class='newline'>
 
-<span class="keyword">let</span> router = <span class="type">RouterBuilder</span>(context: <span class="type">BasicRouterRequestContext</span>.<span class="keyword">self</span>) {
-    <span class="type">TestEndpointMiddleware</span>()
-    <span class="type">Get</span>(<span class="string">"test"</span>) { <span class="keyword">_</span>, context <span class="keyword">in
-        return</span> context.<span class="property">endpointPath</span>
-    }
-    <span class="type">Get</span> { <span class="keyword">_</span>, context <span class="keyword">in
-        return</span> context.<span class="property">endpointPath</span>
-    }
-    <span class="type">Post</span>(<span class="string">"/test2"</span>) { <span class="keyword">_</span>, context <span class="keyword">in
-        return</span> context.<span class="property">endpointPath</span>
-    }
-}
-<span class="keyword">let</span> app = <span class="type">Application</span>(responder: router)</code></pre><p>There are more examples available inside the Hummingbird <a href="https://github.com/hummingbird-project/hummingbird/blob/2.x.x/Tests/HummingbirdRouterTests/RouterTests.swift" target="_blank">RouterTests</a> file. If you are curious about the new route builder tool, that's a good place to get started, since there are no official docs just yet.</p><h2>Generic request context</h2><p>The biggest change to the framework is definitely the introduction of the generic request context. Hummingbird 2.0 separates contextual objects from the <code>Request</code> type and users can define custom properties as custom <code>RequestContext</code> protocol implementations.</p><p>The request context is associated with the reworked <em>Router</em>, which a generic class, featuring a <em>Context</em> type. The <code>BasicRequestContext</code> type is the default <em>Context</em> implementation for the <em>Router</em>. The request decoder and encoder defaults to a JSON-based solution when using the base context. You can provide a custom decoder through a custom router context.</p><p>Let me show you how this new contextual router system works in practice.</p><h2>HB2 example project</h2><p>This article contains a sample project, which you can download from the following <a href="https://github.com/swift-on-server/whats-new-in-hummingbird-2-sample" target="_blank">link</a>.</p><p>You can integrate Hummingbird 2 by adding it as a dependency to your project, using Swift Package Manager.</p><pre><code class="language-swift"><span class="comment">// swift-tools-version:5.9</span>
-<span class="keyword">import</span> PackageDescription
+</span><span class='xk'>let</span> <span class='xv'>router</span> = <span class='xv'>RouterBuilder</span>(<span class='xv'>context</span>: <span class='xv'>BasicRouterRequestContext</span>.<span class='xk'>self</span>) {<span class='newline'>
+</span>    <span class='xv'>TestEndpointMiddleware</span>()<span class='newline'>
+</span>    <span class='xv'>Get</span>(<span class='xs'>"test"</span>) { _, <span class='xv'>context</span> <span class='xk'>in</span><span class='newline'>
+</span>        <span class='xk'>return</span> <span class='xv'>context</span>.<span class='xv'>endpointPath</span><span class='newline'>
+</span>    }<span class='newline'>
+</span>    <span class='xv'>Get</span> { _, <span class='xv'>context</span> <span class='xk'>in</span><span class='newline'>
+</span>        <span class='xk'>return</span> <span class='xv'>context</span>.<span class='xv'>endpointPath</span><span class='newline'>
+</span>    }<span class='newline'>
+</span>    <span class='xv'>Post</span>(<span class='xs'>"/test2"</span>) { _, <span class='xv'>context</span> <span class='xk'>in</span><span class='newline'>
+</span>        <span class='xk'>return</span> <span class='xv'>context</span>.<span class='xv'>endpointPath</span><span class='newline'>
+</span>    }<span class='newline'>
+</span>}<span class='newline'>
+</span><span class='xk'>let</span> <span class='xv'>app</span> = <span class='xv'>Application</span>(<span class='xv'>responder</span>: <span class='xv'>router</span>)</code></pre><p>There are more examples available inside the Hummingbird <a target='_blank' rel='external' href='https://github.com/hummingbird-project/hummingbird/blob/2.x.x/Tests/HummingbirdRouterTests/RouterTests.swift'>RouterTests</a> file. If you are curious about the new route builder tool, that’s a good place to get started, since there are no official docs just yet.</p><h2 id='Generic%20request%20context'><a href='#Generic%20request%20context'>Generic request context</a></h2><p>The biggest change to the framework is definitely the introduction of the generic request context. Hummingbird 2.0 separates contextual objects from the <code>Request</code> type and users can define custom properties as custom <code>RequestContext</code> protocol implementations.</p><p>The request context is associated with the reworked <code>Router</code>, which a generic class, featuring a <em>Context</em> type. The <code>BasicRequestContext</code> type is the default <em>Context</em> implementation for the <em>Router</em>. The request decoder and encoder defaults to a JSON-based solution when using the base context. You can provide a custom decoder through a custom router context.</p><p>Let me show you how this new contextual router system works in practice.</p><h2 id='HB2%20example%20project'><a href='#HB2%20example%20project'>HB2 example project</a></h2><p>This article contains a sample project, which you can download from the following <a target='_blank' rel='external' href='https://github.com/swift-on-server/whats-new-in-hummingbird-2-sample'>link</a>.</p><p>You can integrate Hummingbird 2 by adding it as a dependency to your project, using Swift Package Manager.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xc'>// swift-tools-version:5.9</span><span class='newline'>
+</span><span class='xk'>import</span> <span class='xv'>PackageDescription</span><span class='newline'>
 
-<span class="keyword">let</span> package = <span class="type">Package</span>(
-    name: <span class="string">"whats-new-in-hummingbird-2-sample"</span>,
-    platforms: [
-        .<span class="call">macOS</span>(.<span class="dotAccess">v14</span>),
-    ],
-    dependencies: [
-        .<span class="call">package</span>(url: <span class="string">"https://github.com/hummingbird-project/hummingbird.git"</span>, from: <span class="string">"2.0.0-beta.1"</span>),
-        .<span class="call">package</span>(url: <span class="string">"https://github.com/apple/swift-argument-parser.git"</span>, from: <span class="string">"1.0.0"</span>),
-    ],
-    targets: [
-        .<span class="call">executableTarget</span>(
-            name: <span class="string">"App"</span>,
-            dependencies: [
-                .<span class="call">product</span>(name: <span class="string">"ArgumentParser"</span>, package: <span class="string">"swift-argument-parser"</span>),
-                .<span class="call">product</span>(name: <span class="string">"Hummingbird"</span>, package: <span class="string">"hummingbird"</span>),
-                <span class="comment">// .product(name: "HummingbirdRouter", package: "hummingbird"),</span>
-            ]
-        ),
-        .<span class="call">testTarget</span>(
-            name: <span class="string">"AppTests"</span>,
-            dependencies: [
-                .<span class="call">target</span>(name: <span class="string">"App"</span>),
-                .<span class="call">product</span>(name: <span class="string">"HummingbirdXCT"</span>, package: <span class="string">"hummingbird"</span>),
-            ]
-        ),
-    ]
-)</code></pre><p>Here's how to build a custom decoder to handle different media types on your backend server:</p><pre><code class="language-swift"><span class="keyword">import</span> Hummingbird
+</span><span class='xk'>let</span> <span class='xv'>package</span> = <span class='xv'>Package</span>(<span class='newline'>
+</span>    <span class='xv'>name</span>: <span class='xs'>"whats-new-in-hummingbird-2-sample"</span>,<span class='newline'>
+</span>    <span class='xv'>platforms</span>: [<span class='newline'>
+</span>        .<span class='xv'>macOS</span>(.<span class='xv'>v14</span>),<span class='newline'>
+</span>    ],<span class='newline'>
+</span>    <span class='xv'>dependencies</span>: [<span class='newline'>
+</span>        .<span class='xv'>package</span>(<span class='xv'>url</span>: <span class='xs'>"https://github.com/hummingbird-project/hummingbird.git"</span>, <span class='xv'>from</span>: <span class='xs'>"2.0.0-beta.1"</span>),<span class='newline'>
+</span>        .<span class='xv'>package</span>(<span class='xv'>url</span>: <span class='xs'>"https://github.com/apple/swift-argument-parser.git"</span>, <span class='xv'>from</span>: <span class='xs'>"1.0.0"</span>),<span class='newline'>
+</span>    ],<span class='newline'>
+</span>    <span class='xv'>targets</span>: [<span class='newline'>
+</span>        .<span class='xv'>executableTarget</span>(<span class='newline'>
+</span>            <span class='xv'>name</span>: <span class='xs'>"App"</span>,<span class='newline'>
+</span>            <span class='xv'>dependencies</span>: [<span class='newline'>
+</span>                .<span class='xv'>product</span>(<span class='xv'>name</span>: <span class='xs'>"ArgumentParser"</span>, <span class='xv'>package</span>: <span class='xs'>"swift-argument-parser"</span>),<span class='newline'>
+</span>                .<span class='xv'>product</span>(<span class='xv'>name</span>: <span class='xs'>"Hummingbird"</span>, <span class='xv'>package</span>: <span class='xs'>"hummingbird"</span>),<span class='newline'>
+</span>                <span class='xc'>// .product(name: "HummingbirdRouter", package: "hummingbird"),</span><span class='newline'>
+</span>            ]<span class='newline'>
+</span>        ),<span class='newline'>
+</span>        .<span class='xv'>testTarget</span>(<span class='newline'>
+</span>            <span class='xv'>name</span>: <span class='xs'>"AppTests"</span>,<span class='newline'>
+</span>            <span class='xv'>dependencies</span>: [<span class='newline'>
+</span>                .<span class='xv'>target</span>(<span class='xv'>name</span>: <span class='xs'>"App"</span>),<span class='newline'>
+</span>                .<span class='xv'>product</span>(<span class='xv'>name</span>: <span class='xs'>"HummingbirdXCT"</span>, <span class='xv'>package</span>: <span class='xs'>"hummingbird"</span>),<span class='newline'>
+</span>            ]<span class='newline'>
+</span>        ),<span class='newline'>
+</span>    ]<span class='newline'>
+</span>)</code></pre><p>Here’s how to build a custom decoder to handle different media types on your backend server:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>import</span> <span class='xv'>Hummingbird</span><span class='newline'>
 
-<span class="comment">// 1.</span>
-<span class="keyword">struct</span> MyRequestDecoder: <span class="type">RequestDecoder</span> {
+</span><span class='xc'>// 1.</span><span class='newline'>
+</span><span class='xk'>struct</span> <span class='xv'>MyRequestDecoder</span>: <span class='xt'>RequestDecoder</span> {<span class='newline'>
 
-    <span class="keyword">func</span> decode&lt;T&gt;(
-        <span class="keyword">_</span> type: <span class="type">T</span>.<span class="type">Type</span>,
-        from request: <span class="type">Request</span>,
-        context: <span class="keyword">some</span> <span class="type">BaseRequestContext</span>
-    ) <span class="keyword">async throws</span> -&gt; <span class="type">T</span> <span class="keyword">where</span> <span class="type">T</span>: <span class="type">Decodable</span> {
-        <span class="comment">// 2.</span>
-        <span class="keyword">guard let</span> header = request.<span class="property">headers</span>[.<span class="dotAccess">contentType</span>] <span class="keyword">else</span> {
-            <span class="keyword">throw</span> <span class="type">HTTPError</span>(.<span class="dotAccess">badRequest</span>)
-        }
-        <span class="comment">// 3.</span>
-        <span class="keyword">guard let</span> mediaType = <span class="type">MediaType</span>(from: header) <span class="keyword">else</span> {
-            <span class="keyword">throw</span> <span class="type">HTTPError</span>(.<span class="dotAccess">badRequest</span>)
-        }
-        <span class="comment">// 4.</span>
-        <span class="keyword">let</span> decoder: <span class="type">RequestDecoder</span>
-        <span class="keyword">switch</span> mediaType {
-        <span class="keyword">case</span> .<span class="dotAccess">applicationJson</span>:
-            decoder = <span class="type">JSONDecoder</span>()
-        <span class="keyword">case</span> .<span class="dotAccess">applicationUrlEncoded</span>:
-            decoder = <span class="type">URLEncodedFormDecoder</span>()
-        <span class="keyword">default</span>:
-            <span class="keyword">throw</span> <span class="type">HTTPError</span>(.<span class="dotAccess">badRequest</span>)
-        }
-        <span class="comment">// 5</span>
-        <span class="keyword">return try await</span> decoder.<span class="call">decode</span>(
-            type,
-            from: request,
-            context: context
-        )
-    }
-}</code></pre><ol><li>Define the custom decoder by implementing the <code>RequestDecoder</code> protocol.</li><li>Make sure that the incoming request has a <code>Content-Type</code> HTTP header field.</li><li>Construct a valid <code>MediaType</code> object from the header field.</li><li>Setup a custom decoder based on the media type.</li><li>Return the decoded object using the decoder, with the request and the context.</li></ol><p>To use the custom decoder, let's define a custom request context. A request context is a container for the Hummingbird framework to store information needed by the framework. The following snippet demonstrates how to build one using the <em>RequestContext</em> protocol:</p><pre><code class="language-swift"><span class="comment">// 1.</span>
-<span class="keyword">protocol</span> MyRequestContext: <span class="type">RequestContext</span> {
-    <span class="keyword">var</span> myValue: <span class="type">String</span>? { <span class="keyword">get set</span> }
-}
+</span>    <span class='xk'>func</span> <span class='xv'>decode</span>&lt;<span class='xv'>T</span>&gt;(<span class='newline'>
+</span>        _ <span class='xv'>type</span>: <span class='xt'>T</span>.<span class='xk'>Type</span>,<span class='newline'>
+</span>        <span class='xv'>from</span> <span class='xv'>request</span>: <span class='xt'>Request</span>,<span class='newline'>
+</span>        <span class='xv'>context</span>: <span class='xk'>some</span> <span class='xt'>BaseRequestContext</span><span class='newline'>
+</span>    ) <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <span class='xt'>T</span> <span class='xk'>where</span> <span class='xt'>T</span>: <span class='xt'>Decodable</span> {<span class='newline'>
+</span>        <span class='xc'>// 2.</span><span class='newline'>
+</span>        <span class='xk'>guard</span> <span class='xk'>let</span> <span class='xv'>header</span> = <span class='xv'>request</span>.<span class='xv'>headers</span>[.<span class='xv'>contentType</span>] <span class='xk'>else</span> {<span class='newline'>
+</span>            <span class='xk'>throw</span> <span class='xv'>HTTPError</span>(.<span class='xv'>badRequest</span>)<span class='newline'>
+</span>        }<span class='newline'>
+</span>        <span class='xc'>// 3.</span><span class='newline'>
+</span>        <span class='xk'>guard</span> <span class='xk'>let</span> <span class='xv'>mediaType</span> = <span class='xv'>MediaType</span>(<span class='xv'>from</span>: <span class='xv'>header</span>) <span class='xk'>else</span> {<span class='newline'>
+</span>            <span class='xk'>throw</span> <span class='xv'>HTTPError</span>(.<span class='xv'>badRequest</span>)<span class='newline'>
+</span>        }<span class='newline'>
+</span>        <span class='xc'>// 4.</span><span class='newline'>
+</span>        <span class='xk'>let</span> <span class='xv'>decoder</span>: <span class='xt'>RequestDecoder</span><span class='newline'>
+</span>        <span class='xk'>switch</span> <span class='xv'>mediaType</span> {<span class='newline'>
+</span>        <span class='xk'>case</span> .<span class='xv'>applicationJson</span>:<span class='newline'>
+</span>            <span class='xv'>decoder</span> = <span class='xv'>JSONDecoder</span>()<span class='newline'>
+</span>        <span class='xk'>case</span> .<span class='xv'>applicationUrlEncoded</span>:<span class='newline'>
+</span>            <span class='xv'>decoder</span> = <span class='xv'>URLEncodedFormDecoder</span>()<span class='newline'>
+</span>        <span class='xk'>default</span>:<span class='newline'>
+</span>            <span class='xk'>throw</span> <span class='xv'>HTTPError</span>(.<span class='xv'>badRequest</span>)<span class='newline'>
+</span>        }<span class='newline'>
+</span>        <span class='xc'>// 5</span><span class='newline'>
+</span>        <span class='xk'>return</span> <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>decoder</span>.<span class='xv'>decode</span>(<span class='newline'>
+</span>            <span class='xv'>type</span>,<span class='newline'>
+</span>            <span class='xv'>from</span>: <span class='xv'>request</span>,<span class='newline'>
+</span>            <span class='xv'>context</span>: <span class='xv'>context</span><span class='newline'>
+</span>        )<span class='newline'>
+</span>    }<span class='newline'>
+</span>}</code></pre><ol><li><p>Define the custom decoder by implementing the <code>RequestDecoder</code> protocol.</p></li><li><p>Make sure that the incoming request has a <code>Content-Type</code> HTTP header field.</p></li><li><p>Construct a valid <code>MediaType</code> object from the header field.</p></li><li><p>Setup a custom decoder based on the media type.</p></li><li><p>Return the decoded object using the decoder, with the request and the context.</p></li></ol><p>To use the custom decoder, let’s define a custom request context. A request context is a container for the Hummingbird framework to store information needed by the framework. The following snippet demonstrates how to build one using the <em>RequestContext</em> protocol:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xc'>// 1.</span><span class='newline'>
+</span><span class='xk'>protocol</span> <span class='xv'>MyRequestContext</span>: <span class='xt'>RequestContext</span> {<span class='newline'>
+</span>    <span class='xk'>var</span> <span class='xv'>myValue</span>: <span class='xt'>String</span>? { <span class='xk'>get</span> <span class='xk'>set</span> }<span class='newline'>
+</span>}<span class='newline'>
 
-<span class="comment">// 2.</span>
-<span class="keyword">struct</span> MyBaseRequestContext: <span class="type">MyRequestContext</span> {
-    <span class="keyword">var</span> coreContext: <span class="type">CoreRequestContext</span>
+</span><span class='xc'>// 2.</span><span class='newline'>
+</span><span class='xk'>struct</span> <span class='xv'>MyBaseRequestContext</span>: <span class='xt'>MyRequestContext</span> {<span class='newline'>
+</span>    <span class='xk'>var</span> <span class='xv'>coreContext</span>: <span class='xt'>CoreRequestContext</span><span class='newline'>
 
-    <span class="comment">// 3.</span>
-    <span class="keyword">var</span> myValue: <span class="type">String</span>?
+</span>    <span class='xc'>// 3.</span><span class='newline'>
+</span>    <span class='xk'>var</span> <span class='xv'>myValue</span>: <span class='xt'>String</span>?<span class='newline'>
 
-    <span class="keyword">init</span>(
-        channel: <span class="type">Channel</span>,
-        logger: <span class="type">Logger</span> = .<span class="keyword">init</span>(label: <span class="string">"my-request-context"</span>)
-    ) {
-        <span class="keyword">self</span>.<span class="property">coreContext</span> = .<span class="keyword">init</span>(
-            allocator: channel.<span class="property">allocator</span>,
-            logger: logger
-        )
-        <span class="keyword">self</span>.<span class="property">myValue</span> = <span class="keyword">nil</span>
-    }
-    
-    <span class="comment">// 4.</span>
-    <span class="keyword">var</span> requestDecoder: <span class="type">RequestDecoder</span> {
-        <span class="type">MyRequestDecoder</span>()
-    }
-}</code></pre><ol><li>Define a custom <code>MyRequestContext</code> protocol using the <em>RequestContext</em> protocol.</li><li>Implement the <code>MyRequestContext</code> protocol using a <code>MyBaseRequestContext</code> struct.</li><li>Implement custom properties, configure them using the init method, if needed.</li><li>Return the custom <code>MyRequestDecoder</code> as a default request decoder implementation.</li></ol><p>The <a href="https://github.com/hummingbird-project/hummingbird-auth" target="_blank">HummingbirdAuth</a> library also defines a custom context (<code>AuthRequestContext</code>) in a similar way to store user auth information.</p><p>It is possible to compose multiple protocols such as <em>AuthRequestContext</em> by conforming to all of them. This makes it easy to integrate the context with various libraries. This also allows libraries to provide middleware that accept a custom context as input, or that modify a custom context, to enrich requests. For example, enriching a request by adding the authenticated user.</p><p>Create the application instance using the <code>buildApplication</code> function.</p><pre><code class="language-swift"><span class="keyword">import</span> Foundation
-<span class="keyword">import</span> Hummingbird
-<span class="keyword">import</span> Logging
+</span>    <span class='xk'>init</span>(<span class='newline'>
+</span>        <span class='xv'>channel</span>: <span class='xt'>Channel</span>,<span class='newline'>
+</span>        <span class='xv'>logger</span>: <span class='xt'>Logger</span> = .<span class='xk'>init</span>(<span class='xv'>label</span>: <span class='xs'>"my-request-context"</span>)<span class='newline'>
+</span>    ) {<span class='newline'>
+</span>        <span class='xk'>self</span>.<span class='xv'>coreContext</span> = .<span class='xk'>init</span>(<span class='newline'>
+</span>            <span class='xv'>allocator</span>: <span class='xv'>channel</span>.<span class='xv'>allocator</span>,<span class='newline'>
+</span>            <span class='xv'>logger</span>: <span class='xv'>logger</span><span class='newline'>
+</span>        )<span class='newline'>
+</span>        <span class='xk'>self</span>.<span class='xv'>myValue</span> = <span class='xk'>nil</span><span class='newline'>
+</span>    }<span class='newline'>
+</span>    <span class='newline'>
+</span>    <span class='xc'>// 4.</span><span class='newline'>
+</span>    <span class='xk'>var</span> <span class='xv'>requestDecoder</span>: <span class='xt'>RequestDecoder</span> {<span class='newline'>
+</span>        <span class='xv'>MyRequestDecoder</span>()<span class='newline'>
+</span>    }<span class='newline'>
+</span>}</code></pre><ol><li><p>Define a custom <code>MyRequestContext</code> protocol using the <em>RequestContext</em> protocol.</p></li><li><p>Implement the <code>MyRequestContext</code> protocol using a <code>MyBaseRequestContext</code> struct.</p></li><li><p>Implement custom properties, configure them using the init method, if needed.</p></li><li><p>Return the custom <code>MyRequestDecoder</code> as a default request decoder implementation.</p></li></ol><p>The <a target='_blank' rel='external' href='https://github.com/hummingbird-project/hummingbird-auth'>HummingbirdAuth</a> library also defines a custom context (<code>AuthRequestContext</code>) in a similar way to store user auth information.</p><p>It is possible to compose multiple protocols such as <em>AuthRequestContext</em> by conforming to all of them. This makes it easy to integrate the context with various libraries. This also allows libraries to provide middleware that accept a custom context as input, or that modify a custom context, to enrich requests. For example, enriching a request by adding the authenticated user.</p><p>Create the application instance using the <code>buildApplication</code> function.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>import</span> <span class='xv'>Foundation</span><span class='newline'>
+</span><span class='xk'>import</span> <span class='xv'>Hummingbird</span><span class='newline'>
+</span><span class='xk'>import</span> <span class='xv'>Logging</span><span class='newline'>
 
-<span class="keyword">func</span> buildApplication() <span class="keyword">async throws</span> -&gt; <span class="keyword">some</span> <span class="type">ApplicationProtocol</span> {
-    
-    <span class="comment">// 1.</span>
-    <span class="keyword">let</span> router = <span class="type">Router</span>(context: <span class="type">MyBaseRequestContext</span>.<span class="keyword">self</span>)
-    
-    <span class="comment">// 2</span>
-    router.<span class="property">middlewares</span>.<span class="call">add</span>(<span class="type">LogRequestsMiddleware</span>(.<span class="dotAccess">info</span>))
-    router.<span class="property">middlewares</span>.<span class="call">add</span>(<span class="type">FileMiddleware</span>())
-    router.<span class="property">middlewares</span>.<span class="call">add</span>(<span class="type">CORSMiddleware</span>(
-        allowOrigin: .<span class="dotAccess">originBased</span>,
-        allowHeaders: [.<span class="dotAccess">contentType</span>],
-        allowMethods: [.<span class="dotAccess">get</span>, .<span class="dotAccess">post</span>, .<span class="dotAccess">delete</span>, .<span class="dotAccess">patch</span>]
-    ))
+</span><span class='xk'>func</span> <span class='xv'>buildApplication</span>() <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <span class='xk'>some</span> <span class='xt'>ApplicationProtocol</span> {<span class='newline'>
+</span>    <span class='newline'>
+</span>    <span class='xc'>// 1.</span><span class='newline'>
+</span>    <span class='xk'>let</span> <span class='xv'>router</span> = <span class='xv'>Router</span>(<span class='xv'>context</span>: <span class='xv'>MyBaseRequestContext</span>.<span class='xk'>self</span>)<span class='newline'>
+</span>    <span class='newline'>
+</span>    <span class='xc'>// 2</span><span class='newline'>
+</span>    <span class='xv'>router</span>.<span class='xv'>middlewares</span>.<span class='xv'>add</span>(<span class='xv'>LogRequestsMiddleware</span>(.<span class='xv'>info</span>))<span class='newline'>
+</span>    <span class='xv'>router</span>.<span class='xv'>middlewares</span>.<span class='xv'>add</span>(<span class='xv'>FileMiddleware</span>())<span class='newline'>
+</span>    <span class='xv'>router</span>.<span class='xv'>middlewares</span>.<span class='xv'>add</span>(<span class='xv'>CORSMiddleware</span>(<span class='newline'>
+</span>        <span class='xv'>allowOrigin</span>: .<span class='xv'>originBased</span>,<span class='newline'>
+</span>        <span class='xv'>allowHeaders</span>: [.<span class='xv'>contentType</span>],<span class='newline'>
+</span>        <span class='xv'>allowMethods</span>: [.<span class='xv'>get</span>, .<span class='xv'>post</span>, .<span class='xv'>delete</span>, .<span class='xv'>patch</span>]<span class='newline'>
+</span>    ))<span class='newline'>
 
-    <span class="comment">// 3</span>
-    router.<span class="call">get</span>(<span class="string">"/health"</span>) { <span class="keyword">_</span>, <span class="keyword">_</span> -&gt; <span class="type">HTTPResponse</span>.<span class="type">Status</span> <span class="keyword">in</span>
-        .<span class="dotAccess">ok</span>
-    }
+</span>    <span class='xc'>// 3</span><span class='newline'>
+</span>    <span class='xv'>router</span>.<span class='xv'>get</span>(<span class='xs'>"/health"</span>) { _, _ -&gt; <span class='xt'>HTTPResponse</span>.<span class='xt'>Status</span> <span class='xk'>in</span><span class='newline'>
+</span>        .<span class='xv'>ok</span><span class='newline'>
+</span>    }<span class='newline'>
 
-    <span class="comment">// 4.</span>
-    <span class="type">MyController</span>().<span class="call">addRoutes</span>(to: router.<span class="call">group</span>(<span class="string">"api"</span>))
+</span>    <span class='xc'>// 4.</span><span class='newline'>
+</span>    <span class='xv'>MyController</span>().<span class='xv'>addRoutes</span>(<span class='xv'>to</span>: <span class='xv'>router</span>.<span class='xv'>group</span>(<span class='xs'>"api"</span>))<span class='newline'>
 
-    <span class="comment">// 5.</span>
-    <span class="keyword">return</span> <span class="type">Application</span>(
-        router: router,
-        configuration: .<span class="keyword">init</span>(
-            address: .<span class="call">hostname</span>(<span class="string">"localhost"</span>, port: <span class="number">8080</span>)
-        )
-    )
-}</code></pre><ol><li>Setup the router using the <code>MyBaseRequestContext</code> type as a custom context.</li><li>Add middlewares to the router, HB2 has middlewares on the router instead of the app</li><li>Setup a basic health route on the router, simply return with a HTTP status code</li><li>Add routes using the custom controller to the <code>api</code> route group</li><li>Build the <em>Application</em> instance using the router and the configuration</li></ol><p>Inside the main entrypoint you can start the server by calling the <code>runService()</code> method:</p><pre><code class="language-swift"><span class="keyword">import</span> ArgumentParser
-<span class="keyword">import</span> Hummingbird
+</span>    <span class='xc'>// 5.</span><span class='newline'>
+</span>    <span class='xk'>return</span> <span class='xv'>Application</span>(<span class='newline'>
+</span>        <span class='xv'>router</span>: <span class='xv'>router</span>,<span class='newline'>
+</span>        <span class='xv'>configuration</span>: .<span class='xk'>init</span>(<span class='newline'>
+</span>            <span class='xv'>address</span>: .<span class='xv'>hostname</span>(<span class='xs'>"localhost"</span>, <span class='xv'>port</span>: <span class='xn'>8080</span>)<span class='newline'>
+</span>        )<span class='newline'>
+</span>    )<span class='newline'>
+</span>}</code></pre><ol><li><p>Setup the router using the <code>MyBaseRequestContext</code> type as a custom context.</p></li><li><p>Add middlewares to the router, HB2 has middlewares on the router instead of the app</p></li><li><p>Setup a basic health route on the router, simply return with a HTTP status code</p></li><li><p>Add routes using the custom controller to the <code>api</code> route group</p></li><li><p>Build the <em>Application</em> instance using the router and the configuration</p></li></ol><p>Inside the main entrypoint you can start the server by calling the <code>runService()</code> method:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>import</span> <span class='xv'>ArgumentParser</span><span class='newline'>
+</span><span class='xk'>import</span> <span class='xv'>Hummingbird</span><span class='newline'>
 
-<span class="keyword">@main
-struct</span> HummingbirdArguments: <span class="type">AsyncParsableCommand</span> {
+</span><span class='xa'>@main</span><span class='newline'>
+</span><span class='xk'>struct</span> <span class='xv'>HummingbirdArguments</span>: <span class='xt'>AsyncParsableCommand</span> {<span class='newline'>
 
-    <span class="keyword">func</span> run() <span class="keyword">async throws</span> {
-        <span class="comment">// 1..</span>
-        <span class="keyword">let</span> app = <span class="keyword">try await</span> <span class="call">buildApplication</span>()
-        <span class="keyword">try await</span> app.<span class="call">runService</span>()
-    }
-}</code></pre><p>The route handlers in the <code>MyController</code> struct can access of the custom context type.</p><pre><code class="language-swift"><span class="keyword">struct</span> MyController&lt;Context: <span class="type">MyRequestContext</span>&gt; {
+</span>    <span class='xk'>func</span> <span class='xv'>run</span>() <span class='xk'>async</span> <span class='xk'>throws</span> {<span class='newline'>
+</span>        <span class='xc'>// 1..</span><span class='newline'>
+</span>        <span class='xk'>let</span> <span class='xv'>app</span> = <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>buildApplication</span>()<span class='newline'>
+</span>        <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>app</span>.<span class='xv'>runService</span>()<span class='newline'>
+</span>    }<span class='newline'>
+</span>}</code></pre><p>The route handlers in the <code>MyController</code> struct can access of the custom context type.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>struct</span> <span class='xv'>MyController</span>&lt;<span class='xv'>Context</span>: <span class='xt'>MyRequestContext</span>&gt; {<span class='newline'>
 
-    <span class="comment">// 1.</span>
-    <span class="keyword">func</span> addRoutes(
-        to group: <span class="type">RouterGroup</span>&lt;<span class="type">Context</span>&gt;
-    ) {
-        group
-            .<span class="call">get</span>(use: list)
-            .<span class="call">post</span>(use: create)
-    }
+</span>    <span class='xc'>// 1.</span><span class='newline'>
+</span>    <span class='xk'>func</span> <span class='xv'>addRoutes</span>(<span class='newline'>
+</span>        <span class='xv'>to</span> <span class='xv'>group</span>: <span class='xt'>RouterGroup</span>&lt;<span class='xt'>Context</span>&gt;<span class='newline'>
+</span>    ) {<span class='newline'>
+</span>        <span class='xv'>group</span><span class='newline'>
+</span>            .<span class='xv'>get</span>(<span class='xv'>use</span>: <span class='xv'>list</span>)<span class='newline'>
+</span>            .<span class='xv'>post</span>(<span class='xv'>use</span>: <span class='xv'>create</span>)<span class='newline'>
+</span>    }<span class='newline'>
 
-    <span class="comment">// 2.</span> 
-    <span class="keyword">@Sendable 
-    func</span> list(
-        <span class="keyword">_</span> request: <span class="type">Request</span>,
-        context: <span class="type">Context</span>
-    ) <span class="keyword">async throws</span> -&gt; [<span class="type">MyModel</span>] {
-        [
-            .<span class="keyword">init</span>(title: <span class="string">"foo"</span>),
-            .<span class="keyword">init</span>(title: <span class="string">"bar"</span>),
-            .<span class="keyword">init</span>(title: <span class="string">"baz"</span>),
-        ]
-    }
+</span>    <span class='xc'>// 2. </span><span class='newline'>
+</span>    <span class='xa'>@Sendable</span> <span class='newline'>
+</span>    <span class='xk'>func</span> <span class='xv'>list</span>(<span class='newline'>
+</span>        _ <span class='xv'>request</span>: <span class='xt'>Request</span>,<span class='newline'>
+</span>        <span class='xv'>context</span>: <span class='xt'>Context</span><span class='newline'>
+</span>    ) <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; [<span class='xt'>MyModel</span>] {<span class='newline'>
+</span>        [<span class='newline'>
+</span>            .<span class='xk'>init</span>(<span class='xv'>title</span>: <span class='xs'>"foo"</span>),<span class='newline'>
+</span>            .<span class='xk'>init</span>(<span class='xv'>title</span>: <span class='xs'>"bar"</span>),<span class='newline'>
+</span>            .<span class='xk'>init</span>(<span class='xv'>title</span>: <span class='xs'>"baz"</span>),<span class='newline'>
+</span>        ]<span class='newline'>
+</span>    }<span class='newline'>
 
-    <span class="keyword">@Sendable 
-    func</span> create(
-        <span class="keyword">_</span> request: <span class="type">Request</span>,
-        context: <span class="type">Context</span>
-    ) <span class="keyword">async throws</span> -&gt; <span class="type">EditedResponse</span>&lt;<span class="type">MyModel</span>&gt; {
-        <span class="comment">// 3.
-        // context.myValue</span>
-        <span class="keyword">let</span> input = <span class="keyword">try await</span> request.<span class="call">decode</span>(
-            as: <span class="type">MyModel</span>.<span class="keyword">self</span>,
-            context: context
-        )
-        <span class="keyword">return</span> .<span class="keyword">init</span>(status: .<span class="dotAccess">created</span>, response: input)
-    }
-}</code></pre><ol><li>Register route handlers using the router group</li><li>Hummingbird is thread-safe, so every route handler should be marked with <code>@Sendable</code> to propagate these thread-safety checks.</li><li>It is possible to access both the request and the context in each route handler.</li></ol><p>As you can see there are quite a lot of changes in the latest version of the Hummingbird framework. The final release date is still unknown, but it is expected to happen within a few months, after the alpha &amp; beta period ends.</p><p>If have questions about Hummingbird, feel free to join the following <a href="https://discord.gg/fkN7FC7QJk" target="_blank">Discord server</a>. You can also get some inspiration from the official <a href="https://github.com/hummingbird-project/hummingbird-examples" target="_blank">Hummingbird examples</a> repository.</p>
+</span>    <span class='xa'>@Sendable</span> <span class='newline'>
+</span>    <span class='xk'>func</span> <span class='xv'>create</span>(<span class='newline'>
+</span>        _ <span class='xv'>request</span>: <span class='xt'>Request</span>,<span class='newline'>
+</span>        <span class='xv'>context</span>: <span class='xt'>Context</span><span class='newline'>
+</span>    ) <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <span class='xt'>EditedResponse</span>&lt;<span class='xt'>MyModel</span>&gt; {<span class='newline'>
+</span>        <span class='xc'>// 3.</span><span class='newline'>
+</span>        <span class='xc'>// context.myValue</span><span class='newline'>
+</span>        <span class='xk'>let</span> <span class='xv'>input</span> = <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>request</span>.<span class='xv'>decode</span>(<span class='newline'>
+</span>            <span class='xv'>as</span>: <span class='xv'>MyModel</span>.<span class='xk'>self</span>,<span class='newline'>
+</span>            <span class='xv'>context</span>: <span class='xv'>context</span><span class='newline'>
+</span>        )<span class='newline'>
+</span>        <span class='xk'>return</span> .<span class='xk'>init</span>(<span class='xv'>status</span>: .<span class='xv'>created</span>, <span class='xv'>response</span>: <span class='xv'>input</span>)<span class='newline'>
+</span>    }<span class='newline'>
+</span>}</code></pre><ol><li><p>Register route handlers using the router group</p></li><li><p>Hummingbird is thread-safe, so every route handler should be marked  with <code>@Sendable</code> to propagate these thread-safety checks.</p></li><li><p>It is possible to access both the request and the context in each route handler.</p></li></ol><p>As you can see there are quite a lot of changes in the latest version of the Hummingbird framework. The final release date is still unknown, but it is expected to happen within a few months, after the alpha &amp; beta period ends.</p><p>If have questions about Hummingbird, feel free to join the following <a target='_blank' rel='external nofollow noopener ugc' href='https://discord.gg/fkN7FC7QJk'>Discord server</a>. You can also get some inspiration from the official <a target='_blank' rel='external' href='https://github.com/hummingbird-project/hummingbird-examples'>Hummingbird examples</a> repository.</p></section>
         
     </section>
 
     <section id="about-author" class="content-wrapper">
         <img src="https://github.com/tib.png" alt="Tibor Bödecs" class="author">
         <h4>About Tibor Bödecs</h4>
-        <p class="author-about">Tibor, also known as <a href="https://theswiftdev.com">"The Swift Dev"</a>, is the co-founder of <a href="https://binarybirds.com/">Binary Birds Kft.</a> Tibor provides Server-Side Swift development and consulting.</p>
+        <p class="author-about">Tibor, also known as &lt;a href=&quot;https://theswiftdev.com&quot;&gt;&quot;The Swift Dev&quot;&lt;/a&gt;, is the co-founder of &lt;a href=&quot;https://binarybirds.com/&quot;&gt;Binary Birds Kft.&lt;/a&gt; Tibor provides Server-Side Swift development and consulting.</p>
 
         <a href="mailto:info@binarybirds.com" target="_blank" class="author-cta">Contact us</a>
     </section>
 
 </article>
-        
-    </main>
 
-    <footer>
-        <section class="content-wrapper">
-            <figure>
-                <picture>
-                    <source 
-                        srcset="https://swiftonserver.com/images/logos/logo~dark.png" 
+
+        </main>
+
+        <footer>
+            <section class="content-wrapper">
+                <figure>
+                    <picture>
+                        <source
+                        srcset="https://swiftonserver.com/images/logos/logo~dark.png"
                         media="(prefers-color-scheme: dark)"
-                    >
-                    <img 
+                        />
+                        <img
                         id="logo-image"
                         width="80"
                         height="80"
                         src="https://swiftonserver.com/images/logos/logo.png"
                         alt="Logo of Swift on server"
                         title="Swift on server"
-                    >
-                </picture>
-            </figure>
+                        />
+                    </picture>
+                </figure>
 
-            <p>This site was generated using the <a href="https://swift.org/" target="_blank">Swift</a> programming language.</p>
-            <p class="small">Created by <a href="https://x.com/JoannisOrlandos" target="_blank">Joannis Orlandos</a> & <a href="https://x.com/tiborbodecs">Tibor Bödecs</a> &copy; 2024.</p>
+                <p>This site was generated using the <a href="https://swift.org/" target="_blank">Swift</a> programming language.</p>
+                <p class="small">Created by <a href="https://x.com/JoannisOrlandos" target="_blank">Joannis Orlandos</a> & <a href="https://x.com/tiborbodecs">Tibor Bödecs</a> &copy; 2024.</p>
 
-            <p> 
+                <p>
                 <a href="https://swiftonserver.com/">Home</a> ·
                 <a href="https://swiftonserver.com/rss.xml" target="_blank">RSS</a> ·
                 <a href="https://swiftonserver.com/sitemap.xml" target="_blank">Sitemap</a>
-            </p>
-            
-            
-        </section>
-    </footer>
-</body>
+                </p>
+
+
+            </section>
+        </footer>
+    </body>
 </html>
