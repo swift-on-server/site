@@ -14,7 +14,7 @@ let apiKey = environment["API_KEY"]!
 
 let title = environment["SITE_TITLE"] ?? "Swift on Server"
 let description = environment["SITE_DESC"] ?? "Articles about server-side Swift development. Created by Joannis Orlandos and Tibor Bödecs."
-let baseUrl = environment["BASE_URL"] ?? "/"
+let baseUrl = environment["BASE_URL"] ?? "https://swiftonserver.com/"
 
 let cwd = URL(filePath: fs.currentDirectoryPath)
 let docs = cwd.appending(components: "Sources", module, "Documentation.docc")

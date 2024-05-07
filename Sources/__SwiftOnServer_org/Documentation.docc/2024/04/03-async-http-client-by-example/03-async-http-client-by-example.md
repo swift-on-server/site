@@ -30,6 +30,7 @@ let package = Package(
             name: "async-http-client-by-example-sample",
             dependencies: [
                 .product(name: "AsyncHTTPClient", package: "async-http-client"),
+                .product(name: "NIOFoundationCompat", package: "swift-nio"),
             ]
         ),
     ]
@@ -40,11 +41,10 @@ In the `main.swift` file, import the AsyncHTTPClient library and initialize an H
 
 ```swift
 import AsyncHTTPClient
+import NIOFoundationCompat
 
 struct Entrypoint {
-    
     static func main() async throws {
-
         let httpClient = HTTPClient(
             // 1.
             eventLoopGroupProvider: .singleton,
@@ -77,13 +77,13 @@ struct Entrypoint {
 }
 ```
 
-1. Specify the event loop group provider as `.singleton`, which manages the underlying event loops for asynchronous operations.
-2. The configuration parameter is set, defining various aspects of the HTTP client's behavior.
-3. `redirectConfiguration` is specified to follow redirects up to a maximum of 3 times and disallow redirect cycles.
-4. Set timeouts for different phases of the HTTP request process, such as connection establishment, reading, and writing.
-5. Cleanup by calling the `shutdown()` method on the HTTPClient instance.
+1. Specify the event loop group provider as ``HTTPClient/EventLoopGroupProvider.singleton``, which manages the underlying ``EventLoopGroup`` for asynchronous operations.
+2. The ``HTTPClient/Configuration`` parameter is set, defining various aspects of the ``HTTPClient``'s behavior.
+3. ``HTTPClient/Configuration/RedirectConfiguration`` is specified to follow redirects up to a maximum of 3 times and disallow redirect cycles.
+4. Set ``HTTPClient/Configuration/Timeout``s for different phases of the HTTP request process, such as connection establishment, reading, and writing.
+5. Cleanup by calling the ``HTTPClient/shutdown() [96AYW]`` method on the HTTPClient instance.
 
-Please be aware that it is essential to properly terminate the HTTP client after executing requests. Forgetting to invoke the `shutdown()` method may cause the library to issue a warning about a potential memory leak when compiling the application in debug mode.
+Please be aware that it is essential to properly terminate the HTTP client after executing requests. Forgetting to invoke the ``HTTPClient/shutdown() [96AYW]`` method may cause the library to issue a warning about a potential memory leak when compiling the application in debug mode.
 
 
 ## Performing HTTP requests
@@ -204,10 +204,7 @@ do {
             name: "content-type"
         ), contentType.contains("application/json") {
             // 6.
-            var buffer: ByteBuffer = .init()
-            for try await var chunk in response.body {
-                buffer.writeBuffer(&chunk)
-            }
+            let buffer = try await response.body.collect(upTo: 1024 * 1024)
             
             // 7.
             let decoder = JSONDecoder()
@@ -233,14 +230,14 @@ try await httpClient.shutdown()
 2. An HTTP request is created using a POST method and a `content-type: application/json` header.
 4. The `Input` data is encoded into JSON data using a ``ByteBuffer`` and set as the request body.
 5. If the response status is ok and the content type is JSON, the response body is processed.
-6. The response body chunks are collected asynchronously and concatenated into a single buffer.
-7. The buffer containing the JSON data response is decoded as an `Output` structure using.
+6. The response body chunks are collected asynchronously using ``AsyncSequence.collect(upTo:)``
+7. The buffer containing the JSON data response is decoded as an `Output` structure using ``JSONDecoder.decode(_:from:) [7481W]``.
 
 The code snippet above demonstrates how to use Swift's Codable protocol to handle JSON data in HTTP communication. It defines structures for input and output data, sends a POST request with JSON payload, and processes the response by decoding JSON into a designated output structure.
 
 ## File downloads
 
-The AsyncHTTPClient library provides support for file downloads using the `FileDownloadDelegate`. This feature enables asynchronous streaming of downloaded data while simultaneously reporting the download progress, as demonstrated in the following example:
+The AsyncHTTPClient library provides support for file downloads using the ``FileDownloadDelegate``. This feature enables asynchronous streaming of downloaded data while simultaneously reporting the download progress, as demonstrated in the following example:
 
 ```swift
 let httpClient = HTTPClient(
@@ -278,7 +275,7 @@ catch {
 try await httpClient.shutdown()
 ```
 
-1. A `FileDownloadDelegate` is created to manage file downloads. 
+1. A ``FileDownloadDelegate`` is created to manage file downloads. 
 2. Specify the download destination path.
 3. A progress reporting function is provided to monitor the download progress.
 4. The file download request is executed using the request URL and the delegate.
