@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "site",
     platforms: [
-        .macOS(.v13)
+        .macOS(.v14),
     ],
     products: [
         .executable(name: "SiteBuilder", targets: ["SiteBuilder"]),
@@ -18,6 +18,7 @@ let package = Package(
 
         // Articles
         .package(url: "https://github.com/hummingbird-project/hummingbird.git", from: "2.0.0-beta.4"),
+        .package(url: "https://github.com/swift-server/async-http-client.git", from: "1.21.1"),
         .package(url: "https://github.com/apple/swift-nio.git", from: "2.65.0"),
         .package(url: "https://github.com/apple/swift-log.git", from: "1.5.4"),
     ],
@@ -28,6 +29,7 @@ let package = Package(
             name: "__SwiftOnServer_org",
             dependencies: [
                 .product(name: "Hummingbird", package: "hummingbird"),
+                .product(name: "AsyncHTTPClient", package: "async-http-client"),
                 .product(name: "NIOCore", package: "swift-nio"),
                 .product(name: "NIOPosix", package: "swift-nio"),
                 .product(name: "Logging", package: "swift-log"),
