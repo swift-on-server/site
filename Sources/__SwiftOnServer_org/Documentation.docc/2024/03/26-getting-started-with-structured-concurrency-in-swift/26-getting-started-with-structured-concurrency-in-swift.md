@@ -530,7 +530,7 @@ taskGroup.addTask(executorPreference: executor) {
 }
 ```
 
-As you may notice, the `EventLoopExecutor` type is _manually_ retained and released. This is becasue the ``TaskGroup/addTask(priority:operation:)`` method does not retain the executor. If the EventLoopExecutor type is not retained elsewhere, it will be deallocated before the task is done running, causing a crash.
+As you may notice, the `EventLoopExecutor` type is _manually_ retained and released. This is because the ``TaskGroup.addTask(priority:operation:)`` method does not retain the executor. If the EventLoopExecutor type is not retained elsewhere, it will be deallocated before the task is done running, causing a crash.
 
 #### Running Heavy Workloads
 
