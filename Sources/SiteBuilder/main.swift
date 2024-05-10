@@ -1,25 +1,55 @@
-#if os(macOS)
+import FileManagerKit
 import Foundation
-import Yams
 import Mustache
+import Yams
 
-let fs = FileManager.default
-let environment = ProcessInfo.processInfo.environment
+let fileManager = FileManager.default
+let env = ProcessInfo.processInfo.environment
 
 let repoId = "joannis.swiftonserver-site"
 let module = "__SwiftOnServer_org"
 
-let accountId = environment["ACCOUNT_ID"] ?? "4296918970"
-let apiKey = environment["API_KEY"]!
+let accountId = env["ACCOUNT_ID"] ?? "4296918970"
+let apiKey = env["API_KEY"]!
 
-let title = environment["SITE_TITLE"] ?? "Swift on Server"
-let description = environment["SITE_DESC"] ?? "Articles about server-side Swift development. Created by Joannis Orlandos and Tibor Bödecs."
-let baseUrl = environment["BASE_URL"] ?? "https://swiftonserver.com/"
+let title = env["SITE_TITLE"] ?? "Swift on Server"
+let description =
+    env["SITE_DESC"]
+    ?? "Articles about server-side Swift development. Created by Joannis Orlandos and Tibor Bödecs."
+let baseUrl = env["BASE_URL"] ?? "https://swiftonserver.com/"
 
-let cwd = URL(filePath: fs.currentDirectoryPath)
-let docs = cwd.appending(components: "Sources", module, "Documentation.docc")
-let templates = cwd.appending(components: "src", "templates")
-let output = cwd.appending(components: "docs")
+let cwd = URL(fileURLWithPath: fileManager.currentDirectoryPath)
+let docs =
+    cwd
+    .appendingPathComponent("Sources")
+    .appendingPathComponent(module)
+    .appendingPathComponent("Documentation.docc")
+
+let templates =
+    cwd
+    .appendingPathComponent("src")
+    .appendingPathComponent("templates")
+
+let output =
+    cwd
+    .appendingPathComponent("docs")
+
+try fileManager.createDirectory(at: output)
+
+let publicItems =
+    cwd
+    .appendingPathComponent("src")
+    .appendingPathComponent("public")
+
+for item in fileManager.listDirectory(at: publicItems) {
+    if fileManager.exists(at: output.appendingPathComponent(item)) {
+        continue
+    }
+    try fileManager.copyItem(
+        at: publicItems.appendingPathComponent(item),
+        to: output.appendingPathComponent(item)
+    )
+}
 
 let postDateFormatter = DateFormatter()
 postDateFormatter.timeZone = .init(secondsFromGMT: 0)
@@ -27,23 +57,35 @@ postDateFormatter.dateFormat = "yyyy/MM/dd"
 
 let library = MustacheLibrary(templates: [
     "index": try MustacheTemplate(
-        string: String(contentsOf: templates.appending(components: "index.html"))
+        string: String(
+            contentsOf: templates.appendingPathComponent("index.mustache")
+        )
     ),
     "home": try MustacheTemplate(
-        string: String(contentsOf: templates.appending(components: "home.html"))
+        string: String(
+            contentsOf: templates.appendingPathComponent("home.mustache")
+        )
     ),
     "home-post": try MustacheTemplate(
-        string: String(contentsOf: templates.appending(components: "home-post.html"))
+        string: String(
+            contentsOf: templates.appendingPathComponent("home-post.mustache")
+        )
     ),
     "post": try MustacheTemplate(
-        string: String(contentsOf: templates.appending(components: "post.html"))
+        string: String(
+            contentsOf: templates.appendingPathComponent("post.mustache")
+        )
     ),
     "page": try MustacheTemplate(
-        string: String(contentsOf: templates.appending(components: "page.html"))
+        string: String(
+            contentsOf: templates.appendingPathComponent("page.mustache")
+        )
     ),
     "404": try MustacheTemplate(
-        string: String(contentsOf: templates.appending(components: "404.html"))
-    )
+        string: String(
+            contentsOf: templates.appendingPathComponent("404.mustache")
+        )
+    ),
 ])
 
 struct Config {
@@ -66,11 +108,11 @@ let config = Config(
     language: "en-US"
 )
 
-var posts = [RSSTemplate.Item]()
-var pages = [SitemapTemplate.Item]()
+var posts: [RSSTemplate.Item] = []
+var pages: [SitemapTemplate.Item] = []
 
 // Run on tag through Github Actions
-// TODO: Run Fetch tags on servera
+// TODO: Run Fetch tags on server
 // TODO: Trigger rebuild of docs on server
 
 try openFolder(docs)
@@ -80,67 +122,79 @@ try RSS(
     config: config,
     posts: posts,
     outputUrl: output
-).generate()
+)
+.generate()
 
 try Sitemap(
     config: config,
     items: pages,
     outputUrl: output
-).generate()
+)
+.generate()
 
-let home = library.render(IndexContext(
-    baseUrl: baseUrl,
-    title: title,
-    description: description,
-    permalink: baseUrl,
-    image: "images/defaults/defaults.png",
-    contents: library.render(HomeContext(posts: posts), withTemplate: "home")!
-), withTemplate: "index")!
+let home = library.render(
+    IndexContext(
+        baseUrl: baseUrl,
+        title: title,
+        description: description,
+        permalink: baseUrl,
+        image: "images/defaults/defaults.png",
+        contents: library.render(
+            HomeContext(posts: posts),
+            withTemplate: "home"
+        )!
+    ),
+    withTemplate: "index"
+)!
 
 try home.write(
-    to: output.appending(component: "index.html"),
+    to: output.appendingPathComponent("index.html"),
     atomically: true,
     encoding: .utf8
 )
 
 func openFolder(_ folder: URL) throws {
     let folderName = folder.lastPathComponent
-    let items = try fs.contentsOfDirectory(atPath: folder.relativePath)
+
+    let items = fileManager.listDirectory(at: folder)
     if items.contains("\(folderName).md") && items.contains("metadata.yml") {
         if items.contains("\(folderName).html") {
-            print("Skipping \(folderName) as it is already rendered. Remove the render to allow rerendering.")
-        } else {
+            print(
+                "Skipping \(folderName) as it is already rendered. Remove the render to allow rerendering."
+            )
+        }
+        else {
             print("Rendering \(folderName)...")
             try buildTutorial(folder)
             print("Rendering of \(folderName) was completed.")
         }
-        
-        guard var metadata = getMetadata(forFolder: folder) else {
-            return
-        }
-        
-        let attributes = try FileManager.default.attributesOfItem(
-            atPath: folder.appending(component: "\(folderName).md").relativePath
+
+        var metadata = try getMetadata(forFolder: folder)
+
+        let modificationDate = try fileManager.modificationDate(
+            at: folder.appendingPathComponent("\(folderName).md")
         )
 
-        guard let modificationDate = attributes[.modificationDate] as? NSDate else {
-            return
-        }
-
-        metadata.contents = try String(contentsOf: folder.appending(components: "\(folderName).html"))
-        metadata.tagList = metadata.tags.split(separator: ",").map { tag in
-            tag.trimmingCharacters(in: .whitespacesAndNewlines)
-        }
+        metadata.contents = try String(
+            contentsOf: folder.appendingPathComponent("\(folderName).html")
+        )
+        metadata.tagList = metadata.tags.split(separator: ",")
+            .map { tag in
+                tag.trimmingCharacters(in: .whitespacesAndNewlines)
+            }
         let permalink = "\(baseUrl)\(metadata.slug)/"
         let postHTML = library.render(metadata, withTemplate: "post")!
-        let indexHTML = library.render(IndexContext(
-            baseUrl: baseUrl,
-            title: metadata.title,
-            description: metadata.description,
-            permalink: permalink,
-            image: "images/assets/\(metadata.slug)/cover.jpg",
-            contents: postHTML
-        ), withTemplate: "index")!
+        let indexHTML = library.render(
+            IndexContext(
+                baseUrl: baseUrl,
+                title: metadata.title,
+                description: metadata.description,
+                permalink: permalink,
+                image: "images/assets/\(metadata.slug)/cover.jpg",
+                contents: postHTML
+            ),
+            withTemplate: "index"
+        )!
         if let date = postDateFormatter.date(from: metadata.date) {
             posts.append(
                 RSSTemplate.Item(
@@ -158,18 +212,30 @@ func openFolder(_ folder: URL) throws {
                 )
             )
         }
+
+        try fileManager.createDirectory(
+            at: output.appendingPathComponent(metadata.slug)
+        )
+
         try indexHTML.write(
-            to: output.appending(components: metadata.slug, "index.html"),
+            to:
+                output
+                .appendingPathComponent(metadata.slug)
+                .appendingPathComponent("index.html"),
             atomically: true,
             encoding: .utf8
         )
-    } else {
+    }
+    else {
         for item in items {
-            let itemURL = folder.appending(components: item)
+            let itemURL = folder.appendingPathComponent(item)
             do {
                 try openFolder(itemURL)
-            } catch {
-                print("Error while discovering folder at \"\(itemURL.relativePath)\": \(error)")
+            }
+            catch {
+                print(
+                    "Error while discovering folder at \"\(itemURL.relativePath)\": \(error)"
+                )
             }
         }
     }
@@ -207,14 +273,11 @@ struct ArticleMetadata: Codable {
     var contents: String?
 }
 
-func getMetadata(forFolder folder: URL) -> ArticleMetadata? {
-    do {
-        let data = try Data(contentsOf: folder.appending(components: "metadata.yml"))
-        return try YAMLDecoder().decode(ArticleMetadata.self, from: data)
-    } catch {
-        print("Error parsing YAML for \(folder.relativePath): \(error)")
-        return nil
-    }
+func getMetadata(forFolder folder: URL) throws -> ArticleMetadata {
+    let data = try Data(
+        contentsOf: folder.appendingPathComponent("metadata.yml")
+    )
+    return try YAMLDecoder().decode(ArticleMetadata.self, from: data)
 }
 
 func buildTutorial(_ folder: URL) throws {
@@ -227,9 +290,8 @@ func buildTutorial(_ folder: URL) throws {
         "-v",
         "https://api.swiftinit.org/render/\(repoId)/\(module)/\(folder.lastPathComponent)?account=\(accountId)&api_key=\(apiKey)",
         "-o",
-        "\(folderName).html"
+        "\(folderName).html",
     ]
     try process.run()
     process.waitUntilExit()
 }
-#endif

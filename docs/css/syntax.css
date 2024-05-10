@@ -7,9 +7,9 @@ pre code .xk {
 pre code .xt {
     color: #3900A0;
 }
-/*pre code .xv {*/
-/*    color: #6C36A9;*/
-/*}*/
+pre code .xv {
+    color: #6C36A9;
+}
 pre code .xn {
     color: #1C00CF;
 }
@@ -35,9 +35,9 @@ pre code .xr {
     pre code .xv {
         color: #67B7A4;
     }
-/*    pre code .xn {*/
-/*        color: #D0BF69;*/
-/*    }*/
+    pre code .xn {
+        color: #D0BF69;
+    }
     pre code .xs {
         color: #FC6aA5D;
     }

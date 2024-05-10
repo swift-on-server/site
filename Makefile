@@ -1,11 +1,25 @@
+SHELL=/bin/bash
+
 build:
-	toucan generate ./src ./docs
+	swift build
 
-watch:
-	toucan watch ./src ./docs --base-url /
+release:
+	swift build -c release
+	
+test:
+	swift test --parallel
 
-serve:
-	LOG_LEVEL=notice toucan serve
+test-with-coverage:
+	swift test --parallel --enable-code-coverage
+
+clean:
+	rm -rf .build
+
+check:
+	./scripts/run-checks.sh
+
+format:
+	./scripts/run-swift-format.sh --fix
 
 # brew install optipng jpegoptim
 
