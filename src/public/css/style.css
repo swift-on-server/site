@@ -221,11 +221,22 @@ pre code {
     white-space: pre;
     -webkit-overflow-scrolling: touch;
 }
+p code, li code {
+    font-family: monospace;
+    font-weight: bold;
+}
+p code a, li code a {
+    font-weight: normal;
+}
+li p {
+    margin-top: 0;
+}
 p code a:hover, li code a:hover {
     color: var(--link-color);
     border-bottom: 1px solid var(--link-color);
 }
 p code a:after, li code a:after {
+    
     display: inline-block;
     content: "";
     width: 12px;
