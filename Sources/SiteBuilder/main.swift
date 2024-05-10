@@ -34,6 +34,7 @@ let output =
     cwd
     .appendingPathComponent("docs")
 
+try fileManager.delete(at: output)
 try fileManager.createDirectory(at: output)
 
 let publicItems =
@@ -45,8 +46,8 @@ for item in fileManager.listDirectory(at: publicItems) {
     if fileManager.exists(at: output.appendingPathComponent(item)) {
         continue
     }
-    try fileManager.copyItem(
-        at: publicItems.appendingPathComponent(item),
+    try fileManager.copy(
+        from: publicItems.appendingPathComponent(item),
         to: output.appendingPathComponent(item)
     )
 }
@@ -158,6 +159,7 @@ func openFolder(_ folder: URL) throws {
 
     let items = fileManager.listDirectory(at: folder)
     if items.contains("\(folderName).md") && items.contains("metadata.yml") {
+        
         if items.contains("\(folderName).html") {
             print(
                 "Skipping \(folderName) as it is already rendered. Remove the render to allow rerendering."
@@ -171,9 +173,32 @@ func openFolder(_ folder: URL) throws {
 
         var metadata = try getMetadata(forFolder: folder)
 
+        try fileManager.createDirectory(
+            at: output.appendingPathComponent(metadata.slug)
+        )
+        
         let modificationDate = try fileManager.modificationDate(
             at: folder.appendingPathComponent("\(folderName).md")
         )
+        
+        let imagesUrl = folder.appendingPathComponent("images")
+        if fileManager.directoryExists(at: imagesUrl) {
+            try fileManager.copy(
+                from: imagesUrl,
+                to: output
+                    .appendingPathComponent(metadata.slug)
+                    .appendingPathComponent("images")
+            )
+        }
+        let coverUrl = folder.appendingPathComponent("cover.jpg")
+        if fileManager.fileExists(at: coverUrl) {
+            try fileManager.copy(
+                from: coverUrl,
+                to: output
+                    .appendingPathComponent(metadata.slug)
+                    .appendingPathComponent("cover.jpg")
+            )
+        }
 
         metadata.contents = try String(
             contentsOf: folder.appendingPathComponent("\(folderName).html")
@@ -213,9 +238,7 @@ func openFolder(_ folder: URL) throws {
             )
         }
 
-        try fileManager.createDirectory(
-            at: output.appendingPathComponent(metadata.slug)
-        )
+        
 
         try indexHTML.write(
             to:
