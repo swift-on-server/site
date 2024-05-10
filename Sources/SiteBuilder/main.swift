@@ -180,21 +180,46 @@ func openFolder(_ folder: URL) throws {
         let modificationDate = try fileManager.modificationDate(
             at: folder.appendingPathComponent("\(folderName).md")
         )
+
+        // create assets directory
+        try fileManager.createDirectory(
+            at: output
+                .appendingPathComponent("images")
+                .appendingPathComponent("assets")
+        )
         
         let imagesUrl = folder.appendingPathComponent("images")
         if fileManager.directoryExists(at: imagesUrl) {
+            try fileManager.createDirectory(
+                at: output
+                    .appendingPathComponent("images")
+                    .appendingPathComponent("assets")
+                    .appendingPathComponent(metadata.slug)
+            )
+
             try fileManager.copy(
                 from: imagesUrl,
                 to: output
+                    .appendingPathComponent("images")
+                    .appendingPathComponent("assets")
                     .appendingPathComponent(metadata.slug)
                     .appendingPathComponent("images")
             )
         }
+        
         let coverUrl = folder.appendingPathComponent("cover.jpg")
         if fileManager.fileExists(at: coverUrl) {
+            try fileManager.createDirectory(
+                at: output
+                    .appendingPathComponent("images")
+                    .appendingPathComponent("assets")
+                    .appendingPathComponent(metadata.slug)
+            )
             try fileManager.copy(
                 from: coverUrl,
                 to: output
+                    .appendingPathComponent("images")
+                    .appendingPathComponent("assets")
                     .appendingPathComponent(metadata.slug)
                     .appendingPathComponent("cover.jpg")
             )
