@@ -236,7 +236,6 @@ p code a:hover, li code a:hover {
     border-bottom: 1px solid var(--link-color);
 }
 p code a:after, li code a:after {
-    
     display: inline-block;
     content: "";
     width: 12px;
