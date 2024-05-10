@@ -1,4 +1,3 @@
-#if os(macOS)
 import Foundation
 
 struct RSSTemplate {
@@ -34,7 +33,7 @@ struct RSSTemplate {
         let sorteditems = items.sorted { $0.date > $1.date }
 
         let contents =
-        sorteditems.map { item in
+            sorteditems.map { item in
                 """
                     <item>
                        <guid isPermaLink="true">\(item.permalink)</guid>
@@ -44,8 +43,8 @@ struct RSSTemplate {
                        <pubDate>\(formatter.string(from: item.date))</pubDate>
                     </item>
                 """
-        }
-        .joined(separator: "\n")
+            }
+            .joined(separator: "\n")
 
         let pubDate = sorteditems.first?.date ?? .init()
 
@@ -66,4 +65,3 @@ struct RSSTemplate {
             """
     }
 }
-#endif

@@ -45,7 +45,7 @@ html {
     border-radius: 4px;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 4px 10px rgba(0,0,0,0.22);
     transition: font-size 0.2s;
-}   
+}
 .author-cta:hover {
     font-size: 1.05rem;
 }
@@ -74,7 +74,7 @@ iframe {
 a {
     text-decoration: none;
 }
-p a:hover, p a:active {
+a:hover, a:active {
     cursor: pointer;
 }
 p a:link, p a:visited {
@@ -208,8 +208,8 @@ pre {
     font-size: 0.8rem;
     line-height: 1.25rem;
     background: var(--primary-background-color);
-    padding: 1rem; 
-    margin: 2rem auto; 
+    padding: 1rem;
+    margin: 2rem auto;
     border-radius: 4px;
     border: 1px solid var(--border-color);
 }
@@ -222,10 +222,32 @@ pre code {
     -webkit-overflow-scrolling: touch;
 }
 p code, li code {
-    background: var(--primary-background-color);
-    padding: 4px 8px;
-    border-radius: 4px;
-    border: 1px solid var(--border-color);
+    font-family: monospace;
+    font-weight: bold;
+}
+p code a, li code a {
+    font-weight: normal;
+}
+li p {
+    margin-top: 0;
+}
+p code a:hover, li code a:hover {
+    color: var(--link-color);
+    border-bottom: 1px solid var(--link-color);
+}
+p code a:after, li code a:after {
+    
+    display: inline-block;
+    content: "";
+    width: 12px;
+    height: 12px;
+    margin-left: 0.5em;
+    margin-right: 0.25em;
+    background: var(--link-color);
+    mask-image: url('data:image/svg+xml;utf8,    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">    <path fill-rule="evenodd" clip-rule="evenodd"     d="M 7.5,10 13.6,3.7 14.2,2.9 14,3.7 V 7 h 2 V 0.5 L 15.5,0 H 9 v 2 h 3.3 L 13.1,1.8 12.3,2.4 6,8.5 Z"/>    <path fill-rule="evenodd" clip-rule="evenodd"     d="M 7,0 H 0.5 L 0,0.5 v 15 L 0.5,16 h 15 L 16,15.5 V 9 h -2 v 5 H 2 V 2 h 5 z"/>    </svg>');
+    mask-size: 100% 100%;
+    -webkit-mask-image: url('data:image/svg+xml;utf8,    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">    <path fill-rule="evenodd" clip-rule="evenodd"     d="M 7.5,10 13.6,3.7 14.2,2.9 14,3.7 V 7 h 2 V 0.5 L 15.5,0 H 9 v 2 h 3.3 L 13.1,1.8 12.3,2.4 6,8.5 Z"/>    <path fill-rule="evenodd" clip-rule="evenodd"     d="M 7,0 H 0.5 L 0,0.5 v 15 L 0.5,16 h 15 L 16,15.5 V 9 h -2 v 5 H 2 V 2 h 5 z"/>    </svg>');
+    -webkit-mask-size: 100% 100%;
 }
 figure, picture, img {
     line-height: 0;

@@ -1,4 +1,3 @@
-#if os(macOS)
 import Foundation
 
 struct RSS {
@@ -12,7 +11,8 @@ struct RSS {
             config: config
         )
 
-        let rssUrl = outputUrl
+        let rssUrl =
+            outputUrl
             .appendingPathComponent("rss")
             .appendingPathExtension("xml")
 
@@ -24,4 +24,3 @@ struct RSS {
             )
     }
 }
-#endif

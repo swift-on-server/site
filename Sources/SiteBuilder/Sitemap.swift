@@ -1,4 +1,3 @@
-#if os(macOS)
 import Foundation
 
 struct Sitemap {
@@ -12,7 +11,7 @@ struct Sitemap {
         )
 
         let sitemapUrl =
-        outputUrl
+            outputUrl
             .appendingPathComponent("sitemap")
             .appendingPathExtension("xml")
 
@@ -24,4 +23,3 @@ struct Sitemap {
             )
     }
 }
-#endif
