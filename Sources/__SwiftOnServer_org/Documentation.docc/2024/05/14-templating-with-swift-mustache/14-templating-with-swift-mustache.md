@@ -49,6 +49,8 @@ import Mustache
 let library = MustacheLibrary("/path/to/templates/")
 ```
 
+``MustacheLibrary`` loads all the templates from the specified directory. You can then use the `render` method to render a template. This also enables templates to embed other templates.
+
 Then, create a struct to hold the data you want to render:
 
 ```swift
