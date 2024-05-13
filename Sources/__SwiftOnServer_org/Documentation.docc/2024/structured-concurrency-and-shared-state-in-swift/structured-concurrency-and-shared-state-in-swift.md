@@ -486,7 +486,7 @@ Starting in Swift 6, Structured Concurrency will be improved further. Even thoug
 
 ### Task Executors (Swift 6)
 
-Starting from Swift 6, you can specify a "task executor" to run tasks on. This is described in [SE-0417](https://github.com/apple/swift-evolution/blob/main/proposals/0417-task-executor-preference.md). This is especially useful for server-side Swift, where code can run within a [SwiftNIO event loop](https://swiftonserver.com/using-swiftnio-fundamentals).
+Starting from Swift 6, you can specify a "task executor" to run tasks on. This is described in [SE-0417](https://github.com/apple/swift-evolution/blob/main/proposals/0417-task-executor-preference.md). This is especially useful for server-side Swift, where code can run within a SwiftNIO event loop (<doc:using-swiftnio-fundamentals>).
 
 In Server-Side Swift, all I/O is done asynchronously on the EventLoop. By tying business logic to the same EventLoop as the I/O, you can ensure that there is no unnecessary context switching. This can lead to a significant performance improvement.
 
