@@ -27,6 +27,8 @@
         <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/favicon.ico" type="image/x-icon" />
         <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/icon-320.png" type="image/png" />
 
+        <script type="text/javascript" src="https://swiftonserver.com/js/tooltips.js" async></script>
+
         <link rel="apple-touch-icon" href="https://swiftonserver.com/images/icons/apple-touch-icon.png" />
         <link rel="apple-touch-icon" sizes="57x57" href="https://swiftonserver.com/images/icons/apple-touch-icon-57x57.png" />
         <link rel="apple-touch-icon" sizes="72x72" href="https://swiftonserver.com/images/icons/apple-touch-icon-72x72.png" />
@@ -276,7 +278,7 @@
 </span>        )<span class='newline'>
 </span>        <span class='xk'>return</span> .<span class='xk'>init</span>(<span class='xv'>status</span>: .<span class='xv'>created</span>, <span class='xv'>response</span>: <span class='xv'>input</span>)<span class='newline'>
 </span>    }<span class='newline'>
-</span>}</code></pre><ol><li><p>Register route handlers using the router group</p></li><li><p>Hummingbird is thread-safe, so every route handler should be marked  with <code>@Sendable</code> to propagate these thread-safety checks.</p></li><li><p>It is possible to access both the request and the context in each route handler.</p></li></ol><p>As you can see there are quite a lot of changes in the latest version of the Hummingbird framework. The final release date is still unknown, but it is expected to happen within a few months, after the alpha &amp; beta period ends.</p><p>If have questions about Hummingbird, feel free to join the following <a target='_blank' rel='external nofollow noopener ugc' href='https://discord.gg/fkN7FC7QJk'>Discord server</a>. You can also get some inspiration from the official <a target='_blank' rel='external' href='https://github.com/hummingbird-project/hummingbird-examples'>Hummingbird examples</a> repository.</p></section>
+</span>}</code></pre><ol><li><p>Register route handlers using the router group</p></li><li><p>Hummingbird is thread-safe, so every route handler should be marked  with <code>@Sendable</code> to propagate these thread-safety checks.</p></li><li><p>It is possible to access both the request and the context in each route handler.</p></li></ol><p>As you can see there are quite a lot of changes in the latest version of the Hummingbird framework. The final release date is still unknown, but it is expected to happen within a few months, after the alpha &amp; beta period ends.</p><p>If have questions about Hummingbird, feel free to join the following <a target='_blank' rel='external nofollow noopener ugc' href='https://discord.gg/fkN7FC7QJk'>Discord server</a>. You can also get some inspiration from the official <a target='_blank' rel='external' href='https://github.com/hummingbird-project/hummingbird-examples'>Hummingbird examples</a> repository.</p></section><div style='display: none;' id='ss:tooltips'><a href='/docs/swift/swift/sendable'><pre><code><span class='xk'>protocol</span> <span class='xv'>Sendable</span></code></pre><p>A type whose values can safely be passed across concurrency domains by copying.</p></a><a href='/docs/swift/_concurrency/taskgroup'><pre><code><span class='xa'>@frozen</span> <span class='xk'>struct</span> <span class='xv'>TaskGroup</span>&lt;<span class='xu'>ChildTaskResult</span>&gt; <span class='xk'>where</span> <span class='xt'>ChildTaskResult</span> : <span class='xt'>Sendable</span></code></pre><p>A group that contains dynamically created child tasks.</p></a><a href='/docs/swift-service-lifecycle/servicelifecycle/service'><pre><code><span class='xk'>protocol</span> <span class='xv'>Service</span> : <span class='xt'>Sendable</span></code></pre><p>This is the basic protocol that a service has to implement.</p></a></div>
         
     </section>
 
@@ -287,7 +289,6 @@
 
         <a href="mailto:info@binarybirds.com" target="_blank" class="author-cta">Contact us</a>
     </section>
-
 </article>
 
 

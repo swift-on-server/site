@@ -4,7 +4,7 @@
     <description>Articles about server-side Swift development. Created by Joannis Orlandos and Tibor Bödecs.</description>
     <link>https://swiftonserver.com/</link>
     <language>en-US</language>
-    <lastBuildDate>Fri, 10 May 2024 08:26:59 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 13 May 2024 12:25:20 +0000</lastBuildDate>
     <pubDate>Wed, 10 Apr 2024 00:00:00 +0000</pubDate>
     <ttl>250</ttl>
     <atom:link href="https://swiftonserver.com/rss.xml" rel="self" type="application/rss+xml"/>
@@ -28,6 +28,13 @@
        <title><![CDATA[ Structured Concurrency and Shared State in Swift ]]></title>
        <description><![CDATA[ Learn how actors and sendable prevent race conditions in your concurrent code. ]]></description>
        <link>https://swiftonserver.com/structured-concurrency-and-shared-state-in-swift/</link>
+       <pubDate>Mon, 25 Mar 2024 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+       <guid isPermaLink="true">https://swiftonserver.com/templating-with-swift-mustache/</guid>
+       <title><![CDATA[ Templating with Swift-Mustache ]]></title>
+       <description><![CDATA[ Learn how to template emails and web pages with Swift-Mustache. ]]></description>
+       <link>https://swiftonserver.com/templating-with-swift-mustache/</link>
        <pubDate>Mon, 25 Mar 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
