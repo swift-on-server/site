@@ -1,50 +1,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://swiftonserver.com/useful-scripts-for-server-side-swift-libraries/</loc>
-        <lastmod>2024-05-10</lastmod>
+        <loc>https://swiftonserver.com/templating-with-swift-mustache/</loc>
+        <lastmod>2024-05-13</lastmod>
     </url>
     <url>
         <loc>https://swiftonserver.com/async-http-client-by-example/</loc>
-        <lastmod>2024-05-10</lastmod>
+        <lastmod>2024-05-11</lastmod>
     </url>
     <url>
         <loc>https://swiftonserver.com/structured-concurrency-and-shared-state-in-swift/</loc>
-        <lastmod>2024-05-10</lastmod>
+        <lastmod>2024-05-11</lastmod>
     </url>
     <url>
         <loc>https://swiftonserver.com/getting-started-with-structured-concurrency-in-swift/</loc>
-        <lastmod>2024-05-10</lastmod>
-    </url>
-    <url>
-        <loc>https://swiftonserver.com/using-environment-variables-in-swift/</loc>
-        <lastmod>2024-05-10</lastmod>
-    </url>
-    <url>
-        <loc>https://swiftonserver.com/using-openapi-with-hummingbird/</loc>
-        <lastmod>2024-05-10</lastmod>
-    </url>
-    <url>
-        <loc>https://swiftonserver.com/whats-new-in-hummingbird-2/</loc>
-        <lastmod>2024-05-10</lastmod>
-    </url>
-    <url>
-        <loc>https://swiftonserver.com/building-swiftnio-clients/</loc>
-        <lastmod>2024-05-10</lastmod>
+        <lastmod>2024-05-08</lastmod>
     </url>
     <url>
         <loc>https://swiftonserver.com/logging-for-server-side-swift-apps/</loc>
-        <lastmod>2024-05-10</lastmod>
+        <lastmod>2024-05-08</lastmod>
+    </url>
+    <url>
+        <loc>https://swiftonserver.com/useful-scripts-for-server-side-swift-libraries/</loc>
+        <lastmod>2024-05-07</lastmod>
+    </url>
+    <url>
+        <loc>https://swiftonserver.com/using-environment-variables-in-swift/</loc>
+        <lastmod>2024-05-07</lastmod>
+    </url>
+    <url>
+        <loc>https://swiftonserver.com/using-openapi-with-hummingbird/</loc>
+        <lastmod>2024-05-07</lastmod>
+    </url>
+    <url>
+        <loc>https://swiftonserver.com/whats-new-in-hummingbird-2/</loc>
+        <lastmod>2024-05-07</lastmod>
+    </url>
+    <url>
+        <loc>https://swiftonserver.com/building-swiftnio-clients/</loc>
+        <lastmod>2024-05-07</lastmod>
     </url>
     <url>
         <loc>https://swiftonserver.com/using-swiftnio-channels/</loc>
-        <lastmod>2024-05-10</lastmod>
+        <lastmod>2024-05-07</lastmod>
     </url>
     <url>
         <loc>https://swiftonserver.com/using-swiftnio-fundamentals/</loc>
-        <lastmod>2024-05-10</lastmod>
+        <lastmod>2024-05-07</lastmod>
     </url>
     <url>
         <loc>https://swiftonserver.com/developing-with-swift-in-visual-studio-code/</loc>
-        <lastmod>2024-05-10</lastmod>
+        <lastmod>2024-05-07</lastmod>
     </url>
 </urlset>
