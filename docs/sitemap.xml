@@ -1,11 +1,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://swiftonserver.com/templating-with-swift-mustache/</loc>
+        <loc>https://swiftonserver.com/async-http-client-by-example/</loc>
         <lastmod>2024-05-13</lastmod>
     </url>
     <url>
-        <loc>https://swiftonserver.com/async-http-client-by-example/</loc>
-        <lastmod>2024-05-11</lastmod>
+        <loc>https://swiftonserver.com/templating-with-swift-mustache/</loc>
+        <lastmod>2024-05-13</lastmod>
     </url>
     <url>
         <loc>https://swiftonserver.com/structured-concurrency-and-shared-state-in-swift/</loc>
