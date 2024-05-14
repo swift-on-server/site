@@ -4,7 +4,7 @@ Environment variables are key-value pairs that can be used to alter the behavior
 
 Environment variables are commonly used for configuration purposes. It is possible to set different configuration values for development, testing and production environment. It is possible to use env vars as feature flags or to specify secrets and keys and keep them separate from the application codebase.
 
-For example, an app could take advantage of the `LOG_LEVEL=trace` environment variable to set the log level using the [Logging library](https://swiftonserver.com/logging-for-server-side-swift-apps/) in Swift. By using an env variable developers can get more detailed logs for debugging purposes and less verbose logs for production without changing the source code of the application itself.
+For example, an app could take advantage of the `LOG_LEVEL=trace` environment variable to set the log level using the Logging library (<doc:logging-for-server-side-swift-apps>) in Swift. By using an env variable developers can get more detailed logs for debugging purposes and less verbose logs for production without changing the source code of the application itself.
 
 
 ## How to access environment variables in Swift?
@@ -95,7 +95,7 @@ Click "Close" to get back to the project and press the "Play" icon to run the ap
 
 ### Setting env vars using Visual Studio Code
 
-It is possible to [develop Swift projects with VSCode](https://swiftonserver.com/developing-with-swift-in-visual-studio-code/) using the [official Swift extension](https://www.swift.org/blog/vscode-extension/). 
+It is possible to develop Swift projects with VSCode (see <doc:developing-with-swift-in-visual-studio-code>) using the [official Swift extension](https://www.swift.org/blog/vscode-extension/). 
 
 In order to set environment variables in the editor, open the `.vscode/launch.json` file in your workspace or select the "Debug" > "Open Configurations" menu item. 
 

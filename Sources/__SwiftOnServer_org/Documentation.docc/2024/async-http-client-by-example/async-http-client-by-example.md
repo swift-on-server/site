@@ -207,13 +207,9 @@ do {
             let buffer = try await response.body.collect(upTo: 1024 * 1024)
             
             // 7.
-            let decoder = JSONDecoder()
-            if let data = buffer.getData(at: 0, length: buffer.readableBytes) {
-                let output = try decoder.decode(Output.self, from: data)
-                print(output.json.title)
-            }
+            let output = JSONDecoder().decode(Output.self, from: buffer)
+            print(output.json.title)
         }
-
     }
     else {
         print("Invalid status code: \(response.status)")

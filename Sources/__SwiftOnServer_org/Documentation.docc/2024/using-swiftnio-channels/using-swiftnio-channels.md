@@ -2,13 +2,13 @@
 
 SwiftNIO revolves around networking. In SwiftNIO, reads and writes happen using a ``Channel``.
 
-In the [previous tutorial](https://swiftonserver.com/using-swiftnio-fundamentals), you've learned the fundamentals of SwiftNIO. You're now familiar with the concept of an ``EventLoop``.
+In the previous tutorial, <doc:using-swiftnio-fundamentals>, you've learned the fundamentals of SwiftNIO. You're now familiar with the concept of an ``EventLoop``.
 
 In this tutorial, you'll be building a TCP server that echoes back any data that it receives. This is a very common pattern in network applications, and is a great way to get started with SwiftNIO. You'll learn what **Channels** and **Channel Pipelines** are, and how SwiftNIO uses them to represent network connections. You'll also learn about **Channel Handlers** and applying this knowledge using structured concurrency.
 
 In order to start with this tutorial, [Download the Samples](https://github.com/swift-on-server/using-swiftnio-channels-sample). If you're stuck, you can keep at the Finished product within that repo as well.
 
-The samples make use of [VSCode DevContainers](https://swiftonserver.com/developing-with-swift-in-visual-studio-code/) to provide a consistent development environment. If you're not using VSCode, you can also use the latest Xcode.
+The samples make use of VSCode DevContainers (<doc:developing-with-swift-in-visual-studio-code>) to provide a consistent development environment. If you're not using VSCode, you can also use the latest Xcode.
 
 ## Channels
 
@@ -162,4 +162,4 @@ Because ``NIOAsyncChannel/executeThenClose(_:) [2G196]`` will close the connecti
 
 In this tutorial, you've learned the concept of Channels and Pipelines. You've also created a simple TCP server using SwiftNIO. All with structured concurrency!
 
-In the [next tutorial](https://swiftonserver.com/building-swiftnio-clients), we'll cover how to suppport a protocol (HTTP/1) by using Channel Handlers, by building an HTTP client.
+In the next tutorial, (<doc:building-swiftnio-clients>, we'll cover how to suppport a protocol (HTTP/1) by using Channel Handlers, by building an HTTP client.
