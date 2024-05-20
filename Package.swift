@@ -21,6 +21,7 @@ let package = Package(
         .package(url: "https://github.com/swift-server/async-http-client", from: "1.21.1"),
         .package(url: "https://github.com/apple/swift-nio", from: "2.65.0"),
         .package(url: "https://github.com/apple/swift-log", from: "1.5.4"),
+        .package(url: "https://github.com/swift-server/swift-service-lifecycle", from: "2.5.0"),
     ],
     targets: [
         .target(
@@ -31,6 +32,7 @@ let package = Package(
                 .product(name: "NIOCore", package: "swift-nio"),
                 .product(name: "NIOPosix", package: "swift-nio"),
                 .product(name: "Logging", package: "swift-log"),
+                .product(name: "ServiceLifecycle", package: "swift-service-lifecycle")
             ]
         ),
         .executableTarget(

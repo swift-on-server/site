@@ -1,5 +1,5 @@
 {
-  "originHash" : "5c76885345ca5b4fb8f2c0e5a604ac5a85cbae61768d4e6f4cb3ba0b0a33d17c",
+  "originHash" : "bc4dce0f2bd9d17c6ce2ea7906702af2e3127403aa2d278dc13e516d168d0899",
   "pins" : [
     {
       "identity" : "async-http-client",
@@ -177,8 +177,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/swift-server/swift-service-lifecycle.git",
       "state" : {
-        "revision" : "d7fe0e731499a8dcce53bf4cbbc812c8e565d3a7",
-        "version" : "2.4.1"
+        "revision" : "12a031bcc1284c64d6b847f5013ffe6dcca964d0",
+        "version" : "2.5.0"
       }
     },
     {
