@@ -84,9 +84,11 @@ struct Application {
 4. The service group configuration ignores service termination behavior for the basic service.
 5. The `serviceGroup.run()` method is called to run the service group, with the configured services.
 
-## Cancellation signals
+## Graceful shutdown and cancellation signals
 
 Rather than setting a custom termination behavior, it is also possible to wait for a cancellation signal and then shut down service resources when that event occurs. The ``gracefulShutdown()`` function is designed to suspend the caller until a graceful shutdown is initiated. 
+
+A graceful shutdown is when an application closes down in an orderly way. Instead of stopping suddenly, it finishes its current tasks and cleans up resources like open files or network connections. This matters because it prevents data loss, avoids corruption, and ensures that the system remains stable and reliable. By shutting down gracefully, applications can stop safely without causing problems for users or other systems they interact with.
 
 The following code snippet illustrates this approach:
 
