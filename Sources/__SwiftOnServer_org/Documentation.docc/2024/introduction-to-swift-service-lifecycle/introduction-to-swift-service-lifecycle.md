@@ -38,7 +38,7 @@ The ``ServiceGroup`` is used to orchestrate multiple services. A child task is s
 
 A ``ServiceGroup`` manages the execution of multiple services, handles signal processing, and signals graceful shutdowns to the services. 
 
-While a service is typically a long-running task, it can also be a simple task that returns immediately. By default, if one service returns or throws an error, the entire group is canceled. This behavior can be customized by providing a custom ``successTerminationBehavior`` parameter for the service group, as detailed [here]((https://swiftpackageindex.com/swift-server/swift-service-lifecycle/main/documentation/servicelifecycle/how-to-adopt-servicelifecycle-in-applications#Customizing-the-behavior-when-a-service-returns-or-throws).
+While a service is typically a long-running task, it can also be a simple task that returns immediately. By default, if one service returns or throws an error, the entire group is canceled. This behavior can be customized by providing a custom ``successTerminationBehavior`` parameter for the service group, as detailed [here](https://swiftpackageindex.com/swift-server/swift-service-lifecycle/main/documentation/servicelifecycle/how-to-adopt-servicelifecycle-in-applications#Customizing-the-behavior-when-a-service-returns-or-throws).
 
 The following example illustrates a simple service and a service group with customized termination behavior:
 
@@ -194,7 +194,7 @@ actor PingService: Service {
                 )
 
                 // 5.
-                let response = try await HTTPClient.shared.execute(
+                let response = try await httpClientService.httpClient.execute(
                     request,
                     timeout: .seconds(1)
                 )
@@ -253,7 +253,7 @@ struct Application {
 2. Defines a `PingService` actor that relies on the `AsyncHTTPClientService` for making HTTP requests.
 3. Uses ``withGracefulShutdownHandler`` to handle graceful shutdown within the `PingService` actor's run method.
 4. Initiates a loop for sending HTTP requests to apple.com and prints the result.
-5. Executes an HTTP request asynchronously using the shared HTTPClient instance and handles the response.
+5. Executes an HTTP request asynchronously using the AsyncHTTPClientService and handles the response.
 6. Delays execution for one second before the next iteration of the loop.
 7. Defines a closure to be executed on graceful shutdown within the `PingService` actor.
 8. In the `Application` struct's main function, initializes the `AsyncHTTPClientService` and `PingService`, and creates a ``ServiceGroup`` to manage their lifecycles.
