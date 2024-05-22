@@ -1,4 +1,5 @@
 import FileManagerKit
+import SwiftSoup
 import Foundation
 import Mustache
 import Yams
@@ -263,9 +264,13 @@ func openFolder(_ folder: URL) throws {
             )
         }
 
-        
+        let document: Document = try SwiftSoup.parse(indexHTML)
+        try document.select(".introduction").remove()
 
-        try indexHTML.write(
+        let outputSettings = OutputSettings()
+        outputSettings.prettyPrint(pretty: false)
+        outputSettings.indentAmount(indentAmount: 2)
+        try document.outputSettings(outputSettings).outerHtml().write(
             to:
                 output
                 .appendingPathComponent(metadata.slug)
