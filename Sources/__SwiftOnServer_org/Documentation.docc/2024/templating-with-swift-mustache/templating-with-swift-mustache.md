@@ -4,7 +4,7 @@ When you're working on a backend, you'll often need to generate HTML or other te
 
 One popular way to generate text-based output is to use a templating engine. A templating engine is a tool that lets you define a template with placeholders for dynamic content. You can then fill in the placeholders with actual values to generate the final output.
 
-In this tutorial, you'll learn how to use the ``Swift-Mustache`` library to generate text-based output in Swift.
+In this tutorial, you'll learn how to use the ``Mustache`` library to generate text-based output in Swift.
 
 ## What is Mustache?
 
