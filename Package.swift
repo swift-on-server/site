@@ -14,6 +14,7 @@ let package = Package(
         .package(url: "https://github.com/jpsim/Yams", from: "5.1.2"),
         .package(url: "https://github.com/hummingbird-project/swift-mustache", from: "2.0.0-beta.1"),
         .package(url: "https://github.com/BinaryBirds/file-manager-kit", from: "0.1.0"),
+        .package(url: "https://github.com/scinfu/SwiftSoup.git", from: "2.7.2"),
 
         // article dependencies
         .package(url: "https://github.com/hummingbird-project/hummingbird", from: "2.0.0-beta.4"),
@@ -39,6 +40,7 @@ let package = Package(
             name: "SiteBuilder",
             dependencies: [
                 .product(name: "Yams", package: "Yams"),
+                .product(name: "SwiftSoup", package: "SwiftSoup"),
                 .product(name: "Mustache", package: "swift-mustache"),
                 .product(name: "FileManagerKit", package: "file-manager-kit"),
             ]

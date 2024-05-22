@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en-US">
-    <head>
+<!doctype html><html lang="en-US"><head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -43,18 +41,8 @@
             <a href="https://swiftonserver.com/">
                 <figure>
                     <picture>
-                        <source
-                        srcset="https://swiftonserver.com/images/logos/logo~dark.png"
-                        media="(prefers-color-scheme: dark)"
-                        />
-                        <img
-                        id="logo-image"
-                        width="150"
-                        height="150"
-                        src="https://swiftonserver.com/images/logos/logo.png"
-                        alt="Logo of Swift on server"
-                        title="Swift on server"
-                        />
+                        <source srcset="https://swiftonserver.com/images/logos/logo~dark.png" media="(prefers-color-scheme: dark)" />
+                        <img id="logo-image" width="150" height="150" src="https://swiftonserver.com/images/logos/logo.png" alt="Logo of Swift on server" title="Swift on server" />
                     </picture>
                 </figure>
             </a>
@@ -73,69 +61,69 @@
                 <span class="tag">Templating</span>
                 <span class="tag">Mustache</span>
             </div>
-            <img src="https://github.com/joannis.png" alt="Joannis Orlandos" class="author">
+            <img src="https://github.com/joannis.png" alt="Joannis Orlandos" class="author" />
             <p>
                 <span class="author">Written by: <a href="https://x.com/JoannisOrlandos" target="_blank">Joannis Orlandos</a> @ 
-                <span class="author"><a href="https://unbeatable.software/" target="_blank">Unbeatable Software B.V.</a></span><br>
-                <span class="reading-time">Reading time: 30 minutes</span><br>
-            </p>
+                <span class="author"><a href="https://unbeatable.software/" target="_blank">Unbeatable Software B.V.</a></span><br />
+                <span class="reading-time">Reading time: 30 minutes</span><br />
+            </span></p>
         </section>
     </header>
 
     <section class="content-wrapper">
-        <hr>
+        <hr />
     </section>
 
     <section id="contents" class="content-wrapper">
     
-    <section class='introduction'><h1>Templating with Swift-Mustache</h1></section><section class='details literature'><p>When you’re working on a backend, you’ll often need to generate HTML or other text-based formats. Some common examples include rendering web pages and sending emails.</p><p>One popular way to generate text-based output is to use a templating engine. A templating engine is a tool that lets you define a template with placeholders for dynamic content. You can then fill in the placeholders with actual values to generate the final output.</p><p>In this tutorial, you’ll learn how to use the <code>Swift-Mustache</code> library to generate text-based output in Swift.</p><h2 id='What%20is%20Mustache?'><a href='#What%20is%20Mustache?'>What is Mustache?</a></h2><p><a target='_blank' rel='external nofollow noopener ugc' href='https://mustache.github.io/'>Mustache</a> is a logic-less templating language. It’s called “logic-less” because there are no complex statements in Mustache templates. Mustache templates are also used by <a target='_blank' rel='external' href='https://github.com/swift-on-server/blog'>this blog</a>.</p><p>Unlike Leaf, which is Swift-specific, Mustache templates can be used in any language that has a Mustache implementation. Mustache is low-complexity, which also improves performance.</p><h2 id='Adding%20Swift-Mustache%20to%20Your%20Project'><a href='#Adding%20Swift-Mustache%20to%20Your%20Project'>Adding Swift-Mustache to Your Project</a></h2><p>First, you need to add the Swift-Mustache package to your project. You can do this by adding the following line to your <code>Package.swift</code> file:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span>.<span class='xv'>package</span>(<span class='xv'>url</span>: <span class='xs'>"https://github.com/hummingbird-project/swift-mustache"</span>, <span class='xv'>from</span>: <span class='xs'>"2.0.0-beta.1"</span>),</code></pre><p>Then, add the <code>Mustache</code> library to your target dependencies:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span>.<span class='xv'>product</span>(<span class='xv'>name</span>: <span class='xs'>"Mustache"</span>, <span class='xv'>package</span>: <span class='xs'>"swift-mustache"</span>),</code></pre><h2 id='Using%20Mustache%20Templates'><a href='#Using%20Mustache%20Templates'>Using Mustache Templates</a></h2><p>Here’s an example of a simple Mustache template:</p><pre class='snippet'><code class='language-html'><span class='newline'></span>&lt;main&gt;<span class='newline'>
-</span>    &lt;h1&gt;{{ title }}&lt;/h1&gt;<span class='newline'>
-</span>    &lt;p&gt;{{ body }}&lt;/p&gt;<span class='newline'>
-</span>&lt;/main&gt;</code></pre><p>Create a <code>templates</code> directory in your project, and save this template as <code>short-port.mustache</code> in the <code>templates</code> directory.</p><p>In this template, <code>{{ title }}</code> and <code>{{ body }}</code> are placeholders for dynamic content. You can fill in these placeholders with actual values using the <code>Mustache</code> library.</p><p>Here’s how you can use the <code>Mustache</code> library to render this template:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>import</span> <span class='xv'>Mustache</span><span class='newline'>
+    <section class="details literature"><p>When you’re working on a backend, you’ll often need to generate HTML or other text-based formats. Some common examples include rendering web pages and sending emails.</p><p>One popular way to generate text-based output is to use a templating engine. A templating engine is a tool that lets you define a template with placeholders for dynamic content. You can then fill in the placeholders with actual values to generate the final output.</p><p>In this tutorial, you’ll learn how to use the <code>Mustache</code> library to generate text-based output in Swift.</p><h2 id="What%20is%20Mustache?"><a href="#What%20is%20Mustache?">What is Mustache?</a></h2><p><a target="_blank" rel="external nofollow noopener ugc" href="https://mustache.github.io/">Mustache</a> is a logic-less templating language. It’s called “logic-less” because there are no complex statements in Mustache templates. Mustache templates are also used by <a target="_blank" rel="external" href="https://github.com/swift-on-server/blog">this blog</a>.</p><p>Unlike Leaf, which is Swift-specific, Mustache templates can be used in any language that has a Mustache implementation. Mustache is low-complexity, which also improves performance.</p><h2 id="Adding%20Swift-Mustache%20to%20Your%20Project"><a href="#Adding%20Swift-Mustache%20to%20Your%20Project">Adding Swift-Mustache to Your Project</a></h2><p>First, you need to add the Swift-Mustache package to your project. You can do this by adding the following line to your <code>Package.swift</code> file:</p><pre class="snippet"><code class="language-swift"><span class="newline"></span>.<span class="xv">package</span>(<span class="xv">url</span>: <span class="xs">"https://github.com/hummingbird-project/swift-mustache"</span>, <span class="xv">from</span>: <span class="xs">"2.0.0-beta.1"</span>),</code></pre><p>Then, add the <code>Mustache</code> library to your target dependencies:</p><pre class="snippet"><code class="language-swift"><span class="newline"></span>.<span class="xv">product</span>(<span class="xv">name</span>: <span class="xs">"Mustache"</span>, <span class="xv">package</span>: <span class="xs">"swift-mustache"</span>),</code></pre><h2 id="Using%20Mustache%20Templates"><a href="#Using%20Mustache%20Templates">Using Mustache Templates</a></h2><p>Here’s an example of a simple Mustache template:</p><pre class="snippet"><code class="language-html"><span class="newline"></span>&lt;main&gt;<span class="newline">
+</span>    &lt;h1&gt;{{ title }}&lt;/h1&gt;<span class="newline">
+</span>    &lt;p&gt;{{ body }}&lt;/p&gt;<span class="newline">
+</span>&lt;/main&gt;</code></pre><p>Create a <code>templates</code> directory in your project, and save this template as <code>short-port.mustache</code> in the <code>templates</code> directory.</p><p>In this template, <code>{{ title }}</code> and <code>{{ body }}</code> are placeholders for dynamic content. You can fill in these placeholders with actual values using the <code>Mustache</code> library.</p><p>Here’s how you can use the <code>Mustache</code> library to render this template:</p><pre class="snippet"><code class="language-swift"><span class="newline"></span><span class="xk">import</span> <span class="xv">Mustache</span><span class="newline">
 
-</span><span class='xk'>let</span> <span class='xv'>library</span> = <span class='xv'>MustacheLibrary</span>(<span class='xs'>"/path/to/templates/"</span>)</code></pre><p><code>MustacheLibrary</code> loads all the templates from the specified directory. You can then use the <code>render</code> method to render a template. This also enables templates to embed other templates.</p><p>Then, create a struct to hold the data you want to render:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>struct</span> <span class='xv'>ShortPost</span> {<span class='newline'>
-</span>    <span class='xk'>let</span> <span class='xv'>title</span>: <span class='xt'>String</span><span class='newline'>
-</span>    <span class='xk'>let</span> <span class='xv'>body</span>: <span class='xt'>String</span><span class='newline'>
-</span>}</code></pre><p>You can then render the template like this:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>let</span> <span class='xv'>shortPost</span> = <span class='xv'>ShortPost</span>(<span class='xv'>title</span>: <span class='xs'>"Hello, World!"</span>, <span class='xv'>body</span>: <span class='xs'>"This is a short post."</span>)<span class='newline'>
+</span><span class="xk">let</span> <span class="xv">library</span> = <span class="xv">MustacheLibrary</span>(<span class="xs">"/path/to/templates/"</span>)</code></pre><p><code>MustacheLibrary</code> loads all the templates from the specified directory. You can then use the <code>render</code> method to render a template. This also enables templates to embed other templates.</p><p>Then, create a struct to hold the data you want to render:</p><pre class="snippet"><code class="language-swift"><span class="newline"></span><span class="xk">struct</span> <span class="xv">ShortPost</span> {<span class="newline">
+</span>    <span class="xk">let</span> <span class="xv">title</span>: <span class="xt">String</span><span class="newline">
+</span>    <span class="xk">let</span> <span class="xv">body</span>: <span class="xt">String</span><span class="newline">
+</span>}</code></pre><p>You can then render the template like this:</p><pre class="snippet"><code class="language-swift"><span class="newline"></span><span class="xk">let</span> <span class="xv">shortPost</span> = <span class="xv">ShortPost</span>(<span class="xv">title</span>: <span class="xs">"Hello, World!"</span>, <span class="xv">body</span>: <span class="xs">"This is a short post."</span>)<span class="newline">
 
-</span><span class='xk'>let</span> <span class='xv'>rendered</span> = <span class='xk'>try</span> <span class='xv'>library</span>.<span class='xv'>render</span>(<span class='newline'>
-</span>    <span class='xv'>shortPost</span>,<span class='newline'>
-</span>    <span class='xv'>withTemplate</span>: <span class='xs'>"short-post"</span><span class='newline'>
-</span>)</code></pre><p>The <code>render</code> method takes the data you want to render and the name of the template file. It returns the rendered output as a <code>String</code>.</p><p>In some scenarios, the custom data may contain HTML tags. By default, these are escaped. This means that the HTML tags are displayed as text rather than being rendered as HTML. To render the HTML tags, you can render it as raw by using a three-brace syntax <code>{{{</code> and <code>}}}</code>:</p><pre class='snippet'><code class='language-html'><span class='newline'></span>&lt;main&gt;<span class='newline'>
-</span>    &lt;h1&gt;{{ title }}&lt;/h1&gt;<span class='newline'>
-</span>    &lt;p&gt;{{{ body }}}&lt;/p&gt;<span class='newline'>
-</span>&lt;/main&gt;</code></pre><p>In this scenario, the <code>body</code> property will be rendered as raw HTML whereas the <code>title</code> property will be escaped.</p><h2 id='Arrays'><a href='#Arrays'>Arrays</a></h2><p>You can also use arrays in your Mustache templates. This is useful when you want to render a list of items. Here’s an example:</p><pre class='snippet'><code class='language-html'><span class='newline'></span>&lt;ul&gt;<span class='newline'>
-</span>    {{#items}}<span class='newline'>
-</span>    &lt;li&gt;{{ name }}&lt;/li&gt;<span class='newline'>
-</span>    {{/items}}<span class='newline'>
-</span>&lt;/ul&gt;</code></pre><p>Save this as <code>items.mustache</code> in the <code>templates</code> directory. You can then render this template with an array of items:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>struct</span> <span class='xv'>Item</span> {<span class='newline'>
-</span>    <span class='xk'>let</span> <span class='xv'>name</span>: <span class='xt'>String</span><span class='newline'>
-</span>}<span class='newline'>
+</span><span class="xk">let</span> <span class="xv">rendered</span> = <span class="xk">try</span> <span class="xv">library</span>.<span class="xv">render</span>(<span class="newline">
+</span>    <span class="xv">shortPost</span>,<span class="newline">
+</span>    <span class="xv">withTemplate</span>: <span class="xs">"short-post"</span><span class="newline">
+</span>)</code></pre><p>The <code>render</code> method takes the data you want to render and the name of the template file. It returns the rendered output as a <code>String</code>.</p><p>In some scenarios, the custom data may contain HTML tags. By default, these are escaped. This means that the HTML tags are displayed as text rather than being rendered as HTML. To render the HTML tags, you can render it as raw by using a three-brace syntax <code>{{{</code> and <code>}}}</code>:</p><pre class="snippet"><code class="language-html"><span class="newline"></span>&lt;main&gt;<span class="newline">
+</span>    &lt;h1&gt;{{ title }}&lt;/h1&gt;<span class="newline">
+</span>    &lt;p&gt;{{{ body }}}&lt;/p&gt;<span class="newline">
+</span>&lt;/main&gt;</code></pre><p>In this scenario, the <code>body</code> property will be rendered as raw HTML whereas the <code>title</code> property will be escaped.</p><h2 id="Arrays"><a href="#Arrays">Arrays</a></h2><p>You can also use arrays in your Mustache templates. This is useful when you want to render a list of items. Here’s an example:</p><pre class="snippet"><code class="language-html"><span class="newline"></span>&lt;ul&gt;<span class="newline">
+</span>    {{#items}}<span class="newline">
+</span>    &lt;li&gt;{{ name }}&lt;/li&gt;<span class="newline">
+</span>    {{/items}}<span class="newline">
+</span>&lt;/ul&gt;</code></pre><p>Save this as <code>items.mustache</code> in the <code>templates</code> directory. You can then render this template with an array of items:</p><pre class="snippet"><code class="language-swift"><span class="newline"></span><span class="xk">struct</span> <span class="xv">Item</span> {<span class="newline">
+</span>    <span class="xk">let</span> <span class="xv">name</span>: <span class="xt">String</span><span class="newline">
+</span>}<span class="newline">
 
-</span><span class='xk'>let</span> <span class='xv'>items</span> = [<span class='newline'>
-</span>    <span class='xv'>Item</span>(<span class='xv'>name</span>: <span class='xs'>"Item 1"</span>),<span class='newline'>
-</span>    <span class='xv'>Item</span>(<span class='xv'>name</span>: <span class='xs'>"Item 2"</span>),<span class='newline'>
-</span>    <span class='xv'>Item</span>(<span class='xv'>name</span>: <span class='xs'>"Item 3"</span>)<span class='newline'>
-</span>]<span class='newline'>
+</span><span class="xk">let</span> <span class="xv">items</span> = [<span class="newline">
+</span>    <span class="xv">Item</span>(<span class="xv">name</span>: <span class="xs">"Item 1"</span>),<span class="newline">
+</span>    <span class="xv">Item</span>(<span class="xv">name</span>: <span class="xs">"Item 2"</span>),<span class="newline">
+</span>    <span class="xv">Item</span>(<span class="xv">name</span>: <span class="xs">"Item 3"</span>)<span class="newline">
+</span>]<span class="newline">
 
-</span><span class='xk'>let</span> <span class='xv'>rendered</span> = <span class='xk'>try</span> <span class='xv'>library</span>.<span class='xv'>render</span>(<span class='newline'>
-</span>    [<span class='xs'>"items"</span>: <span class='xv'>items</span>],<span class='newline'>
-</span>    <span class='xv'>withTemplate</span>: <span class='xs'>"items"</span><span class='newline'>
-</span>)</code></pre><p>In this example, the <code>items</code> array is passed to the <code>render</code> method as a dictionary. The <code>{{#items}}</code> and <code>{{/items}}</code> tags are used to create a ‘section’ that is repeated for each item in the array.</p><p>The nested <code>{{ name }}</code> tag is replaced with the <code>name</code> property of each item in the array. Within the scope of a section, the <code>{{ name }}</code> tag is replaced with the <code>name</code> property of each item in the array.</p><p>If your array contains the raw <code><a href='https://swiftinit.org/docs/swift/swift/string' target='_blank' rel='external'>String</a></code> values, you won’t need to access the <code>name</code> property. Instead, you can directly access the array’s value:</p><pre class='snippet'><code class='language-html'><span class='newline'></span>&lt;ul&gt;<span class='newline'>
-</span>    {{#items}}<span class='newline'>
-</span>    &lt;li&gt;{{.}}&lt;/li&gt;<span class='newline'>
-</span>    {{/items}}<span class='newline'>
-</span>&lt;/ul&gt;</code></pre><p>In this example, the <code>{{.}}</code> tag is replaced with the value of each item in the array.</p><h3 id='Empty%20Arrays'><a href='#Empty%20Arrays'>Empty Arrays</a></h3><p>Sometimes, you may want to render a different section of the template when an array is empty. You can do this using the <code>{{^items}}</code> tag:</p><pre class='snippet'><code class='language-htmla'><span class='newline'></span>{{#posts}}<span class='newline'>
-</span>  &lt;h2&gt;&lt;a href="{{link}}"&gt;{{title}}&lt;/a&gt;&lt;/h2&gt;<span class='newline'>
-</span>{{/posts}}<span class='newline'>
-</span>{{^posts}}<span class='newline'>
-</span>  &lt;p&gt;No posts found.&lt;/p&gt;<span class='newline'>
-</span>{{/posts}}</code></pre><p>In this example, the <code>{{#posts}}</code> section is rendered if the <code>posts</code> array contains data. If the <code>posts</code> array is empty, the <code>{{^posts}}</code> section is rendered instead.</p><p>As you’ve seen, <code>Swift-Mustache</code> library provides a lightweight way to generate text-based output in Swift. The library has <a target='_blank' rel='external nofollow noopener ugc' href='https://mustache.github.io/mustache.5.html'>more to offer</a>, such as partials and lambdas. You can explore these features to create more complex templates.</p><p>Finally, <a target='_blank' rel='external' href='https://github.com/hummingbird-project/swift-mustache'>swift-mustache</a> has some extra features, <a target='_blank' rel='external nofollow noopener ugc' href='https://docs.hummingbird.codes/2.0/documentation/hummingbird/templateinheritance/'>template inheritance</a> and <a target='_blank' rel='external nofollow noopener ugc' href='https://docs.hummingbird.codes/2.0/documentation/hummingbird/transforms/'>transforms</a>. This makes mustache even more powerful to work with.</p></section><div style='display: none;' id='ss:tooltips'><a href='/docs/swift/swift/string'><pre><code><span class='xa'>@frozen</span> <span class='xk'>struct</span> <span class='xv'>String</span></code></pre><p>A Unicode string value that is a collection of characters.</p></a></div>
+</span><span class="xk">let</span> <span class="xv">rendered</span> = <span class="xk">try</span> <span class="xv">library</span>.<span class="xv">render</span>(<span class="newline">
+</span>    [<span class="xs">"items"</span>: <span class="xv">items</span>],<span class="newline">
+</span>    <span class="xv">withTemplate</span>: <span class="xs">"items"</span><span class="newline">
+</span>)</code></pre><p>In this example, the <code>items</code> array is passed to the <code>render</code> method as a dictionary. The <code>{{#items}}</code> and <code>{{/items}}</code> tags are used to create a ‘section’ that is repeated for each item in the array.</p><p>The nested <code>{{ name }}</code> tag is replaced with the <code>name</code> property of each item in the array. Within the scope of a section, the <code>{{ name }}</code> tag is replaced with the <code>name</code> property of each item in the array.</p><p>If your array contains the raw <code><a href="https://swiftinit.org/docs/swift/swift/string" target="_blank" rel="external">String</a></code> values, you won’t need to access the <code>name</code> property. Instead, you can directly access the array’s value:</p><pre class="snippet"><code class="language-html"><span class="newline"></span>&lt;ul&gt;<span class="newline">
+</span>    {{#items}}<span class="newline">
+</span>    &lt;li&gt;{{.}}&lt;/li&gt;<span class="newline">
+</span>    {{/items}}<span class="newline">
+</span>&lt;/ul&gt;</code></pre><p>In this example, the <code>{{.}}</code> tag is replaced with the value of each item in the array.</p><h3 id="Empty%20Arrays"><a href="#Empty%20Arrays">Empty Arrays</a></h3><p>Sometimes, you may want to render a different section of the template when an array is empty. You can do this using the <code>{{^items}}</code> tag:</p><pre class="snippet"><code class="language-htmla"><span class="newline"></span>{{#posts}}<span class="newline">
+</span>  &lt;h2&gt;&lt;a href="{{link}}"&gt;{{title}}&lt;/a&gt;&lt;/h2&gt;<span class="newline">
+</span>{{/posts}}<span class="newline">
+</span>{{^posts}}<span class="newline">
+</span>  &lt;p&gt;No posts found.&lt;/p&gt;<span class="newline">
+</span>{{/posts}}</code></pre><p>In this example, the <code>{{#posts}}</code> section is rendered if the <code>posts</code> array contains data. If the <code>posts</code> array is empty, the <code>{{^posts}}</code> section is rendered instead.</p><p>As you’ve seen, <code>Swift-Mustache</code> library provides a lightweight way to generate text-based output in Swift. The library has <a target="_blank" rel="external nofollow noopener ugc" href="https://mustache.github.io/mustache.5.html">more to offer</a>, such as partials and lambdas. You can explore these features to create more complex templates.</p><p>Finally, <a target="_blank" rel="external" href="https://github.com/hummingbird-project/swift-mustache">swift-mustache</a> has some extra features, <a target="_blank" rel="external nofollow noopener ugc" href="https://docs.hummingbird.codes/2.0/documentation/hummingbird/templateinheritance/">template inheritance</a> and <a target="_blank" rel="external nofollow noopener ugc" href="https://docs.hummingbird.codes/2.0/documentation/hummingbird/transforms/">transforms</a>. This makes mustache even more powerful to work with.</p></section><div style="display: none;" id="ss:tooltips"><a href="/docs/swift/swift/string"><pre><code><span class="xa">@frozen</span> <span class="xk">struct</span> <span class="xv">String</span></code></pre><p>A Unicode string value that is a collection of characters.</p></a></div>
         
     </section>
 
     <section id="about-author" class="content-wrapper">
-        <img src="https://github.com/joannis.png" alt="Joannis Orlandos" class="author">
+        <img src="https://github.com/joannis.png" alt="Joannis Orlandos" class="author" />
         <h4>About Joannis Orlandos</h4>
         <p class="author-about">Joannis is a seasoned member of the Swift Server WorkGroup, and the co-founder of Unbeatable Software B.V. If you're looking to elevate your team's capabilities or need expert guidance on Swift backend development, consider hiring him.</p>
 
@@ -150,23 +138,13 @@
             <section class="content-wrapper">
                 <figure>
                     <picture>
-                        <source
-                        srcset="https://swiftonserver.com/images/logos/logo~dark.png"
-                        media="(prefers-color-scheme: dark)"
-                        />
-                        <img
-                        id="logo-image"
-                        width="80"
-                        height="80"
-                        src="https://swiftonserver.com/images/logos/logo.png"
-                        alt="Logo of Swift on server"
-                        title="Swift on server"
-                        />
+                        <source srcset="https://swiftonserver.com/images/logos/logo~dark.png" media="(prefers-color-scheme: dark)" />
+                        <img id="logo-image" width="80" height="80" src="https://swiftonserver.com/images/logos/logo.png" alt="Logo of Swift on server" title="Swift on server" />
                     </picture>
                 </figure>
 
                 <p>This site was generated using the <a href="https://swift.org/" target="_blank">Swift</a> programming language.</p>
-                <p class="small">Created by <a href="https://x.com/JoannisOrlandos" target="_blank">Joannis Orlandos</a> & <a href="https://x.com/tiborbodecs">Tibor Bödecs</a> &copy; 2024.</p>
+                <p class="small">Created by <a href="https://x.com/JoannisOrlandos" target="_blank">Joannis Orlandos</a> &amp; <a href="https://x.com/tiborbodecs">Tibor Bödecs</a> © 2024.</p>
 
                 <p>
                 <a href="https://swiftonserver.com/">Home</a> ·
@@ -177,5 +155,6 @@
 
             </section>
         </footer>
-    </body>
-</html>
+    
+
+</body></html>

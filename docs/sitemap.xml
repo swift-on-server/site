@@ -1,5 +1,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
+        <loc>https://swiftonserver.com/templating-with-swift-mustache/</loc>
+        <lastmod>2024-05-22</lastmod>
+    </url>
+    <url>
         <loc>https://swiftonserver.com/introduction-to-swift-service-lifecycle/</loc>
         <lastmod>2024-05-22</lastmod>
     </url>
@@ -25,10 +29,6 @@
     </url>
     <url>
         <loc>https://swiftonserver.com/useful-scripts-for-server-side-swift-libraries/</loc>
-        <lastmod>2024-05-15</lastmod>
-    </url>
-    <url>
-        <loc>https://swiftonserver.com/templating-with-swift-mustache/</loc>
         <lastmod>2024-05-15</lastmod>
     </url>
     <url>
