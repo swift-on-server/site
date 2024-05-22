@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>Introduction to Swift Service Lifecycle - Swift on Server</title>
+
+        <meta name="description" content="This article offers practical examples to introduce the Swift Service Lifecycle library." />
+
+        <meta property="og:title" content="Introduction to Swift Service Lifecycle - Swift on Server" />
+        <meta property="og:description" content="This article offers practical examples to introduce the Swift Service Lifecycle library." />
+        <meta property="og:url" content="https://swiftonserver.com/introduction-to-swift-service-lifecycle/" />
+        <meta property="og:image" content="https://swiftonserver.com/images/assets/introduction-to-swift-service-lifecycle/cover.jpg" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Introduction to Swift Service Lifecycle - Swift on Server" />
+        <meta name="twitter:description" content="This article offers practical examples to introduce the Swift Service Lifecycle library." />
+        <meta name="twitter:image" content="https://swiftonserver.com/images/assets/introduction-to-swift-service-lifecycle/cover.jpg" />
+
+        <link rel="stylesheet" href="https://swiftonserver.com/css/style.css" />
+        <link rel="stylesheet" href="https://swiftonserver.com/css/syntax.css" />
+
+        <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/icon-320.png" type="image/png" />
+
+        <script type="text/javascript" src="https://swiftonserver.com/js/tooltips.js" async></script>
+
+        <link rel="apple-touch-icon" href="https://swiftonserver.com/images/icons/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="https://swiftonserver.com/images/icons/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="https://swiftonserver.com/images/icons/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="https://swiftonserver.com/images/icons/apple-touch-icon-76x76.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="https://swiftonserver.com/images/icons/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="https://swiftonserver.com/images/icons/apple-touch-icon-120x120.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="https://swiftonserver.com/images/icons/apple-touch-icon-144x144.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="https://swiftonserver.com/images/icons/apple-touch-icon-152x152.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="https://swiftonserver.com/images/icons/apple-touch-icon-180x180.png" />
+
+    </head>
+
+    <body>
+        <header id="page-header">
+            <a href="https://swiftonserver.com/">
+                <figure>
+                    <picture>
+                        <source
+                        srcset="https://swiftonserver.com/images/logos/logo~dark.png"
+                        media="(prefers-color-scheme: dark)"
+                        />
+                        <img
+                        id="logo-image"
+                        width="150"
+                        height="150"
+                        src="https://swiftonserver.com/images/logos/logo.png"
+                        alt="Logo of Swift on server"
+                        title="Swift on server"
+                        />
+                    </picture>
+                </figure>
+            </a>
+        </header>
+
+        <main>
+
+            <article>
+    <header>
+        <section id="post-header" class="content-wrapper">
+            <time datetime="2024/05/22">2024/05/22</time>
+            <h1 class="title">Introduction to Swift Service Lifecycle</h1>
+            <p class="excerpt">This article offers practical examples to introduce the Swift Service Lifecycle library.</p>
+            <div class="meta">
+                <span class="tag">Swift</span>
+                <span class="tag">Service</span>
+            </div>
+            <img src="https://github.com/tib.png" alt="Tibor Bödecs" class="author">
+            <p>
+                <span class="author">Written by: <a href="https://x.com/tiborbodecs" target="_blank">Tibor Bödecs</a> @ 
+                <span class="author"><a href="https://binarybirds.com/" target="_blank">Binary Birds Kft.</a></span><br>
+                <span class="reading-time">Reading time: 15 minutes</span><br>
+            </p>
+        </section>
+    </header>
+
+    <section class="content-wrapper">
+        <hr>
+    </section>
+
+    <section id="contents" class="content-wrapper">
+    
+    <section class='introduction'><h1>Introduction to Swift Service Lifecycle</h1></section><section class='details literature'><p>The <a target='_blank' rel='external' href='https://github.com/swift-server/swift-service-lifecycle'>Swift Service Lifecycle</a> library helps to manage application lifecycle by providing a unified start and stop mechanism. It also features a signal-based shutdown hook, allowing users to gracefully shut down and clean up resources before the application exits.</p><h2 id='A%20basic%20service%20example'><a href='#A%20basic%20service%20example'>A basic service example</a></h2><p>First, the Swift Service Lifecycle package needs to be added to the project. This can be done by modifying the <code>Package.swift</code> file as follows:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xc'>// swift-tools-version: 5.10</span><span class='newline'>
+</span><span class='xk'>import</span> <span class='xv'>PackageDescription</span><span class='newline'>
+
+</span><span class='xk'>let</span> <span class='xv'>package</span> = <span class='xv'>Package</span>(<span class='newline'>
+</span>    <span class='xv'>name</span>: <span class='xs'>"Example"</span>,<span class='newline'>
+</span>    <span class='xv'>platforms</span>: [<span class='newline'>
+</span>        .<span class='xv'>macOS</span>(.<span class='xv'>v14</span>),<span class='newline'>
+</span>    ],<span class='newline'>
+</span>    <span class='xv'>dependencies</span>: [<span class='newline'>
+</span>        .<span class='xv'>package</span>(<span class='xv'>url</span>: <span class='xs'>"https://github.com/swift-server/swift-service-lifecycle.git"</span>, <span class='xv'>from</span>: <span class='xs'>"2.5.0"</span>),<span class='newline'>
+</span>    ],<span class='newline'>
+</span>    <span class='xv'>targets</span>: [<span class='newline'>
+</span>        .<span class='xv'>executableTarget</span>(<span class='newline'>
+</span>            <span class='xv'>name</span>: <span class='xs'>"Example"</span>,<span class='newline'>
+</span>            <span class='xv'>dependencies</span>: [<span class='newline'>
+</span>                .<span class='xv'>product</span>(<span class='xv'>name</span>: <span class='xs'>"ServiceLifecycle"</span>, <span class='xv'>package</span>: <span class='xs'>"swift-service-lifecycle"</span>),<span class='newline'>
+</span>            ]<span class='newline'>
+</span>        ),<span class='newline'>
+</span>    ]<span class='newline'>
+</span>)</code></pre><p>Before the actual implementation, it is important to understand the basic building blocks of the Service Lifecycle library.</p><p>Long-running work should be modeled as services that implement the <code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle/service' target='_blank' rel='external'>Service</a></code> protocol. This protocol requires only one function: a simple asynchronous throwing <code>run</code> method.</p><p>The <code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle/servicegroup' target='_blank' rel='external'>ServiceGroup</a></code> is used to orchestrate multiple services. A child task is spawned for each service, and the respective run method is called in the child task. Additionally, signal listeners are set up for the configured signals, triggering a graceful shutdown for each service.</p><p>A <code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle/servicegroup' target='_blank' rel='external'>ServiceGroup</a></code> manages the execution of multiple services, handles signal processing, and signals graceful shutdowns to the services.</p><p>While a service is typically a long-running task, it can also be a simple task that returns immediately. By default, if one service returns or throws an error, the entire group is canceled. This behavior can be customized by providing a custom <code>successTerminationBehavior</code> parameter for the service group, as detailed [here]((https://swiftpackageindex.com/swift-server/swift-service-lifecycle/main/documentation/servicelifecycle/how-to-adopt-servicelifecycle-in-applications#Customizing-the-behavior-when-a-service-returns-or-throws).</p><p>The following example illustrates a simple service and a service group with customized termination behavior:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>import</span> <span class='xv'>ServiceLifecycle</span><span class='newline'>
+
+</span><span class='xk'>struct</span> <span class='xv'>BasicService</span>: <span class='xt'>Service</span> {<span class='newline'>
+</span>    <span class='xc'>// 1.</span><span class='newline'>
+</span>    <span class='xk'>func</span> <span class='xv'>run</span>() <span class='xk'>async</span> <span class='xk'>throws</span> {<span class='newline'>
+</span>        <span class='xv'>print</span>(<span class='xs'>"Hello, basic service!"</span>)<span class='newline'>
+</span>    }<span class='newline'>
+</span>}<span class='newline'>
+
+</span><span class='xa'>@main</span><span class='newline'>
+</span><span class='xk'>struct</span> <span class='xv'>Application</span> {<span class='newline'>
+
+</span>    <span class='xk'>static</span> <span class='xk'>func</span> <span class='xv'>main</span>() <span class='xk'>async</span> <span class='xk'>throws</span> {<span class='newline'>
+</span>        <span class='xc'>// 2.</span><span class='newline'>
+</span>        <span class='xk'>let</span> <span class='xv'>service</span> = <span class='xv'>BasicService</span>()<span class='newline'>
+
+</span>        <span class='xc'>// 3.</span><span class='newline'>
+</span>        <span class='xk'>let</span> <span class='xv'>serviceGroup</span> = <span class='xv'>ServiceGroup</span>(<span class='newline'>
+</span>            <span class='xv'>configuration</span>: .<span class='xk'>init</span>(<span class='newline'>
+</span>                <span class='xv'>services</span>: [<span class='newline'>
+</span>                    <span class='xc'>// 4.</span><span class='newline'>
+</span>                    .<span class='xk'>init</span>(<span class='newline'>
+</span>                        <span class='xv'>service</span>: <span class='xv'>service</span>,<span class='newline'>
+</span>                        <span class='xv'>successTerminationBehavior</span>: .<span class='xv'>ignore</span>,<span class='newline'>
+</span>                    )<span class='newline'>
+</span>                ],<span class='newline'>
+</span>                <span class='xv'>logger</span>: .<span class='xk'>init</span>(<span class='newline'>
+</span>                    <span class='xv'>label</span>: <span class='xs'>"service-group"</span><span class='newline'>
+</span>                )<span class='newline'>
+</span>            )<span class='newline'>
+</span>        )<span class='newline'>
+</span>        <span class='xc'>// 5.</span><span class='newline'>
+</span>        <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>serviceGroup</span>.<span class='xv'>run</span>()<span class='newline'>
+</span>    }<span class='newline'>
+</span>}</code></pre><ol><li><p>This is the implementation of the run function required by the <code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle/service' target='_blank' rel='external'>Service</a></code> protocol.</p></li><li><p>The <code>BasicService</code> instance is created, it’s going to be used in the group.</p></li><li><p>A <code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle/servicegroup' target='_blank' rel='external'>ServiceGroup</a></code> is initialized with the service instances, using a custom configuration.</p></li><li><p>The service group configuration ignores service termination behavior for the basic service.</p></li><li><p>The <code>serviceGroup.run()</code> method is called to run the service group, with the configured services.</p></li></ol><h2 id='Graceful%20shutdown%20and%20cancellation%20signals'><a href='#Graceful%20shutdown%20and%20cancellation%20signals'>Graceful shutdown and cancellation signals</a></h2><p>Rather than setting a custom termination behavior, it is also possible to wait for a cancellation signal and then shut down service resources when that event occurs. The <code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle.gracefulshutdown' target='_blank' rel='external'>gracefulShutdown</a></code> function is designed to suspend the caller until a graceful shutdown is initiated.</p><p>A graceful shutdown is when an application closes down in an orderly way. Instead of stopping suddenly, it finishes its current tasks and cleans up resources like open files or network connections. This matters because it prevents data loss, avoids corruption, and ensures that the system remains stable and reliable. By shutting down gracefully, applications can stop safely without causing problems for users or other systems they interact with.</p><p>The following code snippet illustrates this approach:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>import</span> <span class='xv'>ServiceLifecycle</span><span class='newline'>
+
+</span><span class='xk'>struct</span> <span class='xv'>BasicService</span>: <span class='xt'>Service</span> {<span class='newline'>
+
+</span>    <span class='xk'>func</span> <span class='xv'>run</span>() <span class='xk'>async</span> <span class='xk'>throws</span> {<span class='newline'>
+</span>        <span class='xv'>print</span>(<span class='xs'>"Start - basic service!"</span>)<span class='newline'>
+</span>       <span class='newline'>
+</span>        <span class='xc'>// 1. </span><span class='newline'>
+</span>        <span class='xk'>try</span>? <span class='xk'>await</span> <span class='xv'>gracefulShutdown</span>()<span class='newline'>
+</span>        <span class='newline'>
+</span>        <span class='xv'>print</span>(<span class='xs'>"Shutdown - basic service!"</span>)<span class='newline'>
+</span>    }<span class='newline'>
+</span>}<span class='newline'>
+
+</span><span class='xa'>@main</span><span class='newline'>
+</span><span class='xk'>struct</span> <span class='xv'>Application</span> {<span class='newline'>
+
+</span>    <span class='xk'>static</span> <span class='xk'>func</span> <span class='xv'>main</span>() <span class='xk'>async</span> <span class='xk'>throws</span> {<span class='newline'>
+</span>        <span class='xk'>let</span> <span class='xv'>service</span> = <span class='xv'>BasicService</span>()<span class='newline'>
+
+</span>        <span class='xk'>let</span> <span class='xv'>serviceGroup</span> = <span class='xv'>ServiceGroup</span>(<span class='newline'>
+</span>            <span class='xv'>configuration</span>: .<span class='xk'>init</span>(<span class='newline'>
+</span>                <span class='xv'>services</span>: [<span class='newline'>
+</span>                    <span class='xc'>// 2.</span><span class='newline'>
+</span>                    .<span class='xk'>init</span>(<span class='xv'>service</span>: <span class='xv'>service</span>)<span class='newline'>
+</span>                ],<span class='newline'>
+</span>                <span class='xc'>// 3.</span><span class='newline'>
+</span>                <span class='xv'>cancellationSignals</span>: [.<span class='xv'>sigterm</span>, .<span class='xv'>sigint</span>],<span class='newline'>
+</span>                <span class='xv'>logger</span>: .<span class='xk'>init</span>(<span class='newline'>
+</span>                    <span class='xv'>label</span>: <span class='xs'>"service-group"</span><span class='newline'>
+</span>                )<span class='newline'>
+</span>            )<span class='newline'>
+</span>        )<span class='newline'>
+</span>        <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>serviceGroup</span>.<span class='xv'>run</span>()<span class='newline'>
+</span>    }<span class='newline'>
+</span>}</code></pre><ol><li><p>Ignore cancellation error, waits for the service until it’s cancelled</p></li><li><p>Configure the service using the default success termination behavior</p></li><li><p>Set the cancellation signals to <code>SIGTERM</code> &amp; <code>SIGINT</code></p></li></ol><p>Run the application from the command line with the following command:</p><pre class='snippet'><code class='language-sh'><span class='newline'></span>swift run</code></pre><p>To halt execution and send a <code>SIGINT</code> signal to the application, press <code>CTRL+C</code>. Any code following the <code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle.gracefulshutdown' target='_blank' rel='external'>gracefulShutdown</a></code> function call within the run method will be executed upon receiving any of the cancellation signals.</p><h2 id='Service%20composition'><a href='#Service%20composition'>Service composition</a></h2><p>It’s feasible to utilize one service within another. For instance, we could create an asynchronous HTTP client-based service, potentially with a pool of HTTP clients. The provided code snippet demonstrates this concept:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>import</span> <span class='xv'>ServiceLifecycle</span><span class='newline'>
+</span><span class='xk'>import</span> <span class='xv'>AsyncHTTPClient</span><span class='newline'>
+
+</span><span class='xc'>// 1.</span><span class='newline'>
+</span><span class='xk'>actor</span> <span class='xv'>AsyncHTTPClientService</span>: <span class='xt'>Service</span> {<span class='newline'>
+</span>    <span class='newline'>
+</span>    <span class='xk'>var</span> <span class='xv'>httpClient</span>: <span class='xt'>HTTPClient</span><span class='newline'>
+</span>    <span class='newline'>
+</span>    <span class='xk'>init</span>() {<span class='newline'>
+</span>        <span class='xk'>self</span>.<span class='xv'>httpClient</span> = .<span class='xk'>init</span>(<span class='newline'>
+</span>            <span class='xv'>eventLoopGroupProvider</span>: .<span class='xv'>singleton</span><span class='newline'>
+</span>        )<span class='newline'>
+</span>    }<span class='newline'>
+
+</span>    <span class='xk'>func</span> <span class='xv'>run</span>() <span class='xk'>async</span> <span class='xk'>throws</span> {<span class='newline'>
+</span>        <span class='xk'>try</span>? <span class='xk'>await</span> <span class='xv'>gracefulShutdown</span>()<span class='newline'>
+</span>        <span class='newline'>
+</span>        <span class='xv'>print</span>(<span class='xs'>"Shutting down http client service..."</span>)<span class='newline'>
+</span>        <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>httpClient</span>.<span class='xv'>shutdown</span>()<span class='newline'>
+</span>    }<span class='newline'>
+</span>}<span class='newline'>
+
+</span><span class='xk'>actor</span> <span class='xv'>PingService</span>: <span class='xt'>Service</span> {<span class='newline'>
+</span>    <span class='newline'>
+</span>    <span class='xk'>let</span> <span class='xv'>httpClientService</span>: <span class='xt'>AsyncHTTPClientService</span><span class='newline'>
+</span>    <span class='newline'>
+</span>    <span class='xc'>// 2.</span><span class='newline'>
+</span>    <span class='xk'>init</span>(<span class='xv'>httpClientService</span>: <span class='xt'>AsyncHTTPClientService</span>) {<span class='newline'>
+</span>        <span class='xk'>self</span>.<span class='xv'>httpClientService</span> = <span class='xv'>httpClientService</span><span class='newline'>
+</span>    }<span class='newline'>
+</span>    <span class='newline'>
+</span>    <span class='xk'>func</span> <span class='xv'>run</span>() <span class='xk'>async</span> <span class='xk'>throws</span> {<span class='newline'>
+</span>        <span class='xc'>// 3.</span><span class='newline'>
+</span>        <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>withGracefulShutdownHandler</span> {<span class='newline'>
+</span>            <span class='xk'>var</span> <span class='xv'>i</span> = <span class='xn'>0</span><span class='newline'>
+</span>            <span class='xc'>// 4.</span><span class='newline'>
+</span>            <span class='xk'>repeat</span> {<span class='newline'>
+</span>                <span class='xv'>print</span>(<span class='xs'>"Ping #</span>\(<span class='xv'>i</span>)<span class='xs'> - apple.com"</span>)<span class='newline'>
+</span>                <span class='newline'>
+</span>                <span class='xk'>let</span> <span class='xv'>request</span> = <span class='xv'>HTTPClientRequest</span>(<span class='newline'>
+</span>                    <span class='xv'>url</span>: <span class='xs'>"https://apple.com/"</span><span class='newline'>
+</span>                )<span class='newline'>
+
+</span>                <span class='xc'>// 5.</span><span class='newline'>
+</span>                <span class='xk'>let</span> <span class='xv'>response</span> = <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>HTTPClient</span>.<span class='xv'>shared</span>.<span class='xv'>execute</span>(<span class='newline'>
+</span>                    <span class='xv'>request</span>,<span class='newline'>
+</span>                    <span class='xv'>timeout</span>: .<span class='xv'>seconds</span>(<span class='xn'>1</span>)<span class='newline'>
+</span>                )<span class='newline'>
+
+</span>                <span class='xk'>if</span> <span class='xv'>response</span>.<span class='xv'>status</span> <span class='xo'>==</span> .<span class='xv'>ok</span> {<span class='newline'>
+</span>                    <span class='xv'>print</span>(<span class='xs'>"Ping #</span>\(<span class='xv'>i</span>)<span class='xs'> - ok"</span>)<span class='newline'>
+</span>                }<span class='newline'>
+</span>                <span class='xk'>else</span> {<span class='newline'>
+</span>                    <span class='xv'>print</span>(<span class='xs'>"Ping #</span>\(<span class='xv'>i</span>)<span class='xs'> - error"</span>)<span class='newline'>
+</span>                }<span class='newline'>
+
+</span>                <span class='xc'>// 6.</span><span class='newline'>
+</span>                <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>Task</span>.<span class='xv'>sleep</span>(<span class='xv'>for</span>: .<span class='xv'>seconds</span>(<span class='xn'>1</span>))<span class='newline'>
+</span>                <span class='xv'>i</span> <span class='xo'>+=</span> <span class='xn'>1</span><span class='newline'>
+</span>            } <span class='xk'>while</span> <span class='xv'>i</span> <span class='xo'>&lt;</span> <span class='xn'>2</span><span class='newline'>
+</span>        } <span class='xv'>onGracefulShutdown</span>: {<span class='newline'>
+</span>            <span class='xc'>// 7.</span><span class='newline'>
+</span>            <span class='xv'>print</span>(<span class='xs'>"Shutting down ping service..."</span>)<span class='newline'>
+</span>        }<span class='newline'>
+</span>    }<span class='newline'>
+</span>}<span class='newline'>
+
+</span><span class='xa'>@main</span><span class='newline'>
+</span><span class='xk'>struct</span> <span class='xv'>Application</span> {<span class='newline'>
+
+</span>    <span class='xk'>static</span> <span class='xk'>func</span> <span class='xv'>main</span>() <span class='xk'>async</span> <span class='xk'>throws</span> {<span class='newline'>
+</span>        <span class='xc'>// 8.</span><span class='newline'>
+</span>        <span class='xk'>let</span> <span class='xv'>httpClientService</span> = <span class='xv'>AsyncHTTPClientService</span>()<span class='newline'>
+</span>        <span class='xk'>let</span> <span class='xv'>pingService</span> = <span class='xv'>PingService</span>(<span class='xv'>httpClientService</span>: <span class='xv'>httpClientService</span>)<span class='newline'>
+
+</span>        <span class='xc'>// 9.</span><span class='newline'>
+</span>        <span class='xk'>let</span> <span class='xv'>serviceGroup</span> = <span class='xv'>ServiceGroup</span>(<span class='newline'>
+</span>            <span class='xv'>configuration</span>: .<span class='xk'>init</span>(<span class='newline'>
+</span>                <span class='xv'>services</span>: [<span class='newline'>
+</span>                    .<span class='xk'>init</span>(<span class='newline'>
+</span>                        <span class='xv'>service</span>: <span class='xv'>httpClientService</span>,<span class='newline'>
+</span>                        <span class='xv'>successTerminationBehavior</span>: .<span class='xv'>ignore</span>,<span class='newline'>
+</span>                        <span class='xv'>failureTerminationBehavior</span>: .<span class='xv'>gracefullyShutdownGroup</span><span class='newline'>
+</span>                    ),<span class='newline'>
+</span>                    .<span class='xk'>init</span>(<span class='newline'>
+</span>                        <span class='xv'>service</span>: <span class='xv'>pingService</span>,<span class='newline'>
+</span>                        <span class='xv'>successTerminationBehavior</span>: .<span class='xv'>gracefullyShutdownGroup</span>,<span class='newline'>
+</span>                        <span class='xv'>failureTerminationBehavior</span>: .<span class='xv'>gracefullyShutdownGroup</span><span class='newline'>
+</span>                    ),<span class='newline'>
+</span>                ],<span class='newline'>
+</span>                <span class='xv'>logger</span>: .<span class='xk'>init</span>(<span class='xv'>label</span>: <span class='xs'>"service-group"</span>)<span class='newline'>
+</span>            )<span class='newline'>
+</span>        )<span class='newline'>
+</span>        <span class='newline'>
+</span>        <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>serviceGroup</span>.<span class='xv'>run</span>()<span class='newline'>
+</span>    }<span class='newline'>
+</span>}</code></pre><ol><li><p>Defines an <code>AsyncHTTPClientService</code> actor that initializes an HTTP client and implements the run method to handle graceful shutdown by shutting down the HTTP client.</p></li><li><p>Defines a <code>PingService</code> actor that relies on the <code>AsyncHTTPClientService</code> for making HTTP requests.</p></li><li><p>Uses <code>withGracefulShutdownHandler</code> to handle graceful shutdown within the <code>PingService</code> actor’s run method.</p></li><li><p>Initiates a loop for sending HTTP requests to apple.com and prints the result.</p></li><li><p>Executes an HTTP request asynchronously using the shared HTTPClient instance and handles the response.</p></li><li><p>Delays execution for one second before the next iteration of the loop.</p></li><li><p>Defines a closure to be executed on graceful shutdown within the <code>PingService</code> actor.</p></li><li><p>In the <code>Application</code> struct’s main function, initializes the <code>AsyncHTTPClientService</code> and <code>PingService</code>, and creates a <code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle/servicegroup' target='_blank' rel='external'>ServiceGroup</a></code> to manage their lifecycles.</p></li><li><p>Configures the <code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle/servicegroup' target='_blank' rel='external'>ServiceGroup</a></code> with appropriate termination behaviors for each service and initiates its execution.</p></li></ol><h2 id='Conclusion'><a href='#Conclusion'>Conclusion</a></h2><p>In summary, Swift Service Lifecycle simplifies application startup and shutdown, ensuring efficient resource management. It encapsulates critical startup and shutdown workflows in a reusable, framework-agnostic manner, enhancing application robustness.</p><p>The library’s seamless integration with Structured Concurrency simplifies the management of concurrent tasks, including first-class support for async sequences and facilitating efficient resource utilization.</p><p>The detailed documentation, intended for both <a target='_blank' rel='external nofollow noopener ugc' href='https://swiftpackageindex.com/swift-server/swift-service-lifecycle/main/documentation/servicelifecycle/how-to-adopt-servicelifecycle-in-applications'>application</a> and <a target='_blank' rel='external nofollow noopener ugc' href='https://swiftpackageindex.com/swift-server/swift-service-lifecycle/main/documentation/servicelifecycle/how-to-adopt-servicelifecycle-in-libraries'>library</a> developers, includes examples demonstrating how to use the features, which helps developers grasp the core concepts of the Swift Service Lifecycle library.</p></section><div style='display: none;' id='ss:tooltips'><a href='/docs/swift-service-lifecycle/servicelifecycle/service'><pre><code><span class='xk'>protocol</span> <span class='xv'>Service</span> : <span class='xt'>Sendable</span></code></pre><p>This is the basic protocol that a service has to implement.</p></a><a href='/docs/swift-service-lifecycle/servicelifecycle/servicegroup'><pre><code><span class='xk'>actor</span> <span class='xv'>ServiceGroup</span></code></pre><p>A <code>ServiceGroup</code> is responsible for running a number of services, setting up signal handling and signalling graceful shutdown to the services.</p></a><a href='/docs/swift-service-lifecycle/servicelifecycle.gracefulshutdown'><pre><code><span class='xk'>func</span> <span class='xv'>gracefulShutdown</span>(<wbr>) <span class='xk'>async</span> <span class='xk'>throws</span></code></pre><p>Waits until graceful shutdown is triggered.</p></a></div>
+        
+    </section>
+
+    <section id="about-author" class="content-wrapper">
+        <img src="https://github.com/tib.png" alt="Tibor Bödecs" class="author">
+        <h4>About Tibor Bödecs</h4>
+        <p class="author-about">Tibor, also known as <a href="https://theswiftdev.com">"The Swift Dev"</a>, is the co-founder of <a href="https://binarybirds.com/">Binary Birds Kft.</a> Tibor provides Server-Side Swift development and consulting.</p>
+
+        <a href="mailto:info@binarybirds.com" target="_blank" class="author-cta">Contact us</a>
+    </section>
+</article>
+
+
+        </main>
+
+        <footer>
+            <section class="content-wrapper">
+                <figure>
+                    <picture>
+                        <source
+                        srcset="https://swiftonserver.com/images/logos/logo~dark.png"
+                        media="(prefers-color-scheme: dark)"
+                        />
+                        <img
+                        id="logo-image"
+                        width="80"
+                        height="80"
+                        src="https://swiftonserver.com/images/logos/logo.png"
+                        alt="Logo of Swift on server"
+                        title="Swift on server"
+                        />
+                    </picture>
+                </figure>
+
+                <p>This site was generated using the <a href="https://swift.org/" target="_blank">Swift</a> programming language.</p>
+                <p class="small">Created by <a href="https://x.com/JoannisOrlandos" target="_blank">Joannis Orlandos</a> & <a href="https://x.com/tiborbodecs">Tibor Bödecs</a> &copy; 2024.</p>
+
+                <p>
+                <a href="https://swiftonserver.com/">Home</a> ·
+                <a href="https://swiftonserver.com/rss.xml" target="_blank">RSS</a> ·
+                <a href="https://swiftonserver.com/sitemap.xml" target="_blank">Sitemap</a>
+                </p>
+
+
+            </section>
+        </footer>
+    </body>
+</html>
