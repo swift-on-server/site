@@ -1,5 +1,3 @@
-# Introduction to Swift Service Lifecycle
-
 The [Swift Service Lifecycle](https://github.com/swift-server/swift-service-lifecycle) library helps to manage application lifecycle by providing a unified start and stop mechanism. It also features a signal-based shutdown hook, allowing users to gracefully shut down and clean up resources before the application exits.
 
 
