@@ -32,9 +32,324 @@ Compared to WebSockets, these methods are less efficient and often seem like wor
 
 WebSocket (WS) uses a plain-text HTTP protocol, making it less secure and easy to intercept. WebSocket Secure (WSS), like HTTPS, encrypts data with SSL/TLS, preventing interception and increasing security. WSS protects against man-in-the-middle attacks but does not offer cross-origin or application-level security. Developers should add URL origin checks and strong authentication. 
 
-## How to use WebSockets to build a real-time application?
+## How to use WebSockets to build a real-time chat application?
 
 
+```swift
+// swift-tools-version:5.10
+import PackageDescription
+
+let package = Package(
+    name: "websocket-chat",
+    platforms: [
+        .macOS(.v14),
+    ],
+    products: [
+        .executable(name: "App", targets: ["App"]),
+    ],
+    dependencies: [
+        .package(url: "https://github.com/hummingbird-project/hummingbird.git", from: "2.0.0-beta.5"),
+        .package(url: "https://github.com/hummingbird-project/hummingbird-websocket.git", from: "2.0.0-beta.2"),
+        .package(url: "https://github.com/apple/swift-argument-parser.git", from: "1.4.0"),
+    ],
+    targets: [
+        .executableTarget(
+            name: "App",
+            dependencies: [
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+                .product(name: "Hummingbird", package: "hummingbird"),
+                .product(name: "HummingbirdWebSocket", package: "hummingbird-websocket"),
+                .product(name: "HummingbirdWSCompression", package: "hummingbird-websocket"),
+            ]
+        )
+    ]
+)
+```
+
+
+```swift
+import ArgumentParser
+import Hummingbird
+
+protocol AppArguments {
+    var hostname: String { get }
+    var port: Int { get }
+}
+
+@main
+struct HummingbirdArguments: AppArguments, AsyncParsableCommand {
+    @Option(name: .shortAndLong)
+    var hostname: String = "127.0.0.1"
+
+    @Option(name: .shortAndLong)
+    var port: Int = 8080
+
+    func run() async throws {
+        let app = try await buildApplication(self)
+        try await app.runService()
+    }
+}
+
+```
+
+
+```swift
+import Foundation
+import Hummingbird
+import HummingbirdWebSocket
+import HummingbirdWSCompression
+import Logging
+import ServiceLifecycle
+
+func buildApplication(
+    _ arguments: some AppArguments
+) async throws -> some ApplicationProtocol {
+    var logger = Logger(label: "WebSocketChat")
+    logger.logLevel = .trace
+
+    let router = Router()
+    router.middlewares.add(LogRequestsMiddleware(.debug))
+    router.middlewares.add(FileMiddleware(logger: logger))
+
+    let connectionManager = ConnectionManager(logger: logger)
+    let wsRouter = Router(context: BasicWebSocketRequestContext.self)
+    wsRouter.middlewares.add(LogRequestsMiddleware(.debug))
+    wsRouter.ws("chat") { request, _ in
+        guard request.uri.queryParameters["username"] != nil else {
+            return .dontUpgrade
+        }
+        return .upgrade([:])
+    } onUpgrade: { inbound, outbound, context in
+        guard let name = context.request.uri.queryParameters["username"] else {
+            return
+        }
+        let outputStream = connectionManager.addUser(
+            name: String(name),
+            inbound: inbound,
+            outbound: outbound
+        )
+        for try await output in outputStream {
+            try await outbound.write(output)
+        }
+    }
+
+    var app = Application(
+        router: router,
+        server: .http1WebSocketUpgrade(
+            webSocketRouter: wsRouter,
+            configuration: .init(extensions: [.perMessageDeflate()])
+        ),
+        configuration: .init(
+            address: .hostname(arguments.hostname, port: arguments.port)
+        ),
+        logger: logger
+    )
+    app.addServices(connectionManager)
+    return app
+}
+```
+
+```swift
+import AsyncAlgorithms
+import Hummingbird
+import HummingbirdWebSocket
+import Logging
+import NIOConcurrencyHelpers
+import ServiceLifecycle
+
+struct ConnectionManager: Service {
+
+    typealias OutputStream = AsyncChannel<WebSocketOutboundWriter.OutboundFrame>
+
+    struct Connection {
+        let name: String
+        let inbound: WebSocketInboundStream
+        let outbound: OutputStream
+    }
+
+    actor OutboundConnections {
+        var outboundWriters: [String: OutputStream]
+
+        init() {
+            self.outboundWriters = [:]
+        }
+
+        func send(_ output: String) async {
+            for outbound in outboundWriters.values {
+                await outbound.send(.text(output))
+            }
+        }
+
+        func add(name: String, outbound: OutputStream) async {
+            outboundWriters[name] = outbound
+            await send("\(name) joined")
+        }
+
+        func remove(name: String) async {
+            outboundWriters[name] = nil
+            await send("\(name) left")
+        }
+    }
+
+    let connectionStream: AsyncStream<Connection>
+    let connectionContinuation: AsyncStream<Connection>.Continuation
+    let logger: Logger
+
+    init(logger: Logger) {
+        let stream = AsyncStream<Connection>.makeStream()
+        self.connectionStream = stream.stream
+        self.connectionContinuation = stream.continuation
+        self.logger = logger
+    }
+
+    func run() async {
+        await withGracefulShutdownHandler {
+            await withDiscardingTaskGroup { group in
+                let outboundCounnections = OutboundConnections()
+                for await connection in connectionStream {
+                    group.addTask {
+                        logger.info("add connection", metadata: [
+                            "name": .string(connection.name)
+                        ])
+                        await outboundCounnections.add(
+                            name: connection.name,
+                            outbound: connection.outbound
+                        )
+
+                        do {
+                            for try await input in connection.inbound.messages(
+                                maxSize: 1_000_000
+                            ) {
+                                guard case .text(let text) = input else {
+                                    continue
+                                }
+                                let output = "[\(connection.name)]: \(text)"
+                                logger.debug("Output", metadata: [
+                                    "message": .string(output)
+                                ])
+                                await outboundCounnections.send(output)
+                            }
+                        } catch {}
+
+                        logger.info("remove connection", metadata: [
+                            "name": .string(connection.name)
+                        ])
+                        await outboundCounnections.remove(name: connection.name)
+                        connection.outbound.finish()
+                    }
+                }
+                group.cancelAll()
+            }
+        } onGracefulShutdown: {
+            connectionContinuation.finish()
+        }
+    }
+
+    func addUser(
+        name: String,
+        inbound: WebSocketInboundStream,
+        outbound: WebSocketOutboundWriter
+    ) -> OutputStream {
+        let outputStream = OutputStream()
+        let connection = Connection(
+            name: name,
+            inbound: inbound,
+            outbound: outputStream
+        )
+        connectionContinuation.yield(connection)
+        return outputStream
+    }
+}
+```
+
+```html
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <title>WebSocket Chat</title>
+    <script language="javascript" type="text/javascript">
+
+        var wsUri = "ws://localhost:8080/chat";
+        var connected = false;
+        var input;
+        var output;
+
+        function init() {
+            input = document.getElementById("input");
+            output = document.getElementById("output");
+            input.value = ""
+        }
+
+        function openWebSocket(uri) {
+            websocket = new WebSocket(uri);
+            websocket.onopen = function(evt) { onOpen(evt) };
+            websocket.onclose = function(evt) { onClose(evt) };
+            websocket.onmessage = function(evt) { onMessage(evt) };
+            websocket.onerror = function(evt) { onError(evt) };
+        }
+
+        function onOpen(evt) {
+          
+        }
+
+        function onClose(evt) {
+            writeToScreen("DISCONNECTED");
+            connected = false
+            let enterName = document.getElementById("enter_name")
+            enterName.style.display = 'block'
+        }
+
+        function onMessage(evt) {
+            writeToScreen('<span style="color: blue;">' + evt.data + '</span>');
+        }
+
+        function onError(evt) {
+            writeToScreen('<span style="color: red;">ERROR:</span> ' + evt);
+        }
+
+        function doSend(message) {
+            websocket.send(message);
+        }
+
+        function writeToScreen(message) {
+            var pre = document.createElement("p");
+            pre.style.wordWrap = "break-word";
+            pre.innerHTML = message;
+            output.appendChild(pre);
+        }
+
+        function inputEnter() {
+            if (connected == false) {
+                if (input.value == "") {
+                    return
+                }
+                let enterName = document.getElementById("enter_name")
+                enterName.style.display = 'none'
+                let uri = wsUri + "?username=" + input.value
+                openWebSocket(uri)
+                connected = true
+            } 
+            else {
+                if (input.value == "") {
+                    return
+                }
+                doSend(input.value)
+            }
+            input.value = ""
+        }
+
+        window.addEventListener("load", init, false);
+    </script>
+</head>
+
+<body>
+    <h2>WebSocket Chat</h2>
+    <div id="output"></div>
+    <p id="enter_name">Please enter your name</p>
+    <input id="input" onchange = "inputEnter()" type="text" name="name"/>
+</body>
+</html>
+```
 
 ## Conclusion
 
