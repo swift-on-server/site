@@ -34,6 +34,27 @@ WebSocket (WS) uses a plain-text HTTP protocol, making it less secure and easy t
 
 ## How to use WebSockets to build a real-time chat application?
 
+The [Hummingbird Websocket](https://github.com/hummingbird-project/hummingbird-websocket) library is an extension for the Hummingbird web framework, designed to provide WebSocket support. This library simplifies the implementation of WebSocket connections by handling message sending and receiving, and efficiently managing multiple connections using the latest structured concurrency features like task groups and async streams.
+
+The [Hummingbird WebSocket chat application](https://github.com/hummingbird-project/hummingbird-examples/tree/main/websocket-chat) demonstrates using web sockets for real-time communication. For an even simpler example, see the [echo server](https://github.com/hummingbird-project/hummingbird-examples/tree/main/websocket-echo). This article will explore the chat application step-by-step. Let’s begin with the directory structure.
+
+```sh
+.
+├── Package.resolved
+├── Package.swift
+├── README.md
+├── Sources
+│   └── App
+│       ├── App.swift
+│       ├── Application+build.swift
+│       └── ConnectionManager.swift
+└── public
+    └── chat.html
+```
+
+The `App.swift` file contains the standard entry point for a Hummingbird application. The `Application+build.swift` file includes the Hummingbird app configuration using the WebSocket connection manager. The `ConnectionManager` is responsible for managing WebSocket connections. The `public/chat.html` file contains client-side JavaScript code to demonstrate a WebSocket connection.
+
+To add WebSocket support to a Hummingbird-based Swift package, simply include the Hummingbird Websocket library as a dependency in your `Package.swift` file..
 
 ```swift
 // swift-tools-version:5.10
@@ -66,16 +87,19 @@ let package = Package(
 )
 ```
 
+The `App.swift` file is the main entry point for a Hummingbird application using the `ArgumentParser` library. 
 
 ```swift
 import ArgumentParser
 import Hummingbird
 
+// 1.
 protocol AppArguments {
     var hostname: String { get }
     var port: Int { get }
 }
 
+// 2.
 @main
 struct HummingbirdArguments: AppArguments, AsyncParsableCommand {
     @Option(name: .shortAndLong)
@@ -85,12 +109,19 @@ struct HummingbirdArguments: AppArguments, AsyncParsableCommand {
     var port: Int = 8080
 
     func run() async throws {
+        // 3.
         let app = try await buildApplication(self)
         try await app.runService()
     }
 }
 
 ```
+
+1.	The `AppArguments` protocol defines hostname and port properties.
+2.	The `HummingbirdArguments` structure is the main entry point, using `AsyncParsableCommand`, and sets command-line options.
+3.	The run function builds the Hummingbird application and starts the server as a service.
+
+The code inside the `Application+build.swift` file sets up a Hummingbird application configured for WebSocket communication. It defines a function buildApplication that takes command-line arguments for hostname and port, initializes a logger, and sets up routers with middlewares for logging and file handling. It creates a `ConnectionManager` for managing WebSocket connections and configures the WebSocket router to handle chat connections, upgrading the connection if a username is provided. The application is configured to use HTTP with WebSocket upgrades and includes WebSocket compression. Finally, the application is returned with the necessary services added.
 
 
 ```swift
@@ -107,18 +138,23 @@ func buildApplication(
     var logger = Logger(label: "WebSocketChat")
     logger.logLevel = .trace
 
+    // 1.
     let router = Router()
     router.middlewares.add(LogRequestsMiddleware(.debug))
     router.middlewares.add(FileMiddleware(logger: logger))
 
+    // 2.
     let connectionManager = ConnectionManager(logger: logger)
+    // 3.
     let wsRouter = Router(context: BasicWebSocketRequestContext.self)
     wsRouter.middlewares.add(LogRequestsMiddleware(.debug))
+    // 4. 
     wsRouter.ws("chat") { request, _ in
         guard request.uri.queryParameters["username"] != nil else {
             return .dontUpgrade
         }
         return .upgrade([:])
+    // 5.
     } onUpgrade: { inbound, outbound, context in
         guard let name = context.request.uri.queryParameters["username"] else {
             return
@@ -133,6 +169,7 @@ func buildApplication(
         }
     }
 
+    // 6. 
     var app = Application(
         router: router,
         server: .http1WebSocketUpgrade(
@@ -144,10 +181,22 @@ func buildApplication(
         ),
         logger: logger
     )
+    // 7.
     app.addServices(connectionManager)
     return app
 }
 ```
+
+1. A `Router` instance is created, and middlewares for logging requests and serving files are added to it.
+2. A `ConnectionManager` instance is created with a logger for managing WebSocket connections.
+3. A separate `Router` instance is created specifically for handling and logging WebSocket requests.
+4. A WebSocket route is set up for the `chat` path, checking for a username query parameter for WebSocket upgrades.
+5. On upgrade, the connection manager handles WebSocket users and writes the output stream to the outbound channel.
+6. An `Application` instance is created with the previously configured routers for both HTTP and WebSocket requests.
+7. The `ConnectionManager` is added as a service to the application before returning it.
+
+The `ConnectionManager` struct manages WebSocket connections, allowing users to join, send messages, and leave the chat, using an `AsyncStream` for connection handling and Actor for managing outbound connections. It includes methods for adding and removing users, broadcasting messages, and gracefully handling shutdowns:
+
 
 ```swift
 import AsyncAlgorithms
@@ -157,29 +206,34 @@ import Logging
 import NIOConcurrencyHelpers
 import ServiceLifecycle
 
+// 1.
 struct ConnectionManager: Service {
 
+    // 2.
     typealias OutputStream = AsyncChannel<WebSocketOutboundWriter.OutboundFrame>
 
+    // 3.
     struct Connection {
         let name: String
         let inbound: WebSocketInboundStream
         let outbound: OutputStream
     }
 
+    // 4.
     actor OutboundConnections {
+        
         var outboundWriters: [String: OutputStream]
 
         init() {
             self.outboundWriters = [:]
         }
-
+        
         func send(_ output: String) async {
             for outbound in outboundWriters.values {
                 await outbound.send(.text(output))
             }
         }
-
+        
         func add(name: String, outbound: OutputStream) async {
             outboundWriters[name] = outbound
             await send("\(name) joined")
@@ -202,21 +256,25 @@ struct ConnectionManager: Service {
         self.logger = logger
     }
 
-    func run() async {
+
+    func run() async {.
         await withGracefulShutdownHandler {
             await withDiscardingTaskGroup { group in
                 let outboundCounnections = OutboundConnections()
+                // 5.
                 for await connection in connectionStream {
                     group.addTask {
                         logger.info("add connection", metadata: [
                             "name": .string(connection.name)
                         ])
+                        // 6.
                         await outboundCounnections.add(
                             name: connection.name,
                             outbound: connection.outbound
                         )
 
                         do {
+                            // 7.
                             for try await input in connection.inbound.messages(
                                 maxSize: 1_000_000
                             ) {
@@ -227,6 +285,7 @@ struct ConnectionManager: Service {
                                 logger.debug("Output", metadata: [
                                     "message": .string(output)
                                 ])
+                                // 8.
                                 await outboundCounnections.send(output)
                             }
                         } catch {}
@@ -234,6 +293,7 @@ struct ConnectionManager: Service {
                         logger.info("remove connection", metadata: [
                             "name": .string(connection.name)
                         ])
+                        // 9.
                         await outboundCounnections.remove(name: connection.name)
                         connection.outbound.finish()
                     }
@@ -262,6 +322,19 @@ struct ConnectionManager: Service {
 }
 ```
 
+1. The `ConnectionManager` implements the `Service` protocol to manage WebSocket connections and ensure graceful shutdown.
+2. `OutputStream` is defined as an `AsyncChannel` for sending WebSocket outbound frames.
+3. The `Connection` struct contains details about each WebSocket connection, including the username, inbound stream, and outbound stream.
+4. The `OutboundConnections` actor manages a dictionary of outbound writers to broadcast messages to all connections.
+5. The `run` function iterates through the `connectionStream` asynchronously to handle incoming connections and messages.
+6. For each connection, a task is added to the group to manage the connection and broadcast the "joined" message.
+7. The task listens for incoming messages, processing text messages to broadcast to all connections.
+8. Each received text message is broadcast to all outbound connections by calling `send`.
+9. Upon connection termination, the connection is removed, a "left" message is broadcast, and the outbound stream is finished.
+
+
+The `public/chat.html` file contains all the client-side HTML and JavaScript code necessary for the WebSocket chat application. Upon loading, the page initializes the input and output elements and establishes a WebSocket connection. Users can enter their names to initiate the connection and send messages. Server messages are displayed in the output area. The application handles WebSocket events, such as opening, closing, receiving messages, and errors, updating the display as needed.
+
 ```html
 <!DOCTYPE html>
 <head>
@@ -269,17 +342,20 @@ struct ConnectionManager: Service {
     <title>WebSocket Chat</title>
     <script language="javascript" type="text/javascript">
 
+        // 1.
         var wsUri = "ws://localhost:8080/chat";
         var connected = false;
         var input;
         var output;
 
+        // 2. 
         function init() {
             input = document.getElementById("input");
             output = document.getElementById("output");
             input.value = ""
         }
 
+        // 3.
         function openWebSocket(uri) {
             websocket = new WebSocket(uri);
             websocket.onopen = function(evt) { onOpen(evt) };
@@ -292,6 +368,7 @@ struct ConnectionManager: Service {
           
         }
 
+        // 4.
         function onClose(evt) {
             writeToScreen("DISCONNECTED");
             connected = false
@@ -299,18 +376,22 @@ struct ConnectionManager: Service {
             enterName.style.display = 'block'
         }
 
+        // 5.
         function onMessage(evt) {
             writeToScreen('<span style="color: blue;">' + evt.data + '</span>');
         }
 
+        // 6.
         function onError(evt) {
             writeToScreen('<span style="color: red;">ERROR:</span> ' + evt);
         }
 
+        // 7.
         function doSend(message) {
             websocket.send(message);
         }
 
+        // 8.
         function writeToScreen(message) {
             var pre = document.createElement("p");
             pre.style.wordWrap = "break-word";
@@ -318,6 +399,7 @@ struct ConnectionManager: Service {
             output.appendChild(pre);
         }
 
+        // 9.
         function inputEnter() {
             if (connected == false) {
                 if (input.value == "") {
@@ -338,6 +420,7 @@ struct ConnectionManager: Service {
             input.value = ""
         }
 
+        // 10.
         window.addEventListener("load", init, false);
     </script>
 </head>
@@ -351,7 +434,22 @@ struct ConnectionManager: Service {
 </html>
 ```
 
+1. The `wsUri` variable is set to the WebSocket server URL, and initial states for connection status, input, and output are declared.
+2. The `init` function initializes the input and output elements and resets the input value.
+3. The `openWebSocket` function establishes a WebSocket connection and sets up event handlers for open, close, message, and error events.
+4. The `onClose` function handles the WebSocket closing event by displaying a disconnected message and showing the name input field again.
+5. The `onMessage` function handles incoming WebSocket messages by displaying them in the output area with blue text.
+6. The `onError` function handles WebSocket errors by displaying an error message in red.
+7. The `doSend` function sends a message through the WebSocket connection.
+8. The `writeToScreen` function creates a new paragraph element to display messages in the output area.
+9. The `inputEnter` function manages user input, either connecting to the WebSocket server with the entered username or sending messages if already connected.
+10. The `window.addEventListener` function sets up the `init` function to run when the page loads.
+
+Make sure the [custom working directory](https://theswiftdev.com/custom-working-directory-in-xcode/) is set to the root folder before starting the app.
+
+Run the app and navigate to `http://localhost:8080/chat.html` in a web browser, enter a name, and start chatting. Open another browser window to create a second connection and chat between the two pages. The app includes a simple connection manager for handling WebSocket connections. 
+
 ## Conclusion
 
+This article demonstrated how to use WebSockets with the Hummingbird framework to build a real-time chat application in Swift. For a similar guide on the Vapor web framework, check out [this article](https://theswiftdev.com/websockets-for-beginners-using-vapor-4-and-vanilla-javascript/). Hummingbird 2 leverages modern Swift concurrency features for handling WebSocket connections, offering a significant advantage over other frameworks. For more information on Swift concurrency, feel free to explore our additional articles about [structured concurrency](https://swiftonserver.com/getting-started-with-structured-concurrency-in-swift/).
 
-https://theswiftdev.com/websockets-for-beginners-using-vapor-4-and-vanilla-javascript/
