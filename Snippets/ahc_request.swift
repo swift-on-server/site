@@ -2,9 +2,11 @@ import AsyncHTTPClient
 import NIOCore
 import Foundation
 
+// mark: hide
 @main
 struct Entrypoint {
     static func main() async throws {
+        // snippet.show
         let httpClient = HTTPClient(eventLoopGroupProvider: .singleton)
 
         do {
@@ -39,5 +41,6 @@ struct Entrypoint {
         }
 
         try await httpClient.shutdown()
+        // snippet.hide
     }
 }

@@ -8,7 +8,7 @@ let package = Package(
     ],
     products: [
         .executable(name: "SiteBuilder", targets: ["SiteBuilder"]),
-        .library(name: "__SwiftOnServer_org", targets: ["__SwiftOnServer_org"]),
+        .library(name: "site", targets: ["site"]),
     ],
     dependencies: [
         .package(url: "https://github.com/jpsim/Yams", from: "5.1.2"),
@@ -26,7 +26,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "__SwiftOnServer_org",
+            name: "site",
             dependencies: [
                 .product(name: "Hummingbird", package: "hummingbird"),
                 .product(name: "AsyncHTTPClient", package: "async-http-client"),
@@ -34,7 +34,8 @@ let package = Package(
                 .product(name: "NIOPosix", package: "swift-nio"),
                 .product(name: "Logging", package: "swift-log"),
                 .product(name: "ServiceLifecycle", package: "swift-service-lifecycle")
-            ]
+            ],
+            packageAccess: true
         ),
         .executableTarget(
             name: "SiteBuilder",

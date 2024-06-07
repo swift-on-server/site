@@ -38,20 +38,7 @@ import NIOHTTP1
 
 Then, create a ``ClientBootstrap``:
 
-```swift
-// 1
-let httpClientBootstrap = ClientBootstrap(group: NIOSingletons.posixEventLoopGroup)
-    // 2
-    .channelOption(ChannelOptions.socketOption(.so_reuseaddr), value: 1)
-    // 3
-    .channelInitializer { channel in
-        // 4
-        channel.pipeline.addHTTPClientHandlers(
-            position: .first,
-            leftOverBytesStrategy: .fireError
-        )
-    }
-```
+@Snippet(id: building-swiftnio-clients-01)
 
 This code prepares a template for creating a client channel. Let's break it down:
 

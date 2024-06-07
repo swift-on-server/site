@@ -39,7 +39,7 @@ let package = Package(
 
 In the `main.swift` file, import the AsyncHTTPClient library and initialize an HTTPClient instance for future use:
 
-@Snippet(id: async-http-client-01)
+@Snippet(path: "site/Snippets/ahc-setup")
 
 1. Specify the event loop group provider as ``HTTPClient/EventLoopGroupProvider.singleton``, which manages the underlying ``EventLoopGroup`` for asynchronous operations.
 2. The ``HTTPClient/Configuration`` parameter is set, defining various aspects of the ``HTTPClient``'s behavior.
@@ -56,7 +56,7 @@ An HTTP request includes the method, a URL, headers providing supplementary deta
 
 Below is an illustration of how to employ the HTTP request and response objects using the AsyncHTTPClient library in Swift:
 
-@Snippet(id: async-http-client-02)
+@Snippet(path: Snippets/ahc-request)
 
 1. A new ``HTTPClientRequest`` object is created targeting the specified URL.
 2. The HTTP request method is set to POST.
@@ -78,7 +78,7 @@ JSON requests involve sending and receiving data formatted in JSON to a server. 
 
 The following code snippet demonstrates how to encode request bodies and decode response bodies using JSON objects:
 
-@Snippet(id: async-http-client-03)
+@Snippet(path: "site/Snippets/AHC/json", slice: "example")
 
 1. Two ``Codable`` structures are defined: `Input` for the data to be sent and `Output` for receiving the JSON response.
 2. An HTTP request is created using a POST method and a `content-type: application/json` header.
@@ -93,7 +93,7 @@ The code snippet above demonstrates how to use Swift's Codable protocol to handl
 
 The AsyncHTTPClient library provides support for file downloads using the ``FileDownloadDelegate``. This feature enables asynchronous streaming of downloaded data while simultaneously reporting the download progress, as demonstrated in the following example:
 
-@Snippet(id: async-http-client-04)
+@Snippet(path: "site/Snippets/AHC/download", slice: "example")
 
 1. A ``FileDownloadDelegate`` is created to manage file downloads. 
 2. Specify the download destination path.
