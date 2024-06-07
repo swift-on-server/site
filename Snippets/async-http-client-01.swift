@@ -24,11 +24,7 @@ struct Entrypoint {
             )
         )
 
-        do {
-            // perform HTTP operations
-        } catch {
-            print("\(error)")
-        }
+        // perform HTTP operations
 
         // 5.
         try await httpClient.shutdown()

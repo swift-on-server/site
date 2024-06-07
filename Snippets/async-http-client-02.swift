@@ -1,6 +1,6 @@
 import AsyncHTTPClient
 import NIOCore
-import Foundation}
+import Foundation
 
 @main
 struct Entrypoint {
@@ -26,16 +26,12 @@ struct Entrypoint {
                 let contentType = response.headers.first(name: "content-type")
 
                 // 8.
-                let contentLength = response.headers.first(
-                    name: "content-length"
-                ).flatMap(Int.init)
-
-                // 9.
                 let buffer = try await response.body.collect(upTo: 1024 * 1024)
 
-                // 10.
+                // 9.
                 let rawResponseBody = String(buffer: buffer)
 
+                print("Content Type", contentType ?? "unknown")
                 print(rawResponseBody)
             }
         } catch {

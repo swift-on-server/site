@@ -65,9 +65,8 @@ Below is an illustration of how to employ the HTTP request and response objects 
 5. The request is executed with a custom timeout of 5 seconds.
 6. If the response status is `.ok` (`200`), further processing is performed.
 7. The `content-type` of the response is retrieved from the headers.
-8. The `content-length` of the response is obtained from the headers, as an `Int` value.
-9. The response body is collected asynchronously into a ``ByteBuffer``, up to a maximum of 1 MiB in size.
-10. The raw response body is converted into a ``String`` for further processing.
+8. The response body is collected asynchronously into a ``ByteBuffer``, up to a maximum of 1 MiB in size.
+9. The raw response body is converted into a ``String`` for further processing.
 
 Any errors encountered during the execution of the request are caught and printed. If the response body exceeds the 1 MiB limit, a ``NIOTooManyBytesError`` error will occur.
 

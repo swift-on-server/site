@@ -12,7 +12,7 @@ struct Input: Codable {
 
 struct Output: Codable {
     let json: Input
-
+}
 
 @main
 struct Entrypoint {
@@ -53,7 +53,7 @@ struct Entrypoint {
                     let buffer = try await response.body.collect(upTo: 1024 * 1024)
 
                     // 6.
-                    let output = JSONDecoder().decode(Output.self, from: buffer)
+                    let output = try JSONDecoder().decode(Output.self, from: buffer)
                     print(output.json.title)
                 }
             } else {

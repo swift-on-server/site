@@ -36,6 +36,6 @@ struct Entrypoint {
             print("\(error)")
         }
 
-        try await httpClient.shutdown())
+        try await httpClient.shutdown()
     }
 }
