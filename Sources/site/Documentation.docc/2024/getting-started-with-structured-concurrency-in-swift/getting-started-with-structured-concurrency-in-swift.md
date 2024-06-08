@@ -14,11 +14,7 @@ Imagine that you're shopping for groceries with a friend. You both have a list o
 
 Concurrency has been a part of Swift for a long time, for example, through the use of ``DispatchQueue`` and ``OperationQueue``. In these models, you can submit work to a queue, and the queue will execute the work in the background. Often times, you'll have to wait for the work to finish, either successfully or with an error.
 
-```swift
-DispatchQueue.global().async {
-    // Offload some (heavy) work
-}
-```
+@Snippet(path: "site/Snippets/getting-started-concurrency-dispatch", slice: "dispatchGlobal")
 
 In these models, you're responsible for managing the lifecycle of the work. You'll need to ensure that work is properly cancelled when it's no longer needed.
 
@@ -26,21 +22,7 @@ When implementing a function that has callbacks, you're responsible for calling 
 
 Take the following example:
 
-```swift
-func fetchImage(at url: URL, completion: @escaping (Result<UIImage, Error>) -> Void) {
-    URLSession.shared.dataTask(with: url) { data, response, error in
-        if let error {
-            completion(.failure(error))
-            return
-        }
-        guard let data = data, let image = UIImage(data: data) else {
-            completion(.failure(NetworkError.missingImage))
-            return
-        }
-        completion(.success(image))
-    }
-}
-```
+@Snippet(path: "site/Snippets/getting-started-concurrency-dispatch", slice: "fetchImageCallback")
 
 In this example, various bugs can arise. For example, in `if let error`, omitting the `return` statement will cause the completion handler to be called twice.
 
@@ -50,32 +32,7 @@ When accessing shared state from concurrently running code, it's critical to ens
 
 Race conditions need to be carefully and correctly solved. When using a mutex/lock to protect shared state, you need to ensure that this lock starts and ends at the right time. And when working with locks in long running calls such as network calls, you need to be careful to avoid performance bottlenecks. Finally, you can cause deadlocks when multiple functions that call each other access the same lock. Take the following example:
 
-```swift
-final class ImageCache {
-    private var cache: [URL: UIImage] = [:]
-    private let lock = NSLock()
-
-    func image(for url: URL) -> UIImage? {
-        lock.lock()
-        defer { lock.unlock() }
-        return cache[url]
-    }
-
-    func loadImage(for url: URL) {
-        lock.lock()
-        defer { lock.unlock() }
-        // This is covered by the lock
-        if cache.keys.contains(url) { 
-            return
-        }
-        fetchImage(at: url) { image in
-            guard case .success(let image) = image else { return }
-            // This is not covered by the lock
-            cache[url] = image
-        }
-    }
-}
-```
+@Snippet(path: "site/Snippets/getting-started-concurrency-imagecache-locks")
 
 The above example is non-trivial. It's not always obvious that you need to lock access to `image` twice. There are not one, but four traps here.
 
@@ -103,6 +60,8 @@ Structured Concurrency is the same concept, but applied to concurrent code. Func
 An `async` function is a function that can pause and resume. Think of it as a function that can be split up into multiple parts.
 
 When you order a pizza, you don't have to wait for the pizza to be made and delivered. You can continue watching your favourite show, while the pizza is delivered to your doorstep. Just like async functions. Should you need to know when the pizza is delivered, you can `await` the delivery.
+
+@Snippet(path: "site/Snippets/getting-started-concurrency-television-pizza")
 
 ```swift
 func watchTelevision() async throws {
@@ -141,23 +100,7 @@ func watchTelevision() async throws {
 
 The `Task` object is not the only way to run concurrent work. The simplest way of running an `async` function in parallel is using the `async let` construct. This is a _structured_ way to start a task and let it run until you need the result:
 
-```swift
-func buyBooks(from bankAccount: BankAccount) async throws -> [Book] {
-    // Resolve this concurrently
-    async let balance = await bankAccount.checkBalance()
-
-    let store = await BookStore.discover()
-    var budget = await balance
-    var boughtBooks: [Book] = []
-    for await book in store.broweBooks() where book.price <= budget {
-        let order = try await book.buy()
-        let book = await order.delivery()
-        budget -= book.price
-        boughtBooks.append(book)
-    }
-    return boughtBooks
-}
-```
+@Snippet(path: "site/Snippets/getting-started-concurrency-buy-books", slice: "buyBooks")
 
 When this `async let` is not `await`ed for, it will continue to run in the background until the end of the function. If the function returns without awaiting the `async let`, the task will be cancelled.
 
@@ -167,21 +110,15 @@ The `async let` pattern is helpful for individual pieces of work that need to ru
 
 Like how a for-loop iterates over a sequence of items, a for-await-in loop iterates over a sequence of async items.
 
-```swift
-struct Books: AsyncSequence {
-    typealias Element = Book
-    ...
-}
+You can create your own sequences, using ``AsyncStream`` or your own implementation.
 
-func browseBooks() -> Books {}
+@Snippet(path: "site/Snippets/getting-started-concurrency-buy-books", slice: "asyncSequence")
 
-func buyAllBooks() async throws {
-    for await book in browseBooks() {
-        let order = try await book.buy()
-        await order.delivery()
-    }
-}
-```
+These can be used to represent an asynchronous set of results, such as incoming messages on a websocket.
+
+Since an ``AsyncIteratorProtocol`` implementation can throw, it can even exit the for-loop on network errors.
+
+@Snippet(path: "site/Snippets/getting-started-concurrency-buy-books", slice: "browseBooks")
 
 This is a powerful feature, as it allows you to easily reason about _streams_ of data. On iOS, this can be a stream of keyboard events, StoreKit purchases, notifications or sensor data. For backend developers, this can be a WebSocket, a database query or the incoming connections on a TCP server. If you're interested in that, please check out our tutorial on <doc:using-swiftnio-channels>.
 
@@ -199,17 +136,7 @@ A task is a concurrent unit of work. In concurrency, many tasks can run in paral
 
 The _easiest_ way to create a task is using the **unstructured** `Task` type. It's used to run a piece of code concurrently in the background, similar to `DispatchQueue.global().async {}`. In addition, you can manage it's lifecycle by `cancel()`ing it. Finally, you can also `await` its `value` for it to finish. 
 
-```swift
-func buyBooks() {
-    let store = await BookStore.discover()
-    for await book in store.browseBooks() {
-        Task {
-            let order = try await book.buy()
-            await order.delivery()
-        }
-    }
-}
-```
+@Snippet(path: "site/Snippets/getting-started-concurrency-buy-books", slice: "buyBooksInBackground")
 
 This looks great in theory, but the `Task` object is _not_ structured. It's not clear when the task starts, when it ends, and what happens when it's cancelled. You're required to manage the lifecycle of the task yourself, and don't even need to await the result or handle errors. This is inherently unsafe and re-introduces the problems that structured concurrency is designed to solve.
 

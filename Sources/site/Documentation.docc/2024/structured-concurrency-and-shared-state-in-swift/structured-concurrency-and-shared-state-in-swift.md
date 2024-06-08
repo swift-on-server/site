@@ -14,20 +14,7 @@ Classes are not automatically Sendable. Since reference types are explicitly not
 
 If you're working with a class that is not a set of constants, you can still mark it as Sendable by using the `@unchecked Sendable` conformance. When you use this conformance, you're telling the compiler that you're sure that the class is Sendable, and that you're taking responsibility of isolating the state. In this case, you can adopt your own isolation such as Locks.
 
-```swift
-final class SharedState: @unchecked Sendable {
-    private var _state: Int = 0
-    let lock = NSLock()
-    public var state: Int {
-        get {
-            lock.withLock { _state }
-        }
-        set {
-            lock.withLock { _state = newValue }
-        }
-    }
-}
-```
+@Snippet(path: "site/Snippets/shared-state", slice: "sharedState")
 
 ### Actors and Isolation
 
@@ -41,32 +28,13 @@ When accessing an actor's state or calling its functions, you can prefix your ca
 
 You can define an actor like so:
 
-```swift
-actor BankAccount {
-    var balance: Int = 0
-
-    func deposit(_ amount: Int) {
-        balance += amount
-    }
-
-    func withdraw(_ amount: Int) {
-        balance -= amount
-    }
-}
-
-let bankAccount = BankAccount()
-await bankAccount.deposit(100)
-let balance = await bankAccount.balance
-print(balance) // 100
-```
+@Snippet(path: "site/Snippets/shared-state", slice: "bankAccount")
 
 Just like any type, you can make an `extension` on an actor. Actors can also conform to protocols, assuming that the protocol's signature can be feasibly implemented with isolation. A common obstacle is that you can't easily conform to a protocol that has properties or methods that are not isolated.
 
 An actor's isolation is inherited by its properties and methods. Actor Isolation is compile-time checked to ensures that only one task can access the actor's state at a time. This is achieved through the ``Actor/unownedExecutor`` of an actor. This is a ``SerialExecutor`` that the Swift runtime submits tasks to, which provides the isolation in this actor. The SerialExecutor may be a single thread, or multiple. But needs to guarantee that only one task is running on this at a time. Akin to `DispatchQueue.main.async { }` in GCD.
 
-```swift
-bankAccount.unownedExecutor
-```
+@Snippet(path: "site/Snippets/shared-state", slice: "unownedExecutor")
 
 You can create your own ``SerialExecutor`` for use with your actors. SwiftNIO's EventLoop already has a ``EventLoop/executor [59PH6]`` property that you can use. ``/Dispatch``'s ``DispatchQueue`` can be adapted easily as well.
 
@@ -76,44 +44,7 @@ Since ``Actor/unownedExecutor`` is not a static member of an actor, an actor's s
 
 You can use the `nonisolated` keyword to mark a function as lacking isolation. This allows you to access these functions without the `await` keyword, and conform to protocols that have non-isolated methods.
 
-```swift
-actor BookStore: AsyncSequence {
-    typealias AsyncIterator = AsyncStream<Book>.AsyncIterator
-    typealias Element = Book
-
-    private var page = 1
-    private var hasReachedEnd = false
-    private let stream: AsyncStream<Book>
-    private let continuation: AsyncStream<Book>.Continuation
-
-    init() {
-        (stream, continuation) = AsyncStream<Book>.makeStream(
-            bufferingPolicy: .unbounded
-        )
-    }
-    
-    func produce() async throws {
-        do {
-           while !hasReachedEnd {
-               let books = try await fetchBooks(page: page)
-               hasReachedEnd = books.isEmpty
-               for book in books {
-                   continuation.yield(book)
-               }
-               page += 1
-           }
-           continuation.finish()
-        } catch {
-            continuation.finish(throwing: error)
-        }
-    }
-
-    // AsyncSequence required a nonisolated func here
-    nonisolated func makeAsyncIterator() -> AsyncIterator {
-        stream.makeAsyncIterator()
-    }
-}
-```
+@Snippet(path: "site/Snippets/shared-state", slice: "bookStore")
 
 Starting with Swift 5.10, `nonisolated(unsafe)` can be used to opt-out of actor isolation checking for stored properties. This is useful to expose a property or method to the outside world, but you're sure that it's safe to do so. In this case, you're taking responsibility of isolating the state.
 
@@ -121,25 +52,7 @@ Starting with Swift 5.10, `nonisolated(unsafe)` can be used to opt-out of actor 
 
 The alternative way to conform to protocols, is for the _protocol_ to be aware of the actor's isolation. This is done by using `async` computed properties.
 
-```swift
-protocol BankAccount {
-    var balance: Int { get async }
-    func deposit(_ amount: Int) async
-    func withdraw(_ amount: Int) async
-}
-
-actor MyBankAccount: BankAccount {
-    var balance: Int = 0
-
-    func deposit(_ amount: Int) {
-        balance += amount
-    }
-
-    func withdraw(_ amount: Int) {
-        balance -= amount
-    }
-}
-```
+@Snippet(path: "site/Snippets/shared-state", slice: "bankAccountProtocol")
 
 Because actor isolation makes these functions and properties `async`, this actor can now to the defined protocol.
 
@@ -159,58 +72,13 @@ Because of re-entrancy, multiple tasks can call functions on the same actor at t
 
 Let's take the image cache example as an actor:
 
-```swift
-actor ImageCache {
-    private var cache: [URL: UIImage] = [:]
-
-    func image(for url: URL) -> UIImage? {
-        return cache[url]
-    }
-
-    func setImage(_ image: UIImage, for url: URL) {
-        cache[url] = image
-    }
-
-    func loadImage(for url: URL) async throws {
-        if cache.keys.contains(url) {
-            return
-        }
-        
-        let image = try await fetchImage(at: url)
-        setImage(image, for: url)
-    }
-}
-```
+@Snippet(path: "site/Snippets/shared-state", slice: "imageCache")
 
 The above function is an implementation of the image cache. It's a simple actor that allows storing and retrieving images by URL. Since actors are re-entrant, `loadImage` can be ran multiple times concurrently. This can lead to multiple fetches of the same image, and multiple writes to the cache.
 
 Your code can still be correct and crash-free, but can be inefficient.
 
-```swift
-actor ImageCache {
-    private var cache: [URL: UIImage] = [:]
-    private var loadingURLs: Set<URL> = []
-
-    func image(for url: URL) -> UIImage? {
-        return cache[url]
-    }
-
-    func setImage(_ image: UIImage, for url: URL) {
-        cache[url] = image
-    }
-
-    func loadImage(for url: URL) async throws {
-        if cache.keys.contains(url), !loadingURLs.contains(url) {
-            return
-        }
-        
-        loadingURLs.insert(url)
-        defer { loadingURLs.remove(url) }
-        let image = try await fetchImage(at: url)
-        setImage(image, for: url)
-    }
-}
-```
+@Snippet(path: "site/Snippets/shared-state", slice: "loadingAwareImageCache")
 
 The above function is an improved implementation of the image cache. By tracking the URLs that are currently being loaded, you can avoid fetching the same image multiple times.
 
@@ -245,42 +113,15 @@ final class NeedsImage {
 
 By explicitly creating a capture group, you'll only retain the values needed. See the following example:
 
-```swift
-let (stream, continuation) = AsyncThrowingStream<UIImage>.makeStream(
-    bufferingPolicy: .unbounded
-)
-
-// Hypothetical function that lists images
-// Calls the callback once for each image found
-findImages { [continuation] image in
-    // Captures `continuation`
-    continuation.yield(image)
-} onCompletion: { [continuation] error in
-    // Captures `continuation`
-    // Called exactly once when done or failed
-    if let error = error {
-        continuation.finish(throwing: error)
-    } else {
-        continuation.finish()
-    }
-}
-
-for try await image in stream {
-    // Show image
-}
-```
+@Snippet(path: "site/Snippets/shared-state", slice: "captureGroups")
 
 ### @Sendable Functions
 
 When marking functions as `@Sendable`, you're telling Swift that the function is safe to be stored and called across actor boundaries and is thread-safe. Swift will enforce that the function is not accessing any state that is not Sendable.
 
-Callback function arguments can be makred `@Sendable` as such:
+Callback function arguments can be marked `@Sendable` as such:
 
-```swift
-func fetchImage(at url: URL, completion: @Sendable @escaping (Result<UIImage, Error>) -> Void) {
-    ...
-}
-```
+@Snippet(path: "site/Snippets/shared-state", slice: "findImages")
 
 Finally, regular functions can be marked `@Sendable` as well:
 
@@ -297,20 +138,7 @@ So far, we've been using `await` to wait for a value to be available. But not al
 A continuation is a way to capture the current state of a task, and to resume the task at a later point.
 Let's implement a simple continuation that fetches an image:
 
-```swift
-@Sendable func fetchImage(at url: URL) async throws -> UIImage {
-    return try await withCheckedThrowingContinuation { continuation in
-        fetchImage(at: url) { result in
-            switch result {
-            case .success(let image):
-                continuation.resume(returning: image)
-            case .failure(let error):
-                continuation.resume(throwing: error)
-            }
-        }
-    }
-}
-```
+@Snippet(path: "site/Snippets/shared-state", slice: "continuations")
 
 There are two variations of continuations.
 
@@ -332,49 +160,7 @@ Let's go back to the ImageCache example. In that example, the `loadImage` functi
 
 We can restructure the `loadImage` function to use a continuation:
 
-```swift
-final class ImageCache {
-    private var cache: [URL: UIImage] = [:]
-    private var loadingURLs: Set<URL> = []
-    private var fetchingURLs: [(URL, CheckedContinuation<UIImage, Error>)] = []
-    private func completeFetchingURLs(with result: Result<UIImage, Error>, for url: URL) {
-        for (awaitingURL, continuation) in fetchingURLs where awaitingURL == url {
-            switch result {
-            case .success(let image):
-                continuation.resume(returning: image)
-            case .failure(let error):
-                continuation.resume(throwing: error)
-            }
-        }
-        fetchingURLs.removeAll { $0.0 == url }
-    }
-
-    func loadImage(at url: URL) async throws -> UIImage {
-        if let image = cache[url] {
-            return image
-        }
-
-        if loadingURLs.contains(url) {
-            return try await withCheckedThrowingContinuation { continuation in
-                fetchingURLs.append((url, continuation))
-            }
-        }
-
-        loadingURLs.insert(url)
-        defer { loadingURLs.remove(url) }
-        
-        do {
-            let image = try await fetchImage(at: url)
-            setImage(image, for: url)
-            completeFetchingURLs(with: .success(image), for: url)
-            return image
-        } catch {
-            completeFetchingURLs(with: .failure(error), for: url)
-            throw error
-        }
-    }
-}
-```
+@Snippet(path: "site/Snippets/shared-state", slice: "efficientImageCache")
 
 **Note:** When creating a continuation, you're starting a new workload that does not (yet) adopt structured concurrency. When this happens, this code is also responsible for ensuring that Task Cancellation is handled propertly. For that, please refer back to ``withTaskCancellationHandler`` earlier in this article.
 
@@ -429,11 +215,7 @@ This frees up the actor to continue processing other tasks, and prevents the act
 
 Custom global actors can be created through the `@globalActor` attribute:
 
-```swift
-@globalActor actor SensorActor {
-    static let shared = SensorActor()
-}
-```
+@Snippet(path: "site/Snippets/shared-state", slice: "globalActor")
 
 With this addition, you can isolate properties, functions _and types_ to the `SensorActor`:
 
