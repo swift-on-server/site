@@ -1,8 +1,8 @@
+// snippet.hide
 import AsyncHTTPClient
 import NIOCore
 import Foundation
 
-// mark: hide
 @main
 struct Entrypoint {
     static func main() async throws {
