@@ -7,6 +7,9 @@ DispatchQueue.global().async {
 // snippet.end
 
 import Foundation
+#if os(Linux)
+import FoundationNetworking
+#endif
 // This is stubbed since UIImage isn't available on mac and Linux
 struct UIImage {
     let data: Data
