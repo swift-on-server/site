@@ -36,23 +36,7 @@ Hummingbird 2 features a brand new routing library, based on Swift result builde
 
 Here's a little sneak-peak about the usage of the new ``RouterBuilder`` object:
 
-```swift
-import HummingbirdRouter
-
-let router = RouterBuilder(context: BasicRouterRequestContext.self) {
-    TestEndpointMiddleware()
-    Get("test") { _, context in
-        return context.endpointPath
-    }
-    Get { _, context in
-        return context.endpointPath
-    }
-    Post("/test2") { _, context in
-        return context.endpointPath
-    }
-}
-let app = Application(responder: router)
-```
+@Snippet(path: "site/Snippets/hummingbird-2-routerbuilder")
 
 There are more examples available inside the Hummingbird [RouterTests](https://github.com/hummingbird-project/hummingbird/blob/2.x.x/Tests/HummingbirdRouterTests/RouterTests.swift) file. If you are curious about the new route builder tool, that's a good place to get started, since there are no official docs just yet.
 
@@ -80,8 +64,8 @@ let package = Package(
         .macOS(.v14),
     ],
     dependencies: [
-        .package(url: "https://github.com/hummingbird-project/hummingbird.git", from: "2.0.0-beta.1"),
-        .package(url: "https://github.com/apple/swift-argument-parser.git", from: "1.0.0"),
+        .package(url: "https://github.com/hummingbird-project/hummingbird.git", from: "2.0.0-beta.6"),
+        .package(url: "https://github.com/apple/swift-argument-parser.git", from: "1.4.0"),
     ],
     targets: [
         .executableTarget(
@@ -105,45 +89,7 @@ let package = Package(
 
 Here's how to build a custom decoder to handle different media types on your backend server:
 
-```swift
-import Hummingbird
-
-// 1.
-struct MyRequestDecoder: RequestDecoder {
-
-    func decode<T>(
-        _ type: T.Type,
-        from request: Request,
-        context: some BaseRequestContext
-    ) async throws -> T where T: Decodable {
-        // 2.
-        guard let header = request.headers[.contentType] else {
-            throw HTTPError(.badRequest)
-        }
-        // 3.
-        guard let mediaType = MediaType(from: header) else {
-            throw HTTPError(.badRequest)
-        }
-        // 4.
-        let decoder: RequestDecoder
-        switch mediaType {
-        case .applicationJson:
-            decoder = JSONDecoder()
-        case .applicationUrlEncoded:
-            decoder = URLEncodedFormDecoder()
-        default:
-            throw HTTPError(.badRequest)
-        }
-        // 5
-        return try await decoder.decode(
-            type,
-            from: request,
-            context: context
-        )
-    }
-}
-
-```
+@Snippet(path: "site/Snippets/hummingbird-2", slice: "requestDecoder")
 
 1. Define the custom decoder by implementing the ``RequestDecoder`` protocol.
 2. Make sure that the incoming request has a `Content-Type` HTTP header field.
@@ -153,36 +99,7 @@ struct MyRequestDecoder: RequestDecoder {
 
 To use the custom decoder, let's define a custom request context. A request context is a container for the Hummingbird framework to store information needed by the framework. The following snippet demonstrates how to build one using the _RequestContext_ protocol:
 
-```swift
-// 1.
-protocol MyRequestContext: RequestContext {
-    var myValue: String? { get set }
-}
-
-// 2.
-struct MyBaseRequestContext: MyRequestContext {
-    var coreContext: CoreRequestContext
-
-    // 3.
-    var myValue: String?
-
-    init(
-        channel: Channel,
-        logger: Logger = .init(label: "my-request-context")
-    ) {
-        self.coreContext = .init(
-            allocator: channel.allocator,
-            logger: logger
-        )
-        self.myValue = nil
-    }
-    
-    // 4.
-    var requestDecoder: RequestDecoder {
-        MyRequestDecoder()
-    }
-}
-```
+@Snippet(path: "site/Snippets/hummingbird-2", slice: "requestContext")
 
 1. Define a custom `MyRequestContext` protocol using the _RequestContext_ protocol.
 2. Implement the `MyRequestContext` protocol using a `MyBaseRequestContext` struct.
@@ -195,43 +112,7 @@ It is possible to compose multiple protocols such as _AuthRequestContext_ by con
 
 Create the application instance using the `buildApplication` function.
 
-```swift
-import Foundation
-import Hummingbird
-import Logging
-
-func buildApplication() async throws -> some ApplicationProtocol {
-    
-    // 1.
-    let router = Router(context: MyBaseRequestContext.self)
-    
-    // 2
-    router.middlewares.add(LogRequestsMiddleware(.info))
-    router.middlewares.add(FileMiddleware())
-    router.middlewares.add(CORSMiddleware(
-        allowOrigin: .originBased,
-        allowHeaders: [.contentType],
-        allowMethods: [.get, .post, .delete, .patch]
-    ))
-
-    // 3
-    router.get("/health") { _, _ -> HTTPResponse.Status in
-        .ok
-    }
-
-    // 4.
-    MyController().addRoutes(to: router.group("api"))
-
-    // 5.
-    return Application(
-        router: router,
-        configuration: .init(
-            address: .hostname("localhost", port: 8080)
-        )
-    )
-}
-
-```
+@Snippet(path: "site/Snippets/hummingbird-2", slice: "buildApp")
 
 1. Setup the router using the `MyBaseRequestContext` type as a custom context.
 2. Add middlewares to the router, HB2 has middlewares on the router instead of the app
@@ -239,66 +120,13 @@ func buildApplication() async throws -> some ApplicationProtocol {
 4. Add routes using the custom controller to the `api` route group
 5. Build the _Application_ instance using the router and the configuration
 
-Inside the main entrypoint you can start the server by calling the `runService()` method:
+Inside the main entrypoint you can start the server by calling the ``Application.runService()`` method:
 
-```swift
-import ArgumentParser
-import Hummingbird
-
-@main
-struct HummingbirdArguments: AsyncParsableCommand {
-
-    func run() async throws {
-        // 1..
-        let app = try await buildApplication()
-        try await app.runService()
-    }
-}
-
-```
+@Snippet(path: "site/Snippets/hummingbird-2", slice: "run")
 
 The route handlers in the `MyController` struct can access of the custom context type.
 
-```swift
-struct MyController<Context: MyRequestContext> {
-
-    // 1.
-    func addRoutes(
-        to group: RouterGroup<Context>
-    ) {
-        group
-            .get(use: list)
-            .post(use: create)
-    }
-
-    // 2. 
-    @Sendable 
-    func list(
-        _ request: Request,
-        context: Context
-    ) async throws -> [MyModel] {
-        [
-            .init(title: "foo"),
-            .init(title: "bar"),
-            .init(title: "baz"),
-        ]
-    }
-
-    @Sendable 
-    func create(
-        _ request: Request,
-        context: Context
-    ) async throws -> EditedResponse<MyModel> {
-        // 3.
-        // context.myValue
-        let input = try await request.decode(
-            as: MyModel.self,
-            context: context
-        )
-        return .init(status: .created, response: input)
-    }
-}
-```
+@Snippet(path: "site/Snippets/hummingbird-2", slice: "controller")
 
 1. Register route handlers using the router group
 2. Hummingbird is thread-safe, so every route handler should be marked  with `@Sendable` to propagate these thread-safety checks. 

@@ -56,32 +56,7 @@ In order to create a TCP server, you'll first need to create a ``ServerBootstrap
 
 ServerBootstrap requires an ``EventLoopGroup`` to run on. This is a group of EventLoops that the server will use to run on. Each client will be handled by a single specific ``EventLoop``, that is randomly assigned. This helps your server scale to many threads (and cores) without having to worry about thread-safety.
 
-```swift
-import NIOCore
-import NIOPosix
-
-// 1. 
-let server = try await ServerBootstrap(group: NIOSingletons.posixEventLoopGroup)
-    .bind( // 2.
-        host: "0.0.0.0", // 3.
-        port: 2048 // 4.
-    ) { channel in
-        // 5.
-        channel.eventLoop.makeCompletedFuture {
-            // Add any handlers for parsing or serializing messages here
-            // We don't need any for this echo example
-
-            // 6.
-            return try NIOAsyncChannel(
-                wrappingChannelSynchronously: channel,
-                configuration: NIOAsyncChannel.Configuration(
-                    inboundType: ByteBuffer.self, // Read the raw bytes from the socket
-                    outboundType: ByteBuffer.self // Write raw bytes to the socket
-                )
-            )
-        }
-    }
-```
+@Snippet(path: "site/Snippets/using-swiftnio-channels", slice: "bootstrap")
 
 The above code can create a TCP server, without any logic to accept or communicate with clients. Let's go over the code step-by-step:
 
@@ -97,22 +72,7 @@ The above code can create a TCP server, without any logic to accept or communica
 With this newly created server, this code can start accepting clients.
 Let's implement that:
 
-```swift
-// 1.
-try await withThrowingDiscardingTaskGroup { group in
-    // 2.
-    try await server.executeThenClose { clients in
-        // 3.
-        for try await client in clients {
-            // 4.
-            group.addTask {
-                // 5.
-                try await handleClient(client)
-            }
-        }
-    }
-}
-```
+@Snippet(path: "site/Snippets/using-swiftnio-channels", slice: "acceptClients")
 
 This code is an implementation of the server bootstrap that was created in the previous snippet. Let's go over the code step-by-step:
 
@@ -126,20 +86,7 @@ This code is an implementation of the server bootstrap that was created in the p
 
 The server is not able to accept client, but can not yet communicate with them. Let's implement that:
 
-```swift
-func handleClient(_ client: NIOAsyncChannel<ByteBuffer, ByteBuffer>) async throws {
-    // 1.
-    try await client.executeThenClose { inboundMessages, outbound in
-        // 2.
-        for try await inboundMessage in inboundMessages {
-            // 3.
-            try await outbound.write(inboundMessage)
-
-            // MARK: A
-        }
-    }
-}
-```
+@Snippet(path: "site/Snippets/using-swiftnio-channels", slice: "handleClient")
 
 This code receives messages from a client, and echoes it back. It's functional, efficient and easy to understand. Let's go over the code step-by-step:
 
