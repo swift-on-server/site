@@ -6,10 +6,14 @@ final class SharedState: @unchecked Sendable {
     let lock = NSLock()
     public var state: Int {
         get {
-            lock.withLock { _state }
+            lock.lock()
+            defer { lock.unlock() }
+            return _state
         }
         set {
-            lock.withLock { _state = newValue }
+            lock.lock()
+            defer { lock.unlock() }
+            _state = newValue
         }
     }
 }
