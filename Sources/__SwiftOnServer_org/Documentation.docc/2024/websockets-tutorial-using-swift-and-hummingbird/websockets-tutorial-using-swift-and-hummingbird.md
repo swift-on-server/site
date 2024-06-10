@@ -22,7 +22,7 @@ HTTP streaming reduces network latency by keeping the initial request open indef
 
 ### SSE - Server-sent events
 
-Server-sent events (SSE) allow the server to push data to the client, similar to HTTP streaming. SSE is a standardized version of HTTP streaming and includes a built-in browser API. However, SSE is not suitable for applications like chat or gaming that require two-way communication since it only allows one-way data flow from the server to the client. SSE uses traditional HTTP and has limitations on the number of open connections.
+Server-sent events (SSE) allow the server to push data to the client, similar to HTTP streaming. SSE is a standardized version of HTTP streaming and includes a built-in browser API. However, SSE is not suitable for applications like chats or games that require two-way communication since it only allows a one-way data flow from the server to the client. SSE uses traditional HTTP and has limitations on the number of open connections.
 
 ## Why to use WebSockets?
 
