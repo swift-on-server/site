@@ -14,7 +14,7 @@ Similar to WebSockets, there are other methods of achieving real-time capabiliti
 
 ### Long polling (HTTP polling)
 
-Long polling (HTTP polling) was one of the first methods to address real-time data fetching. It involved the client frequently sending requests to the server at regular intervals. Long polling improved on this by having the server hold the request open until there’s new data or a timeout occurs. Once data is available, the server responds, and the client immediately sends a new request. However, long polling had several issues, including header overhead, latency, timeouts, and caching problems.
+Long polling (HTTP polling) was one of the first methods to address real-time data fetching. It involved the client repeatedly sending requests to the server. The server holds the request open until there’s new data or a timeout occurs. Once data is available, the server responds, and the client immediately sends a new request. However, long polling has several issues, including header overhead, latency, timeouts, and caching problems.
 
 ### HTTP streaming
 
