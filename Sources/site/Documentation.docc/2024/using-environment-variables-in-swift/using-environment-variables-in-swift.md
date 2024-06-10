@@ -13,15 +13,7 @@ In Swift, it is possible to access environment variables using the [ProcessInfo]
 
 Here's a quick example how to get the value of the `LOG_LEVEL` variable:
 
-```swift
-import Foundation
-
-let env = ProcessInfo.processInfo.environment
-
-let value = env["LOG_LEVEL"] ?? "trace"
-
-print(value) 
-```
+@Snippet(path: "site/Snippets/environment", slice: "processInfo")
 
 The process info's environment is represented a `[String: String]` dictionary. When requesting a specific key, the value is going to be an optional `String` type.
 
@@ -161,38 +153,7 @@ Vapor will look for dotenv files in the current working directory. If you're usi
 
 In Hummingbird, it is possible to use the shared environment or load dotenv files using the static `dotEnv()` method on the  [HBEnvironment](https://hummingbird-project.github.io/hummingbird-docs/1.0/documentation/hummingbirdauth/hbenvironment) struct:
 
-```swift
-import Hummingbird
-import Logging
-
-func buildApplication(
-    configuration: HBApplicationConfiguration
-) async throws -> some HBApplicationProtocol {
-
-    var logger = Logger(label: "hummingbird-logger")
-    logger.logLevel = .trace
-
-    let env = HBEnvironment.shared
-    // let env = try await HBEnvironment.dotEnv()
-    let logLevel = env.get("LOG_LEVEL")
-    
-    if let logLevel, let logLevel = Logger.Level(rawValue: logLevel) {
-        logger.logLevel = logLevel
-    }
-
-    let router = HBRouter()
-    router.get("/") { _, _ in
-        return "Hello"
-    }
-    
-    let app = HBApplication(
-        router: router,
-        configuration: configuration,
-        logger: logger
-    )
-    return app
-}
-```
+@Snippet(path: "site/Snippets/environment", slice: "hummingbird")
 
 If you run the project from Xcode, make sure you set a custom working directory, otherwise the framework won't be able to locate your dotenv file.
 

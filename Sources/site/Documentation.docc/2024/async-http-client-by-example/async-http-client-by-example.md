@@ -39,43 +39,7 @@ let package = Package(
 
 In the `main.swift` file, import the AsyncHTTPClient library and initialize an HTTPClient instance for future use:
 
-```swift
-import AsyncHTTPClient
-import NIOFoundationCompat
-
-struct Entrypoint {
-    static func main() async throws {
-        let httpClient = HTTPClient(
-            // 1.
-            eventLoopGroupProvider: .singleton,
-            // 2.
-            configuration: .init(
-                // 3.
-                redirectConfiguration: .follow(
-                    max: 3,
-                    allowCycles: false
-                ),
-                // 4.
-                timeout: .init(
-                    connect: .init(.seconds(1)),
-                    read: .seconds(1),
-                    write: .seconds(1)
-                )
-            )
-        )
-        
-        do {
-            // perform HTTP operations
-        }
-        catch {
-            print("\(error)")
-        }
-
-        // 5.
-        try await httpClient.shutdown()
-    }
-}
-```
+@Snippet(path: "site/Snippets/ahc_setup")
 
 1. Specify the event loop group provider as ``HTTPClient/EventLoopGroupProvider.singleton``, which manages the underlying ``EventLoopGroup`` for asynchronous operations.
 2. The ``HTTPClient/Configuration`` parameter is set, defining various aspects of the ``HTTPClient``'s behavior.
@@ -92,64 +56,21 @@ An HTTP request includes the method, a URL, headers providing supplementary deta
 
 Below is an illustration of how to employ the HTTP request and response objects using the AsyncHTTPClient library in Swift:
 
-```swift
-let httpClient = HTTPClient(eventLoopGroupProvider: .singleton)
+@Snippet(path: "site/Snippets/ahc_request")
 
-do {
-    // 1.
-    var request = HTTPClientRequest(url: "https://httpbin.org/post")
-    // 2.
-    request.method = .POST
-    // 3.
-    request.headers.add(name: "User-Agent", value: "Swift AsyncHTTPClient")
-    // 4.
-    request.body = .bytes(ByteBuffer(string: "Some data"))
-    
-    // 5.
-    let response = try await httpClient.execute(request, timeout: .seconds(5))
-    
-    // 6.
-    if response.status == .ok {
-        // 7.
-        let contentType = response.headers.first(name: "content-type")
-
-        // 8.
-        let contentLength = response.headers.first(
-            name: "content-length"
-        ).flatMap(Int.init)
-
-        // 9.
-        let buffer = try await response.body.collect(upTo: 1024 * 1024)
-
-        // 10.
-        let rawResponseBody = buffer.getString(
-            at: 0,
-            length: buffer.readableBytes
-        )
-    }
-}
-catch {
-    print("\(error)")
-}
-
-try await httpClient.shutdown()
-```
-
-1. A new HTTP request object is created targeting the specified URL.
+1. A new ``HTTPClientRequest`` object is created targeting the specified URL.
 2. The HTTP request method is set to POST.
 3. A `user-agent` header with the value `"Swift AsyncHTTPClient"` is added to the request.
 4. The request body is set to contain the string "Some data".
 5. The request is executed with a custom timeout of 5 seconds.
 6. If the response status is `.ok` (`200`), further processing is performed.
 7. The `content-type` of the response is retrieved from the headers.
-8. The `content-length` of the response is obtained from the headers, as an `Int` value.
-9. The response body is collected asynchronously, up to a maximum of 1 MiB in size.
-10. The raw response body is retrieved as a string for further processing.
+8. The response body is collected asynchronously into a ``ByteBuffer``, up to a maximum of 1 MiB in size.
+9. The raw response body is converted into a ``String`` for further processing.
 
 Any errors encountered during the execution of the request are caught and printed. If the response body exceeds the 1 MiB limit, a ``NIOTooManyBytesError`` error will occur.
 
 Finally, the HTTP client is shut down to release associated resources.
-
 
 ## JSON requests
 
@@ -157,77 +78,14 @@ JSON requests involve sending and receiving data formatted in JSON to a server. 
 
 The following code snippet demonstrates how to encode request bodies and decode response bodies using JSON objects:
 
-```swift
-// 1.
-struct Input: Codable {
-    let id: Int
-    let title: String
-    let completed: Bool
-}
-
-struct Output: Codable {
-    let json: Input
-}
-
-
-let httpClient = HTTPClient(
-    eventLoopGroupProvider: .singleton
-)
-do {
-    // 2.
-    var request = HTTPClientRequest(
-        url: "https://httpbin.org/post"
-    )
-    request.method = .POST
-    request.headers.add(name: "content-type", value: "application/json")
-    
-    // 4.
-    let input = Input(
-        id: 1,
-        title: "foo",
-        completed: false
-    )
-
-    let encoder = JSONEncoder()
-    let data = try encoder.encode(input)
-    let buffer = ByteBuffer(bytes: data)
-    request.body = .bytes(buffer)
-    
-    let response = try await httpClient.execute(
-        request,
-        timeout: .seconds(5)
-    )
-    
-    if response.status == .ok {
-        // 5.
-        if let contentType = response.headers.first(
-            name: "content-type"
-        ), contentType.contains("application/json") {
-            // 6.
-            let buffer = try await response.body.collect(upTo: 1024 * 1024)
-            
-            // 7.
-            let output = JSONDecoder().decode(Output.self, from: buffer)
-            print(output.json.title)
-        }
-    }
-    else {
-        print("Invalid status code: \(response.status)")
-    }
-}
-catch {
-    print("\(error)")
-}
-
-try await httpClient.shutdown()
-```
+@Snippet(path: "site/Snippets/ahc_json")
 
 1. Two ``Codable`` structures are defined: `Input` for the data to be sent and `Output` for receiving the JSON response.
 2. An HTTP request is created using a POST method and a `content-type: application/json` header.
-4. The `Input` data is encoded into JSON data using a ``ByteBuffer`` and set as the request body.
-5. If the response status is ok and the content type is JSON, the response body is processed.
-6. The response body chunks are collected asynchronously using ``AsyncSequence.collect(upTo:)``
-7. The buffer containing the JSON data response is decoded as an `Output` structure using ``JSONDecoder.decode(_:from:) [7481W]``.
+3. The `Input` data is encoded into JSON data using a ``ByteBuffer`` and set as the request body.
+4. If the response status is ok and the content type is JSON, the response body is processed.
+5. The response body chunks are collected asynchronously using ``AsyncSequence.collect(upTo:)``
+6. The buffer containing the JSON data response is decoded as an `Output` structure using ``JSONDecoder.decode(_:from:) [7481W]``.
 
 The code snippet above demonstrates how to use Swift's Codable protocol to handle JSON data in HTTP communication. It defines structures for input and output data, sends a POST request with JSON payload, and processes the response by decoding JSON into a designated output structure.
 
@@ -235,41 +93,7 @@ The code snippet above demonstrates how to use Swift's Codable protocol to handl
 
 The AsyncHTTPClient library provides support for file downloads using the ``FileDownloadDelegate``. This feature enables asynchronous streaming of downloaded data while simultaneously reporting the download progress, as demonstrated in the following example:
 
-```swift
-let httpClient = HTTPClient(
-    eventLoopGroupProvider: .singleton
-)
-
-do {
-    // 1.
-    let delegate = try FileDownloadDelegate(
-        // 2.
-        path: NSTemporaryDirectory() + "600x400.png",
-        // 3.
-        reportProgress: {
-            if let totalBytes = $0.totalBytes {
-                print("Total: \(totalBytes).")
-            }
-            print("Downloaded: \($0.receivedBytes).")
-        }
-    )
-    
-    // 4.
-    let fileDownloadResponse = try await httpClient.execute(
-        request: .init(
-            url: "https://placehold.co/600x400.png"
-        ),
-        delegate: delegate
-    ).futureResult.get()
-    
-    print(fileDownloadResponse)
-}
-catch {
-    print("\(error)")
-}
-
-try await httpClient.shutdown()
-```
+@Snippet(path: "site/Snippets/ahc_download")
 
 1. A ``FileDownloadDelegate`` is created to manage file downloads. 
 2. Specify the download destination path.
