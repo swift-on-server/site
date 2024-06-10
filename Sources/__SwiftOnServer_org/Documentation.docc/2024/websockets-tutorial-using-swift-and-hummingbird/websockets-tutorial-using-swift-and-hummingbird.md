@@ -10,7 +10,7 @@ WebSockets are particularly useful for applications that require low latency and
 
 ## WebSockets vs long polling vs HTTP streaming, and server-sent events
 
-Various methods have been used to achieve real-time capabilities by allowing data to be sent directly from the server to clients, but none have been as efficient as WebSockets. Techniques like HTTP polling, HTTP streaming, Comet, and SSE (server-sent events) all have their drawbacks. Let’s explore how these methods differ.
+Similar to WebSockets, there are other methods of achieving real-time capabilities. Techniques like HTTP polling, HTTP streaming, Comet, and SSE (server-sent events) come to mind. Let’s explore how these methods differ.
 
 ### Long polling (HTTP polling)
 
