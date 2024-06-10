@@ -87,7 +87,7 @@ let package = Package(
 )
 ```
 
-The `App.swift` file is the main entry point for a Hummingbird application using the `ArgumentParser` library. 
+The `App.swift` file is the main entry point for a Hummingbird application using the ``ArgumentParser`` library. 
 
 ```swift
 import ArgumentParser
