@@ -118,7 +118,7 @@ struct HummingbirdArguments: AppArguments, AsyncParsableCommand {
 ```
 
 1.	The ``AppArguments`` protocol defines hostname and port properties.
-2.	The `HummingbirdArguments` structure is the main entry point, using `AsyncParsableCommand`, and sets command-line options.
+2.	The `HummingbirdArguments` structure is the main entry point, using ``AsyncParsableCommand``, and sets command-line options.
 3.	The run function builds the Hummingbird application and starts the server as a service.
 
 The code inside the `Application+build.swift` file sets up a Hummingbird application configured for WebSocket communication. It defines a function buildApplication that takes command-line arguments for hostname and port, initializes a logger, and sets up routers with middlewares for logging and file handling. It creates a `ConnectionManager` for managing WebSocket connections and configures the WebSocket router to handle chat connections, upgrading the connection if a username is provided. The application is configured to use HTTP with WebSocket upgrades and includes WebSocket compression. Finally, the application is returned with the necessary services added.
