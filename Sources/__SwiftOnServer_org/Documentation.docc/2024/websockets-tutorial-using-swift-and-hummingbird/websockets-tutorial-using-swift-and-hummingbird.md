@@ -18,7 +18,7 @@ Long polling (HTTP polling) was one of the first methods to address real-time da
 
 ### HTTP streaming
 
-HTTP streaming reduces network latency by keeping the initial request open indefinitely. Unlike long polling, the server does not close the connection after sending data; it keeps it open to send new updates whenever there is a change. The first few steps of HTTP streaming are similar to long polling, but the key difference is that the connection remains active. This method allows continuous data updates and can be implemented using low-level streaming APIs.
+HTTP streaming reduces network latency by keeping the initial request open indefinitely. Unlike long polling, the server does not close the connection after sending data; it keeps it open to send new updates whenever there is a change.
 
 ### SSE - Server-sent events
 
