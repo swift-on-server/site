@@ -26,7 +26,7 @@ Server-sent events (SSE) allow the server to push data to the client, similar to
 
 ## Why to use WebSockets?
 
-Compared to WebSockets, these methods are less efficient and often seem like workarounds to make a request-reply protocol appear full-duplex. WebSockets are designed to replace existing bidirectional communication methods, as the previously mentioned methods are neither reliable nor efficient for full-duplex real-time communication. WebSockets are similar to SSE but excel in enabling messages to be sent from the client to the server. Connection restrictions are no longer an issue because data is transmitted over a single TCP socket connection.
+The above methods are less efficient on a protocol level and often seem like workarounds to make a request-reply protocol appear full-duplex. WebSockets are designed for full-duplex communication, and are more lightweight than its alternatives.
 
 ### Security (WSS)
 
