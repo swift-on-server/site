@@ -117,7 +117,7 @@ struct HummingbirdArguments: AppArguments, AsyncParsableCommand {
 
 ```
 
-1.	The `AppArguments` protocol defines hostname and port properties.
+1.	The ``AppArguments`` protocol defines hostname and port properties.
 2.	The `HummingbirdArguments` structure is the main entry point, using `AsyncParsableCommand`, and sets command-line options.
 3.	The run function builds the Hummingbird application and starts the server as a service.
 
