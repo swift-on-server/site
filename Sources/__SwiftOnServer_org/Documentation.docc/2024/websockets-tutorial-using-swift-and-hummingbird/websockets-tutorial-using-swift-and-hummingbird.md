@@ -323,7 +323,7 @@ struct ConnectionManager: Service {
 ```
 
 1. The `ConnectionManager` implements the ``Service`` protocol to manage WebSocket connections and ensure graceful shutdown.
-2. `OutputStream` is defined as an `AsyncChannel` for sending WebSocket outbound frames.
+2. `OutputStream` is defined as an ``AsyncChannel`` for sending WebSocket outbound frames.
 3. The `Connection` struct contains details about each WebSocket connection, including the username, inbound stream, and outbound stream.
 4. The `OutboundConnections` actor manages a dictionary of outbound writers to broadcast messages to all connections.
 5. The `run` function iterates through the `connectionStream` asynchronously to handle incoming connections and messages.
