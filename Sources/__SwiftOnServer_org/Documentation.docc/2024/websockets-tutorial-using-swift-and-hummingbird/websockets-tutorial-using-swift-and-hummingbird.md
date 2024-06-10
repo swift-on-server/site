@@ -36,7 +36,7 @@ WebSocket (WS) uses a plain-text TCP connection, making it less secure and easy 
 
 The [Hummingbird Websocket](https://github.com/hummingbird-project/hummingbird-websocket) library is an extension for the Hummingbird web framework, designed to provide WebSocket support. This library simplifies the implementation of WebSocket connections by handling message sending and receiving, and efficiently managing multiple connections using the latest structured concurrency features like task groups and async streams.
 
-The [Hummingbird WebSocket chat application](https://github.com/hummingbird-project/hummingbird-examples/tree/main/websocket-chat) demonstrates using web sockets for real-time communication. For an even simpler example, see the [echo server](https://github.com/hummingbird-project/hummingbird-examples/tree/main/websocket-echo). This article will explore the chat application step-by-step. Let’s begin with the directory structure.
+The [Hummingbird WebSocket chat application](https://github.com/hummingbird-project/hummingbird-examples/tree/main/websocket-chat) example demonstrates using web sockets for real-time communication. For an even simpler example, see the [echo server](https://github.com/hummingbird-project/hummingbird-examples/tree/main/websocket-echo) example. This article will explore the chat application step-by-step. Let’s begin with the directory structure.
 
 ```sh
 .
