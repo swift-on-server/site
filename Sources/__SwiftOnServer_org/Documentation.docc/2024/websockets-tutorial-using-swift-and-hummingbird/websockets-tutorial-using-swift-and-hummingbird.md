@@ -6,7 +6,7 @@ In this article, you will learn about WebSockets and how to use them with the Hu
 
 WebSocket is a communication protocol that enables two-way, real-time interaction between an HTTP client and server. It is designed to work over a single, long-lived connection, which significantly reduces overhead compared to traditional HTTP request-response cycles. This protocol uses HTTP 1 to establish the connection, and then upgrades it to the WebSocket protocol, allowing both the client and server to send and receive messages asynchronously.
 
-WebSockets are particularly useful for applications that require low latency and high-frequency updates, such as online gaming, chat applications, and live data feeds. The protocol supports full-duplex communication, meaning data can be sent and received simultaneously, which enhances performance and responsiveness. This efficient data transfer method helps in creating more interactive applications, providing a smoother user experience.
+WebSockets are particularly useful for applications that require low latency and high-frequency updates, such as online gaming, chat applications, and live data feeds. The protocol supports full-duplex communication, meaning data can be sent and received simultaneously. This efficient data transfer method helps in creating more interactive applications, providing a smoother user experience.
 
 ## WebSockets vs long polling vs HTTP streaming, and server-sent events
 
