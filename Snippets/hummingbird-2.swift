@@ -9,7 +9,7 @@ struct MyRequestDecoder: RequestDecoder {
     func decode<T>(
         _ type: T.Type,
         from request: Request,
-        context: some BaseRequestContext
+        context: some RequestContext
     ) async throws -> T where T: Decodable {
         // 2.
         guard let header = request.headers[.contentType] else {
@@ -46,20 +46,13 @@ protocol MyRequestContext: RequestContext {
 
 // 2.
 struct MyBaseRequestContext: MyRequestContext {
-    var coreContext: CoreRequestContext
+    var coreContext: CoreRequestContextStorage
 
     // 3.
     var myValue: String?
 
-    init(
-        channel: Channel,
-        logger: Logger = .init(label: "my-request-context")
-    ) {
-        self.coreContext = .init(
-            allocator: channel.allocator,
-            logger: logger
-        )
-        self.myValue = nil
+    init(source: Source) {
+        self.coreContext = .init(source: source)
     }
 
     // 4.

@@ -11,11 +11,12 @@ let package = Package(
         .library(name: "site", targets: ["site"]),
     ],
     dependencies: [
+        // SiteBuilder dependencies
         .package(url: "https://github.com/jpsim/Yams", from: "5.1.2"),
         .package(url: "https://github.com/hummingbird-project/swift-mustache", from: "2.0.0-beta.1"),
         .package(url: "https://github.com/BinaryBirds/file-manager-kit", from: "0.1.0"),
-        .package(url: "https://github.com/scinfu/SwiftSoup.git", from: "2.7.2"),
-        .package(url: "https://github.com/apple/swift-docc-plugin.git", from: "1.3.0"),
+        .package(url: "https://github.com/scinfu/SwiftSoup", from: "2.7.2"),
+        .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.3.0"),
 
         // article dependencies
         .package(url: "https://github.com/hummingbird-project/hummingbird", from: "2.0.0-beta.4"),

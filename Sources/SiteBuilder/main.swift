@@ -7,7 +7,7 @@ import Yams
 let fileManager = FileManager.default
 let env = ProcessInfo.processInfo.environment
 
-let repoId = "joannis.swiftonserver-site"
+let repoId = "swift-on-server.site:main"
 let module = "site"
 
 let accountId = env["ACCOUNT_ID"] ?? "4296918970"
