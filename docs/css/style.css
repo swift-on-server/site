@@ -79,10 +79,10 @@ a {
 a:hover, a:active {
     cursor: pointer;
 }
-p a:link, p a:visited {
+p a:link, p a:visited, a.source.github {
     color: var(--link-color);
 }
-p a.selected {
+p a.selected, a.source.github.selected {
     color: var(--selected-link-color);
 }
 p a:hover {
@@ -223,6 +223,9 @@ pre code {
     white-space: pre;
     -webkit-overflow-scrolling: touch;
 }
+.source.github {
+    color: var(--link-color);
+}
 p code, li code {
     font-family: monospace;
     font-weight: bold;
@@ -237,7 +240,7 @@ p code a:hover, li code a:hover {
     color: var(--link-color);
     border-bottom: 1px solid var(--link-color);
 }
-p code a:after, li code a:after {
+p code a:after, li code a:after, a.source.github:after {
     display: inline-block;
     content: "";
     width: 12px;
@@ -275,6 +278,21 @@ a.button {
 }
 a.button:hover {
     background: var(--hover-link-color);
+}
+pre.snippet {
+    /* Margin is added to a.source.github underneath */
+    margin-bottom: 0 !important;
+}
+a.source.github::before {
+    content: 'Source: ';
+    font-weight: bold;
+}
+a.source.github {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+pre code a {
+    text-decoration: underline !important;
 }
 .content-wrapper {
     max-width: 640px;

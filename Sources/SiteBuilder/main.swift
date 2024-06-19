@@ -8,7 +8,7 @@ let fileManager = FileManager.default
 let env = ProcessInfo.processInfo.environment
 
 let repoId = "joannis.swiftonserver-site"
-let module = "__SwiftOnServer_org"
+let module = "site"
 
 let accountId = env["ACCOUNT_ID"] ?? "4296918970"
 let apiKey = env["API_KEY"]!
@@ -278,14 +278,12 @@ func openFolder(_ folder: URL) throws {
             atomically: true,
             encoding: .utf8
         )
-    }
-    else {
+    } else {
         for item in items {
             let itemURL = folder.appendingPathComponent(item)
             do {
                 try openFolder(itemURL)
-            }
-            catch {
+            } catch {
                 print(
                     "Error while discovering folder at \"\(itemURL.relativePath)\": \(error)"
                 )
