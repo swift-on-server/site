@@ -34,6 +34,8 @@ WebSocket (WS) uses a plain-text TCP connection, making it less secure and easy 
 
 ## How to use WebSockets to build a real-time chat application?
 
+<!-- TODO: link AsyncSequences article when it's ready -->
+
 The [Hummingbird Websocket](https://github.com/hummingbird-project/hummingbird-websocket) library is an extension for the Hummingbird web framework. This library provides WebSocket Client- and Serve support using the latest structured concurrency features like ``TaskGroup`` and ``AsyncSequence``s.
 
 The [Hummingbird WebSocket chat application](https://github.com/hummingbird-project/hummingbird-examples/tree/main/websocket-chat) example demonstrates using web sockets for real-time communication. For an even simpler example, see the [echo server](https://github.com/hummingbird-project/hummingbird-examples/tree/main/websocket-echo) example. This article will explore the chat application step-by-step. Let’s begin with the directory structure.
@@ -89,7 +91,7 @@ let package = Package(
 
 The `App.swift` file is the main entry point for a Hummingbird application using the ``ArgumentParser`` library. 
 
-@Snippet(path: "site/Snippets/websockets_entrypoint")
+@Snippet(path: "site/Snippets/websockets", slice: "entrypoint")
 
 1.	The ``AppArguments`` protocol defines hostname and port properties.
 2.	The `HummingbirdArguments` structure is the main entry point, using ``AsyncParsableCommand``, and sets command-line options.
@@ -97,7 +99,7 @@ The `App.swift` file is the main entry point for a Hummingbird application using
 
 The code inside the `Application+build.swift` file sets up a Hummingbird application configured for WebSocket communication. It defines a function buildApplication that takes command-line arguments for hostname and port, initializes a logger, and sets up routers with middlewares for logging and file handling. It creates a `ConnectionManager` for managing WebSocket connections and configures the WebSocket router to handle chat connections, upgrading the connection if a username is provided. The application is configured to use HTTP with WebSocket upgrades and includes WebSocket compression. Finally, the application is returned with the necessary services added.
 
-@Snippet(path: "site/Snippets/websockets_build")
+@Snippet(path: "site/Snippets/websockets", slice: "buildApplication")
 
 1. A `Router` instance is created, and middlewares for logging requests and serving files are added to it.
 2. A `ConnectionManager` instance is created with a logger for managing WebSocket connections.
@@ -109,7 +111,7 @@ The code inside the `Application+build.swift` file sets up a Hummingbird applica
 
 The `ConnectionManager` struct manages WebSocket connections, allowing users to join, send messages, and leave the chat, using an `AsyncStream` for connection handling and Actor for managing outbound connections. It includes methods for adding and removing users, broadcasting messages, and gracefully handling shutdowns:
 
-@Snippet(path: "site/Snippets/websockets_manager")
+@Snippet(path: "site/Snippets/websockets", slice: "connectionManager")
 
 1. The `ConnectionManager` implements the ``Service`` protocol to manage WebSocket connections and ensure graceful shutdown.
 2. `OutputStream` is defined as an ``AsyncChannel`` for sending WebSocket outbound frames.
