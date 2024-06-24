@@ -127,7 +127,7 @@ The ``addUser`` function creates a ``Connection`` object with a given name and W
 
 @Snippet(path: "site/Snippets/websockets_02")
 
-The init method creates an asynchronous stream for ``Connection`` objects along with a logger, and the ``run`` function asynchronously handles connections by logging their addition, processing inbound messages, sending outbound messages, and logging their removal, with graceful shutdown support:
+The ``init(logger:)`` method creates an asynchronous stream for ``Connection`` objects along with a logger, and the ``run`` function asynchronously handles connections by logging their addition, processing inbound messages, sending outbound messages, and logging their removal, with graceful shutdown support:
 
 @Snippet(path: "site/Snippets/websockets_03", slice: "ConnectionManager")
 
