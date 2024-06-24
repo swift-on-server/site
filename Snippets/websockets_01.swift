@@ -7,19 +7,20 @@ import HummingbirdWSCompression
 import Logging
 import ServiceLifecycle
 
+// 1.
 struct ConnectionManager: Service {
 
-    // 1.
+    // 2.
     typealias OutputStream = AsyncChannel<WebSocketOutboundWriter.OutboundFrame>
 
-    // 2.
+    // 3.
     struct Connection {
         let name: String
         let inbound: WebSocketInboundStream
         let outbound: OutputStream
     }
 
-    // 3.
+    // 4.
     actor OutboundConnections {
         
         var outboundWriters: [String: OutputStream]
