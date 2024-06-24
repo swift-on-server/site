@@ -164,7 +164,8 @@ func buildApplication(
         }
     }
 
-    // 6.
+    // ...
+    // snippet.hide
     var app = Application(
         router: router,
         server: .http1WebSocketUpgrade(
@@ -179,6 +180,7 @@ func buildApplication(
     // 7.
     app.addServices(connectionManager)
     return app
+    // snippet.show
 }
 // snippet.end
 

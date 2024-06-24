@@ -97,7 +97,7 @@ The `App.swift` file is the main entry point for a Hummingbird application using
 2.	The `HummingbirdArguments` structure is the main entry point, using ``AsyncParsableCommand``, and sets command-line options.
 3.	The run function builds the Hummingbird application and starts the server as a service.
 
-The code inside the `Application+build.swift` file sets up a Hummingbird application configured for WebSocket communication. It defines a function buildApplication that takes command-line arguments for hostname and port, initializes a logger, and sets up routers with middlewares for logging and file handling. It creates a ``ConnectionManager`` for managing WebSocket connections and configures the WebSocket router to handle chat connections, upgrading the connection if a username is provided. The application is configured to use HTTP with WebSocket upgrades and includes WebSocket compression. Finally, the application is returned with the necessary services added.
+The code inside the `Application+build.swift` file sets up a Hummingbird application configured for WebSocket communication. It defines a function buildApplication that takes command-line arguments for hostname and port, initializes a logger, and sets up routers with middlewares for logging and file handling. It creates a ``ConnectionManager`` for managing WebSocket connections and configures the WebSocket router to handle chat connections, upgrading the connection if a username is provided:
 
 @Snippet(path: "site/Snippets/websockets_03", slice: "buildApplication")
 
@@ -106,8 +106,13 @@ The code inside the `Application+build.swift` file sets up a Hummingbird applica
 3. A separate ``Router`` instance is created specifically for handling and logging WebSocket requests.
 4. A WebSocket route is set up for the `chat` path, checking for a username query parameter for WebSocket upgrades.
 5. On upgrade, the connection manager handles WebSocket users and writes the output stream to the outbound channel.
-6. An `Application` instance is created with the previously configured routers for both HTTP and WebSocket requests.
-7. The `ConnectionManager` is added as a service to the application before returning it.
+
+The application is configured to use HTTP with WebSocket upgrades and includes WebSocket compression. Finally, the application is returned with the necessary services added:
+
+@Snippet(path: "site/Snippets/websockets_04")
+
+1. An `Application` instance is created with the previously configured routers for both HTTP and WebSocket requests.
+2. The `ConnectionManager` is added as a service to the application before returning it.
 
 The ``ConnectionManager`` struct manages WebSocket connections, allowing users to join, send messages, and leave the chat, using an `AsyncStream` for connection handling and Actor for managing outbound connections:
 
