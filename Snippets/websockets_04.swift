@@ -77,6 +77,7 @@ protocol AppArguments {
     var port: Int { get }
 }
 // snippet.show
+
 func buildApplication(
     _ arguments: some AppArguments
 ) async throws -> some ApplicationProtocol {
