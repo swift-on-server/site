@@ -7,20 +7,19 @@ import HummingbirdWSCompression
 import Logging
 import ServiceLifecycle
 
-// snippet.connectionManager
+// snippet.ConnectionManager
 struct ConnectionManager: Service {
 
-    // 2.
+    // ...
+    // snippet.hide
     typealias OutputStream = AsyncChannel<WebSocketOutboundWriter.OutboundFrame>
 
-    // 3.
     struct Connection {
         let name: String
         let inbound: WebSocketInboundStream
         let outbound: OutputStream
     }
 
-    // 4.
     actor OutboundConnections {
         
         var outboundWriters: [String: OutputStream]
@@ -45,6 +44,7 @@ struct ConnectionManager: Service {
             await send("\(name) left")
         }
     }
+    // snippet.show
 
     let connectionStream: AsyncStream<Connection>
     let connectionContinuation: AsyncStream<Connection>.Continuation
@@ -57,25 +57,24 @@ struct ConnectionManager: Service {
         self.logger = logger
     }
 
-
     func run() async {
         await withGracefulShutdownHandler {
             await withDiscardingTaskGroup { group in
                 let outboundCounnections = OutboundConnections()
-                // 5.
+                // 1.
                 for await connection in connectionStream {
                     group.addTask {
                         logger.info("add connection", metadata: [
                             "name": .string(connection.name)
                         ])
-                        // 6.
+                        // 2.
                         await outboundCounnections.add(
                             name: connection.name,
                             outbound: connection.outbound
                         )
 
                         do {
-                            // 7.
+                            // 3.
                             for try await input in connection.inbound.messages(
                                 maxSize: 1_000_000
                             ) {
@@ -86,7 +85,7 @@ struct ConnectionManager: Service {
                                 logger.debug("Output", metadata: [
                                     "message": .string(output)
                                 ])
-                                // 8.
+                                // 4.
                                 await outboundCounnections.send(output)
                             }
                         } catch {}
@@ -94,7 +93,7 @@ struct ConnectionManager: Service {
                         logger.info("remove connection", metadata: [
                             "name": .string(connection.name)
                         ])
-                        // 9.
+                        // 5.
                         await outboundCounnections.remove(name: connection.name)
                         connection.outbound.finish()
                     }

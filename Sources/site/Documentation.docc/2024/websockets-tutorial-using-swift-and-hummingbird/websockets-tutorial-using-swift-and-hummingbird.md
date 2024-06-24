@@ -54,7 +54,7 @@ The [Hummingbird WebSocket chat application](https://github.com/hummingbird-proj
     └── chat.html
 ```
 
-The `App.swift` file contains the standard entry point for a Hummingbird application. The `Application+build.swift` file includes the Hummingbird app configuration using the WebSocket connection manager. The `ConnectionManager` is responsible for managing WebSocket connections. The `public/chat.html` file contains client-side JavaScript code to demonstrate a WebSocket connection.
+The `App.swift` file contains the standard entry point for a Hummingbird application. The `Application+build.swift` file includes the Hummingbird app configuration using the WebSocket connection manager. The ``ConnectionManager`` is responsible for managing WebSocket connections. The `public/chat.html` file contains client-side JavaScript code to demonstrate a WebSocket connection.
 
 To add WebSocket support to a Hummingbird-based Swift package, simply include the Hummingbird Websocket library as a dependency in your `Package.swift` file..
 
@@ -97,31 +97,36 @@ The `App.swift` file is the main entry point for a Hummingbird application using
 2.	The `HummingbirdArguments` structure is the main entry point, using ``AsyncParsableCommand``, and sets command-line options.
 3.	The run function builds the Hummingbird application and starts the server as a service.
 
-The code inside the `Application+build.swift` file sets up a Hummingbird application configured for WebSocket communication. It defines a function buildApplication that takes command-line arguments for hostname and port, initializes a logger, and sets up routers with middlewares for logging and file handling. It creates a `ConnectionManager` for managing WebSocket connections and configures the WebSocket router to handle chat connections, upgrading the connection if a username is provided. The application is configured to use HTTP with WebSocket upgrades and includes WebSocket compression. Finally, the application is returned with the necessary services added.
+The code inside the `Application+build.swift` file sets up a Hummingbird application configured for WebSocket communication. It defines a function buildApplication that takes command-line arguments for hostname and port, initializes a logger, and sets up routers with middlewares for logging and file handling. It creates a ``ConnectionManager`` for managing WebSocket connections and configures the WebSocket router to handle chat connections, upgrading the connection if a username is provided. The application is configured to use HTTP with WebSocket upgrades and includes WebSocket compression. Finally, the application is returned with the necessary services added.
 
 @Snippet(path: "site/Snippets/websockets", slice: "buildApplication")
 
-1. A `Router` instance is created, and middlewares for logging requests and serving files are added to it.
-2. A `ConnectionManager` instance is created with a logger for managing WebSocket connections.
-3. A separate `Router` instance is created specifically for handling and logging WebSocket requests.
+1. A ``Router`` instance is created, and middlewares for logging requests and serving files are added to it.
+2. A ``ConnectionManager`` instance is created with a logger for managing WebSocket connections.
+3. A separate ``Router`` instance is created specifically for handling and logging WebSocket requests.
 4. A WebSocket route is set up for the `chat` path, checking for a username query parameter for WebSocket upgrades.
 5. On upgrade, the connection manager handles WebSocket users and writes the output stream to the outbound channel.
 6. An `Application` instance is created with the previously configured routers for both HTTP and WebSocket requests.
 7. The `ConnectionManager` is added as a service to the application before returning it.
 
-The `ConnectionManager` struct manages WebSocket connections, allowing users to join, send messages, and leave the chat, using an `AsyncStream` for connection handling and Actor for managing outbound connections. It includes methods for adding and removing users, broadcasting messages, and gracefully handling shutdowns:
+The ``ConnectionManager`` struct manages WebSocket connections, allowing users to join, send messages, and leave the chat, using an `AsyncStream` for connection handling and Actor for managing outbound connections:
 
-@Snippet(path: "site/Snippets/websockets", slice: "connectionManager")
+@Snippet(path: "site/Snippets/websockets_01")
 
-1. The `ConnectionManager` implements the ``Service`` protocol to manage WebSocket connections and ensure graceful shutdown.
-2. `OutputStream` is defined as an ``AsyncChannel`` for sending WebSocket outbound frames.
-3. The `Connection` struct contains details about each WebSocket connection, including the username, inbound stream, and outbound stream.
-4. The `OutboundConnections` actor manages a dictionary of outbound writers to broadcast messages to all connections.
-5. The `run` function iterates through the `connectionStream` asynchronously to handle incoming connections and messages.
-6. For each connection, a task is added to the group to manage the connection and broadcast the "joined" message.
-7. The task listens for incoming messages, processing text messages to broadcast to all connections.
-8. Each received text message is broadcast to all outbound connections by calling `send`.
-9. Upon connection termination, the connection is removed, a "left" message is broadcast, and the outbound stream is finished.
+1. The ``ConnectionManager`` implements the ``Service`` protocol to manage WebSocket connections and ensure graceful shutdown.
+2. ``OutputStream`` is defined as an ``AsyncChannel`` for sending WebSocket outbound frames.
+3. The ``Connection`` struct contains details about each WebSocket connection, including the username, inbound stream, and outbound stream.
+4. The ``OutboundConnections`` actor manages a dictionary of outbound writers to broadcast messages to all connections.
+
+It includes methods for adding and removing users, broadcasting messages, and gracefully handling shutdowns:
+
+@Snippet(path: "site/Snippets/websockets_02", slice: "ConnectionManager")
+
+1. The ``run`` function iterates through the `connectionStream` asynchronously to handle incoming connections and messages.
+2. For each connection, a task is added to the group to manage the connection and broadcast the "joined" message.
+3. The task listens for incoming messages, processing text messages to broadcast to all connections.
+4. Each received text message is broadcast to all outbound connections by calling `send`.
+5. Upon connection termination, the connection is removed, a "left" message is broadcast, and the outbound stream is finished.
 
 
 The `public/chat.html` file contains all the client-side HTML and JavaScript code necessary for the WebSocket chat application. Upon loading, the page initializes the input and output elements and establishes a WebSocket connection. Users can enter their names to initiate the connection and send messages. Server messages are displayed in the output area. The application handles WebSocket events, such as opening, closing, receiving messages, and errors, updating the display as needed.
