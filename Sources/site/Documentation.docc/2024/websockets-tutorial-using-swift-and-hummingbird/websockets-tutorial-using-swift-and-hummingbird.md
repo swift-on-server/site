@@ -8,7 +8,7 @@ WebSocket is a communication protocol that enables two-way, real-time interactio
 
 WebSockets are particularly useful for applications that require low latency and high-frequency updates, such as online gaming, chat applications, and live data feeds. The protocol supports full-duplex communication, meaning data can be sent and received simultaneously. This efficient data transfer method helps in creating more interactive applications, providing a smoother user experience.
 
-## WebSockets vs long polling vs HTTP streaming, and server-sent events
+## WebSockets vs Alternatives
 
 Similar to WebSockets, there are other methods of achieving real-time capabilities. Techniques like HTTP polling, HTTP streaming, Comet, and SSE (server-sent events) come to mind. Let’s explore how these methods differ.
 
