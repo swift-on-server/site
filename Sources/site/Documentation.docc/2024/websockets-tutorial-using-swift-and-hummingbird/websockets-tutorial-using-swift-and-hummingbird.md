@@ -30,7 +30,7 @@ The above methods are less efficient on a protocol level and often seem like wor
 
 ### Security (WSS)
 
-WebSocket (WS) uses a plain-text TCP connection, making it less secure and easy to intercept. WebSocket Secure (WSS), like HTTPS, uses TLS to protect the TCP connection. It's identical to WebSocket otherwise. WSS protects against man-in-the-middle attacks but does not offer cross-origin or application-level security. Developers should add URL origin checks and strong authentication. 
+WebSocket (WS) uses a plain-text TCP connection. A WebSocket connection is created by upgrading an HTTP/1 connection. WebSocket Secure (WSS), which is upgraded from HTTPS, uses TLS to protect the TCP connection. WSS protects against man-in-the-middle attacks but does not offer cross-origin or application-level security. Developers should add URL origin checks and strong authentication. 
 
 ## How to use WebSockets to build a real-time chat application?
 
