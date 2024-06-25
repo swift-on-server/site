@@ -104,7 +104,7 @@ The code inside the `Application+build.swift` file sets up a Hummingbird applica
 1. A ``Router`` instance is created, and middlewares for logging requests and serving files are added to it.
 2. A ``ConnectionManager`` instance is created with a logger for managing WebSocket connections.
 3. A separate ``Router`` instance is created specifically for handling and logging WebSocket requests.
-4. A WebSocket route is set up for the `chat` path, checking for a username query parameter for WebSocket upgrades.
+4. A WebSocket route is set up for the `/chat` path, checking for a username query parameter for WebSocket upgrades.
 5. On upgrade, the connection manager handles WebSocket users and writes the output stream to the outbound channel.
 
 The application is configured to use HTTP with WebSocket upgrades and includes WebSocket compression. Finally, the application is returned with the necessary services added:
