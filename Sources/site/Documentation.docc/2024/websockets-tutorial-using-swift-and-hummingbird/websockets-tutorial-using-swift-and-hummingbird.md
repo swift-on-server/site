@@ -32,7 +32,7 @@ The above methods are less efficient on a protocol level and often seem like wor
 
 WebSocket (WS) uses a plain-text TCP connection. A WebSocket connection is created by upgrading an HTTP/1 connection. WebSocket Secure (WSS), which is upgraded from HTTPS, uses TLS to protect the TCP connection. WSS protects against man-in-the-middle attacks but does not offer cross-origin or application-level security. Developers should add URL origin checks and strong authentication. 
 
-## How to use WebSockets to build a real-time chat application?
+## Building a real-time WebSocket chat
 
 <!-- TODO: link AsyncSequences article when it's ready -->
 
@@ -137,122 +137,15 @@ The ``init(logger:)`` method creates an asynchronous stream for ``Connection`` o
 4. Each received text message is broadcast to all outbound connections by calling `send`.
 5. Upon connection termination, the connection is removed, a "left" message is broadcast, and the outbound stream is finished.
 
+Make sure the [custom working directory](https://theswiftdev.com/custom-working-directory-in-xcode/) is set to the root folder before starting the app. Client communication with the WebSocket server can be established using the `ws://localhost:8080/chat` endpoint.
 
-The `public/chat.html` file contains all the client-side HTML and JavaScript code necessary for the WebSocket chat application. Upon loading, the page initializes the input and output elements and establishes a WebSocket connection. Users can enter their names to initiate the connection and send messages. Server messages are displayed in the output area. The application handles WebSocket events, such as opening, closing, receiving messages, and errors, updating the display as needed.
+Execute the app and open a web browser to navigate to the [WebSocket Tester Tool](https://websocketman.com/) website. To initiate a chat connection, input the following URL into the designated field:
 
-```html
-<!DOCTYPE html>
-<head>
-    <meta charset="utf-8" />
-    <title>WebSocket Chat</title>
-    <script language="javascript" type="text/javascript">
-
-        // 1.
-        var wsUri = "ws://localhost:8080/chat";
-        var connected = false;
-        var input;
-        var output;
-
-        // 2. 
-        function init() {
-            input = document.getElementById("input");
-            output = document.getElementById("output");
-            input.value = ""
-        }
-
-        // 3.
-        function openWebSocket(uri) {
-            websocket = new WebSocket(uri);
-            websocket.onopen = function(evt) { onOpen(evt) };
-            websocket.onclose = function(evt) { onClose(evt) };
-            websocket.onmessage = function(evt) { onMessage(evt) };
-            websocket.onerror = function(evt) { onError(evt) };
-        }
-
-        function onOpen(evt) {
-          
-        }
-
-        // 4.
-        function onClose(evt) {
-            writeToScreen("DISCONNECTED");
-            connected = false
-            let enterName = document.getElementById("enter_name")
-            enterName.style.display = 'block'
-        }
-
-        // 5.
-        function onMessage(evt) {
-            writeToScreen('<span style="color: blue;">' + evt.data + '</span>');
-        }
-
-        // 6.
-        function onError(evt) {
-            writeToScreen('<span style="color: red;">ERROR:</span> ' + evt);
-        }
-
-        // 7.
-        function doSend(message) {
-            websocket.send(message);
-        }
-
-        // 8.
-        function writeToScreen(message) {
-            var pre = document.createElement("p");
-            pre.style.wordWrap = "break-word";
-            pre.innerHTML = message;
-            output.appendChild(pre);
-        }
-
-        // 9.
-        function inputEnter() {
-            if (connected == false) {
-                if (input.value == "") {
-                    return
-                }
-                let enterName = document.getElementById("enter_name")
-                enterName.style.display = 'none'
-                let uri = wsUri + "?username=" + input.value
-                openWebSocket(uri)
-                connected = true
-            } 
-            else {
-                if (input.value == "") {
-                    return
-                }
-                doSend(input.value)
-            }
-            input.value = ""
-        }
-
-        // 10.
-        window.addEventListener("load", init, false);
-    </script>
-</head>
-
-<body>
-    <h2>WebSocket Chat</h2>
-    <div id="output"></div>
-    <p id="enter_name">Please enter your name</p>
-    <input id="input" onchange = "inputEnter()" type="text" name="name"/>
-</body>
-</html>
+```
+ws://localhost:8080/chat?username=Tib
 ```
 
-1. The `wsUri` variable is set to the WebSocket server URL, and initial states for connection status, input, and output are declared.
-2. The `init` function initializes the input and output elements and resets the input value.
-3. The `openWebSocket` function establishes a WebSocket connection and sets up event handlers for open, close, message, and error events.
-4. The `onClose` function handles the WebSocket closing event by displaying a disconnected message and showing the name input field again.
-5. The `onMessage` function handles incoming WebSocket messages by displaying them in the output area with blue text.
-6. The `onError` function handles WebSocket errors by displaying an error message in red.
-7. The `doSend` function sends a message through the WebSocket connection.
-8. The `writeToScreen` function creates a new paragraph element to display messages in the output area.
-9. The `inputEnter` function manages user input, either connecting to the WebSocket server with the entered username or sending messages if already connected.
-10. The `window.addEventListener` function sets up the `init` function to run when the page loads.
-
-Make sure the [custom working directory](https://theswiftdev.com/custom-working-directory-in-xcode/) is set to the root folder before starting the app.
-
-Run the app and navigate to `http://localhost:8080/chat.html` in a web browser, enter a name, and start chatting. Open another browser window to create a second connection and chat between the two pages. The app includes a simple connection manager for handling WebSocket connections. 
+The `username` parameter can be modified as needed. Press the _Connect_ button to add a new user to the chat room. Upon connection, messages can be sent as the user by entering a custom message and clicking the _Send Message_ button. Multiple windows of the WebSocket Tester Tool can be opened to add additional users. 
 
 ## Conclusion
 
