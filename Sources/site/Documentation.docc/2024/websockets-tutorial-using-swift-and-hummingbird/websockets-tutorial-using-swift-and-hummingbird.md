@@ -91,7 +91,7 @@ let package = Package(
 
 The `App.swift` file is the main entry point for a Hummingbird application using the ``ArgumentParser`` library. 
 
-@Snippet(path: "site/Snippets/websockets_03", slice: "entrypoint")
+@Snippet(path: "site/Snippets/websockets", slice: "entrypoint")
 
 1.	The ``AppArguments`` protocol defines hostname and port properties.
 2.	The `HummingbirdArguments` structure is the main entry point, using ``AsyncParsableCommand``, and sets command-line options.
@@ -99,7 +99,7 @@ The `App.swift` file is the main entry point for a Hummingbird application using
 
 The code inside the `Application+build.swift` file sets up a Hummingbird application configured for WebSocket communication. It defines a function buildApplication that takes command-line arguments for hostname and port, initializes a logger, and sets up routers with middlewares for logging and file handling. It creates a ``ConnectionManager`` for managing WebSocket connections and configures the WebSocket router to handle chat connections, upgrading the connection if a username is provided:
 
-@Snippet(path: "site/Snippets/websockets_03", slice: "buildApplication")
+@Snippet(path: "site/Snippets/websockets", slice: "buildApplication")
 
 1. A ``Router`` instance is created, and middlewares for logging requests and serving files are added to it.
 2. A ``ConnectionManager`` instance is created with a logger for managing WebSocket connections.
@@ -109,14 +109,14 @@ The code inside the `Application+build.swift` file sets up a Hummingbird applica
 
 The application is configured to use HTTP with WebSocket upgrades and includes WebSocket compression. Finally, the application is returned with the necessary services added:
 
-@Snippet(path: "site/Snippets/websockets_04")
+@Snippet(path: "site/Snippets/websockets-app")
 
 1. An `Application` instance is created with the previously configured routers for both HTTP and WebSocket requests.
 2. The `ConnectionManager` is added as a service to the application before returning it.
 
 The ``ConnectionManager`` struct manages WebSocket connections, allowing users to join, send messages, and leave the chat, using an `AsyncStream` for connection handling and Actor for managing outbound connections:
 
-@Snippet(path: "site/Snippets/websockets_01")
+@Snippet(path: "site/Snippets/websockets-connection-manager-types")
 
 1. The ``ConnectionManager`` implements the ``Service`` protocol to manage WebSocket connections and ensure graceful shutdown.
 2. ``OutputStream`` is defined as an ``AsyncChannel`` for sending WebSocket outbound frames.
@@ -125,11 +125,11 @@ The ``ConnectionManager`` struct manages WebSocket connections, allowing users t
 
 The ``addUser`` function creates a ``Connection`` object with a given name and WebSocket streams, yields this connection, and returns a new ``OutputStream``:
 
-@Snippet(path: "site/Snippets/websockets_02")
+@Snippet(path: "site/Snippets/websockets-connection-manager-add-user")
 
 The ``init(logger:)`` method creates an asynchronous stream for ``Connection`` objects along with a logger, and the ``run`` function asynchronously handles connections by logging their addition, processing inbound messages, sending outbound messages, and logging their removal, with graceful shutdown support:
 
-@Snippet(path: "site/Snippets/websockets_03", slice: "ConnectionManager")
+@Snippet(path: "site/Snippets/websockets", slice: "ConnectionManager")
 
 1. The ``run`` function iterates through the `connectionStream` asynchronously to handle incoming connections and messages.
 2. For each connection, a task is added to the group to manage the connection and broadcast the "joined" message.
