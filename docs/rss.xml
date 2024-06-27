@@ -4,8 +4,8 @@
     <description>Articles about server-side Swift development. Created by Joannis Orlandos and Tibor Bödecs.</description>
     <link>https://swiftonserver.com/</link>
     <language>en-US</language>
-    <lastBuildDate>Wed, 19 Jun 2024 10:49:07 +0000</lastBuildDate>
-    <pubDate>Thu, 20 Jun 2024 00:00:00 +0000</pubDate>
+    <lastBuildDate>Thu, 27 Jun 2024 10:09:47 +0000</lastBuildDate>
+    <pubDate>Thu, 27 Jun 2024 00:00:00 +0000</pubDate>
     <ttl>250</ttl>
     <atom:link href="https://swiftonserver.com/rss.xml" rel="self" type="application/rss+xml"/>
 
@@ -14,7 +14,7 @@
        <title><![CDATA[ WebSocket tutorial using Swift and Hummingbird ]]></title>
        <description><![CDATA[ In this article, you will learn about WebSockets and how to use them with the Hummingbird framework in a straightforward, easy-to-follow manner. ]]></description>
        <link>https://swiftonserver.com/websocket-tutorial-using-swift-and-hummingbird/</link>
-       <pubDate>Thu, 20 Jun 2024 00:00:00 +0000</pubDate>
+       <pubDate>Thu, 27 Jun 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
        <guid isPermaLink="true">https://swiftonserver.com/introduction-to-swift-service-lifecycle/</guid>
