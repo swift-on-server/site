@@ -149,5 +149,5 @@ The `username` parameter can be modified as needed. Press the _Connect_ button t
 
 ## Conclusion
 
-This article demonstrated how to use WebSockets with the Hummingbird framework to build a real-time chat application in Swift. For a similar guide on the Vapor web framework, check out [this article](https://theswiftdev.com/websockets-for-beginners-using-vapor-4-and-vanilla-javascript/). Hummingbird 2 leverages modern Swift concurrency features for handling WebSocket connections, offering a significant advantage over other frameworks. For more information on Swift concurrency, feel free to explore our additional articles about [structured concurrency](https://swiftonserver.com/getting-started-with-structured-concurrency-in-swift/).
+This article demonstrated how to use WebSockets with the Hummingbird framework to build a real-time chat application in Swift. For a similar guide on the Vapor web framework, check out [this article](https://theswiftdev.com/websockets-for-beginners-using-vapor-4-and-vanilla-javascript/). Hummingbird 2 leverages modern Swift concurrency features for handling WebSocket connections, offering a significant advantage over other frameworks. For more information on Swift concurrency, dive into our additional articles about [structured concurrency](https://swiftonserver.com/getting-started-with-structured-concurrency-in-swift/).
 
