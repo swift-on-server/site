@@ -4,3 +4,4 @@
 .build
 Sources/**/*.html
 docc
+.build.ssgc
