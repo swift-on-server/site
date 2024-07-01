@@ -33,7 +33,7 @@ When reading a file from the disk, reading a file starts at the first byte/chara
 
 ### Filesystem and Networking Similarities
 
-While your filesystem and network don't seem to have much in common, in your operating system they do! When creating socket and connecting to a server, your operating systme _also_ returns a file descriptor. Instead of `open`, you use the `socket` and `connect` calls instead. However, from that point forward the APIs are very similar in use.
+While your filesystem and network don't seem to have much in common, in your operating system they do! When creating socket and connecting to a server, your operating system _also_ returns a file descriptor. Instead of `open`, you use the `socket` and `connect` calls instead. However, from that point forward the APIs are very similar in use.
 
 When calling `read`, you'll receive the information on a socket. And when `write`ing data, you'll send it over the network as well. Unlike your disk, a socket does not have an offset like a filesystem does. But the basic concepts of a file descriptor, reading, writing and closing are the same.
 
