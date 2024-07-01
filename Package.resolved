@@ -1,5 +1,5 @@
 {
-  "originHash" : "82b3f1c76a50705a5d1c871bbbae61db9df174a830bf2389ea6415bce296ed44",
+  "originHash" : "ca56cc79c68ab5665168d41843042a264f15fd29c41475428a812b3db84f51fc",
   "pins" : [
     {
       "identity" : "async-http-client",
@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/hummingbird-project/hummingbird",
       "state" : {
-        "revision" : "de24af2daf32e8ef9439823e7c72b3ee8676ef6c",
-        "version" : "2.0.0-beta.8"
+        "revision" : "0e6de7141f4feda30c319c1a14047b7057f38db5",
+        "version" : "2.0.0-rc.1"
       }
     },
     {
@@ -42,8 +42,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/hummingbird-project/hummingbird-websocket.git",
       "state" : {
-        "revision" : "1352aa2dee5d3c1283b53823e8461587554c1e87",
-        "version" : "2.0.0-beta.4"
+        "revision" : "948b417eac2bdc082184f028f9670170367eb362",
+        "version" : "2.0.0-beta.5"
       }
     },
     {
