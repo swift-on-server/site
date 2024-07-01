@@ -289,6 +289,26 @@ The ``AsyncIteratorProtocol/next()`` function can be cancelled by the consumer. 
 
 It is expected that Async Sequences handle cancellation gracefully as appropriate. In Networking, this could mean cancelling a network request. In a generator, this could mean stopping the generation of new elements.
 
+## Changes in Swift 6
+
+In Swift 5, any `async` function that does not use actor isolation implicitly runs on the global concurrent executor. This means that the ``AsyncIteratorProtocol.next()`` function runs on the global concurrent executor as well.
+
+Starting with Swift 6, a variant of this function is available.
+
+```swift
+mutating func next(isolation actor: isolated (any Actor)? = #isolation) async throws -> Element?
+```
+
+The `isolated (any Actor)?` argument allows callees to tell an `async` function which actor the function runs on. This is helpful forin performance-sensitive contexts.
+
+Finally, Swift 6' AsyncSequences can specify an `associatedtype Failure: Error`. Using typed throws, you can specify the type of error that the iterator can throw.
+
+```swift
+mutating func next(isolation actor: isolated (any Actor)? = #isolation) async throws(Failure) -> Element?
+```
+
+By default, `throws` is equivalent to `throws(any Error)`, and this is reflected when you omit specifying a specific ``Error`` type in Failure.
+
 ## Conclusion
 
 AsyncSequences are a cornerstone of structured concurrency in Swift. They enable you to create streams of elements that can be iterated upon asynchronously. They're especially useful in networking, but also serve great purpose in UI programming and other areas.
