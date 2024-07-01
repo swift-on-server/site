@@ -1,8 +1,8 @@
 slug: advanced-async-sequences
 title: Advanced Async Sequences in Swift
 description: Learn how to use and create your own AsyncSequences.
-date: 2024/02/08
-tags: Swift, Structured Concurrency
+date: 2024/07/02
+tags: Structured Concurrency
 author: Joannis Orlandos
 authorLink: https://x.com/JoannisOrlandos
 authorGithub: joannis
