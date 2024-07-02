@@ -61,8 +61,6 @@ An `async` function is a function that can pause and resume. Think of it as a fu
 
 When you order a pizza, you don't have to wait for the pizza to be made and delivered. You can continue watching your favourite show, while the pizza is delivered to your doorstep. Just like async functions. Should you need to know when the pizza is delivered, you can `await` the delivery.
 
-@Snippet(path: "site/Snippets/getting-started-concurrency-television-pizza")
-
 ```swift
 func watchTelevision() async throws {
     let store = await PizzaStore.discover()
@@ -127,6 +125,8 @@ If you're familiar with the Combine framework, this might sound similar to a `Pu
 AsyncSequences are part of the standard library, and are designed similarly to the existing `Sequence` protocol. You can create an `AsyncIterator` from them.  The iterator has a `mutating func next() async throws -> Element?`.
 
 This allows you to write a longer control flow that expect multiple results, such as the head and body of an HTTP request. You can use a `for-await-in` loop to iterate over the sequence of results, or manually iterate over the sequence using the `next()` method.
+
+To learn more about Async Sequences, visit <doc:advanced-async-sequences>.
 
 Now, a common request; "How can I await the delivery of these books concurrently?"
 

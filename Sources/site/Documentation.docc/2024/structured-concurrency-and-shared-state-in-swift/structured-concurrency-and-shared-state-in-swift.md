@@ -298,6 +298,11 @@ final class EventLoopExecutor: TaskExecutor, SerialExecutor {
     func asUnownedSerialExecutor() -> UnownedSerialExecutor {
         UnownedSerialExecutor(complexEquality: self)
     }
+
+    @inlinable
+    func checkIsolated() {
+        precondition(eventLoop.inEventLoop, "The callee is not isolated to this EventLoop")
+    }
 }
 ```
 
@@ -319,3 +324,19 @@ As you may notice, the `EventLoopExecutor` type is _manually_ retained and relea
 Previously, we wrote that large workloads should be run outside of structured concurrency. This is necessary, since the _standard_ executor in Swift is designed to run tasks concurrently. In Swift 6, this is executor is the ``globalConcurrentExecutor``, which is hidden in previous versions of Swift.
 
 However, heavy workload _can_ be run on a custom executor. Using the pattern shown above, or an executor that is could be provided by SwiftNIO in the future, heavy workloads can run on a custom executor that is designed to handle heavy workloads.
+
+### Inheriting Actor Isolation
+
+Starting with Swift 6, a variant of ``AsyncSequence.next()`` is available.
+
+```swift
+mutating func next(isolation actor: isolated (any Actor)? = #isolation) async throws -> Element?
+```
+
+The `isolated (any Actor)?` argument allows callees to tell an `async` function which actor the function runs on. This is helpful forin performance-sensitive contexts.
+
+In addition, Swift 6' AsyncSequences can specify an `associatedtype Failure: Error`. Using typed throws, you can specify the type of error that the iterator can throw.
+
+```swift 
+mutating func next(isolation actor: isolated (any Actor)? = #isolation) async throws(MyCustomIteratorError) -> Element?
+```

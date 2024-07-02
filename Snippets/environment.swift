@@ -17,7 +17,7 @@ func buildApplication(
     var logger = Logger(label: "hummingbird-logger")
     logger.logLevel = .trace
 
-    let env = Environment.shared
+    let env = Environment()
     // let env = try await Environment.dotEnv()
     let logLevel = env.get("LOG_LEVEL")
 

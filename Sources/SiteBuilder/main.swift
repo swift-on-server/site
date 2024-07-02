@@ -10,6 +10,7 @@ let env = ProcessInfo.processInfo.environment
 let repoId = "swift-on-server.site:preview"
 let module = "site"
 
+let swiftinitApi = env["SWIFTINIT_API"] ?? "api.swiftinit.org"
 let accountId = env["ACCOUNT_ID"] ?? "4296918970"
 let apiKey = env["API_KEY"]!
 
@@ -339,7 +340,7 @@ func buildTutorial(_ folder: URL) throws {
     process.arguments = [
         "--http2",
         "-v",
-        "https://api.swiftinit.org/render/\(repoId)/\(module)/\(folder.lastPathComponent)?account=\(accountId)&api_key=\(apiKey)",
+        "https://\(swiftinitApi)/render/\(repoId)/\(module)/\(folder.lastPathComponent)?account=\(accountId)&api_key=\(apiKey)",
         "-o",
         "\(folderName).html",
     ]
