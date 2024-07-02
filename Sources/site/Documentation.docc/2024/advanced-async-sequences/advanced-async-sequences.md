@@ -165,7 +165,7 @@ Starting with Swift 6, a variant of this function is available.
 mutating func next(isolation actor: isolated (any Actor)? = #isolation) async throws -> Element?
 ```
 
-The `isolated (any Actor)?` argument allows callees to tell an `async` function which actor the function runs on. This is helpful forin performance-sensitive contexts.
+The `isolated (any Actor)?` argument allows callees to tell an `async` function which actor the function runs on. This is helpful for performance-sensitive contexts.
 
 Finally, Swift 6' AsyncSequences can specify an `associatedtype Failure: Error`. Using typed throws, you can specify the type of error that the iterator can throw.
 
