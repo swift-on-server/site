@@ -91,7 +91,7 @@ struct StartDownloadView: View {
 
     var body: some View {
         Button("Start Download") {
-            continuation.yield(.buttonTapped)
+            continuation.yield(.startDownloadTapped)
         }
     }
 }
@@ -153,7 +153,9 @@ The above change would allow you to iterate over the sequence without needing to
 
 The ``AsyncIteratorProtocol/next()`` function can be cancelled by the consumer. This can be done through ``TaskGroup.cancelAll()``, ``Task.cancel()`` or a variety of other cancellation mechanisms.
 
-It is expected that Async Sequences handle cancellation gracefully as appropriate. In Networking, this could mean cancelling a network request. In a generator, this could mean stopping the generation of new elements.
+It is expected that Async Sequences handle cancellation gracefully as appropriate. In Networking, this could mean cancelling a network request. In a generator, this could mean stopping the generation of new elements through ``AsyncStream.Continuation.finish()``.
+
+To detect a cancellation signal, use ``withTaskCancellationHandler(operation:onCancel:)``. Or when using Swift Service Lifecycle, use ``withTaskCancellationOrGracefulShutdownHandler(operation:onCancelOrGracefulShutdown:)``.
 
 ## Changes in Swift 6
 
