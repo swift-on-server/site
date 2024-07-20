@@ -26,7 +26,7 @@ When adding the OpenAPI generator to your project, you'll need to add the follow
 .package(url: "https://github.com/apple/swift-openapi-runtime.git", from: "1.3.0"),
 .package(url: "https://github.com/apple/swift-argument-parser.git", from: "1.3.0"),
 .package(url: "https://github.com/hummingbird-project/hummingbird.git", from: "2.0.0-rc.1"),
-.package(url: "https://github.com/swift-server/swift-openapi-hummingbird.git", from: "2.0.0-beta.4"),
+.package(url: "https://github.com/swift-server/swift-openapi-hummingbird.git", from: "2.0.0-rc.1"),
 ```
 
 **Note:** `swift-argument-parser` is not related to Hummingbird or OpenAPI.
