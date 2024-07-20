@@ -1,5 +1,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
+        <loc>https://swiftonserver.com/using-openapi-with-hummingbird/</loc>
+        <lastmod>2024-07-08</lastmod>
+    </url>
+    <url>
+        <loc>https://swiftonserver.com/advanced-async-sequences/</loc>
+        <lastmod>2024-07-08</lastmod>
+    </url>
+    <url>
+        <loc>https://swiftonserver.com/structured-concurrency-and-shared-state-in-swift/</loc>
+        <lastmod>2024-07-08</lastmod>
+    </url>
+    <url>
         <loc>https://swiftonserver.com/whats-new-in-hummingbird-2/</loc>
         <lastmod>2024-07-02</lastmod>
     </url>
@@ -12,19 +24,7 @@
         <lastmod>2024-07-02</lastmod>
     </url>
     <url>
-        <loc>https://swiftonserver.com/using-openapi-with-hummingbird/</loc>
-        <lastmod>2024-07-02</lastmod>
-    </url>
-    <url>
-        <loc>https://swiftonserver.com/structured-concurrency-and-shared-state-in-swift/</loc>
-        <lastmod>2024-07-02</lastmod>
-    </url>
-    <url>
         <loc>https://swiftonserver.com/getting-started-with-structured-concurrency-in-swift/</loc>
-        <lastmod>2024-07-02</lastmod>
-    </url>
-    <url>
-        <loc>https://swiftonserver.com/advanced-async-sequences/</loc>
         <lastmod>2024-07-02</lastmod>
     </url>
     <url>
