@@ -75,8 +75,7 @@
     </section>
 
     <section id="contents" class="content-wrapper">
-    
-    <section class="details literature"><p>The <a href="https://github.com/swift-server/swift-service-lifecycle" target="_blank" rel="external">Swift Service Lifecycle</a> library helps to manage application lifecycle by providing a unified start and stop mechanism. It also features a signal-based shutdown hook, allowing users to gracefully shut down and clean up resources before the application exits.</p><h2 id="A%20basic%20service%20example"><a href="#A%20basic%20service%20example">A basic service example</a></h2><p>First, the Swift Service Lifecycle package needs to be added to the project. This can be done by modifying the <code>Package.swift</code> file as follows:</p><pre class="snippet"><code class="language-swift"><span class="newline"></span><span class="xc">// swift-tools-version: 5.10</span><span class="newline">
+        <section class="details literature"><p>The <a href="https://github.com/swift-server/swift-service-lifecycle" target="_blank" rel="external">Swift Service Lifecycle</a> library helps to manage application lifecycle by providing a unified start and stop mechanism. It also features a signal-based shutdown hook, allowing users to gracefully shut down and clean up resources before the application exits.</p><h2 id="A%20basic%20service%20example"><a href="#A%20basic%20service%20example">A basic service example</a></h2><p>First, the Swift Service Lifecycle package needs to be added to the project. This can be done by modifying the <code>Package.swift</code> file as follows:</p><pre class="snippet"><code class="language-swift"><span class="newline"></span><span class="xc">// swift-tools-version: 5.10</span><span class="newline">
 </span><span class="xk">import</span> <span class="xv">PackageDescription</span><span class="newline">
 
 </span><span class="xk">let</span> <span class="xv">package</span> = <span class="xv">Package</span>(<span class="newline">
@@ -261,14 +260,26 @@
 </span>        <span class="xk">try</span> <span class="xk">await</span> <span class="xv">serviceGroup</span>.<span class="xv">run</span>()<span class="newline">
 </span>    }<span class="newline">
 </span>}</code></pre><ol><li><p>Defines an <code>AsyncHTTPClientService</code> actor that initializes an HTTP client and implements the run method to handle graceful shutdown by shutting down the HTTP client.</p></li><li><p>Defines a <code>PingService</code> actor that relies on the <code>AsyncHTTPClientService</code> for making HTTP requests.</p></li><li><p>Uses <code>withGracefulShutdownHandler</code> to handle graceful shutdown within the <code>PingService</code> actor’s run method.</p></li><li><p>Initiates a loop for sending HTTP requests to apple.com and prints the result.</p></li><li><p>Executes an HTTP request asynchronously using the AsyncHTTPClientService and handles the response.</p></li><li><p>Delays execution for one second before the next iteration of the loop.</p></li><li><p>Defines a closure to be executed on graceful shutdown within the <code>PingService</code> actor.</p></li><li><p>In the <code>Application</code> struct’s main function, initializes the <code>AsyncHTTPClientService</code> and <code>PingService</code>, and creates a <code><a href="https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle/servicegroup" target="_blank" rel="external">ServiceGroup</a></code> to manage their lifecycles.</p></li><li><p>Configures the <code><a href="https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle/servicegroup" target="_blank" rel="external">ServiceGroup</a></code> with appropriate termination behaviors for each service and initiates its execution.</p></li></ol><h2 id="Conclusion"><a href="#Conclusion">Conclusion</a></h2><p>In summary, Swift Service Lifecycle simplifies application startup and shutdown, ensuring efficient resource management. It encapsulates critical startup and shutdown workflows in a reusable, framework-agnostic manner, enhancing application robustness.</p><p>The library’s seamless integration with Structured Concurrency simplifies the management of concurrent tasks, including first-class support for async sequences and facilitating efficient resource utilization.</p><p>The detailed documentation, intended for both <a href="https://swiftpackageindex.com/swift-server/swift-service-lifecycle/main/documentation/servicelifecycle/how-to-adopt-servicelifecycle-in-applications" target="_blank" rel="external nofollow noopener ugc">application</a> and <a href="https://swiftpackageindex.com/swift-server/swift-service-lifecycle/main/documentation/servicelifecycle/how-to-adopt-servicelifecycle-in-libraries" target="_blank" rel="external nofollow noopener ugc">library</a> developers, includes examples demonstrating how to use the features, which helps developers grasp the core concepts of the Swift Service Lifecycle library.</p></section><div style="display: none;" id="ss:tooltips"><a href="/docs/swift-service-lifecycle/servicelifecycle/service"><pre><code><span class="xk">protocol</span> <span class="xv">Service</span> : <span class="xt">Sendable</span></code></pre><p>This is the basic protocol that a service has to implement.</p></a><a href="/docs/swift-service-lifecycle/servicelifecycle/servicegroup"><pre><code><span class="xk">actor</span> <span class="xv">ServiceGroup</span></code></pre><p>A <code>ServiceGroup</code> is responsible for running a number of services, setting up signal handling and signalling graceful shutdown to the services.</p></a><a href="/docs/swift-service-lifecycle/servicelifecycle.gracefulshutdown"><pre><code><span class="xk">func</span> <span class="xv">gracefulShutdown</span>(<wbr />) <span class="xk">async</span> <span class="xk">throws</span></code></pre><p>Waits until graceful shutdown is triggered.</p></a></div>
-        
     </section>
+
+    <hr />
+    <center>Dive deeper into Architecture</center>
+
+    <ul id="next-steps">
+        <li>
+            <a href="https://swiftonserver.com/whats-new-in-hummingbird-2">What's new in Hummingbird 2
+</a>
+        </li>
+        <li>
+            <a href="https://swiftonserver.com/using-swiftnio-fundamentals">Using SwiftNIO - Fundamentals</a>
+        </li>
+    </ul>
 
     <section id="about-author" class="content-wrapper">
         <img src="https://github.com/tib.png" alt="Tibor Bödecs" class="author" />
         <h4>About Tibor Bödecs</h4>
         <p class="author-about">Tibor, also known as <a href="https://theswiftdev.com">"The Swift Dev"</a>, is the co-founder of <a href="https://binarybirds.com/">Binary Birds Kft.</a> Tibor provides Server-Side Swift development and consulting.</p>
-
+    
         <a href="mailto:info@binarybirds.com" target="_blank" class="author-cta">Contact us</a>
     </section>
 </article>

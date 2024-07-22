@@ -23,16 +23,27 @@
     </section>
 
     <section id="contents" class="content-wrapper">
-    
-    {{{contents}}}
-        
+        {{{contents}}}
     </section>
+
+    {{#mainTopic}}
+    <hr />
+    <center>Dive deeper into {{.}}</center>
+    {{/mainTopic}}
+
+    <ul id="next-steps">
+        {{#readMore}}
+        <li>
+            <a href="{{baseUrl}}{{id}}">{{name}}</a>
+        </li>
+        {{/readMore}}
+    </ul>
 
     <section id="about-author" class="content-wrapper">
         <img src="https://github.com/{{authorGithub}}.png" alt="{{author}}" class="author">
         <h4>About {{author}}</h4>
         <p class="author-about">{{{authorAbout}}}</p>
-
+    
         <a href="{{ctaLink}}" target="_blank" class="author-cta">{{cta}}</a>
     </section>
 </article>

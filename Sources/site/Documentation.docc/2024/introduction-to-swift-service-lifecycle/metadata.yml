@@ -1,5 +1,6 @@
 slug: introduction-to-swift-service-lifecycle
 title: Introduction to Swift Service Lifecycle
+mainTopic: Architecture
 description: This article offers practical examples to introduce the Swift Service Lifecycle library.
 date: 2024/05/22
 tags: Swift, Service
@@ -12,3 +13,9 @@ ctaLink: mailto:info@binarybirds.com
 company: Binary Birds Kft.
 companyLink: https://binarybirds.com/
 duration: 15 minutes
+readMore:
+  - id: whats-new-in-hummingbird-2
+    name: |
+      What's new in Hummingbird 2
+  - id: using-swiftnio-fundamentals
+    name: Using SwiftNIO - Fundamentals

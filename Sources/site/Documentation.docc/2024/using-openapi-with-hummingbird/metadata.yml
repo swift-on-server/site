@@ -1,5 +1,6 @@
 slug: using-openapi-with-hummingbird
 title: Using OpenAPI Generator with Hummingbird
+mainTopic: Hummingbird
 description: Learn how to use OpenAPI Generator to create Swift APIs with Hummingbird.
 date: 2024/03/5
 tags: Hummingbird, OpenAPI, Documentation
@@ -12,3 +13,9 @@ ctaLink: https://unbeatable.software/mentoring-and-training
 company: Unbeatable Software B.V.
 companyLink: https://unbeatable.software/
 duration: 20 minutes
+readMore:
+  - id: whats-new-in-hummingbird-2
+    name: |
+      What's new in Hummingbird 2
+  - id: websockets-tutorial-using-swift-and-hummingbird
+    name: Using WebSockets with Hummingbird

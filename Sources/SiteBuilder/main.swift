@@ -1,7 +1,7 @@
 import FileManagerKit
-import SwiftSoup
 import Foundation
 import Mustache
+import SwiftSoup
 import Yams
 
 let fileManager = FileManager.default
@@ -161,13 +161,12 @@ func openFolder(_ folder: URL) throws {
 
     let items = fileManager.listDirectory(at: folder)
     if items.contains("\(folderName).md") && items.contains("metadata.yml") {
-        
+
         if items.contains("\(folderName).html") {
             print(
                 "Skipping \(folderName) as it is already rendered. Remove the render to allow rerendering."
             )
-        }
-        else {
+        } else {
             print("Rendering \(folderName)...")
             try buildTutorial(folder)
             print("Rendering of \(folderName) was completed.")
@@ -178,22 +177,24 @@ func openFolder(_ folder: URL) throws {
         try fileManager.createDirectory(
             at: output.appendingPathComponent(metadata.slug)
         )
-        
+
         let modificationDate = try fileManager.modificationDate(
             at: folder.appendingPathComponent("\(folderName).md")
         )
 
         // create assets directory
         try fileManager.createDirectory(
-            at: output
+            at:
+                output
                 .appendingPathComponent("images")
                 .appendingPathComponent("assets")
         )
-        
+
         let imagesUrl = folder.appendingPathComponent("images")
         if fileManager.directoryExists(at: imagesUrl) {
             try fileManager.createDirectory(
-                at: output
+                at:
+                    output
                     .appendingPathComponent("images")
                     .appendingPathComponent("assets")
                     .appendingPathComponent(metadata.slug)
@@ -201,25 +202,28 @@ func openFolder(_ folder: URL) throws {
 
             try fileManager.copy(
                 from: imagesUrl,
-                to: output
+                to:
+                    output
                     .appendingPathComponent("images")
                     .appendingPathComponent("assets")
                     .appendingPathComponent(metadata.slug)
                     .appendingPathComponent("images")
             )
         }
-        
+
         let coverUrl = folder.appendingPathComponent("cover.jpg")
         if fileManager.fileExists(at: coverUrl) {
             try fileManager.createDirectory(
-                at: output
+                at:
+                    output
                     .appendingPathComponent("images")
                     .appendingPathComponent("assets")
                     .appendingPathComponent(metadata.slug)
             )
             try fileManager.copy(
                 from: coverUrl,
-                to: output
+                to:
+                    output
                     .appendingPathComponent("images")
                     .appendingPathComponent("assets")
                     .appendingPathComponent(metadata.slug)
@@ -271,20 +275,23 @@ func openFolder(_ folder: URL) throws {
         let outputSettings = OutputSettings()
         outputSettings.prettyPrint(pretty: false)
         outputSettings.indentAmount(indentAmount: 2)
-        try document.outputSettings(outputSettings).outerHtml().write(
-            to:
-                output
-                .appendingPathComponent(metadata.slug)
-                .appendingPathComponent("index.html"),
-            atomically: true,
-            encoding: .utf8
-        )
-    } else {
+        try document.outputSettings(outputSettings).outerHtml()
+            .write(
+                to:
+                    output
+                    .appendingPathComponent(metadata.slug)
+                    .appendingPathComponent("index.html"),
+                atomically: true,
+                encoding: .utf8
+            )
+    }
+    else {
         for item in items {
             let itemURL = folder.appendingPathComponent(item)
             do {
                 try openFolder(itemURL)
-            } catch {
+            }
+            catch {
                 print(
                     "Error while discovering folder at \"\(itemURL.relativePath)\": \(error)"
                 )
@@ -323,13 +330,25 @@ struct ArticleMetadata: Codable {
     let companyLink: String
     let duration: String
     var contents: String?
+    let sample: String?
+    let readFirst: [OtherArticle]?
+    let readMore: [OtherArticle]?
+    var baseUrl: String?
+    let mainTopic: String?
+}
+
+struct OtherArticle: Codable {
+    let id: String
+    let name: String
 }
 
 func getMetadata(forFolder folder: URL) throws -> ArticleMetadata {
     let data = try Data(
         contentsOf: folder.appendingPathComponent("metadata.yml")
     )
-    return try YAMLDecoder().decode(ArticleMetadata.self, from: data)
+    var metadata = try YAMLDecoder().decode(ArticleMetadata.self, from: data)
+    metadata.baseUrl = baseUrl
+    return metadata
 }
 
 func buildTutorial(_ folder: URL) throws {

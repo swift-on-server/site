@@ -1,5 +1,6 @@
 slug: building-swiftnio-clients
 title: Building an HTTP client using SwiftNIO
+mainTopic: Networking
 description: Learn how to build a simple HTTP client using SwiftNIO and structured concurrency.
 date: 2024/02/20
 tags: Swift, SwiftNIO, Networking
@@ -12,3 +13,13 @@ ctaLink: https://unbeatable.software/mentoring-and-training
 company: Unbeatable Software B.V.
 companyLink: https://unbeatable.software/
 duration: 30 minutes
+readFirst:
+  - id: using-swiftnio-channels
+    name: Using SwiftNIO - Channels
+  - id: using-swiftnio-channels
+    name: Using SwiftNIO - Channels
+readMore:
+  - id: getting-started-with-structured-concurrency-in-swift
+    name: Getting Started with Structured Concurrency
+  - id: advanced-async-sequences
+    name: Advanced Async Sequences
