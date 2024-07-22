@@ -1,5 +1,6 @@
 slug: developing-with-swift-in-visual-studio-code
 title: Developing with Swift in Visual Studio Code
+mainTopic: Developer Tools
 description: Learn how to set up your Visual Studio Code for Swift development using Docker, Dev Containers and the Swift for VS Code extension.
 date: 2024/01/16
 tags: Swift, VSCode
@@ -12,3 +13,9 @@ ctaLink: https://unbeatable.software/mentoring-and-training
 company: Unbeatable Software B.V.
 companyLink: https://unbeatable.software/
 duration: 10 minutes
+readMore:
+  - id: whats-new-in-hummingbird-2
+    name: |
+      What's new in Hummingbird 2
+  - id: getting-started-with-structured-concurrency-in-swift
+    name: Getting Started with Structured Concurrency

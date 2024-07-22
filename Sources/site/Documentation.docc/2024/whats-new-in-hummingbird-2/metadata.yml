@@ -1,5 +1,6 @@
 slug: whats-new-in-hummingbird-2
 title: What's new in Hummingbird 2?
+mainTopic: Hummingbird
 description: |
     Discover Hummingbird 2: a Swift-based HTTP server framework, with modern concurrency and customizable request contexts.
 date: 2024/02/27
@@ -14,3 +15,8 @@ company: Binary Birds Kft.
 companyLink: https://binarybirds.com/
 duration: 10 minutes
 sample: https://github.com/swift-on-server/whats-new-in-hummingbird-2-sample
+readMore:
+  - id: using-openapi-with-hummingbird
+    name: Using OpenAPI with Hummingbird
+  - id: websockets-tutorial-using-swift-and-hummingbird
+    name: Using WebSockets with Hummingbird

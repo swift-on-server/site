@@ -79,16 +79,16 @@ a {
 a:hover, a:active {
     cursor: pointer;
 }
-p a:link, p a:visited, a.source.github {
+p a:link, p a:visited, a.source.github, #next-steps a {
     color: var(--link-color);
 }
 p a.selected, a.source.github.selected {
     color: var(--selected-link-color);
 }
-p a:hover {
+p a:hover, #next-steps a:hover {
     color: var(--hover-link-color);
 }
-p a:active {
+p a:active, #next-steps a:active {
     color: var(--active-link-color);
 }
 h1, h2, h3, h4, h5, h6 {
@@ -392,4 +392,22 @@ footer img#logo-image {
 .tooltips .visible {
     opacity: 1;
     z-index: 3;
+}
+
+ul#next-steps {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+    padding: 2rem 4rem;
+    margin: 0 auto;
+    max-width: 800pt;
+}
+
+ul#next-steps li {
+    list-style: none;
+}
+
+#next-steps li {
+    display: flex;
+    flex-direction: column;
 }

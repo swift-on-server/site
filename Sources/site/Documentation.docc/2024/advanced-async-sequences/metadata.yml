@@ -1,5 +1,6 @@
 slug: advanced-async-sequences
 title: Advanced Async Sequences in Swift
+mainTopic: Concurrency
 description: Learn how to use and create your own AsyncSequences.
 date: 2024/07/02
 tags: Structured Concurrency
@@ -12,3 +13,8 @@ ctaLink: https://unbeatable.software/mentoring-and-training
 company: Unbeatable Software B.V.
 companyLink: https://unbeatable.software/
 duration: 30 minutes
+readMore:
+  - id: getting-started-with-structured-concurrency-in-swift
+    name: Getting Started with Structured Concurrency
+  - id: structured-concurrency-and-shared-state-in-swift
+    name: Structured Concurrency and Shared State

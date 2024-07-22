@@ -76,8 +76,7 @@
     </section>
 
     <section id="contents" class="content-wrapper">
-    
-    <section class="details literature"><p>Logging is an essential practice that helps you understand what happens within your program.</p><p>The <a href="https://github.com/apple/swift-log" target="_blank" rel="external">swift-log</a> open-source project is developed by Apple. It provides a unified logging solution for server-side Swift applications. The API closely mirrors the functionality of <a href="https://developer.apple.com/documentation/os/logging" target="_blank" rel="external nofollow noopener ugc">os_log</a>, but it also offers cross-platform compatibility. This means that it is possible to use the Logging library on Linux and Windows too. This tutorial aims to provide a simple, but comprehensive overview of the logger API.</p><h2 id="How%20to%20use%20the%20Logging%20library"><a href="#How%20to%20use%20the%20Logging%20library">How to use the Logging library</a></h2><p>Incorporating Logging into a backend Swift project is straightforward. Swift Package Manager provides an easy way to add the Logging framework as a package dependency using the <code>Package.swift</code> file.</p><pre class="snippet"><code class="language-swift"><span class="newline"></span><span class="xc">// swift-tools-version: 5.9</span><span class="newline">
+        <section class="details literature"><p>Logging is an essential practice that helps you understand what happens within your program.</p><p>The <a href="https://github.com/apple/swift-log" target="_blank" rel="external">swift-log</a> open-source project is developed by Apple. It provides a unified logging solution for server-side Swift applications. The API closely mirrors the functionality of <a href="https://developer.apple.com/documentation/os/logging" target="_blank" rel="external nofollow noopener ugc">os_log</a>, but it also offers cross-platform compatibility. This means that it is possible to use the Logging library on Linux and Windows too. This tutorial aims to provide a simple, but comprehensive overview of the logger API.</p><h2 id="How%20to%20use%20the%20Logging%20library"><a href="#How%20to%20use%20the%20Logging%20library">How to use the Logging library</a></h2><p>Incorporating Logging into a backend Swift project is straightforward. Swift Package Manager provides an easy way to add the Logging framework as a package dependency using the <code>Package.swift</code> file.</p><pre class="snippet"><code class="language-swift"><span class="newline"></span><span class="xc">// swift-tools-version: 5.9</span><span class="newline">
 </span><span class="xk">import</span> <span class="xv">PackageDescription</span><span class="newline">
 
 </span><span class="xk">let</span> <span class="xv">package</span> = <span class="xv">Package</span>(<span class="newline">
@@ -409,14 +408,17 @@
 </span>export MY_APP_LOG_LEVEL=trace<span class="newline">
 </span>export MY_LIBRARY_LOG_LEVEL=trace<span class="newline">
 </span>swift run MyApp</code></pre><p>Provide the environmental variables using a single command before the <code>swift run MyApp</code> action.</p><p>The <code>export</code> command can be used to export variables, making them available in the environment of subsequently executed commands.</p><h2 id="Summary"><a href="#Summary">Summary</a></h2><p>That’s how you can integrate the Swift Logging library into a framework or application.</p><p>You’ve learned a lot about logging in this article, including log levels, metadata and custom logging subsystems via environment variables.</p><p>If you want to learn a bit more about other logging and debugging solutions, you can also <a href="https://theswiftdev.com/logging-for-beginners-in-swift/" target="_blank" rel="external nofollow noopener ugc">read this article</a>, which contains some useful snippets &amp; examples.</p></section>
-        
     </section>
+
+
+    <ul id="next-steps">
+    </ul>
 
     <section id="about-author" class="content-wrapper">
         <img src="https://github.com/tib.png" alt="Tibor Bödecs" class="author" />
         <h4>About Tibor Bödecs</h4>
         <p class="author-about">Tibor, also known as <a href="https://theswiftdev.com">"The Swift Dev"</a>, is the co-founder of <a href="https://binarybirds.com/">Binary Birds Kft.</a> Tibor provides Server-Side Swift development and consulting.</p>
-
+    
         <a href="mailto:info@binarybirds.com" target="_blank" class="author-cta">Contact us</a>
     </section>
 </article>

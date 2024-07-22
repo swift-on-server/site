@@ -12,3 +12,8 @@ ctaLink: https://unbeatable.software/mentoring-and-training
 company: Unbeatable Software B.V.
 companyLink: https://unbeatable.software/
 duration: 30 minutes
+readMore:
+  - id: using-openapi-with-hummingbird
+    name: Using OpenAPI with Hummingbird
+  - id: websockets-tutorial-using-swift-and-hummingbird
+    name: Using WebSockets with Hummingbird

@@ -1,5 +1,6 @@
 slug: structured-concurrency-and-shared-state-in-swift
 title: Structured Concurrency and Shared State in Swift
+mainTopic: Concurrency
 description: Learn how actors and sendable prevent race conditions in your concurrent code.
 date: 2024/03/25
 tags: Swift, Structured Concurrency
@@ -12,3 +13,11 @@ ctaLink: https://unbeatable.software/mentoring-and-training
 company: Unbeatable Software B.V.
 companyLink: https://unbeatable.software/
 duration: 30 minutes
+readFirst:
+  - id: getting-started-with-structured-concurrency-in-swift
+    name: Getting Started with Structured Concurrency
+readMore:
+  - id: advanced-async-sequences
+    name: Advanced Async Sequences
+  - id: using-swiftnio-fundamentals
+    name: Using SwiftNIO - Fundamentals

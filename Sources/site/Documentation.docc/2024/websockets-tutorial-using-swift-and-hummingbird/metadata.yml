@@ -1,5 +1,6 @@
 slug: websocket-tutorial-using-swift-and-hummingbird
 title: WebSocket tutorial using Swift and Hummingbird
+mainTopic: Hummingbird
 description: In this article, you will learn about WebSockets and how to use them with the Hummingbird framework in a straightforward, easy-to-follow manner.
 date: 2024/06/27
 tags: Swift, Hummingbird, WebSockets
@@ -12,3 +13,8 @@ ctaLink: mailto:info@binarybirds.com
 company: Binary Birds Kft.
 companyLink: https://binarybirds.com/
 duration: 15 minutes
+readMore:
+  - id: using-openapi-with-hummingbird
+    name: Using OpenAPI with Hummingbird
+  - id: advanced-async-sequences
+    name: Advanced Async Sequences
