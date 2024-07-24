@@ -13,7 +13,7 @@ This guide assumes familiarity with Structured Concurrency as covered in these g
 
 Swift's ``Sequence`` types are very commonly present in Swift. They provide sequential, iterated access to its elements. The most common sequence types such as ``Array``, ``Set`` and ``Dictionary`` are all a ``Collection``.
 
-Thes Collection types can accessed by subscript, by providing an Index. The type of Index varies between implementations. A common example is the ``Int`` index used to access an ``Array``.
+These Collection types can accessed by subscript, by providing an Index. The type of Index varies between implementations. A common example is the ``Int`` index used to access an ``Array``.
 
 Whereas ``Collection`` types enable access to one or more specific elements, ``Sequence`` do not necessarily provide this capability. A Sequence solely has the ability to iterate upon a set of elements.
 
