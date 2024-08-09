@@ -480,7 +480,7 @@
 </span>        }<span class='newline'>
 </span>    &lt;/script&gt;<span class='newline'>
 </span>&lt;/body&gt;<span class='newline'>
-</span>&lt;/html&gt;</code></pre><p>Once the script has been executed, the Swagger UI services should be accessible via the <a target='_blank' href='https://localhost:8888/' rel='external nofollow noopener ugc'>https://localhost:8888/</a> address.</p><h2 id='Check%20DocC%20warnings'><a href='#Check%20DocC%20warnings'>Check DocC warnings</a></h2><p>This script (<code>check-docc-warnings.sh</code>) builds the DocC documentation and checks for potential issues within it:</p><pre class='snippet'><code class='language-sh'><span class='newline'></span>set -euo pipefail<span class='newline'>
+</span>&lt;/html&gt;</code></pre><p>Once the script has been executed, the Swagger UI services should be accessible via the <a target='_blank' href='http://localhost:8888/' rel='external nofollow noopener ugc'>http://localhost:8888/</a> address.</p><h2 id='Check%20DocC%20warnings'><a href='#Check%20DocC%20warnings'>Check DocC warnings</a></h2><p>This script (<code>check-docc-warnings.sh</code>) builds the DocC documentation and checks for potential issues within it:</p><pre class='snippet'><code class='language-sh'><span class='newline'></span>set -euo pipefail<span class='newline'>
 
 </span>log() { printf -- "** %s\n" "$*" &gt;&amp;2; }<span class='newline'>
 </span>error() { printf -- "** ERROR: %s\n" "$*" &gt;&amp;2; }<span class='newline'>
