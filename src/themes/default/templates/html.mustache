@@ -11,10 +11,10 @@
     {{/page.hreflang}}
     {{#page.prev}}<link rel="prev" href="{{permalink}}">{{/page.prev}}
     {{#page.next}}<link rel="next" href="{{permalink}}">{{/page.next}}
-    
+
     <title>{{page.title}} - {{site.title}}</title>
     <meta name="description" content="{{page.description}}">
-    
+
     <meta property="og:url" content="{{page.permalink}}">
     <meta property="og:title" content="{{page.title}} - {{site.title}}">
     <meta property="og:description" content="{{page.description}}">
@@ -24,23 +24,21 @@
     <meta name="twitter:title" content="{{page.title}} - {{site.title}}">
     <meta name="twitter:description" content="{{page.description}}">
     {{#page.imageUrl}}<meta name="twitter:image" content="{{.}}">{{/page.imageUrl}}
-    
+
     <link rel="stylesheet" href="{{site.baseUrl}}css/modern-normalize.css">
     <link rel="stylesheet" href="{{site.baseUrl}}css/modern-base.css">
     <link rel="stylesheet" href="{{site.baseUrl}}css/variables.css">
     <link rel="stylesheet" href="{{site.baseUrl}}css/base.css">
-    
     <link rel="stylesheet" href="{{site.baseUrl}}css/grid.css">
     <link rel="stylesheet" href="{{site.baseUrl}}css/navigation.css">
     <link rel="stylesheet" href="{{site.baseUrl}}css/footer.css">
     <link rel="stylesheet" href="{{site.baseUrl}}css/syntax.css">
-    
     <link rel="stylesheet" href="{{site.baseUrl}}css/style.css">
-    
+
     {{#page.css}}<link rel="stylesheet" href="{{.}}">{{/page.css}}
-    
+
     {{> blocks.icons}}
-    
+
     <script type="text/javascript" src="{{site.baseUrl}}/js/tooltips.js" async=""></script>
 
     <link
@@ -89,7 +87,7 @@
     {{> blocks.footer}}
 
     </div>
-    <script src="/js/main.js" async></script>
+
     {{#page.js}}<script src="{{.}}" async></script>{{/page.js}}
 
 </body>
