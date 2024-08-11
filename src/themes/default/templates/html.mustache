@@ -39,8 +39,6 @@
 
     {{> blocks.icons}}
 
-    <script type="text/javascript" src="{{site.baseUrl}}/js/tooltips.js" async=""></script>
-
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
@@ -53,7 +51,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
-          const container = document.querySelector("div#ss\\:tooltips");
+          const container = document.querySelector("div#swiftinit-tooltips");
           if (container !== null) {
               container.querySelectorAll('pre code').forEach((el) => {
                   el.classList.add('nohighlight');
@@ -70,6 +68,7 @@
         });
     </script>
 
+    <script defer data-domain="swiftonserver.com" src="https://plausible.io/js/script.js"></script>
 
 </head>
 
@@ -90,5 +89,6 @@
 
     {{#page.js}}<script src="{{.}}" async></script>{{/page.js}}
 
+    <script type="text/javascript" src="{{site.baseUrl}}/js/tooltips.js" async=""></script>
 </body>
 </html>
