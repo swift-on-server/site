@@ -1,7 +1,7 @@
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. https://github.com/tayloraswift/swift-unidoc?tab=MPL-2.0-1-ov-file
 
-const tooltips = document.getElementById('ss:tooltips');
+const tooltips = document.getElementById('swiftinit-tooltips');
 
 if (tooltips !== null) {
     tooltips.remove();

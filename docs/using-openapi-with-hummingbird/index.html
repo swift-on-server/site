@@ -47,8 +47,6 @@
     <link rel="apple-touch-icon" sizes="152x152" href="https://swiftonserver.com/images/icons/apple-touch-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://swiftonserver.com/images/icons/apple-touch-icon-180x180.png">
 
-    <script type="text/javascript" src="https://swiftonserver.com//js/tooltips.js" async=""></script>
-
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
@@ -61,7 +59,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
-          const container = document.querySelector("div#ss\\:tooltips");
+          const container = document.querySelector("div#swiftinit-tooltips");
           if (container !== null) {
               container.querySelectorAll('pre code').forEach((el) => {
                   el.classList.add('nohighlight');
@@ -78,6 +76,7 @@
         });
     </script>
 
+    <script defer data-domain="swiftonserver.com" src="https://plausible.io/js/script.js"></script>
 
 </head>
 
@@ -224,7 +223,7 @@
 </span>        <span class='xc'>// 5</span><span class='newline'>
 </span>        <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>app</span>.<span class='xv'>runService</span>()<span class='newline'>
 </span>    }<span class='newline'>
-</span>}</code></pre><p>This code registers the <code>HelloAPI</code> routes, defined in your <code>openapi.yaml</code></p><p>Let’s break down the above:</p><ol><li><p>Create a new <code>Router</code> and add a logging middleware to it, allowing you to see the requests in the console.</p></li><li><p>Create a new <code>HelloAPI</code> instance. This is also the point where you can inject dependencies into your API implementation.</p></li><li><p>Register the HelloAPI’s handlers on the router. This will make the <code>HelloAPI</code> respond to the <code>/hello</code> route.</p></li><li><p>Create a new <code>Application</code> with the router and a configuration that specifies the hostname and port.</p></li><li><p>Run the application. This will make your route available at <a target='_blank' href='http://localhost:8080/hello' rel='external nofollow noopener ugc'>http://localhost:8080/hello</a>.</p></li></ol><p>That’s all it takes to create a Hummingbird server that responds to the <code>/hello</code> route using the OpenAPI generator. There are many more features and options available in the OpenAPI generator, such as multipart or generating client code for use with a client transport such as <a href='https://github.com/swift-server/async-http-client' target='_blank' rel='external'>async-http-client</a> and URLSession. We hope this tutorial has given you a good starting point for using the OpenAPI generator with Hummingbird.</p></section><div style='display: none;' id='ss:tooltips'><a href='/hist/swift-on-server.articles:main/articles/whats-new-in-hummingbird-2'><p>Hummingbird is a lightweight, flexible HTTP server framework written in Swift. The work on the second major version started last year and the first alpha version was tagged on the 22th of January, 2024. There are quite a lot of significant changes and under the hood improvements. It seems like the new APIs are mostly settled down at this point, so this is a great opportunity to introduce HB2. Let’s dive in.</p></a></div>
+</span>}</code></pre><p>This code registers the <code>HelloAPI</code> routes, defined in your <code>openapi.yaml</code></p><p>Let’s break down the above:</p><ol><li><p>Create a new <code>Router</code> and add a logging middleware to it, allowing you to see the requests in the console.</p></li><li><p>Create a new <code>HelloAPI</code> instance. This is also the point where you can inject dependencies into your API implementation.</p></li><li><p>Register the HelloAPI’s handlers on the router. This will make the <code>HelloAPI</code> respond to the <code>/hello</code> route.</p></li><li><p>Create a new <code>Application</code> with the router and a configuration that specifies the hostname and port.</p></li><li><p>Run the application. This will make your route available at <a target='_blank' href='http://localhost:8080/hello' rel='external nofollow noopener ugc'>http://localhost:8080/hello</a>.</p></li></ol><p>That’s all it takes to create a Hummingbird server that responds to the <code>/hello</code> route using the OpenAPI generator. There are many more features and options available in the OpenAPI generator, such as multipart or generating client code for use with a client transport such as <a href='https://github.com/swift-server/async-http-client' target='_blank' rel='external'>async-http-client</a> and URLSession. We hope this tutorial has given you a good starting point for using the OpenAPI generator with Hummingbird.</p></section><div style='display: none;' id='swiftinit-tooltips'><a href='/hist/swift-on-server.articles:main/articles/whats-new-in-hummingbird-2'><p>Hummingbird is a lightweight, flexible HTTP server framework written in Swift. The work on the second major version started last year and the first alpha version was tagged on the 22th of January, 2024. There are quite a lot of significant changes and under the hood improvements. It seems like the new APIs are mostly settled down at this point, so this is a great opportunity to introduce HB2. Let’s dive in.</p></a></div>
                     
                 </section>
     
@@ -440,5 +439,6 @@
 
     
 
+    <script type="text/javascript" src="https://swiftonserver.com//js/tooltips.js" async=""></script>
 </body>
 </html>
