@@ -4,21 +4,28 @@
     <description>Articles about server-side Swift development. Created by Joannis Orlandos and Tibor Bödecs.</description>
     <link>https://swiftonserver.com/</link>
     <language>en-US</language>
-    <lastBuildDate>Sun, 11 Aug 2024 19:01:07 +0000</lastBuildDate>
-    <pubDate>Tue, 02 Jul 2024 12:00:00 +0000</pubDate>
+    <lastBuildDate>Thu, 29 Aug 2024 11:52:05 +0000</lastBuildDate>
+    <pubDate>Thu, 29 Aug 2024 09:00:00 +0000</pubDate>
     <ttl>250</ttl>
     <atom:link href="https://swiftonserver.com/rss.xml" rel="self" type="application/rss+xml"/>
 
 <item>
+    <guid isPermaLink="true">https://swiftonserver.com/working-with-udp-in-swiftnio/</guid>
+    <title><![CDATA[ Working with UDP in SwiftNIO ]]></title>
+    <description><![CDATA[ Create UDP servers and clients using SwiftNIO and structured concurrency ]]></description>
+    <link>https://swiftonserver.com/working-with-udp-in-swiftnio/</link>
+    <pubDate>Thu, 29 Aug 2024 09:00:00 +0000</pubDate>
+</item>
+<item>
     <guid isPermaLink="true">https://swiftonserver.com/advanced-async-sequences/</guid>
-    <title><![CDATA[ Advanced Async Sequences in Swift ]]></title>
-    <description><![CDATA[ Learn how to use and create your own AsyncSequences. ]]></description>
+    <title><![CDATA[ Advanced Async Sequences ]]></title>
+    <description><![CDATA[ Learn how to use and create your own AsyncSequences in Swift. ]]></description>
     <link>https://swiftonserver.com/advanced-async-sequences/</link>
     <pubDate>Tue, 02 Jul 2024 12:00:00 +0000</pubDate>
 </item>
 <item>
     <guid isPermaLink="true">https://swiftonserver.com/websockets-tutorial-using-swift-and-hummingbird/</guid>
-    <title><![CDATA[ WebSocket tutorial using Swift and Hummingbird ]]></title>
+    <title><![CDATA[ Using WebSockets in Hummingbird ]]></title>
     <description><![CDATA[ In this article, you will learn about WebSockets and how to use them with the Hummingbird framework in a straightforward, easy-to-follow manner. ]]></description>
     <link>https://swiftonserver.com/websockets-tutorial-using-swift-and-hummingbird/</link>
     <pubDate>Thu, 27 Jun 2024 12:00:00 +0000</pubDate>
@@ -39,7 +46,7 @@
 </item>
 <item>
     <guid isPermaLink="true">https://swiftonserver.com/useful-scripts-for-server-side-swift-libraries/</guid>
-    <title><![CDATA[ Useful scripts for server-side Swift libraries ]]></title>
+    <title><![CDATA[ Useful scripts for server-side Swift ]]></title>
     <description><![CDATA[ Learn about shell scripts to enforce coding standards and conduct checks for backend Swift projects. ]]></description>
     <link>https://swiftonserver.com/useful-scripts-for-server-side-swift-libraries/</link>
     <pubDate>Wed, 10 Apr 2024 12:00:00 +0000</pubDate>
@@ -53,21 +60,21 @@
 </item>
 <item>
     <guid isPermaLink="true">https://swiftonserver.com/structured-concurrency-and-shared-state-in-swift/</guid>
-    <title><![CDATA[ Structured Concurrency and Shared State in Swift ]]></title>
+    <title><![CDATA[ Using Structured Concurrency and Shared State ]]></title>
     <description><![CDATA[ Learn how actors and sendable prevent race conditions in your concurrent code. ]]></description>
     <link>https://swiftonserver.com/structured-concurrency-and-shared-state-in-swift/</link>
     <pubDate>Mon, 25 Mar 2024 12:00:00 +0000</pubDate>
 </item>
 <item>
     <guid isPermaLink="true">https://swiftonserver.com/getting-started-with-structured-concurrency-in-swift/</guid>
-    <title><![CDATA[ Getting Started with Structured Concurrency in Swift ]]></title>
+    <title><![CDATA[ Getting Started: Swift&#39;s Structured Concurrency ]]></title>
     <description><![CDATA[ Learn how to apply structured concurrency in your applications, using task groups and other structured concepts. ]]></description>
     <link>https://swiftonserver.com/getting-started-with-structured-concurrency-in-swift/</link>
     <pubDate>Tue, 19 Mar 2024 12:00:00 +0000</pubDate>
 </item>
 <item>
     <guid isPermaLink="true">https://swiftonserver.com/using-environment-variables-in-swift/</guid>
-    <title><![CDATA[ Using environment variables in Swift ]]></title>
+    <title><![CDATA[ Environment Variables in Swift ]]></title>
     <description><![CDATA[ Explore the importance of environment variables in Swift and how to use them. ]]></description>
     <link>https://swiftonserver.com/using-environment-variables-in-swift/</link>
     <pubDate>Tue, 12 Mar 2024 12:00:00 +0000</pubDate>

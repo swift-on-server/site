@@ -9,17 +9,17 @@
     
     <link rel="next" href="https://swiftonserver.com/async-http-client-by-example/">
 
-    <title>Advanced Async Sequences in Swift - Swift on server</title>
-    <meta name="description" content="Learn how to use and create your own AsyncSequences.">
+    <title>Advanced Async Sequences - Swift on server</title>
+    <meta name="description" content="Learn how to use and create your own AsyncSequences in Swift.">
 
     <meta property="og:url" content="https://swiftonserver.com/advanced-async-sequences/">
-    <meta property="og:title" content="Advanced Async Sequences in Swift - Swift on server">
-    <meta property="og:description" content="Learn how to use and create your own AsyncSequences.">
+    <meta property="og:title" content="Advanced Async Sequences - Swift on server">
+    <meta property="og:description" content="Learn how to use and create your own AsyncSequences in Swift.">
     <meta property="og:image" content="/assets/advanced-async-sequences/cover.jpg" />
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Advanced Async Sequences in Swift - Swift on server">
-    <meta name="twitter:description" content="Learn how to use and create your own AsyncSequences.">
+    <meta name="twitter:title" content="Advanced Async Sequences - Swift on server">
+    <meta name="twitter:description" content="Learn how to use and create your own AsyncSequences in Swift.">
     <meta name="twitter:image" content="/assets/advanced-async-sequences/cover.jpg">
 
     <link rel="stylesheet" href="https://swiftonserver.com/css/modern-normalize.css">
@@ -125,11 +125,11 @@
                 <div class="meta">
                     <time datetime="2024/07/02">2024/07/02</time>
                      &middot; <span class="reading-time">15 min read</span>
-                     &middot; <span class="featured">featured</span>
+                    
                 </div>
                 <section>
                 
-                <section class='introduction'><h1>Advanced Async Sequences in Swift</h1></section><section class='details literature'><p><code><a href='https://swiftinit.org/docs/swift/_concurrency/asyncsequence' target='_blank' rel='external'>AsyncSequence</a></code>s are very prevalent in Server-Side Swift, and are becoming more prominent in macOS and iOS apps as well.</p><p>Like other structured concurrency features, AsyncSequences enable structured programming. This makes it easier for you to reason about your code, and write more robust code free of data races.</p><p>This guide assumes familiarity with Structured Concurrency as covered in these guides:</p><ul><li><p><a href='../getting-started-with-structured-concurrency-in-swift'>Structured Concurrency in Swift</a></p></li><li><p><a href='../structured-concurrency-and-shared-state-in-swift'>Sendable and Shared Mutable State</a></p></li></ul><h2 id='What%20is%20a%20Sequence?'><a href='#What%20is%20a%20Sequence?'>What is a Sequence?</a></h2><p>Swift’s <code><a href='https://swiftinit.org/docs/swift/swift/sequence' target='_blank' rel='external'>Sequence</a></code> types are very commonly present in Swift. They provide sequential, iterated access to its elements. The most common sequence types such as <code><a href='https://swiftinit.org/docs/swift/swift/array' target='_blank' rel='external'>Array</a></code>, <code><a href='https://swiftinit.org/docs/swift/swift/set' target='_blank' rel='external'>Set</a></code> and <code><a href='https://swiftinit.org/docs/swift/swift/dictionary' target='_blank' rel='external'>Dictionary</a></code> are all a <code><a href='https://swiftinit.org/docs/swift/swift/collection' target='_blank' rel='external'>Collection</a></code>.</p><p>These Collection types can accessed by subscript, by providing an Index. The type of Index varies between implementations. A common example is the <code><a href='https://swiftinit.org/docs/swift/swift/int' target='_blank' rel='external'>Int</a></code> index used to access an <code><a href='https://swiftinit.org/docs/swift/swift/array' target='_blank' rel='external'>Array</a></code>.</p><p>Whereas <code><a href='https://swiftinit.org/docs/swift/swift/collection' target='_blank' rel='external'>Collection</a></code> types enable access to one or more specific elements, <code><a href='https://swiftinit.org/docs/swift/swift/sequence' target='_blank' rel='external'>Sequence</a></code> do not necessarily provide this capability. A Sequence solely has the ability to iterate upon a set of elements.</p><p>When you’re using a <code>for .. in</code> loop to iterate elements, you’re always leveraging the sequence APIs.</p><h3 id='IteratorProtocol'><a href='#IteratorProtocol'>IteratorProtocol</a></h3><p>Sequence implementations only need to provide one function, the <code>makeIterator</code> function. This function creates an <code><a href='https://swiftinit.org/docs/swift/swift/iteratorprotocol' target='_blank' rel='external'>IteratorProtocol</a></code> that you implement as well.</p><p><em>IteratorProtocol</em> should be implemented as a <code>struct</code>, and has a single function called <code><a href='https://swiftinit.org/docs/swift/swift/iteratorprotocol.next' target='_blank' rel='external'>next</a></code>. This <em>mutating</em> function returns the next element in the sequence.</p><p>A common way to consume sequences and iterators is the <code>for .. in</code> syntax:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>for</span> <span class='xv'>element</span> <span class='xk'>in</span> <span class='xv'>mySequence</span> {<span class='newline'>
+                <section class='introduction'><h1>Advanced Async Sequences in Swift</h1></section><section class='details literature'><p><code><a href='https://swiftinit.org/docs/swift/_concurrency/asyncsequence' target='_blank' rel='external'>AsyncSequence</a></code>s are very prevalent in Server-Side Swift, and are becoming more prominent in macOS and iOS apps as well.</p><p>Like other structured concurrency features, AsyncSequences enable structured programming. This makes it easier for you to reason about your code, and write more robust code free of data races.</p><p>This guide assumes familiarity with Structured Concurrency as covered in these guides:</p><ul><li><p><a href='../getting-started-with-structured-concurrency-in-swift'>Structured Concurrency in Swift</a></p></li><li><p><a href='../structured-concurrency-and-shared-state-in-swift'>Sendable and Shared Mutable State</a></p></li></ul><h2 id='What%20is%20a%20Sequence?'><a href='#What%20is%20a%20Sequence?'>What is a Sequence?</a></h2><p>Swift’s <code><a href='https://swiftinit.org/docs/swift/swift/sequence' target='_blank' rel='external'>Sequence</a></code> types are very commonly present in Swift. They provide sequential, iterated access to its elements. The most common sequence types such as <code><a href='https://swiftinit.org/docs/swift/swift/array' target='_blank' rel='external'>Array</a></code>, <code><a href='https://swiftinit.org/docs/swift/swift/set' target='_blank' rel='external'>Set</a></code> and <code><a href='https://swiftinit.org/docs/swift/swift/dictionary' target='_blank' rel='external'>Dictionary</a></code> are all a <code><a href='https://swiftinit.org/docs/swift/swift/collection' target='_blank' rel='external'>Collection</a></code>.</p><p>These Collection types can accessed by subscript, by providing an Index. The type of Index varies between implementations. A common example is the <code><a href='https://swiftinit.org/docs/swift/swift/int' target='_blank' rel='external'>Int</a></code> index used to access an <code><a href='https://swiftinit.org/docs/swift/swift/array' target='_blank' rel='external'>Array</a></code>.</p><p>Whereas <code><a href='https://swiftinit.org/docs/swift/swift/collection' target='_blank' rel='external'>Collection</a></code> types enable access to one or more specific elements, <code><a href='https://swiftinit.org/docs/swift/swift/sequence' target='_blank' rel='external'>Sequence</a></code> do not necessarily provide this capability. A Sequence solely has the ability to iterate upon a set of elements.</p><p>When you’re using a <code>for .. in</code> loop to iterate elements, you’re always leveraging the sequence APIs.</p><h3 id='IteratorProtocol'><a href='#IteratorProtocol'>IteratorProtocol</a></h3><p>Sequence implementations only need to provide one function, the <code>Sequence/makeIterator</code> function. This function creates an <code><a href='https://swiftinit.org/docs/swift/swift/iteratorprotocol' target='_blank' rel='external'>IteratorProtocol</a></code> that you implement as well.</p><p><em>IteratorProtocol</em> should be implemented as a <code>struct</code>, and has a single function called <code><a href='https://swiftinit.org/docs/swift/swift/iteratorprotocol.next' target='_blank' rel='external'>next</a></code>. This <em>mutating</em> function returns the next element in the sequence.</p><p>A common way to consume sequences and iterators is the <code>for .. in</code> syntax:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>for</span> <span class='xv'>element</span> <span class='xk'>in</span> <span class='xv'>mySequence</span> {<span class='newline'>
 </span>    <a class='xv' href='https://swiftinit.org/docs/swift/swift.print(_:separator:terminator:)' target='_blank' rel='external'>print</a>(<span class='xv'>element</span>)<span class='newline'>
 </span>}</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/advanced-async-sequences.swift#L4' target='_blank' class='source github'><span class='file'>advanced-async-sequences.swift</span>:<span class='line'>4</span></a><p>Swift uses some syntax sugar in the above example, and unwinds that code behind the scenes:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>var</span> <span class='xv'>iterator</span> = <span class='xv'>mySequence</span>.<a class='xv' href='https://swiftinit.org/docs/swift/swift/collection.makeiterator?hash=85CYW' target='_blank' rel='external'>makeIterator</a>()<span class='newline'>
 </span><span class='xk'>while</span> <span class='xk'>let</span> <span class='xv'>element</span> = <span class='xv'>iterator</span>.<a class='xv' href='https://swiftinit.org/docs/swift/swift/indexingiterator.next' target='_blank' rel='external'>next</a>() {<span class='newline'>
@@ -295,8 +295,10 @@
                                 
                             </div>
                             
-                            <h2 class="title"><a href="https://swiftonserver.com/structured-concurrency-and-shared-state-in-swift/" target="">Structured Concurrency and Shared State in Swift</a></h2>
+                            <h2 class="title"><a href="https://swiftonserver.com/structured-concurrency-and-shared-state-in-swift/" target="">Using Structured Concurrency and Shared State</a></h2>
                             <p>Learn how actors and sendable prevent race conditions in your concurrent code.</p>
+                        
+                            <div class="spacer"></div>
                         
                             <div class="tag-list">
                             </div>
@@ -311,8 +313,10 @@
                                 
                             </div>
                             
-                            <h2 class="title"><a href="https://swiftonserver.com/getting-started-with-structured-concurrency-in-swift/" target="">Getting Started with Structured Concurrency in Swift</a></h2>
+                            <h2 class="title"><a href="https://swiftonserver.com/getting-started-with-structured-concurrency-in-swift/" target="">Getting Started: Swift&#39;s Structured Concurrency</a></h2>
                             <p>Learn how to apply structured concurrency in your applications, using task groups and other structured concepts.</p>
+                        
+                            <div class="spacer"></div>
                         
                             <div class="tag-list">
                             </div>
@@ -403,7 +407,7 @@
             <div>
                 <span style="display: block; height: 32px;">&nbsp;</span>
                 <h4>Swift on server</h4>
-                <p><small><a href="https://swiftonserver.com/" target="_blank">swiftonserver.com</a></small></p>
+                <p><small><a href=https://swiftonserver.com/" target="_blank">swiftonserver.com</a></small></p>
                 <ul>
                     <li><a href="https://github.com/swift-on-server/" target="_blank">GitHub</a></li>
                     <li><a href="https://mastodon.social/@swiftonserver/" target="_blank">Mastodon</a></li>
