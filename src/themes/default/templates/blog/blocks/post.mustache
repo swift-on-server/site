@@ -16,9 +16,11 @@
     <h2 class="title"><a href="{{permalink}}" target="">{{title}}</a></h2>
     <p>{{description}}</p>
 
+    <div class="spacer"></div>
+
     <div class="tag-list">
     {{#tags}}
-        <a href="{{permalink}}"><small>{{title}}</small></a>{{^last()}}<small>, </small>{{/last()}}
+        <a href="{{permalink}}"><small>{{title}}</small></a>
     {{/tags}}
     </div>
 </div>

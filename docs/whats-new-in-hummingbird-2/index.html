@@ -7,7 +7,7 @@
 
     <link rel="canonical" href="https://swiftonserver.com/whats-new-in-hummingbird-2/">
     <link rel="prev" href="https://swiftonserver.com/websockets-tutorial-using-swift-and-hummingbird/">
-    
+    <link rel="next" href="https://swiftonserver.com/working-with-udp-in-swiftnio/">
 
     <title>What&#39;s new in Hummingbird 2? - Swift on server</title>
     <meta name="description" content="Discover Hummingbird 2: a Swift-based HTTP server framework, with modern concurrency and customizable request contexts.">
@@ -264,7 +264,7 @@
 </span>        <span class='xk'>let</span> <span class='xv'>app</span> = <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>buildApplication</span>()<span class='newline'>
 </span>        <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>app</span>.<span class='xv'>runService</span>()<span class='newline'>
 </span>    }<span class='newline'>
-</span>}</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/hummingbird-2.swift#L109' target='_blank' class='source github'><span class='file'>hummingbird-2.swift</span>:<span class='line'>109</span></a><ol><li><p>Setup the router using the <code>MyBaseRequestContext</code> type as a custom context.</p></li><li><p>Add middlewares to the router, HB2 has middlewares on the router instead of the app</p></li><li><p>Setup a basic health route on the router, simply return with a HTTP status code</p></li><li><p>Add routes using the custom controller to the <code>api</code> route group</p></li><li><p>Build the <em>Application</em> instance using the router and the configuration</p></li></ol><p>Inside the main entrypoint you can start the server by calling the <code>Application.runService</code> method:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>import</span> <span class='xv'>ArgumentParser</span><span class='newline'>
+</span>}</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/hummingbird-2.swift#L109' target='_blank' class='source github'><span class='file'>hummingbird-2.swift</span>:<span class='line'>109</span></a><ol><li><p>Setup the router using the <code>MyBaseRequestContext</code> type as a custom context.</p></li><li><p>Add middlewares to the router, HB2 has middlewares on the router instead of the app</p></li><li><p>Setup a basic health route on the router, simply return with a HTTP status code</p></li><li><p>Add routes using the custom controller to the <code>api</code> route group</p></li><li><p>Build the <em>Application</em> instance using the router and the configuration</p></li></ol><p>Inside the main entrypoint you can start the server by calling the <code>Application.runService()</code> method:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>import</span> <span class='xv'>ArgumentParser</span><span class='newline'>
 </span><span class='xk'>import</span> <span class='xv'>Foundation</span><span class='newline'>
 </span><span class='xk'>import</span> <span class='xv'>Hummingbird</span><span class='newline'>
 </span><span class='xk'>import</span> <span class='xv'>Logging</span><span class='newline'>
@@ -320,7 +320,7 @@
                         </a>
                     </div>
                     <div class="tag-list">
-                        <a href="https://swiftonserver.com/tags/hummingbird/"><small>Hummingbird</small></a><small>, </small>
+                        <a href="https://swiftonserver.com/tags/hummingbird/"><small>Hummingbird</small></a>
                     <a href="https://swiftonserver.com/tags/server/"><small>Server</small></a>
                     </div>
                 </footer>
@@ -334,12 +334,32 @@
                             <div class="author-list">
                             </div>
                             <div class="meta">
+                                <time datetime="2024/08/29">2024/08/29</time>
+                                
+                            </div>
+                            
+                            <h2 class="title"><a href="https://swiftonserver.com/working-with-udp-in-swiftnio/" target="">Working with UDP in SwiftNIO</a></h2>
+                            <p>Create UDP servers and clients using SwiftNIO and structured concurrency</p>
+                        
+                            <div class="spacer"></div>
+                        
+                            <div class="tag-list">
+                            </div>
+                        </div>
+                    <div class="card">
+                            
+                            
+                            <div class="author-list">
+                            </div>
+                            <div class="meta">
                                 <time datetime="2024/06/27">2024/06/27</time>
                                 
                             </div>
                             
-                            <h2 class="title"><a href="https://swiftonserver.com/websockets-tutorial-using-swift-and-hummingbird/" target="">WebSocket tutorial using Swift and Hummingbird</a></h2>
+                            <h2 class="title"><a href="https://swiftonserver.com/websockets-tutorial-using-swift-and-hummingbird/" target="">Using WebSockets in Hummingbird</a></h2>
                             <p>In this article, you will learn about WebSockets and how to use them with the Hummingbird framework in a straightforward, easy-to-follow manner.</p>
+                        
+                            <div class="spacer"></div>
                         
                             <div class="tag-list">
                             </div>
@@ -357,6 +377,8 @@
                             <h2 class="title"><a href="https://swiftonserver.com/using-openapi-with-hummingbird/" target="">Using OpenAPI Generator with Hummingbird</a></h2>
                             <p>Learn how to use OpenAPI Generator to create Swift APIs with Hummingbird.</p>
                         
+                            <div class="spacer"></div>
+                        
                             <div class="tag-list">
                             </div>
                         </div>
@@ -372,6 +394,8 @@
                             
                             <h2 class="title"><a href="https://swiftonserver.com/using-swiftnio-channels/" target="">Using SwiftNIO - Channels</a></h2>
                             <p>Create a TCP server using SwiftNIO and structured concurrency</p>
+                        
+                            <div class="spacer"></div>
                         
                             <div class="tag-list">
                             </div>
@@ -472,7 +496,7 @@
             <div>
                 <span style="display: block; height: 32px;">&nbsp;</span>
                 <h4>Swift on server</h4>
-                <p><small><a href="https://swiftonserver.com/" target="_blank">swiftonserver.com</a></small></p>
+                <p><small><a href=https://swiftonserver.com/" target="_blank">swiftonserver.com</a></small></p>
                 <ul>
                     <li><a href="https://github.com/swift-on-server/" target="_blank">GitHub</a></li>
                     <li><a href="https://mastodon.social/@swiftonserver/" target="_blank">Mastodon</a></li>

@@ -148,7 +148,7 @@
 </span>            ]<span class='newline'>
 </span>        ),<span class='newline'>
 </span>    ]<span class='newline'>
-</span>)</code></pre><p>Before the actual implementation, it is important to understand the basic building blocks of the Service Lifecycle library.</p><p>Long-running work should be modeled as services that implement the <code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle/service' target='_blank' rel='external'>Service</a></code> protocol. This protocol requires only one function: a simple asynchronous throwing <code>run</code> method.</p><p>The <code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle/servicegroup' target='_blank' rel='external'>ServiceGroup</a></code> is used to orchestrate multiple services. A child task is spawned for each service, and the respective run method is called in the child task. Additionally, signal listeners are set up for the configured signals, triggering a graceful shutdown for each service.</p><p>A <code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle/servicegroup' target='_blank' rel='external'>ServiceGroup</a></code> manages the execution of multiple services, handles signal processing, and signals graceful shutdowns to the services.</p><p>While a service is typically a long-running task, it can also be a simple task that returns immediately. By default, if one service returns or throws an error, the entire group is canceled. This behavior can be customized by providing a custom <code>successTerminationBehavior</code> parameter for the service group, as detailed <a href='https://swiftpackageindex.com/swift-server/swift-service-lifecycle/main/documentation/servicelifecycle/how-to-adopt-servicelifecycle-in-applications#Customizing-the-behavior-when-a-service-returns-or-throws' target='_blank' rel='external nofollow noopener ugc'>here</a>.</p><p>The following example illustrates a simple service and a service group with customized termination behavior:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>import</span> <span class='xv'>ServiceLifecycle</span><span class='newline'>
+</span>)</code></pre><p>Before the actual implementation, it is important to understand the basic building blocks of the Service Lifecycle library.</p><p>Long-running work should be modeled as services that implement the <code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle/service' target='_blank' rel='external'>Service</a></code> protocol. This protocol requires only one function: a simple asynchronous throwing <code>run()</code> method.</p><p>The <code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle/servicegroup' target='_blank' rel='external'>ServiceGroup</a></code> is used to orchestrate multiple services. A child task is spawned for each service, and the respective run method is called in the child task. Additionally, signal listeners are set up for the configured signals, triggering a graceful shutdown for each service.</p><p>A <code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle/servicegroup' target='_blank' rel='external'>ServiceGroup</a></code> manages the execution of multiple services, handles signal processing, and signals graceful shutdowns to the services.</p><p>While a service is typically a long-running task, it can also be a simple task that returns immediately. By default, if one service returns or throws an error, the entire group is canceled. This behavior can be customized by providing a custom <code>successTerminationBehavior</code> parameter for the service group, as detailed <a href='https://swiftpackageindex.com/swift-server/swift-service-lifecycle/main/documentation/servicelifecycle/how-to-adopt-servicelifecycle-in-applications#Customizing-the-behavior-when-a-service-returns-or-throws' target='_blank' rel='external nofollow noopener ugc'>here</a>.</p><p>The following example illustrates a simple service and a service group with customized termination behavior:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>import</span> <span class='xv'>ServiceLifecycle</span><span class='newline'>
 
 </span><span class='xk'>struct</span> <span class='xv'>BasicService</span>: <span class='xt'>Service</span> {<span class='newline'>
 </span>    <span class='xc'>// 1.</span><span class='newline'>
@@ -349,6 +349,8 @@
                             <h2 class="title"><a href="https://swiftonserver.com/templating-with-swift-mustache/" target="">Templating with Swift-Mustache</a></h2>
                             <p>Learn how to template emails and web pages with Swift-Mustache.</p>
                         
+                            <div class="spacer"></div>
+                        
                             <div class="tag-list">
                             </div>
                         </div>
@@ -364,6 +366,8 @@
                             
                             <h2 class="title"><a href="https://swiftonserver.com/async-http-client-by-example/" target="">AsyncHTTPClient by example</a></h2>
                             <p>This article offers practical examples to introduce the Swift AsyncHTTPClient library.</p>
+                        
+                            <div class="spacer"></div>
                         
                             <div class="tag-list">
                             </div>
@@ -439,7 +443,7 @@
             <div>
                 <span style="display: block; height: 32px;">&nbsp;</span>
                 <h4>Swift on server</h4>
-                <p><small><a href="https://swiftonserver.com/" target="_blank">swiftonserver.com</a></small></p>
+                <p><small><a href=https://swiftonserver.com/" target="_blank">swiftonserver.com</a></small></p>
                 <ul>
                     <li><a href="https://github.com/swift-on-server/" target="_blank">GitHub</a></li>
                     <li><a href="https://mastodon.social/@swiftonserver/" target="_blank">Mastodon</a></li>

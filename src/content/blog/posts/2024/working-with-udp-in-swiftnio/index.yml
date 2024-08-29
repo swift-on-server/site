@@ -2,7 +2,7 @@ type: post
 title: "Working with UDP in SwiftNIO"
 description: "Create UDP servers and clients using SwiftNIO and structured concurrency"
 image: ./assets/cover.jpg
-publication: 2024/08/29 13:00:00
+publication: 2024/08/29 9:00:00
 tags:
   - swiftnio
   - networking
