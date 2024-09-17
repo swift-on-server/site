@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="canonical" href="https://swiftonserver.com/getting-started-with-swiftpm-snippets/">
+    <link rel="prev" href="https://swiftonserver.com/getting-started-with-structured-concurrency-in-swift/">
+    <link rel="next" href="https://swiftonserver.com/introduction-to-swift-service-lifecycle/">
+
+    <title>Getting Started with SwiftPM Snippets - Swift on server</title>
+    <meta name="description" content="Learn what Swift Snippets are, and how they can enrich your libraries.">
+
+    <meta property="og:url" content="https://swiftonserver.com/getting-started-with-swiftpm-snippets/">
+    <meta property="og:title" content="Getting Started with SwiftPM Snippets - Swift on server">
+    <meta property="og:description" content="Learn what Swift Snippets are, and how they can enrich your libraries.">
+    <meta property="og:image" content="/assets/getting-started-with-swiftpm-snippets/cover.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Getting Started with SwiftPM Snippets - Swift on server">
+    <meta name="twitter:description" content="Learn what Swift Snippets are, and how they can enrich your libraries.">
+    <meta name="twitter:image" content="/assets/getting-started-with-swiftpm-snippets/cover.jpg">
+
+    <link rel="stylesheet" href="https://swiftonserver.com/css/modern-normalize.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/modern-base.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/variables.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/base.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/grid.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/navigation.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/footer.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/syntax.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/style.css">
+
+    
+
+    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/icon-320.png" type="image/png">
+    
+    <link rel="apple-touch-icon" href="https://swiftonserver.com/images/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://swiftonserver.com/images/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://swiftonserver.com/images/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://swiftonserver.com/images/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://swiftonserver.com/images/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://swiftonserver.com/images/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://swiftonserver.com/images/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://swiftonserver.com/images/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://swiftonserver.com/images/icons/apple-touch-icon-180x180.png">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+        media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+        media="(prefers-color-scheme: dark)"
+    >
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+          const container = document.querySelector("div#swiftinit-tooltips");
+          if (container !== null) {
+              container.querySelectorAll('pre code').forEach((el) => {
+                  el.classList.add('nohighlight');
+              });
+          }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+          document.querySelectorAll('section pre code:not(.language-swift').forEach((el) => {
+              hljs.highlightElement(el);
+          });
+        });
+    </script>
+
+    <script defer data-domain="swiftonserver.com" src="https://plausible.io/js/script.js"></script>
+
+</head>
+
+<body>
+    <div id="site-container">
+
+    <header id="navigation">
+        <a href="/">
+            <figure>
+                <picture>
+                    <source
+                        srcset="https://swiftonserver.com/images/logos/logo~dark.png"
+                        media="(prefers-color-scheme: dark)"
+                    >
+                    <img
+                        src="https://swiftonserver.com/images/logos/logo.png"
+                        alt="Logo of Swift on server"
+                        title="Swift on server"
+                    >
+                </picture>
+            </figure>
+        </a>
+        <nav>
+            <input type="checkbox" id="primary-menu-button" name="menu-button" class="menu-button">
+            <label for="primary-menu-button">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </label>
+            <div class="menu-items">
+                <a href="/posts/page/1/">Posts</a>
+                <a href="/tags/">Tags</a>
+                <a href="/authors/">Authors</a>
+                <a href="/newsletter/">Newsletter</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="page-container">
+    
+    <div class="article-with-toc">
+        <div>
+            <article class="post">
+                <div class="meta">
+                    <time datetime="2024/09/17">2024/09/17</time>
+                     &middot; <span class="reading-time">10 min read</span>
+                    
+                </div>
+                <section>
+                
+                <section class='introduction'><h1>Getting started with SwiftPM Snippets</h1></section><section class='details literature'><p><a href='https://github.com/apple/swift-evolution/blob/main/proposals/0356-swift-snippets.md' target='_blank' rel='external'>SwiftPM Snippets</a> are one of the most powerful features of the <a href='https://github.com/apple/swift-package-manager' target='_blank' rel='external'>Swift Package Manager</a>, and yet two years after their introduction few developers know they exist. This tutorial will explain some of the advantages of using SwiftPM Snippets and show you how to add Snippets to a Swift package.</p><p>In this tutorial, we will use the Apple <a href='https://github.com/apple/swift-docc' target='_blank' rel='external'>DocC</a> tool to preview and iterate on Snippets locally. The DocC tool itself does not support rendering clickable references within Snippets, however the finished SwiftPM project containing Snippets can be published to a platform like <a href='https://swiftinit.org' target='_blank' rel='external'>Swiftinit</a> where the Snippets will be rendered with clickable references, allowing readers to interact with the symbols contained within them and navigate to supplemental documentation.</p><h2 id='What%20are%20Swift%20Snippets?'><a href='#What%20are%20Swift%20Snippets?'>What are Swift Snippets?</a></h2><p>Swift Snippets were invented in 2022 by <a href='https://github.com/bitjammer' target='_blank' rel='external'>Ashley Garland</a> and first shipped in Swift 5.7. <a href='https://forums.swift.org/t/se-0356-swift-snippets/57097' target='_blank' rel='external'>Originally conceived</a> as a way to validate example programs by compiling them, developers have since found a variety of additional applications for them, ranging from testing to documentation to even full-blown prototyping of multi-module setups.</p><p>Despite their immense potential, very little documentation exists on how to use Swift Snippets, and awareness of the feature remains <a href='https://github.com/search?q=%40Snippet+language%3Aswift&type=code' target='_blank' rel='external'>surprisingly low</a>.</p><blockquote><p>The outlook for this feature is pessimistic considering the low adoption rate. This might change if Apple invests in better documentation and adopts Snippets in their own repositories.</p><p>— <a href='https://blog.eidinger.info/a-critical-look-at-swift-snippets-swift-57' target='_blank' rel='external nofollow noopener ugc'>A critical look at Swift Snippets</a> by Marco Eidinger</p></blockquote><aside class='warning'><h3>Warning</h3><p>There is a known <a href='http://ww.openradar.appspot.com/FB13482049' target='_blank' rel='external nofollow noopener ugc'>Xcode bug</a> that prevents Snippets from being shown in the Xcode editor.</p></aside><h2 id='Why%20use%20Swift%20Snippets?'><a href='#Why%20use%20Swift%20Snippets?'>Why use Swift Snippets?</a></h2><p>Swift Snippets are incredibly versatile. Some common applications include:</p><ul><li><p><strong>Scratch modules</strong>. Snippets are effectively single-file Swift modules, and can be used to quickly prototype code or sketch patterns without the overhead of declaring a proper library target in the package manifest. Snippets are especially useful when the code being prototyped depends on other modules, as Snippets have the ability to <code>import</code> modules from the current package.</p></li><li><p><strong>Reproductions</strong>. Snippets can be used to reproduce bugs in a minimal environment, with little to no setup required. Although you could also compile your own playgrounds manually with <code>swiftc -parse-as-library</code>, it is much easier to run Snippets because they are automatically discovered by the <code>swift run</code> command.</p><p>Snippets are especially useful for reproducing compiler bugs. Some developers find it helpful to keep a <code>.gitignore</code>’d <code>Snippets/Crashes</code> directory in their local environment specifically for collecting compiler crashes.</p></li><li><p><strong>Examples</strong>. Snippets can be used to provide runnable examples that ship with your package. This allows you to avoid cluttering the package manifest with example targets, and helps you organize your examples in a self-documenting manner.</p></li><li><p><strong>Documentation</strong>. Snippets can be embedded in Markdown documentation and displayed in DocC. This allows you to include live code examples in your documentation that are guaranteed to compile and run.</p><p>Snippets can be sliced and embedded as individual code fragments, allowing you to write tutorials that discuss each section of an example program in detail.</p><p>Some documentation engines such as Unidoc can render Snippets in the browser with linked identifiers, allowing readers to interact with the symbols in the code.</p></li></ul><h2 id='Adding%20Snippets%20to%20a%20Swift%20package'><a href='#Adding%20Snippets%20to%20a%20Swift%20package'>Adding Snippets to a Swift package</a></h2><p>For this tutorial, we will create a package named <code>snippets-example</code>.</p><pre class='snippet'><code class='language-bash'><span class='newline'></span>$ mkdir snippets-example<span class='newline'>
+</span>$ cd $_<span class='newline'>
+</span>$ swift package init --name 'Swift Snippets'</code></pre><p>This should initialize a new Swift package with a <code>Package.swift</code> resembling the following.</p><pre class='title'>Package.swift</pre><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xc'>// swift-tools-version: 5.10</span><span class='newline'>
+
+</span><span class='xk'>import</span> <span class='xv'>PackageDescription</span><span class='newline'>
+
+</span><span class='xk'>let</span> <span class='xv'>package</span> = <span class='xv'>Package</span>(<span class='newline'>
+</span>    <span class='xv'>name</span>: <span class='xs'>"Swift Snippets"</span>,<span class='newline'>
+</span>    <span class='xv'>products</span>: [<span class='newline'>
+</span>        .<span class='xv'>library</span>(<span class='xv'>name</span>: <span class='xs'>"Swift Snippets"</span>, <span class='xv'>targets</span>: [<span class='xs'>"Swift Snippets"</span>]),<span class='newline'>
+</span>    ],<span class='newline'>
+</span>    <span class='xv'>targets</span>: [<span class='newline'>
+</span>        .<span class='xv'>target</span>(<span class='xv'>name</span>: <span class='xs'>"Swift Snippets"</span>),<span class='newline'>
+</span>    ]<span class='newline'>
+</span>)</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Sources/Articles/Documentation.docc/2024/getting-started-with-swiftpm-snippets/Manifest.1.swift' target='_blank' class='source github'><span class='file'>Manifest.1.swift</span></a><p>Rename the library target to <code>SnippetsExample</code>.</p><pre class='title'>Package.swift</pre><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xc'>// swift-tools-version: 5.10</span><span class='newline'>
+
+</span><span class='xk'>import</span> <span class='xv'>PackageDescription</span><span class='newline'>
+
+</span><span class='xk'>let</span> <span class='xv'>package</span> = <span class='xv'>Package</span>(<span class='newline'>
+</span>    <span class='xv'>name</span>: <span class='xs'>"Swift Snippets"</span>,<span class='newline'>
+</span>    <span class='xv'>products</span>: [<span class='newline'>
+</span><ins>        .<span class='xv'>library</span>(<span class='xv'>name</span>: <span class='xs'>"SnippetsExample"</span>, <span class='xv'>targets</span>: [<span class='xs'>"SnippetsExample"</span>]),</ins><span class='newline'>
+</span>    ],<span class='newline'>
+</span>    <span class='xv'>targets</span>: [<span class='newline'>
+</span><ins>        .<span class='xv'>target</span>(<span class='xv'>name</span>: <span class='xs'>"SnippetsExample"</span>),</ins><span class='newline'>
+</span>    ]<span class='newline'>
+</span>)</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Sources/Articles/Documentation.docc/2024/getting-started-with-swiftpm-snippets/Manifest.2.swift' target='_blank' class='source github'><span class='file'>Manifest.2.swift</span></a><p>Make sure the <code>Sources/SnippetsExample</code> directory contains at least one Swift file. For this tutorial, we will add an empty file named <code>anchor.swift</code>.</p><p>Next, create a new directory named <code>Snippets</code> at the top level of the package.</p><pre class='snippet'><code class='language-bash'><span class='newline'></span>$ mkdir Snippets</code></pre><aside class='note'><h3>Note</h3><p>Despite the specification of <a href='https://github.com/apple/swift-evolution/blob/main/proposals/0356-swift-snippets.md#overriding-the-location-of-snippets' target='_blank' rel='external'>SE-0356</a>, it is not possible to name the directory anything other than <code>Snippets</code>.</p></aside><p>Inside the <code>Snippets</code> directory, create a new Swift file named <code>SnippetsExample_I.swift</code>.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><a class='xv' href='https://swiftinit.org/docs/swift/swift.print(_:separator:terminator:)' target='_blank' rel='external'>print</a>(<span class='xs'>"Hi Barbie!"</span>)</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/swiftpm-snippets/SnippetsExample_I.swift' target='_blank' class='source github'><span class='file'>SnippetsExample_I.swift</span></a><p>The directory structure should now look like this:</p><pre class='snippet'><code><span class='newline'></span>📂 swift-snippets<span class='newline'>
+</span>├── 📂 Snippets<span class='newline'>
+</span>│   └── 📄 SnippetsExample_I.swift<span class='newline'>
+</span>├── 📂 Sources<span class='newline'>
+</span>│   └── 📂 SnippetsExample<span class='newline'>
+</span>│       └── 📄 anchor.swift<span class='newline'>
+</span>├── 📄 Package.swift<span class='newline'>
+</span>└── 📄 .gitignore</code></pre><p>The Swift package now contains the Snippet file and is ready to be built.​</p><h2 id='Running%20Snippets'><a href='#Running%20Snippets'>Running Snippets</a></h2><p>The <code>swift build</code> command will automatically discover and compile all Snippets in a package.</p><p>Snippets are just modules with discovery enabled, which means you can also build a single Snippet with the <code>--target</code> flag.</p><pre class='snippet'><code class='language-bash'><span class='newline'></span>$ swift build --target SnippetsExample_I</code></pre><p>You can run a Snippet with the <code>swift run</code> command.</p><pre class='snippet'><code class='language-bash'><span class='newline'></span>$ swift run SnippetsExample_I</code></pre><pre class='snippet'><code class='language-text'><span class='newline'></span>Building for debugging...<span class='newline'>
+</span>[5/5] Linking SnippetsExample_I<span class='newline'>
+</span>Build complete! (0.97s)<span class='newline'>
+</span>Hi Barbie!</code></pre><p>You could also run a Snippet with release optimizations, just like any other executable target.</p><pre class='snippet'><code class='language-bash'><span class='newline'></span>$ swift run -c release SnippetsExample_I</code></pre><pre class='snippet'><code class='language-text'><span class='newline'></span>Building for production...<span class='newline'>
+</span>[17/17] Linking SnippetsExample_I<span class='newline'>
+</span>Build complete! (9.73s)<span class='newline'>
+</span>Hi Barbie!</code></pre><aside class='note'><h3>Note</h3><p>If the Snippet name contains special characters, you should pass the file name as-is to the <code>--target</code> flag. For example, to run a Snippet named <code>Foo bar.swift</code>, you would use <code>swift run 'Foo bar'</code> and not <code>Foo_bar</code>.</p></aside><h2 id='Embedding%20Snippets%20in%20documentation'><a href='#Embedding%20Snippets%20in%20documentation'>Embedding Snippets in documentation</a></h2><p>Most modern documentation engines support embedding Snippets in Markdown documentation via the <code>@Snippet</code> block directive.</p><p>Let’s create a documentation bundle for the <code>SnippetsExample</code> target.</p><pre class='snippet'><code class='language-bash'><span class='newline'></span>$ mkdir -p Sources/SnippetsExample/docs.docc</code></pre><aside class='tip'><h3>Tip</h3><p>You can name the documentation bundle anything you like, as long as it has a <code>.docc</code> extension. The name comes from the DocC tool, but most other documentation engines will recognize it too.</p></aside><p>Create a markdown article named <code>My article.md</code> in the <code>docs.docc</code> directory.</p><pre class='title'>My article.md</pre><pre class='snippet'><code class='language-txt'><span class='newline'></span># My article<span class='newline'>
+
+</span>This is a simple article that demonstrates how to use snippets in documentation.<span class='newline'>
+
+</span>@Snippet(path: "Swift Snippets/Snippets/SnippetsExample_I")</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Sources/Articles/Documentation.docc/2024/getting-started-with-swiftpm-snippets/My article (1).md.txt' target='_blank' class='source github'><span class='file'>My article (1).md.txt</span></a><p>In the example above, we have specified the Snippet to include by <code>path</code> identity.</p><p>Despite its naming, the <code>path</code> syntax is not a file path. The first component is the name of the package <strong>as specified by the <code>PackageDescription/Package/name</code> field in the manifest</strong>. The second component is always the string <code>Snippets</code>. The third component is the Snippet ID, which is the name of the Snippet file without the <code>.swift</code> extension.</p><p>If the Snippet ID contains special characters, you should pass the ID as-is, without replacing any characters.</p><p>Some documentation engines such as <a href='https://github.com/tayloraswift/swift-unidoc' target='_blank' rel='external'>Unidoc</a> support referencing Snippets by <code>id</code>.</p><pre class='title'>My article.md</pre><pre class='snippet'><code class='language-txt'><span class='newline'></span># My article<span class='newline'>
+
+</span>This is a simple article that demonstrates how to use snippets in documentation.<span class='newline'>
+
+</span><ins>@Snippet(id: SnippetsExample_I)</ins></code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Sources/Articles/Documentation.docc/2024/getting-started-with-swiftpm-snippets/My article (2).md.txt' target='_blank' class='source github'><span class='file'>My article (2).md.txt</span></a><aside class='important'><h3>Important</h3><p>DocC does not currently support referencing Snippets by ID. Instead, you must use the fully-qualified <code>path</code> syntax to reference a Snippet.</p></aside><p>The project layout should now look like this:</p><pre class='snippet'><code><span class='newline'></span>📂 swift-snippets<span class='newline'>
+</span>├── 📂 Snippets<span class='newline'>
+</span>│   └── 📄 SnippetsExample_I.swift<span class='newline'>
+</span>├── 📂 Sources<span class='newline'>
+</span>│   └── 📂 SnippetsExample<span class='newline'>
+</span>│       ├── 📂 docs.docc<span class='newline'>
+</span>│       │   └── 📄 My article.md<span class='newline'>
+</span>│       └── 📄 anchor.swift<span class='newline'>
+</span>├── 📄 Package.swift<span class='newline'>
+</span>└── 📄 .gitignore</code></pre><h3 id='Previewing%20Snippets%20with%20DocC'><a href='#Previewing%20Snippets%20with%20DocC'>Previewing Snippets with DocC</a></h3><p>Many developers find <a href='https://github.com/apple/swift-docc' target='_blank' rel='external'>DocC</a> helpful for previewing documentation locally. To use DocC, add the <a href='https://github.com/apple/swift-docc-plugin' target='_blank' rel='external'>swift-docc-plugin</a> to the package manifest.</p><pre class='title'>Package.swift</pre><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xc'>// swift-tools-version: 5.10</span><span class='newline'>
+
+</span><span class='xk'>import</span> <span class='xv'>PackageDescription</span><span class='newline'>
+
+</span><span class='xk'>let</span> <span class='xv'>package</span> = <span class='xv'>Package</span>(<span class='newline'>
+</span>    <span class='xv'>name</span>: <span class='xs'>"Swift Snippets"</span>,<span class='newline'>
+</span>    <span class='xv'>products</span>: [<span class='newline'>
+</span>        .<span class='xv'>library</span>(<span class='xv'>name</span>: <span class='xs'>"SnippetsExample"</span>, <span class='xv'>targets</span>: [<span class='xs'>"SnippetsExample"</span>]),<span class='newline'>
+</span>    ],<span class='newline'>
+</span><ins>    <span class='xv'>dependencies</span>: [</ins><span class='newline'>
+</span><ins>        .<span class='xv'>package</span>(<span class='xv'>url</span>: <span class='xs'>"https://github.com/apple/swift-docc-plugin"</span>, <span class='xv'>from</span>: <span class='xs'>"1.3.0"</span>),</ins><span class='newline'>
+</span><ins>    ],</ins><span class='newline'>
+</span>    <span class='xv'>targets</span>: [<span class='newline'>
+</span>        .<span class='xv'>target</span>(<span class='xv'>name</span>: <span class='xs'>"SnippetsExample"</span>),<span class='newline'>
+</span>    ]<span class='newline'>
+</span>)</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Sources/Articles/Documentation.docc/2024/getting-started-with-swiftpm-snippets/Manifest.3.swift' target='_blank' class='source github'><span class='file'>Manifest.3.swift</span></a><p>Please note that while it is possible to build DocC documentation using Xcode, Snippets will not render, due to <a href='http://ww.openradar.appspot.com/FB13482049' target='_blank' rel='external nofollow noopener ugc'>FB13482049</a>.</p><p>You can then launch DocC with the <code>preview-documentation</code> package subcommand:</p><pre class='snippet'><code class='language-bash'><span class='newline'></span>$ swift package --disable-sandbox preview-documentation --target SnippetsExample</code></pre><p>You can find the rendered article at <a href='http://localhost:8080/documentation/snippetsexample/my-article' target='_blank' rel='external nofollow noopener ugc'><code>http://localhost:8080/documentation/snippetsexample/my-article</code></a>.</p><aside class='warning'><h3>Warning</h3><p>At the time of writing, there is a <a href='https://github.com/apple/swift-docc/issues/944' target='_blank' rel='external'>known bug</a> causing DocC preview to crash if the target name contains special characters.</p></aside><h2 id='Using%20Snippet%20captions'><a href='#Using%20Snippet%20captions'>Using Snippet captions</a></h2><p>If a Snippet begins with contiguous line comments, those comments will be parsed as Markdown and treated as a Snippet caption. Try adding the following code to a Snippet named <code>SnippetsExample_II.swift</code>.</p><pre class='title'>SnippetsExample_II.swift</pre><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xc'>//  This is a snippet caption.</span><span class='newline'>
+</span><span class='xc'>//</span><span class='newline'>
+</span><span class='xc'>//  You can use normal features in captions, such as links to symbols like ``Int``.</span><span class='newline'>
+
+</span><span class='xv'>print</span>(<span class='xs'>"Hi Raquelle!"</span>)</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Sources/Articles/Documentation.docc/2024/getting-started-with-swiftpm-snippets/Snippets/SnippetsExample_II.swift' target='_blank' class='source github'><span class='file'>SnippetsExample_II.swift</span></a><p>When embedded, it should look like this:</p><hr><p>This is a snippet caption.</p><p>You can use normal features in captions, such as links to symbols like <code><a href='https://swiftinit.org/docs/swift/swift/int' target='_blank' rel='external'>Int</a></code>.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><a class='xv' href='https://swiftinit.org/docs/swift/swift.print(_:separator:terminator:)' target='_blank' rel='external'>print</a>(<span class='xs'>"Hi Raquelle!"</span>)</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/swiftpm-snippets/SnippetsExample_II.swift' target='_blank' class='source github'><span class='file'>SnippetsExample_II.swift</span></a><aside class='note'><h3>Note</h3><p>Snippet captions cannot embed other Snippets.</p></aside><h2 id='Redacting%20parts%20of%20a%20Snippet'><a href='#Redacting%20parts%20of%20a%20Snippet'>Redacting parts of a Snippet</a></h2><p>You can redact portions of a Snippet using <strong>slice directives</strong>. A slice directive is a line comment token that starts with <code>snippet</code> followed by a dot and an identifier. The following identifiers have special meanings:</p><table><thead><tr><th>Identifier</th><th>Behavior</th></tr></thead><tbody><tr><td><code>snippet.hide</code></td><td>Hides the content following the directive.</td></tr><tr><td><code>snippet.end</code></td><td>Hides the content following the directive.</td></tr><tr><td><code>snippet.show</code></td><td>Shows the content following the directive.</td></tr></tbody></table><p>Below is an example of a Snippet that uses redactions to hide the <code>import</code> statements.</p><pre class='title'>SnippetsExample_III.swift</pre><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xc'>// snippet.hide</span><span class='newline'>
+</span><span class='xk'>import</span> <span class='xv'>SnippetsExample</span><span class='newline'>
+
+</span><span class='xc'>// snippet.show</span><span class='newline'>
+</span><span class='xk'>let</span> _:<span class='xt'>String</span> = <span class='xs'>"""</span><span class='newline'>
+</span><span class='xs'>The import statements at the top of the file are redacted from </span>\<span class='newline'>
+</span><span class='xs'>the rendered Snippet.
+
+// snippet.hide
+
+Snippet markers slice the source code at the token syntax level. </span>\<span class='newline'>
+</span><span class='xs'>This means strings resembling Snippet markers inside multiline </span>\<span class='newline'>
+</span><span class='xs'>string literals do not need to be escaped. However, there is no </span>\<span class='newline'>
+</span><span class='xs'>requirement for slices to contain complete lexical blocks. This is
+different from the behavior of constructs like `#if`.
+
+// snippet.show</span><span class='newline'>
+</span><span class='xs'>"""</span></code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Sources/Articles/Documentation.docc/2024/getting-started-with-swiftpm-snippets/Snippets/SnippetsExample_III.swift' target='_blank' class='source github'><span class='file'>SnippetsExample_III.swift</span></a><p>When embedded, it should look like this:</p><hr><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>let</span> _:<a class='xt' href='https://swiftinit.org/docs/swift/swift/string' target='_blank' rel='external'>String</a> = <span class='xs'>"""</span><span class='newline'>
+</span><span class='xs'>The import statements at the top of the file are redacted from </span>\<span class='newline'>
+</span><span class='xs'>the rendered Snippet.
+
+// snippet.hide
+
+Snippet markers slice the source code at the token syntax level. </span>\<span class='newline'>
+</span><span class='xs'>This means strings resembling Snippet markers inside multiline </span>\<span class='newline'>
+</span><span class='xs'>string literals do not need to be escaped. However, there is no </span>\<span class='newline'>
+</span><span class='xs'>requirement for slices to contain complete lexical blocks. This is
+different from the behavior of constructs like `#if`.
+
+// snippet.show</span><span class='newline'>
+</span><span class='xs'>"""</span></code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/swiftpm-snippets/SnippetsExample_III.swift#L4' target='_blank' class='source github'><span class='file'>SnippetsExample_III.swift</span>:<span class='line'>4</span></a><aside class='warning'><h3>Warning</h3><p>At the time of writing, there is a <a href='https://github.com/apple/swift-docc/issues/946' target='_blank' rel='external'>known bug</a> preventing DocC from slicing Snippets that contain multi-line string literals correctly.</p></aside><h3 id='Slice%20indentation'><a href='#Slice%20indentation'>Slice indentation</a></h3><p>The indentation of the first <code>snippet.show</code> determines specifies the maximum amount of indentation to remove from the Snippet. In the example below, four spaces of indentation will be removed from the rendered Snippet. Note that the <code>snippet.end</code> token is required in order to prevent the Snippet from including the final brace, which would have prevented the indentation from being removed.</p><pre class='title'>SnippetsExample_IV.swift</pre><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xc'>// snippet.hide</span><span class='newline'>
+</span><span class='xk'>import</span> <span class='xv'>SnippetsExample</span><span class='newline'>
+
+</span><span class='xk'>enum</span> <span class='xv'>Main</span><span class='newline'>
+</span>{<span class='newline'>
+</span>    <span class='xc'>// snippet.show</span><span class='newline'>
+</span>    <span class='xk'>static</span><span class='newline'>
+</span>    <span class='xk'>func</span> <span class='xv'>main</span>() -&gt; <span class='xt'>Int</span><span class='newline'>
+</span>    {<span class='newline'>
+</span>        <span class='xk'>return</span> <span class='xn'>2</span> <span class='xo'>+</span> <span class='xn'>2</span><span class='newline'>
+</span>    }<span class='newline'>
+</span>    <span class='xc'>// snippet.end</span><span class='newline'>
+</span>}</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Sources/Articles/Documentation.docc/2024/getting-started-with-swiftpm-snippets/Snippets/SnippetsExample_IV.swift' target='_blank' class='source github'><span class='file'>SnippetsExample_IV.swift</span></a><p>When embedded, it should look like this:</p><hr><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>static</span><span class='newline'>
+</span><span class='xk'>func</span> <span class='xv'>main</span>() -&gt; <a class='xt' href='https://swiftinit.org/docs/swift/swift/int' target='_blank' rel='external'>Int</a><span class='newline'>
+</span>{<span class='newline'>
+</span>    <span class='xk'>return</span> <span class='xn'>2</span> <a class='xv' href='https://swiftinit.org/docs/swift/swift/int.+(_:_:)' target='_blank' rel='external'>+</a> <span class='xn'>2</span><span class='newline'>
+</span>}</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/swiftpm-snippets/SnippetsExample_IV.swift#L6' target='_blank' class='source github'><span class='file'>SnippetsExample_IV.swift</span>:<span class='line'>6</span></a><h2 id='Using%20named%20slices'><a href='#Using%20named%20slices'>Using named slices</a></h2><p>You can also use <strong>named slices</strong> to create Snippets with multiple embeddable sections. It’s a good idea to give slices uppercase names to distinguish them from special slice directives.</p><p>Below is an example of a Snippet with a caption and three named slices.</p><pre class='title'>SnippetsExample_V.swift</pre><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xd'>/// This is a caption to associate with the first named slice.</span><span class='newline'>
+
+</span><span class='xc'>// snippet.DECLARATION</span><span class='newline'>
+</span><span class='xk'>func</span> <span class='xv'>f</span>() -&gt; <span class='xt'>Int</span><span class='newline'>
+</span>{<span class='newline'>
+</span>    <span class='xc'>// snippet.BODY</span><span class='newline'>
+</span>    <span class='xk'>return</span> <span class='xn'>2</span> <span class='xo'>+</span> <span class='xn'>2</span><span class='newline'>
+</span>    <span class='xc'>// snippet.EXIT</span><span class='newline'>
+</span>}</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Sources/Articles/Documentation.docc/2024/getting-started-with-swiftpm-snippets/Snippets/SnippetsExample_V.swift' target='_blank' class='source github'><span class='file'>SnippetsExample_V.swift</span></a><p>Here’s how you might embed the slices in a Markdown article.</p><pre class='title'>My article.md</pre><pre class='snippet'><code class='language-txt'><span class='newline'></span># My article<span class='newline'>
+
+</span><ins>This is a simple article that demonstrates how to embed a Snippet with named slices.</ins><span class='newline'>
+
+</span><ins>@Snippet(path: "Swift Snippets/Snippets/SnippetsExample_V", slice: DECLARATION)</ins><span class='newline'>
+</span><ins>@Snippet(path: "Swift Snippets/Snippets/SnippetsExample_V", slice: BODY)</ins><span class='newline'>
+</span><ins>@Snippet(path: "Swift Snippets/Snippets/SnippetsExample_V", slice: EXIT)</ins><span class='newline'>
+
+</span><ins>If you do not specify a slice, all slices will be included in the article.</ins><span class='newline'>
+
+</span><ins>@Snippet(path: "Swift Snippets/Snippets/SnippetsExample_V")</ins></code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Sources/Articles/Documentation.docc/2024/getting-started-with-swiftpm-snippets/My article (3).md.txt' target='_blank' class='source github'><span class='file'>My article (3).md.txt</span></a><p>And here’s how the embedded slices should look.</p><hr><p>This is a caption to associate with the first named slice.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>func</span> <span class='xv'>f</span>() -&gt; <a class='xt' href='https://swiftinit.org/docs/swift/swift/int' target='_blank' rel='external'>Int</a><span class='newline'>
+</span>{</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/swiftpm-snippets/SnippetsExample_V.swift#L3' target='_blank' class='source github'><span class='file'>SnippetsExample_V.swift</span>:<span class='line'>3</span></a><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>return</span> <span class='xn'>2</span> <a class='xv' href='https://swiftinit.org/docs/swift/swift/int.+(_:_:)' target='_blank' rel='external'>+</a> <span class='xn'>2</span></code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/swiftpm-snippets/SnippetsExample_V.swift#L6' target='_blank' class='source github'><span class='file'>SnippetsExample_V.swift</span>:<span class='line'>6</span></a><pre class='snippet'><code class='language-swift'><span class='newline'></span>}</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/swiftpm-snippets/SnippetsExample_V.swift#L8' target='_blank' class='source github'><span class='file'>SnippetsExample_V.swift</span>:<span class='line'>8</span></a><h2 id='Where%20to%20go%20from%20here'><a href='#Where%20to%20go%20from%20here'>Where to go from here</a></h2><p>DocC cannot read the metadata emitted by the Swift compiler that associates the tokens in a Snippet with their definitions, nor can it link to symbols that originate from a package’s dependencies.</p><p>However, other documentation engines such as <a href='https://github.com/tayloraswift/swift-unidoc' target='_blank' rel='external'>Unidoc</a> do support rendering Snippets with linked identifiers, and you can easily leverage this feature by publishing your documentation to a platform like <a href='https://swiftinit.org/help/self-serve' target='_blank' rel='external'>Swiftinit</a>. Because the Swift compiler already checks that the Snippets are valid and buildable, most DocC documentation can be uploaded to Swiftinit as-is without additional iteration.</p><p>Third-party websites (such as Swift on Server itself) can also leverage this feature through the <a href='https://swiftinit.org/help/exporting-articles' target='_blank' rel='external'>Swiftinit API</a>.</p></section><div style='display: none;' id='swiftinit-tooltips'><a href='/docs/swift/swift.print(_:separator:terminator:)'><pre><code><span class='xk'>func</span> <span class='xv'>print</span>(<span class='xi'></span>_ <span class='xb'>items</span>: <span class='xk'>Any</span>..., <span class='xi'></span><span class='xv'>separator</span>: <span class='xt'>String</span> = <span class='xs'>" "</span>, <span class='xi'></span><span class='xv'>terminator</span>: <span class='xt'>String</span> = <span class='xs'>"\n"</span><wbr>)</code></pre><p>Writes the textual representations of the given items into the standard output.</p></a><a href='/docs/swift/swift/int'><pre><code><span class='xa'>@frozen</span> <span class='xk'>struct</span> <span class='xv'>Int</span></code></pre><p>A signed integer value type.</p></a><a href='/docs/swift/swift/string'><pre><code><span class='xa'>@frozen</span> <span class='xk'>struct</span> <span class='xv'>String</span></code></pre><p>A Unicode string value that is a collection of characters.</p></a><a href='/docs/swift/swift/int.+(_:_:)'><pre><code><span class='xk'>static</span> <span class='xk'>func</span> <span class='xo'>+</span> (<span class='xi'></span><span class='xv'>lhs</span>: <span class='xt'>Int</span>, <span class='xi'></span><span class='xv'>rhs</span>: <span class='xt'>Int</span><wbr>) -&gt; <span class='xt'>Int</span></code></pre><p>Adds two values and produces their sum.</p></a></div>
+                    
+                </section>
+    
+                <footer>
+                    <br>
+                    <time datetime=""></time>
+    
+                    
+                    <div class="author-list">
+                        <a href="https://swiftonserver.com/authors/dianna-ma/">
+                        <img class="small rounded" src="/assets/authors/dianna-ma/tayloraswift.jpeg" alt="Dianna Ma">
+                        <span class="name">Dianna Ma</span>
+                        </a>
+                    </div>
+                    <div class="tag-list">
+                        <a href="https://swiftonserver.com/tags/documentation/"><small>Documentation</small></a>
+                    </div>
+                </footer>
+                            
+                <section class="group">
+                    <h4>Related posts</h4>                
+                    <div class="grid grid-221">
+                        <div class="card">
+                            
+                            
+                            <div class="author-list">
+                            </div>
+                            <div class="meta">
+                                <time datetime="2024/03/05">2024/03/05</time>
+                                
+                            </div>
+                            
+                            <h2 class="title"><a href="https://swiftonserver.com/using-openapi-with-hummingbird/" target="">Using OpenAPI Generator with Hummingbird</a></h2>
+                            <p>Learn how to use OpenAPI Generator to create Swift APIs with Hummingbird.</p>
+                        
+                            <div class="spacer"></div>
+                        
+                            <div class="tag-list">
+                            </div>
+                        </div>
+                    <div class="card">
+                            
+                            
+                            <div class="author-list">
+                            </div>
+                            <div class="meta">
+                                <time datetime="2024/02/13">2024/02/13</time>
+                                
+                            </div>
+                            
+                            <h2 class="title"><a href="https://swiftonserver.com/logging-for-server-side-swift-apps/" target="">Logging for server-side Swift apps</a></h2>
+                            <p>Discover how to integrate the Logging library into an application, use various log levels, and tailor the unified logging API for backend projects.</p>
+                        
+                            <div class="spacer"></div>
+                        
+                            <div class="tag-list">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+    
+            </article>
+        </div>
+        
+        <div>
+            <div class="support">
+                <a href="https://www.serversideswift.info/" target="_blank">
+                    <img src="https://swiftonserver.com//images/logos/serversideswift.png" alt="Server-Side Swift Conference logo">
+                </a>
+                <h4>
+                    <a href="https://www.serversideswift.info/" target="_blank">ServerSide.swift</a>
+                </h4>
+                <p>26th-27th September 2024. London, UK</p>
+                <p>Discount code: <strong><a href="https://ti.to/serverside-swift/2024/discount/SWIFTONSERVER" target="_blank">SWIFTONSERVER</a></strong></p>
+                <a class="cta" href="https://www.serversideswift.info/tickets/" target="_blank">Buy a ticket</a>
+            </div>
+            
+            <aside id="toc">
+                <h4>On this page</h4>
+                <ul>
+                    <li class="first-level">
+                        <a href="#What%20are%20Swift%20Snippets?">What are Swift Snippets?</a>
+                        <ul>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Why%20use%20Swift%20Snippets?">Why use Swift Snippets?</a>
+                        <ul>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Adding%20Snippets%20to%20a%20Swift%20package">Adding Snippets to a Swift package</a>
+                        <ul>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Running%20Snippets">Running Snippets</a>
+                        <ul>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Embedding%20Snippets%20in%20documentation">Embedding Snippets in documentation</a>
+                        <ul>
+                            <li><a href="#Previewing%20Snippets%20with%20DocC">Previewing Snippets with DocC</a></li>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Using%20Snippet%20captions">Using Snippet captions</a>
+                        <ul>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Redacting%20parts%20of%20a%20Snippet">Redacting parts of a Snippet</a>
+                        <ul>
+                            <li><a href="#Slice%20indentation">Slice indentation</a></li>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Using%20named%20slices">Using named slices</a>
+                        <ul>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Where%20to%20go%20from%20here">Where to go from here</a>
+                        <ul>
+                        </ul>
+                    </li>
+                </ul>
+            </aside>
+    
+        </div>
+    </div>
+    
+    </main>
+
+    <footer id="site-footer">
+        <div class="grid grid-421">
+    
+            <figure>
+                <picture>
+                    <source
+                        srcset="https://swiftonserver.com/images/logos/logo~dark.png"
+                        media="(prefers-color-scheme: dark)"
+                    >
+                    <img
+                        id="logo-image"
+                        src="https://swiftonserver.com/images/logos/logo.png"
+                        alt="Logo of Swift on server"
+                        title="Swift on server"
+                    >
+                </picture>
+            </figure>
+            
+            <div>
+                <span style="display: block; height: 32px;">&nbsp;</span>
+                <h4>Swift on server</h4>
+                <p><small><a href=https://swiftonserver.com/" target="_blank">swiftonserver.com</a></small></p>
+                <ul>
+                    <li><a href="https://github.com/swift-on-server/" target="_blank">GitHub</a></li>
+                    <li><a href="https://mastodon.social/@swiftonserver/" target="_blank">Mastodon</a></li>
+                    <li><a href="https://swiftonserver.com/rss.xml" target="_blank">RSS</a></li>
+                    <li><a href="https://swiftonserver.com/sitemap.xml" target="_blank">Sitemap</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
+                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                </a>
+                <h4><a href="https://swiftonserver.com/authors/joannis-orlandos/">Joannis Orlandos</a></h4>
+                <p><small><a href="https://unbeatable.software/" target="_blank">Unbeatable Software B.V.</a></small></p>
+                <ul>
+                    <li><a href="mailto:hello@unbeatable.software" target="_blank">Email</a></li>
+                    <li><a href="https://github.com/Joannis" target="_blank">GitHub</a></li>
+                    <li><a href="https://x.com/JoannisOrlandos" target="_blank">X (Twitter)</a></li>
+                    <li><a href="https://mastodon.social/@joannis@fosstodon.org" target="_blank">Mastodon</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <a href="https://swiftonserver.com/authors/tibor-bodecs/">
+                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                </a>
+                <h4><a href="https://swiftonserver.com/authors/tibor-bodecs/">Tibor Bödecs</a></h4>
+                <p><small><a href="https://binarybirds.com/" target="_blank">Binary Birds Kft.</a></small></p>
+                <ul>
+                    <li><a href="mailto:mail.tib@gmail.com" target="_blank">Email</a></li>
+                    <li><a href="https://github.com/tib/" target="_blank">GitHub</a></li>
+                    <li><a href="https://x.com/tiborbodecs" target="_blank">X (Twitter)</a></li>
+                    <li><a href="https://mastodon.social/@tiborbodecs" target="_blank">Mastodon</a></li>
+                </ul>
+            </div>
+            
+        </div>
+        
+        <section class="grid grid-221">
+            <small>Swift on server &copy; 2022 - 2024</small>
+            <small>This site was generated using <a href="https://swift.org/" target="_blank">Swift</a> & <a href="https://github.com/binarybirds/toucan" target="_blank">Toucan</a>.</small>
+        </section>
+    </footer>
+
+    </div>
+
+    
+
+    <script type="text/javascript" src="https://swiftonserver.com//js/tooltips.js" async=""></script>
+</body>
+</html>
