@@ -98,3 +98,6 @@ li p {
 p code a, li code a {
     border-bottom: 1px dotted var(--text-color);
 }
+blockquote {
+    font-style: italic;
+}

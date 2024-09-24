@@ -9,4 +9,4 @@ tags:
 authors:
     - tibor-bodecs
 sample: "https://github.com/swift-on-server/whats-new-in-hummingbird-2-sample"
-featured: true
+featured: false
