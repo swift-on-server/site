@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="canonical" href="https://swiftonserver.com/how-to-build-a-proxy-server-with-hummingbird/">
+    <link rel="prev" href="https://swiftonserver.com/getting-started-with-swiftpm-snippets/">
+    <link rel="next" href="https://swiftonserver.com/introduction-to-swift-service-lifecycle/">
+
+    <title>How to Build a Proxy Server with Hummingbird - Swift on server</title>
+    <meta name="description" content="Learn how to leverage the flexibility and performance of Hummingbird to build a proxy server.">
+
+    <meta property="og:url" content="https://swiftonserver.com/how-to-build-a-proxy-server-with-hummingbird/">
+    <meta property="og:title" content="How to Build a Proxy Server with Hummingbird - Swift on server">
+    <meta property="og:description" content="Learn how to leverage the flexibility and performance of Hummingbird to build a proxy server.">
+    <meta property="og:image" content="/assets/how-to-build-a-proxy-server-with-hummingbird/cover.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Build a Proxy Server with Hummingbird - Swift on server">
+    <meta name="twitter:description" content="Learn how to leverage the flexibility and performance of Hummingbird to build a proxy server.">
+    <meta name="twitter:image" content="/assets/how-to-build-a-proxy-server-with-hummingbird/cover.jpg">
+
+    <link rel="stylesheet" href="https://swiftonserver.com/css/modern-normalize.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/modern-base.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/variables.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/base.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/grid.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/navigation.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/footer.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/syntax.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/style.css">
+
+    
+
+    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/icon-320.png" type="image/png">
+    
+    <link rel="apple-touch-icon" href="https://swiftonserver.com/images/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://swiftonserver.com/images/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://swiftonserver.com/images/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://swiftonserver.com/images/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://swiftonserver.com/images/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://swiftonserver.com/images/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://swiftonserver.com/images/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://swiftonserver.com/images/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://swiftonserver.com/images/icons/apple-touch-icon-180x180.png">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+        media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+        media="(prefers-color-scheme: dark)"
+    >
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+          const container = document.querySelector("div#swiftinit-tooltips");
+          if (container !== null) {
+              container.querySelectorAll('pre code').forEach((el) => {
+                  el.classList.add('nohighlight');
+              });
+          }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+          document.querySelectorAll('section pre code:not(.language-swift').forEach((el) => {
+              hljs.highlightElement(el);
+          });
+        });
+    </script>
+
+    <script defer data-domain="swiftonserver.com" src="https://plausible.io/js/script.js"></script>
+
+</head>
+
+<body>
+    <div id="site-container">
+
+    <header id="navigation">
+        <a href="/">
+            <figure>
+                <picture>
+                    <source
+                        srcset="https://swiftonserver.com/images/logos/logo~dark.png"
+                        media="(prefers-color-scheme: dark)"
+                    >
+                    <img
+                        src="https://swiftonserver.com/images/logos/logo.png"
+                        alt="Logo of Swift on server"
+                        title="Swift on server"
+                    >
+                </picture>
+            </figure>
+        </a>
+        <nav>
+            <input type="checkbox" id="primary-menu-button" name="menu-button" class="menu-button">
+            <label for="primary-menu-button">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </label>
+            <div class="menu-items">
+                <a href="/posts/page/1/">Posts</a>
+                <a href="/tags/">Tags</a>
+                <a href="/authors/">Authors</a>
+                <a href="/newsletter/">Newsletter</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="page-container">
+    
+    <div class="article-with-toc">
+        <div>
+            <article class="post">
+                <div class="meta">
+                    <time datetime="2024/09/30">2024/09/30</time>
+                     &middot; <span class="reading-time">9 min read</span>
+                    
+                </div>
+                <section>
+                
+                <section class='introduction'><h1>Building a Proxy Server with Hummingbird</h1></section><section class='details literature'><p><a href='https://hummingbird.codes' target='_blank' rel='external nofollow noopener ugc'>Hummingbird</a> is a powerful and flexible system for creating various web applications. Its design enables running on a tiny memory footprint, allowing it to efficiently handle a lot of throughput.</p><p>The asynchronous and flexible nature of Hummingbird allows you to create HTTP proxies extremely easily.</p><h3 id='Routing%20Requests'><a href='#Routing%20Requests'>Routing Requests</a></h3><p>To create a proxy server, you can use three ways to intercept the incoming request:</p><p>The first way is to create route on the <code><a href='https://swiftinit.org/docs/hummingbird/hummingbird/router' target='_blank' rel='external'>Router</a></code>, for example, using a (recursive) wildcard. The route associated with these paths will receive this request. It can can then modify the target server and forward the request there.</p><p>The second solution is to create a <code><a href='https://swiftinit.org/docs/hummingbird/hummingbird/routermiddleware' target='_blank' rel='external'>RouterMiddleware</a></code> that intercepts the request. This can be applied to a route group or globally to all requests.</p><p>Finally, you can forward every request by intercepting them all in a custom <code><a href='https://swiftinit.org/docs/hummingbird/hummingbird/httpresponder' target='_blank' rel='external'>HTTPResponder</a></code>.</p><p>Each of these solutions will need to import the necessary modules:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>import</span> <span class='xv'>AsyncHTTPClient</span><span class='newline'>
+</span><span class='xk'>import</span> <span class='xv'>Hummingbird</span><span class='newline'>
+</span><span class='xk'>import</span> <span class='xv'>Logging</span><span class='newline'>
+</span><span class='xk'>import</span> <span class='xv'>NIOCore</span><span class='newline'>
+</span><span class='xk'>import</span> <span class='xv'>NIOPosix</span><span class='newline'>
+</span><span class='xk'>import</span> <span class='xv'>ServiceLifecycle</span></code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/hummingbird-2-proxy.swift' target='_blank' class='source github'><span class='file'>hummingbird-2-proxy.swift</span></a><h2 id='Forwarding%20Requests'><a href='#Forwarding%20Requests'>Forwarding Requests</a></h2><p>Each of the above solutions forwards requests the same way. The actual forwarding logic is only invoked differently for each solution.</p><p>To forward a request, you need to create a new <code><a href='https://swiftinit.org/docs/async-http-client/asynchttpclient/httpclientrequest' target='_blank' rel='external'>HTTPClientRequest</a></code> as defined by the <code><a href='https://swiftinit.org/docs/async-http-client/asynchttpclient' target='_blank' rel='external'>AsyncHTTPClient</a></code> library. Then, swap the target host (your API) with a new host. You can then use the <code><a href='https://swiftinit.org/docs/async-http-client/asynchttpclient/httpclient' target='_blank' rel='external'>HTTPClient</a></code> to send the request and receive the response.</p><p>The HTTP Client is swappable in this function, but the rest of this tutorial will use the <code><a href='https://swiftinit.org/docs/async-http-client/asynchttpclient/httpclient' target='_blank' rel='external'>HTTPClient</a>.<a href='https://swiftinit.org/docs/async-http-client/asynchttpclient/httpclient.shared' target='_blank' rel='external'>shared</a></code>.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>func</span> <span class='xv'>forward</span>(<span class='newline'>
+</span>    <span class='xv'>request</span>: <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/request' target='_blank' rel='external'>Request</a>,<span class='newline'>
+</span>    <span class='xv'>targetHost</span>: <a class='xt' href='https://swiftinit.org/docs/swift/swift/string' target='_blank' rel='external'>String</a>,<span class='newline'>
+</span>    <span class='xv'>httpClient</span>: <a class='xt' href='https://swiftinit.org/docs/async-http-client/asynchttpclient/httpclient' target='_blank' rel='external'>HTTPClient</a>,<span class='newline'>
+</span>    <span class='xv'>context</span>: <span class='xk'>some</span> <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbird/requestcontext' target='_blank' rel='external'>RequestContext</a><span class='newline'>
+</span>) <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/response' target='_blank' rel='external'>Response</a> {<span class='newline'>
+</span>    <span class='xc'>// 1.</span><span class='newline'>
+</span>    <span class='xk'>let</span> <span class='xv'>query</span> = <span class='xv'>request</span>.<a class='xv' href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/request.uri' target='_blank' rel='external'>uri</a>.<a class='xv' href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/uri.query' target='_blank' rel='external'>query</a>.<span class='xv'>map</span> { <a class='xs' href='https://swiftinit.org/docs/swift/swift/string.init(stringinterpolation:)' target='_blank' rel='external'>"?</a>\(<span class='xp'>$0</span>)<span class='xs'>"</span> } <span class='xv'>??</span> <span class='xs'>""</span><span class='newline'>
+</span>    <span class='xk'>var</span> <span class='xv'>clientRequest</span> = <a class='xt' href='https://swiftinit.org/docs/async-http-client/asynchttpclient/httpclientrequest' target='_blank' rel='external'>HTTPClientRequest</a>(<span class='xv'>url</span>: <a class='xs' href='https://swiftinit.org/docs/swift/swift/string.init(stringinterpolation:)' target='_blank' rel='external'>"https://</a>\(<span class='xv'>targetHost</span>)\(<span class='xv'>request</span>.<a class='xv' href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/request.uri' target='_blank' rel='external'>uri</a>.<a class='xv' href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/uri.path' target='_blank' rel='external'>path</a>)\(<span class='xv'>query</span>)<span class='xs'>"</span>)<span class='newline'>
+</span>    <span class='xv'>clientRequest</span>.<a class='xv' href='https://swiftinit.org/docs/async-http-client/asynchttpclient/httpclientrequest.method' target='_blank' rel='external'>method</a> = .<a class='xv' href='https://swiftinit.org/docs/swift-nio-extras/niohttp1/httpmethod.init(_:)' target='_blank' rel='external'>init</a>(<span class='xv'>request</span>.<a class='xv' href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/request.method' target='_blank' rel='external'>method</a>)<span class='newline'>
+</span>    <span class='xv'>clientRequest</span>.<a class='xv' href='https://swiftinit.org/docs/async-http-client/asynchttpclient/httpclientrequest.headers' target='_blank' rel='external'>headers</a> = .<a class='xv' href='https://swiftinit.org/docs/swift-nio-extras/niohttp1/httpheaders.init(_:)' target='_blank' rel='external'>init</a>(<span class='xv'>request</span>.<a class='xv' href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/request.headers' target='_blank' rel='external'>headers</a>)<span class='newline'>
+
+</span>    <span class='xc'>// 2.</span><span class='newline'>
+</span>    <span class='xk'>let</span> <span class='xv'>contentLength</span> = <span class='xk'>if</span> <span class='xk'>let</span> <span class='xv'>header</span> = <span class='xv'>request</span>.<a class='xv' href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/request.headers' target='_blank' rel='external'>headers</a><a href='https://swiftinit.org/docs/swift-http-types/httptypes/httpfields.subscript(_:)?hash=8MY26' target='_blank' rel='external'>[.</a><a class='xv' href='https://swiftinit.org/docs/swift-http-types/httptypes/httpfield/name.contentlength' target='_blank' rel='external'>contentLength</a>], <span class='xk'>let</span> <span class='xv'>value</span> = <a class='xt' href='https://swiftinit.org/docs/swift/swift/int' target='_blank' rel='external'>Int</a>(<span class='xv'>header</span>) {<span class='newline'>
+</span>        <a class='xt' href='https://swiftinit.org/docs/async-http-client/asynchttpclient/httpclientrequest' target='_blank' rel='external'>HTTPClientRequest</a>.<a class='xt' href='https://swiftinit.org/docs/async-http-client/asynchttpclient/httpclientrequest/body' target='_blank' rel='external'>Body</a>.<a class='xt' href='https://swiftinit.org/docs/async-http-client/asynchttpclient/httpclientrequest/body/length' target='_blank' rel='external'>Length</a>.<a class='xv' href='https://swiftinit.org/docs/async-http-client/asynchttpclient/httpclientrequest/body/length.known(_:)?hash=9DVCJ' target='_blank' rel='external'>known</a>(<span class='xv'>value</span>)<span class='newline'>
+</span>    } <span class='xk'>else</span> {<span class='newline'>
+</span>        <a class='xt' href='https://swiftinit.org/docs/async-http-client/asynchttpclient/httpclientrequest' target='_blank' rel='external'>HTTPClientRequest</a>.<a class='xt' href='https://swiftinit.org/docs/async-http-client/asynchttpclient/httpclientrequest/body' target='_blank' rel='external'>Body</a>.<a class='xt' href='https://swiftinit.org/docs/async-http-client/asynchttpclient/httpclientrequest/body/length' target='_blank' rel='external'>Length</a>.<a class='xv' href='https://swiftinit.org/docs/async-http-client/asynchttpclient/httpclientrequest/body/length.unknown' target='_blank' rel='external'>unknown</a><span class='newline'>
+</span>    }<span class='newline'>
+</span>    <span class='xv'>clientRequest</span>.<a class='xv' href='https://swiftinit.org/docs/async-http-client/asynchttpclient/httpclientrequest.body' target='_blank' rel='external'>body</a> = .<a class='xv' href='https://swiftinit.org/docs/async-http-client/asynchttpclient/httpclientrequest/body.stream(_:length:)?hash=2MTSS' target='_blank' rel='external'>stream</a>(<span class='newline'>
+</span>        <span class='xv'>request</span>.<a class='xv' href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/request.body' target='_blank' rel='external'>body</a>,<span class='newline'>
+</span>        <span class='xv'>length</span>: <span class='xv'>contentLength</span><span class='newline'>
+</span>    )<span class='newline'>
+
+</span>    <span class='xc'>// 3.</span><span class='newline'>
+</span>    <span class='xk'>let</span> <span class='xv'>response</span> = <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>httpClient</span>.<a class='xv' href='https://swiftinit.org/docs/async-http-client/asynchttpclient/httpclient.execute(_:timeout:logger:)' target='_blank' rel='external'>execute</a>(<span class='xv'>clientRequest</span>, <span class='xv'>timeout</span>: .<a class='xv' href='https://swiftinit.org/hist/swift-nio:2.72.0/niocore/timeamount.seconds(_:)' target='_blank' rel='external'>seconds</a>(<span class='xn'>60</span>))<span class='newline'>
+
+</span>    <span class='xc'>// 4.</span><span class='newline'>
+</span>    <span class='xk'>return</span> <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/response' target='_blank' rel='external'>Response</a>(<span class='newline'>
+</span>        <span class='xv'>status</span>: <a class='xt' href='https://swiftinit.org/docs/swift-http-types/httptypes/httpresponse' target='_blank' rel='external'>HTTPResponse</a>.<a class='xt' href='https://swiftinit.org/docs/swift-http-types/httptypes/httpresponse/status' target='_blank' rel='external'>Status</a>(<span class='xv'>code</span>: <a class='xt' href='https://swiftinit.org/docs/swift/swift/int' target='_blank' rel='external'>Int</a>(<span class='xv'>response</span>.<a class='xv' href='https://swiftinit.org/docs/async-http-client/asynchttpclient/httpclientresponse.status' target='_blank' rel='external'>status</a>.<a class='xv' href='https://swiftinit.org/hist/swift-nio:2.72.0/niohttp1/httpresponsestatus.code' target='_blank' rel='external'>code</a>), <span class='xv'>reasonPhrase</span>: <span class='xv'>response</span>.<a class='xv' href='https://swiftinit.org/docs/async-http-client/asynchttpclient/httpclientresponse.status' target='_blank' rel='external'>status</a>.<a class='xv' href='https://swiftinit.org/hist/swift-nio:2.72.0/niohttp1/httpresponsestatus.reasonphrase' target='_blank' rel='external'>reasonPhrase</a>),<span class='newline'>
+</span>        <span class='xv'>headers</span>: <a class='xt' href='https://swiftinit.org/docs/swift-http-types/httptypes/httpfields' target='_blank' rel='external'>HTTPFields</a>(<span class='xv'>response</span>.<a class='xv' href='https://swiftinit.org/docs/async-http-client/asynchttpclient/httpclientresponse.headers' target='_blank' rel='external'>headers</a>, <span class='xv'>splitCookie</span>: <span class='xk'>false</span>),<span class='newline'>
+</span>        <span class='xv'>body</span>: <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/responsebody' target='_blank' rel='external'>ResponseBody</a>(<span class='xv'>asyncSequence</span>: <span class='xv'>response</span>.<a class='xv' href='https://swiftinit.org/docs/async-http-client/asynchttpclient/httpclientresponse.body' target='_blank' rel='external'>body</a>)<span class='newline'>
+</span>    )<span class='newline'>
+</span>}</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/hummingbird-2-proxy.swift#L10' target='_blank' class='source github'><span class='file'>hummingbird-2-proxy.swift</span>:<span class='line'>10</span></a><p>As you see, there are four steps to forward a request:</p><ol><li><p>Modify the incoming <code><a href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/request' target='_blank' rel='external'>Request</a></code>’s URL, Method and Headers to point to the target server.</p></li><li><p>Provide the request’s <code><a href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/requestbody' target='_blank' rel='external'>RequestBody</a></code> to the <code><a href='https://swiftinit.org/docs/async-http-client/asynchttpclient/httpclient' target='_blank' rel='external'>HTTPClient</a></code> in a streaming fashion.</p></li><li><p>Execute the request using <code><a href='https://swiftinit.org/docs/async-http-client/asynchttpclient/httpclient' target='_blank' rel='external'>HTTPClient</a></code>.</p></li><li><p>Forward the <code><a href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/response' target='_blank' rel='external'>Response</a></code> back to the end user.</p></li></ol><p>In both step 2 and step 4, the HTTP body is passed along as a stream, or specifically an <code>AsyncSequence&lt;ByteBuffer&gt;</code>. This allows SwiftNIO to pass along the data efficiently, whilst applying backpressure in both directions (client and remote).</p><p>Due to the design of Hummingbird, where bodies are always streamed, this is not just an efficient solution but also the easiest to implement.</p><h3 id='Custom%20Route'><a href='#Custom%20Route'>Custom Route</a></h3><p>The first option is to create a route on the <code><a href='https://swiftinit.org/docs/hummingbird/hummingbird/router' target='_blank' rel='external'>Router</a></code> that will intercept the request and forward it to the target server.</p><p>Since the code is the same as the previous example, we will only need to invoke the <code>forward</code> function from within this middleware.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>let</span> <span class='xv'>router</span> = <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbird/router' target='_blank' rel='external'>Router</a>()<span class='newline'>
+</span><span class='xv'>router</span>.<a class='xv' href='https://swiftinit.org/docs/hummingbird/hummingbird/routermethods.get(_:use:)' target='_blank' rel='external'>get</a>(<a class='xs' href='https://swiftinit.org/docs/hummingbird/hummingbird/routerpath.init(stringliteral:)' target='_blank' rel='external'>"**"</a>) { <span class='xv'>request</span>, <span class='xv'>context</span> <span class='xk'>in</span><span class='newline'>
+</span>    <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>forward</span>(<span class='newline'>
+</span>        <span class='xv'>request</span>: <span class='xv'>request</span>,<span class='newline'>
+</span>        <span class='xv'>targetHost</span>: <span class='xs'>"example.com"</span>,<span class='newline'>
+</span>        <span class='xv'>httpClient</span>: .<a class='xv' href='https://swiftinit.org/docs/async-http-client/asynchttpclient/httpclient.shared' target='_blank' rel='external'>shared</a>,<span class='newline'>
+</span>        <span class='xv'>context</span>: <span class='xv'>context</span><span class='newline'>
+</span>    )<span class='newline'>
+</span>}</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/hummingbird-2-proxy.swift#L78' target='_blank' class='source github'><span class='file'>hummingbird-2-proxy.swift</span>:<span class='line'>78</span></a><h3 id='Middleware'><a href='#Middleware'>Middleware</a></h3><p>For the second option you need to create a new <code><a href='https://swiftinit.org/docs/hummingbird/hummingbird/routermiddleware' target='_blank' rel='external'>RouterMiddleware</a></code>. This middleware will intercept the request and forward it to the target server.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>struct</span> <span class='xt'>ProxyServerMiddleware</span>&lt;<span class='xt'>Context</span>: <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbird/requestcontext' target='_blank' rel='external'>RequestContext</a>&gt;: <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbird/routermiddleware' target='_blank' rel='external'>RouterMiddleware</a> {<span class='newline'>
+</span>    <span class='xk'>var</span> <span class='xv'>httpClient</span>: <a class='xt' href='https://swiftinit.org/docs/async-http-client/asynchttpclient/httpclient' target='_blank' rel='external'>HTTPClient</a> = .<a class='xv' href='https://swiftinit.org/docs/async-http-client/asynchttpclient/httpclient.shared' target='_blank' rel='external'>shared</a><span class='newline'>
+</span>    <span class='xk'>let</span> <span class='xv'>targetHost</span>: <a class='xt' href='https://swiftinit.org/docs/swift/swift/string' target='_blank' rel='external'>String</a><span class='newline'>
+
+</span>    <span class='xk'>func</span> <span class='xv'>handle</span>(_ <span class='xv'>request</span>: <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/request' target='_blank' rel='external'>Request</a>, <span class='xv'>context</span>: <span class='xt'>Context</span>, <span class='xv'>next</span>: (<a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/request' target='_blank' rel='external'>Request</a>, <span class='xt'>Context</span>) <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/response' target='_blank' rel='external'>Response</a>) <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/response' target='_blank' rel='external'>Response</a> {<span class='newline'>
+</span>        <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>forward</span>(<span class='newline'>
+</span>            <span class='xv'>request</span>: <span class='xv'>request</span>,<span class='newline'>
+</span>            <span class='xv'>targetHost</span>: <span class='xv'>targetHost</span>,<span class='newline'>
+</span>            <span class='xv'>httpClient</span>: <span class='xv'>httpClient</span>,<span class='newline'>
+</span>            <span class='xv'>context</span>: <span class='xv'>context</span><span class='newline'>
+</span>        )<span class='newline'>
+</span>    }<span class='newline'>
+</span>}</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/hummingbird-2-proxy.swift#L46' target='_blank' class='source github'><span class='file'>hummingbird-2-proxy.swift</span>:<span class='line'>46</span></a><p>Then, once the middleware is set up, you can <code><a href='https://swiftinit.org/docs/hummingbird/hummingbird/router' target='_blank' rel='external'>Router</a>.<a href='https://swiftinit.org/docs/hummingbird/hummingbird/router.add(middleware:)' target='_blank' rel='external'>add(middleware:)</a></code> to the router.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>let</span> <span class='xv'>router</span> = <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbird/router' target='_blank' rel='external'>Router</a>()<span class='newline'>
+</span><span class='xv'>router</span>.<a class='xv' href='https://swiftinit.org/docs/hummingbird/hummingbird/router.add(middleware:)' target='_blank' rel='external'>add</a>(<span class='xv'>middleware</span>: <span class='xt'>ProxyServerMiddleware</span>(<span class='xv'>targetHost</span>: <span class='xs'>"example.com"</span>))</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/hummingbird-2-proxy.swift#L63' target='_blank' class='source github'><span class='file'>hummingbird-2-proxy.swift</span>:<span class='line'>63</span></a><h3 id='Custom%20Responder'><a href='#Custom%20Responder'>Custom Responder</a></h3><p>The final option will implement an <code><a href='https://swiftinit.org/docs/hummingbird/hummingbird/httpresponder' target='_blank' rel='external'>HTTPResponder</a></code>.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>struct</span> <span class='xt'>ProxyServerResponder</span>&lt;<span class='xt'>Context</span>: <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbird/requestcontext' target='_blank' rel='external'>RequestContext</a>&gt;: <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbird/httpresponder' target='_blank' rel='external'>HTTPResponder</a> {<span class='newline'>
+</span>    <span class='xk'>let</span> <span class='xv'>targetHost</span>: <a class='xt' href='https://swiftinit.org/docs/swift/swift/string' target='_blank' rel='external'>String</a><span class='newline'>
+
+</span>    <span class='xk'>func</span> <span class='xv'>respond</span>(<span class='xv'>to</span> <span class='xv'>request</span>: <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/request' target='_blank' rel='external'>Request</a>, <span class='xv'>context</span>: <span class='xt'>Context</span>) <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/response' target='_blank' rel='external'>Response</a> {<span class='newline'>
+</span>        <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>forward</span>(<span class='newline'>
+</span>            <span class='xv'>request</span>: <span class='xv'>request</span>,<span class='newline'>
+</span>            <span class='xv'>targetHost</span>: <span class='xv'>targetHost</span>,<span class='newline'>
+</span>            <span class='xv'>httpClient</span>: .<a class='xv' href='https://swiftinit.org/docs/async-http-client/asynchttpclient/httpclient.shared' target='_blank' rel='external'>shared</a>,<span class='newline'>
+</span>            <span class='xv'>context</span>: <span class='xv'>context</span><span class='newline'>
+</span>        )<span class='newline'>
+</span>    }<span class='newline'>
+</span>}</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/hummingbird-2-proxy.swift#L93' target='_blank' class='source github'><span class='file'>hummingbird-2-proxy.swift</span>:<span class='line'>93</span></a><p>Then, you can set up the responder in the <code><a href='https://swiftinit.org/docs/hummingbird/hummingbird/application' target='_blank' rel='external'>Application</a></code>.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>let</span> <span class='xv'>app</span> = <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbird/application' target='_blank' rel='external'>Application</a>(<span class='newline'>
+</span>    <span class='xv'>responder</span>: <span class='xt'>ProxyServerResponder</span>&lt;<a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbird/basicrequestcontext' target='_blank' rel='external'>BasicRequestContext</a>&gt;(<span class='xv'>targetHost</span>: <span class='xs'>"example.com"</span>)<span class='newline'>
+</span>)</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/hummingbird-2-proxy.swift#L109' target='_blank' class='source github'><span class='file'>hummingbird-2-proxy.swift</span>:<span class='line'>109</span></a><h2 id='Conclusion'><a href='#Conclusion'>Conclusion</a></h2><p>Hummingbird’s powerful design makes it easy to stream data in- and out of your applications. This makes it a great choice for creating a proxy server. Each of the three solutions presented in this tutorial can be used to create a proxy server with Hummingbird. Choose the one that best fits your needs and enjoy the power of Hummingbird.</p></section><div style='display: none;' id='swiftinit-tooltips'><a href='/docs/hummingbird/hummingbird/router'><pre><code><span class='xk'>final</span> <span class='xk'>class</span> <span class='xv'>Router</span>&lt;<span class='xu'>Context</span>&gt; <span class='xk'>where</span> <span class='xt'>Context</span> : <span class='xt'>RequestContext</span></code></pre><p>Create rules for routing requests and then create <code>Responder</code> that will follow these rules.</p></a><a href='/docs/hummingbird/hummingbird/routermiddleware'><pre><code><span class='xk'>protocol</span> <span class='xv'>RouterMiddleware</span>&lt;<span class='xv'>Context</span>&gt; : <span class='xt'>MiddlewareProtocol</span> <span class='xk'>where</span> <span class='xk'>Self</span>.<span class='xt'>Input</span> <span class='xo'>==</span> <span class='xt'>Request</span>, <span class='xk'>Self</span>.<span class='xt'>Output</span> <span class='xo'>==</span> <span class='xt'>Response</span></code></pre><p>Middleware protocol with Request as input and Response as output</p></a><a href='/docs/hummingbird/hummingbird/httpresponder'><pre><code><span class='xk'>protocol</span> <span class='xv'>HTTPResponder</span>&lt;<span class='xv'>Context</span>&gt; : <span class='xt'>Sendable</span></code></pre><p>Protocol for object that produces a response given a request</p></a><a href='/docs/async-http-client/asynchttpclient/httpclientrequest'><pre><code><span class='xk'>struct</span> <span class='xv'>HTTPClientRequest</span></code></pre><p>A representation of an HTTP request for the Swift Concurrency HTTPClient API.</p></a><a href='/docs/async-http-client/asynchttpclient'><pre><code><span class='xk'>import</span> <span class='xv'>AsyncHTTPClient</span></code></pre><p>This package provides simple HTTP Client library built on top of SwiftNIO.</p></a><a href='/docs/async-http-client/asynchttpclient/httpclient'><pre><code><span class='xk'>class</span> <span class='xv'>HTTPClient</span></code></pre><p>HTTPClient class provides API for request execution.</p></a><a href='/docs/async-http-client/asynchttpclient/httpclient.shared'><pre><code><span class='xk'>static</span> <span class='xk'>var</span> <span class='xv'>shared</span>: <span class='xt'>HTTPClient</span> { <span class='xk'>get</span> }</code></pre><p>A globally shared, singleton <code>HTTPClient</code>.</p></a><a href='/docs/hummingbird/hummingbirdcore/request'><pre><code><span class='xk'>struct</span> <span class='xv'>Request</span></code></pre><p>Holds all the values required to process a request</p></a><a href='/docs/swift/swift/string'><pre><code><span class='xa'>@frozen</span> <span class='xk'>struct</span> <span class='xv'>String</span></code></pre><p>A Unicode string value that is a collection of characters.</p></a><a href='/docs/hummingbird/hummingbird/requestcontext'><pre><code><span class='xk'>protocol</span> <span class='xv'>RequestContext</span> : <span class='xt'>InitializableFromSource</span>, <span class='xt'>RequestContextSource</span> <span class='xk'>where</span> <span class='xk'>Self</span>.<span class='xt'>Source</span> : <span class='xt'>RequestContextSource</span></code></pre><p>Protocol that all request contexts should conform to. Holds data associated with a request. Provides context for request processing</p></a><a href='/docs/hummingbird/hummingbirdcore/response'><pre><code><span class='xk'>struct</span> <span class='xv'>Response</span></code></pre><p>Holds all the required to generate a HTTP Response</p></a><a href='/docs/hummingbird/hummingbirdcore/request.uri'><pre><code><span class='xk'>let</span> <span class='xv'>uri</span>: <span class='xt'>URI</span></code></pre><p>URI path</p></a><a href='/docs/hummingbird/hummingbirdcore/uri.query'><pre><code><span class='xk'>var</span> <span class='xv'>query</span>: <span class='xt'>String</span>? { <span class='xk'>get</span> }</code></pre><p>URL query</p></a><a href='/docs/swift/swift/string.init(stringinterpolation:)'><pre><code><span class='xk'>init</span>(<span class='xi'></span><span class='xv'>stringInterpolation</span>: <span class='xt'>DefaultStringInterpolation</span><wbr>)</code></pre><p>Creates a new instance from an interpolated string literal.</p></a><a href='/docs/hummingbird/hummingbirdcore/uri.path'><pre><code><span class='xk'>var</span> <span class='xv'>path</span>: <span class='xt'>String</span> { <span class='xk'>get</span> }</code></pre><p>URL path</p></a><a href='/docs/async-http-client/asynchttpclient/httpclientrequest.method'><pre><code><span class='xk'>var</span> <span class='xv'>method</span>: <span class='xt'>HTTPMethod</span></code></pre><p>The request method.</p></a><a href='/docs/swift-nio-extras/niohttp1/httpmethod.init(_:)'><pre><code><span class='xk'>init</span>(<span class='xi'></span>_ <span class='xb'>newMethod</span>: <span class='xt'>HTTPRequest</span>.<span class='xt'>Method</span><wbr>)</code></pre></a><a href='/docs/hummingbird/hummingbirdcore/request.method'><pre><code><span class='xk'>var</span> <span class='xv'>method</span>: <span class='xt'>HTTPRequest</span>.<span class='xt'>Method</span> { <span class='xk'>get</span> }</code></pre><p>Request HTTP method</p></a><a href='/docs/async-http-client/asynchttpclient/httpclientrequest.headers'><pre><code><span class='xk'>var</span> <span class='xv'>headers</span>: <span class='xt'>HTTPHeaders</span></code></pre><p>The request headers.</p></a><a href='/docs/swift-nio-extras/niohttp1/httpheaders.init(_:)'><pre><code><span class='xk'>init</span>(<span class='xi'></span>_ <span class='xb'>newFields</span>: <span class='xt'>HTTPFields</span><wbr>)</code></pre></a><a href='/docs/hummingbird/hummingbirdcore/request.headers'><pre><code><span class='xk'>var</span> <span class='xv'>headers</span>: <span class='xt'>HTTPFields</span> { <span class='xk'>get</span> }</code></pre><p>Request HTTP headers</p></a><a href='/docs/swift-http-types/httptypes/httpfields.subscript(_:)?hash=8MY26'><pre><code><span class='xk'>subscript</span>(<span class='xi'></span><span class='xv'>name</span>: <span class='xt'>HTTPField</span>.<span class='xt'>Name</span><wbr>) -&gt; <span class='xt'>String</span>? { <span class='xk'>get</span> <span class='xk'>set</span> }</code></pre><p>Access the field value string by name.</p></a><a href='/docs/swift-http-types/httptypes/httpfield/name.contentlength'><pre><code><span class='xk'>static</span> <span class='xk'>var</span> <span class='xv'>contentLength</span>: <span class='xt'>`Self`</span> { <span class='xk'>get</span> }</code></pre><p>Content-Length</p></a><a href='/docs/swift/swift/int'><pre><code><span class='xa'>@frozen</span> <span class='xk'>struct</span> <span class='xv'>Int</span></code></pre><p>A signed integer value type.</p></a><a href='/docs/async-http-client/asynchttpclient/httpclientrequest/body'><pre><code><span class='xk'>struct</span> <span class='xv'>Body</span></code></pre><p>An HTTP request body.</p></a><a href='/docs/async-http-client/asynchttpclient/httpclientrequest/body/length'><pre><code><span class='xk'>struct</span> <span class='xv'>Length</span></code></pre><p>The length of a HTTP request body.</p></a><a href='/docs/async-http-client/asynchttpclient/httpclientrequest/body/length.known(_:)?hash=9DVCJ'><pre><code><span class='xk'>static</span> <span class='xk'>func</span> <span class='xv'>known</span>(<span class='xi'></span>_ <span class='xb'>count</span>: <span class='xt'>Int</span><wbr>) -&gt; <span class='xt'>HTTPClientRequest</span>.<span class='xt'>Body</span>.<span class='xt'>Length</span></code></pre><p>The size of the request body is known and exactly <code>count</code> bytes</p></a><a href='/docs/async-http-client/asynchttpclient/httpclientrequest/body/length.unknown'><pre><code><span class='xk'>static</span> <span class='xk'>let</span> <span class='xv'>unknown</span>: <span class='xt'>`Self`</span></code></pre><p>The size of the request body is not known before starting the request</p></a><a href='/docs/async-http-client/asynchttpclient/httpclientrequest.body'><pre><code><span class='xk'>var</span> <span class='xv'>body</span>: <span class='xt'>Body</span>?</code></pre><p>The request body, if any.</p></a><a href='/docs/async-http-client/asynchttpclient/httpclientrequest/body.stream(_:length:)?hash=2MTSS'><pre><code><span class='xa'>@preconcurrency</span> <span class='xk'>static</span> <span class='xk'>func</span> <span class='xv'>stream</span>&lt;<span class='xu'>SequenceOfBytes</span>&gt;(<span class='xi'></span>_ <span class='xb'>sequenceOfBytes</span>: <span class='xt'>SequenceOfBytes</span>, <span class='xi'></span><span class='xv'>length</span>: <span class='xt'>Length</span><wbr>) -&gt; <span class='xt'>HTTPClientRequest</span>.<span class='xt'>Body</span> <span class='xk'>where</span> <span class='xt'>SequenceOfBytes</span> : <span class='xt'>Sendable</span>, <span class='xt'>SequenceOfBytes</span> : <span class='xt'>AsyncSequence</span>, <span class='xt'>SequenceOfBytes</span>.<span class='xt'>Element</span> <span class='xo'>==</span> <span class='xt'>ByteBuffer</span></code></pre><p>Create an <code>Body</code> from an <code>AsyncSequence</code> of <code>ByteBuffer</code>s.</p></a><a href='/docs/hummingbird/hummingbirdcore/request.body'><pre><code><span class='xk'>var</span> <span class='xv'>body</span>: <span class='xt'>RequestBody</span></code></pre><p>Body of HTTP request</p></a><a href='/docs/async-http-client/asynchttpclient/httpclient.execute(_:timeout:logger:)'><pre><code><span class='xk'>func</span> <span class='xv'>execute</span>(<span class='xi'></span>_ <span class='xb'>request</span>: <span class='xt'>HTTPClientRequest</span>, <span class='xi'></span><span class='xv'>timeout</span>: <span class='xt'>TimeAmount</span>, <span class='xi'></span><span class='xv'>logger</span>: <span class='xt'>Logger</span>? = <span class='xk'>nil</span><wbr>) <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <span class='xt'>HTTPClientResponse</span></code></pre><p>Execute arbitrary HTTP requests.</p></a><a href='/hist/swift-nio:2.72.0/niocore/timeamount.seconds(_:)'><pre><code><span class='xk'>static</span> <span class='xk'>func</span> <span class='xv'>seconds</span>(<span class='xi'></span>_ <span class='xb'>amount</span>: <span class='xt'>Int64</span><wbr>) -&gt; <span class='xt'>TimeAmount</span></code></pre><p>Creates a new <code>TimeAmount</code> for the given amount of seconds.</p></a><a href='/docs/swift-http-types/httptypes/httpresponse'><pre><code><span class='xk'>struct</span> <span class='xv'>HTTPResponse</span></code></pre><p>An HTTP response message consisting of the “:status” pseudo header field and header fields.</p></a><a href='/docs/swift-http-types/httptypes/httpresponse/status'><pre><code><span class='xk'>struct</span> <span class='xv'>Status</span></code></pre><p>The response status consisting of a 3-digit status code and a reason phrase. The reason phrase is ignored by modern HTTP versions.</p></a><a href='/docs/async-http-client/asynchttpclient/httpclientresponse.status'><pre><code><span class='xk'>var</span> <span class='xv'>status</span>: <span class='xt'>HTTPResponseStatus</span></code></pre><p>The HTTP status for this response.</p></a><a href='/hist/swift-nio:2.72.0/niohttp1/httpresponsestatus.code'><pre><code><span class='xk'>var</span> <span class='xv'>code</span>: <span class='xt'>UInt</span> { <span class='xk'>get</span> }</code></pre><p>The numerical status code for a given HTTP response status.</p></a><a href='/hist/swift-nio:2.72.0/niohttp1/httpresponsestatus.reasonphrase'><pre><code><span class='xk'>var</span> <span class='xv'>reasonPhrase</span>: <span class='xt'>String</span> { <span class='xk'>get</span> }</code></pre><p>The string reason phrase for a given HTTP response status.</p></a><a href='/docs/swift-http-types/httptypes/httpfields'><pre><code><span class='xk'>struct</span> <span class='xv'>HTTPFields</span></code></pre><p>A collection of HTTP fields. It is used in <code>HTTPRequest</code> and <code>HTTPResponse</code>, and can also be used as HTTP trailer fields.</p></a><a href='/docs/async-http-client/asynchttpclient/httpclientresponse.headers'><pre><code><span class='xk'>var</span> <span class='xv'>headers</span>: <span class='xt'>HTTPHeaders</span></code></pre><p>The HTTP headers of this response.</p></a><a href='/docs/hummingbird/hummingbirdcore/responsebody'><pre><code><span class='xk'>struct</span> <span class='xv'>ResponseBody</span></code></pre><p>Response body</p></a><a href='/docs/async-http-client/asynchttpclient/httpclientresponse.body'><pre><code><span class='xk'>var</span> <span class='xv'>body</span>: <span class='xt'>Body</span></code></pre><p>The body of this HTTP response.</p></a><a href='/docs/hummingbird/hummingbirdcore/requestbody'><pre><code><span class='xk'>struct</span> <span class='xv'>RequestBody</span></code></pre><p>Request Body</p></a><a href='/docs/hummingbird/hummingbird/routermethods.get(_:use:)'><pre><code><span class='xa'>@discardableResult</span> <span class='xk'>func</span> <span class='xv'>get</span>(<span class='xi'></span>_ <span class='xb'>path</span>: <span class='xt'>RouterPath</span> = <span class='xs'>""</span>, <span class='xi'></span><span class='xv'>use</span> <span class='xb'>handler</span>: <span class='xa'>@escaping</span> (<span class='xt'>Request</span>, <span class='xt'>Context</span>) <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <span class='xk'>some</span> <span class='xt'>ResponseGenerator</span><wbr>) -&gt; <span class='xk'>Self</span></code></pre><p>GET path for async closure returning type conforming to ResponseGenerator</p></a><a href='/docs/hummingbird/hummingbird/routerpath.init(stringliteral:)'><pre><code><span class='xk'>init</span>(<span class='xi'></span><span class='xv'>stringLiteral</span> <span class='xb'>value</span>: <span class='xt'>String</span><wbr>)</code></pre><p>Initialize RouterPath from String literal</p></a><a href='/docs/hummingbird/hummingbird/router.add(middleware:)'><pre><code><span class='xa'>@discardableResult</span> <span class='xk'>func</span> <span class='xv'>add</span>(<span class='xi'></span><span class='xv'>middleware</span>: <span class='xk'>any</span> <span class='xt'>MiddlewareProtocol</span>&lt;<span class='xt'>Request</span>, <span class='xt'>Response</span>, <span class='xt'>Context</span>&gt;<wbr>) -&gt; <span class='xk'>Self</span></code></pre><p>Add middleware to Router</p></a><a href='/docs/hummingbird/hummingbird/application'><pre><code><span class='xk'>struct</span> <span class='xv'>Application</span>&lt;<span class='xu'>Responder</span>&gt; <span class='xk'>where</span> <span class='xt'>Responder</span> : <span class='xt'>HTTPResponder</span>, <span class='xt'>Responder</span>.<span class='xt'>Context</span> : <span class='xt'>InitializableFromSource</span>, <span class='xt'>Responder</span>.<span class='xt'>Context</span>.<span class='xt'>Source</span> <span class='xo'>==</span> <span class='xt'>ApplicationRequestContextSource</span></code></pre><p>Application class. Brings together all the components of Hummingbird together</p></a><a href='/docs/hummingbird/hummingbird/basicrequestcontext'><pre><code><span class='xk'>struct</span> <span class='xv'>BasicRequestContext</span></code></pre><p>Implementation of a basic request context that supports everything the Hummingbird library needs</p></a></div>
+                    
+                </section>
+    
+                <footer>
+                    <br>
+                    <time datetime=""></time>
+    
+                    
+                    <div class="author-list">
+                        <a href="https://swiftonserver.com/authors/joannis-orlandos/">
+                        <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                        <span class="name">Joannis Orlandos</span>
+                        </a>
+                    </div>
+                    <div class="tag-list">
+                        <a href="https://swiftonserver.com/tags/hummingbird/"><small>Hummingbird</small></a>
+                    <a href="https://swiftonserver.com/tags/server/"><small>Server</small></a>
+                    </div>
+                </footer>
+                            
+                <section class="group">
+                    <h4>Related posts</h4>                
+                    <div class="grid grid-221">
+                        <div class="card">
+                            
+                            
+                            <div class="author-list">
+                            </div>
+                            <div class="meta">
+                                <time datetime="2024/09/24">2024/09/24</time>
+                                
+                            </div>
+                            
+                            <h2 class="title"><a href="https://swiftonserver.com/getting-started-with-hummingbird/" target="">Getting Started with Hummingbird</a></h2>
+                            <p>Learn how to get started with Hummingbird 2, the modern Swift Web Framework.</p>
+                        
+                            <div class="spacer"></div>
+                        
+                            <div class="tag-list">
+                            </div>
+                        </div>
+                    <div class="card">
+                            
+                            
+                            <div class="author-list">
+                            </div>
+                            <div class="meta">
+                                <time datetime="2024/08/29">2024/08/29</time>
+                                
+                            </div>
+                            
+                            <h2 class="title"><a href="https://swiftonserver.com/working-with-udp-in-swiftnio/" target="">Working with UDP in SwiftNIO</a></h2>
+                            <p>Create UDP servers and clients using SwiftNIO and structured concurrency</p>
+                        
+                            <div class="spacer"></div>
+                        
+                            <div class="tag-list">
+                            </div>
+                        </div>
+                    <div class="card">
+                            
+                            
+                            <div class="author-list">
+                            </div>
+                            <div class="meta">
+                                <time datetime="2024/06/27">2024/06/27</time>
+                                
+                            </div>
+                            
+                            <h2 class="title"><a href="https://swiftonserver.com/websockets-tutorial-using-swift-and-hummingbird/" target="">Using WebSockets in Hummingbird</a></h2>
+                            <p>In this article, you will learn about WebSockets and how to use them with the Hummingbird framework in a straightforward, easy-to-follow manner.</p>
+                        
+                            <div class="spacer"></div>
+                        
+                            <div class="tag-list">
+                            </div>
+                        </div>
+                    <div class="card">
+                            
+                            
+                            <div class="author-list">
+                            </div>
+                            <div class="meta">
+                                <time datetime="2024/03/05">2024/03/05</time>
+                                
+                            </div>
+                            
+                            <h2 class="title"><a href="https://swiftonserver.com/using-openapi-with-hummingbird/" target="">Using OpenAPI Generator with Hummingbird</a></h2>
+                            <p>Learn how to use OpenAPI Generator to create Swift APIs with Hummingbird.</p>
+                        
+                            <div class="spacer"></div>
+                        
+                            <div class="tag-list">
+                            </div>
+                        </div>
+                    <div class="card">
+                            
+                            
+                            <div class="author-list">
+                            </div>
+                            <div class="meta">
+                                <time datetime="2024/02/27">2024/02/27</time>
+                                
+                            </div>
+                            
+                            <h2 class="title"><a href="https://swiftonserver.com/whats-new-in-hummingbird-2/" target="">What&#39;s new in Hummingbird 2?</a></h2>
+                            <p>Discover Hummingbird 2: a Swift-based HTTP server framework, with modern concurrency and customizable request contexts.</p>
+                        
+                            <div class="spacer"></div>
+                        
+                            <div class="tag-list">
+                            </div>
+                        </div>
+                    <div class="card">
+                            
+                            
+                            <div class="author-list">
+                            </div>
+                            <div class="meta">
+                                <time datetime="2024/02/08">2024/02/08</time>
+                                
+                            </div>
+                            
+                            <h2 class="title"><a href="https://swiftonserver.com/using-swiftnio-channels/" target="">Using SwiftNIO - Channels</a></h2>
+                            <p>Create a TCP server using SwiftNIO and structured concurrency</p>
+                        
+                            <div class="spacer"></div>
+                        
+                            <div class="tag-list">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+    
+            </article>
+        </div>
+        
+        <div>
+            <div class="support">
+                <a href="https://www.serversideswift.info/" target="_blank">
+                    <img src="https://swiftonserver.com//images/logos/serversideswift.png" alt="Server-Side Swift Conference logo">
+                </a>
+                <h4>
+                    <a href="https://www.serversideswift.info/" target="_blank">ServerSide.swift</a>
+                </h4>
+                <p>26th-27th September 2024. London, UK</p>
+                <p>Discount code: <strong><a href="https://ti.to/serverside-swift/2024/discount/SWIFTONSERVER" target="_blank">SWIFTONSERVER</a></strong></p>
+                <a class="cta" href="https://www.serversideswift.info/tickets/" target="_blank">Buy a ticket</a>
+            </div>
+            
+            <aside id="toc">
+                <h4>On this page</h4>
+                <ul>
+                    <li class="first-level">
+                        <a href="#Routing%20Requests">Routing Requests</a>
+                        <ul>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Forwarding%20Requests">Forwarding Requests</a>
+                        <ul>
+                            <li><a href="#Custom%20Route">Custom Route</a></li>
+                <li><a href="#Middleware">Middleware</a></li>
+                <li><a href="#Custom%20Responder">Custom Responder</a></li>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Conclusion">Conclusion</a>
+                        <ul>
+                        </ul>
+                    </li>
+                </ul>
+            </aside>
+    
+        </div>
+    </div>
+    
+    </main>
+
+    <footer id="site-footer">
+        <div class="grid grid-421">
+    
+            <figure>
+                <picture>
+                    <source
+                        srcset="https://swiftonserver.com/images/logos/logo~dark.png"
+                        media="(prefers-color-scheme: dark)"
+                    >
+                    <img
+                        id="logo-image"
+                        src="https://swiftonserver.com/images/logos/logo.png"
+                        alt="Logo of Swift on server"
+                        title="Swift on server"
+                    >
+                </picture>
+            </figure>
+            
+            <div>
+                <span style="display: block; height: 32px;">&nbsp;</span>
+                <h4>Swift on server</h4>
+                <p><small><a href="https://swiftonserver.com/" target="_blank">swiftonserver.com</a></small></p>
+                <ul>
+                    <li><a href="https://github.com/swift-on-server/" target="_blank">GitHub</a></li>
+                    <li><a href="https://mastodon.social/@swiftonserver/" target="_blank">Mastodon</a></li>
+                    <li><a href="https://swiftonserver.com/rss.xml" target="_blank">RSS</a></li>
+                    <li><a href="https://swiftonserver.com/sitemap.xml" target="_blank">Sitemap</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
+                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                </a>
+                <h4><a href="https://swiftonserver.com/authors/joannis-orlandos/">Joannis Orlandos</a></h4>
+                <p><small><a href="https://unbeatable.software/" target="_blank">Unbeatable Software B.V.</a></small></p>
+                <ul>
+                    <li><a href="mailto:hello@unbeatable.software" target="_blank">Email</a></li>
+                    <li><a href="https://github.com/Joannis" target="_blank">GitHub</a></li>
+                    <li><a href="https://x.com/JoannisOrlandos" target="_blank">X (Twitter)</a></li>
+                    <li><a href="https://mastodon.social/@joannis@fosstodon.org" target="_blank">Mastodon</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <a href="https://swiftonserver.com/authors/tibor-bodecs/">
+                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                </a>
+                <h4><a href="https://swiftonserver.com/authors/tibor-bodecs/">Tibor Bödecs</a></h4>
+                <p><small><a href="https://binarybirds.com/" target="_blank">Binary Birds Kft.</a></small></p>
+                <ul>
+                    <li><a href="mailto:mail.tib@gmail.com" target="_blank">Email</a></li>
+                    <li><a href="https://github.com/tib/" target="_blank">GitHub</a></li>
+                    <li><a href="https://x.com/tiborbodecs" target="_blank">X (Twitter)</a></li>
+                    <li><a href="https://mastodon.social/@tiborbodecs" target="_blank">Mastodon</a></li>
+                </ul>
+            </div>
+            
+        </div>
+        
+        <section class="grid grid-221">
+            <small>Swift on server &copy; 2022 - 2024</small>
+            <small>This site was generated using <a href="https://swift.org/" target="_blank">Swift</a> & <a href="https://github.com/binarybirds/toucan" target="_blank">Toucan</a>.</small>
+        </section>
+    </footer>
+
+    </div>
+
+    
+
+    <script type="text/javascript" src="https://swiftonserver.com//js/tooltips.js" async=""></script>
+</body>
+</html>
