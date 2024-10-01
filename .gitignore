@@ -5,3 +5,4 @@
 Sources/**/*.html
 docc
 .build.ssgc
+cache

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="canonical" href="https://swiftonserver.com/using-openapi-with-hummingbird/">
-    <link rel="prev" href="https://swiftonserver.com/using-environment-variables-in-swift/">
+    <link rel="prev" href="https://swiftonserver.com/using-hummingbird-request-context/">
     <link rel="next" href="https://swiftonserver.com/using-swiftnio-channels/">
 
     <title>Using OpenAPI Generator with Hummingbird - Swift on server</title>
@@ -132,8 +132,8 @@
                 <section class='introduction'><h1>Using OpenAPI Generator with Hummingbird</h1></section><section class='details literature'><p>The OpenAPI Generator for Swift is a recent addition to the ecosystem that enables you to generate Swift code from OpenAPI specifications. This documentation-first approach allows you to define your API before starting a project, enabling both client and server code generation across multiple languages.</p><p>OpenAPI specifications can support a variety of content types, such as JSON, XML, Multipart, binary files and streams of data. When using <a href='https://github.com/apple/swift-openapi-generator' target='_blank' rel='external'>OpenAPI Generator</a>  to generate a client, you’ll get a spec-compliant client implementation at the push of a button.</p><p>Servers generated from OpenAPI specifications are also spec-compliant. The generator creates an protocol named <code>APIProtocol</code> . Conforming to this type, you’ll need to implement all the routes defined in your OpenAPI specification. This ensures that your server is always in sync with your API specification.</p><p>The OpenAPI generator ensures that data is handled efficiently and correctly. It also provides a clear and concise way to define your API, making it easy to understand and maintain. It integrates well with Hummingbird, requiring minimal setup to get started.</p><p>In this tutorial, we’ll show you how to use the OpenAPI Generator to create a Swift API with Hummingbird (<a href='../whats-new-in-hummingbird-2'>What’s new in Hummingbird 2?</a>). If you’re using Hummingbird with AWS Lambda, you can also use the OpenAPI generator for handling routes in your Lambda function.</p><h2 id='Prerequisites'><a href='#Prerequisites'>Prerequisites</a></h2><p>This tutorial has a <a href='https://github.com/swift-on-server/using-openapi-with-hummingbird-sample' target='_blank' rel='external'>sample project</a>, containing a starter and finished project. You can use this to verify your setup.</p><h2 id='OpenAPI%20Generation'><a href='#OpenAPI%20Generation'>OpenAPI Generation</a></h2><p>The <a href='https://swagger.io/specification/' target='_blank' rel='external nofollow noopener ugc'>OpenAPI Specification</a> is a standard for defining HTTP APIs. It allows you to define the endpoints, request and response bodies, and other relevant details of your API in a machine-readable format.</p><p>When adding the OpenAPI generator to your project, you’ll need to add the following dependencies to your <code>Package.swift</code> file:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span>.<span class='xv'>package</span>(<span class='xv'>url</span>: <span class='xs'>"https://github.com/apple/swift-openapi-generator.git"</span>, <span class='xv'>from</span>: <span class='xs'>"1.2.0"</span>),<span class='newline'>
 </span>.<span class='xv'>package</span>(<span class='xv'>url</span>: <span class='xs'>"https://github.com/apple/swift-openapi-runtime.git"</span>, <span class='xv'>from</span>: <span class='xs'>"1.3.0"</span>),<span class='newline'>
 </span>.<span class='xv'>package</span>(<span class='xv'>url</span>: <span class='xs'>"https://github.com/apple/swift-argument-parser.git"</span>, <span class='xv'>from</span>: <span class='xs'>"1.3.0"</span>),<span class='newline'>
-</span>.<span class='xv'>package</span>(<span class='xv'>url</span>: <span class='xs'>"https://github.com/hummingbird-project/hummingbird.git"</span>, <span class='xv'>from</span>: <span class='xs'>"2.0.0-rc.1"</span>),<span class='newline'>
-</span>.<span class='xv'>package</span>(<span class='xv'>url</span>: <span class='xs'>"https://github.com/swift-server/swift-openapi-hummingbird.git"</span>, <span class='xv'>from</span>: <span class='xs'>"2.0.0-rc.1"</span>),</code></pre><p><strong>Note:</strong> <code>swift-argument-parser</code> is not related to Hummingbird or OpenAPI.</p><p>When working with OpenAPI generator, it’s helpful to create a separate module (target) for your generated OpenAPI code. First of all, this allows you to import the generated code into a client implementation. But more importantly, it prevents the Swift compiler from getting confusing about the generated code “not existing” at times. When separating the OpenAPI module, it is compiled first, helping avoid these issues.</p><p>In order to complete the setup, add the following to your Package manifest:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span>.<span class='xv'>target</span>(<span class='newline'>
+</span>.<span class='xv'>package</span>(<span class='xv'>url</span>: <span class='xs'>"https://github.com/hummingbird-project/hummingbird.git"</span>, <span class='xv'>from</span>: <span class='xs'>"2.0.0"</span>),<span class='newline'>
+</span>.<span class='xv'>package</span>(<span class='xv'>url</span>: <span class='xs'>"https://github.com/swift-server/swift-openapi-hummingbird.git"</span>, <span class='xv'>from</span>: <span class='xs'>"2.0.0"</span>),</code></pre><p><strong>Note:</strong> <code>swift-argument-parser</code> is not related to Hummingbird or OpenAPI.</p><p>When working with OpenAPI generator, it’s helpful to create a separate module (target) for your generated OpenAPI code. First of all, this allows you to import the generated code into a client implementation. But more importantly, it prevents the Swift compiler from getting confusing about the generated code “not existing” at times. When separating the OpenAPI module, it is compiled first, helping avoid these issues.</p><p>In order to complete the setup, add the following to your Package manifest:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span>.<span class='xv'>target</span>(<span class='newline'>
 </span>    <span class='xv'>name</span>: <span class='xs'>"MyOpenAPI"</span>,<span class='newline'>
 </span>    <span class='xv'>dependencies</span>: [<span class='newline'>
 </span>        <span class='xc'>// 1</span><span class='newline'>
@@ -223,7 +223,7 @@
 </span>        <span class='xc'>// 5</span><span class='newline'>
 </span>        <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>app</span>.<span class='xv'>runService</span>()<span class='newline'>
 </span>    }<span class='newline'>
-</span>}</code></pre><p>This code registers the <code>HelloAPI</code> routes, defined in your <code>openapi.yaml</code></p><p>Let’s break down the above:</p><ol><li><p>Create a new <code>Router</code> and add a logging middleware to it, allowing you to see the requests in the console.</p></li><li><p>Create a new <code>HelloAPI</code> instance. This is also the point where you can inject dependencies into your API implementation.</p></li><li><p>Register the HelloAPI’s handlers on the router. This will make the <code>HelloAPI</code> respond to the <code>/hello</code> route.</p></li><li><p>Create a new <code>Application</code> with the router and a configuration that specifies the hostname and port.</p></li><li><p>Run the application. This will make your route available at <a target='_blank' href='http://localhost:8080/hello' rel='external nofollow noopener ugc'>http://localhost:8080/hello</a>.</p></li></ol><p>That’s all it takes to create a Hummingbird server that responds to the <code>/hello</code> route using the OpenAPI generator. There are many more features and options available in the OpenAPI generator, such as multipart or generating client code for use with a client transport such as <a href='https://github.com/swift-server/async-http-client' target='_blank' rel='external'>async-http-client</a> and URLSession. We hope this tutorial has given you a good starting point for using the OpenAPI generator with Hummingbird.</p></section><div style='display: none;' id='swiftinit-tooltips'><a href='/hist/swift-on-server.articles:main/articles/whats-new-in-hummingbird-2'><p>Hummingbird is a lightweight, flexible HTTP server framework written in Swift. The work on the second major version started last year and the first alpha version was tagged on the 22th of January, 2024. There are quite a lot of significant changes and under the hood improvements. It seems like the new APIs are mostly settled down at this point, so this is a great opportunity to introduce HB2. Let’s dive in.</p></a></div>
+</span>}</code></pre><p>This code registers the <code>HelloAPI</code> routes, defined in your <code>openapi.yaml</code></p><p>Let’s break down the above:</p><ol><li><p>Create a new <code>Router</code> and add a logging middleware to it, allowing you to see the requests in the console.</p></li><li><p>Create a new <code>HelloAPI</code> instance. This is also the point where you can inject dependencies into your API implementation.</p></li><li><p>Register the HelloAPI’s handlers on the router. This will make the <code>HelloAPI</code> respond to the <code>/hello</code> route.</p></li><li><p>Create a new <code>Application</code> with the router and a configuration that specifies the hostname and port.</p></li><li><p>Run the application. This will make your route available at <a target='_blank' href='http://localhost:8080/hello' rel='external nofollow noopener ugc'>http://localhost:8080/hello</a>.</p></li></ol><p>That’s all it takes to create a Hummingbird server that responds to the <code>/hello</code> route using the OpenAPI generator. There are many more features and options available in the OpenAPI generator, such as multipart or generating client code for use with a client transport such as <a href='https://github.com/swift-server/async-http-client' target='_blank' rel='external'>async-http-client</a> and URLSession. We hope this tutorial has given you a good starting point for using the OpenAPI generator with Hummingbird.</p></section><div style='display: none;' id='swiftinit-tooltips'><a href='/hist/swift-on-server.articles:main/articles/whats-new-in-hummingbird-2'><p>Hummingbird is a lightweight, flexible HTTP server framework written in Swift. The work on the second major version started halfway through 2023 and the first alpha version was tagged on the 22th of January, 2024. There are quite a lot of significant changes and under the hood improvements. With 2.0 being released, this is a great opportunity to read up on it!</p></a></div>
                     
                 </section>
     
@@ -250,6 +250,24 @@
                     <h4>Related posts</h4>                
                     <div class="grid grid-221">
                         <div class="card">
+                            
+                            
+                            <div class="author-list">
+                            </div>
+                            <div class="meta">
+                                <time datetime="2024/10/01">2024/10/01</time>
+                                
+                            </div>
+                            
+                            <h2 class="title"><a href="https://swiftonserver.com/using-hummingbird-request-context/" target="">Using Hummingbird&#39;s Request Contexts</a></h2>
+                            <p>Learn about request contexts in Hummingbird and how to use them.</p>
+                        
+                            <div class="spacer"></div>
+                        
+                            <div class="tag-list">
+                            </div>
+                        </div>
+                    <div class="card">
                             
                             
                             <div class="author-list">
@@ -333,24 +351,6 @@
                             
                             <h2 class="title"><a href="https://swiftonserver.com/websockets-tutorial-using-swift-and-hummingbird/" target="">Using WebSockets in Hummingbird</a></h2>
                             <p>In this article, you will learn about WebSockets and how to use them with the Hummingbird framework in a straightforward, easy-to-follow manner.</p>
-                        
-                            <div class="spacer"></div>
-                        
-                            <div class="tag-list">
-                            </div>
-                        </div>
-                    <div class="card">
-                            
-                            
-                            <div class="author-list">
-                            </div>
-                            <div class="meta">
-                                <time datetime="2024/02/27">2024/02/27</time>
-                                
-                            </div>
-                            
-                            <h2 class="title"><a href="https://swiftonserver.com/whats-new-in-hummingbird-2/" target="">What&#39;s new in Hummingbird 2?</a></h2>
-                            <p>Discover Hummingbird 2: a Swift-based HTTP server framework, with modern concurrency and customizable request contexts.</p>
                         
                             <div class="spacer"></div>
                         
