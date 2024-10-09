@@ -6,3 +6,5 @@ Sources/**/*.html
 docc
 .build.ssgc
 cache
+cover-image-generator/.build
+cover-image-generator/.swiftpm

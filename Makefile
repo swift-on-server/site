@@ -5,7 +5,7 @@ SHELL=/bin/bash
 dev:
 	toucan generate ./src ./docs --base-url http://localhost:3000/
 
-dist:
+dist: cover
 	toucan generate ./src ./docs
 
 watch:
@@ -19,3 +19,6 @@ png:
 
 jpg:
 	find ./src/* -type f -name '*.jpg' | xargs jpegoptim --all-progressive '*.jpg'
+
+cover:
+	cd cover-image-generator && swift run cover-image-generator && cd .. && make jpg
