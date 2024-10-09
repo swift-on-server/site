@@ -1,10 +1,6 @@
 id: tag
 
 properties:
-    order:
-        type: int
-        required: true
-
 
 context:
     site:

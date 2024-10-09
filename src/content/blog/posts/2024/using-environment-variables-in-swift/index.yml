@@ -3,10 +3,10 @@ title: "Environment Variables in Swift"
 description: "Explore the importance of environment variables in Swift and how to use them."
 image: ./assets/cover.jpg
 publication: 2024/03/12 12:00:00
+featured: true
 tags:
     - utilities
     - observability
 authors:
     - tibor-bodecs
-featured: true
 # TODO: Path for iOS and backend

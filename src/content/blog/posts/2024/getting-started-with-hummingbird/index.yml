@@ -3,9 +3,9 @@ title: "Getting Started with Hummingbird"
 description: "Learn how to get started with Hummingbird 2, the modern Swift Web Framework."
 image: ./assets/cover.jpg
 publication: 2024/09/24 08:00:00
+featured: true
 tags:
     - hummingbird
     - server
 authors:
     - joannis-orlandos
-featured: true

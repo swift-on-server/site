@@ -1,5 +1,11 @@
 id: post
 rss: true
+template: blog.single.post
+
+transformers:
+    run:
+        - name: swiftinit
+    render: false
 
 pagination:
     bundle: blog/posts/pagination
@@ -10,9 +16,6 @@ pagination:
 properties:
     featured:
         type: bool
-        required: true
-    order:
-        type: int
         required: true
 
 relations:
@@ -71,9 +74,4 @@ context:
             limit: 6
         
 
-template: blog.single.post
 
-transformers:
-    run:
-        - name: swiftinit
-    render: false

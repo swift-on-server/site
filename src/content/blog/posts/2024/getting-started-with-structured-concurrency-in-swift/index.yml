@@ -3,8 +3,8 @@ title: "Getting Started: Swift's Structured Concurrency"
 description: "Learn how to apply structured concurrency in your applications, using task groups and other structured concepts."
 image: ./assets/cover.jpg
 publication: 2024/03/19 12:00:00
+featured: true
 tags:
     - structured-concurrency
 authors:
     - joannis-orlandos
-featured: true

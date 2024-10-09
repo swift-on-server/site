@@ -3,6 +3,7 @@ title: "Templating with Swift-Mustache"
 description: "Learn how to template emails and web pages with Swift-Mustache."
 image: ./assets/cover.jpg
 publication: 2024/05/14 12:00:00
+featured: false
 tags:
     - package-highlight
 authors:

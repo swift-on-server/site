@@ -3,6 +3,7 @@ title: "Useful scripts for server-side Swift"
 description: "Learn about shell scripts to enforce coding standards and conduct checks for backend Swift projects."
 image: ./assets/cover.jpg
 publication: 2024/04/10 12:00:00
+featured: false
 tags:
     - utilities
 authors:
