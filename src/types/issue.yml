@@ -1,0 +1,14 @@
+id: issue
+
+context:
+    site:
+        issues:
+            sort: publication
+            order: desc
+
+template: newsletter.single.issue
+
+transformers:
+    run:
+        - name: newsletter
+    render: false
