@@ -1,5 +1,5 @@
 site:
-    baseUrl: https://swiftonserver.com/
+    baseUrl: http://localhost:3000/ # https://swiftonserver.com/
     language: en-US
     title: Swift on server
     description: Articles about server-side Swift development. Created by Joannis Orlandos and Tibor Bödecs.
