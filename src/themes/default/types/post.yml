@@ -1,11 +1,6 @@
 id: post
 rss: true
-template: blog.single.post
-
-transformers:
-    run:
-        - name: swiftinit
-    render: false
+template: blog.post.default
 
 pagination:
     bundle: blog/posts/pagination

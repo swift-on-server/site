@@ -1,7 +1,7 @@
 ---
 title: Authors
 description: This is the authors page. 
-template: blog.authors.index
+template: blog.authors
 ---
 
 # Authors

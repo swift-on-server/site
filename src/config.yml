@@ -12,3 +12,10 @@ site:
           url: "/authors/"
         - label: "Newsletter"
           url: "/newsletter/"
+
+
+transformers:
+    pipelines:
+        - types: [post]
+          run: [swiftinit]
+          render: false

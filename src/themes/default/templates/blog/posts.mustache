@@ -11,7 +11,7 @@
     {{^empty(pagination.data.post)}}
     <div class="grid grid-321">
     {{#pagination.data.post}}
-        {{> blog.blocks.post}}
+        {{> partials.blog.post}}
     {{/pagination.data.post}}
     </div>
     {{/empty(pagination.data.post)}}
@@ -21,7 +21,7 @@
     {{^empty(pagination.links.post)}}
     <div class="pagination">
     {{#pagination.links.post}}
-        {{> blocks.pagination}}
+        {{> partials.pagination}}
     {{/pagination.links.post}}
     </div>
     {{/empty(pagination.links.post)}}

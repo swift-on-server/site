@@ -21,7 +21,7 @@
     {{^empty(site.context.featured)}}
     <div class="grid grid-221">
     {{#site.context.featured}}
-        {{> blog.blocks.post}}
+        {{> partials.blog.post}}
     {{/site.context.featured}}
     </div>
     {{/empty(site.context.featured)}}
@@ -34,7 +34,7 @@
     {{^empty(site.context.posts)}}
     <div class="grid grid-321">
     {{#site.context.posts}}
-        {{> blog.blocks.post}}
+        {{> partials.blog.post}}
     {{/site.context.posts}}
     </div>
     {{/empty(site.context.posts)}}
@@ -47,7 +47,7 @@
     {{^empty(site.context.authors)}}
         <div class="grid grid-321">
     {{#site.context.authors}}
-        {{> blog.blocks.author}}
+        {{> partials.blog.author}}
     {{/site.context.authors}}
     </div>
     {{/empty(site.context.authors)}}
@@ -59,7 +59,7 @@
     {{^empty(site.context.tags)}}
         <div class="grid grid-321">
     {{#site.context.tags}}
-        {{> blog.blocks.tag}}
+        {{> partials.blog.tag}}
     {{/site.context.tags}}
     </div>
     {{/empty(site.context.tags)}}
@@ -73,7 +73,7 @@
     {{^empty(site.context.pagination)}}
     <div class="pagination">
     {{#site.context.pagination}}
-        {{> blocks.pagination}}
+        {{> partials.pagination}}
     {{/site.context.pagination}}
     </div>
     {{/empty(site.context.pagination)}}

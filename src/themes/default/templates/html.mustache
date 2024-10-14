@@ -37,7 +37,7 @@
 
     {{#page.css}}<link rel="stylesheet" href="{{.}}">{{/page.css}}
 
-    {{> blocks.icons}}
+    {{> partials.icons}}
 
     <link
         rel="stylesheet"
@@ -75,7 +75,7 @@
 <body>
     <div id="site-container">
 
-    {{> blocks.navigation}}
+    {{> partials.navigation}}
 
     <main id="page-container">
     {{$main}}
@@ -83,7 +83,7 @@
     {{/main}}
     </main>
 
-    {{> blocks.footer}}
+    {{> partials.footer}}
 
     </div>
 

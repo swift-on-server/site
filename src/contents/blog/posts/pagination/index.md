@@ -5,7 +5,7 @@ slug: posts/page/{{number}}
 title: Posts - {{number}} / {{total}}
 description: Posts page - {{number}} / {{total}}  
 image: images/defaults/default.png
-template: blog.posts.pagination
+template: blog.posts
 ---
 
 # Posts

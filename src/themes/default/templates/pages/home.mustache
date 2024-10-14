@@ -13,7 +13,7 @@
     {{^empty(site.context.featured)}}
     <div class="grid grid-221">
     {{#site.context.featured}}
-        {{> blog.blocks.post}}
+        {{> partials.blog.post}}
     {{/site.context.featured}}
     </div>
     {{/empty(site.context.featured)}}
@@ -30,7 +30,7 @@
     {{^empty(site.context.posts)}}
     <div class="grid grid-321">
     {{#site.context.posts}}
-        {{> blog.blocks.post}}
+        {{> partials.blog.post}}
     {{/site.context.posts}}
     </div>
     {{/empty(site.context.posts)}}
