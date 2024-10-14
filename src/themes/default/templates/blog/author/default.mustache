@@ -5,9 +5,9 @@
     <header>
         {{#page.imageUrl}}<img class="large rounded" src="{{page.imageUrl}}" alt="{{page.title}}">{{/page.imageUrl}}
         <h1>{{page.title}}</h1>
-        <a href="{{userDefined.companyUrl}}">{{userDefined.companyName}}</a>
+        {{#company}}<a href="{{url}}">{{name}}</a>{{/company}}
         {{& page.contents}}
-        <a class="cta" href="{{userDefined.ctaUrl}}">{{userDefined.ctaLabel}}</a>
+        {{#cta}}<a class="cta" href="{{url}}">{{label}}</a>{{/cta}}
     </header>
     
     <p><br>{{count(page.posts)}} posts</p>
