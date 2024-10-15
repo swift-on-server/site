@@ -1,21 +1,8 @@
-site:
-    baseUrl: "https://swiftonserver.com/"
-    language: "en-US"
-    title: "Swift on server"
-    dateFormat: "yyyy/MM/dd"
-    navigation:
-        - label: "Posts"
-          url: "/posts/page/1/"
-        - label: "Tags"
-          url: "/tags/"
-        - label: "Authors"
-          url: "/authors/"
-        - label: "Newsletter"
-          url: "/newsletter/"
-
-
 transformers:
     pipelines:
-        - types: [post]
-          run: [swiftinit]
-          render: false
+        post:
+          run: 
+            - name: swiftinit
+            - name: second
+            - name: third
+          render: false # default: true
