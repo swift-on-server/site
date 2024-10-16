@@ -11,3 +11,4 @@ navigation:
       url: "/authors/"
     - label: "Newsletter"
       url: "/newsletter/"
+      
