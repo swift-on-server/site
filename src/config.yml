@@ -5,4 +5,4 @@ transformers:
             - name: swiftinit
             - name: second
             - name: third
-          render: false # default: true
+          isMarkdownResult: false # default: true
