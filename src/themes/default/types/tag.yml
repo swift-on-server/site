@@ -1,0 +1,20 @@
+id: tag
+template: blog.tag.default
+
+context:
+    site:
+        tags:
+            sort: title
+            order: asc
+            pagination:
+                limit: 10
+                
+    local:
+        posts:
+            references: post
+            foreignKey: tags
+            sort: title
+            order: asc
+            limit: 10
+
+

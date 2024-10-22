@@ -1,14 +1,21 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
 <channel>
     <title>Swift on server</title>
-    <description>Articles about server-side Swift development. Created by Joannis Orlandos and Tibor Bödecs.</description>
+    <description></description>
     <link>https://swiftonserver.com/</link>
     <language>en-US</language>
-    <lastBuildDate>Tue, 01 Oct 2024 20:10:29 +0000</lastBuildDate>
-    <pubDate>Tue, 01 Oct 2024 08:00:00 +0000</pubDate>
+    <lastBuildDate>Tue, 22 Oct 2024 19:26:58 +0000</lastBuildDate>
+    <pubDate>Tue, 22 Oct 2024 00:00:00 +0000</pubDate>
     <ttl>250</ttl>
     <atom:link href="https://swiftonserver.com/rss.xml" rel="self" type="application/rss+xml"/>
 
+<item>
+    <guid isPermaLink="true">https://swiftonserver.com/beginners-guide-to-protocol-buffers-and-grpc-with-swift/</guid>
+    <title><![CDATA[ Beginner&#39;s Guide to Protocol Buffers and gRPC with Swift ]]></title>
+    <description><![CDATA[ Learn Protocol Buffers and gRPC with Swift in this easy, step-by-step beginner&#39;s guide. ]]></description>
+    <link>https://swiftonserver.com/beginners-guide-to-protocol-buffers-and-grpc-with-swift/</link>
+    <pubDate>Tue, 22 Oct 2024 00:00:00 +0000</pubDate>
+</item>
 <item>
     <guid isPermaLink="true">https://swiftonserver.com/using-hummingbird-request-context/</guid>
     <title><![CDATA[ Using Hummingbird&#39;s Request Contexts ]]></title>

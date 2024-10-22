@@ -1,0 +1,18 @@
+id: author
+template: blog.author.default
+
+context:
+    site:
+        authors:
+            sort: title
+            order: asc
+            pagination:
+                limit: 10
+        
+    local:
+        posts:
+            references: post
+            foreignKey: authors
+            sort: title
+            order: asc
+            limit: 10
