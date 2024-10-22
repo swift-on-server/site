@@ -1,0 +1,10 @@
+name: column
+params:
+  - label: class
+    default: ""
+requiresParentDirective: grid
+
+tag: div
+attributes:
+  - name: class
+    value: "column {{class}}"

@@ -3,6 +3,4 @@ transformers:
         post:
           run: 
             - name: swiftinit
-            - name: second
-            - name: third
-          isMarkdownResult: false # default: true
+          isMarkdownResult: false

@@ -5,7 +5,7 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="canonical" href="">
+    <link rel="canonical" href="https://swiftonserver.com/working-with-udp-in-swiftnio/">
     <link rel="prev" href="https://swiftonserver.com/whats-new-in-hummingbird-2/">
     
 
@@ -124,12 +124,40 @@
             <article class="post">
                 <div class="meta">
                     <time datetime="2024/08/29">2024/08/29</time>
-                     &middot; <span class="reading-time">1 min read</span>
+                     &middot; <span class="reading-time">5 min read</span>
                     
                 </div>
                 <section>
                 
-                
+                <section class='introduction'><h1>Working with UDP in SwiftNIO</h1></section><section class='details literature'><p>When you visit this website, you’re using an HTTP connection to fetch the content. HTTP/1 and HTTP/2 both use TCP sockets to establish a connection.</p><p>TCP is a helpful tool, as it provides reliability to your network connections, guaranteeing a datastream’s integrity in and delivery through receipts. These receipts, however, do incur additional overhead on the connection. When a TCP packet is lost, the connection will wait for the packet to be retransmitted before continuing. This can be a problem for applications that need to send data quickly, such as online games and audio/video calls where real-time interaction is critical. For some applications, this overhead is too much or simply unnecessary, and they prefer to use UDP instead.</p><h3 id='What%20is%20UDP?'><a href='#What%20is%20UDP?'>What is UDP?</a></h3><p>UDP is a core networking protocol like TCP, built on top of IPv4 and IPv6. It’s a simple protocol that omits delivery checks, which can cause data to be lost. However, this simplicity allows UDP to be faster than TCP, as it doesn’t wait for lost packets to be retransmitted.</p><p>In this tutorial, you’ll learn how to build a UDP server using SwiftNIO. You’ll build a simple UDP echo server that listens for incoming packets, reads a string, and sends them back in reverse to the client. By the end of this tutorial, you’ll know how to create a UDP server using SwiftNIO and how to send and receive UDP packets.</p><h2 id='How%20UDP%20Works'><a href='#How%20UDP%20Works'>How UDP Works</a></h2><p>Unlike TCP, UDP sockets don’t distinguish between client and server. Any client that sends a packet to a UDP socket needs to bind to a port to receive a response. This makes UDP a connectionless protocol, as it doesn’t establish a connection before sending data. Instead, it sends packets directly to the destination.</p><p>In order to start accepting packets, bind a UDP socket to a port:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xc'>// 1.</span><span class='newline'>
+</span><span class='xk'>let</span> <span class='xv'>server</span> = <span class='xk'>try</span> <span class='xk'>await</span> <a class='xt' href='https://swiftinit.org/hist/swift-nio:2.73.0/nioposix/datagrambootstrap' target='_blank' rel='external'>DatagramBootstrap</a>(<span class='xv'>group</span>: <a class='xt' href='https://swiftinit.org/hist/swift-nio:2.73.0/niocore/niosingletons' target='_blank' rel='external'>NIOSingletons</a>.<a class='xv' href='https://swiftinit.org/hist/swift-nio:2.73.0/niocore/niosingletons.posixeventloopgroup' target='_blank' rel='external'>posixEventLoopGroup</a>)<span class='newline'>
+</span>    <span class='xc'>// 2.</span><span class='newline'>
+</span>    .<a class='xv' href='https://swiftinit.org/hist/swift-nio:2.73.0/nioposix/datagrambootstrap.bind(host:port:)' target='_blank' rel='external'>bind</a>(<span class='xv'>host</span>: <span class='xs'>"0.0.0.0"</span>, <span class='xv'>port</span>: <span class='xn'>2048</span>)<span class='newline'>
+</span>    .<a class='xv' href='https://swiftinit.org/hist/swift-nio:2.73.0/niocore/eventloopfuture.flatmapthrowing(_:)' target='_blank' rel='external'>flatMapThrowing</a> { <span class='xv'>channel</span> <span class='xk'>in</span><span class='newline'>
+</span>        <span class='xc'>// 3.</span><span class='newline'>
+</span>        <span class='xk'>return</span> <span class='xk'>try</span> <a class='xt' href='https://swiftinit.org/hist/swift-nio:2.73.0/niocore/nioasyncchannel' target='_blank' rel='external'>NIOAsyncChannel</a>(<span class='newline'>
+</span>            <span class='xv'>wrappingChannelSynchronously</span>: <span class='xv'>channel</span>,<span class='newline'>
+</span>            <span class='xv'>configuration</span>: <a class='xt' href='https://swiftinit.org/hist/swift-nio:2.73.0/niocore/nioasyncchannel' target='_blank' rel='external'>NIOAsyncChannel</a>.<a class='xt' href='https://swiftinit.org/hist/swift-nio:2.73.0/niocore/nioasyncchannel/configuration' target='_blank' rel='external'>Configuration</a>(<span class='newline'>
+</span>                <span class='xc'>// 4.</span><span class='newline'>
+</span>                <span class='xv'>inboundType</span>: <a class='xt' href='https://swiftinit.org/hist/swift-nio:2.73.0/niocore/addressedenvelope' target='_blank' rel='external'>AddressedEnvelope</a>&lt;<a class='xt' href='https://swiftinit.org/hist/swift-nio:2.73.0/niocore/bytebuffer' target='_blank' rel='external'>ByteBuffer</a>&gt;.<span class='xk'>self</span>,<span class='newline'>
+</span>                <span class='xv'>outboundType</span>: <a class='xt' href='https://swiftinit.org/hist/swift-nio:2.73.0/niocore/addressedenvelope' target='_blank' rel='external'>AddressedEnvelope</a>&lt;<a class='xt' href='https://swiftinit.org/hist/swift-nio:2.73.0/niocore/bytebuffer' target='_blank' rel='external'>ByteBuffer</a>&gt;.<span class='xk'>self</span><span class='newline'>
+</span>            )<span class='newline'>
+</span>        )<span class='newline'>
+</span>    }<span class='newline'>
+</span>    .<a class='xv' href='https://swiftinit.org/hist/swift-nio:2.73.0/niocore/eventloopfuture.get' target='_blank' rel='external'>get</a>()</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/working-with-udp-in-swiftnio.swift#L4' target='_blank' class='source github'><span class='file'>working-with-udp-in-swiftnio.swift</span>:<span class='line'>4</span></a><ol><li><p>First, create a <code><a href='https://swiftinit.org/hist/swift-nio:2.73.0/nioposix/datagrambootstrap' target='_blank' rel='external'>DatagramBootstrap</a></code> to open a UDP socket.</p></li><li><p>Next, bind the socket to a port using the <code>bind</code> method.</p></li><li><p>Before completing the setup, transform the created <code><a href='https://swiftinit.org/hist/swift-nio:2.73.0/niocore/channel' target='_blank' rel='external'>Channel</a></code> by wrapping it in a <code><a href='https://swiftinit.org/hist/swift-nio:2.73.0/niocore/nioasyncchannel' target='_blank' rel='external'>NIOAsyncChannel</a></code></p></li><li><p>Unlike TCP, a UDP server does not receive <em>connections</em>. It receives an <code><a href='https://swiftinit.org/hist/swift-nio:2.73.0/niocore/addressedenvelope' target='_blank' rel='external'>AddressedEnvelope</a></code> containing a <code><a href='https://swiftinit.org/hist/swift-nio:2.73.0/niocore/bytebuffer' target='_blank' rel='external'>ByteBuffer</a></code> and the sender’s <code><a href='https://swiftinit.org/hist/swift-nio:2.73.0/niocore/socketaddress' target='_blank' rel='external'>SocketAddress</a></code>.</p></li></ol><p>Now that you’ve bound the socket, you can start receiving packets.</p><h3 id='Receiving%20and%20Sending%20Packets'><a href='#Receiving%20and%20Sending%20Packets'>Receiving and Sending Packets</a></h3><p>First, start observing the socket using <code><a href='https://swiftinit.org/hist/swift-nio:2.73.0/niocore/nioasyncchannel.executethenclose(_:)?hash=2G196' target='_blank' rel='external'>executeThenClose(_:)</a></code>. This method will provide an <code>inbound</code> and <code>outbound</code> argument.</p><p>Inbound is a stream of incoming packets, whereas outbound is a writer that you can write packets to.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>server</span>.<a class='xv' href='https://swiftinit.org/hist/swift-nio:2.73.0/niocore/nioasyncchannel.executethenclose(_:)?hash=2G196' target='_blank' rel='external'>executeThenClose</a> { <span class='xv'>inbound</span>, <span class='xv'>outbound</span> <span class='xk'>in</span><span class='newline'>
+</span>    <a class='xt' href='https://swiftinit.org/docs/swift/_concurrency/mainactor' target='_blank' rel='external'>for</a> <span class='xk'>try</span> <span class='xk'>await</span> <span class='xk'>var</span> <span class='xv'>packet</span> <span class='xk'>in</span> <span class='xv'>inbound</span> {<span class='newline'>
+</span>        <span class='xc'>// 1.</span><span class='newline'>
+</span>        <span class='xk'>guard</span> <span class='xk'>let</span> <span class='xv'>string</span> = <span class='xv'>packet</span>.<a class='xv' href='https://swiftinit.org/hist/swift-nio:2.73.0/niocore/addressedenvelope.data' target='_blank' rel='external'>data</a>.<a class='xv' href='https://swiftinit.org/hist/swift-nio:2.73.0/niocore/bytebuffer.readstring(length:)' target='_blank' rel='external'>readString</a>(<span class='xv'>length</span>: <span class='xv'>packet</span>.<a class='xv' href='https://swiftinit.org/hist/swift-nio:2.73.0/niocore/addressedenvelope.data' target='_blank' rel='external'>data</a>.<a class='xv' href='https://swiftinit.org/hist/swift-nio:2.73.0/niocore/bytebuffer.readablebytes' target='_blank' rel='external'>readableBytes</a>) <span class='xk'>else</span> {<span class='newline'>
+</span>            <span class='xk'>continue</span><span class='newline'>
+</span>        }<span class='newline'>
+
+</span>        <span class='xc'>// 2.</span><span class='newline'>
+</span>        <span class='xk'>let</span> <span class='xv'>response</span> = <a class='xt' href='https://swiftinit.org/hist/swift-nio:2.73.0/niocore/bytebuffer' target='_blank' rel='external'>ByteBuffer</a>(<span class='xv'>string</span>: <a class='xt' href='https://swiftinit.org/docs/swift/swift/string' target='_blank' rel='external'>String</a>(<span class='xv'>string</span>.<a class='xv' href='https://swiftinit.org/docs/swift/swift/bidirectionalcollection.reversed' target='_blank' rel='external'>reversed</a>()))<span class='newline'>
+
+</span>        <span class='xc'>// 3.</span><span class='newline'>
+</span>        <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>outbound</span>.<a class='xv' href='https://swiftinit.org/hist/swift-nio:2.73.0/niocore/nioasyncchanneloutboundwriter.write(_:)' target='_blank' rel='external'>write</a>(<a class='xt' href='https://swiftinit.org/hist/swift-nio:2.73.0/niocore/addressedenvelope' target='_blank' rel='external'>AddressedEnvelope</a>(<span class='xv'>remoteAddress</span>: <span class='xv'>packet</span>.<a class='xv' href='https://swiftinit.org/hist/swift-nio:2.73.0/niocore/addressedenvelope.remoteaddress' target='_blank' rel='external'>remoteAddress</a>, <span class='xv'>data</span>: <span class='xv'>response</span>))<span class='newline'>
+</span>    }<span class='newline'>
+</span>}</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/working-with-udp-in-swiftnio.swift#L23' target='_blank' class='source github'><span class='file'>working-with-udp-in-swiftnio.swift</span>:<span class='line'>23</span></a><ol><li><p>Each packet received in <code>inbound</code> is read into a String</p></li><li><p>The string is reversed, and packet back into a ByteBuffer. This is not very optimised, nor a real use case, but serves a as simple example.</p></li><li><p>The packet is written back, addressed to the <code>remoteAddress</code> that sent the original packet.</p></li></ol><h3 id='Testing%20the%20Server'><a href='#Testing%20the%20Server'>Testing the Server</a></h3><p>The nc (NetCat) command is a popular tool for managing network connections. Its main use is to establish and handle them. After your code is ready, start the app on your Mac, and run the following command in your terminal:</p><pre class='snippet'><code class='language-sh'><span class='newline'></span>echo "Hello, UDP" | nc -u 127.0.0.1 2048 -p 2049</code></pre><ul><li><p><code>-u</code> creates a UDP socket with NetCat</p></li><li><p><code>127.0.0.1 2048</code> is the IP address of your UDP server</p></li><li><p><code>-p 2049</code> is the port number where you’re receiving replies</p></li></ul><p>You’ll now see the following in your terminal window:</p><pre class='snippet'><code class='language-sh'><span class='newline'></span>PDU ,olleH</code></pre></section><div style='display: none;' id='swiftinit-tooltips'><a href='/hist/swift-nio:2.73.0/nioposix/datagrambootstrap'><pre><code><span class='xk'>final</span> <span class='xk'>class</span> <span class='xv'>DatagramBootstrap</span></code></pre><p>A <code>DatagramBootstrap</code> is an easy way to bootstrap a <code>DatagramChannel</code> when creating datagram clients and servers.</p></a><a href='/hist/swift-nio:2.73.0/niocore/niosingletons'><pre><code><span class='xk'>enum</span> <span class='xv'>NIOSingletons</span></code></pre><p>SwiftNIO provided singleton resources for programs &amp; libraries that don’t need full control over all operating system resources. This type holds sizing (how many loops/threads) suggestions.</p></a><a href='/hist/swift-nio:2.73.0/niocore/niosingletons.posixeventloopgroup'><pre><code><span class='xk'>static</span> <span class='xk'>var</span> <span class='xv'>posixEventLoopGroup</span>: <span class='xt'>MultiThreadedEventLoopGroup</span> { <span class='xk'>get</span> }</code></pre><p>A globally shared, lazily initialized <code>MultiThreadedEventLoopGroup</code>  that uses <code>epoll</code>/<code>kqueue</code> as the selector mechanism.</p></a><a href='/hist/swift-nio:2.73.0/nioposix/datagrambootstrap.bind(host:port:)'><pre><code><span class='xk'>func</span> <span class='xv'>bind</span>(<span class='xi'></span><span class='xv'>host</span>: <span class='xt'>String</span>, <span class='xi'></span><span class='xv'>port</span>: <span class='xt'>Int</span><wbr>) -&gt; <span class='xt'>EventLoopFuture</span>&lt;<span class='xt'>Channel</span>&gt;</code></pre><p>Bind the <code>DatagramChannel</code> to <code>host</code> and <code>port</code>.</p></a><a href='/hist/swift-nio:2.73.0/niocore/eventloopfuture.flatmapthrowing(_:)'><pre><code><span class='xa'>@preconcurrency</span> <span class='xk'>func</span> <span class='xv'>flatMapThrowing</span>&lt;<span class='xu'>NewValue</span>&gt;(<span class='xi'></span>_ <span class='xb'>callback</span>: <span class='xa'>@escaping</span> (<span class='xt'>Value</span>) <span class='xk'>throws</span> -&gt; <span class='xt'>NewValue</span><wbr>) -&gt; <span class='xt'>EventLoopFuture</span>&lt;<span class='xt'>NewValue</span>&gt;</code></pre><p>When the current <code>EventLoopFuture&lt;Value&gt;</code> is fulfilled, run the provided callback, which performs a synchronous computation and returns a new value of type <code>NewValue</code>. The provided callback may optionally <code>throw</code>.</p></a><a href='/hist/swift-nio:2.73.0/niocore/nioasyncchannel'><pre><code><span class='xk'>struct</span> <span class='xv'>NIOAsyncChannel</span>&lt;<span class='xu'>Inbound</span>, <span class='xu'>Outbound</span>&gt; <span class='xk'>where</span> <span class='xt'>Inbound</span> : <span class='xt'>Sendable</span>, <span class='xt'>Outbound</span> : <span class='xt'>Sendable</span></code></pre><p>Wraps a NIO <code>Channel</code> object into a form suitable for use in Swift Concurrency.</p></a><a href='/hist/swift-nio:2.73.0/niocore/nioasyncchannel/configuration'><pre><code><span class='xk'>struct</span> <span class='xv'>Configuration</span></code></pre></a><a href='/hist/swift-nio:2.73.0/niocore/addressedenvelope'><pre><code><span class='xk'>struct</span> <span class='xv'>AddressedEnvelope</span>&lt;<span class='xu'>DataType</span>&gt;</code></pre><p>A data structure for processing addressed datagrams, such as those used by UDP.</p></a><a href='/hist/swift-nio:2.73.0/niocore/bytebuffer'><pre><code><span class='xk'>struct</span> <span class='xv'>ByteBuffer</span></code></pre><p><code>ByteBuffer</code> stores contiguously allocated raw bytes. It is a random and sequential accessible sequence of zero or more bytes (octets).</p></a><a href='/hist/swift-nio:2.73.0/niocore/eventloopfuture.get'><pre><code><span class='xk'>func</span> <span class='xv'>get</span>(<wbr>) <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <span class='xt'>Value</span></code></pre><p>Get the value/error from an <code>EventLoopFuture</code> in an <code>async</code> context.</p></a><a href='/hist/swift-nio:2.73.0/niocore/channel'><pre><code><span class='xk'>protocol</span> <span class='xv'>Channel</span> : <span class='xt'>AnyObject</span>, <span class='xt'>ChannelOutboundInvoker</span>, <span class='xt'>_NIOPreconcurrencySendable</span></code></pre><p>A <code>Channel</code> is easiest thought of as a network socket. But it can be anything that is capable of I/O operations such as read, write, connect, and bind.</p></a><a href='/hist/swift-nio:2.73.0/niocore/socketaddress'><pre><code><span class='xk'>enum</span> <span class='xv'>SocketAddress</span></code></pre><p>Represent a socket address to which we may want to connect or bind.</p></a><a href='/hist/swift-nio:2.73.0/niocore/nioasyncchannel.executethenclose(_:)?hash=2G196'><pre><code><span class='xk'>func</span> <span class='xv'>executeThenClose</span>&lt;<span class='xu'>Result</span>&gt;(<span class='xi'></span>_ <span class='xb'>body</span>: (_ <span class='xv'>inbound</span>: <span class='xt'>NIOAsyncChannelInboundStream</span>&lt;<span class='xt'>Inbound</span>&gt;, _ <span class='xv'>outbound</span>: <span class='xt'>NIOAsyncChannelOutboundWriter</span>&lt;<span class='xt'>Outbound</span>&gt;) <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <span class='xt'>Result</span><wbr>) <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <span class='xt'>Result</span></code></pre><p>Provides scoped access to the inbound and outbound side of the underlying <code>Channel</code>.</p></a><a href='/docs/swift/_concurrency/mainactor'><pre><code><span class='xa'>@globalActor</span> <span class='xk'>final</span> <span class='xk'>actor</span> <span class='xv'>MainActor</span></code></pre><p>A singleton actor whose executor is equivalent to the main dispatch queue.</p></a><a href='/hist/swift-nio:2.73.0/niocore/addressedenvelope.data'><pre><code><span class='xk'>var</span> <span class='xv'>data</span>: <span class='xt'>DataType</span></code></pre></a><a href='/hist/swift-nio:2.73.0/niocore/bytebuffer.readstring(length:)'><pre><code><span class='xk'>mutating</span> <span class='xk'>func</span> <span class='xv'>readString</span>(<span class='xi'></span><span class='xv'>length</span>: <span class='xt'>Int</span><wbr>) -&gt; <span class='xt'>String</span>?</code></pre><p>Read <code>length</code> bytes off this <code>ByteBuffer</code>, decoding it as <code>String</code> using the UTF-8 encoding. Move the reader index forward by <code>length</code>.</p></a><a href='/hist/swift-nio:2.73.0/niocore/bytebuffer.readablebytes'><pre><code><span class='xk'>var</span> <span class='xv'>readableBytes</span>: <span class='xt'>Int</span> { <span class='xk'>get</span> }</code></pre><p>The number of bytes readable (<code>readableBytes</code> = <code>writerIndex</code> - <code>readerIndex</code>).</p></a><a href='/docs/swift/swift/string'><pre><code><span class='xa'>@frozen</span> <span class='xk'>struct</span> <span class='xv'>String</span></code></pre><p>A Unicode string value that is a collection of characters.</p></a><a href='/docs/swift/swift/bidirectionalcollection.reversed'><pre><code><span class='xk'>func</span> <span class='xv'>reversed</span>(<wbr>) -&gt; <span class='xt'>ReversedCollection</span>&lt;<span class='xk'>Self</span>&gt;</code></pre><p>Returns a view presenting the elements of the collection in reverse order.</p></a><a href='/hist/swift-nio:2.73.0/niocore/nioasyncchanneloutboundwriter.write(_:)'><pre><code><span class='xk'>func</span> <span class='xv'>write</span>(<span class='xi'></span>_ <span class='xb'>data</span>: <span class='xt'>OutboundOut</span><wbr>) <span class='xk'>async</span> <span class='xk'>throws</span></code></pre><p>Send a write into the <code>ChannelPipeline</code> and flush it right away.</p></a><a href='/hist/swift-nio:2.73.0/niocore/addressedenvelope.remoteaddress'><pre><code><span class='xk'>var</span> <span class='xv'>remoteAddress</span>: <span class='xt'>SocketAddress</span></code></pre></a></div>
                     
                 </section>
     
@@ -158,13 +186,37 @@
                             
                             
                             <div class="author-list">
+                                <a href="https://swiftonserver.com/authors/tibor-bodecs/">
+                                <img class="small rounded" src="/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                                </a>
+                            </div>
+                            <div class="meta">
+                                <time datetime="2024/10/22">2024/10/22</time>
+                                 &middot; <span class="reading-time">10 min read</span>
+                            </div>
+                            
+                            <h2 class="title"><a href="https://swiftonserver.com/beginners-guide-to-protocol-buffers-and-grpc-with-swift/" target="">Beginner&#39;s Guide to Protocol Buffers and gRPC with Swift</a></h2>
+                            <p>Learn Protocol Buffers and gRPC with Swift in this easy, step-by-step beginner&#39;s guide.</p>
+                        
+                            <div class="spacer"></div>
+                        
+                            <div class="tag-list">
+                                <a href="https://swiftonserver.com/tags/networking/"><small>Networking</small></a>
+        <a href="https://swiftonserver.com/tags/package-highlight/"><small>Package Highlight</small></a>
+        <a href="https://swiftonserver.com/tags/server/"><small>Server</small></a>
+                            </div>
+                        </div>
+                    <div class="card">
+                            
+                            
+                            <div class="author-list">
                                 <a href="https://swiftonserver.com/authors/joannis-orlandos/">
                                 <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                                 </a>
                             </div>
                             <div class="meta">
                                 <time datetime="2024/10/01">2024/10/01</time>
-                                 &middot; <span class="reading-time">1 min read</span>
+                                 &middot; <span class="reading-time">6 min read</span>
                             </div>
                             
                             <h2 class="title"><a href="https://swiftonserver.com/using-hummingbird-request-context/" target="">Using Hummingbird&#39;s Request Contexts</a></h2>
@@ -187,7 +239,7 @@
                             </div>
                             <div class="meta">
                                 <time datetime="2024/09/30">2024/09/30</time>
-                                 &middot; <span class="reading-time">1 min read</span>
+                                 &middot; <span class="reading-time">9 min read</span>
                             </div>
                             
                             <h2 class="title"><a href="https://swiftonserver.com/how-to-build-a-proxy-server-with-hummingbird/" target="">How to Build a Proxy Server with Hummingbird</a></h2>
@@ -210,7 +262,7 @@
                             </div>
                             <div class="meta">
                                 <time datetime="2024/09/24">2024/09/24</time>
-                                 &middot; <span class="reading-time">1 min read</span>
+                                 &middot; <span class="reading-time">8 min read</span>
                             </div>
                             
                             <h2 class="title"><a href="https://swiftonserver.com/getting-started-with-hummingbird/" target="">Getting Started with Hummingbird</a></h2>
@@ -233,7 +285,7 @@
                             </div>
                             <div class="meta">
                                 <time datetime="2024/06/27">2024/06/27</time>
-                                 &middot; <span class="reading-time">1 min read</span>
+                                 &middot; <span class="reading-time">19 min read</span>
                             </div>
                             
                             <h2 class="title"><a href="https://swiftonserver.com/websockets-tutorial-using-swift-and-hummingbird/" target="">Using WebSockets in Hummingbird</a></h2>
@@ -256,7 +308,7 @@
                             </div>
                             <div class="meta">
                                 <time datetime="2024/04/03">2024/04/03</time>
-                                 &middot; <span class="reading-time">1 min read</span>
+                                 &middot; <span class="reading-time">12 min read</span>
                             </div>
                             
                             <h2 class="title"><a href="https://swiftonserver.com/async-http-client-by-example/" target="">AsyncHTTPClient by example</a></h2>
@@ -267,31 +319,6 @@
                             <div class="tag-list">
                                 <a href="https://swiftonserver.com/tags/networking/"><small>Networking</small></a>
         <a href="https://swiftonserver.com/tags/package-highlight/"><small>Package Highlight</small></a>
-                            </div>
-                        </div>
-                    <div class="card">
-                            
-                            
-                            <div class="author-list">
-                                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
-                                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
-                                </a>
-                            </div>
-                            <div class="meta">
-                                <time datetime="2024/03/05">2024/03/05</time>
-                                 &middot; <span class="reading-time">1 min read</span>
-                            </div>
-                            
-                            <h2 class="title"><a href="https://swiftonserver.com/using-openapi-with-hummingbird/" target="">Using OpenAPI Generator with Hummingbird</a></h2>
-                            <p>Learn how to use OpenAPI Generator to create Swift APIs with Hummingbird.</p>
-                        
-                            <div class="spacer"></div>
-                        
-                            <div class="tag-list">
-                                <a href="https://swiftonserver.com/tags/documentation/"><small>Documentation</small></a>
-        <a href="https://swiftonserver.com/tags/hummingbird/"><small>Hummingbird</small></a>
-        <a href="https://swiftonserver.com/tags/openapi/"><small>OpenAPI</small></a>
-        <a href="https://swiftonserver.com/tags/server/"><small>Server</small></a>
                             </div>
                         </div>
                     </div>
@@ -316,6 +343,21 @@
             </div>
             
             <aside id="toc">
+                <h4>On this page</h4>
+                <ul>
+                    <li class="first-level">
+                        <a href="#What%20is%20UDP?">What is UDP?</a>
+                        <ul>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#How%20UDP%20Works">How UDP Works</a>
+                        <ul>
+                            <li><a href="#Receiving%20and%20Sending%20Packets">Receiving and Sending Packets</a></li>
+                <li><a href="#Testing%20the%20Server">Testing the Server</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </aside>
     
         </div>

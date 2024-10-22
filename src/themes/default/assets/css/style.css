@@ -257,18 +257,11 @@ img.large {
     }
 }
 
-
-.post .featured {
+.card .post .featured {
     color: var(--link-color);
     text-transform: uppercase;
     font-weight: bold;
 }
-
-
-
-
-
-
 
 .pagination {
     margin-top: 64px;
@@ -286,8 +279,6 @@ img.large {
 .pagination a.current-page {
     border: 3px solid var(--link-color-hover);
 }
-
-
 
 .tooltips {
     position: fixed;
@@ -336,4 +327,9 @@ section.group h4 {
     color: var(--text-color-3);
     text-transform: uppercase;
     border-bottom: 3px solid var(--background-color-1);
+}
+
+.hljs {
+    background: none !important;
+    padding: 0 !important;
 }
