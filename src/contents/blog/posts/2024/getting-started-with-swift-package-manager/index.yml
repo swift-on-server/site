@@ -1,0 +1,10 @@
+type: post
+title: "Getting Started with Swift Package Manager"
+description: "Learn how to create and manage Swift packages with SwiftPM."
+image: ./assets/cover.jpg
+publication: 2024/10/27 12:00:00
+featured: false
+tags:
+    - utilities
+authors:
+    - joannis-orlandos
