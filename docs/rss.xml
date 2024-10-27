@@ -4,11 +4,18 @@
     <description></description>
     <link>https://swiftonserver.com/</link>
     <language>en-US</language>
-    <lastBuildDate>Tue, 22 Oct 2024 19:26:58 +0000</lastBuildDate>
-    <pubDate>Tue, 22 Oct 2024 00:00:00 +0000</pubDate>
+    <lastBuildDate>Sun, 27 Oct 2024 14:17:57 +0000</lastBuildDate>
+    <pubDate>Sun, 27 Oct 2024 12:00:00 +0000</pubDate>
     <ttl>250</ttl>
     <atom:link href="https://swiftonserver.com/rss.xml" rel="self" type="application/rss+xml"/>
 
+<item>
+    <guid isPermaLink="true">https://swiftonserver.com/getting-started-with-swift-package-manager/</guid>
+    <title><![CDATA[ Getting Started with Swift Package Manager ]]></title>
+    <description><![CDATA[ Learn how to create and manage Swift packages with SwiftPM. ]]></description>
+    <link>https://swiftonserver.com/getting-started-with-swift-package-manager/</link>
+    <pubDate>Sun, 27 Oct 2024 12:00:00 +0000</pubDate>
+</item>
 <item>
     <guid isPermaLink="true">https://swiftonserver.com/beginners-guide-to-protocol-buffers-and-grpc-with-swift/</guid>
     <title><![CDATA[ Beginner&#39;s Guide to Protocol Buffers and gRPC with Swift ]]></title>
