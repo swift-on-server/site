@@ -1,7 +1,7 @@
 ---
 type: tag
 title: "Hummingbird"
-description: "Hummingbird is a lightweight, high-performance web framework written in Swift. "
+description: "Hummingbird is a lightweight, high-performance web framework written in Swift."
 image: ./assets/hummingbird-logo.png
 ---
 
