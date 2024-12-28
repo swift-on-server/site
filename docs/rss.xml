@@ -4,11 +4,25 @@
     <description></description>
     <link>https://swiftonserver.com/</link>
     <language>en-US</language>
-    <lastBuildDate>Sun, 27 Oct 2024 14:17:57 +0000</lastBuildDate>
-    <pubDate>Sun, 27 Oct 2024 12:00:00 +0000</pubDate>
+    <lastBuildDate>Sat, 28 Dec 2024 10:23:19 +0000</lastBuildDate>
+    <pubDate>Sat, 28 Dec 2024 09:00:00 +0000</pubDate>
     <ttl>250</ttl>
     <atom:link href="https://swiftonserver.com/rss.xml" rel="self" type="application/rss+xml"/>
 
+<item>
+    <guid isPermaLink="true">https://swiftonserver.com/getting-started-with-mongokitten/</guid>
+    <title><![CDATA[ Getting Started with MongoKitten ]]></title>
+    <description><![CDATA[ Learn how to get started with MongoDB using MongoKitten ]]></description>
+    <link>https://swiftonserver.com/getting-started-with-mongokitten/</link>
+    <pubDate>Sat, 28 Dec 2024 09:00:00 +0000</pubDate>
+</item>
+<item>
+    <guid isPermaLink="true">https://swiftonserver.com/realtime-mongodb-updates-with-changestreams-and-websockets/</guid>
+    <title><![CDATA[ Realtime MongoDB Updates with ChangeStreams and WebSockets ]]></title>
+    <description><![CDATA[ Learn how to implement real-time updates over WebSockets using ChangeStreams and MongoKitten ]]></description>
+    <link>https://swiftonserver.com/realtime-mongodb-updates-with-changestreams-and-websockets/</link>
+    <pubDate>Sat, 28 Dec 2024 09:00:00 +0000</pubDate>
+</item>
 <item>
     <guid isPermaLink="true">https://swiftonserver.com/getting-started-with-swift-package-manager/</guid>
     <title><![CDATA[ Getting Started with Swift Package Manager ]]></title>
