@@ -4,16 +4,16 @@
     <description></description>
     <link>https://swiftonserver.com/</link>
     <language>en-US</language>
-    <lastBuildDate>Thu, 09 Jan 2025 12:47:43 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 09 Jan 2025 12:50:06 +0000</lastBuildDate>
     <pubDate>Thu, 09 Jan 2025 09:00:00 +0000</pubDate>
     <ttl>250</ttl>
     <atom:link href="https://swiftonserver.com/rss.xml" rel="self" type="application/rss+xml"/>
 
 <item>
-    <guid isPermaLink="true">https://swiftonserver.com/2025/introduction-to-jwts-in-swift/</guid>
+    <guid isPermaLink="true">https://swiftonserver.com/2025/jwt-kit/</guid>
     <title><![CDATA[ Introduction to JWTs in Swift ]]></title>
     <description><![CDATA[ Learn how to use JWTs in Swift to secure your API ]]></description>
-    <link>https://swiftonserver.com/2025/introduction-to-jwts-in-swift/</link>
+    <link>https://swiftonserver.com/2025/jwt-kit/</link>
     <pubDate>Thu, 09 Jan 2025 09:00:00 +0000</pubDate>
 </item>
 <item>
