@@ -159,8 +159,8 @@
 </span>            ]<span class='newline'>
 </span>        ),<span class='newline'>
 </span>    ]<span class='newline'>
-</span>)</code></pre><p>This article offers a <a href='https://github.com/swift-on-server/logging-for-server-side-swift-apps-sample' target='_blank' rel='external'>sample project</a> that you can use as a starting point.</p><p>In this tutorial, we are going to create a basic library and an executable target. These simulate a virtual meeting room including participants and their ability to join and leave the room. We’re going to use the <code>MyLibrary</code> target, which will take advantage of the logging framework.</p><p>Inside the <code>MyApp</code> target , we’ll add more log messages as well. The starter sample project has no logs at all, but relies on the <code>print</code> function to display the desired output. We’re going to improve the project to provide debug messages for developers through the Logging API.</p><h3 id='The%20basics'><a href='#The%20basics'>The basics</a></h3><p>The Logging library defines a public <code>Logger</code> struct that developers can instantiate and customize.</p><p>The Logger’s label serves as an identifier or name for a specific logger instance. It helps distinguish log messages originating from different parts of an application or system. Additionally, the label can be useful for categorizing and organizing log entries, especially in large-scale projects with multiple components or modules. It provides context for where the log messages are coming from, aiding in debugging, monitoring, and analyzing the behavior of the software.</p><p>Log levels allow developers to specify the level of detail they want to log, ranging from very specific debugging information to high-level summaries of system activity. This granularity enables developers to tailor logging output according to their specific needs.</p><p>Through extra metadata, developers can get even more details about the circumstances surrounding a log event. This contextual information helps developers understand why a log event occurred, making it easier to diagnose issues and trace the flow of execution within a system.</p><p>The following snippet demonstrates how to use a basic <code>Logger</code> instance:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xc'>// 1. </span><span class='newline'>
-</span><span class='xk'>import</span> <span class='xv'>Logging</span> <span class='newline'>
+</span>)</code></pre><p>This article offers a <a href='https://github.com/swift-on-server/logging-for-server-side-swift-apps-sample' target='_blank' rel='external'>sample project</a> that you can use as a starting point.</p><p>In this tutorial, we are going to create a basic library and an executable target. These simulate a virtual meeting room including participants and their ability to join and leave the room. We’re going to use the <code>MyLibrary</code> target, which will take advantage of the logging framework.</p><p>Inside the <code>MyApp</code> target , we’ll add more log messages as well. The starter sample project has no logs at all, but relies on the <code>print</code> function to display the desired output. We’re going to improve the project to provide debug messages for developers through the Logging API.</p><h3 id='The%20basics'><a href='#The%20basics'>The basics</a></h3><p>The Logging library defines a public <code>Logger</code> struct that developers can instantiate and customize.</p><p>The Logger’s label serves as an identifier or name for a specific logger instance. It helps distinguish log messages originating from different parts of an application or system. Additionally, the label can be useful for categorizing and organizing log entries, especially in large-scale projects with multiple components or modules. It provides context for where the log messages are coming from, aiding in debugging, monitoring, and analyzing the behavior of the software.</p><p>Log levels allow developers to specify the level of detail they want to log, ranging from very specific debugging information to high-level summaries of system activity. This granularity enables developers to tailor logging output according to their specific needs.</p><p>Through extra metadata, developers can get even more details about the circumstances surrounding a log event. This contextual information helps developers understand why a log event occurred, making it easier to diagnose issues and trace the flow of execution within a system.</p><p>The following snippet demonstrates how to use a basic <code>Logger</code> instance:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xc'>// 1.</span><span class='newline'>
+</span><span class='xk'>import</span> <span class='xv'>Logging</span><span class='newline'>
 
 </span><span class='xc'>// 2.</span><span class='newline'>
 </span><span class='xk'>var</span> <span class='xv'>logger</span>: <span class='xt'>Logger</span> = .<span class='xk'>init</span>(<span class='xv'>label</span>: <span class='xs'>"my-app"</span>)<span class='newline'>
@@ -210,10 +210,10 @@
 </span><span class='xk'>import</span> <span class='xv'>Logging</span><span class='newline'>
 
 </span><span class='xk'>public</span> <span class='xk'>struct</span> <span class='xv'>Meeting</span> {<span class='newline'>
-</span>    <span class='newline'>
+
 </span>    <span class='xc'>// 1.</span><span class='newline'>
 </span>    <span class='xk'>public</span> <span class='xk'>init</span>(<span class='newline'>
-</span>        <span class='xv'>id</span>: <span class='xt'>UUID</span>,    <span class='newline'>
+</span>        <span class='xv'>id</span>: <span class='xt'>UUID</span>,<span class='newline'>
 </span>        <span class='xv'>logger</span>: <span class='xt'>Logger</span> = .<span class='xk'>init</span>(<span class='xv'>label</span>: <span class='xs'>"meeting-logger"</span>)<span class='newline'>
 </span>    ) {<span class='newline'>
 </span>        <span class='xk'>self</span>.<span class='xv'>id</span> = <span class='xv'>id</span><span class='newline'>
@@ -222,7 +222,7 @@
 </span>        <span class='xk'>self</span>.<span class='xv'>logger</span> = <span class='xv'>logger</span><span class='newline'>
 </span>        <span class='xc'>// 2.</span><span class='newline'>
 </span>        <span class='xk'>self</span>.<span class='xv'>logger</span>[<span class='xv'>metadataKey</span>: <span class='xs'>"meeting.id"</span>] = <span class='xs'>"</span>\(<span class='xv'>id</span>)<span class='xs'>"</span><span class='newline'>
-</span>        <span class='newline'>
+
 </span>        <span class='xc'>// 3.</span><span class='newline'>
 </span>        <span class='xk'>self</span>.<span class='xv'>logger</span>.<span class='xv'>trace</span>(<span class='xs'>"meeting room is ready"</span>)<span class='newline'>
 </span>    }<span class='newline'>
@@ -232,7 +232,7 @@
 
 </span><span class='xa'>@main</span><span class='newline'>
 </span><span class='xk'>struct</span> <span class='xv'>MyApp</span> {<span class='newline'>
-</span>    <span class='newline'>
+
 </span>    <span class='xk'>static</span> <span class='xk'>func</span> <span class='xv'>main</span>() <span class='xk'>async</span> <span class='xk'>throws</span> {<span class='newline'>
 </span>        <span class='xk'>var</span> <span class='xv'>libLogger</span> = <span class='xv'>Logger</span>(<span class='xv'>label</span>: <span class='xs'>"my-library"</span>)<span class='newline'>
 </span>        <span class='xv'>libLogger</span>.<span class='xv'>logLevel</span> = .<span class='xv'>trace</span><span class='newline'>
@@ -248,18 +248,18 @@
 </span>        )<span class='newline'>
 </span>    }<span class='newline'>
 </span>}</code></pre><p>This is an extremely powerful debugging feature, since users can filter the console output based on the log levels.</p><pre class='snippet'><code><span class='newline'></span>2024-01-24T11:31:19+0100 trace my-library : meeting.id=B6176BC5-39A0-4141-B50B-B86141CCE4C8 [MyLibrary] meeting room is ready</code></pre><p>The next step is to add some useful debug &amp; trace information message to the <code>add</code>, <code>remove</code>, <code>start</code> and <code>end</code> functions.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>public</span> <span class='xk'>mutating</span> <span class='xk'>func</span> <span class='xv'>add</span>(_ <span class='xv'>participant</span>: <span class='xt'>Participant</span>) {<span class='newline'>
-</span>    <span class='xc'>// 1. </span><span class='newline'>
+</span>    <span class='xc'>// 1.</span><span class='newline'>
 </span>    <span class='xv'>logger</span>.<span class='xv'>debug</span>(<span class='newline'>
 </span>        <span class='xs'>"trying to add participant"</span>,<span class='newline'>
 </span>        <span class='xv'>metadata</span>: <span class='xv'>participant</span>.<span class='xv'>loggerMetadata</span><span class='newline'>
 </span>    )<span class='newline'>
-</span>    <span class='newline'>
+
 </span>    <span class='xk'>if</span> <span class='xv'>isInProgress</span> {<span class='newline'>
 </span>        <span class='xv'>greet</span>(<span class='xv'>participant</span>)<span class='newline'>
 </span>        <span class='xc'>// 2.</span><span class='newline'>
 </span>        <span class='xv'>logger</span>.<span class='xv'>trace</span>(<span class='xs'>"meeting is in progress"</span>)<span class='newline'>
 </span>    }<span class='newline'>
-</span>    <span class='newline'>
+
 </span>    <span class='xk'>if</span> <span class='xv'>participants</span>.<span class='xv'>contains</span>(<span class='xv'>participant</span>) {<span class='newline'>
 </span>        <span class='xc'>// 3.</span><span class='newline'>
 </span>        <span class='xv'>logger</span>.<span class='xv'>trace</span>(<span class='newline'>
@@ -294,13 +294,13 @@
 </span>    }<span class='newline'>
 
 </span>    <span class='xv'>participants</span>.<span class='xv'>remove</span>(<span class='xv'>participant</span>)<span class='newline'>
-</span>    <span class='newline'>
+
 </span>    <span class='xv'>logger</span>.<span class='xv'>debug</span>(<span class='xs'>"participant removed"</span>, <span class='xv'>metadata</span>: [<span class='newline'>
 </span>        <span class='xs'>"participants"</span>: <span class='xs'>"</span>\(<span class='xv'>participants</span>.<span class='xv'>count</span>)<span class='xs'>"</span><span class='newline'>
 </span>    ])<span class='newline'>
 </span>}</code></pre><p>By including the participant identifier and the name, as metadata, developers can identify the referenced objects.</p><p>The start function will look very similar:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>public</span> <span class='xk'>mutating</span> <span class='xk'>func</span> <span class='xv'>start</span>() <span class='xk'>throws</span> {<span class='newline'>
 </span>    <span class='xv'>logger</span>.<span class='xv'>debug</span>(<span class='xs'>"trying to start the meeting"</span>)<span class='newline'>
-</span>    <span class='newline'>
+
 </span>    <span class='xk'>if</span> <span class='xv'>isInProgress</span> {<span class='newline'>
 </span>        <span class='xv'>logger</span>.<span class='xv'>trace</span>(<span class='xs'>"already in progress"</span>)<span class='newline'>
 </span>        <span class='xk'>return</span><span class='newline'>
@@ -322,7 +322,7 @@
 </span>    ])<span class='newline'>
 </span>}</code></pre><p>We should also update the end function using the same technique:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>public</span> <span class='xk'>mutating</span> <span class='xk'>func</span> <span class='xv'>end</span>() {<span class='newline'>
 </span>    <span class='xv'>logger</span>.<span class='xv'>debug</span>(<span class='xs'>"trying to end the meeting"</span>)<span class='newline'>
-</span>    <span class='newline'>
+
 </span>    <span class='xk'>guard</span> <span class='xv'>isInProgress</span> <span class='xk'>else</span> {<span class='newline'>
 </span>        <span class='xv'>logger</span>.<span class='xv'>trace</span>(<span class='xs'>"meeting is not in progress yet"</span>)<span class='newline'>
 </span>        <span class='xk'>return</span><span class='newline'>
@@ -344,7 +344,7 @@
 
 </span><span class='xa'>@main</span><span class='newline'>
 </span><span class='xk'>struct</span> <span class='xv'>MyApp</span> {<span class='newline'>
-</span>    <span class='newline'>
+
 </span>    <span class='xk'>static</span> <span class='xk'>func</span> <span class='xv'>main</span>() {<span class='newline'>
 
 </span>        <span class='xc'>// 1.</span><span class='newline'>
@@ -353,37 +353,37 @@
 
 </span>        <span class='xk'>var</span> <span class='xv'>libLogger</span> = <span class='xv'>Logger</span>(<span class='xv'>label</span>: <span class='xs'>"my-library"</span>)<span class='newline'>
 </span>        <span class='xv'>libLogger</span>.<span class='xv'>logLevel</span> = .<span class='xv'>info</span><span class='newline'>
-</span>        <span class='newline'>
+
 </span>        <span class='xc'>// 2.</span><span class='newline'>
 </span>        <span class='xv'>appLogger</span>.<span class='xv'>info</span>(<span class='xs'>"Start a meeting"</span>)<span class='newline'>
 </span>        <span class='xk'>let</span> <span class='xv'>bob</span> = <span class='xv'>Participant</span>(<span class='xv'>name</span>: <span class='xs'>"Bob"</span>)<span class='newline'>
 </span>        <span class='xk'>let</span> <span class='xv'>john</span> = <span class='xv'>Participant</span>(<span class='xv'>name</span>: <span class='xs'>"John"</span>)<span class='newline'>
 </span>        <span class='xk'>let</span> <span class='xv'>kate</span> = <span class='xv'>Participant</span>(<span class='xv'>name</span>: <span class='xs'>"Kate"</span>)<span class='newline'>
 </span>        <span class='xk'>let</span> <span class='xv'>mike</span> = <span class='xv'>Participant</span>(<span class='xv'>name</span>: <span class='xs'>"Mike"</span>)<span class='newline'>
-</span>        <span class='newline'>
+
 </span>        <span class='xc'>// 3.</span><span class='newline'>
 </span>        <span class='xv'>appLogger</span>.<span class='xv'>notice</span>(<span class='xs'>"Preparing the meeting"</span>)<span class='newline'>
 </span>        <span class='xk'>var</span> <span class='xv'>meeting</span> = <span class='xv'>Meeting</span>(<span class='newline'>
 </span>            <span class='xv'>id</span>: .<span class='xk'>init</span>(),<span class='newline'>
 </span>            <span class='xv'>logger</span>: <span class='xv'>libLogger</span><span class='newline'>
 </span>        )<span class='newline'>
-</span>        <span class='newline'>
+
 </span>        <span class='xv'>appLogger</span>.<span class='xv'>notice</span>(<span class='xs'>"Add the participants, except Mike..."</span>)<span class='newline'>
-</span>        <span class='newline'>
+
 </span>        <span class='xv'>meeting</span>.<span class='xv'>add</span>(<span class='xv'>bob</span>)<span class='newline'>
 </span>        <span class='xv'>meeting</span>.<span class='xv'>add</span>(<span class='xv'>john</span>)<span class='newline'>
 </span>        <span class='xv'>meeting</span>.<span class='xv'>add</span>(<span class='xv'>kate</span>)<span class='newline'>
-</span>        <span class='newline'>
+
 </span>        <span class='xc'>// 4.</span><span class='newline'>
 </span>        <span class='xv'>appLogger</span>.<span class='xv'>warning</span>(<span class='xs'>"Trying to remove Mike from the list, but he is not on the list."</span>)<span class='newline'>
 </span>        <span class='xv'>meeting</span>.<span class='xv'>remove</span>(<span class='xv'>mike</span>)<span class='newline'>
-</span>        <span class='newline'>
+
 </span>        <span class='xv'>appLogger</span>.<span class='xv'>info</span>(<span class='xs'>"Start the meeting"</span>)<span class='newline'>
 
 </span>        <span class='xk'>if</span> <span class='xo'>!</span><span class='xv'>meeting</span>.<span class='xv'>hasEnoughParticipants</span> {<span class='newline'>
 </span>            <span class='xv'>appLogger</span>.<span class='xv'>warning</span>(<span class='xs'>"the meeting has not enough participants just yet"</span>)<span class='newline'>
 </span>        }<span class='newline'>
-</span>        <span class='newline'>
+
 </span>        <span class='xk'>do</span> {<span class='newline'>
 </span>            <span class='xk'>try</span> <span class='xv'>meeting</span>.<span class='xv'>start</span>()<span class='newline'>
 </span>        }<span class='newline'>
@@ -391,16 +391,16 @@
 </span>            <span class='xc'>// 5.</span><span class='newline'>
 </span>            <span class='xv'>appLogger</span>.<span class='xv'>error</span>(<span class='xs'>"</span>\(<span class='xv'>error</span>)<span class='xs'>"</span>)<span class='newline'>
 </span>        }<span class='newline'>
-</span>        <span class='newline'>
+
 </span>        <span class='xv'>appLogger</span>.<span class='xv'>notice</span>(<span class='xs'>"Add Mike to the list"</span>)<span class='newline'>
 </span>        <span class='xv'>meeting</span>.<span class='xv'>add</span>(<span class='xv'>mike</span>)<span class='newline'>
-</span>        <span class='newline'>
+
 </span>        <span class='xv'>appLogger</span>.<span class='xv'>notice</span>(<span class='xs'>"Remove Bob to the list"</span>)<span class='newline'>
 </span>        <span class='xv'>meeting</span>.<span class='xv'>remove</span>(<span class='xv'>bob</span>)<span class='newline'>
-</span>        <span class='newline'>
+
 </span>        <span class='xv'>appLogger</span>.<span class='xv'>info</span>(<span class='xs'>"End the meeting"</span>)<span class='newline'>
 </span>        <span class='xv'>meeting</span>.<span class='xv'>end</span>()<span class='newline'>
-</span>        <span class='newline'>
+
 </span>        <span class='xv'>appLogger</span>.<span class='xv'>info</span>(<span class='xs'>"Meeting finished"</span>)<span class='newline'>
 </span>    }<span class='newline'>
 </span>}</code></pre><ol><li><p>Instantiate a standalone logger for the application.</p></li><li><p>Log informational messages if necessary, this is the default log level.</p></li><li><p>Use a notice when aiming for a log level higher than info.</p></li><li><p>Warnings can be used to inform users about potential issues or errors.</p></li><li><p>Error log messages can indicate that something has gone wrong.</p></li></ol><p>Try to set different log levels for each Logger instance and run the application.</p><h3 id='Environment-based%20logs'><a href='#Environment-based%20logs'>Environment-based logs</a></h3><p>It’s possible to set the log level for the entire application by defining a <code>LOG_LEVEL</code> environment variable. This will set the log level for all the logger instances, and may bloat the console with quite a lot of messages.</p><p>In an upcoming article, a more detailed explanation will be provided on how to store and define environment variables.</p><p>Apple has a solution for this problem, they provide a way to <a href='https://developer.apple.com/documentation/os/logging/customizing_logging_behavior_while_debugging' target='_blank' rel='external nofollow noopener ugc'>customize logging behaviors</a>.</p><p>Currently, this approach is unavailable for server-side Swift applications featuring the Logging library.</p><p>To overcome the issue, we can write a function (<code>subsystem</code>) as an extension for the Logger struct:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>import</span> <span class='xv'>Foundation</span><span class='newline'>
@@ -444,7 +444,7 @@
 
 </span><span class='xa'>@main</span><span class='newline'>
 </span><span class='xk'>struct</span> <span class='xv'>MyApp</span> {<span class='newline'>
-</span>    <span class='newline'>
+
 </span>    <span class='xk'>static</span> <span class='xk'>func</span> <span class='xv'>main</span>() {<span class='newline'>
 </span>        <span class='xc'>// setenv("MY_APP_LOG_LEVEL", "trace", 1)</span><span class='newline'>
 </span>        <span class='xk'>let</span> <span class='xv'>appLogger</span> = <span class='xv'>Logger</span>.<span class='xv'>subsystem</span>(<span class='xs'>"my-app"</span>, .<span class='xv'>trace</span>)<span class='newline'>
@@ -454,13 +454,13 @@
 
 </span>        <span class='xc'>// ...</span><span class='newline'>
 </span>    }<span class='newline'>
-</span>}</code></pre><p>Define a custom environment variable based on your identifier:</p><ul><li><p>add the <code>-log-level</code> suffix to the identifier</p></li><li><p>replace the dash characters with underscores</p></li><li><p>capitalize the entire string</p></li></ul><p>e.g.: <code>my-library</code> -&gt; <code>MY_LIBRARY_LOG_LEVEL</code></p><p>The <code>setenv</code> function can be used to define environmental variables from Swift code.</p><p>Important: Avoid utilizing the <code>setenv</code> function. It is intended solely for demonstration purposes.</p><p>Run the project from the command line, using the following command to explicitly set environment variables:</p><pre class='snippet'><code class='language-sh'><span class='newline'></span># single command<span class='newline'>
+</span>}</code></pre><p>Define a custom environment variable based on your identifier:</p><ul><li><p>add the <code>-log-level</code> suffix to the identifier</p></li><li><p>replace the dash characters with underscores</p></li><li><p>capitalize the entire string</p></li></ul><p>e.g.: <code>my-library</code> -&gt; <code>MY_LIBRARY_LOG_LEVEL</code></p><p>The <code><a href='https://swiftinit.org/docc/swift-crypto/ccryptoboringssl.setenv(_:_:_:)' target='_blank' rel='external'>setenv(_:_:_:)</a></code> function can be used to define environmental variables from Swift code.</p><p>Important: Avoid utilizing the <code><a href='https://swiftinit.org/docc/swift-crypto/ccryptoboringssl.setenv(_:_:_:)' target='_blank' rel='external'>setenv(_:_:_:)</a></code> function. It is intended solely for demonstration purposes.</p><p>Run the project from the command line, using the following command to explicitly set environment variables:</p><pre class='snippet'><code class='language-sh'><span class='newline'></span># single command<span class='newline'>
 </span>MY_APP_LOG_LEVEL=trace MY_LIBRARY_LOG_LEVEL=trace swift run MyApp<span class='newline'>
 
 </span># or export env vars<span class='newline'>
 </span>export MY_APP_LOG_LEVEL=trace<span class='newline'>
 </span>export MY_LIBRARY_LOG_LEVEL=trace<span class='newline'>
-</span>swift run MyApp</code></pre><p>Provide the environmental variables using a single command before the <code>swift run MyApp</code> action.</p><p>The <code>export</code> command can be used to export variables, making them available in the environment of subsequently executed commands.</p><h2 id='Summary'><a href='#Summary'>Summary</a></h2><p>That’s how you can integrate the Swift Logging library into a framework or application.</p><p>You’ve learned a lot about logging in this article, including log levels, metadata and custom logging subsystems via environment variables.</p><p>If you want to learn a bit more about other logging and debugging solutions, you can also <a href='https://theswiftdev.com/logging-for-beginners-in-swift/' target='_blank' rel='external nofollow noopener ugc'>read this article</a>, which contains some useful snippets &amp; examples.</p></section>
+</span>swift run MyApp</code></pre><p>Provide the environmental variables using a single command before the <code>swift run MyApp</code> action.</p><p>The <code>export</code> command can be used to export variables, making them available in the environment of subsequently executed commands.</p><h2 id='Summary'><a href='#Summary'>Summary</a></h2><p>That’s how you can integrate the Swift Logging library into a framework or application.</p><p>You’ve learned a lot about logging in this article, including log levels, metadata and custom logging subsystems via environment variables.</p><p>If you want to learn a bit more about other logging and debugging solutions, you can also <a href='https://theswiftdev.com/logging-for-beginners-in-swift/' target='_blank' rel='external nofollow noopener ugc'>read this article</a>, which contains some useful snippets &amp; examples.</p></section><div style='display: none;' id='swiftinit-tooltips'><a href='/docc/swift-crypto/ccryptoboringssl.setenv(_:_:_:)'><pre><code><span class='xk'>func</span> <span class='xv'>setenv</span>(<span class='xi'></span>_ <span class='xb'>__name</span>: <span class='xt'>UnsafePointer</span>&lt;<span class='xt'>CChar</span>&gt;!, <span class='xi'></span>_ <span class='xb'>__value</span>: <span class='xt'>UnsafePointer</span>&lt;<span class='xt'>CChar</span>&gt;, <span class='xi'></span>_ <span class='xb'>__replace</span>: <span class='xt'>Int32</span><wbr>) -&gt; <span class='xt'>Int32</span></code></pre></a></div>
                     
                 </section>
     

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="canonical" href="https://swiftonserver.com/2025/introduction-to-jwts-in-swift/">
+    
+    <link rel="next" href="https://swiftonserver.com/advanced-async-sequences/">
+
+    <title>Introduction to JWTs in Swift - Swift on server</title>
+    <meta name="description" content="Learn how to use JWTs in Swift to secure your API">
+
+    <meta property="og:url" content="https://swiftonserver.com/2025/introduction-to-jwts-in-swift/">
+    <meta property="og:title" content="Introduction to JWTs in Swift - Swift on server">
+    <meta property="og:description" content="Learn how to use JWTs in Swift to secure your API">
+    <meta property="og:image" content="/assets/2025/introduction-to-jwts-in-swift/cover.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Introduction to JWTs in Swift - Swift on server">
+    <meta name="twitter:description" content="Learn how to use JWTs in Swift to secure your API">
+    <meta name="twitter:image" content="/assets/2025/introduction-to-jwts-in-swift/cover.jpg">
+
+    <link rel="stylesheet" href="/css/modern-normalize.css">
+    <link rel="stylesheet" href="/css/modern-base.css">
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/grid.css">
+    <link rel="stylesheet" href="/css/navigation.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    
+
+    <link rel="shortcut icon" href="/images/icons/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/images/icons/icon-320.png" type="image/png">
+    
+    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon-180x180.png">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+        media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+        media="(prefers-color-scheme: dark)"
+    >
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+          const container = document.querySelector("div#swiftinit-tooltips");
+          if (container !== null) {
+              container.querySelectorAll('pre code').forEach((el) => {
+                  el.classList.add('nohighlight');
+              });
+          }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+          document.querySelectorAll('section pre code:not(.language-swift').forEach((el) => {
+              hljs.highlightElement(el);
+          });
+        });
+    </script>
+
+    <script defer data-domain="swiftonserver.com" src="https://plausible.io/js/script.js"></script>
+
+</head>
+
+<body>
+    <div id="site-container">
+
+    <header id="navigation">
+        <a href="/">
+            <figure>
+                <picture>
+                    <source
+                        srcset="/images/logos/logo~dark.png"
+                        media="(prefers-color-scheme: dark)"
+                    >
+                    <img
+                        src="/images/logos/logo.png"
+                        alt="Logo of Swift on server"
+                        title="Swift on server"
+                    >
+                </picture>
+            </figure>
+        </a>
+        <nav>
+            <input type="checkbox" id="primary-menu-button" name="menu-button" class="menu-button">
+            <label for="primary-menu-button">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </label>
+            <div class="menu-items">
+                <a href="/posts/page/1/">Posts</a>
+            <a href="/tags/">Tags</a>
+            <a href="/authors/">Authors</a>
+            <a href="/newsletter/">Newsletter</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="page-container">
+    
+    <div class="article-with-toc">
+        <div>
+            <article class="post">
+                <div class="meta">
+                    <time datetime="2025/01/09">2025/01/09</time>
+                     &middot; <span class="reading-time">1 min read</span>
+                    
+                </div>
+                <section>
+                
+                No such article
+    
+                    
+                </section>
+    
+                <footer>
+                    <br>
+                    <time datetime=""></time>
+    
+                    
+                    <div class="author-list">
+                        <a href="https://swiftonserver.com/authors/paul-toffloni/">
+                        <img class="small rounded" src="/assets/authors/paul-toffloni/paul-toffloni.jpeg" alt="Paul Toffloni">
+                        <span class="name">Paul Toffloni</span>
+                        </a>
+                    </div>
+                    <div class="tag-list">
+                        <a href="https://swiftonserver.com/tags/authentication/"><small>Authentication</small></a>
+                    </div>
+                </footer>
+                            
+                <section class="group">
+                </section>
+    
+            </article>
+        </div>
+        
+        <div>
+            <div class="support">
+                <a href="https://swiftcraft.uk/" target="_blank">
+                    <img src="/images/logos/swiftcraft.png" alt="SwiftCraft logo">
+                </a>
+                <h4>
+                    <a href="https://swiftcraft.uk/" target="_blank">SwiftCraft</a>
+                </h4>
+                <p>
+                    SwiftCraft is a UK based Swift Conference, 19th-21st May 2025!
+                    <br>
+                    There'll be talks, workshops, and a lot of Swift (Server) fun!
+                </p>
+                <a class="cta" href="https://swiftcraft.uk/" target="_blank">Get Tickets</a>
+            </div>
+            
+            <aside id="toc">
+            </aside>
+    
+        </div>
+    </div>
+    
+    </main>
+
+    <footer id="site-footer">
+        <div class="grid grid-421">
+    
+            <figure>
+                <picture>
+                    <source
+                        srcset="/images/logos/logo~dark.png"
+                        media="(prefers-color-scheme: dark)"
+                    >
+                    <img
+                        id="logo-image"
+                        src="/images/logos/logo.png"
+                        alt="Logo of Swift on server"
+                        title="Swift on server"
+                    >
+                </picture>
+            </figure>
+            
+            <div>
+                <span style="display: block; height: 32px;">&nbsp;</span>
+                <h4>Swift on server</h4>
+                <p><small><a href="/" target="_blank">swiftonserver.com</a></small></p>
+                <ul>
+                    <li><a href="https://github.com/swift-on-server/" target="_blank">GitHub</a></li>
+                    <li><a href="https://mastodon.social/@swiftonserver/" target="_blank">Mastodon</a></li>
+                    <li><a href="/rss.xml" target="_blank">RSS</a></li>
+                    <li><a href="/sitemap.xml" target="_blank">Sitemap</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <a href="/authors/joannis-orlandos/">
+                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                </a>
+                <h4><a href="/authors/joannis-orlandos/">Joannis Orlandos</a></h4>
+                <p><small><a href="https://unbeatable.software/" target="_blank">Unbeatable Software B.V.</a></small></p>
+                <ul>
+                    <li><a href="mailto:hello@unbeatable.software" target="_blank">Email</a></li>
+                    <li><a href="https://github.com/Joannis" target="_blank">GitHub</a></li>
+                    <li><a href="https://x.com/JoannisOrlandos" target="_blank">X (Twitter)</a></li>
+                    <li><a href="https://mastodon.social/@joannis@fosstodon.org" target="_blank">Mastodon</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <a href="/authors/tibor-bodecs/">
+                <img class="small rounded" src="/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                </a>
+                <h4><a href="/authors/tibor-bodecs/">Tibor Bödecs</a></h4>
+                <p><small><a href="https://binarybirds.com/" target="_blank">Binary Birds Kft.</a></small></p>
+                <ul>
+                    <li><a href="mailto:mail.tib@gmail.com" target="_blank">Email</a></li>
+                    <li><a href="https://github.com/tib/" target="_blank">GitHub</a></li>
+                    <li><a href="https://x.com/tiborbodecs" target="_blank">X (Twitter)</a></li>
+                    <li><a href="https://mastodon.social/@tiborbodecs" target="_blank">Mastodon</a></li>
+                </ul>
+            </div>
+            
+        </div>
+        
+        <section class="grid grid-221">
+            <small>Swift on server &copy; 2022 - 2025</small>
+            <small>This site was generated using <a href="https://swift.org/" target="_blank">Swift</a> & <a href="https://github.com/binarybirds/toucan" target="_blank">Toucan</a>.</small>
+        </section>
+    </footer>
+
+    </div>
+
+    
+
+    <script type="text/javascript" src="/js/tooltips.js" async=""></script>
+</body>
+</html>

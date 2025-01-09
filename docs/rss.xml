@@ -4,11 +4,18 @@
     <description></description>
     <link>https://swiftonserver.com/</link>
     <language>en-US</language>
-    <lastBuildDate>Sun, 05 Jan 2025 15:48:11 +0000</lastBuildDate>
-    <pubDate>Sat, 28 Dec 2024 09:00:00 +0000</pubDate>
+    <lastBuildDate>Thu, 09 Jan 2025 12:47:43 +0000</lastBuildDate>
+    <pubDate>Thu, 09 Jan 2025 09:00:00 +0000</pubDate>
     <ttl>250</ttl>
     <atom:link href="https://swiftonserver.com/rss.xml" rel="self" type="application/rss+xml"/>
 
+<item>
+    <guid isPermaLink="true">https://swiftonserver.com/2025/introduction-to-jwts-in-swift/</guid>
+    <title><![CDATA[ Introduction to JWTs in Swift ]]></title>
+    <description><![CDATA[ Learn how to use JWTs in Swift to secure your API ]]></description>
+    <link>https://swiftonserver.com/2025/introduction-to-jwts-in-swift/</link>
+    <pubDate>Thu, 09 Jan 2025 09:00:00 +0000</pubDate>
+</item>
 <item>
     <guid isPermaLink="true">https://swiftonserver.com/getting-started-with-mongokitten/</guid>
     <title><![CDATA[ Getting Started with MongoKitten ]]></title>
