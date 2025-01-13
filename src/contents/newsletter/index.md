@@ -4,7 +4,7 @@ description: Join our newsletter
 template: newsletter.home
 ---
 
-# Swift on Server Newsletter
+# Swift on Server newsletter
 
 Join over two thousand developers to stay in the loop with the best Server-Side Swift news.
 

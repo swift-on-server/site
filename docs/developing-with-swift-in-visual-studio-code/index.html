@@ -5,22 +5,22 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="canonical" href="http://localhost:3000/developing-with-swift-in-visual-studio-code/">
-    <link rel="prev" href="http://localhost:3000/building-swiftnio-clients/">
-    <link rel="next" href="http://localhost:3000/getting-started-with-hummingbird/">
+    <link rel="canonical" href="https://swiftonserver.com/developing-with-swift-in-visual-studio-code/">
+    <link rel="prev" href="https://swiftonserver.com/building-swiftnio-clients/">
+    <link rel="next" href="https://swiftonserver.com/getting-started-with-hummingbird/">
 
     <title>Developing with Swift in Visual Studio Code - Swift on server</title>
     <meta name="description" content="Learn how to set up your Visual Studio Code for Swift development using Docker, Dev Containers and the Swift for VS Code extension.">
 
-    <meta property="og:url" content="http://localhost:3000/developing-with-swift-in-visual-studio-code/">
+    <meta property="og:url" content="https://swiftonserver.com/developing-with-swift-in-visual-studio-code/">
     <meta property="og:title" content="Developing with Swift in Visual Studio Code - Swift on server">
     <meta property="og:description" content="Learn how to set up your Visual Studio Code for Swift development using Docker, Dev Containers and the Swift for VS Code extension.">
-    <meta property="og:image" content="http://localhost:3000/assets/developing-with-swift-in-visual-studio-code/cover.jpg" />
+    <meta property="og:image" content="https://swiftonserver.com/assets/developing-with-swift-in-visual-studio-code/cover.jpg" />
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Developing with Swift in Visual Studio Code - Swift on server">
     <meta name="twitter:description" content="Learn how to set up your Visual Studio Code for Swift development using Docker, Dev Containers and the Swift for VS Code extension.">
-    <meta name="twitter:image" content="http://localhost:3000/assets/developing-with-swift-in-visual-studio-code/cover.jpg">
+    <meta name="twitter:image" content="https://swiftonserver.com/assets/developing-with-swift-in-visual-studio-code/cover.jpg">
 
     <link rel="stylesheet" href="/css/modern-normalize.css">
     <link rel="stylesheet" href="/css/modern-base.css">
@@ -124,12 +124,12 @@
             <article class="post">
                 <div class="meta">
                     <time datetime="2024/01/16">2024/01/16</time>
-                     &middot; <span class="reading-time">1 min read</span>
+                     &middot; <span class="reading-time">2 min read</span>
                     
                 </div>
                 <section>
                 
-                
+                <section class='introduction'><h1>Developing with Swift in Visual Studio Code</h1></section><section class='details literature'><p>Swift is a great language for developing applications for Apple platforms, and is easily set up using Xcode. However, Xcode is only available for macOS, and does not support a wide variety of extensions.</p><p>For this reason, many Server-Side Swift developers prefer to use Visual Studio Code for their development.</p><p>Visual Studio Code is a free and open-source code editor developed by Microsoft for Windows, Linux and macOS.</p><h2 id='What%20are%20Dev%20Containers?'><a href='#What%20are%20Dev%20Containers?'>What are Dev Containers?</a></h2><p>Dev Containers are a way to develop in a containerized environment. Containers are a way to package software in a format that can be run on any platform, such as Linux, macOS or Windows. You can think of them as a lightweight alternative to virtual machines. In most of our tutorials, we’ll provide a dev container for you to use. This allows you to set up all prerequisites for a tutorial in a single step.</p><h3 id='Prerequisites'><a href='#Prerequisites'>Prerequisites</a></h3><p>First, download Visual Studio Code from <a target='_blank' href='https://code.visualstudio.com/download/' rel='external nofollow noopener ugc'>https://code.visualstudio.com/download/</a> and install it for your platform.</p><p>Then, once Visual Studio Code is installed, download and install Docker. The easiest way is to use the Docker Desktop installer for your platform: <a target='_blank' href='https://www.docker.com/products/docker-desktop/' rel='external nofollow noopener ugc'>https://www.docker.com/products/docker-desktop/</a></p><p>Finally, you’ll need to install the <a href='https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers' target='_blank' rel='external nofollow noopener ugc'>Dev Containers</a> plugin for VSCode. This will allow you to open a project inside a Docker container, if it has a devcontainer bundled with it.</p><p>This tutorial has a <a href='https://github.com/swift-on-server/developing-with-swift-in-visual-studio-code-sample' target='_blank' rel='external'>sample project</a> that you can use to test your setup.</p><h2 id='Opening%20a%20Project'><a href='#Opening%20a%20Project'>Opening a Project</a></h2><p>Make sure Docker (Desktop) is running, ready, and has sufficient resources allocated. You can do this by opening the Docker Desktop application and going to the “Resources” tab. Swift needs at least 4GB of memory to compile, so make sure you have at least 4GB of memory allocated to Docker.</p><p>Open Visual Studio Code and click on the “Open Folder” button in the welcome screen. Select the folder containing the starter project. In the bottom-right of the window, you’ll see a blue button with the text “Reopen in Container”. Click on it to reopen the project in a Dev Container.</p><p>If you don’t see the button, you can also open the command palette (<code>Ctrl+Shift+P</code> on Windows/Linux, <code>Cmd+Shift+P</code> on macOS) and search for “Reopen in Container”.</p><p><img alt='Reopen in Container' src='https://raw.githubusercontent.com/swift-on-server/articles/main/Sources/Articles/Documentation.docc/2024/developing-with-swift-in-visual-studio-code/images/open-in-container.png'></p><p><strong>Note:</strong> The image shows the “Update” button instead of the “Reopen in Container” button. This is because I already have the project open in a Dev Container.</p><p>Visual Studio Code will now start downloading or building the Dev Container. This may take a while, as it needs to download the Swift toolchain and other dependencies.</p><p>Once it’s done, you’ll see a new window with the project open. You can now start developing!</p><h3 id='Running%20the%20Code'><a href='#Running%20the%20Code'>Running the Code</a></h3><p>In the left sidebar, you’ll see a “Run and Debug” tab. Click on it to open the Run view. You’ll see a “Run” button with a green arrow. Click on it to run the project.</p><p><strong>Tip:</strong> Press <code>Cmd + Shift + D</code> on macOS or <code>Ctrl + Shift + D</code> on Windows/Linux to open the Run view.</p><p>On the bottom-right of the window, you’ll see a terminal window pop up. This is the terminal inside the Dev Container, and shows the output of the program. You can also find the debugger right next to that terminal window, which has LLDB integration.</p><p>Once the program is done running, you’ll see the output in the terminal window:</p><p><img alt='Program Output' src='https://raw.githubusercontent.com/swift-on-server/articles/main/Sources/Articles/Documentation.docc/2024/developing-with-swift-in-visual-studio-code/images/program-output.png'></p><p>If it’s not visible for you, open the Output tab on the bottom of the window. You can open it using <code>Cmd + Shift + U</code> on macOS or <code>Ctrl + Shift + U</code> on Windows/Linux.</p><p>The output pane should be a split view, with a Terminal section on the right. If it’s minimized, you’ll see a small arrow on the right side of the window. Click on it to expand the window.</p><p>If you see the above output, congratulations! You’ve successfully set up your development environment for Swift development using Visual Studio Code and Dev Containers.</p></section>
                     
                 </section>
     
@@ -139,14 +139,14 @@
     
                     
                     <div class="author-list">
-                        <a href="http://localhost:3000/authors/joannis-orlandos/">
-                        <img class="small rounded" src="http://localhost:3000/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                        <a href="https://swiftonserver.com/authors/joannis-orlandos/">
+                        <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                         <span class="name">Joannis Orlandos</span>
                         </a>
                     </div>
                     <div class="tag-list">
-                        <a href="http://localhost:3000/tags/utilities/"><small>Utilities</small></a>
-                    <a href="http://localhost:3000/tags/vscode/"><small>VSCode</small></a>
+                        <a href="https://swiftonserver.com/tags/utilities/"><small>Utilities</small></a>
+                    <a href="https://swiftonserver.com/tags/vscode/"><small>VSCode</small></a>
                     </div>
                 </footer>
                             
@@ -157,91 +157,91 @@
                             
                             
                             <div class="author-list">
-                                <a href="http://localhost:3000/authors/joannis-orlandos/">
-                                <img class="small rounded" src="http://localhost:3000/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                                 </a>
                             </div>
                             <div class="meta">
                                 <time datetime="2024/10/27">2024/10/27</time>
-                                 &middot; <span class="reading-time">1 min read</span>
+                                 &middot; <span class="reading-time">3 min read</span>
                             </div>
                             
-                            <h2 class="title"><a href="http://localhost:3000/getting-started-with-swift-package-manager/" target="">Getting Started with Swift Package Manager</a></h2>
+                            <h2 class="title"><a href="https://swiftonserver.com/getting-started-with-swift-package-manager/" target="">Getting Started with Swift Package Manager</a></h2>
                             <p>Learn how to create and manage Swift packages with SwiftPM.</p>
                         
                             <div class="spacer"></div>
                         
                             <div class="tag-list">
-                                <a href="http://localhost:3000/tags/utilities/"><small>Utilities</small></a>
+                                <a href="https://swiftonserver.com/tags/utilities/"><small>Utilities</small></a>
                             </div>
                         </div>
                     <div class="card">
                             
                             
                             <div class="author-list">
-                                <a href="http://localhost:3000/authors/tibor-bodecs/">
-                                <img class="small rounded" src="http://localhost:3000/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                                <a href="https://swiftonserver.com/authors/tibor-bodecs/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                                 </a>
                             </div>
                             <div class="meta">
                                 <time datetime="2024/04/10">2024/04/10</time>
-                                 &middot; <span class="reading-time">1 min read</span>
+                                 &middot; <span class="reading-time">13 min read</span>
                             </div>
                             
-                            <h2 class="title"><a href="http://localhost:3000/useful-scripts-for-server-side-swift-libraries/" target="">Useful scripts for server-side Swift</a></h2>
+                            <h2 class="title"><a href="https://swiftonserver.com/useful-scripts-for-server-side-swift-libraries/" target="">Useful scripts for server-side Swift</a></h2>
                             <p>Learn about shell scripts to enforce coding standards and conduct checks for backend Swift projects.</p>
                         
                             <div class="spacer"></div>
                         
                             <div class="tag-list">
-                                <a href="http://localhost:3000/tags/utilities/"><small>Utilities</small></a>
+                                <a href="https://swiftonserver.com/tags/utilities/"><small>Utilities</small></a>
                             </div>
                         </div>
                     <div class="card featured">
                             <span class="featured">featured</span>
                             
                             <div class="author-list">
-                                <a href="http://localhost:3000/authors/tibor-bodecs/">
-                                <img class="small rounded" src="http://localhost:3000/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                                <a href="https://swiftonserver.com/authors/tibor-bodecs/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                                 </a>
                             </div>
                             <div class="meta">
                                 <time datetime="2024/03/12">2024/03/12</time>
-                                 &middot; <span class="reading-time">1 min read</span>
+                                 &middot; <span class="reading-time">7 min read</span>
                             </div>
                             
-                            <h2 class="title"><a href="http://localhost:3000/using-environment-variables-in-swift/" target="">Environment Variables in Swift</a></h2>
+                            <h2 class="title"><a href="https://swiftonserver.com/using-environment-variables-in-swift/" target="">Environment Variables in Swift</a></h2>
                             <p>Explore the importance of environment variables in Swift and how to use them.</p>
                         
                             <div class="spacer"></div>
                         
                             <div class="tag-list">
-                                <a href="http://localhost:3000/tags/observability/"><small>Observability</small></a>
-        <a href="http://localhost:3000/tags/utilities/"><small>Utilities</small></a>
+                                <a href="https://swiftonserver.com/tags/observability/"><small>Observability</small></a>
+        <a href="https://swiftonserver.com/tags/utilities/"><small>Utilities</small></a>
                             </div>
                         </div>
                     <div class="card">
                             
                             
                             <div class="author-list">
-                                <a href="http://localhost:3000/authors/tibor-bodecs/">
-                                <img class="small rounded" src="http://localhost:3000/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                                <a href="https://swiftonserver.com/authors/tibor-bodecs/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                                 </a>
                             </div>
                             <div class="meta">
                                 <time datetime="2024/02/13">2024/02/13</time>
-                                 &middot; <span class="reading-time">1 min read</span>
+                                 &middot; <span class="reading-time">13 min read</span>
                             </div>
                             
-                            <h2 class="title"><a href="http://localhost:3000/logging-for-server-side-swift-apps/" target="">Logging for server-side Swift apps</a></h2>
+                            <h2 class="title"><a href="https://swiftonserver.com/logging-for-server-side-swift-apps/" target="">Logging for server-side Swift apps</a></h2>
                             <p>Discover how to integrate the Logging library into an application, use various log levels, and tailor the unified logging API for backend projects.</p>
                         
                             <div class="spacer"></div>
                         
                             <div class="tag-list">
-                                <a href="http://localhost:3000/tags/documentation/"><small>Documentation</small></a>
-        <a href="http://localhost:3000/tags/observability/"><small>Observability</small></a>
-        <a href="http://localhost:3000/tags/utilities/"><small>Utilities</small></a>
+                                <a href="https://swiftonserver.com/tags/documentation/"><small>Documentation</small></a>
+        <a href="https://swiftonserver.com/tags/observability/"><small>Observability</small></a>
+        <a href="https://swiftonserver.com/tags/utilities/"><small>Utilities</small></a>
                             </div>
                         </div>
                     </div>
@@ -267,6 +267,21 @@
             </div>
             
             <aside id="toc">
+                <h4>On this page</h4>
+                <ul>
+                    <li class="first-level">
+                        <a href="#What%20are%20Dev%20Containers?">What are Dev Containers?</a>
+                        <ul>
+                            <li><a href="#Prerequisites">Prerequisites</a></li>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Opening%20a%20Project">Opening a Project</a>
+                        <ul>
+                            <li><a href="#Running%20the%20Code">Running the Code</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </aside>
     
         </div>

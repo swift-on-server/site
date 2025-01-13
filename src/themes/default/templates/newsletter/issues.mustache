@@ -1,0 +1,32 @@
+{{<html}}
+{{$main}}
+
+{{& page.contents}}
+
+<div id="issues" class="wrapper">
+
+    {{#empty(pagination.data.issue)}}
+    Empty.
+    {{/empty(pagination.data.issue)}}
+    {{^empty(pagination.data.issue)}}
+    <div class="">
+    {{#pagination.data.issue}}
+        {{> partials.newsletter.issue}}
+    {{/pagination.data.issue}}
+    </div>
+    {{/empty(pagination.data.issue)}}
+    
+    {{#empty(pagination.links.issue)}}
+    {{/empty(pagination.links.issue)}}
+    {{^empty(pagination.links.issue)}}
+    <div class="pagination">
+    {{#pagination.links.issue}}
+        {{> partials.pagination}}
+    {{/pagination.links.issue}}
+    </div>
+    {{/empty(pagination.links.issue)}}
+
+</div>
+
+{{/main}}
+{{/html}}

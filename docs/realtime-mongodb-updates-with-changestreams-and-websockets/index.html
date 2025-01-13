@@ -5,22 +5,22 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="canonical" href="http://localhost:3000/realtime-mongodb-updates-with-changestreams-and-websockets/">
-    <link rel="prev" href="http://localhost:3000/logging-for-server-side-swift-apps/">
-    <link rel="next" href="http://localhost:3000/structured-concurrency-and-shared-state-in-swift/">
+    <link rel="canonical" href="https://swiftonserver.com/realtime-mongodb-updates-with-changestreams-and-websockets/">
+    <link rel="prev" href="https://swiftonserver.com/logging-for-server-side-swift-apps/">
+    <link rel="next" href="https://swiftonserver.com/structured-concurrency-and-shared-state-in-swift/">
 
     <title>Realtime MongoDB Updates with ChangeStreams and WebSockets - Swift on server</title>
     <meta name="description" content="Learn how to implement real-time updates over WebSockets using ChangeStreams and MongoKitten">
 
-    <meta property="og:url" content="http://localhost:3000/realtime-mongodb-updates-with-changestreams-and-websockets/">
+    <meta property="og:url" content="https://swiftonserver.com/realtime-mongodb-updates-with-changestreams-and-websockets/">
     <meta property="og:title" content="Realtime MongoDB Updates with ChangeStreams and WebSockets - Swift on server">
     <meta property="og:description" content="Learn how to implement real-time updates over WebSockets using ChangeStreams and MongoKitten">
-    <meta property="og:image" content="http://localhost:3000/assets/realtime-mongodb-updates-with-changestreams-and-websockets/cover.jpg" />
+    <meta property="og:image" content="https://swiftonserver.com/assets/realtime-mongodb-updates-with-changestreams-and-websockets/cover.jpg" />
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Realtime MongoDB Updates with ChangeStreams and WebSockets - Swift on server">
     <meta name="twitter:description" content="Learn how to implement real-time updates over WebSockets using ChangeStreams and MongoKitten">
-    <meta name="twitter:image" content="http://localhost:3000/assets/realtime-mongodb-updates-with-changestreams-and-websockets/cover.jpg">
+    <meta name="twitter:image" content="https://swiftonserver.com/assets/realtime-mongodb-updates-with-changestreams-and-websockets/cover.jpg">
 
     <link rel="stylesheet" href="/css/modern-normalize.css">
     <link rel="stylesheet" href="/css/modern-base.css">
@@ -124,12 +124,104 @@
             <article class="post">
                 <div class="meta">
                     <time datetime="2024/12/28">2024/12/28</time>
-                     &middot; <span class="reading-time">1 min read</span>
+                     &middot; <span class="reading-time">8 min read</span>
                     
                 </div>
                 <section>
                 
-                
+                <section class='introduction'><h1>Real-time MongoDB Updates over WebSockets</h1></section><section class='details literature'><p>Learn how to create a real-time feed of MongoDB changes using ChangeStreams and WebSockets. This tutorial demonstrates how to stream database changes to connected clients using MongoKitten and Hummingbird.</p><h2 id='Overview'><a href='#Overview'>Overview</a></h2><p>In this tutorial, you’ll learn how to:</p><ul><li><p>Create a real-time post feed using MongoDB ChangeStreams</p></li><li><p>Set up a WebSocket server with Hummingbird</p></li><li><p>Implement a REST endpoint for creating posts</p></li><li><p>Broadcast changes to WebSocket clients</p></li><li><p>Handle WebSocket connections safely using Swift concurrency</p></li></ul><h3 id='Prerequisites'><a href='#Prerequisites'>Prerequisites</a></h3><p>This tutorial builds upon concepts from:</p><ul><li><p><a href='../getting-started-with-mongokitten'>Getting Started with MongoDB in Swift using MongoKitten</a></p></li><li><p><a href='../websockets-tutorial-using-swift-and-hummingbird'>WebSocket tutorial using Swift and Hummingbird</a></p></li></ul><p>Make sure you have MongoDB running locally before starting.</p><h2 id='The%20Connection%20Manager'><a href='#The%20Connection%20Manager'>The Connection Manager</a></h2><p>The <code>ConnectionManager</code> handles WebSocket connections and MongoDB change notifications:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>actor</span> <span class='xt'>ConnectionManager</span> {<span class='newline'>
+</span>    <span class='xk'>private</span> <span class='xk'>let</span> <span class='xv'>database</span>: <a class='xt' href='https://swiftinit.org/docs/mongokitten/mongokitten/mongodatabase' target='_blank' rel='external'>MongoDatabase</a><span class='newline'>
+</span>    <span class='xk'>private</span> <span class='xk'>var</span> <span class='xv'>outboundConnections</span>: [<a class='xt' href='https://swiftinit.org/docs/swift/foundationessentials/uuid' target='_blank' rel='external'>UUID</a>: <a class='xt' href='https://swiftinit.org/docs/swift-websocket/wscore/websocketoutboundwriter' target='_blank' rel='external'>WebSocketOutboundWriter</a>] = [:]<span class='newline'>
+</span>    <span class='newline'>
+</span>    <span class='xk'>init</span>(<span class='xv'>database</span>: <a class='xt' href='https://swiftinit.org/docs/mongokitten/mongokitten/mongodatabase' target='_blank' rel='external'>MongoDatabase</a>) {<span class='newline'>
+</span>        <span class='xk'>self</span>.<span class='xv'>database</span> = <span class='xv'>database</span><span class='newline'>
+</span>    }<span class='newline'>
+</span>    <span class='newline'>
+</span>    <span class='xk'>func</span> <span class='xv'>broadcast</span>(_ <span class='xv'>data</span>: <a class='xt' href='https://swiftinit.org/docs/swift/foundationessentials/data' target='_blank' rel='external'>Data</a>) <span class='xk'>async</span> {<span class='newline'>
+</span>        <span class='xk'>guard</span> <span class='xk'>let</span> <span class='xv'>text</span> = <a class='xt' href='https://swiftinit.org/docs/swift/swift/string' target='_blank' rel='external'>String</a>(<span class='xv'>data</span>: <span class='xv'>data</span>, <span class='xv'>encoding</span>: .<a class='xv' href='https://swiftinit.org/docs/swift/swift/string/encoding.utf8' target='_blank' rel='external'>utf8</a>) <span class='xk'>else</span> {<span class='newline'>
+</span>            <span class='xk'>return</span><span class='newline'>
+</span>        }<span class='newline'>
+</span>        <span class='newline'>
+</span>        <span class='xk'>for</span> <span class='xv'>connection</span> <span class='xk'>in</span> <span class='xv'>outboundConnections</span>.<a class='xv' href='https://swiftinit.org/docs/swift/swift/dictionary.values' target='_blank' rel='external'>values</a> {<span class='newline'>
+</span>            <span class='xk'>try</span>? <span class='xk'>await</span> <span class='xv'>connection</span>.<a class='xv' href='https://swiftinit.org/docs/swift-websocket/wscore/websocketoutboundwriter.write(_:)' target='_blank' rel='external'>write</a>(.<a class='xv' href='https://swiftinit.org/docs/swift-websocket/wscore/websocketoutboundwriter/outboundframe.text(_:)' target='_blank' rel='external'>text</a>(<span class='xv'>text</span>))<span class='newline'>
+</span>        }<span class='newline'>
+</span>    }<span class='newline'>
+
+</span>    <span class='xk'>func</span> <span class='xv'>withRegisteredClient</span>&lt;<span class='xv'>T</span>: <a class='xt' href='https://swiftinit.org/docs/swift/swift/sendable' target='_blank' rel='external'>Sendable</a>&gt;(<span class='newline'>
+</span>        _ <span class='xv'>client</span>: <a class='xt' href='https://swiftinit.org/docs/swift-websocket/wscore/websocketoutboundwriter' target='_blank' rel='external'>WebSocketOutboundWriter</a>,<span class='newline'>
+</span>        <span class='xv'>perform</span>: () <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <span class='xt'>T</span><span class='newline'>
+</span>    ) <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <span class='xt'>T</span> {<span class='newline'>
+</span>        <span class='xk'>let</span> <span class='xv'>id</span> = <a class='xt' href='https://swiftinit.org/docs/swift/foundationessentials/uuid' target='_blank' rel='external'>UUID</a>()<span class='newline'>
+</span>        <span class='xv'>outboundConnections</span><a href='https://swiftinit.org/docs/swift/swift/dictionary.subscript(_:)?hash=8RFQL' target='_blank' rel='external'>[</a><span class='xv'>id</span>] = <span class='xv'>client</span><span class='newline'>
+</span>        <span class='xk'>defer</span> { <span class='xv'>outboundConnections</span><a href='https://swiftinit.org/docs/swift/swift/dictionary.subscript(_:)?hash=8RFQL' target='_blank' rel='external'>[</a><span class='xv'>id</span>] = <span class='xk'>nil</span> }<span class='newline'>
+</span>        <span class='xk'>return</span> <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>perform</span>()<span class='newline'>
+</span>    }<span class='newline'>
+</span>}</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/realtime-mongodb-app.swift#L85' target='_blank' class='source github'><span class='file'>realtime-mongodb-app.swift</span>:<span class='line'>85</span></a><ol><li><p>The manager is an actor to ensure thread-safe access to connections</p></li><li><p>It maintains a dictionary of active WebSocket connections</p></li><li><p>The <code>broadcast</code> method sends updates to all connected clients</p></li><li><p><code>withRegisteredClient</code> safely manages client lifecycle using structured concurrency</p></li></ol><p>The use of <code>withRegisteredClient</code> ensures that the WebSocket connection is properly cleaned up when the connection is closed. This pattern is very scalable.</p><aside class='tip'><h3>Tip</h3><p>Watch <a href='https://www.youtube.com/watch?v=JmrnE7HUaDE' target='_blank' rel='external nofollow noopener ugc'>Franz’ Busch talk</a> on this topic for a deeper dive into this pattern.</p></aside><h3 id='Watching%20for%20Changes'><a href='#Watching%20for%20Changes'>Watching for Changes</a></h3><p>Now that the <code>ConnectionManager</code> is implemented, we can watch for changes in the MongoDB database. For this, we’ll tie the <code>ConnectionManager</code> to the application lifecycle using the <code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle/service' target='_blank' rel='external'>Service</a></code> protocol.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>extension</span> <span class='xt'>ConnectionManager</span>: <a class='xt' href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle/service' target='_blank' rel='external'>Service</a> {<span class='newline'>
+</span>    <span class='xk'>func</span> <span class='xv'>run</span>() <span class='xk'>async</span> <span class='xk'>throws</span> {<span class='newline'>
+</span>        <span class='xc'>// 1.</span><span class='newline'>
+</span>        <span class='xk'>let</span> <span class='xv'>posts</span> = <span class='xv'>database</span><a href='https://swiftinit.org/docs/mongokitten/mongokitten/mongodatabase.subscript(_:)' target='_blank' rel='external'>[</a><span class='xs'>"posts"</span>]<span class='newline'>
+</span>        <span class='newline'>
+</span>        <span class='xc'>// 2.</span><span class='newline'>
+</span>        <span class='xk'>let</span> <span class='xv'>changes</span> = <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>posts</span>.<a class='xv' href='https://swiftinit.org/docs/mongokitten/mongokitten/mongocollection.watch(options:type:using:)' target='_blank' rel='external'>watch</a>(<span class='xv'>type</span>: <span class='xt'>Post</span>.<span class='xk'>self</span>)<span class='newline'>
+</span>        <span class='newline'>
+</span>        <span class='xc'>// 3.</span><span class='newline'>
+</span>        <span class='xk'>for</span> <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>change</span> <span class='xk'>in</span> <span class='xv'>changes</span> {<span class='newline'>
+</span>            <span class='xc'>// 4.</span><span class='newline'>
+</span>            <span class='xk'>if</span> <span class='xv'>change</span>.<a class='xv' href='https://swiftinit.org/docs/mongokitten/mongokitten/changestreamnotification.operationtype' target='_blank' rel='external'>operationType</a> <a class='xv' href='https://swiftinit.org/docs/swift/swift.==(_:_:)?hash=9HU5C' target='_blank' rel='external'>==</a> .<a class='xv' href='https://swiftinit.org/docs/mongokitten/mongokitten/changestreamnotification/operationtype.insert' target='_blank' rel='external'>insert</a>, <span class='xk'>let</span> <span class='xv'>post</span> = <span class='xv'>change</span>.<a class='xv' href='https://swiftinit.org/docs/mongokitten/mongokitten/changestreamnotification.fulldocument' target='_blank' rel='external'>fullDocument</a> {<span class='newline'>
+</span>                <span class='xc'>// 5.</span><span class='newline'>
+</span>                <span class='xk'>let</span> <span class='xv'>jsonData</span> = <span class='xk'>try</span> <a class='xt' href='https://swiftinit.org/docs/swift/foundationessentials/jsonencoder' target='_blank' rel='external'>JSONEncoder</a>().<a class='xv' href='https://swiftinit.org/docs/swift/foundationessentials/jsonencoder.encode(_:)' target='_blank' rel='external'>encode</a>(<span class='xv'>post</span>)<span class='newline'>
+</span>                <span class='xc'>// 6.</span><span class='newline'>
+</span>                <span class='xk'>await</span> <span class='xv'>broadcast</span>(<span class='xv'>jsonData</span>)<span class='newline'>
+</span>            }<span class='newline'>
+</span>        }<span class='newline'>
+</span>    }<span class='newline'>
+</span>}</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/realtime-mongodb-app.swift#L116' target='_blank' class='source github'><span class='file'>realtime-mongodb-app.swift</span>:<span class='line'>116</span></a><ol><li><p>Get a reference to the posts collection</p></li><li><p>Create a change stream watching for post changes</p></li><li><p>Loop over each change</p></li><li><p>If the change is an insert, take the decoded post</p></li><li><p>Encode the post as JSON</p></li><li><p>Broadcast the post to all connected clients</p></li></ol><p>This flow is very scalable, as only one ChangeStream is created and maintained per Hummingbird instance. At the same time, the use of structured concurrency ensures that the ChangeStream is properly cleaned up when the application shuts down.</p><h2 id='Setting%20Up%20the%20Application'><a href='#Setting%20Up%20the%20Application'>Setting Up the Application</a></h2><p>Let’s create the main application entry point:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xa'>@main</span><span class='newline'>
+</span><span class='xk'>struct</span> <span class='xt'>RealtimeMongoApp</span> {<span class='newline'>
+</span>    <span class='xk'>static</span> <span class='xk'>func</span> <span class='xv'>main</span>() <span class='xk'>async</span> <span class='xk'>throws</span> {<span class='newline'>
+</span>        <span class='xc'>// 1.</span><span class='newline'>
+</span>        <span class='xk'>let</span> <span class='xv'>db</span> = <span class='xk'>try</span> <span class='xk'>await</span> <a class='xt' href='https://swiftinit.org/docs/mongokitten/mongokitten/mongodatabase' target='_blank' rel='external'>MongoDatabase</a>.<a class='xv' href='https://swiftinit.org/docs/mongokitten/mongokitten/mongodatabase.connect(to:logger:)?hash=33E0S' target='_blank' rel='external'>connect</a>(<span class='xv'>to</span>: <span class='xs'>"mongodb://localhost/social_network"</span>)<span class='newline'>
+</span>        <span class='newline'>
+</span>        <span class='xc'>// 2.</span><span class='newline'>
+</span>        <span class='xk'>let</span> <span class='xv'>connectionManager</span> = <span class='xt'>ConnectionManager</span>(<span class='xv'>database</span>: <span class='xv'>db</span>)<span class='newline'>
+
+
+</span>        <span class='xk'>let</span> <span class='xv'>router</span> = <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbird/router' target='_blank' rel='external'>Router</a>(<span class='xv'>context</span>: <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbird/basicrequestcontext' target='_blank' rel='external'>BasicRequestContext</a>.<span class='xk'>self</span>)<span class='newline'>
+</span>        <span class='xv'>setupRoutes</span>(<span class='xv'>router</span>: <span class='xv'>router</span>, <span class='xv'>db</span>: <span class='xv'>db</span>)<span class='newline'>
+</span>        <span class='newline'>
+</span>        <span class='xc'>// 4.</span><span class='newline'>
+</span>        <span class='xk'>var</span> <span class='xv'>app</span> = <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbird/application' target='_blank' rel='external'>Application</a>(<span class='newline'>
+</span>            <span class='xv'>router</span>: <span class='xv'>router</span>,<span class='newline'>
+</span>            <span class='xv'>server</span>: .<a class='xv' href='https://swiftinit.org/docs/hummingbird-websocket/hummingbirdcore/httpserverbuilder.http1websocketupgrade(configuration:additionalchannelhandlers:shouldupgrade:)?hash=6SIVA' target='_blank' rel='external'>http1WebSocketUpgrade</a> { <span class='xv'>request</span>, <span class='xv'>channel</span>, <span class='xv'>logger</span> <span class='xk'>in</span><span class='newline'>
+</span>                <span class='xk'>return</span> .<a class='xv' href='https://swiftinit.org/docs/hummingbird-websocket/hummingbirdwebsocket/shouldupgraderesult.upgrade(_:_:)' target='_blank' rel='external'>upgrade</a>([:]) { <span class='xv'>inbound</span>, <span class='xv'>outbound</span>, <span class='xv'>context</span> <span class='xk'>in</span><span class='newline'>
+</span>                    <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>connectionManager</span>.<span class='xv'>withRegisteredClient</span>(<span class='xv'>outbound</span>) {<span class='newline'>
+</span>                        <span class='xk'>for</span> <span class='xk'>try</span> <span class='xk'>await</span> _ <span class='xk'>in</span> <span class='xv'>inbound</span> {<span class='newline'>
+</span>                            <span class='xc'>// Drop any incoming data, we don't need it</span><span class='newline'>
+</span>                            <span class='xc'>// But keep the connection open</span><span class='newline'>
+</span>                        }<span class='newline'>
+</span>                    }<span class='newline'>
+</span>                }<span class='newline'>
+</span>            }<span class='newline'>
+</span>        )<span class='newline'>
+
+</span>        <span class='xc'>// 5.</span><span class='newline'>
+</span>        <span class='xv'>app</span>.<a class='xv' href='https://swiftinit.org/docs/hummingbird/hummingbird/application.addservices(_:)' target='_blank' rel='external'>addServices</a>(<span class='xv'>connectionManager</span>)<span class='newline'>
+</span>        <span class='newline'>
+</span>        <span class='xc'>// 6.</span><span class='newline'>
+</span>        <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>app</span>.<a class='xv' href='https://swiftinit.org/docs/hummingbird/hummingbird/applicationprotocol.runservice(gracefulshutdownsignals:)' target='_blank' rel='external'>runService</a>()<span class='newline'>
+</span>    }<span class='newline'>
+</span>}</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/realtime-mongodb-app.swift#L47' target='_blank' class='source github'><span class='file'>realtime-mongodb-app.swift</span>:<span class='line'>47</span></a><ol><li><p>Connect to MongoDB</p></li><li><p>Create the connection manager</p></li><li><p>Setup the HTTP router with a POST endpoint for creating posts</p></li><li><p>Configure WebSocket support using HTTP/1.1 upgrade</p></li><li><p>Add the connection manager as a service</p></li><li><p>Run the application</p></li></ol><h3 id='Adding%20Routes'><a href='#Adding%20Routes'>Adding Routes</a></h3><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>func</span> <span class='xv'>setupRoutes</span>(<span class='xv'>router</span>: <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbird/router' target='_blank' rel='external'>Router</a>&lt;<a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbird/basicrequestcontext' target='_blank' rel='external'>BasicRequestContext</a>&gt;, <span class='xv'>db</span>: <a class='xt' href='https://swiftinit.org/docs/mongokitten/mongokitten/mongodatabase' target='_blank' rel='external'>MongoDatabase</a>) {<span class='newline'>
+</span>    <span class='xv'>router</span>.<a class='xv' href='https://swiftinit.org/docs/hummingbird/hummingbird/routermethods.post(_:use:)' target='_blank' rel='external'>post</a>(<a class='xs' href='https://swiftinit.org/docs/hummingbird/hummingbird/routerpath.init(stringliteral:)' target='_blank' rel='external'>"/posts"</a>) { <span class='xv'>request</span>, <span class='xv'>context</span> -&gt; <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/response' target='_blank' rel='external'>Response</a> <span class='xk'>in</span><span class='newline'>
+</span>        <span class='xk'>struct</span> <span class='xv'>CreatePostRequest</span>: <a class='xt' href='https://swiftinit.org/docs/swift/swift/codable' target='_blank' rel='external'>Codable</a> {<span class='newline'>
+</span>            <span class='xk'>let</span> <span class='xv'>author</span>: <a class='xt' href='https://swiftinit.org/docs/swift/swift/string' target='_blank' rel='external'>String</a><span class='newline'>
+</span>            <span class='xk'>let</span> <span class='xv'>content</span>: <a class='xt' href='https://swiftinit.org/docs/swift/swift/string' target='_blank' rel='external'>String</a><span class='newline'>
+</span>        }<span class='newline'>
+</span>        <span class='xk'>let</span> <span class='xv'>post</span> = <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>request</span>.<a class='xv' href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/request.decode(as:context:)' target='_blank' rel='external'>decode</a>(<span class='xv'>as</span>: <span class='xv'>CreatePostRequest</span>.<span class='xk'>self</span>, <span class='xv'>context</span>: <span class='xv'>context</span>)<span class='newline'>
+</span>        <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>createPost</span>(<span class='xv'>author</span>: <span class='xv'>post</span>.<span class='xv'>author</span>, <span class='xv'>content</span>: <span class='xv'>post</span>.<span class='xv'>content</span>, <span class='xv'>in</span>: <span class='xv'>db</span>)<span class='newline'>
+</span>        <span class='xk'>return</span> <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/response' target='_blank' rel='external'>Response</a>(<span class='xv'>status</span>: .<a class='xv' href='https://swiftinit.org/docs/swift-http-types/httptypes/httpresponse/status.created' target='_blank' rel='external'>created</a>)<span class='newline'>
+</span>    }<span class='newline'>
+</span>}</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/realtime-mongodb-app.swift#L33' target='_blank' class='source github'><span class='file'>realtime-mongodb-app.swift</span>:<span class='line'>33</span></a><p>This snippet adds a POST route to the application that creates a new post in the database. That process then triggers the change streams, which broadcast to all connected clients.</p><h2 id='Testing%20the%20Setup'><a href='#Testing%20the%20Setup'>Testing the Setup</a></h2><ol><li><p>Start the server:</p></li></ol><pre class='snippet'><code class='language-bash'><span class='newline'></span>swift run</code></pre><p>You can also copy the code from this tutorial’s snippet into your project and run it.</p><ol><li><p>Connect to the WebSocket endpoint:</p></li></ol><pre class='snippet'><code><span class='newline'></span>ws://localhost:8080</code></pre><ol><li><p>Create a new post using curl:</p></li></ol><pre class='snippet'><code class='language-bash'><span class='newline'></span>curl -X POST http://localhost:8080/posts \<span class='newline'>
+</span>  -H "Content-Type: application/json" \<span class='newline'>
+</span>  -d '{"author":"Joannis Orlandos","content":"Hello, real-time world!"}'</code></pre><p>You should see the new post appear immediately in your WebSocket client!</p><h2 id='Next%20Steps'><a href='#Next%20Steps'>Next Steps</a></h2><p>You’ve learned how to create a real-time feed of MongoDB changes using ChangeStreams and WebSockets! Here’s what you can explore next:</p><ul><li><p>Add authentication for both HTTP and WebSocket endpoints</p></li><li><p>Implement filters for specific types of changes</p></li><li><p>Add support for updates and deletions</p></li><li><p>Implement message acknowledgment</p></li><li><p>Add retry mechanisms for failed broadcasts</p></li></ul><h3 id='Resources'><a href='#Resources'>Resources</a></h3><ul><li><p><a href='https://www.mongodb.com/docs/manual/changeStreams/' target='_blank' rel='external nofollow noopener ugc'>MongoDB ChangeStreams Documentation</a></p></li><li><p><a href='https://github.com/hummingbird-project/hummingbird-websocket' target='_blank' rel='external'>Hummingbird WebSocket Documentation</a></p></li><li><p><a href='https://github.com/orlandos-nl/MongoKitten' target='_blank' rel='external'>MongoKitten Documentation</a></p></li></ul></section><div style='display: none;' id='swiftinit-tooltips'><a href='/hist/swift-on-server.articles:main/articles/getting-started-with-mongokitten'><p><a>MongoDB</a> is a popular NoSQL database that stores data in flexible, JSON-like documents. <a>MongoKitten</a> provides a Swift-native way to interact with MongoDB, complete with type-safe queries and Codable support.</p></a><a href='/hist/swift-on-server.articles:main/articles/websockets-tutorial-using-swift-and-hummingbird'><p>In this article, you will learn about WebSockets and how to use them with the Hummingbird framework in a straightforward, easy-to-follow manner. The first part will give a clear understanding of what the WebSocket protocol is. After that, a hands-on example will be created using the Hummingbird WebSocket library, showing how to use this technology effectively.</p></a><a href='/docs/mongokitten/mongokitten/mongodatabase'><pre><code><span class='xk'>class</span> <span class='xv'>MongoDatabase</span></code></pre><p>A reference to a MongoDB database, over a <code>MongoConnectionPool</code>.</p></a><a href='/docs/swift/foundationessentials/uuid'><pre><code><span class='xk'>struct</span> <span class='xv'>UUID</span></code></pre><p>Represents UUID strings, which can be used to uniquely identify types, interfaces, and other items.</p></a><a href='/docs/swift-websocket/wscore/websocketoutboundwriter'><pre><code><span class='xk'>struct</span> <span class='xv'>WebSocketOutboundWriter</span></code></pre><p>Outbound websocket writer</p></a><a href='/docs/swift/foundationessentials/data'><pre><code><span class='xa'>@frozen</span> <span class='xk'>struct</span> <span class='xv'>Data</span></code></pre></a><a href='/docs/swift/swift/string'><pre><code><span class='xa'>@frozen</span> <span class='xk'>struct</span> <span class='xv'>String</span></code></pre><p>A Unicode string value that is a collection of characters.</p></a><a href='/docs/swift/swift/string/encoding.utf8'><pre><code><span class='xk'>static</span> <span class='xk'>let</span> <span class='xv'>utf8</span>: <span class='xt'>String</span>.<span class='xt'>Encoding</span></code></pre></a><a href='/docs/swift/swift/dictionary.values'><pre><code><span class='xk'>var</span> <span class='xv'>values</span>: <span class='xt'>Dictionary</span>&lt;<span class='xt'>Key</span>, <span class='xt'>Value</span>&gt;.<span class='xt'>Values</span> { <span class='xk'>get</span> <span class='xk'>set</span> }</code></pre><p>A collection containing just the values of the dictionary.</p></a><a href='/docs/swift-websocket/wscore/websocketoutboundwriter.write(_:)'><pre><code><span class='xk'>func</span> <span class='xv'>write</span>(<span class='xi'></span>_ <span class='xb'>frame</span>: <span class='xt'>OutboundFrame</span><wbr>) <span class='xk'>async</span> <span class='xk'>throws</span></code></pre><p>Write WebSocket frame</p></a><a href='/docs/swift-websocket/wscore/websocketoutboundwriter/outboundframe.text(_:)'><pre><code><span class='xk'>case</span> <span class='xv'>text</span>(<span class='xt'>String</span>)</code></pre><p>Text frame</p></a><a href='/docs/swift/swift/sendable'><pre><code><span class='xk'>protocol</span> <span class='xv'>Sendable</span></code></pre></a><a href='/docs/swift/swift/dictionary.subscript(_:)?hash=8RFQL'><pre><code><span class='xk'>subscript</span>(<span class='xi'></span><span class='xv'>key</span>: <span class='xt'>Key</span><wbr>) -&gt; <span class='xt'>Value</span>? { <span class='xk'>get</span> <span class='xk'>set</span> }</code></pre><p>Accesses the value associated with the given key for reading and writing.</p></a><a href='/docs/swift-service-lifecycle/servicelifecycle/service'><pre><code><span class='xk'>protocol</span> <span class='xv'>Service</span> : <span class='xt'>Sendable</span></code></pre><p>This is the basic protocol that a service has to implement.</p></a><a href='/docs/mongokitten/mongokitten/mongodatabase.subscript(_:)'><pre><code><span class='xk'>subscript</span>(<span class='xi'></span><span class='xv'>collection</span>: <span class='xt'>String</span><wbr>) -&gt; <span class='xt'>MongoCollection</span> { <span class='xk'>get</span> }</code></pre><p>Get a collection in this database</p></a><a href='/docs/mongokitten/mongokitten/mongocollection.watch(options:type:using:)'><pre><code><span class='xk'>func</span> <span class='xv'>watch</span>&lt;<span class='xu'>T</span>&gt;(<span class='xi'></span><span class='xv'>options</span>: <span class='xt'>ChangeStreamOptions</span> = .<span class='xk'>init</span>(), <span class='xi'></span><span class='xv'>type</span>: <span class='xt'>T</span>.<span class='xk'>Type</span>, <span class='xi'></span><span class='xv'>using</span> <span class='xb'>decoder</span>: <span class='xt'>BSONDecoder</span> = <span class='xv'>BSONDecoder</span>()<wbr>) <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <span class='xt'>ChangeStream</span>&lt;<span class='xt'>T</span>&gt; <span class='xk'>where</span> <span class='xt'>T</span> : <span class='xt'>Decodable</span></code></pre><p>Creates a type-safe change stream for this collection</p></a><a href='/docs/mongokitten/mongokitten/changestreamnotification.operationtype'><pre><code><span class='xk'>let</span> <span class='xv'>operationType</span>: <span class='xt'>OperationType</span></code></pre><p>The type of operation that caused this notification</p></a><a href='/docs/swift/swift.==(_:_:)?hash=9HU5C'><pre><code><span class='xk'>func</span> <span class='xo'>==</span> &lt;<span class='xu'>T</span>&gt;(<span class='xi'></span><span class='xv'>lhs</span>: <span class='xt'>T</span>, <span class='xi'></span><span class='xv'>rhs</span>: <span class='xt'>T</span><wbr>) -&gt; <span class='xt'>Bool</span> <span class='xk'>where</span> <span class='xt'>T</span> : <span class='xt'>RawRepresentable</span>, <span class='xt'>T</span>.<span class='xt'>RawValue</span> : <span class='xt'>Equatable</span></code></pre><p>Returns a Boolean value indicating whether the two arguments are equal.</p></a><a href='/docs/mongokitten/mongokitten/changestreamnotification/operationtype.insert'><pre><code><span class='xk'>case</span> <span class='xv'>insert</span></code></pre></a><a href='/docs/mongokitten/mongokitten/changestreamnotification.fulldocument'><pre><code><span class='xk'>let</span> <span class='xv'>fullDocument</span>: <span class='xt'>T</span>?</code></pre><p>The full document that was changed</p></a><a href='/docs/swift/foundationessentials/jsonencoder'><pre><code><span class='xk'>class</span> <span class='xv'>JSONEncoder</span></code></pre><p><code>JSONEncoder</code> facilitates the encoding of <code>Encodable</code> values into JSON.</p></a><a href='/docs/swift/foundationessentials/jsonencoder.encode(_:)'><pre><code><span class='xk'>func</span> <span class='xv'>encode</span>&lt;<span class='xu'>T</span>&gt;(<span class='xi'></span>_ <span class='xb'>value</span>: <span class='xt'>T</span><wbr>) <span class='xk'>throws</span> -&gt; <span class='xt'>Data</span> <span class='xk'>where</span> <span class='xt'>T</span> : <span class='xt'>Encodable</span></code></pre><p>Encodes the given top-level value and returns its JSON representation.</p></a><a href='/docs/mongokitten/mongokitten/mongodatabase.connect(to:logger:)?hash=33E0S'><pre><code><span class='xk'>static</span> <span class='xk'>func</span> <span class='xv'>connect</span>(<span class='xi'></span><span class='xv'>to</span> <span class='xb'>uri</span>: <span class='xt'>String</span>, <span class='xi'></span><span class='xv'>logger</span>: <span class='xt'>Logger</span> = <span class='xv'>Logger</span>(<span class='xv'>label</span>: <span class='xs'>"org.orlandos-nl.mongokitten"</span>)<wbr>) <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <span class='xt'>MongoDatabase</span></code></pre><p>Connect to a MongoDB database using a connection string</p></a><a href='/docs/hummingbird/hummingbird/router'><pre><code><span class='xk'>final</span> <span class='xk'>class</span> <span class='xv'>Router</span>&lt;<span class='xu'>Context</span>&gt; <span class='xk'>where</span> <span class='xt'>Context</span> : <span class='xt'>RequestContext</span></code></pre><p>Create rules for routing requests and then create <code>Responder</code> that will follow these rules.</p></a><a href='/docs/hummingbird/hummingbird/basicrequestcontext'><pre><code><span class='xk'>struct</span> <span class='xv'>BasicRequestContext</span></code></pre><p>Implementation of a basic request context that supports everything the Hummingbird library needs</p></a><a href='/docs/hummingbird/hummingbird/application'><pre><code><span class='xk'>struct</span> <span class='xv'>Application</span>&lt;<span class='xu'>Responder</span>&gt; <span class='xk'>where</span> <span class='xt'>Responder</span> : <span class='xt'>HTTPResponder</span>, <span class='xt'>Responder</span>.<span class='xt'>Context</span> : <span class='xt'>InitializableFromSource</span>, <span class='xt'>Responder</span>.<span class='xt'>Context</span>.<span class='xt'>Source</span> <span class='xo'>==</span> <span class='xt'>ApplicationRequestContextSource</span></code></pre><p>Application class. Brings together all the components of Hummingbird together</p></a><a href='/docs/hummingbird-websocket/hummingbirdcore/httpserverbuilder.http1websocketupgrade(configuration:additionalchannelhandlers:shouldupgrade:)?hash=6SIVA'><pre><code><span class='xk'>static</span> <span class='xk'>func</span> <span class='xv'>http1WebSocketUpgrade</span>(<span class='xi'></span><span class='xv'>configuration</span>: <span class='xt'>WebSocketServerConfiguration</span> = .<span class='xk'>init</span>(), <span class='xi'></span><span class='xv'>additionalChannelHandlers</span>: <span class='xa'>@autoclosure</span> <span class='xa'>@escaping</span> () -&gt; [<span class='xk'>any</span> <span class='xt'>RemovableChannelHandler</span>] = [], <span class='xi'></span><span class='xv'>shouldUpgrade</span>: <span class='xa'>@escaping</span> (<span class='xt'>HTTPRequest</span>, <span class='xt'>Channel</span>, <span class='xt'>Logger</span>) <span class='xk'>throws</span> -&gt; <span class='xt'>ShouldUpgradeResult</span>&lt;<span class='xt'>WebSocketDataHandler</span>&lt;<span class='xt'>HTTP1WebSocketUpgradeChannel</span>.<span class='xt'>Context</span>&gt;&gt;<wbr>) -&gt; <span class='xt'>HTTPServerBuilder</span></code></pre><p>HTTP1 channel builder supporting a websocket upgrade</p></a><a href='/docs/hummingbird-websocket/hummingbirdwebsocket/shouldupgraderesult.upgrade(_:_:)'><pre><code><span class='xk'>case</span> <span class='xv'>upgrade</span>(_: <span class='xt'>HTTPFields</span> = [:], <span class='xt'>Value</span>)</code></pre></a><a href='/docs/hummingbird/hummingbird/application.addservices(_:)'><pre><code><span class='xk'>mutating</span> <span class='xk'>func</span> <span class='xv'>addServices</span>(<span class='xi'></span>_ <span class='xb'>services</span>: <span class='xk'>any</span> <span class='xt'>Service</span>...<wbr>)</code></pre><p>Add service to be managed by application ServiceGroup</p></a><a href='/docs/hummingbird/hummingbird/applicationprotocol.runservice(gracefulshutdownsignals:)'><pre><code><span class='xk'>func</span> <span class='xv'>runService</span>(<span class='xi'></span><span class='xv'>gracefulShutdownSignals</span>: [<span class='xt'>UnixSignal</span>] = [.<span class='xv'>sigterm</span>, .<span class='xv'>sigint</span>]<wbr>) <span class='xk'>async</span> <span class='xk'>throws</span></code></pre><p>Helper function that runs application inside a ServiceGroup which will gracefully shutdown on signals SIGINT, SIGTERM</p></a><a href='/docs/hummingbird/hummingbird/routermethods.post(_:use:)'><pre><code><span class='xa'>@discardableResult</span> <span class='xk'>func</span> <span class='xv'>post</span>(<span class='xi'></span>_ <span class='xb'>path</span>: <span class='xt'>RouterPath</span> = <span class='xs'>""</span>, <span class='xi'></span><span class='xv'>use</span> <span class='xb'>handler</span>: <span class='xa'>@escaping</span> (<span class='xt'>Request</span>, <span class='xt'>Context</span>) <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <span class='xk'>some</span> <span class='xt'>ResponseGenerator</span><wbr>) -&gt; <span class='xk'>Self</span></code></pre><p>POST path for async closure returning type conforming to ResponseGenerator</p></a><a href='/docs/hummingbird/hummingbird/routerpath.init(stringliteral:)'><pre><code><span class='xk'>init</span>(<span class='xi'></span><span class='xv'>stringLiteral</span> <span class='xb'>value</span>: <span class='xt'>String</span><wbr>)</code></pre><p>Initialize RouterPath from String literal</p></a><a href='/docs/hummingbird/hummingbirdcore/response'><pre><code><span class='xk'>struct</span> <span class='xv'>Response</span></code></pre><p>Holds all the required to generate a HTTP Response</p></a><a href='/docs/swift/swift/codable'><pre><code><span class='xk'>typealias</span> <span class='xv'>Codable</span> = <span class='xt'>Decodable</span> <span class='xo'>&amp;</span> <span class='xt'>Encodable</span></code></pre><p>A type that can convert itself into and out of an external representation.</p></a><a href='/docs/hummingbird/hummingbirdcore/request.decode(as:context:)'><pre><code><span class='xk'>func</span> <span class='xv'>decode</span>&lt;<span class='xu'>Type</span>&gt;(<span class='xi'></span><span class='xv'>as</span> <span class='xb'>type</span>: <span class='xt'>Type</span>.<span class='xk'>Type</span>, <span class='xi'></span><span class='xv'>context</span>: <span class='xk'>some</span> <span class='xt'>RequestContext</span><wbr>) <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <span class='xt'>Type</span> <span class='xk'>where</span> <span class='xt'>Type</span> : <span class='xt'>Decodable</span></code></pre><p>Decode request using decoder stored at <code>Application.decoder</code>.</p></a><a href='/docs/swift-http-types/httptypes/httpresponse/status.created'><pre><code><span class='xk'>static</span> <span class='xk'>var</span> <span class='xv'>created</span>: <span class='xt'>`Self`</span> { <span class='xk'>get</span> }</code></pre><p>201 Created</p></a></div>
                     
                 </section>
     
@@ -139,14 +231,14 @@
     
                     
                     <div class="author-list">
-                        <a href="http://localhost:3000/authors/joannis-orlandos/">
-                        <img class="small rounded" src="http://localhost:3000/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                        <a href="https://swiftonserver.com/authors/joannis-orlandos/">
+                        <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                         <span class="name">Joannis Orlandos</span>
                         </a>
                     </div>
                     <div class="tag-list">
-                        <a href="http://localhost:3000/tags/databases/"><small>Databases</small></a>
-                    <a href="http://localhost:3000/tags/hummingbird/"><small>Hummingbird</small></a>
+                        <a href="https://swiftonserver.com/tags/databases/"><small>Databases</small></a>
+                    <a href="https://swiftonserver.com/tags/hummingbird/"><small>Hummingbird</small></a>
                     </div>
                 </footer>
                             
@@ -157,139 +249,139 @@
                             
                             
                             <div class="author-list">
-                                <a href="http://localhost:3000/authors/joannis-orlandos/">
-                                <img class="small rounded" src="http://localhost:3000/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                                 </a>
                             </div>
                             <div class="meta">
                                 <time datetime="2024/12/28">2024/12/28</time>
-                                 &middot; <span class="reading-time">1 min read</span>
+                                 &middot; <span class="reading-time">8 min read</span>
                             </div>
                             
-                            <h2 class="title"><a href="http://localhost:3000/getting-started-with-mongokitten/" target="">Getting Started with MongoKitten</a></h2>
+                            <h2 class="title"><a href="https://swiftonserver.com/getting-started-with-mongokitten/" target="">Getting Started with MongoKitten</a></h2>
                             <p>Learn how to get started with MongoDB using MongoKitten</p>
                         
                             <div class="spacer"></div>
                         
                             <div class="tag-list">
-                                <a href="http://localhost:3000/tags/databases/"><small>Databases</small></a>
+                                <a href="https://swiftonserver.com/tags/databases/"><small>Databases</small></a>
                             </div>
                         </div>
                     <div class="card">
                             
                             
                             <div class="author-list">
-                                <a href="http://localhost:3000/authors/joannis-orlandos/">
-                                <img class="small rounded" src="http://localhost:3000/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                                 </a>
                             </div>
                             <div class="meta">
                                 <time datetime="2024/10/01">2024/10/01</time>
-                                 &middot; <span class="reading-time">1 min read</span>
+                                 &middot; <span class="reading-time">6 min read</span>
                             </div>
                             
-                            <h2 class="title"><a href="http://localhost:3000/using-hummingbird-request-context/" target="">Using Hummingbird&#39;s Request Contexts</a></h2>
+                            <h2 class="title"><a href="https://swiftonserver.com/using-hummingbird-request-context/" target="">Using Hummingbird&#39;s Request Contexts</a></h2>
                             <p>Learn about request contexts in Hummingbird and how to use them.</p>
                         
                             <div class="spacer"></div>
                         
                             <div class="tag-list">
-                                <a href="http://localhost:3000/tags/hummingbird/"><small>Hummingbird</small></a>
-        <a href="http://localhost:3000/tags/server/"><small>Server</small></a>
+                                <a href="https://swiftonserver.com/tags/hummingbird/"><small>Hummingbird</small></a>
+        <a href="https://swiftonserver.com/tags/server/"><small>Server</small></a>
                             </div>
                         </div>
                     <div class="card">
                             
                             
                             <div class="author-list">
-                                <a href="http://localhost:3000/authors/joannis-orlandos/">
-                                <img class="small rounded" src="http://localhost:3000/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                                 </a>
                             </div>
                             <div class="meta">
                                 <time datetime="2024/09/30">2024/09/30</time>
-                                 &middot; <span class="reading-time">1 min read</span>
+                                 &middot; <span class="reading-time">9 min read</span>
                             </div>
                             
-                            <h2 class="title"><a href="http://localhost:3000/how-to-build-a-proxy-server-with-hummingbird/" target="">How to Build a Proxy Server with Hummingbird</a></h2>
+                            <h2 class="title"><a href="https://swiftonserver.com/how-to-build-a-proxy-server-with-hummingbird/" target="">How to Build a Proxy Server with Hummingbird</a></h2>
                             <p>Learn how to leverage the flexibility and performance of Hummingbird to build a proxy server.</p>
                         
                             <div class="spacer"></div>
                         
                             <div class="tag-list">
-                                <a href="http://localhost:3000/tags/hummingbird/"><small>Hummingbird</small></a>
-        <a href="http://localhost:3000/tags/server/"><small>Server</small></a>
+                                <a href="https://swiftonserver.com/tags/hummingbird/"><small>Hummingbird</small></a>
+        <a href="https://swiftonserver.com/tags/server/"><small>Server</small></a>
                             </div>
                         </div>
                     <div class="card featured">
                             <span class="featured">featured</span>
                             
                             <div class="author-list">
-                                <a href="http://localhost:3000/authors/joannis-orlandos/">
-                                <img class="small rounded" src="http://localhost:3000/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                                 </a>
                             </div>
                             <div class="meta">
                                 <time datetime="2024/09/24">2024/09/24</time>
-                                 &middot; <span class="reading-time">1 min read</span>
+                                 &middot; <span class="reading-time">7 min read</span>
                             </div>
                             
-                            <h2 class="title"><a href="http://localhost:3000/getting-started-with-hummingbird/" target="">Getting Started with Hummingbird</a></h2>
+                            <h2 class="title"><a href="https://swiftonserver.com/getting-started-with-hummingbird/" target="">Getting Started with Hummingbird</a></h2>
                             <p>Learn how to get started with Hummingbird 2, the modern Swift Web Framework.</p>
                         
                             <div class="spacer"></div>
                         
                             <div class="tag-list">
-                                <a href="http://localhost:3000/tags/hummingbird/"><small>Hummingbird</small></a>
-        <a href="http://localhost:3000/tags/server/"><small>Server</small></a>
+                                <a href="https://swiftonserver.com/tags/hummingbird/"><small>Hummingbird</small></a>
+        <a href="https://swiftonserver.com/tags/server/"><small>Server</small></a>
                             </div>
                         </div>
                     <div class="card">
                             
                             
                             <div class="author-list">
-                                <a href="http://localhost:3000/authors/tibor-bodecs/">
-                                <img class="small rounded" src="http://localhost:3000/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                                <a href="https://swiftonserver.com/authors/tibor-bodecs/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                                 </a>
                             </div>
                             <div class="meta">
                                 <time datetime="2024/06/27">2024/06/27</time>
-                                 &middot; <span class="reading-time">1 min read</span>
+                                 &middot; <span class="reading-time">19 min read</span>
                             </div>
                             
-                            <h2 class="title"><a href="http://localhost:3000/websockets-tutorial-using-swift-and-hummingbird/" target="">Using WebSockets in Hummingbird</a></h2>
+                            <h2 class="title"><a href="https://swiftonserver.com/websockets-tutorial-using-swift-and-hummingbird/" target="">Using WebSockets in Hummingbird</a></h2>
                             <p>In this article, you will learn about WebSockets and how to use them with the Hummingbird framework in a straightforward, easy-to-follow manner.</p>
                         
                             <div class="spacer"></div>
                         
                             <div class="tag-list">
-                                <a href="http://localhost:3000/tags/hummingbird/"><small>Hummingbird</small></a>
-        <a href="http://localhost:3000/tags/server/"><small>Server</small></a>
+                                <a href="https://swiftonserver.com/tags/hummingbird/"><small>Hummingbird</small></a>
+        <a href="https://swiftonserver.com/tags/server/"><small>Server</small></a>
                             </div>
                         </div>
                     <div class="card">
                             
                             
                             <div class="author-list">
-                                <a href="http://localhost:3000/authors/joannis-orlandos/">
-                                <img class="small rounded" src="http://localhost:3000/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                                 </a>
                             </div>
                             <div class="meta">
                                 <time datetime="2024/03/05">2024/03/05</time>
-                                 &middot; <span class="reading-time">1 min read</span>
+                                 &middot; <span class="reading-time">7 min read</span>
                             </div>
                             
-                            <h2 class="title"><a href="http://localhost:3000/using-openapi-with-hummingbird/" target="">Using OpenAPI Generator with Hummingbird</a></h2>
+                            <h2 class="title"><a href="https://swiftonserver.com/using-openapi-with-hummingbird/" target="">Using OpenAPI Generator with Hummingbird</a></h2>
                             <p>Learn how to use OpenAPI Generator to create Swift APIs with Hummingbird.</p>
                         
                             <div class="spacer"></div>
                         
                             <div class="tag-list">
-                                <a href="http://localhost:3000/tags/documentation/"><small>Documentation</small></a>
-        <a href="http://localhost:3000/tags/hummingbird/"><small>Hummingbird</small></a>
-        <a href="http://localhost:3000/tags/openapi/"><small>OpenAPI</small></a>
-        <a href="http://localhost:3000/tags/server/"><small>Server</small></a>
+                                <a href="https://swiftonserver.com/tags/documentation/"><small>Documentation</small></a>
+        <a href="https://swiftonserver.com/tags/hummingbird/"><small>Hummingbird</small></a>
+        <a href="https://swiftonserver.com/tags/openapi/"><small>OpenAPI</small></a>
+        <a href="https://swiftonserver.com/tags/server/"><small>Server</small></a>
                             </div>
                         </div>
                     </div>
@@ -315,6 +407,38 @@
             </div>
             
             <aside id="toc">
+                <h4>On this page</h4>
+                <ul>
+                    <li class="first-level">
+                        <a href="#Overview">Overview</a>
+                        <ul>
+                            <li><a href="#Prerequisites">Prerequisites</a></li>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#The%20Connection%20Manager">The Connection Manager</a>
+                        <ul>
+                            <li><a href="#Watching%20for%20Changes">Watching for Changes</a></li>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Setting%20Up%20the%20Application">Setting Up the Application</a>
+                        <ul>
+                            <li><a href="#Adding%20Routes">Adding Routes</a></li>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Testing%20the%20Setup">Testing the Setup</a>
+                        <ul>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Next%20Steps">Next Steps</a>
+                        <ul>
+                            <li><a href="#Resources">Resources</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </aside>
     
         </div>

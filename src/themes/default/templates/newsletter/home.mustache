@@ -4,19 +4,23 @@
 {{& page.contents}}
 
 <div id="issues">
-    <h2>Previous Issues</h2>
+    <h3>Latest issues</h3>
+    <hr>
     {{#empty(site.context.issues)}}
     Empty.
     {{/empty(site.context.issues)}}
     {{^empty(site.context.issues)}}
-    <div class="">
-    <ul>
+    <div class="issue-list">
     {{#site.context.issues}}
-       <li> {{> partials.newsletter.issue}}</li>
+       {{> partials.newsletter.issue}}
     {{/site.context.issues}}
-    </li>
+    </div>
     {{/empty(site.context.issues)}}
+    <hr>
+    <a href="/newsletter/issues/page/1">Browse all issues</a>
 </div>
+
+
 
 {{/main}}
 {{/html}}

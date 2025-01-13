@@ -1,10 +1,17 @@
 id: issue
 location: newsletter/issues
+template: newsletter.issue.default
+
+pagination:
+    bundle: newsletter/pagination
+    sort: publication
+    order: desc
+    limit: 10
 
 context:
     site:
         issues:
             sort: publication
             order: desc
+            limit: 3
 
-template: newsletter.issue.default

@@ -5,22 +5,22 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="canonical" href="http://localhost:3000/beginners-guide-to-protocol-buffers-and-grpc-with-swift/">
-    <link rel="prev" href="http://localhost:3000/async-http-client-by-example/">
-    <link rel="next" href="http://localhost:3000/building-swiftnio-clients/">
+    <link rel="canonical" href="https://swiftonserver.com/beginners-guide-to-protocol-buffers-and-grpc-with-swift/">
+    <link rel="prev" href="https://swiftonserver.com/async-http-client-by-example/">
+    <link rel="next" href="https://swiftonserver.com/building-swiftnio-clients/">
 
     <title>Beginner&#39;s Guide to Protocol Buffers and gRPC with Swift - Swift on server</title>
     <meta name="description" content="Learn Protocol Buffers and gRPC with Swift in this easy, step-by-step beginner&#39;s guide.">
 
-    <meta property="og:url" content="http://localhost:3000/beginners-guide-to-protocol-buffers-and-grpc-with-swift/">
+    <meta property="og:url" content="https://swiftonserver.com/beginners-guide-to-protocol-buffers-and-grpc-with-swift/">
     <meta property="og:title" content="Beginner&#39;s Guide to Protocol Buffers and gRPC with Swift - Swift on server">
     <meta property="og:description" content="Learn Protocol Buffers and gRPC with Swift in this easy, step-by-step beginner&#39;s guide.">
-    <meta property="og:image" content="http://localhost:3000/assets/beginners-guide-to-protocol-buffers-and-grpc-with-swift/cover.jpg" />
+    <meta property="og:image" content="https://swiftonserver.com/assets/beginners-guide-to-protocol-buffers-and-grpc-with-swift/cover.jpg" />
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Beginner&#39;s Guide to Protocol Buffers and gRPC with Swift - Swift on server">
     <meta name="twitter:description" content="Learn Protocol Buffers and gRPC with Swift in this easy, step-by-step beginner&#39;s guide.">
-    <meta name="twitter:image" content="http://localhost:3000/assets/beginners-guide-to-protocol-buffers-and-grpc-with-swift/cover.jpg">
+    <meta name="twitter:image" content="https://swiftonserver.com/assets/beginners-guide-to-protocol-buffers-and-grpc-with-swift/cover.jpg">
 
     <link rel="stylesheet" href="/css/modern-normalize.css">
     <link rel="stylesheet" href="/css/modern-base.css">
@@ -124,12 +124,194 @@
             <article class="post">
                 <div class="meta">
                     <time datetime="2024/10/22">2024/10/22</time>
-                     &middot; <span class="reading-time">1 min read</span>
+                     &middot; <span class="reading-time">10 min read</span>
                     
                 </div>
                 <section>
                 
-                
+                <section class='introduction'><h1>Beginner’s Guide to Protocol Buffers and gRPC with Swift</h1></section><section class='details literature'><p>gRPC is a popular open-source framework by Google that enables efficient communication between various systems and services. It leverages “protocol buffers”, an efficient binary format, to write API specifications.</p><p>If you’re interested in building your own gRPC services, this tutorial explores Protocol Buffers and gRPC in Swift.</p><h2 id='What%20are%20Protocol%20Buffers?'><a href='#What%20are%20Protocol%20Buffers?'>What are Protocol Buffers?</a></h2><p><a href='https://protobuf.dev/' target='_blank' rel='external nofollow noopener ugc'>Protocol Buffers</a>, also called “protobuf”, is an efficient data serialization method developed by Google. Using protobuf consists of three main components:</p><ul><li><p>The Protobuf language</p></li><li><p>The Swift-Protobuf Compiler</p></li><li><p>Swift-Protobuf Library</p></li></ul><ol><li><p>The <a href='https://protobuf.dev/programming-guides/proto3/' target='_blank' rel='external nofollow noopener ugc'>protobuf language</a> is used to define your protocol’s data structures.</p></li><li><p>These types are then defined in a <code>.proto</code> file, which is fed into the protobuf compiler.</p></li><li><p>The output of the Swift compiler consists of one or more Swift files that handle (de)-serialization to- and from protobuf.</p></li><li><p>The protobuf-swift libraries contains the utilities needed by the produces source files.</p></li></ol><p>Because protobuf compilers and libraries exist for many ecosystems, <code>proto</code> files are portable to other projects that need to interface together in various different languages.</p><h3 id='The%20Protobuf%20language'><a href='#The%20Protobuf%20language'>The Protobuf language</a></h3><p>Protobuf defines structured data using <code>.proto</code> schema files, where message types are declared with fields that have unique tags for identification.</p><p>Each field has a type, such as integers, strings, or nested messages, and can be marked as optional or repeated. When compiled, these definitions generate code in various languages, allowing efficient serialization and deserialization of data.</p><p>The language is designed to be compact, fast, and backward-compatible, making it ideal for communication between services or for long-term data storage.</p><p>A <a href='https://marketplace.visualstudio.com/items?itemName=zxh404.vscode-proto3' target='_blank' rel='external nofollow noopener ugc'>VSCode plugin</a> is available that provides syntax highlighting and validation features, making it easier to work with <code>.proto</code> files.</p><h3 id='The%20Protocol%20Buffer%20Compiler'><a href='#The%20Protocol%20Buffer%20Compiler'>The Protocol Buffer Compiler</a></h3><p>The protocol buffer compiler (protoc) is a tool that generates source code for data serialization and gRPC communication from <code>.proto</code> schema files.</p><p>The protocol buffers compiler supports many <a href='https://protobuf.dev/getting-started/' target='_blank' rel='external nofollow noopener ugc'>languages</a>, including Swift. To <a href='https://grpc.io/docs/protoc-installation/' target='_blank' rel='external nofollow noopener ugc'>install</a> protoc on your machine, follow the instructions based on your operating system:</p><pre class='snippet'><code class='language-sh'><span class='newline'></span># install on macOS <span class='newline'>
+</span>brew install protobuf<span class='newline'>
+
+</span># install on Linux<span class='newline'>
+</span>apt install -y protobuf-compiler<span class='newline'>
+
+</span># manual install, on any operating system<span class='newline'>
+</span>PB_REL="https://github.com/protocolbuffers/protobuf/releases"<span class='newline'>
+</span>curl -LO $PB_REL/download/v25.1/protoc-25.1-linux-x86_64.zip<span class='newline'>
+</span>unzip protoc-25.1-linux-x86_64.zip -d $HOME/.local<span class='newline'>
+</span>export PATH="$PATH:$HOME/.local/bin"</code></pre><p>The <code>protoc</code> command is now ready for use. This extensible tool allows for the generation of language-specific code through plugins. The second major version of the <a href='https://github.com/grpc/grpc-swift-protobuf/' target='_blank' rel='external'>gRPC Swift protobuf</a>  library includes a protoc plugin that generates Swift data structures and a gRPC interface, specifically tailored for this version.</p><p>You can install the plugin using the following snippet, which will place the <code>protoc-gen-grpc-swift</code> binary in your home folder:</p><pre class='snippet'><code class='language-sh'><span class='newline'></span>git clone https://github.com/grpc/grpc-swift-protobuf.git<span class='newline'>
+</span>cd grpc-swift-protobuf<span class='newline'>
+</span>swift build -c release<span class='newline'>
+</span>cp "$(swift build --show-bin-path -c release)/protoc-gen-grpc-swift" /Users/{me}/</code></pre><p>The next step involves defining the data structure for a sample todo application by creating a <code>todo_messages.proto</code> file. This file will specify the models for the application. Below is the complete protobuf definition:</p><pre class='snippet'><code class='language-proto'><span class='newline'></span>syntax = "proto3";<span class='newline'>
+
+</span>// 1.<span class='newline'>
+</span>package todos;<span class='newline'>
+
+</span>// 2.<span class='newline'>
+</span>message Empty {}<span class='newline'>
+
+</span>// 3.<span class='newline'>
+</span>message TodoID {<span class='newline'>
+</span>    string todoID = 1;<span class='newline'>
+</span>}<span class='newline'>
+
+</span>// 4.<span class='newline'>
+</span>message Todo {<span class='newline'>
+</span>    optional string todoID = 1;<span class='newline'>
+</span>    string title = 2;<span class='newline'>
+</span>    bool completed = 3;<span class='newline'>
+</span>}<span class='newline'>
+
+</span>// 5.<span class='newline'>
+</span>message TodoList {<span class='newline'>
+</span>    repeated Todo todos = 1;<span class='newline'>
+</span>}</code></pre><ol><li><p>Define a <code>todos</code> namespace for this protobuf file.</p></li><li><p>Create the <code>Empty</code> message with an empty structure - which contains no data.</p></li><li><p>The <code>TodoID</code> message holds a single string field to represent the ID of a specific “Todo” item.</p></li><li><p>A <code>Todo</code> message defines a task with an optional <code>todoID</code>, a <code>title</code>, and a <code>completed</code> status represented by a boolean.</p></li><li><p>Finally, the <code>TodoList</code> message contains a list of <code>Todo</code> items, through a repeated field.</p></li></ol><p>Each field in a protocol buffer message has a unique integer number assigned to it. These are referred to as <a href='https://protobuf.dev/programming-guides/proto3/#assigning' target='_blank' rel='external nofollow noopener ugc'>associated field numbers</a>. Field numbers are crucial for identifying fields and ensuring compatibility across different message versions.</p><p>Protocol buffer field numbers provide efficient, compact encoding and ensure compatibility between different versions of a message. Field numbers act as unique identifiers, allowing parsers to handle changes in the message structure without breaking functionality.</p><p>This approach optimizes both data transmission and parsing speed, making protocol buffers highly reliable for evolving data models.</p><p>With the basics of the proto file covered, the next step is to generate a Swift data structure using the protoc command. To generate the Swift source code, run the following command in the same directory as your proto file:</p><pre class='snippet'><code class='language-sh'><span class='newline'></span>protoc \<span class='newline'>
+</span>    --plugin=/Users/{me}/protoc-gen-grpc-swift \ <span class='newline'>
+</span>    --swift_out=./ \<span class='newline'>
+</span>    todo_messages.proto</code></pre><p>Running this command will generate a <code>todo_messages.pb.swift</code> file, containing the Swift models that represent the protocol buffer description.</p><p>With the data model defined, the next step is to create a basic gRPC interface, which will form the foundation for the future gRPC server.</p><h2 id='What%20is%20gRPC?'><a href='#What%20is%20gRPC?'>What is gRPC?</a></h2><p><a href='https://grpc.io/' target='_blank' rel='external nofollow noopener ugc'>gRPC</a> (gRPC Remote Procedure Call) is an open-source framework developed by Google. It enables efficient communication between distributed systems and services, allowing them to collaborate seamlessly.</p><p>It’s used similarly to the OpenAPI standard, but has two key differences:</p><ul><li><p>gRPC uses protobuf, which is more compact and performant than JSON or Multipart.</p></li><li><p>gRPC supports bi-directional streaming as opposed to OpenAPI’s request/response model.</p></li></ul><p>Below is the protobuf definition for the todo gRPC service:</p><pre class='snippet'><code class='language-proto'><span class='newline'></span>syntax = "proto3";<span class='newline'>
+
+</span>package todos;<span class='newline'>
+
+</span>// 1.<span class='newline'>
+</span>import "todo_messages.proto";<span class='newline'>
+
+</span>// 2. <span class='newline'>
+</span>service TodoService {<span class='newline'>
+</span>  // 3. <span class='newline'>
+</span>  rpc FetchTodos (Empty) returns (TodoList) {}<span class='newline'>
+</span>  // 4. <span class='newline'>
+</span>  rpc CreateTodo (Todo) returns (Todo) {}<span class='newline'>
+</span>  // 5. <span class='newline'>
+</span>  rpc DeleteTodo (TodoID) returns (Empty) {}<span class='newline'>
+</span>  // 6. <span class='newline'>
+</span>  rpc CompleteTodo (TodoID) returns (Todo) {}<span class='newline'>
+</span>}</code></pre><ol><li><p>The <code>todo_messages.proto</code> file is imported to reuse its message definitions.</p></li><li><p>The <code>TodoService</code> defines the service responsible for managing todo operations.</p></li><li><p>The <code>FetchTodos</code> method retrieves a list of todos, taking an empty message as input and returning a <code>TodoList</code>.</p></li><li><p>The <code>CreateTodo</code> method creates a new todo, taking a <code>Todo</code> as input and returning the created <code>Todo</code>.</p></li><li><p>The <code>DeleteTodo</code> method removes a todo, taking a <code>TodoID</code> as input and returning an empty response.</p></li><li><p>The <code>CompleteTodo</code> method toggles the completion status of a todo, taking a <code>TodoID</code> as input and returning the updated <code>Todo</code>.</p></li></ol><p>It’s possible to generate the complete gRPC service protocol directly from the <code>todo_service.proto</code> file using the <code>protoc</code> command. To do so, simply run the following command in the same directory as your proto file:</p><pre class='snippet'><code class='language-sh'><span class='newline'></span>protoc \<span class='newline'>
+</span>    --plugin=/Users/tib/protoc-gen-grpc-swift \<span class='newline'>
+</span>    --grpc-swift_out=./ \<span class='newline'>
+</span>    todo_service.proto</code></pre><p>Running this command will generate the <code>todo_service.grpc.swift</code> file, containing the protocols required for building the gRPC server. Notably, the <code>protoc</code> command automatically generates both client-side and server-side protocols, ensuring a consistent interface for implementing both ends of the service.</p><p>The process described above relies on ahead-of-time (manual) code generation, similar to what is available with the <a href='https://github.com/apple/swift-openapi-generator/blob/main/Examples/README.md#ahead-of-time-manual-code-generation' target='_blank' rel='external'>Swift OpenAPI generator</a> tool.</p><p>Next, let’s explore how to utilize the <a href='https://github.com/apple/swift-protobuf' target='_blank' rel='external'>Swift Protobuf</a> and the <a href='https://github.com/grpc/grpc-swift' target='_blank' rel='external'>gRPC Swift</a> libraries to set up a basic gRPC server in Swift.</p><h2 id='Using%20Protocol%20Buffers%20and%20gRPC%20with%20Swift'><a href='#Using%20Protocol%20Buffers%20and%20gRPC%20with%20Swift'>Using Protocol Buffers and gRPC with Swift</a></h2><p>To get started, create a new Swift package and include both the gRPC Swift Protobuf and gRPC Swift NIO Transport libraries as dependencies. Additionally, add the <a href='https://github.com/apple/swift-argument-parser' target='_blank' rel='external'>Swift Argument Parser</a> for convenient command-line argument handling.</p><p>The <a href='https://github.com/grpc/grpc-swift-nio-transport' target='_blank' rel='external'>gRPC Swift NIO Transport</a> library provides high-performance HTTP/2 client and server transport implementations for gRPC Swift, built on SwiftNIO.</p><p>Here’s how to configure your <code>Package.swift</code> file with the necessary dependencies:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xc'>// swift-tools-version:6.0</span><span class='newline'>
+</span><span class='xk'>import</span> <span class='xv'>PackageDescription</span><span class='newline'>
+
+</span><span class='xk'>let</span> <span class='xv'>package</span> = <span class='xv'>Package</span>(<span class='newline'>
+</span>    <span class='xv'>name</span>: <span class='xs'>"gRPC-example"</span>,<span class='newline'>
+</span>    <span class='xv'>platforms</span>: [<span class='newline'>
+</span>        .<span class='xv'>macOS</span>(.<span class='xv'>v15</span>),<span class='newline'>
+</span>    ],<span class='newline'>
+</span>    <span class='xv'>dependencies</span>: [<span class='newline'>
+</span>        .<span class='xv'>package</span>(<span class='xv'>url</span>: <span class='xs'>"https://github.com/grpc/grpc-swift-protobuf"</span>, <span class='xv'>exact</span>: <span class='xs'>"1.0.0-alpha.1"</span>),<span class='newline'>
+</span>        .<span class='xv'>package</span>(<span class='xv'>url</span>: <span class='xs'>"https://github.com/grpc/grpc-swift-nio-transport"</span>, <span class='xv'>exact</span>: <span class='xs'>"1.0.0-alpha.1"</span>),<span class='newline'>
+</span>        .<span class='xv'>package</span>(<span class='xv'>url</span>: <span class='xs'>"https://github.com/apple/swift-argument-parser"</span>, <span class='xv'>from</span>: <span class='xs'>"1.5.0"</span>),<span class='newline'>
+</span>    ],<span class='newline'>
+</span>    <span class='xv'>targets</span>: [<span class='newline'>
+</span>        .<span class='xv'>executableTarget</span>(<span class='newline'>
+</span>            <span class='xv'>name</span>: <span class='xs'>"App"</span>,<span class='newline'>
+</span>            <span class='xv'>dependencies</span>: [<span class='newline'>
+</span>                .<span class='xv'>product</span>(<span class='xv'>name</span>: <span class='xs'>"ArgumentParser"</span>, <span class='xv'>package</span>: <span class='xs'>"swift-argument-parser"</span>),<span class='newline'>
+
+</span>                .<span class='xv'>product</span>(<span class='xv'>name</span>: <span class='xs'>"GRPCNIOTransportHTTP2"</span>, <span class='xv'>package</span>: <span class='xs'>"grpc-swift-nio-transport"</span>),<span class='newline'>
+</span>                .<span class='xv'>product</span>(<span class='xv'>name</span>: <span class='xs'>"GRPCProtobuf"</span>, <span class='xv'>package</span>: <span class='xs'>"grpc-swift-protobuf"</span>),<span class='newline'>
+</span>            ]<span class='newline'>
+</span>        ),<span class='newline'>
+</span>    ]<span class='newline'>
+</span>)</code></pre><p>The next step is to add the previously generated Swift files file into the <code>Sources/App/Generated</code> directory. Make sure you copy both the <code>todo_messages.pb.swift</code> and the <code>todo_service.grpc.swift</code> files.</p><p>It’s also a good practice to retain the original <code>.proto</code> files for reference and future updates. You can store them in a top-level folder named <code>protos</code> within the repository. This helps keep the project organized and ensures easy access to the protocol definitions.</p><p>With the generated data types and interfaces in place, the server-side interface can now be implemented using the gRPC library. Below is an example of a simple actor-based implementation that utilizes in-memory storage and fulfills the <code>TodoService</code> protocol requirements:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>actor</span> <span class='xv'>TodoService</span>: <span class='xt'>Todos_TodoService_ServiceProtocol</span> {<span class='newline'>
+
+</span>    <span class='xk'>var</span> <span class='xv'>todos</span>: [<span class='xt'>Todos_Todo</span>]<span class='newline'>
+</span>    <span class='newline'>
+</span>    <span class='xk'>init</span>(<span class='newline'>
+</span>        <span class='xv'>todos</span>: [<span class='xt'>Todos_Todo</span>] = []<span class='newline'>
+</span>    ) {<span class='newline'>
+</span>        <span class='xk'>self</span>.<span class='xv'>todos</span> = <span class='xv'>todos</span><span class='newline'>
+</span>    }<span class='newline'>
+
+</span>    <span class='xk'>func</span> <span class='xv'>createTodo</span>(<span class='newline'>
+</span>        <span class='xv'>request</span>: <span class='xt'>ServerRequest</span>&lt;<span class='xt'>Todos_Todo</span>&gt;,<span class='newline'>
+</span>        <span class='xv'>context</span>: <span class='xt'>ServerContext</span><span class='newline'>
+</span>    ) <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <span class='xt'>ServerResponse</span>&lt;<span class='xt'>Todos_Todo</span>&gt; {<span class='newline'>
+</span>        <span class='xv'>todos</span>.<span class='xv'>append</span>(<span class='xv'>request</span>.<span class='xv'>message</span>)<span class='newline'>
+</span>        <span class='xk'>return</span> .<span class='xk'>init</span>(<span class='xv'>message</span>: <span class='xv'>request</span>.<span class='xv'>message</span>)<span class='newline'>
+</span>    }<span class='newline'>
+</span>    <span class='newline'>
+</span>    <span class='xk'>func</span> <span class='xv'>fetchTodos</span>(<span class='newline'>
+</span>        <span class='xv'>request</span>: <span class='xt'>ServerRequest</span>&lt;<span class='xt'>Todos_Empty</span>&gt;,<span class='newline'>
+</span>        <span class='xv'>context</span>: <span class='xt'>ServerContext</span><span class='newline'>
+</span>    ) <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <span class='xt'>ServerResponse</span>&lt;<span class='xt'>Todos_TodoList</span>&gt; {<span class='newline'>
+</span>        <span class='xk'>var</span> <span class='xv'>result</span> = <span class='xv'>Todos_TodoList</span>()<span class='newline'>
+</span>        <span class='xv'>result</span>.<span class='xv'>todos</span> = <span class='xv'>todos</span><span class='newline'>
+</span>        <span class='xk'>return</span> .<span class='xk'>init</span>(<span class='xv'>message</span>: <span class='xv'>result</span>)<span class='newline'>
+</span>    }<span class='newline'>
+</span>    <span class='newline'>
+</span>    <span class='xk'>func</span> <span class='xv'>completeTodo</span>(<span class='newline'>
+</span>        <span class='xv'>request</span>: <span class='xt'>ServerRequest</span>&lt;<span class='xt'>Todos_TodoID</span>&gt;,<span class='newline'>
+</span>        <span class='xv'>context</span>: <span class='xt'>ServerContext</span><span class='newline'>
+</span>    ) <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <span class='xt'>ServerResponse</span>&lt;<span class='xt'>Todos_Todo</span>&gt; {<span class='newline'>
+</span>        <span class='xk'>guard</span><span class='newline'>
+</span>            <span class='xk'>var</span> <span class='xv'>todo</span> = <span class='xv'>todos</span>.<span class='xv'>first</span>(<span class='xv'>where</span>: { <span class='xp'>$0</span>.<span class='xv'>todoID</span> <span class='xo'>==</span> <span class='xv'>request</span>.<span class='xv'>message</span>.<span class='xv'>todoID</span> })<span class='newline'>
+</span>        <span class='xk'>else</span> {<span class='newline'>
+</span>            <span class='xk'>return</span> .<span class='xk'>init</span>(<span class='newline'>
+</span>                <span class='xv'>error</span>: <span class='xv'>RPCError</span>.<span class='xk'>init</span>(<span class='newline'>
+</span>                    <span class='xv'>code</span>: .<span class='xv'>notFound</span>,<span class='newline'>
+</span>                    <span class='xv'>message</span>: <span class='xs'>"Todo not found."</span><span class='newline'>
+</span>                )<span class='newline'>
+</span>            )<span class='newline'>
+</span>        }<span class='newline'>
+</span>        <span class='xv'>todo</span>.<span class='xv'>completed</span> = <span class='xk'>true</span><span class='newline'>
+</span>        <span class='xv'>todos</span> = <span class='xv'>todos</span>.<span class='xv'>filter</span> { <span class='xp'>$0</span>.<span class='xv'>todoID</span> <span class='xo'>!=</span> <span class='xv'>request</span>.<span class='xv'>message</span>.<span class='xv'>todoID</span> }<span class='newline'>
+</span>        <span class='xv'>todos</span>.<span class='xv'>append</span>(<span class='xv'>todo</span>)<span class='newline'>
+</span>        <span class='xk'>return</span> .<span class='xk'>init</span>(<span class='xv'>message</span>: <span class='xv'>todo</span>)<span class='newline'>
+</span>    }<span class='newline'>
+</span>    <span class='newline'>
+</span>    <span class='xk'>func</span> <span class='xv'>deleteTodo</span>(<span class='newline'>
+</span>        <span class='xv'>request</span>: <span class='xt'>ServerRequest</span>&lt;<span class='xt'>Todos_TodoID</span>&gt;,<span class='newline'>
+</span>        <span class='xv'>context</span>: <span class='xt'>ServerContext</span><span class='newline'>
+</span>    ) <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <span class='xt'>ServerResponse</span>&lt;<span class='xt'>Todos_Empty</span>&gt; {<span class='newline'>
+</span>        <span class='xk'>guard</span><span class='newline'>
+</span>            <span class='xk'>let</span> <span class='xv'>todo</span> = <span class='xv'>todos</span>.<span class='xv'>first</span>(<span class='xv'>where</span>: { <span class='xp'>$0</span>.<span class='xv'>todoID</span> <span class='xo'>==</span> <span class='xv'>request</span>.<span class='xv'>message</span>.<span class='xv'>todoID</span> })<span class='newline'>
+</span>        <span class='xk'>else</span> {<span class='newline'>
+</span>            <span class='xk'>return</span> .<span class='xk'>init</span>(<span class='newline'>
+</span>                <span class='xv'>error</span>: <span class='xv'>RPCError</span>.<span class='xk'>init</span>(<span class='newline'>
+</span>                    <span class='xv'>code</span>: .<span class='xv'>notFound</span>,<span class='newline'>
+</span>                    <span class='xv'>message</span>: <span class='xs'>"Todo not found."</span><span class='newline'>
+</span>                )<span class='newline'>
+</span>            )<span class='newline'>
+</span>        }<span class='newline'>
+</span>        <span class='xv'>todos</span> = <span class='xv'>todos</span>.<span class='xv'>filter</span> { <span class='xp'>$0</span>.<span class='xv'>todoID</span> <span class='xo'>!=</span> <span class='xv'>todo</span>.<span class='xv'>todoID</span> }<span class='newline'>
+</span>        <span class='xk'>return</span> .<span class='xk'>init</span>(<span class='xv'>message</span>: .<span class='xk'>init</span>())<span class='newline'>
+</span>    }<span class='newline'>
+</span>}</code></pre><p>The snippet above relies on several types from the gRPC library, such as <code>ServerRequest</code> and <code>ServerContext</code>, which are passed as arguments to each function call. The functions also use Swift data types generated from the <code>todo_messages.proto</code> file, ensuring that the required input and output data is provided correctly.</p><p>The final step involves configuring the gRPC server. This can be achieved by creating an Entrypoint struct to serve as the application’s main entry point. We’ll use the Swift Argument Parser library to enable users to specify both the hostname and port when launching the application.</p><p>This setup is built on the v2 gRPC library, which introduces support for modern concurrency features, including task groups and the Service Lifecycle library. Below is an example demonstrating how to configure the server using the upcoming gRPC v2 release:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>import</span> <span class='xv'>ArgumentParser</span><span class='newline'>
+</span><span class='xk'>import</span> <span class='xv'>GRPCNIOTransportHTTP2</span><span class='newline'>
+</span><span class='xk'>import</span> <span class='xv'>GRPCProtobuf</span><span class='newline'>
+
+</span><span class='xa'>@main</span><span class='newline'>
+</span><span class='xk'>struct</span> <span class='xv'>Entrypoint</span>: <span class='xt'>AsyncParsableCommand</span> {<span class='newline'>
+</span>    <span class='newline'>
+</span>    <span class='xa'>@Option</span>(<span class='xv'>name</span>: .<span class='xv'>shortAndLong</span>)<span class='newline'>
+</span>    <span class='xk'>var</span> <span class='xv'>hostname</span>: <span class='xt'>String</span> = <span class='xs'>"127.0.0.1"</span><span class='newline'>
+</span>    <span class='newline'>
+</span>    <span class='xa'>@Option</span>(<span class='xv'>name</span>: .<span class='xv'>shortAndLong</span>)<span class='newline'>
+</span>    <span class='xk'>var</span> <span class='xv'>port</span>: <span class='xt'>Int</span> = <span class='xn'>1234</span><span class='newline'>
+</span>    <span class='newline'>
+</span>    <span class='xk'>func</span> <span class='xv'>run</span>() <span class='xk'>async</span> <span class='xk'>throws</span> {<span class='newline'>
+</span>        <span class='xc'>// 1.</span><span class='newline'>
+</span>        <span class='xk'>let</span> <span class='xv'>server</span> = <span class='xv'>GRPCServer</span>(<span class='newline'>
+</span>            <span class='xv'>transport</span>: .<span class='xv'>http2NIOPosix</span>(<span class='newline'>
+</span>                <span class='xv'>address</span>: .<span class='xv'>ipv4</span>(<span class='xv'>host</span>: <span class='xv'>hostname</span>, <span class='xv'>port</span>: <span class='xv'>port</span>),<span class='newline'>
+</span>                <span class='xv'>config</span>: .<span class='xv'>defaults</span>(<span class='xv'>transportSecurity</span>: .<span class='xv'>plaintext</span>)<span class='newline'>
+</span>            ),<span class='newline'>
+</span>            <span class='xv'>services</span>: [<span class='newline'>
+</span>                <span class='xc'>// 2.</span><span class='newline'>
+</span>                <span class='xv'>TodoService</span>()<span class='newline'>
+</span>            ]<span class='newline'>
+</span>        )<span class='newline'>
+
+</span>        <span class='xc'>// 3.</span><span class='newline'>
+</span>        <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>withThrowingDiscardingTaskGroup</span> { <span class='xv'>group</span> <span class='xk'>in</span><span class='newline'>
+</span>            <span class='xv'>group</span>.<span class='xv'>addTask</span> { <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>server</span>.<span class='xv'>serve</span>() }<span class='newline'>
+</span>            <span class='xc'>// 4.</span><span class='newline'>
+</span>            <span class='xk'>if</span> <span class='xk'>let</span> <span class='xv'>address</span> = <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>server</span>.<span class='xv'>listeningAddress</span> {<span class='newline'>
+</span>                <span class='xv'>print</span>(<span class='xs'>"gRPC server listening on </span>\(<span class='xv'>address</span>)<span class='xs'>"</span>)<span class='newline'>
+</span>            }<span class='newline'>
+</span>        }<span class='newline'>
+</span>    }<span class='newline'>
+</span>}</code></pre><ol><li><p>Creates a gRPC server using the specified <code>http2NIOPosix</code> transport layer with the provided configuration.</p></li><li><p>Add the <code>TodoService</code> as a service, which contains the logic for handling gRPC requests.</p></li><li><p>Start the server asynchronously within a throwing task group.</p></li><li><p>The server’s listening address is printed if successfully started.</p></li></ol><p>To test the gRPC server, the <a href='https://github.com/ktr0731/evans' target='_blank' rel='external'>Evans gRPC client</a> is a highly recommended option. Evans offers an interactive, user-friendly interface, allowing developers to communicate with gRPC servers without writing any extra code. It features a REPL-like interface for easy interaction with the server’s methods.</p><p>Evans is available through the Homebrew package manager. To install, run the following command:</p><pre class='snippet'><code class='language-sh'><span class='newline'></span>brew tap ktr0731/evans &amp;&amp; brew install evans</code></pre><p>Once installed, you can connect to your gRPC server by specifying the host, port, and the service description <code>.proto</code> file with the following command:</p><pre class='snippet'><code class='language-sh'><span class='newline'></span>evans repl --host localhost --port 1234 --proto ./todo_service.proto</code></pre><p>This will launch Evans in interactive mode, allowing you to call the available RPC methods defined in your <code>.proto</code> files. Evans simplifies testing gRPC servers, making it a valuable tool during development and debugging.</p><h2 id='Summary'><a href='#Summary'>Summary</a></h2><p>That’s all it takes to set up a basic gRPC server using Swift and Protocol Buffers. Many advanced features are available, such as streaming, bidirectional data flow, and generating client-side code. I hope this tutorial has provided a solid foundation for getting started with gRPC servers in Swift using the Swift Protobuf and gRPC libraries.</p></section>
                     
                 </section>
     
@@ -139,15 +321,15 @@
     
                     
                     <div class="author-list">
-                        <a href="http://localhost:3000/authors/tibor-bodecs/">
-                        <img class="small rounded" src="http://localhost:3000/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                        <a href="https://swiftonserver.com/authors/tibor-bodecs/">
+                        <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                         <span class="name">Tibor Bödecs</span>
                         </a>
                     </div>
                     <div class="tag-list">
-                        <a href="http://localhost:3000/tags/networking/"><small>Networking</small></a>
-                    <a href="http://localhost:3000/tags/package-highlight/"><small>Package Highlight</small></a>
-                    <a href="http://localhost:3000/tags/server/"><small>Server</small></a>
+                        <a href="https://swiftonserver.com/tags/networking/"><small>Networking</small></a>
+                    <a href="https://swiftonserver.com/tags/package-highlight/"><small>Package Highlight</small></a>
+                    <a href="https://swiftonserver.com/tags/server/"><small>Server</small></a>
                     </div>
                 </footer>
                             
@@ -158,138 +340,138 @@
                             
                             
                             <div class="author-list">
-                                <a href="http://localhost:3000/authors/joannis-orlandos/">
-                                <img class="small rounded" src="http://localhost:3000/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                                 </a>
                             </div>
                             <div class="meta">
                                 <time datetime="2024/10/01">2024/10/01</time>
-                                 &middot; <span class="reading-time">1 min read</span>
+                                 &middot; <span class="reading-time">6 min read</span>
                             </div>
                             
-                            <h2 class="title"><a href="http://localhost:3000/using-hummingbird-request-context/" target="">Using Hummingbird&#39;s Request Contexts</a></h2>
+                            <h2 class="title"><a href="https://swiftonserver.com/using-hummingbird-request-context/" target="">Using Hummingbird&#39;s Request Contexts</a></h2>
                             <p>Learn about request contexts in Hummingbird and how to use them.</p>
                         
                             <div class="spacer"></div>
                         
                             <div class="tag-list">
-                                <a href="http://localhost:3000/tags/hummingbird/"><small>Hummingbird</small></a>
-        <a href="http://localhost:3000/tags/server/"><small>Server</small></a>
+                                <a href="https://swiftonserver.com/tags/hummingbird/"><small>Hummingbird</small></a>
+        <a href="https://swiftonserver.com/tags/server/"><small>Server</small></a>
                             </div>
                         </div>
                     <div class="card">
                             
                             
                             <div class="author-list">
-                                <a href="http://localhost:3000/authors/joannis-orlandos/">
-                                <img class="small rounded" src="http://localhost:3000/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                                 </a>
                             </div>
                             <div class="meta">
                                 <time datetime="2024/09/30">2024/09/30</time>
-                                 &middot; <span class="reading-time">1 min read</span>
+                                 &middot; <span class="reading-time">9 min read</span>
                             </div>
                             
-                            <h2 class="title"><a href="http://localhost:3000/how-to-build-a-proxy-server-with-hummingbird/" target="">How to Build a Proxy Server with Hummingbird</a></h2>
+                            <h2 class="title"><a href="https://swiftonserver.com/how-to-build-a-proxy-server-with-hummingbird/" target="">How to Build a Proxy Server with Hummingbird</a></h2>
                             <p>Learn how to leverage the flexibility and performance of Hummingbird to build a proxy server.</p>
                         
                             <div class="spacer"></div>
                         
                             <div class="tag-list">
-                                <a href="http://localhost:3000/tags/hummingbird/"><small>Hummingbird</small></a>
-        <a href="http://localhost:3000/tags/server/"><small>Server</small></a>
+                                <a href="https://swiftonserver.com/tags/hummingbird/"><small>Hummingbird</small></a>
+        <a href="https://swiftonserver.com/tags/server/"><small>Server</small></a>
                             </div>
                         </div>
                     <div class="card featured">
                             <span class="featured">featured</span>
                             
                             <div class="author-list">
-                                <a href="http://localhost:3000/authors/joannis-orlandos/">
-                                <img class="small rounded" src="http://localhost:3000/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                                 </a>
                             </div>
                             <div class="meta">
                                 <time datetime="2024/09/24">2024/09/24</time>
-                                 &middot; <span class="reading-time">1 min read</span>
+                                 &middot; <span class="reading-time">7 min read</span>
                             </div>
                             
-                            <h2 class="title"><a href="http://localhost:3000/getting-started-with-hummingbird/" target="">Getting Started with Hummingbird</a></h2>
+                            <h2 class="title"><a href="https://swiftonserver.com/getting-started-with-hummingbird/" target="">Getting Started with Hummingbird</a></h2>
                             <p>Learn how to get started with Hummingbird 2, the modern Swift Web Framework.</p>
                         
                             <div class="spacer"></div>
                         
                             <div class="tag-list">
-                                <a href="http://localhost:3000/tags/hummingbird/"><small>Hummingbird</small></a>
-        <a href="http://localhost:3000/tags/server/"><small>Server</small></a>
+                                <a href="https://swiftonserver.com/tags/hummingbird/"><small>Hummingbird</small></a>
+        <a href="https://swiftonserver.com/tags/server/"><small>Server</small></a>
                             </div>
                         </div>
                     <div class="card">
                             
                             
                             <div class="author-list">
-                                <a href="http://localhost:3000/authors/joannis-orlandos/">
-                                <img class="small rounded" src="http://localhost:3000/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                                 </a>
                             </div>
                             <div class="meta">
                                 <time datetime="2024/08/29">2024/08/29</time>
-                                 &middot; <span class="reading-time">1 min read</span>
+                                 &middot; <span class="reading-time">5 min read</span>
                             </div>
                             
-                            <h2 class="title"><a href="http://localhost:3000/working-with-udp-in-swiftnio/" target="">Working with UDP in SwiftNIO</a></h2>
+                            <h2 class="title"><a href="https://swiftonserver.com/working-with-udp-in-swiftnio/" target="">Working with UDP in SwiftNIO</a></h2>
                             <p>Create UDP servers and clients using SwiftNIO and structured concurrency</p>
                         
                             <div class="spacer"></div>
                         
                             <div class="tag-list">
-                                <a href="http://localhost:3000/tags/networking/"><small>Networking</small></a>
-        <a href="http://localhost:3000/tags/server/"><small>Server</small></a>
-        <a href="http://localhost:3000/tags/swiftnio/"><small>SwiftNIO</small></a>
+                                <a href="https://swiftonserver.com/tags/networking/"><small>Networking</small></a>
+        <a href="https://swiftonserver.com/tags/server/"><small>Server</small></a>
+        <a href="https://swiftonserver.com/tags/swiftnio/"><small>SwiftNIO</small></a>
                             </div>
                         </div>
                     <div class="card">
                             
                             
                             <div class="author-list">
-                                <a href="http://localhost:3000/authors/tibor-bodecs/">
-                                <img class="small rounded" src="http://localhost:3000/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                                <a href="https://swiftonserver.com/authors/tibor-bodecs/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                                 </a>
                             </div>
                             <div class="meta">
                                 <time datetime="2024/06/27">2024/06/27</time>
-                                 &middot; <span class="reading-time">1 min read</span>
+                                 &middot; <span class="reading-time">19 min read</span>
                             </div>
                             
-                            <h2 class="title"><a href="http://localhost:3000/websockets-tutorial-using-swift-and-hummingbird/" target="">Using WebSockets in Hummingbird</a></h2>
+                            <h2 class="title"><a href="https://swiftonserver.com/websockets-tutorial-using-swift-and-hummingbird/" target="">Using WebSockets in Hummingbird</a></h2>
                             <p>In this article, you will learn about WebSockets and how to use them with the Hummingbird framework in a straightforward, easy-to-follow manner.</p>
                         
                             <div class="spacer"></div>
                         
                             <div class="tag-list">
-                                <a href="http://localhost:3000/tags/hummingbird/"><small>Hummingbird</small></a>
-        <a href="http://localhost:3000/tags/server/"><small>Server</small></a>
+                                <a href="https://swiftonserver.com/tags/hummingbird/"><small>Hummingbird</small></a>
+        <a href="https://swiftonserver.com/tags/server/"><small>Server</small></a>
                             </div>
                         </div>
                     <div class="card">
                             
                             
                             <div class="author-list">
-                                <a href="http://localhost:3000/authors/tibor-bodecs/">
-                                <img class="small rounded" src="http://localhost:3000/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                                <a href="https://swiftonserver.com/authors/tibor-bodecs/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                                 </a>
                             </div>
                             <div class="meta">
                                 <time datetime="2024/05/22">2024/05/22</time>
-                                 &middot; <span class="reading-time">1 min read</span>
+                                 &middot; <span class="reading-time">7 min read</span>
                             </div>
                             
-                            <h2 class="title"><a href="http://localhost:3000/introduction-to-swift-service-lifecycle/" target="">Introduction to Swift Service Lifecycle</a></h2>
+                            <h2 class="title"><a href="https://swiftonserver.com/introduction-to-swift-service-lifecycle/" target="">Introduction to Swift Service Lifecycle</a></h2>
                             <p>This article offers practical examples to introduce the Swift Service Lifecycle library.</p>
                         
                             <div class="spacer"></div>
                         
                             <div class="tag-list">
-                                <a href="http://localhost:3000/tags/package-highlight/"><small>Package Highlight</small></a>
+                                <a href="https://swiftonserver.com/tags/package-highlight/"><small>Package Highlight</small></a>
                             </div>
                         </div>
                     </div>
@@ -315,6 +497,31 @@
             </div>
             
             <aside id="toc">
+                <h4>On this page</h4>
+                <ul>
+                    <li class="first-level">
+                        <a href="#What%20are%20Protocol%20Buffers?">What are Protocol Buffers?</a>
+                        <ul>
+                            <li><a href="#The%20Protobuf%20language">The Protobuf language</a></li>
+                <li><a href="#The%20Protocol%20Buffer%20Compiler">The Protocol Buffer Compiler</a></li>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#What%20is%20gRPC?">What is gRPC?</a>
+                        <ul>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Using%20Protocol%20Buffers%20and%20gRPC%20with%20Swift">Using Protocol Buffers and gRPC with Swift</a>
+                        <ul>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Summary">Summary</a>
+                        <ul>
+                        </ul>
+                    </li>
+                </ul>
             </aside>
     
         </div>
