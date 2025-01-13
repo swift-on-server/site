@@ -1,5 +1,6 @@
 id: post
 rss: true
+location: blog/posts
 template: blog.post.default
 
 pagination:

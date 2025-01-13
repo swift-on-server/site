@@ -1,5 +1,4 @@
 ---
-type: tag
 title: "SwiftNIO"
 description: "SwiftNIO is a powerful, event-driven networking framework for building high-performance server applications in Swift."
 image: ./assets/swift-logo.png

@@ -1,5 +1,4 @@
 ---
-type: author
 title: "Joannis Orlandos"
 description: "Joannis is a maintainer for Hummingbird 2, member of the Swift Server WorkGroup, and the co-founder of Unbeatable Software B.V."
 image: "./assets/joannis-orlandos.jpeg"

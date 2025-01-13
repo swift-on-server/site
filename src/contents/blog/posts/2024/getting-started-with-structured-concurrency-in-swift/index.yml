@@ -1,4 +1,3 @@
-type: post
 title: "Getting Started: Swift's Structured Concurrency"
 description: "Learn how to apply structured concurrency in your applications, using task groups and other structured concepts."
 image: ./assets/cover.jpg

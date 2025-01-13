@@ -1,4 +1,3 @@
-type: post
 title: "Logging for server-side Swift apps"
 description: "Discover how to integrate the Logging library into an application, use various log levels, and tailor the unified logging API for backend projects."
 image: ./assets/cover.jpg

@@ -1,5 +1,4 @@
 ---
-type: author
 title: "Paul Toffoloni"
 description: "Paul is a Swift developer at Broken Hands Ltd. and maintains JWTKit and MultipartKit amongst other open source projects."
 image: "./assets/paul-toffoloni.jpeg"

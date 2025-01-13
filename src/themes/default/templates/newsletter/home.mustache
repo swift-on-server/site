@@ -1,0 +1,21 @@
+{{<html}}
+{{$main}}
+
+{{& page.contents}}
+
+<div id="issues">
+    <h2>Previous Issues</h2>
+    {{#empty(site.context.issues)}}
+    Empty.
+    {{/empty(site.context.issues)}}
+    {{^empty(site.context.issues)}}
+    <div class="">
+    {{#site.context.issues}}
+        {{> partials.newsletter.issue}}
+    {{/site.context.issues}}
+    </div>
+    {{/empty(site.context.issues)}}
+</div>
+
+{{/main}}
+{{/html}}

@@ -1,5 +1,4 @@
 ---
-type: tag
 title: "Observability"
 description: "Observability is the practice of measuring and understanding the internal state of a system based on the data it produces."
 image: ./assets/observability.png

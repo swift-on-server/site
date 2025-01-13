@@ -1,4 +1,3 @@
-type: post
 title: "Using SwiftNIO - Fundamentals"
 description: "Learn the fundamental concepts of SwiftNIO, such as EventLoops and nonblocking I/O"
 image: ./assets/cover.jpg

@@ -1,4 +1,3 @@
-type: post
 title: "Useful scripts for server-side Swift"
 description: "Learn about shell scripts to enforce coding standards and conduct checks for backend Swift projects."
 image: ./assets/cover.jpg

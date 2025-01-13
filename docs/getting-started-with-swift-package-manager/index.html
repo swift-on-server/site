@@ -5,22 +5,22 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="canonical" href="https://swiftonserver.com/getting-started-with-swift-package-manager/">
-    <link rel="prev" href="https://swiftonserver.com/getting-started-with-structured-concurrency-in-swift/">
-    <link rel="next" href="https://swiftonserver.com/getting-started-with-swiftpm-snippets/">
+    <link rel="canonical" href="http://localhost:3000/getting-started-with-swift-package-manager/">
+    <link rel="prev" href="http://localhost:3000/getting-started-with-structured-concurrency-in-swift/">
+    <link rel="next" href="http://localhost:3000/getting-started-with-swiftpm-snippets/">
 
     <title>Getting Started with Swift Package Manager - Swift on server</title>
     <meta name="description" content="Learn how to create and manage Swift packages with SwiftPM.">
 
-    <meta property="og:url" content="https://swiftonserver.com/getting-started-with-swift-package-manager/">
+    <meta property="og:url" content="http://localhost:3000/getting-started-with-swift-package-manager/">
     <meta property="og:title" content="Getting Started with Swift Package Manager - Swift on server">
     <meta property="og:description" content="Learn how to create and manage Swift packages with SwiftPM.">
-    <meta property="og:image" content="/assets/getting-started-with-swift-package-manager/cover.jpg" />
+    <meta property="og:image" content="http://localhost:3000/assets/getting-started-with-swift-package-manager/cover.jpg" />
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Getting Started with Swift Package Manager - Swift on server">
     <meta name="twitter:description" content="Learn how to create and manage Swift packages with SwiftPM.">
-    <meta name="twitter:image" content="/assets/getting-started-with-swift-package-manager/cover.jpg">
+    <meta name="twitter:image" content="http://localhost:3000/assets/getting-started-with-swift-package-manager/cover.jpg">
 
     <link rel="stylesheet" href="/css/modern-normalize.css">
     <link rel="stylesheet" href="/css/modern-base.css">
@@ -124,32 +124,12 @@
             <article class="post">
                 <div class="meta">
                     <time datetime="2024/10/27">2024/10/27</time>
-                     &middot; <span class="reading-time">3 min read</span>
+                     &middot; <span class="reading-time">1 min read</span>
                     
                 </div>
                 <section>
                 
-                <section class='introduction'><h1>Getting Started with Swift Package Manager</h1></section><section class='details literature'><p>Swift Package Manager (SwiftPM) is a tool for managing the distribution of Swift code. It allows you to create reusable packages, and to distribute them to other developers. SwiftPM is included with Swift, and is the recommended way to distribute Swift libraries in Swift.</p><h2 id='What%20is%20a%20Swift%20Package?'><a href='#What%20is%20a%20Swift%20Package?'>What is a Swift Package?</a></h2><p>A Swift <em>package</em> is a collection of Swift code, resources, and other assets that can be distributed and reused in other projects. Packages can contain anything from a single file to an entire project.</p><p>Packages are made up from a few basic components:</p><ul><li><p><strong>Products</strong>: A product is a collection of one or more targets, that other packages can depend on.</p></li><li><p><strong>Targets</strong>: A target is the fundamental building block of a package, and is the unit of distribution.</p></li><li><p><strong>Dependencies</strong>: A dependency is another package that is required by this package.</p></li></ul><p>In addition to these components, packages have a few other characteristics:</p><ul><li><p><strong>Name</strong>: The name of the package, which must be unique across all packages.</p></li><li><p><strong>Platforms</strong>: The platforms (e.g macOS 10.15, iOS 18) that it supports.</p></li></ul><p>Finally, each package must have a special comment on top of the file that contains the package manifest version. That looks something along the lines of:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xc'>// swift-tools-version: 5.10</span></code></pre><h2 id='Creating%20a%20Package'><a href='#Creating%20a%20Package'>Creating a Package</a></h2><p>When creating a package, you’ll need to create a <code>Package.swift</code> file and basic layout. To get set up quickly, the <code>swift</code> commandline utility has a <code>package</code> subcommand that can generate a basic package layout for you.</p><p>There are a few types of packages you can create. The most important two are:</p><ul><li><p><strong>executable</strong>: Creates a (Command Line) executable target.</p></li><li><p><strong>library</strong>: Creates a library target.</p></li></ul><p>To create a new <em>executable</em> package, run the following command:</p><pre class='snippet'><code class='language-bash'><span class='newline'></span>mkdir MyProject &amp;&amp; cd MyProject<span class='newline'>
-</span>swift package init --type=executable</code></pre><p>From here, you can start adding your code to the <code>Sources</code> directory, and add dependencies to the <code>Package.swift</code> file. The Package.swift file is also called the <em>Package Manifest</em>.</p><p>Let’s analyze the generated <code>Package.swift</code> file:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xc'>// swift-tools-version: 6.0</span><span class='newline'>
-</span><span class='xc'>// The swift-tools-version declares the minimum version of Swift required to build this package.</span><span class='newline'>
-
-</span><span class='xk'>import</span> <span class='xv'>PackageDescription</span><span class='newline'>
-
-</span><span class='xk'>let</span> <span class='xv'>package</span> = <span class='xv'>Package</span>(<span class='newline'>
-</span>    <span class='xv'>name</span>: <span class='xs'>"MyProject"</span>, <span class='xc'>// 1</span><span class='newline'>
-</span>    <span class='xc'>// 2</span><span class='newline'>
-</span>    <span class='xv'>targets</span>: [ <span class='xc'>// 3</span><span class='newline'>
-</span>        .<span class='xv'>executableTarget</span>(<span class='newline'>
-</span>            <span class='xv'>name</span>: <span class='xs'>"MyProject"</span><span class='newline'>
-</span>        ),<span class='newline'>
-</span>    ]<span class='newline'>
-</span>)</code></pre><p>As you see, the <code>Package.swift</code> format is a simple Swift source file that defines a <code>Package</code> variable named <code>package</code>. This is compiled using Swift as well, granting access to the environment variables and other basic language tools. Package manifests are sandboxed (for good reason), so there’s no filesystem or network access.</p><p>In the first marker, SwiftPM put the name of the directory as the Package’s name. Then, you’ll notice a marker in empty space. This is normally where you can specify products you’d like to expose.</p><p>Executable targets don’t generally need to expose themselves, as they cannot be imported like a library. As such, it is omitted.</p><p>Underneath the products section, you’ll see the targets section. This is where you can define the targets that are part of this package.</p><h2 id='Adding%20Dependencies'><a href='#Adding%20Dependencies'>Adding Dependencies</a></h2><p>Next, let’s add a dependency to our package. Run the following command in the terminal. Make sure you run this from your SwiftPM project’s directory.</p><pre class='snippet'><code class='language-sh'><span class='newline'></span>swift package add-dependency https://github.com/hummingbird-project/hummingbird.git --from 2.2.0</code></pre><p>If you look at your <em>Package Manifest</em> again, you’ll see that Hummingbird has been added as a dependency.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xv'>dependencies</span>: [<span class='newline'>
-</span>    .<span class='xv'>package</span>(<span class='xv'>url</span>: <span class='xs'>"https://github.com/hummingbird-project/hummingbird.git"</span>, <span class='xv'>from</span>: <span class='xs'>"2.2.0"</span>),<span class='newline'>
-</span>],</code></pre><p>In SwiftPM you can choose how to add a dependency. Both explicitly editing the manifest, or using the CLI tool work out the same way.</p><p>Many libraries will show you the <code>.package</code> method, which allows you to specify the dependency’s URL and the version you’d like to use. However, Swift 6 introduced the command-line tool we used, so as time passes you’ll likely find more and more packages using that.</p><p>Before you can <code>import Hummingbird</code> in your app, you’ll need to do one more thing!</p><h3 id='Target%20Dependencies'><a href='#Target%20Dependencies'>Target Dependencies</a></h3><p>Depending on a package is not enough to import the package’s targets. You’ll need to add the package’s targets as dependencies to your target. Hummingbird in particular takes advantage of this structure, by allowing you to choose the parts of the library you want. This way you don’t compile libraries you don’t need.</p><pre class='snippet'><code class='language-sh'><span class='newline'></span>swift package add-target-dependency Hummingbird MyProject</code></pre><p>This will add Hummingbird as a dependency to your target. Swift will automatically understand that <code>Hummingbird</code> is a library within the hummingbird package, and will make it available to you. The second argument, MyProject, is the name of your <em>target</em>, not your package.</p><p>You’ll notice that the package’s target now looks like this:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span>.<span class='xv'>executableTarget</span>(<span class='newline'>
-</span>    <span class='xv'>name</span>: <span class='xs'>"MyProject"</span>,<span class='newline'>
-</span>    <span class='xv'>dependencies</span>: [<span class='newline'>
-</span>        .<span class='xv'>target</span>(<span class='xv'>name</span>: <span class='xs'>"Hummingbird"</span>),<span class='newline'>
-</span>    ]),</code></pre><p>From here, you can <code>import Hummingbird</code> in your code, and start using it.</p><h2 id='Conclusion'><a href='#Conclusion'>Conclusion</a></h2><p>In this article, we’ve covered the basics of Swift Package Manager. We’ve seen how to create a package, add dependencies, and add target dependencies.</p><p>You’ve learned how to add a dependency to your package, and how to add a target dependency to your target. This enables you to use Swift’s wide ecosystem of packages in your project.</p><p>I highly recommend checking out the <a href='https://swiftpackageindex.com' target='_blank' rel='external nofollow noopener ugc'>Swift Package Index</a> to find packages that might be useful for your project.</p></section>
+                
                     
                 </section>
     
@@ -159,13 +139,13 @@
     
                     
                     <div class="author-list">
-                        <a href="https://swiftonserver.com/authors/joannis-orlandos/">
-                        <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                        <a href="http://localhost:3000/authors/joannis-orlandos/">
+                        <img class="small rounded" src="http://localhost:3000/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                         <span class="name">Joannis Orlandos</span>
                         </a>
                     </div>
                     <div class="tag-list">
-                        <a href="https://swiftonserver.com/tags/utilities/"><small>Utilities</small></a>
+                        <a href="http://localhost:3000/tags/utilities/"><small>Utilities</small></a>
                     </div>
                 </footer>
                             
@@ -176,92 +156,92 @@
                             
                             
                             <div class="author-list">
-                                <a href="https://swiftonserver.com/authors/tibor-bodecs/">
-                                <img class="small rounded" src="/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                                <a href="http://localhost:3000/authors/tibor-bodecs/">
+                                <img class="small rounded" src="http://localhost:3000/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                                 </a>
                             </div>
                             <div class="meta">
                                 <time datetime="2024/04/10">2024/04/10</time>
-                                 &middot; <span class="reading-time">13 min read</span>
+                                 &middot; <span class="reading-time">1 min read</span>
                             </div>
                             
-                            <h2 class="title"><a href="https://swiftonserver.com/useful-scripts-for-server-side-swift-libraries/" target="">Useful scripts for server-side Swift</a></h2>
+                            <h2 class="title"><a href="http://localhost:3000/useful-scripts-for-server-side-swift-libraries/" target="">Useful scripts for server-side Swift</a></h2>
                             <p>Learn about shell scripts to enforce coding standards and conduct checks for backend Swift projects.</p>
                         
                             <div class="spacer"></div>
                         
                             <div class="tag-list">
-                                <a href="https://swiftonserver.com/tags/utilities/"><small>Utilities</small></a>
+                                <a href="http://localhost:3000/tags/utilities/"><small>Utilities</small></a>
                             </div>
                         </div>
                     <div class="card featured">
                             <span class="featured">featured</span>
                             
                             <div class="author-list">
-                                <a href="https://swiftonserver.com/authors/tibor-bodecs/">
-                                <img class="small rounded" src="/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                                <a href="http://localhost:3000/authors/tibor-bodecs/">
+                                <img class="small rounded" src="http://localhost:3000/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                                 </a>
                             </div>
                             <div class="meta">
                                 <time datetime="2024/03/12">2024/03/12</time>
-                                 &middot; <span class="reading-time">7 min read</span>
+                                 &middot; <span class="reading-time">1 min read</span>
                             </div>
                             
-                            <h2 class="title"><a href="https://swiftonserver.com/using-environment-variables-in-swift/" target="">Environment Variables in Swift</a></h2>
+                            <h2 class="title"><a href="http://localhost:3000/using-environment-variables-in-swift/" target="">Environment Variables in Swift</a></h2>
                             <p>Explore the importance of environment variables in Swift and how to use them.</p>
                         
                             <div class="spacer"></div>
                         
                             <div class="tag-list">
-                                <a href="https://swiftonserver.com/tags/observability/"><small>Observability</small></a>
-        <a href="https://swiftonserver.com/tags/utilities/"><small>Utilities</small></a>
+                                <a href="http://localhost:3000/tags/observability/"><small>Observability</small></a>
+        <a href="http://localhost:3000/tags/utilities/"><small>Utilities</small></a>
                             </div>
                         </div>
                     <div class="card">
                             
                             
                             <div class="author-list">
-                                <a href="https://swiftonserver.com/authors/tibor-bodecs/">
-                                <img class="small rounded" src="/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                                <a href="http://localhost:3000/authors/tibor-bodecs/">
+                                <img class="small rounded" src="http://localhost:3000/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                                 </a>
                             </div>
                             <div class="meta">
                                 <time datetime="2024/02/13">2024/02/13</time>
-                                 &middot; <span class="reading-time">13 min read</span>
+                                 &middot; <span class="reading-time">1 min read</span>
                             </div>
                             
-                            <h2 class="title"><a href="https://swiftonserver.com/logging-for-server-side-swift-apps/" target="">Logging for server-side Swift apps</a></h2>
+                            <h2 class="title"><a href="http://localhost:3000/logging-for-server-side-swift-apps/" target="">Logging for server-side Swift apps</a></h2>
                             <p>Discover how to integrate the Logging library into an application, use various log levels, and tailor the unified logging API for backend projects.</p>
                         
                             <div class="spacer"></div>
                         
                             <div class="tag-list">
-                                <a href="https://swiftonserver.com/tags/documentation/"><small>Documentation</small></a>
-        <a href="https://swiftonserver.com/tags/observability/"><small>Observability</small></a>
-        <a href="https://swiftonserver.com/tags/utilities/"><small>Utilities</small></a>
+                                <a href="http://localhost:3000/tags/documentation/"><small>Documentation</small></a>
+        <a href="http://localhost:3000/tags/observability/"><small>Observability</small></a>
+        <a href="http://localhost:3000/tags/utilities/"><small>Utilities</small></a>
                             </div>
                         </div>
                     <div class="card">
                             
                             
                             <div class="author-list">
-                                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
-                                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                <a href="http://localhost:3000/authors/joannis-orlandos/">
+                                <img class="small rounded" src="http://localhost:3000/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                                 </a>
                             </div>
                             <div class="meta">
                                 <time datetime="2024/01/16">2024/01/16</time>
-                                 &middot; <span class="reading-time">2 min read</span>
+                                 &middot; <span class="reading-time">1 min read</span>
                             </div>
                             
-                            <h2 class="title"><a href="https://swiftonserver.com/developing-with-swift-in-visual-studio-code/" target="">Developing with Swift in Visual Studio Code</a></h2>
+                            <h2 class="title"><a href="http://localhost:3000/developing-with-swift-in-visual-studio-code/" target="">Developing with Swift in Visual Studio Code</a></h2>
                             <p>Learn how to set up your Visual Studio Code for Swift development using Docker, Dev Containers and the Swift for VS Code extension.</p>
                         
                             <div class="spacer"></div>
                         
                             <div class="tag-list">
-                                <a href="https://swiftonserver.com/tags/utilities/"><small>Utilities</small></a>
-        <a href="https://swiftonserver.com/tags/vscode/"><small>VSCode</small></a>
+                                <a href="http://localhost:3000/tags/utilities/"><small>Utilities</small></a>
+        <a href="http://localhost:3000/tags/vscode/"><small>VSCode</small></a>
                             </div>
                         </div>
                     </div>
@@ -287,30 +267,6 @@
             </div>
             
             <aside id="toc">
-                <h4>On this page</h4>
-                <ul>
-                    <li class="first-level">
-                        <a href="#What%20is%20a%20Swift%20Package?">What is a Swift Package?</a>
-                        <ul>
-                        </ul>
-                    </li>
-        <li class="first-level">
-                        <a href="#Creating%20a%20Package">Creating a Package</a>
-                        <ul>
-                        </ul>
-                    </li>
-        <li class="first-level">
-                        <a href="#Adding%20Dependencies">Adding Dependencies</a>
-                        <ul>
-                            <li><a href="#Target%20Dependencies">Target Dependencies</a></li>
-                        </ul>
-                    </li>
-        <li class="first-level">
-                        <a href="#Conclusion">Conclusion</a>
-                        <ul>
-                        </ul>
-                    </li>
-                </ul>
             </aside>
     
         </div>

@@ -1,5 +1,4 @@
 ---
-type: tag
 title: "Networking"
 description: "Networking involves the practice of connecting computers and other devices to share resources and information."
 image: ./assets/networking-logo.png

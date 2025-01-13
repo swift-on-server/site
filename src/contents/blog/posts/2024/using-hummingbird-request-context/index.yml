@@ -1,4 +1,3 @@
-type: post
 title: "Using Hummingbird's Request Contexts"
 description: "Learn about request contexts in Hummingbird and how to use them."
 image: ./assets/cover.jpg

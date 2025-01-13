@@ -1,5 +1,4 @@
 ---
-type: tag
 title: "Databases"
 description: "Databases provide a way to store and retrieve data efficiently."
 image: ./assets/databases-logo.png

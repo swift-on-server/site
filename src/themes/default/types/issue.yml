@@ -1,0 +1,10 @@
+id: issue
+location: newsletter/issues
+
+context:
+    site:
+        issues:
+            sort: publication
+            order: desc
+
+template: newsletter.issue.default
