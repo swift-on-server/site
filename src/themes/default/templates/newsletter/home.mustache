@@ -10,10 +10,11 @@
     {{/empty(site.context.issues)}}
     {{^empty(site.context.issues)}}
     <div class="">
+    <ul>
     {{#site.context.issues}}
-        {{> partials.newsletter.issue}}
+       <li> {{> partials.newsletter.issue}}</li>
     {{/site.context.issues}}
-    </div>
+    </li>
     {{/empty(site.context.issues)}}
 </div>
 
