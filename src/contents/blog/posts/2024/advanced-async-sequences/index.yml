@@ -7,10 +7,3 @@ tags:
     - structured-concurrency
 authors:
     - joannis-orlandos
-#transformers:
-#    run:
-#        - name: swiftinit
-#          options:
-#                article: async-http-client-by-example
-#    render: false
-
