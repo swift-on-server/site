@@ -1,5 +1,4 @@
 ---
-type: tag
 title: "Structured Concurrency"
 description: "Structured Concurrency is a programming paradigm that simplifies the management of concurrent tasks by organizing them in a structured, hierarchical manner."
 image: ./assets/concurrency-logo.png

@@ -1,4 +1,5 @@
 id: tag
+location: blog/tags
 template: blog.tag.default
 
 context:

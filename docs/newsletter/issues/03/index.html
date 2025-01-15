@@ -1,0 +1,426 @@
+<!-- FILE: issue-03.mjml -->
+<!doctype html>
+<html lang="und" dir="auto" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+  <title>Swift on Server Newsletter</title>
+  <!--[if !mso]><!-->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--<![endif]-->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style type="text/css">
+    #outlook a {
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+
+    table,
+    td {
+      border-collapse: collapse;
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+    }
+
+    img {
+      border: 0;
+      height: auto;
+      line-height: 100%;
+      outline: none;
+      text-decoration: none;
+      -ms-interpolation-mode: bicubic;
+    }
+
+    p {
+      display: block;
+      margin: 13px 0;
+    }
+
+  </style>
+  <!--[if mso]>
+    <noscript>
+    <xml>
+    <o:OfficeDocumentSettings>
+      <o:AllowPNG/>
+      <o:PixelsPerInch>96</o:PixelsPerInch>
+    </o:OfficeDocumentSettings>
+    </xml>
+    </noscript>
+    <![endif]-->
+  <!--[if lte mso 11]>
+    <style type="text/css">
+      .mj-outlook-group-fix { width:100% !important; }
+    </style>
+    <![endif]-->
+  <style type="text/css">
+    @media only screen and (min-width:480px) {
+      .mj-column-per-100 {
+        width: 100% !important;
+        max-width: 100%;
+      }
+    }
+
+  </style>
+  <style media="screen and (min-width:480px)">
+    .moz-text-html .mj-column-per-100 {
+      width: 100% !important;
+      max-width: 100%;
+    }
+
+  </style>
+  <style type="text/css">
+    @media only screen and (max-width:479px) {
+      table.mj-full-width-mobile {
+        width: 100% !important;
+      }
+
+      td.mj-full-width-mobile {
+        width: auto !important;
+      }
+    }
+
+  </style>
+</head>
+
+<body style="word-spacing:normal;background-color:#ffffff;">
+  <div style="background-color:#ffffff;" lang="und" dir="auto">
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+      <tbody>
+        <tr>
+          <td>
+            <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+            <div style="margin:0px auto;max-width:600px;">
+              <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+                <tbody>
+                  <tr>
+                    <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0;text-align:center;">
+                      <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+                      <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                        <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                          <tbody>
+                            <tr>
+                              <td align="center" style="font-size:0px;padding:0;padding-bottom:20px;word-break:break-word;">
+                                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+                                  <tbody>
+                                    <tr>
+                                      <td style="width:100px;">
+                                        <a href="https://swiftonserver.com" target="_blank" style="color: inherit;">
+                                          <img alt="Swift on Server Logo" src="https://swiftonserver.com/images/logos/logo.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="100" height="auto">
+                                        </a>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <!--[if mso | IE]></td></tr></table><![endif]-->
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!--[if mso | IE]></td></tr></table><![endif]-->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#5856D7" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div style="background:#5856D7;background-color:#5856D7;margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#5856D7;background-color:#5856D7;width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                  <tbody>
+                    <tr>
+                      <td style="vertical-align:top;padding:20px;">
+                        <table border="0" cellpadding="0" cellspacing="0" role="presentation" style width="100%">
+                          <tbody>
+                            <tr>
+                              <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                                <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:32px;font-weight:400;line-height:24px;text-align:center;color:#ffffff;">Swift on Server</div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="body-section-outlook" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    <div class="body-section" style="-webkit-box-shadow: 1px 4px 11px 0px rgba(0, 0, 0, 0.15); -moz-box-shadow: 1px 4px 11px 0px rgba(0, 0, 0, 0.15); box-shadow: 1px 4px
+      11px 0px rgba(0, 0, 0, 0.15); margin: 0px auto; max-width: 600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0;padding-top:0;text-align:center;">
+              <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" width="600px" ><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#fcfcfc" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+              <div style="background:#fcfcfc;background-color:#fcfcfc;margin:0px auto;max-width:600px;">
+                <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#fcfcfc;background-color:#fcfcfc;width:100%;">
+                  <tbody>
+                    <tr>
+                      <td style="direction:ltr;font-size:0px;padding:20px 0;padding-left:15px;padding-right:15px;text-align:center;">
+                        <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:570px;" ><![endif]-->
+                        <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                          <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                            <tbody>
+                              <tr>
+                                <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                                  <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:24px;text-align:left;color:#637381;">I've been using Swift on the server daily for over four years now, and this year we've seen quite a lot of updates, not just for the server side, but for the whole ecosystem.</div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                                  <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:24px;text-align:left;color:#637381;">This year at WWDC24, Apple announced <a href="https://www.swift.org/migration/documentation/migrationguide/" style="color: inherit;">Swift 6</a>, the new major version of the programming language, alongside the modern <a href="https://github.com/apple/swift-testing" style="color: inherit;">Swift-Testing</a> framework. They are currently migrating the entire Swift project to a new organization on GitHub called <a href="https://github.com/swiftlang" style="color: inherit;">SwiftLang</a>. In addition, the <a href="https://github.com/swiftlang/vscode-swift" style="color: inherit;">Swift VSCode extension</a> - originally by <a href="https://github.com/adam-fowler" style="color: inherit;">Adam Fowler</a> - is now available under the new organization. It is nice to see Swift becoming a standalone project.</div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                                  <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:24px;text-align:left;color:#637381;">We have also worked hard on the <a href="https://swiftonserver.com/" style="color: inherit;">swiftonserver.com</a> website, and are very proud of our <a href="https://forums.swift.org/t/swiftinit-org-now-partnering-with-swiftonserver-com/72283" style="color: inherit;">latest integration</a> with the <a href="https://swiftinit.org/" style="color: inherit;">swiftinit.org</a> project. This integration helps validate our examples and provides links to the documentation symbols.</div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                                  <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:24px;text-align:left;color:#637381;">- Tib</div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="center" style="font-size:0px;padding:20px;word-break:break-word;">
+                                  <p style="border-top:solid 1px #DFE3E8;font-size:1px;margin:0px auto;width:100%;">
+                                  </p>
+                                  <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" style="border-top:solid 1px #DFE3E8;font-size:1px;margin:0px auto;width:530px;" role="presentation" width="530px" ><tr><td style="height:0;line-height:0;"> &nbsp;
+</td></tr></table><![endif]-->
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" style="font-size:0px;padding:10px 25px;padding-bottom:0;word-break:break-word;">
+                                  <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:20px;font-weight:bold;line-height:24px;text-align:left;color:#0095ff;"><a href="https://swiftonserver.com/advanced-async-sequences/" style="color: inherit;">Advanced Async Sequences in Swift</a></div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                                  <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:24px;text-align:left;color:#637381;">AsyncSequences are increasingly prevalent in Server-Side Swift and are becoming more prominent in macOS and iOS apps as well. Similar to other structured concurrency features, AsyncSequences facilitate structured programming, making it easier to reason about your code. To learn more, read Joannis' guide on <a href="https://swiftonserver.com/advanced-async-sequences/" style="color: inherit;">swiftonserver.com</a>.</div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" style="font-size:0px;padding:10px 25px;padding-bottom:0;word-break:break-word;">
+                                  <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:20px;font-weight:bold;line-height:24px;text-align:left;color:#0095ff;"><a href="https://swiftonserver.com/websocket-tutorial-using-swift-and-hummingbird/" style="color: inherit;">WebSocket tutorial using Swift and Hummingbird</a></div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                                  <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:24px;text-align:left;color:#637381;">Tibor has a brand new tutorial on <a href="https://swiftonserver.com/websocket-tutorial-using-swift-and-hummingbird/" style="color: inherit;">swiftonserver.com</a> about WebSockets and how to use them with the Hummingbird 2 framework in a straightforward, easy-to-follow manner. The first part provides a clear understanding of the WebSocket protocol. Following that, a hands-on example demonstrates effective use of this technology through the Hummingbird WebSocket library.</div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" style="font-size:0px;padding:10px 25px;padding-bottom:0;word-break:break-word;">
+                                  <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:20px;font-weight:bold;line-height:24px;text-align:left;color:#0095ff;"><a href="https://developer.apple.com/videos/play/wwdc2024/10216/" style="color: inherit;">Explore the Swift on Server Ecosystem</a></div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                                  <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:24px;text-align:left;color:#637381;">Swift is an excellent language for developing server applications, powering critical services across Apple's cloud products. <a href="https://developer.apple.com/videos/play/wwdc2024/10216/" style="color: inherit;">This WWDC session</a> explores essential tooling, delves into the Swift server package ecosystem, demonstrates how to interact with databases, and enhances application observability. <a href="https://github.com/FranzBusch" style="color: inherit;">Franz Busch</a>'s talk will help unlock the full potential of Swift for server-side projects.</div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" style="font-size:0px;padding:10px 25px;padding-bottom:0;word-break:break-word;">
+                                  <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:20px;font-weight:bold;line-height:24px;text-align:left;color:#0095ff;"><a href="https://www.swift.org/documentation/articles/static-linux-getting-started.html" style="color: inherit;">Getting Started with the Static Linux SDK</a></div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                                  <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:24px;text-align:left;color:#637381;">Introducing the <a href="https://www.swift.org/documentation/articles/static-linux-getting-started.html" style="color: inherit;">Swift Static Linux SDK</a>: a powerful tool that lets developers build fully statically linked executables with no external dependencies. This ensures programs run seamlessly on any Linux distribution, relying solely on the Linux system call interface. With this new tool, you can create Linux binaries from your mac.</div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="center" style="font-size:0px;padding:20px;word-break:break-word;">
+                                  <p style="border-top:solid 1px #DFE3E8;font-size:1px;margin:0px auto;width:100%;">
+                                  </p>
+                                  <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" style="border-top:solid 1px #DFE3E8;font-size:1px;margin:0px auto;width:530px;" role="presentation" width="530px" ><tr><td style="height:0;line-height:0;"> &nbsp;
+</td></tr></table><![endif]-->
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" style="font-size:0px;padding:10px 25px;padding-bottom:0;word-break:break-word;">
+                                  <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:20px;font-weight:bold;line-height:24px;text-align:left;color:#ff0095;"><a href="https://www.youtube.com/watch?v=UgON3lsCRwo" style="color: inherit;">Swift Server Meetup #2</a></div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                                  <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:24px;text-align:left;color:#637381;">Sebastian hosted the second quarterly SSWG-organized <a href="https://www.youtube.com/watch?v=UgON3lsCRwo" style="color: inherit;">online meetup</a> on June 26th. The event began with Mikaela Caron discussing how to deploy your Vapor app to Fly.io for free using a Dockerfile. This was followed by Joannis and Adam, who explored the recently released version 2 of Hummingbird with a live-coding example. The session saw lively interactions in the chat, both before and after the talks. We look forward to seeing you at the next edition.</div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" style="font-size:0px;padding:10px 25px;padding-bottom:0;word-break:break-word;">
+                                  <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:20px;font-weight:bold;line-height:24px;text-align:left;color:#ff0095;"><a href="https://www.serversideswift.info/" style="color: inherit;">Server-Side Swift Conference</a></div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                                  <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:24px;text-align:left;color:#637381;"><a href="https://www.serversideswift.info/" style="color: inherit;">ServerSide.swift</a> is a framework-independent conference dedicated to learning and sharing knowledge on various server-side Swift topics. Join us on September 26th and 27th at the Science Museum in London, UK, for two days of inspiring talks from some of the brightest minds in the field. The conference promises a packed schedule full of amazing presentations. Keep an eye on the <a href="https://www.serversideswift.info/schedule/" style="color: inherit;">lineup</a> and get ready to be inspired!</div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="center" style="font-size:0px;padding:20px;word-break:break-word;">
+                                  <p style="border-top:solid 1px #DFE3E8;font-size:1px;margin:0px auto;width:100%;">
+                                  </p>
+                                  <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" style="border-top:solid 1px #DFE3E8;font-size:1px;margin:0px auto;width:530px;" role="presentation" width="530px" ><tr><td style="height:0;line-height:0;"> &nbsp;
+</td></tr></table><![endif]-->
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" style="font-size:0px;padding:10px 25px;padding-bottom:0;word-break:break-word;">
+                                  <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:20px;font-weight:bold;line-height:24px;text-align:left;color:#00aa95;"><a href="https://github.com/hummingbird-project/hummingbird/releases" style="color: inherit;">Hummingbird 2 Release Candidate 1</a></div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                                  <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:24px;text-align:left;color:#637381;"><a href="https://github.com/hummingbird-project/hummingbird/" style="color: inherit;">Hummingbird</a> is a lightweight, flexible web application framework designed to run on a <a href="https://github.com/apple/swift-nio" style="color: inherit;">SwiftNIO</a>-based server implementation with minimal dependencies. Built on top of modern <a href="https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency/" style="color: inherit;">Structured Concurrency</a> features, version 2 offers a great performance with an API that's ready for Swift 6. Hummingbird features a powerful new router, a new "Request Context" System in addition to all of the existing and familiar APIs such as Codable support and a Middleware system.</div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" style="font-size:0px;padding:10px 25px;padding-bottom:0;word-break:break-word;">
+                                  <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:20px;font-weight:bold;line-height:24px;text-align:left;color:#00aa95;"><a href="https://github.com/vapor/jwt-kit/releases" style="color: inherit;">JWTKit 5 Release Candidate 1</a></div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                                  <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:24px;text-align:left;color:#637381;"><a href="https://github.com/vapor/jwt-kit/" style="color: inherit;">JWTKit</a> offers robust APIs for signing and verifying JSON Web Tokens (JWTs) using SwiftCrypto. JWTKit enables secure and efficient token management with customizable signing and verification using custom headers. It's easy to use, has flexible parsing and serialization options, along with support for JSON Web Keys (JWK, JWKS). This makes JWTKit an essential tool for working with JWTs in Swift.</div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" style="font-size:0px;padding:10px 25px;padding-bottom:0;word-break:break-word;">
+                                  <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:20px;font-weight:bold;line-height:24px;text-align:left;color:#00aa95;"><a href="https://github.com/swiftlang/swiftly" style="color: inherit;">swiftly</a></div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                                  <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:24px;text-align:left;color:#637381;"><a href="https://github.com/swiftlang/swiftly" style="color: inherit;">swiftly</a> is a powerful CLI tool crafted in Swift, designed to install, manage, and switch between Swift toolchains effortlessly. Installation and setup are straightforward, ensuring you can get started quickly. The command interface strikes a perfect balance between flexibility and simplicity, making <i>swiftly</i> an essential tool for streamlined Swift development.</div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" style="font-size:0px;padding:10px 25px;padding-bottom:0;word-break:break-word;">
+                                  <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:20px;font-weight:bold;line-height:24px;text-align:left;color:#00aa95;"><a href="https://github.com/kabiroberai/node-swift" style="color: inherit;">NodeSwift</a></div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                                  <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:24px;text-align:left;color:#637381;"><a href="https://github.com/kabiroberai/node-swift" style="color: inherit;">NodeSwift</a> bridges the gap between Swift and Node.js, enabling seamless communication between these two powerful ecosystems. Leverage Swift and SwiftPM to access native macOS features from within Electron applications, or tap into the extensive library of NPM APIs from within your Swift code.</div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <!--[if mso | IE]></td></tr></table><![endif]-->
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table></td></tr><tr><td class="" width="600px" ><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#fcfcfc" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+              <div style="background:#fcfcfc;background-color:#fcfcfc;margin:0px auto;max-width:600px;">
+                <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#fcfcfc;background-color:#fcfcfc;width:100%;">
+                  <tbody>
+                    <tr>
+                      <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
+                        <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+                        <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                          <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                            <tbody>
+                              <tr>
+                                <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                                  <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:12px;font-weight:400;line-height:24px;text-align:center;color:#637381;"><a href="https://unbeatable.software" style="color: inherit;">Joannis Orlandos</a> &amp; <a href="https://binarybirds.com" style="color: inherit;">Tibor Bödecs</a></div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <!--[if mso | IE]></td></tr></table><![endif]-->
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--[if mso | IE]></td></tr></table></td></tr></table><![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]></td></tr></table><![endif]-->
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+      <tbody>
+        <tr>
+          <td>
+            <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+            <div style="margin:0px auto;max-width:600px;">
+              <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+                <tbody>
+                  <tr>
+                    <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
+                      <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" width="600px" ><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+                      <div style="margin:0px auto;max-width:600px;">
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+                          <tbody>
+                            <tr>
+                              <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
+                                <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+                                <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                                    <tbody>
+                                      <tr>
+                                        <td style="vertical-align:top;padding:0;">
+                                          <table border="0" cellpadding="0" cellspacing="0" role="presentation" style width="100%">
+                                            <tbody>
+                                              <tr>
+                                                <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                                                  <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:11px;font-weight:400;line-height:16px;text-align:center;color:#445566;">You are receiving this email newsletter because you registered with the <a class="footer-link" href="https://swiftonserver.com" style="color: #888888;">swiftonserver.com</a> newsletter. <br> (previously <a class="footer-link" href="https://theswiftdev.com" style="color: #888888;">theswiftdev.com</a> newsletter)</div>
+                                                </td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                                <!--[if mso | IE]></td></tr></table><![endif]-->
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <!--[if mso | IE]></td></tr></table></td></tr></table><![endif]-->
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!--[if mso | IE]></td></tr></table><![endif]-->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>
+

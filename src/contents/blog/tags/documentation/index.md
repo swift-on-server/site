@@ -1,5 +1,4 @@
 ---
-type: tag
 title: "Documentation"
 description: "Documentation is essential for providing clear and comprehensive information about software systems, APIs, and development processes."
 image: ./assets/docc-logo.png

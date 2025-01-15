@@ -1,4 +1,3 @@
-type: post
 title: "Working with UDP in SwiftNIO"
 description: "Create UDP servers and clients using SwiftNIO and structured concurrency"
 image: ./assets/cover.jpg

@@ -1,4 +1,3 @@
-type: post
 title: "Building an HTTP client using SwiftNIO"
 description: "Learn how to build a simple HTTP client using SwiftNIO and structured concurrency."
 image: ./assets/cover.jpg

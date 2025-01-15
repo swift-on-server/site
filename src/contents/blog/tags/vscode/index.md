@@ -1,5 +1,4 @@
 ---
-type: tag
 title: "VSCode"
 description: "Visual Studio Code (VSCode) is a versatile and powerful code editor developed by Microsoft."
 image: ./assets/vscode-logo.png

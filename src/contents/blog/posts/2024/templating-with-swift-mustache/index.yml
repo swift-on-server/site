@@ -1,4 +1,3 @@
-type: post
 title: "Templating with Swift-Mustache"
 description: "Learn how to template emails and web pages with Swift-Mustache."
 image: ./assets/cover.jpg

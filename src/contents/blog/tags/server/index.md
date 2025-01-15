@@ -1,5 +1,4 @@
 ---
-type: tag
 title: "Server"
 description: "Servers are powerful systems designed to manage, store, and process data, and to deliver services to clients over a network."
 image: ./assets/server-logo.png

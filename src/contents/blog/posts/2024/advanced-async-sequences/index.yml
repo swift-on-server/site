@@ -1,4 +1,3 @@
-type: post
 title: "Advanced Async Sequences"
 description: "Learn how to use and create your own AsyncSequences in Swift."
 image: ./assets/cover.jpg

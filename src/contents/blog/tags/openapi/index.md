@@ -1,5 +1,4 @@
 ---
-type: tag
 title: "OpenAPI"
 description: "OpenAPI is a specification for building APIs that allows developers to describe the structure of their APIs in a machine-readable format."
 image: ./assets/openapi-logo.png

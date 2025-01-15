@@ -1,4 +1,5 @@
 id: author
+location: blog/authors
 template: blog.author.default
 
 context:

@@ -1,4 +1,3 @@
-type: post
 title: "AsyncHTTPClient by example"
 description: "This article offers practical examples to introduce the Swift AsyncHTTPClient library."
 image: ./assets/cover.jpg
