@@ -2,18 +2,25 @@
 <channel>
     <title>Swift on server</title>
     <description></description>
-    <link>https://swiftonserver.com</link>
+    <link>https://swiftonserver.com/</link>
     <language>en-US</language>
-    <lastBuildDate>Mon, 13 Jan 2025 16:10:39 +0000</lastBuildDate>
-    <pubDate>Thu, 09 Jan 2025 09:00:00 +0000</pubDate>
+    <lastBuildDate>Mon, 20 Jan 2025 09:25:08 +0000</lastBuildDate>
+    <pubDate>Mon, 20 Jan 2025 09:00:00 +0000</pubDate>
     <ttl>250</ttl>
-    <atom:link href="https://swiftonserver.comrss.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://swiftonserver.com/rss.xml" rel="self" type="application/rss+xml"/>
 
 <item>
-    <guid isPermaLink="true">https://swiftonserver.com/2025/jwt-kit/</guid>
+    <guid isPermaLink="true">https://swiftonserver.com/hummingbird-and-cors/</guid>
+    <title><![CDATA[ Hummingbird and CORS ]]></title>
+    <description><![CDATA[ Learn how to use Hummingbird and CORS in Swift ]]></description>
+    <link>https://swiftonserver.com/hummingbird-and-cors/</link>
+    <pubDate>Mon, 20 Jan 2025 09:00:00 +0000</pubDate>
+</item>
+<item>
+    <guid isPermaLink="true">https://swiftonserver.com/jwt-kit/</guid>
     <title><![CDATA[ Introduction to JWTs in Swift ]]></title>
     <description><![CDATA[ Learn how to use JWTs in Swift to secure your API ]]></description>
-    <link>https://swiftonserver.com/2025/jwt-kit/</link>
+    <link>https://swiftonserver.com/jwt-kit/</link>
     <pubDate>Thu, 09 Jan 2025 09:00:00 +0000</pubDate>
 </item>
 <item>
