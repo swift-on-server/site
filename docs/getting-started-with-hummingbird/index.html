@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="canonical" href="https://swiftonserver.com/getting-started-with-hummingbird/">
-    <link rel="prev" href="https://swiftonserver.com/developing-with-swift-in-visual-studio-code/">
-    <link rel="next" href="https://swiftonserver.com/getting-started-with-mongokitten/">
+    <link rel="prev" href="https://swiftonserver.com/advanced-async-sequences/">
+    <link rel="next" href="https://swiftonserver.com/beginners-guide-to-protocol-buffers-and-grpc-with-swift/">
 
     <title>Getting Started with Hummingbird - Swift on server</title>
     <meta name="description" content="Learn how to get started with Hummingbird 2, the modern Swift Web Framework.">
@@ -15,37 +15,37 @@
     <meta property="og:url" content="https://swiftonserver.com/getting-started-with-hummingbird/">
     <meta property="og:title" content="Getting Started with Hummingbird - Swift on server">
     <meta property="og:description" content="Learn how to get started with Hummingbird 2, the modern Swift Web Framework.">
-    <meta property="og:image" content="/assets/getting-started-with-hummingbird/cover.jpg" />
+    <meta property="og:image" content="https://swiftonserver.com/assets/getting-started-with-hummingbird/cover.jpg" />
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Getting Started with Hummingbird - Swift on server">
     <meta name="twitter:description" content="Learn how to get started with Hummingbird 2, the modern Swift Web Framework.">
-    <meta name="twitter:image" content="/assets/getting-started-with-hummingbird/cover.jpg">
+    <meta name="twitter:image" content="https://swiftonserver.com/assets/getting-started-with-hummingbird/cover.jpg">
 
-    <link rel="stylesheet" href="/css/modern-normalize.css">
-    <link rel="stylesheet" href="/css/modern-base.css">
-    <link rel="stylesheet" href="/css/variables.css">
-    <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/css/grid.css">
-    <link rel="stylesheet" href="/css/navigation.css">
-    <link rel="stylesheet" href="/css/footer.css">
-    <link rel="stylesheet" href="/css/syntax.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/modern-normalize.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/modern-base.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/variables.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/base.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/grid.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/navigation.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/footer.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/syntax.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/style.css">
 
     
 
-    <link rel="shortcut icon" href="/images/icons/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="/images/icons/icon-320.png" type="image/png">
+    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/icon-320.png" type="image/png">
     
-    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/images/icons/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon-180x180.png">
+    <link rel="apple-touch-icon" href="https://swiftonserver.com/images/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://swiftonserver.com/images/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://swiftonserver.com/images/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://swiftonserver.com/images/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://swiftonserver.com/images/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://swiftonserver.com/images/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://swiftonserver.com/images/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://swiftonserver.com/images/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://swiftonserver.com/images/icons/apple-touch-icon-180x180.png">
 
     <link
         rel="stylesheet"
@@ -88,11 +88,11 @@
             <figure>
                 <picture>
                     <source
-                        srcset="/images/logos/logo~dark.png"
+                        srcset="https://swiftonserver.com/logos/logo~dark.png"
                         media="(prefers-color-scheme: dark)"
                     >
                     <img
-                        src="/images/logos/logo.png"
+                        src="https://swiftonserver.com/images/logos/logo.png"
                         alt="Logo of Swift on server"
                         title="Swift on server"
                     >
@@ -123,27 +123,27 @@
         <div>
             <article class="post">
                 <div class="meta">
-                    <time datetime="2024/09/24">2024/09/24</time>
+                    <time datetime="2024-09-24">2024-09-24</time>
                      &middot; <span class="reading-time">7 min read</span>
                      &middot; <span class="featured">featured</span>
                 </div>
                 <section>
                 
-                <section class='introduction'><h1>Getting Started with Hummingbird</h1></section><section class='details literature'><p><a href='https://hummingbird.codes' target='_blank' rel='external nofollow noopener ugc'>Hummingbird</a> is a robust, feature-rich and performance-oriented web framework for Swift.</p><p>It’s designed for Swift 6, making it the first web framework to do so. In this guide, you’ll learn how to set up a basic Hummingbird project, run it, and create routes to handle requests.</p><h2 id='Setting%20Up'><a href='#Setting%20Up'>Setting Up</a></h2><p>To get started with <code><a href='https://swiftinit.org/docs/hummingbird/hummingbird' target='_blank' rel='external'>Hummingbird</a></code>, you’ll need to set up a new project based on the <a href='https://github.com/hummingbird-project/template' target='_blank' rel='external'>starter template</a>. This template includes everything you need to create and deploy a basic Hummingbird app.</p><p>To create a new project based on the starter template, you can click “Use this template” on the GitHub page or clone the repository using the following command:</p><pre class='snippet'><code class='language-sh'><span class='newline'></span>curl -L https://raw.githubusercontent.com/hummingbird-project/template/main/scripts/download.sh | bash -s &lt;project-name&gt;</code></pre><p>You can also clone the template repository, and run the configure script:</p><pre class='snippet'><code class='language-sh'><span class='newline'></span>git clone https://github.com/hummingbird-project/template<span class='newline'>
+                <section class='introduction'><h1>Getting Started with Hummingbird</h1></section><section class='details literature'><p><a href='https://hummingbird.codes' target='_blank' rel='external nofollow noopener ugc'>Hummingbird</a> is a robust, feature-rich and performance-oriented web framework for Swift.</p><p>It’s designed for Swift 6, making it the first web framework to do so. In this guide, you’ll learn how to set up a basic Hummingbird project, run it, and create routes to handle requests.</p><h2 id='Setting%20Up'><a href='#Setting%20Up'>Setting Up</a></h2><p>To get started with <code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird' target='_blank' rel='external'>Hummingbird</a></code>, you’ll need to set up a new project based on the <a href='https://github.com/hummingbird-project/template' target='_blank' rel='external'>starter template</a>. This template includes everything you need to create and deploy a basic Hummingbird app.</p><p>To create a new project based on the starter template, you can click “Use this template” on the GitHub page or clone the repository using the following command:</p><pre class='snippet'><code class='language-sh'><span class='newline'></span>curl -L https://raw.githubusercontent.com/hummingbird-project/template/main/scripts/download.sh | bash -s &lt;project-name&gt;</code></pre><p>You can also clone the template repository, and run the configure script:</p><pre class='snippet'><code class='language-sh'><span class='newline'></span>git clone https://github.com/hummingbird-project/template<span class='newline'>
 </span>cd template<span class='newline'>
-</span>./configure &lt;path to new project&gt;</code></pre><p>You now have a new Hummingbird project set up, and are ready to start building your application.</p><h3 id='Running%20the%20Project'><a href='#Running%20the%20Project'>Running the Project</a></h3><p>To run your Hummingbird project using Swift Package Manager (SwiftPM), navigate to the root directory of your project and run the following command:</p><pre class='snippet'><code class='language-sh'><span class='newline'></span>swift run</code></pre><p>This will download any dependencies and build your project, before starting the server. You can then navigate to <code>http://localhost:8080</code> in your browser to see your empty Hummingbird app in action.</p><p>When using Xcode, you can double-click on- or otherwise open the <code>Package.swift</code> file. This will open the entire folder as a project. From here, you can build and run your project as normal.</p><p>Finally, you can use Visual Studio Code to develop and run apps as well. More on that in <a href='../developing-with-swift-in-visual-studio-code'>Developing with Swift in Visual Studio Code</a></p><h2 id='Project%20Structure'><a href='#Project%20Structure'>Project Structure</a></h2><p>The Hummingbird project template includes only two files:</p><p><code>App.swift</code> containing your Command Line arguments, and <code><a href='https://swiftinit.org/docs/swift-argument-parser/argumentparser/asyncparsablecommand.run' target='_blank' rel='external'>run</a></code> function. The type is <code>@main</code> annotated, making this is the entrypoint for your app.</p><p>From here, the app calls into <code>buildApplication</code>, which is located in <code>Application+build.swift</code>.</p><p>Once the app is configured in <code>buildApplication</code>, the server is started by calling <code><a href='https://swiftinit.org/docs/hummingbird/hummingbird/application' target='_blank' rel='external'>Application</a>.<a href='https://swiftinit.org/docs/hummingbird/hummingbird/applicationprotocol.runservice(gracefulshutdownsignals:)' target='_blank' rel='external'>runService(gracefulShutdownSignals:)</a></code>.</p><p>Running services starts Hummingbird and all registered dependencies (<code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle/service' target='_blank' rel='external'>Service</a></code>s). This kicks off <code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle' target='_blank' rel='external'>ServiceLifecycle</a></code>, which manages your app’s lifecycle. For now, services are not important to understand in detail, but you can learn about them in detail here: <a href='../introduction-to-swift-service-lifecycle'>Introduction to Swift Service Lifecycle</a></p><h3 id='Configuring%20the%20App'><a href='#Configuring%20the%20App'>Configuring the App</a></h3><p>The <code>buildApplication</code> function is where you configure your Hummingbird <code><a href='https://swiftinit.org/docs/hummingbird/hummingbird/application' target='_blank' rel='external'>Application</a></code>. This is where you register your routes, middleware, and services.</p><p>In essence, an Application just needs an <code><a href='https://swiftinit.org/docs/hummingbird/hummingbird/httpresponder' target='_blank' rel='external'>HTTPResponder</a></code>. This type receives incoming <code><a href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/request' target='_blank' rel='external'>Request</a></code>s from Hummingbird, and responds with a <code><a href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/response' target='_blank' rel='external'>Response</a></code>.</p><p>You can create your own <code><a href='https://swiftinit.org/docs/hummingbird/hummingbird/httpresponder' target='_blank' rel='external'>HTTPResponder</a></code> by conforming to that protocol. Most commonly, you’ll be using one of the router types. The default router type is simply called <code><a href='https://swiftinit.org/docs/hummingbird/hummingbird/router' target='_blank' rel='external'>Router</a></code>.</p><h2 id='Routers,%20Routing%20and%20Routes'><a href='#Routers,%20Routing%20and%20Routes'>Routers, Routing and Routes</a></h2><p>Routers are objects that take incoming requests route them to the appropriate handler. Handlers are simply functions that take a <code><a href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/request' target='_blank' rel='external'>Request</a></code> and return a <code><a href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/response' target='_blank' rel='external'>Response</a></code>. They’re the core of your backend logic.</p><p>Each of these route handlers is registered to a <code><a href='https://swiftinit.org/docs/hummingbird/hummingbird/routerpath' target='_blank' rel='external'>RouterPath</a></code>. When an incoming request is received, the <code><a href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/request.uri' target='_blank' rel='external'>uri</a></code> and <code><a href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/request.method' target='_blank' rel='external'>method</a></code> are matched against the registered paths. If a match is found, the handler is called with that request.</p><p>There are two default routers in Hummingbird. The basic <code><a href='https://swiftinit.org/docs/hummingbird/hummingbird/router' target='_blank' rel='external'>Router</a></code> uses a Trie to organise routes. There’s also a separate <code><a href='https://swiftinit.org/docs/hummingbird/hummingbirdrouter' target='_blank' rel='external'>HummingbirdRouter</a></code> module can be opted-into, which contains a result-builder style router called <code><a href='https://swiftinit.org/docs/hummingbird/hummingbirdrouter/routerbuilder' target='_blank' rel='external'>RouterBuilder</a></code>.</p><p>Both are roughly equivalent in performance. While the RouterBuilder is faster in small apps, the regular (trie-based) Router scales much better to bigger apps.</p><p>You can read up on the result builder routers <a href='https://docs.hummingbird.codes/2.0/documentation/hummingbirdrouter' target='_blank' rel='external nofollow noopener ugc'>here</a>.</p><h3 id='Context'><a href='#Context'>Context</a></h3><p>Before adding routes, a Router is created:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>typealias</span> <span class='xv'>AppRequestContext</span> = <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbird/basicrequestcontext' target='_blank' rel='external'>BasicRequestContext</a><span class='newline'>
-</span><span class='xk'>let</span> <span class='xv'>router</span> = <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbird/router' target='_blank' rel='external'>Router</a>(<span class='xv'>context</span>: <span class='xv'>AppRequestContext</span>.<span class='xk'>self</span>)</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/HummingbirdApp.swift#L5' target='_blank' class='source github'><span class='file'>HummingbirdApp.swift</span>:<span class='line'>5</span></a><p>Notice that a “context” is provided here. An instance of this context is created for each request that passes through your Hummingbird server. The default one is <code><a href='https://swiftinit.org/docs/hummingbird/hummingbird/basicrequestcontext' target='_blank' rel='external'>BasicRequestContext</a></code>, but you can customise this to your needs. A context must be a concrete type, and can conform to many protocols. Through this system, you can integrate with various different libraries that need to inject or read properties.</p><h3 id='Adding%20a%20Route'><a href='#Adding%20a%20Route'>Adding a Route</a></h3><p>In the template, the first route has already been created. This is a <code>GET /health</code> route, as indicated in the function signature:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xv'>router</span>.<a class='xv' href='https://swiftinit.org/docs/hummingbird/hummingbird/routermethods.get(_:use:)' target='_blank' rel='external'>get</a>(<a class='xs' href='https://swiftinit.org/docs/hummingbird/hummingbird/routerpath.init(stringliteral:)' target='_blank' rel='external'>"/health"</a>) { _, _ -&gt; <a class='xt' href='https://swiftinit.org/docs/swift-http-types/httptypes/httpresponse' target='_blank' rel='external'>HTTPResponse</a>.<a class='xt' href='https://swiftinit.org/docs/swift-http-types/httptypes/httpresponse/status' target='_blank' rel='external'>Status</a> <span class='xk'>in</span><span class='newline'>
+</span>./configure &lt;path to new project&gt;</code></pre><p>You now have a new Hummingbird project set up, and are ready to start building your application.</p><h3 id='Running%20the%20Project'><a href='#Running%20the%20Project'>Running the Project</a></h3><p>To run your Hummingbird project using Swift Package Manager (SwiftPM), navigate to the root directory of your project and run the following command:</p><pre class='snippet'><code class='language-sh'><span class='newline'></span>swift run</code></pre><p>This will download any dependencies and build your project, before starting the server. You can then navigate to <code>http://localhost:8080</code> in your browser to see your empty Hummingbird app in action.</p><p>When using Xcode, you can double-click on- or otherwise open the <code>Package.swift</code> file. This will open the entire folder as a project. From here, you can build and run your project as normal.</p><p>Finally, you can use Visual Studio Code to develop and run apps as well. More on that in <a href='../developing-with-swift-in-visual-studio-code'>Developing with Swift in Visual Studio Code</a></p><h2 id='Project%20Structure'><a href='#Project%20Structure'>Project Structure</a></h2><p>The Hummingbird project template includes only two files:</p><p><code>App.swift</code> containing your Command Line arguments, and <code><a href='https://swiftinit.org/docs/swift-argument-parser/argumentparser/asyncparsablecommand.run' target='_blank' rel='external'>run</a></code> function. The type is <code>@main</code> annotated, making this is the entrypoint for your app.</p><p>From here, the app calls into <code>buildApplication</code>, which is located in <code>Application+build.swift</code>.</p><p>Once the app is configured in <code>buildApplication</code>, the server is started by calling <code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/application' target='_blank' rel='external'>Application</a>.<a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/applicationprotocol.runservice(gracefulshutdownsignals:)' target='_blank' rel='external'>runService(gracefulShutdownSignals:)</a></code>.</p><p>Running services starts Hummingbird and all registered dependencies (<code><a href='https://swiftinit.org/hist/swift-service-lifecycle:2.6.3/servicelifecycle/service' target='_blank' rel='external'>Service</a></code>s). This kicks off <code><a href='https://swiftinit.org/hist/swift-service-lifecycle:2.6.3/servicelifecycle' target='_blank' rel='external'>ServiceLifecycle</a></code>, which manages your app’s lifecycle. For now, services are not important to understand in detail, but you can learn about them in detail here: <a href='../introduction-to-swift-service-lifecycle'>Introduction to Swift Service Lifecycle</a></p><h3 id='Configuring%20the%20App'><a href='#Configuring%20the%20App'>Configuring the App</a></h3><p>The <code>buildApplication</code> function is where you configure your Hummingbird <code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/application' target='_blank' rel='external'>Application</a></code>. This is where you register your routes, middleware, and services.</p><p>In essence, an Application just needs an <code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/httpresponder' target='_blank' rel='external'>HTTPResponder</a></code>. This type receives incoming <code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbirdcore/request' target='_blank' rel='external'>Request</a></code>s from Hummingbird, and responds with a <code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbirdcore/response' target='_blank' rel='external'>Response</a></code>.</p><p>You can create your own <code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/httpresponder' target='_blank' rel='external'>HTTPResponder</a></code> by conforming to that protocol. Most commonly, you’ll be using one of the router types. The default router type is simply called <code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/router' target='_blank' rel='external'>Router</a></code>.</p><h2 id='Routers,%20Routing%20and%20Routes'><a href='#Routers,%20Routing%20and%20Routes'>Routers, Routing and Routes</a></h2><p>Routers are objects that take incoming requests route them to the appropriate handler. Handlers are simply functions that take a <code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbirdcore/request' target='_blank' rel='external'>Request</a></code> and return a <code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbirdcore/response' target='_blank' rel='external'>Response</a></code>. They’re the core of your backend logic.</p><p>Each of these route handlers is registered to a <code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/routerpath' target='_blank' rel='external'>RouterPath</a></code>. When an incoming request is received, the <code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbirdcore/request.uri' target='_blank' rel='external'>uri</a></code> and <code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbirdcore/request.method' target='_blank' rel='external'>method</a></code> are matched against the registered paths. If a match is found, the handler is called with that request.</p><p>There are two default routers in Hummingbird. The basic <code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/router' target='_blank' rel='external'>Router</a></code> uses a Trie to organise routes. There’s also a separate <code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbirdrouter' target='_blank' rel='external'>HummingbirdRouter</a></code> module can be opted-into, which contains a result-builder style router called <code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbirdrouter/routerbuilder' target='_blank' rel='external'>RouterBuilder</a></code>.</p><p>Both are roughly equivalent in performance. While the RouterBuilder is faster in small apps, the regular (trie-based) Router scales much better to bigger apps.</p><p>You can read up on the result builder routers <a href='https://docs.hummingbird.codes/2.0/documentation/hummingbirdrouter' target='_blank' rel='external nofollow noopener ugc'>here</a>.</p><h3 id='Context'><a href='#Context'>Context</a></h3><p>Before adding routes, a Router is created:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>typealias</span> <span class='xv'>AppRequestContext</span> = <a class='xt' href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/basicrequestcontext' target='_blank' rel='external'>BasicRequestContext</a><span class='newline'>
+</span><span class='xk'>let</span> <span class='xv'>router</span> = <a class='xt' href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/router' target='_blank' rel='external'>Router</a>(<span class='xv'>context</span>: <span class='xv'>AppRequestContext</span>.<span class='xk'>self</span>)</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/HummingbirdApp.swift#L5' target='_blank' class='source github'><span class='file'>HummingbirdApp.swift</span>:<span class='line'>5</span></a><p>Notice that a “context” is provided here. An instance of this context is created for each request that passes through your Hummingbird server. The default one is <code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/basicrequestcontext' target='_blank' rel='external'>BasicRequestContext</a></code>, but you can customise this to your needs. A context must be a concrete type, and can conform to many protocols. Through this system, you can integrate with various different libraries that need to inject or read properties.</p><h3 id='Adding%20a%20Route'><a href='#Adding%20a%20Route'>Adding a Route</a></h3><p>In the template, the first route has already been created. This is a <code>GET /health</code> route, as indicated in the function signature:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xv'>router</span>.<a class='xv' href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/routermethods.get(_:use:)' target='_blank' rel='external'>get</a>(<a class='xs' href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/routerpath.init(stringliteral:)' target='_blank' rel='external'>"/health"</a>) { _, _ -&gt; <a class='xt' href='https://swiftinit.org/docs/swift-http-types/httptypes/httpresponse' target='_blank' rel='external'>HTTPResponse</a>.<a class='xt' href='https://swiftinit.org/docs/swift-http-types/httptypes/httpresponse/status' target='_blank' rel='external'>Status</a> <span class='xk'>in</span><span class='newline'>
 </span>    <span class='xk'>return</span> .<a class='xv' href='https://swiftinit.org/docs/swift-http-types/httptypes/httpresponse/status.ok' target='_blank' rel='external'>ok</a><span class='newline'>
-</span>}</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/HummingbirdApp.swift#L10' target='_blank' class='source github'><span class='file'>HummingbirdApp.swift</span>:<span class='line'>10</span></a><p>This route is a simple health check that returns a 200 OK status code. You can test this route by navigating to <code>http://localhost:8080/health</code> in your browser. Although it returns a status code, the body is empty, meaning you’ll see an empty page.</p><p>A route handler has two input parameters: a <code><a href='https://swiftinit.org/docs/hummingbird/hummingbirdcore/request' target='_blank' rel='external'>Request</a></code> first, and the Context second. Since the AppRequestContext is set to <code><a href='https://swiftinit.org/docs/hummingbird/hummingbird/basicrequestcontext' target='_blank' rel='external'>BasicRequestContext</a></code>, you’ll find that type in here.</p><p>Let’s add a new GET route at the <code>/</code> path. This means that visiting your server at <code>http://localhost:8080</code> you’ll see the response.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xv'>router</span>.<a class='xv' href='https://swiftinit.org/docs/hummingbird/hummingbird/routermethods.get(_:use:)' target='_blank' rel='external'>get</a>(<a class='xs' href='https://swiftinit.org/docs/hummingbird/hummingbird/routerpath.init(stringliteral:)' target='_blank' rel='external'>"/"</a>) { _, _ -&gt; <a class='xt' href='https://swiftinit.org/docs/swift/swift/string' target='_blank' rel='external'>String</a> <span class='xk'>in</span><span class='newline'>
+</span>}</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/HummingbirdApp.swift#L10' target='_blank' class='source github'><span class='file'>HummingbirdApp.swift</span>:<span class='line'>10</span></a><p>This route is a simple health check that returns a 200 OK status code. You can test this route by navigating to <code>http://localhost:8080/health</code> in your browser. Although it returns a status code, the body is empty, meaning you’ll see an empty page.</p><p>A route handler has two input parameters: a <code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbirdcore/request' target='_blank' rel='external'>Request</a></code> first, and the Context second. Since the AppRequestContext is set to <code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/basicrequestcontext' target='_blank' rel='external'>BasicRequestContext</a></code>, you’ll find that type in here.</p><p>Let’s add a new GET route at the <code>/</code> path. This means that visiting your server at <code>http://localhost:8080</code> you’ll see the response.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xv'>router</span>.<a class='xv' href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/routermethods.get(_:use:)' target='_blank' rel='external'>get</a>(<a class='xs' href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/routerpath.init(stringliteral:)' target='_blank' rel='external'>"/"</a>) { _, _ -&gt; <a class='xt' href='https://swiftinit.org/docs/swift/swift/string' target='_blank' rel='external'>String</a> <span class='xk'>in</span><span class='newline'>
 </span>    <span class='xk'>return</span> <span class='xs'>"My app works!"</span><span class='newline'>
-</span>}</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/HummingbirdApp.swift#L16' target='_blank' class='source github'><span class='file'>HummingbirdApp.swift</span>:<span class='line'>16</span></a><p>Rebuild and re-run your app, using Xcode, <code>swift run</code> or your other preferred method. Note that we’ve changed the return type to <code><a href='https://swiftinit.org/docs/swift/swift/string' target='_blank' rel='external'>String</a></code> to return a body.</p><p>You can return any type that conforms to <code><a href='https://swiftinit.org/docs/hummingbird/hummingbird/responsegenerator' target='_blank' rel='external'>ResponseGenerator</a></code>. A full list of these types can be found <a href='https://swiftinit.org/ptcl/hummingbird/hummingbird/responsegenerator' target='_blank' rel='external'>here</a>.</p><p>Now, when you navigate to <code>http://localhost:8080</code>, you’ll see the message “My app works!”.</p><h2 id='Responses'><a href='#Responses'>Responses</a></h2><p>While returning these simple types is a nice way to get started, you’ll quickly find that you need to return more complex responses. Hummingbird embraces Codable for this, although any other system can be used as well.</p><p>Create a type that conforms to <code><a href='https://swiftinit.org/docs/hummingbird/hummingbird/responsecodable' target='_blank' rel='external'>ResponseCodable</a></code>, and return that from your route handler. This type will be encoded to the response body.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>struct</span> <span class='xv'>MyResponse</span>: <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbird/responsecodable' target='_blank' rel='external'>ResponseCodable</a> {<span class='newline'>
+</span>}</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/HummingbirdApp.swift#L16' target='_blank' class='source github'><span class='file'>HummingbirdApp.swift</span>:<span class='line'>16</span></a><p>Rebuild and re-run your app, using Xcode, <code>swift run</code> or your other preferred method. Note that we’ve changed the return type to <code><a href='https://swiftinit.org/docs/swift/swift/string' target='_blank' rel='external'>String</a></code> to return a body.</p><p>You can return any type that conforms to <code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/responsegenerator' target='_blank' rel='external'>ResponseGenerator</a></code>. A full list of these types can be found <a href='https://swiftinit.org/ptcl/hummingbird/hummingbird/responsegenerator' target='_blank' rel='external'>here</a>.</p><p>Now, when you navigate to <code>http://localhost:8080</code>, you’ll see the message “My app works!”.</p><h2 id='Responses'><a href='#Responses'>Responses</a></h2><p>While returning these simple types is a nice way to get started, you’ll quickly find that you need to return more complex responses. Hummingbird embraces Codable for this, although any other system can be used as well.</p><p>Create a type that conforms to <code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/responsecodable' target='_blank' rel='external'>ResponseCodable</a></code>, and return that from your route handler. This type will be encoded to the response body.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>struct</span> <span class='xv'>MyResponse</span>: <a class='xt' href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/responsecodable' target='_blank' rel='external'>ResponseCodable</a> {<span class='newline'>
 </span>    <span class='xk'>let</span> <span class='xv'>message</span>: <a class='xt' href='https://swiftinit.org/docs/swift/swift/string' target='_blank' rel='external'>String</a><span class='newline'>
 </span>}<span class='newline'>
 
-</span><span class='xv'>router</span>.<a class='xv' href='https://swiftinit.org/docs/hummingbird/hummingbird/routermethods.get(_:use:)' target='_blank' rel='external'>get</a>(<a class='xs' href='https://swiftinit.org/docs/hummingbird/hummingbird/routerpath.init(stringliteral:)' target='_blank' rel='external'>"/message"</a>) { _, _ -&gt; <span class='xt'>MyResponse</span> <span class='xk'>in</span><span class='newline'>
+</span><span class='xv'>router</span>.<a class='xv' href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/routermethods.get(_:use:)' target='_blank' rel='external'>get</a>(<a class='xs' href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/routerpath.init(stringliteral:)' target='_blank' rel='external'>"/message"</a>) { _, _ -&gt; <span class='xt'>MyResponse</span> <span class='xk'>in</span><span class='newline'>
 </span>    <span class='xk'>return</span> <span class='xv'>MyResponse</span>(<span class='xv'>message</span>: <span class='xs'>"Hello, world!"</span>)<span class='newline'>
-</span>}</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/HummingbirdApp.swift#L22' target='_blank' class='source github'><span class='file'>HummingbirdApp.swift</span>:<span class='line'>22</span></a><p>This route will return a JSON response with the message “Hello, world!” encoded within!</p><p>From here, just run the app!</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>let</span> <span class='xv'>app</span> = <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbird/application' target='_blank' rel='external'>Application</a>(<span class='xv'>router</span>: <span class='xv'>router</span>)<span class='newline'>
-</span><span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>app</span>.<a class='xv' href='https://swiftinit.org/docs/hummingbird/hummingbird/applicationprotocol.runservice(gracefulshutdownsignals:)' target='_blank' rel='external'>runService</a>()</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/HummingbirdApp.swift#L32' target='_blank' class='source github'><span class='file'>HummingbirdApp.swift</span>:<span class='line'>32</span></a><h2 id='Conclusion'><a href='#Conclusion'>Conclusion</a></h2><p>In this guide, you’ve learned how to set up a new Hummingbird project, run it, and create routes to handle requests. You also learned how to return simple and complex responses. With this foundation, you’re ready to start building your own Hummingbird applications! For more advanced topics, check out the <a href='https://docs.hummingbird.codes' target='_blank' rel='external nofollow noopener ugc'>Hummingbird documentation</a> and our other tutorials! Happy coding!</p></section><div style='display: none;' id='swiftinit-tooltips'><a href='/docs/hummingbird/hummingbird'><pre><code><span class='xk'>import</span> <span class='xv'>Hummingbird</span></code></pre></a><a href='/hist/swift-on-server.articles:main/articles/developing-with-swift-in-visual-studio-code'><p>Swift is a great language for developing applications for Apple platforms, and is easily set up using Xcode. However, Xcode is only available for macOS, and does not support a wide variety of extensions.</p></a><a href='/docs/swift-argument-parser/argumentparser/asyncparsablecommand.run'><pre><code><span class='xk'>mutating</span> <span class='xk'>func</span> <span class='xv'>run</span>(<wbr>) <span class='xk'>async</span> <span class='xk'>throws</span></code></pre><p>The behavior or functionality of this command.</p></a><a href='/docs/hummingbird/hummingbird/applicationprotocol.runservice(gracefulshutdownsignals:)'><pre><code><span class='xk'>func</span> <span class='xv'>runService</span>(<span class='xi'></span><span class='xv'>gracefulShutdownSignals</span>: [<span class='xt'>UnixSignal</span>] = [.<span class='xv'>sigterm</span>, .<span class='xv'>sigint</span>]<wbr>) <span class='xk'>async</span> <span class='xk'>throws</span></code></pre><p>Helper function that runs application inside a ServiceGroup which will gracefully shutdown on signals SIGINT, SIGTERM</p></a><a href='/docs/hummingbird/hummingbird/application'><pre><code><span class='xk'>struct</span> <span class='xv'>Application</span>&lt;<span class='xu'>Responder</span>&gt; <span class='xk'>where</span> <span class='xt'>Responder</span> : <span class='xt'>HTTPResponder</span>, <span class='xt'>Responder</span>.<span class='xt'>Context</span> : <span class='xt'>InitializableFromSource</span>, <span class='xt'>Responder</span>.<span class='xt'>Context</span>.<span class='xt'>Source</span> <span class='xo'>==</span> <span class='xt'>ApplicationRequestContextSource</span></code></pre><p>Application class. Brings together all the components of Hummingbird together</p></a><a href='/docs/swift-service-lifecycle/servicelifecycle/service'><pre><code><span class='xk'>protocol</span> <span class='xv'>Service</span> : <span class='xt'>Sendable</span></code></pre><p>This is the basic protocol that a service has to implement.</p></a><a href='/docs/swift-service-lifecycle/servicelifecycle'><pre><code><span class='xk'>import</span> <span class='xv'>ServiceLifecycle</span></code></pre><p>A library for cleanly starting up and shutting down applications.</p></a><a href='/hist/swift-on-server.articles:main/articles/introduction-to-swift-service-lifecycle'><p>The <a>Swift Service Lifecycle</a> library helps to manage application lifecycle by providing a unified start and stop mechanism. It also features a signal-based shutdown hook, allowing users to gracefully shut down and clean up resources before the application exits.</p></a><a href='/docs/hummingbird/hummingbird/httpresponder'><pre><code><span class='xk'>protocol</span> <span class='xv'>HTTPResponder</span>&lt;<span class='xv'>Context</span>&gt; : <span class='xt'>Sendable</span></code></pre><p>Protocol for object that produces a response given a request</p></a><a href='/docs/hummingbird/hummingbirdcore/request'><pre><code><span class='xk'>struct</span> <span class='xv'>Request</span></code></pre><p>Holds all the values required to process a request</p></a><a href='/docs/hummingbird/hummingbirdcore/response'><pre><code><span class='xk'>struct</span> <span class='xv'>Response</span></code></pre><p>Holds all the required to generate a HTTP Response</p></a><a href='/docs/hummingbird/hummingbird/router'><pre><code><span class='xk'>final</span> <span class='xk'>class</span> <span class='xv'>Router</span>&lt;<span class='xu'>Context</span>&gt; <span class='xk'>where</span> <span class='xt'>Context</span> : <span class='xt'>RequestContext</span></code></pre><p>Create rules for routing requests and then create <code>Responder</code> that will follow these rules.</p></a><a href='/docs/hummingbird/hummingbird/routerpath'><pre><code><span class='xk'>struct</span> <span class='xv'>RouterPath</span></code></pre><p>Split router path into components</p></a><a href='/docs/hummingbird/hummingbirdcore/request.uri'><pre><code><span class='xk'>let</span> <span class='xv'>uri</span>: <span class='xt'>URI</span></code></pre><p>URI path</p></a><a href='/docs/hummingbird/hummingbirdcore/request.method'><pre><code><span class='xk'>var</span> <span class='xv'>method</span>: <span class='xt'>HTTPRequest</span>.<span class='xt'>Method</span> { <span class='xk'>get</span> }</code></pre><p>Request HTTP method</p></a><a href='/docs/hummingbird/hummingbirdrouter'><pre><code><span class='xk'>import</span> <span class='xv'>HummingbirdRouter</span></code></pre></a><a href='/docs/hummingbird/hummingbirdrouter/routerbuilder'><pre><code><span class='xk'>struct</span> <span class='xv'>RouterBuilder</span>&lt;<span class='xu'>Context</span>, <span class='xu'>Handler</span>&gt; <span class='xk'>where</span> <span class='xt'>Context</span> : <span class='xt'>RouterRequestContext</span>, <span class='xt'>Context</span> <span class='xo'>==</span> <span class='xt'>Handler</span>.<span class='xt'>Context</span>, <span class='xt'>Handler</span> : <span class='xt'>MiddlewareProtocol</span>, <span class='xt'>Handler</span>.<span class='xt'>Input</span> <span class='xo'>==</span> <span class='xt'>Request</span>, <span class='xt'>Handler</span>.<span class='xt'>Output</span> <span class='xo'>==</span> <span class='xt'>Response</span></code></pre><p>Router built using a result builder</p></a><a href='/docs/hummingbird/hummingbird/basicrequestcontext'><pre><code><span class='xk'>struct</span> <span class='xv'>BasicRequestContext</span></code></pre><p>Implementation of a basic request context that supports everything the Hummingbird library needs</p></a><a href='/docs/hummingbird/hummingbird/routermethods.get(_:use:)'><pre><code><span class='xa'>@discardableResult</span> <span class='xk'>func</span> <span class='xv'>get</span>(<span class='xi'></span>_ <span class='xb'>path</span>: <span class='xt'>RouterPath</span> = <span class='xs'>""</span>, <span class='xi'></span><span class='xv'>use</span> <span class='xb'>handler</span>: <span class='xa'>@escaping</span> (<span class='xt'>Request</span>, <span class='xt'>Context</span>) <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <span class='xk'>some</span> <span class='xt'>ResponseGenerator</span><wbr>) -&gt; <span class='xk'>Self</span></code></pre><p>GET path for async closure returning type conforming to ResponseGenerator</p></a><a href='/docs/hummingbird/hummingbird/routerpath.init(stringliteral:)'><pre><code><span class='xk'>init</span>(<span class='xi'></span><span class='xv'>stringLiteral</span> <span class='xb'>value</span>: <span class='xt'>String</span><wbr>)</code></pre><p>Initialize RouterPath from String literal</p></a><a href='/docs/swift-http-types/httptypes/httpresponse'><pre><code><span class='xk'>struct</span> <span class='xv'>HTTPResponse</span></code></pre><p>An HTTP response message consisting of the “:status” pseudo header field and header fields.</p></a><a href='/docs/swift-http-types/httptypes/httpresponse/status'><pre><code><span class='xk'>struct</span> <span class='xv'>Status</span></code></pre><p>The response status consisting of a 3-digit status code and a reason phrase. The reason phrase is ignored by modern HTTP versions.</p></a><a href='/docs/swift-http-types/httptypes/httpresponse/status.ok'><pre><code><span class='xk'>static</span> <span class='xk'>var</span> <span class='xv'>ok</span>: <span class='xt'>`Self`</span> { <span class='xk'>get</span> }</code></pre><p>200 OK</p></a><a href='/docs/swift/swift/string'><pre><code><span class='xa'>@frozen</span> <span class='xk'>struct</span> <span class='xv'>String</span></code></pre><p>A Unicode string value that is a collection of characters.</p></a><a href='/docs/hummingbird/hummingbird/responsegenerator'><pre><code><span class='xk'>protocol</span> <span class='xv'>ResponseGenerator</span></code></pre><p>Object that can generate a <code>Response</code>.</p></a><a href='/docs/hummingbird/hummingbird/responsecodable'><pre><code><span class='xk'>protocol</span> <span class='xv'>ResponseCodable</span> : <span class='xt'>ResponseEncodable</span>, <span class='xt'>Decodable</span></code></pre><p>Protocol for codable object that can generate a response</p></a></div>
+</span>}</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/HummingbirdApp.swift#L22' target='_blank' class='source github'><span class='file'>HummingbirdApp.swift</span>:<span class='line'>22</span></a><p>This route will return a JSON response with the message “Hello, world!” encoded within!</p><p>From here, just run the app!</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>let</span> <span class='xv'>app</span> = <a class='xt' href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/application' target='_blank' rel='external'>Application</a>(<span class='xv'>router</span>: <span class='xv'>router</span>)<span class='newline'>
+</span><span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>app</span>.<a class='xv' href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/applicationprotocol.runservice(gracefulshutdownsignals:)' target='_blank' rel='external'>runService</a>()</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/HummingbirdApp.swift#L32' target='_blank' class='source github'><span class='file'>HummingbirdApp.swift</span>:<span class='line'>32</span></a><h2 id='Conclusion'><a href='#Conclusion'>Conclusion</a></h2><p>In this guide, you’ve learned how to set up a new Hummingbird project, run it, and create routes to handle requests. You also learned how to return simple and complex responses. With this foundation, you’re ready to start building your own Hummingbird applications! For more advanced topics, check out the <a href='https://docs.hummingbird.codes' target='_blank' rel='external nofollow noopener ugc'>Hummingbird documentation</a> and our other tutorials! Happy coding!</p></section><div style='display: none;' id='swiftinit-tooltips'><a href='/hist/hummingbird:2.6.2/hummingbird'><pre><code><span class='xk'>import</span> <span class='xv'>Hummingbird</span></code></pre></a><a href='/hist/swift-on-server.articles:main/articles/developing-with-swift-in-visual-studio-code'><p>Swift is a great language for developing applications for Apple platforms, and is easily set up using Xcode. However, Xcode is only available for macOS, and does not support a wide variety of extensions.</p></a><a href='/docs/swift-argument-parser/argumentparser/asyncparsablecommand.run'><pre><code><span class='xk'>mutating</span> <span class='xk'>func</span> <span class='xv'>run</span>(<wbr>) <span class='xk'>async</span> <span class='xk'>throws</span></code></pre><p>The behavior or functionality of this command.</p></a><a href='/hist/hummingbird:2.6.2/hummingbird/applicationprotocol.runservice(gracefulshutdownsignals:)'><pre><code><span class='xk'>func</span> <span class='xv'>runService</span>(<span class='xi'></span><span class='xv'>gracefulShutdownSignals</span>: [<span class='xt'>UnixSignal</span>] = [.<span class='xv'>sigterm</span>, .<span class='xv'>sigint</span>]<wbr>) <span class='xk'>async</span> <span class='xk'>throws</span></code></pre><p>Helper function that runs application inside a ServiceGroup which will gracefully shutdown on signals SIGINT, SIGTERM</p></a><a href='/hist/hummingbird:2.6.2/hummingbird/application'><pre><code><span class='xk'>struct</span> <span class='xv'>Application</span>&lt;<span class='xu'>Responder</span>&gt; <span class='xk'>where</span> <span class='xt'>Responder</span> : <span class='xt'>HTTPResponder</span>, <span class='xt'>Responder</span>.<span class='xt'>Context</span> : <span class='xt'>InitializableFromSource</span>, <span class='xt'>Responder</span>.<span class='xt'>Context</span>.<span class='xt'>Source</span> <span class='xo'>==</span> <span class='xt'>ApplicationRequestContextSource</span></code></pre><p>Application class. Brings together all the components of Hummingbird together</p></a><a href='/hist/swift-service-lifecycle:2.6.3/servicelifecycle/service'><pre><code><span class='xk'>protocol</span> <span class='xv'>Service</span> : <span class='xt'>Sendable</span></code></pre><p>This is the basic protocol that a service has to implement.</p></a><a href='/hist/swift-service-lifecycle:2.6.3/servicelifecycle'><pre><code><span class='xk'>import</span> <span class='xv'>ServiceLifecycle</span></code></pre><p>A library for cleanly starting up and shutting down applications.</p></a><a href='/hist/swift-on-server.articles:main/articles/introduction-to-swift-service-lifecycle'><p>The <a>Swift Service Lifecycle</a> library helps to manage application lifecycle by providing a unified start and stop mechanism. It also features a signal-based shutdown hook, allowing users to gracefully shut down and clean up resources before the application exits.</p></a><a href='/hist/hummingbird:2.6.2/hummingbird/httpresponder'><pre><code><span class='xk'>protocol</span> <span class='xv'>HTTPResponder</span>&lt;<span class='xv'>Context</span>&gt; : <span class='xt'>Sendable</span></code></pre><p>Protocol for object that produces a response given a request</p></a><a href='/hist/hummingbird:2.6.2/hummingbirdcore/request'><pre><code><span class='xk'>struct</span> <span class='xv'>Request</span></code></pre><p>Holds all the values required to process a request</p></a><a href='/hist/hummingbird:2.6.2/hummingbirdcore/response'><pre><code><span class='xk'>struct</span> <span class='xv'>Response</span></code></pre><p>Holds all the required to generate a HTTP Response</p></a><a href='/hist/hummingbird:2.6.2/hummingbird/router'><pre><code><span class='xk'>final</span> <span class='xk'>class</span> <span class='xv'>Router</span>&lt;<span class='xu'>Context</span>&gt; <span class='xk'>where</span> <span class='xt'>Context</span> : <span class='xt'>RequestContext</span></code></pre><p>Create rules for routing requests and then create <code>Responder</code> that will follow these rules.</p></a><a href='/hist/hummingbird:2.6.2/hummingbird/routerpath'><pre><code><span class='xk'>struct</span> <span class='xv'>RouterPath</span></code></pre><p>Split router path into components</p></a><a href='/hist/hummingbird:2.6.2/hummingbirdcore/request.uri'><pre><code><span class='xk'>let</span> <span class='xv'>uri</span>: <span class='xt'>URI</span></code></pre><p>URI path</p></a><a href='/hist/hummingbird:2.6.2/hummingbirdcore/request.method'><pre><code><span class='xk'>var</span> <span class='xv'>method</span>: <span class='xt'>HTTPRequest</span>.<span class='xt'>Method</span> { <span class='xk'>get</span> }</code></pre><p>Request HTTP method</p></a><a href='/hist/hummingbird:2.6.2/hummingbirdrouter'><pre><code><span class='xk'>import</span> <span class='xv'>HummingbirdRouter</span></code></pre></a><a href='/hist/hummingbird:2.6.2/hummingbirdrouter/routerbuilder'><pre><code><span class='xk'>struct</span> <span class='xv'>RouterBuilder</span>&lt;<span class='xu'>Context</span>, <span class='xu'>Handler</span>&gt; <span class='xk'>where</span> <span class='xt'>Context</span> : <span class='xt'>RouterRequestContext</span>, <span class='xt'>Context</span> <span class='xo'>==</span> <span class='xt'>Handler</span>.<span class='xt'>Context</span>, <span class='xt'>Handler</span> : <span class='xt'>MiddlewareProtocol</span>, <span class='xt'>Handler</span>.<span class='xt'>Input</span> <span class='xo'>==</span> <span class='xt'>Request</span>, <span class='xt'>Handler</span>.<span class='xt'>Output</span> <span class='xo'>==</span> <span class='xt'>Response</span></code></pre><p>Router built using a result builder</p></a><a href='/hist/hummingbird:2.6.2/hummingbird/basicrequestcontext'><pre><code><span class='xk'>struct</span> <span class='xv'>BasicRequestContext</span></code></pre><p>Implementation of a basic request context that supports everything the Hummingbird library needs</p></a><a href='/hist/hummingbird:2.6.2/hummingbird/routermethods.get(_:use:)'><pre><code><span class='xa'>@discardableResult</span> <span class='xk'>func</span> <span class='xv'>get</span>(<span class='xi'></span>_ <span class='xb'>path</span>: <span class='xt'>RouterPath</span> = <span class='xs'>""</span>, <span class='xi'></span><span class='xv'>use</span> <span class='xb'>handler</span>: <span class='xa'>@escaping</span> (<span class='xt'>Request</span>, <span class='xt'>Context</span>) <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <span class='xk'>some</span> <span class='xt'>ResponseGenerator</span><wbr>) -&gt; <span class='xk'>Self</span></code></pre><p>GET path for async closure returning type conforming to ResponseGenerator</p></a><a href='/hist/hummingbird:2.6.2/hummingbird/routerpath.init(stringliteral:)'><pre><code><span class='xk'>init</span>(<span class='xi'></span><span class='xv'>stringLiteral</span> <span class='xb'>value</span>: <span class='xt'>String</span><wbr>)</code></pre><p>Initialize RouterPath from String literal</p></a><a href='/docs/swift-http-types/httptypes/httpresponse'><pre><code><span class='xk'>struct</span> <span class='xv'>HTTPResponse</span></code></pre><p>An HTTP response message consisting of the “:status” pseudo header field and header fields.</p></a><a href='/docs/swift-http-types/httptypes/httpresponse/status'><pre><code><span class='xk'>struct</span> <span class='xv'>Status</span></code></pre><p>The response status consisting of a 3-digit status code and a reason phrase. The reason phrase is ignored by modern HTTP versions.</p></a><a href='/docs/swift-http-types/httptypes/httpresponse/status.ok'><pre><code><span class='xk'>static</span> <span class='xk'>var</span> <span class='xv'>ok</span>: <span class='xt'>`Self`</span> { <span class='xk'>get</span> }</code></pre><p>200 OK</p></a><a href='/docs/swift/swift/string'><pre><code><span class='xa'>@frozen</span> <span class='xk'>struct</span> <span class='xv'>String</span></code></pre><p>A Unicode string value that is a collection of characters.</p></a><a href='/hist/hummingbird:2.6.2/hummingbird/responsegenerator'><pre><code><span class='xk'>protocol</span> <span class='xv'>ResponseGenerator</span></code></pre><p>Object that can generate a <code>Response</code>.</p></a><a href='/hist/hummingbird:2.6.2/hummingbird/responsecodable'><pre><code><span class='xk'>protocol</span> <span class='xv'>ResponseCodable</span> : <span class='xt'>ResponseEncodable</span>, <span class='xt'>Decodable</span></code></pre><p>Protocol for codable object that can generate a response</p></a></div>
                     
                 </section>
     
@@ -154,7 +154,7 @@
                     
                     <div class="author-list">
                         <a href="https://swiftonserver.com/authors/joannis-orlandos/">
-                        <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                        <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                         <span class="name">Joannis Orlandos</span>
                         </a>
                     </div>
@@ -171,59 +171,13 @@
                             
                             
                             <div class="author-list">
-                                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
-                                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
-                                </a>
-                            </div>
-                            <div class="meta">
-                                <time datetime="2025/01/20">2025/01/20</time>
-                                 &middot; <span class="reading-time">3 min read</span>
-                            </div>
-                            
-                            <h2 class="title"><a href="https://swiftonserver.com/hummingbird-and-cors/" target="">Hummingbird and CORS</a></h2>
-                            <p>Learn how to use Hummingbird and CORS in Swift</p>
-                        
-                            <div class="spacer"></div>
-                        
-                            <div class="tag-list">
-                                <a href="https://swiftonserver.com/tags/hummingbird/"><small>Hummingbird</small></a>
-        <a href="https://swiftonserver.com/tags/server/"><small>Server</small></a>
-                            </div>
-                        </div>
-                    <div class="card">
-                            
-                            
-                            <div class="author-list">
-                                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
-                                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
-                                </a>
-                            </div>
-                            <div class="meta">
-                                <time datetime="2024/12/28">2024/12/28</time>
-                                 &middot; <span class="reading-time">8 min read</span>
-                            </div>
-                            
-                            <h2 class="title"><a href="https://swiftonserver.com/realtime-mongodb-updates-with-changestreams-and-websockets/" target="">Realtime MongoDB Updates with ChangeStreams and WebSockets</a></h2>
-                            <p>Learn how to implement real-time updates over WebSockets using ChangeStreams and MongoKitten</p>
-                        
-                            <div class="spacer"></div>
-                        
-                            <div class="tag-list">
-                                <a href="https://swiftonserver.com/tags/databases/"><small>Databases</small></a>
-        <a href="https://swiftonserver.com/tags/hummingbird/"><small>Hummingbird</small></a>
-                            </div>
-                        </div>
-                    <div class="card">
-                            
-                            
-                            <div class="author-list">
                                 <a href="https://swiftonserver.com/authors/tibor-bodecs/">
-                                <img class="small rounded" src="/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                                 </a>
                             </div>
                             <div class="meta">
-                                <time datetime="2024/10/22">2024/10/22</time>
-                                 &middot; <span class="reading-time">10 min read</span>
+                                <time datetime="2024-10-22">2024-10-22</time>
+                                    &middot; <span class="reading-time">10 min read</span>
                             </div>
                             
                             <h2 class="title"><a href="https://swiftonserver.com/beginners-guide-to-protocol-buffers-and-grpc-with-swift/" target="">Beginner&#39;s Guide to Protocol Buffers and gRPC with Swift</a></h2>
@@ -237,21 +191,21 @@
         <a href="https://swiftonserver.com/tags/server/"><small>Server</small></a>
                             </div>
                         </div>
-                    <div class="card">
-                            
+                    <div class="card featured">
+                            <span class="featured">featured</span>
                             
                             <div class="author-list">
                                 <a href="https://swiftonserver.com/authors/joannis-orlandos/">
-                                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                                 </a>
                             </div>
                             <div class="meta">
-                                <time datetime="2024/10/01">2024/10/01</time>
-                                 &middot; <span class="reading-time">6 min read</span>
+                                <time datetime="2024-09-24">2024-09-24</time>
+                                    &middot; <span class="reading-time">7 min read</span>
                             </div>
                             
-                            <h2 class="title"><a href="https://swiftonserver.com/using-hummingbird-request-context/" target="">Using Hummingbird&#39;s Request Contexts</a></h2>
-                            <p>Learn about request contexts in Hummingbird and how to use them.</p>
+                            <h2 class="title"><a href="https://swiftonserver.com/getting-started-with-hummingbird/" target="">Getting Started with Hummingbird</a></h2>
+                            <p>Learn how to get started with Hummingbird 2, the modern Swift Web Framework.</p>
                         
                             <div class="spacer"></div>
                         
@@ -265,12 +219,12 @@
                             
                             <div class="author-list">
                                 <a href="https://swiftonserver.com/authors/joannis-orlandos/">
-                                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                                 </a>
                             </div>
                             <div class="meta">
-                                <time datetime="2024/09/30">2024/09/30</time>
-                                 &middot; <span class="reading-time">9 min read</span>
+                                <time datetime="2024-09-30">2024-09-30</time>
+                                    &middot; <span class="reading-time">9 min read</span>
                             </div>
                             
                             <h2 class="title"><a href="https://swiftonserver.com/how-to-build-a-proxy-server-with-hummingbird/" target="">How to Build a Proxy Server with Hummingbird</a></h2>
@@ -288,23 +242,70 @@
                             
                             <div class="author-list">
                                 <a href="https://swiftonserver.com/authors/joannis-orlandos/">
-                                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                                 </a>
                             </div>
                             <div class="meta">
-                                <time datetime="2024/08/29">2024/08/29</time>
-                                 &middot; <span class="reading-time">5 min read</span>
+                                <time datetime="2024-12-28">2024-12-28</time>
+                                    &middot; <span class="reading-time">8 min read</span>
                             </div>
                             
-                            <h2 class="title"><a href="https://swiftonserver.com/working-with-udp-in-swiftnio/" target="">Working with UDP in SwiftNIO</a></h2>
-                            <p>Create UDP servers and clients using SwiftNIO and structured concurrency</p>
+                            <h2 class="title"><a href="https://swiftonserver.com/realtime-mongodb-updates-with-changestreams-and-websockets/" target="">Realtime MongoDB Updates with ChangeStreams and WebSockets</a></h2>
+                            <p>Learn how to implement real-time updates over WebSockets using ChangeStreams and MongoKitten</p>
                         
                             <div class="spacer"></div>
                         
                             <div class="tag-list">
-                                <a href="https://swiftonserver.com/tags/networking/"><small>Networking</small></a>
+                                <a href="https://swiftonserver.com/tags/databases/"><small>Databases</small></a>
+        <a href="https://swiftonserver.com/tags/hummingbird/"><small>Hummingbird</small></a>
+                            </div>
+                        </div>
+                    <div class="card">
+                            
+                            
+                            <div class="author-list">
+                                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                </a>
+                            </div>
+                            <div class="meta">
+                                <time datetime="2024-10-01">2024-10-01</time>
+                                    &middot; <span class="reading-time">6 min read</span>
+                            </div>
+                            
+                            <h2 class="title"><a href="https://swiftonserver.com/using-hummingbird-request-context/" target="">Using Hummingbird&#39;s Request Contexts</a></h2>
+                            <p>Learn about request contexts in Hummingbird and how to use them.</p>
+                        
+                            <div class="spacer"></div>
+                        
+                            <div class="tag-list">
+                                <a href="https://swiftonserver.com/tags/hummingbird/"><small>Hummingbird</small></a>
         <a href="https://swiftonserver.com/tags/server/"><small>Server</small></a>
-        <a href="https://swiftonserver.com/tags/swiftnio/"><small>SwiftNIO</small></a>
+                            </div>
+                        </div>
+                    <div class="card">
+                            
+                            
+                            <div class="author-list">
+                                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                </a>
+                            </div>
+                            <div class="meta">
+                                <time datetime="2024-03-05">2024-03-05</time>
+                                    &middot; <span class="reading-time">7 min read</span>
+                            </div>
+                            
+                            <h2 class="title"><a href="https://swiftonserver.com/using-openapi-with-hummingbird/" target="">Using OpenAPI Generator with Hummingbird</a></h2>
+                            <p>Learn how to use OpenAPI Generator to create Swift APIs with Hummingbird.</p>
+                        
+                            <div class="spacer"></div>
+                        
+                            <div class="tag-list">
+                                <a href="https://swiftonserver.com/tags/documentation/"><small>Documentation</small></a>
+        <a href="https://swiftonserver.com/tags/hummingbird/"><small>Hummingbird</small></a>
+        <a href="https://swiftonserver.com/tags/openapi/"><small>OpenAPI</small></a>
+        <a href="https://swiftonserver.com/tags/server/"><small>Server</small></a>
                             </div>
                         </div>
                     </div>
@@ -316,7 +317,7 @@
         <div>
             <div class="support">
                 <a href="https://swiftcraft.uk/" target="_blank">
-                    <img src="/images/logos/swiftcraft.png" alt="SwiftCraft logo">
+                    <img src="https://swiftonserver.com/images/logos/swiftcraft.png" alt="SwiftCraft logo">
                 </a>
                 <h4>
                     <a href="https://swiftcraft.uk/" target="_blank">SwiftCraft</a>
@@ -335,20 +336,36 @@
                     <li class="first-level">
                         <a href="#Setting%20Up">Setting Up</a>
                         <ul>
-                            <li><a href="#Running%20the%20Project">Running the Project</a></li>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Running%20the%20Project">Running the Project</a>
+                        <ul>
                         </ul>
                     </li>
         <li class="first-level">
                         <a href="#Project%20Structure">Project Structure</a>
                         <ul>
-                            <li><a href="#Configuring%20the%20App">Configuring the App</a></li>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Configuring%20the%20App">Configuring the App</a>
+                        <ul>
                         </ul>
                     </li>
         <li class="first-level">
                         <a href="#Routers,%20Routing%20and%20Routes">Routers, Routing and Routes</a>
                         <ul>
-                            <li><a href="#Context">Context</a></li>
-                <li><a href="#Adding%20a%20Route">Adding a Route</a></li>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Context">Context</a>
+                        <ul>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Adding%20a%20Route">Adding a Route</a>
+                        <ul>
                         </ul>
                     </li>
         <li class="first-level">
@@ -375,12 +392,12 @@
             <figure>
                 <picture>
                     <source
-                        srcset="/images/logos/logo~dark.png"
+                        srcset="https://swiftonserver.com/images/logos/logo~dark.png"
                         media="(prefers-color-scheme: dark)"
                     >
                     <img
                         id="logo-image"
-                        src="/images/logos/logo.png"
+                        src="https://swiftonserver.com/images/logos/logo.png"
                         alt="Logo of Swift on server"
                         title="Swift on server"
                     >
@@ -401,7 +418,7 @@
             
             <div>
                 <a href="/authors/joannis-orlandos/">
-                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                 </a>
                 <h4><a href="/authors/joannis-orlandos/">Joannis Orlandos</a></h4>
                 <p><small><a href="https://unbeatable.software/" target="_blank">Unbeatable Software B.V.</a></small></p>
@@ -415,7 +432,7 @@
             
             <div>
                 <a href="/authors/tibor-bodecs/">
-                <img class="small rounded" src="/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                 </a>
                 <h4><a href="/authors/tibor-bodecs/">Tibor Bödecs</a></h4>
                 <p><small><a href="https://binarybirds.com/" target="_blank">Binary Birds Kft.</a></small></p>

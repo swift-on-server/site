@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html {{#site.language}}lang="{{.}}"{{/site.language}}>
+<html {{#site.locale}}lang="{{.}}"{{/site.locale}}>
 <head>
     <meta charset="utf-8">
     {{#page.noindex}}<meta name="robots" content="noindex">{{/page.noindex}}
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="canonical" href="{{page.canonical}}">
+    <link rel="canonical" href="{{page.permalink}}">
     {{#page.hreflang}}
     <link rel="alternate" hreflang="{{lang}}" href="{{url}}">
     {{/page.hreflang}}
@@ -18,22 +18,22 @@
     <meta property="og:url" content="{{page.permalink}}">
     <meta property="og:title" content="{{page.title}} - {{site.title}}">
     <meta property="og:description" content="{{page.description}}">
-    {{#page.imageUrl}}<meta property="og:image" content="{{.}}" />{{/page.imageUrl}}
+    {{#page.image}}<meta property="og:image" content="{{.}}" />{{/page.image}}
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{page.title}} - {{site.title}}">
     <meta name="twitter:description" content="{{page.description}}">
-    {{#page.imageUrl}}<meta name="twitter:image" content="{{.}}">{{/page.imageUrl}}
+    {{#page.image}}<meta name="twitter:image" content="{{.}}">{{/page.image}}
 
-    <link rel="stylesheet" href="/css/modern-normalize.css">
-    <link rel="stylesheet" href="/css/modern-base.css">
-    <link rel="stylesheet" href="/css/variables.css">
-    <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/css/grid.css">
-    <link rel="stylesheet" href="/css/navigation.css">
-    <link rel="stylesheet" href="/css/footer.css">
-    <link rel="stylesheet" href="/css/syntax.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="{{site.baseUrl}}/css/modern-normalize.css">
+    <link rel="stylesheet" href="{{site.baseUrl}}/css/modern-base.css">
+    <link rel="stylesheet" href="{{site.baseUrl}}/css/variables.css">
+    <link rel="stylesheet" href="{{site.baseUrl}}/css/base.css">
+    <link rel="stylesheet" href="{{site.baseUrl}}/css/grid.css">
+    <link rel="stylesheet" href="{{site.baseUrl}}/css/navigation.css">
+    <link rel="stylesheet" href="{{site.baseUrl}}/css/footer.css">
+    <link rel="stylesheet" href="{{site.baseUrl}}/css/syntax.css">
+    <link rel="stylesheet" href="{{site.baseUrl}}/css/style.css">
 
     {{#page.css}}<link rel="stylesheet" href="{{.}}">{{/page.css}}
 

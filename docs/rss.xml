@@ -1,48 +1,27 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
 <channel>
-    <title>Swift on server</title>
+    <title>localhost</title>
     <description></description>
-    <link>https://swiftonserver.com/</link>
+    <link>https://swiftonserver.com</link>
     <language>en-US</language>
-    <lastBuildDate>Tue, 21 Jan 2025 16:17:16 +0000</lastBuildDate>
-    <pubDate>Mon, 20 Jan 2025 09:00:00 +0000</pubDate>
+    <lastBuildDate>Tue, 01 Apr 2025 15:25:59 +0000</lastBuildDate>
+    <pubDate>Tue, 01 Apr 2025 12:31:52 +0000</pubDate>
     <ttl>250</ttl>
     <atom:link href="https://swiftonserver.com/rss.xml" rel="self" type="application/rss+xml"/>
 
 <item>
-    <guid isPermaLink="true">https://swiftonserver.com/hummingbird-and-cors/</guid>
-    <title><![CDATA[ Hummingbird and CORS ]]></title>
-    <description><![CDATA[ Learn how to use Hummingbird and CORS in Swift ]]></description>
-    <link>https://swiftonserver.com/hummingbird-and-cors/</link>
-    <pubDate>Mon, 20 Jan 2025 09:00:00 +0000</pubDate>
+    <guid isPermaLink="true">https://swiftonserver.com/advanced-async-sequences/</guid>
+    <title><![CDATA[ Advanced Async Sequences ]]></title>
+    <description><![CDATA[ Learn how to use and create your own AsyncSequences in Swift. ]]></description>
+    <link>https://swiftonserver.com/advanced-async-sequences/</link>
+    <pubDate>Tue, 02 Jul 2024 12:00:00 +0000</pubDate>
 </item>
 <item>
-    <guid isPermaLink="true">https://swiftonserver.com/jwt-kit/</guid>
-    <title><![CDATA[ Introduction to JWTs in Swift ]]></title>
-    <description><![CDATA[ Learn how to use JWTs in Swift to secure your API ]]></description>
-    <link>https://swiftonserver.com/jwt-kit/</link>
-    <pubDate>Thu, 09 Jan 2025 09:00:00 +0000</pubDate>
-</item>
-<item>
-    <guid isPermaLink="true">https://swiftonserver.com/getting-started-with-mongokitten/</guid>
-    <title><![CDATA[ Getting Started with MongoKitten ]]></title>
-    <description><![CDATA[ Learn how to get started with MongoDB using MongoKitten ]]></description>
-    <link>https://swiftonserver.com/getting-started-with-mongokitten/</link>
-    <pubDate>Sat, 28 Dec 2024 09:00:00 +0000</pubDate>
-</item>
-<item>
-    <guid isPermaLink="true">https://swiftonserver.com/realtime-mongodb-updates-with-changestreams-and-websockets/</guid>
-    <title><![CDATA[ Realtime MongoDB Updates with ChangeStreams and WebSockets ]]></title>
-    <description><![CDATA[ Learn how to implement real-time updates over WebSockets using ChangeStreams and MongoKitten ]]></description>
-    <link>https://swiftonserver.com/realtime-mongodb-updates-with-changestreams-and-websockets/</link>
-    <pubDate>Sat, 28 Dec 2024 09:00:00 +0000</pubDate>
-</item>
-<item>
-    <guid isPermaLink="true">https://swiftonserver.com/getting-started-with-swift-package-manager/</guid>
-    <title><![CDATA[ Getting Started with Swift Package Manager ]]></title>
-    <description><![CDATA[ Learn how to create and manage Swift packages with SwiftPM. ]]></description>
-    <link>https://swiftonserver.com/getting-started-with-swift-package-manager/</link>
-    <pubDate>Sun, 27 Oct 2024 12:00:00 +0000</pubDate>
+    <guid isPermaLink="true">https://swiftonserver.com/async-http-client-by-example/</guid>
+    <title><![CDATA[ AsyncHTTPClient by example ]]></title>
+    <description><![CDATA[ This article offers practical examples to introduce the Swift AsyncHTTPClient library. ]]></description>
+    <link>https://swiftonserver.com/async-http-client-by-example/</link>
+    <pubDate>Wed, 03 Apr 2024 12:00:00 +0000</pubDate>
 </item>
 <item>
     <guid isPermaLink="true">https://swiftonserver.com/beginners-guide-to-protocol-buffers-and-grpc-with-swift/</guid>
@@ -52,18 +31,18 @@
     <pubDate>Tue, 22 Oct 2024 00:00:00 +0000</pubDate>
 </item>
 <item>
-    <guid isPermaLink="true">https://swiftonserver.com/using-hummingbird-request-context/</guid>
-    <title><![CDATA[ Using Hummingbird&#39;s Request Contexts ]]></title>
-    <description><![CDATA[ Learn about request contexts in Hummingbird and how to use them. ]]></description>
-    <link>https://swiftonserver.com/using-hummingbird-request-context/</link>
-    <pubDate>Tue, 01 Oct 2024 08:00:00 +0000</pubDate>
+    <guid isPermaLink="true">https://swiftonserver.com/building-swiftnio-clients/</guid>
+    <title><![CDATA[ Building an HTTP client using SwiftNIO ]]></title>
+    <description><![CDATA[ Learn how to build a simple HTTP client using SwiftNIO and structured concurrency. ]]></description>
+    <link>https://swiftonserver.com/building-swiftnio-clients/</link>
+    <pubDate>Tue, 20 Feb 2024 12:00:00 +0000</pubDate>
 </item>
 <item>
-    <guid isPermaLink="true">https://swiftonserver.com/how-to-build-a-proxy-server-with-hummingbird/</guid>
-    <title><![CDATA[ How to Build a Proxy Server with Hummingbird ]]></title>
-    <description><![CDATA[ Learn how to leverage the flexibility and performance of Hummingbird to build a proxy server. ]]></description>
-    <link>https://swiftonserver.com/how-to-build-a-proxy-server-with-hummingbird/</link>
-    <pubDate>Mon, 30 Sep 2024 08:00:00 +0000</pubDate>
+    <guid isPermaLink="true">https://swiftonserver.com/developing-with-swift-in-visual-studio-code/</guid>
+    <title><![CDATA[ Developing with Swift in Visual Studio Code ]]></title>
+    <description><![CDATA[ Learn how to set up your Visual Studio Code for Swift development using Docker, Dev Containers and the Swift for VS Code extension. ]]></description>
+    <link>https://swiftonserver.com/developing-with-swift-in-visual-studio-code/</link>
+    <pubDate>Tue, 16 Jan 2024 12:00:00 +0000</pubDate>
 </item>
 <item>
     <guid isPermaLink="true">https://swiftonserver.com/getting-started-with-hummingbird/</guid>
@@ -73,6 +52,27 @@
     <pubDate>Tue, 24 Sep 2024 08:00:00 +0000</pubDate>
 </item>
 <item>
+    <guid isPermaLink="true">https://swiftonserver.com/getting-started-with-mongokitten/</guid>
+    <title><![CDATA[ Getting Started with MongoKitten ]]></title>
+    <description><![CDATA[ Learn how to get started with MongoDB using MongoKitten ]]></description>
+    <link>https://swiftonserver.com/getting-started-with-mongokitten/</link>
+    <pubDate>Sat, 28 Dec 2024 09:00:00 +0000</pubDate>
+</item>
+<item>
+    <guid isPermaLink="true">https://swiftonserver.com/getting-started-with-structured-concurrency-in-swift/</guid>
+    <title><![CDATA[ Getting Started: Swift&#39;s Structured Concurrency ]]></title>
+    <description><![CDATA[ Learn how to apply structured concurrency in your applications, using task groups and other structured concepts. ]]></description>
+    <link>https://swiftonserver.com/getting-started-with-structured-concurrency-in-swift/</link>
+    <pubDate>Tue, 19 Mar 2024 12:00:00 +0000</pubDate>
+</item>
+<item>
+    <guid isPermaLink="true">https://swiftonserver.com/getting-started-with-swift-package-manager/</guid>
+    <title><![CDATA[ Getting Started with Swift Package Manager ]]></title>
+    <description><![CDATA[ Learn how to create and manage Swift packages with SwiftPM. ]]></description>
+    <link>https://swiftonserver.com/getting-started-with-swift-package-manager/</link>
+    <pubDate>Sun, 27 Oct 2024 12:00:00 +0000</pubDate>
+</item>
+<item>
     <guid isPermaLink="true">https://swiftonserver.com/getting-started-with-swiftpm-snippets/</guid>
     <title><![CDATA[ Getting Started with SwiftPM Snippets ]]></title>
     <description><![CDATA[ Learn what Swift Snippets are, and how they can enrich your libraries. ]]></description>
@@ -80,25 +80,11 @@
     <pubDate>Tue, 17 Sep 2024 11:00:00 +0000</pubDate>
 </item>
 <item>
-    <guid isPermaLink="true">https://swiftonserver.com/working-with-udp-in-swiftnio/</guid>
-    <title><![CDATA[ Working with UDP in SwiftNIO ]]></title>
-    <description><![CDATA[ Create UDP servers and clients using SwiftNIO and structured concurrency ]]></description>
-    <link>https://swiftonserver.com/working-with-udp-in-swiftnio/</link>
-    <pubDate>Thu, 29 Aug 2024 09:00:00 +0000</pubDate>
-</item>
-<item>
-    <guid isPermaLink="true">https://swiftonserver.com/advanced-async-sequences/</guid>
-    <title><![CDATA[ Advanced Async Sequences ]]></title>
-    <description><![CDATA[ Learn how to use and create your own AsyncSequences in Swift. ]]></description>
-    <link>https://swiftonserver.com/advanced-async-sequences/</link>
-    <pubDate>Tue, 02 Jul 2024 12:00:00 +0000</pubDate>
-</item>
-<item>
-    <guid isPermaLink="true">https://swiftonserver.com/websockets-tutorial-using-swift-and-hummingbird/</guid>
-    <title><![CDATA[ Using WebSockets in Hummingbird ]]></title>
-    <description><![CDATA[ In this article, you will learn about WebSockets and how to use them with the Hummingbird framework in a straightforward, easy-to-follow manner. ]]></description>
-    <link>https://swiftonserver.com/websockets-tutorial-using-swift-and-hummingbird/</link>
-    <pubDate>Thu, 27 Jun 2024 12:00:00 +0000</pubDate>
+    <guid isPermaLink="true">https://swiftonserver.com/how-to-build-a-proxy-server-with-hummingbird/</guid>
+    <title><![CDATA[ How to Build a Proxy Server with Hummingbird ]]></title>
+    <description><![CDATA[ Learn how to leverage the flexibility and performance of Hummingbird to build a proxy server. ]]></description>
+    <link>https://swiftonserver.com/how-to-build-a-proxy-server-with-hummingbird/</link>
+    <pubDate>Mon, 30 Sep 2024 08:00:00 +0000</pubDate>
 </item>
 <item>
     <guid isPermaLink="true">https://swiftonserver.com/introduction-to-swift-service-lifecycle/</guid>
@@ -106,6 +92,27 @@
     <description><![CDATA[ This article offers practical examples to introduce the Swift Service Lifecycle library. ]]></description>
     <link>https://swiftonserver.com/introduction-to-swift-service-lifecycle/</link>
     <pubDate>Wed, 22 May 2024 12:00:00 +0000</pubDate>
+</item>
+<item>
+    <guid isPermaLink="true">https://swiftonserver.com/logging-for-server-side-swift-apps/</guid>
+    <title><![CDATA[ Logging for server-side Swift apps ]]></title>
+    <description><![CDATA[ Discover how to integrate the Logging library into an application, use various log levels, and tailor the unified logging API for backend projects. ]]></description>
+    <link>https://swiftonserver.com/logging-for-server-side-swift-apps/</link>
+    <pubDate>Tue, 13 Feb 2024 12:00:00 +0000</pubDate>
+</item>
+<item>
+    <guid isPermaLink="true">https://swiftonserver.com/realtime-mongodb-updates-with-changestreams-and-websockets/</guid>
+    <title><![CDATA[ Realtime MongoDB Updates with ChangeStreams and WebSockets ]]></title>
+    <description><![CDATA[ Learn how to implement real-time updates over WebSockets using ChangeStreams and MongoKitten ]]></description>
+    <link>https://swiftonserver.com/realtime-mongodb-updates-with-changestreams-and-websockets/</link>
+    <pubDate>Sat, 28 Dec 2024 09:00:00 +0000</pubDate>
+</item>
+<item>
+    <guid isPermaLink="true">https://swiftonserver.com/structured-concurrency-and-shared-state-in-swift/</guid>
+    <title><![CDATA[ Using Structured Concurrency and Shared State ]]></title>
+    <description><![CDATA[ Learn how actors and sendable prevent race conditions in your concurrent code. ]]></description>
+    <link>https://swiftonserver.com/structured-concurrency-and-shared-state-in-swift/</link>
+    <pubDate>Mon, 25 Mar 2024 12:00:00 +0000</pubDate>
 </item>
 <item>
     <guid isPermaLink="true">https://swiftonserver.com/templating-with-swift-mustache/</guid>
@@ -122,27 +129,6 @@
     <pubDate>Wed, 10 Apr 2024 12:00:00 +0000</pubDate>
 </item>
 <item>
-    <guid isPermaLink="true">https://swiftonserver.com/async-http-client-by-example/</guid>
-    <title><![CDATA[ AsyncHTTPClient by example ]]></title>
-    <description><![CDATA[ This article offers practical examples to introduce the Swift AsyncHTTPClient library. ]]></description>
-    <link>https://swiftonserver.com/async-http-client-by-example/</link>
-    <pubDate>Wed, 03 Apr 2024 12:00:00 +0000</pubDate>
-</item>
-<item>
-    <guid isPermaLink="true">https://swiftonserver.com/structured-concurrency-and-shared-state-in-swift/</guid>
-    <title><![CDATA[ Using Structured Concurrency and Shared State ]]></title>
-    <description><![CDATA[ Learn how actors and sendable prevent race conditions in your concurrent code. ]]></description>
-    <link>https://swiftonserver.com/structured-concurrency-and-shared-state-in-swift/</link>
-    <pubDate>Mon, 25 Mar 2024 12:00:00 +0000</pubDate>
-</item>
-<item>
-    <guid isPermaLink="true">https://swiftonserver.com/getting-started-with-structured-concurrency-in-swift/</guid>
-    <title><![CDATA[ Getting Started: Swift&#39;s Structured Concurrency ]]></title>
-    <description><![CDATA[ Learn how to apply structured concurrency in your applications, using task groups and other structured concepts. ]]></description>
-    <link>https://swiftonserver.com/getting-started-with-structured-concurrency-in-swift/</link>
-    <pubDate>Tue, 19 Mar 2024 12:00:00 +0000</pubDate>
-</item>
-<item>
     <guid isPermaLink="true">https://swiftonserver.com/using-environment-variables-in-swift/</guid>
     <title><![CDATA[ Environment Variables in Swift ]]></title>
     <description><![CDATA[ Explore the importance of environment variables in Swift and how to use them. ]]></description>
@@ -150,32 +136,18 @@
     <pubDate>Tue, 12 Mar 2024 12:00:00 +0000</pubDate>
 </item>
 <item>
+    <guid isPermaLink="true">https://swiftonserver.com/using-hummingbird-request-context/</guid>
+    <title><![CDATA[ Using Hummingbird&#39;s Request Contexts ]]></title>
+    <description><![CDATA[ Learn about request contexts in Hummingbird and how to use them. ]]></description>
+    <link>https://swiftonserver.com/using-hummingbird-request-context/</link>
+    <pubDate>Tue, 01 Oct 2024 08:00:00 +0000</pubDate>
+</item>
+<item>
     <guid isPermaLink="true">https://swiftonserver.com/using-openapi-with-hummingbird/</guid>
     <title><![CDATA[ Using OpenAPI Generator with Hummingbird ]]></title>
     <description><![CDATA[ Learn how to use OpenAPI Generator to create Swift APIs with Hummingbird. ]]></description>
     <link>https://swiftonserver.com/using-openapi-with-hummingbird/</link>
     <pubDate>Tue, 05 Mar 2024 12:00:00 +0000</pubDate>
-</item>
-<item>
-    <guid isPermaLink="true">https://swiftonserver.com/whats-new-in-hummingbird-2/</guid>
-    <title><![CDATA[ What&#39;s new in Hummingbird 2? ]]></title>
-    <description><![CDATA[ Discover Hummingbird 2: a Swift-based HTTP server framework, with modern concurrency and customizable request contexts. ]]></description>
-    <link>https://swiftonserver.com/whats-new-in-hummingbird-2/</link>
-    <pubDate>Tue, 27 Feb 2024 12:00:00 +0000</pubDate>
-</item>
-<item>
-    <guid isPermaLink="true">https://swiftonserver.com/building-swiftnio-clients/</guid>
-    <title><![CDATA[ Building an HTTP client using SwiftNIO ]]></title>
-    <description><![CDATA[ Learn how to build a simple HTTP client using SwiftNIO and structured concurrency. ]]></description>
-    <link>https://swiftonserver.com/building-swiftnio-clients/</link>
-    <pubDate>Tue, 20 Feb 2024 12:00:00 +0000</pubDate>
-</item>
-<item>
-    <guid isPermaLink="true">https://swiftonserver.com/logging-for-server-side-swift-apps/</guid>
-    <title><![CDATA[ Logging for server-side Swift apps ]]></title>
-    <description><![CDATA[ Discover how to integrate the Logging library into an application, use various log levels, and tailor the unified logging API for backend projects. ]]></description>
-    <link>https://swiftonserver.com/logging-for-server-side-swift-apps/</link>
-    <pubDate>Tue, 13 Feb 2024 12:00:00 +0000</pubDate>
 </item>
 <item>
     <guid isPermaLink="true">https://swiftonserver.com/using-swiftnio-channels/</guid>
@@ -192,11 +164,39 @@
     <pubDate>Tue, 30 Jan 2024 12:00:00 +0000</pubDate>
 </item>
 <item>
-    <guid isPermaLink="true">https://swiftonserver.com/developing-with-swift-in-visual-studio-code/</guid>
-    <title><![CDATA[ Developing with Swift in Visual Studio Code ]]></title>
-    <description><![CDATA[ Learn how to set up your Visual Studio Code for Swift development using Docker, Dev Containers and the Swift for VS Code extension. ]]></description>
-    <link>https://swiftonserver.com/developing-with-swift-in-visual-studio-code/</link>
-    <pubDate>Tue, 16 Jan 2024 12:00:00 +0000</pubDate>
+    <guid isPermaLink="true">https://swiftonserver.com/websockets-tutorial-using-swift-and-hummingbird/</guid>
+    <title><![CDATA[ Using WebSockets in Hummingbird ]]></title>
+    <description><![CDATA[ In this article, you will learn about WebSockets and how to use them with the Hummingbird framework in a straightforward, easy-to-follow manner. ]]></description>
+    <link>https://swiftonserver.com/websockets-tutorial-using-swift-and-hummingbird/</link>
+    <pubDate>Thu, 27 Jun 2024 12:00:00 +0000</pubDate>
+</item>
+<item>
+    <guid isPermaLink="true">https://swiftonserver.com/whats-new-in-hummingbird-2/</guid>
+    <title><![CDATA[ What&#39;s new in Hummingbird 2? ]]></title>
+    <description><![CDATA[ Discover Hummingbird 2: a Swift-based HTTP server framework, with modern concurrency and customizable request contexts. ]]></description>
+    <link>https://swiftonserver.com/whats-new-in-hummingbird-2/</link>
+    <pubDate>Tue, 27 Feb 2024 12:00:00 +0000</pubDate>
+</item>
+<item>
+    <guid isPermaLink="true">https://swiftonserver.com/working-with-udp-in-swiftnio/</guid>
+    <title><![CDATA[ Working with UDP in SwiftNIO ]]></title>
+    <description><![CDATA[ Create UDP servers and clients using SwiftNIO and structured concurrency ]]></description>
+    <link>https://swiftonserver.com/working-with-udp-in-swiftnio/</link>
+    <pubDate>Thu, 29 Aug 2024 09:00:00 +0000</pubDate>
+</item>
+<item>
+    <guid isPermaLink="true">https://swiftonserver.com/hummingbird-and-cors/</guid>
+    <title><![CDATA[ Hummingbird and CORS ]]></title>
+    <description><![CDATA[ Learn how to use Hummingbird and CORS in Swift ]]></description>
+    <link>https://swiftonserver.com/hummingbird-and-cors/</link>
+    <pubDate>Mon, 20 Jan 2025 09:00:00 +0000</pubDate>
+</item>
+<item>
+    <guid isPermaLink="true">https://swiftonserver.com/jwt-kit/</guid>
+    <title><![CDATA[ Introduction to JWTs in Swift ]]></title>
+    <description><![CDATA[ Learn how to use JWTs in Swift to secure your API ]]></description>
+    <link>https://swiftonserver.com/jwt-kit/</link>
+    <pubDate>Thu, 09 Jan 2025 09:00:00 +0000</pubDate>
 </item>
 
 </channel>

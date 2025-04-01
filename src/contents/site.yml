@@ -1,7 +1,7 @@
 baseUrl: "https://swiftonserver.com/"
-language: "en-US"
+#baseUrl: "http://localhost:3000/"
+locale: "en-US"
 title: "Swift on server"
-dateFormat: "yyyy/MM/dd"
 navigation:
     - label: "Posts"
       url: "/posts/page/1/"

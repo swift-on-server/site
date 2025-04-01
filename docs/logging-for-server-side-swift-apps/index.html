@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="canonical" href="https://swiftonserver.com/logging-for-server-side-swift-apps/">
-    <link rel="prev" href="https://swiftonserver.com/jwt-kit/">
-    <link rel="next" href="https://swiftonserver.com/realtime-mongodb-updates-with-changestreams-and-websockets/">
+    <link rel="prev" href="https://swiftonserver.com/developing-with-swift-in-visual-studio-code/">
+    <link rel="next" href="https://swiftonserver.com/advanced-async-sequences/">
 
     <title>Logging for server-side Swift apps - Swift on server</title>
     <meta name="description" content="Discover how to integrate the Logging library into an application, use various log levels, and tailor the unified logging API for backend projects.">
@@ -15,37 +15,37 @@
     <meta property="og:url" content="https://swiftonserver.com/logging-for-server-side-swift-apps/">
     <meta property="og:title" content="Logging for server-side Swift apps - Swift on server">
     <meta property="og:description" content="Discover how to integrate the Logging library into an application, use various log levels, and tailor the unified logging API for backend projects.">
-    <meta property="og:image" content="/assets/logging-for-server-side-swift-apps/cover.jpg" />
+    <meta property="og:image" content="https://swiftonserver.com/assets/logging-for-server-side-swift-apps/cover.jpg" />
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Logging for server-side Swift apps - Swift on server">
     <meta name="twitter:description" content="Discover how to integrate the Logging library into an application, use various log levels, and tailor the unified logging API for backend projects.">
-    <meta name="twitter:image" content="/assets/logging-for-server-side-swift-apps/cover.jpg">
+    <meta name="twitter:image" content="https://swiftonserver.com/assets/logging-for-server-side-swift-apps/cover.jpg">
 
-    <link rel="stylesheet" href="/css/modern-normalize.css">
-    <link rel="stylesheet" href="/css/modern-base.css">
-    <link rel="stylesheet" href="/css/variables.css">
-    <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/css/grid.css">
-    <link rel="stylesheet" href="/css/navigation.css">
-    <link rel="stylesheet" href="/css/footer.css">
-    <link rel="stylesheet" href="/css/syntax.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/modern-normalize.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/modern-base.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/variables.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/base.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/grid.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/navigation.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/footer.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/syntax.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/style.css">
 
     
 
-    <link rel="shortcut icon" href="/images/icons/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="/images/icons/icon-320.png" type="image/png">
+    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/icon-320.png" type="image/png">
     
-    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/images/icons/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon-180x180.png">
+    <link rel="apple-touch-icon" href="https://swiftonserver.com/images/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://swiftonserver.com/images/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://swiftonserver.com/images/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://swiftonserver.com/images/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://swiftonserver.com/images/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://swiftonserver.com/images/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://swiftonserver.com/images/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://swiftonserver.com/images/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://swiftonserver.com/images/icons/apple-touch-icon-180x180.png">
 
     <link
         rel="stylesheet"
@@ -88,11 +88,11 @@
             <figure>
                 <picture>
                     <source
-                        srcset="/images/logos/logo~dark.png"
+                        srcset="https://swiftonserver.com/logos/logo~dark.png"
                         media="(prefers-color-scheme: dark)"
                     >
                     <img
-                        src="/images/logos/logo.png"
+                        src="https://swiftonserver.com/images/logos/logo.png"
                         alt="Logo of Swift on server"
                         title="Swift on server"
                     >
@@ -123,7 +123,7 @@
         <div>
             <article class="post">
                 <div class="meta">
-                    <time datetime="2024/02/13">2024/02/13</time>
+                    <time datetime="2024-02-13">2024-02-13</time>
                      &middot; <span class="reading-time">13 min read</span>
                     
                 </div>
@@ -454,13 +454,13 @@
 
 </span>        <span class='xc'>// ...</span><span class='newline'>
 </span>    }<span class='newline'>
-</span>}</code></pre><p>Define a custom environment variable based on your identifier:</p><ul><li><p>add the <code>-log-level</code> suffix to the identifier</p></li><li><p>replace the dash characters with underscores</p></li><li><p>capitalize the entire string</p></li></ul><p>e.g.: <code>my-library</code> -&gt; <code>MY_LIBRARY_LOG_LEVEL</code></p><p>The <code><a href='https://swiftinit.org/docc/swift-crypto/ccryptoboringssl.setenv(_:_:_:)' target='_blank' rel='external'>setenv(_:_:_:)</a></code> function can be used to define environmental variables from Swift code.</p><p>Important: Avoid utilizing the <code><a href='https://swiftinit.org/docc/swift-crypto/ccryptoboringssl.setenv(_:_:_:)' target='_blank' rel='external'>setenv(_:_:_:)</a></code> function. It is intended solely for demonstration purposes.</p><p>Run the project from the command line, using the following command to explicitly set environment variables:</p><pre class='snippet'><code class='language-sh'><span class='newline'></span># single command<span class='newline'>
+</span>}</code></pre><p>Define a custom environment variable based on your identifier:</p><ul><li><p>add the <code>-log-level</code> suffix to the identifier</p></li><li><p>replace the dash characters with underscores</p></li><li><p>capitalize the entire string</p></li></ul><p>e.g.: <code>my-library</code> -&gt; <code>MY_LIBRARY_LOG_LEVEL</code></p><p>The <code><a href='https://swiftinit.org/hist/swift-crypto:3.10.0/ccryptoboringssl.setenv(_:_:_:)' target='_blank' rel='external'>setenv(_:_:_:)</a></code> function can be used to define environmental variables from Swift code.</p><p>Important: Avoid utilizing the <code><a href='https://swiftinit.org/hist/swift-crypto:3.10.0/ccryptoboringssl.setenv(_:_:_:)' target='_blank' rel='external'>setenv(_:_:_:)</a></code> function. It is intended solely for demonstration purposes.</p><p>Run the project from the command line, using the following command to explicitly set environment variables:</p><pre class='snippet'><code class='language-sh'><span class='newline'></span># single command<span class='newline'>
 </span>MY_APP_LOG_LEVEL=trace MY_LIBRARY_LOG_LEVEL=trace swift run MyApp<span class='newline'>
 
 </span># or export env vars<span class='newline'>
 </span>export MY_APP_LOG_LEVEL=trace<span class='newline'>
 </span>export MY_LIBRARY_LOG_LEVEL=trace<span class='newline'>
-</span>swift run MyApp</code></pre><p>Provide the environmental variables using a single command before the <code>swift run MyApp</code> action.</p><p>The <code>export</code> command can be used to export variables, making them available in the environment of subsequently executed commands.</p><h2 id='Summary'><a href='#Summary'>Summary</a></h2><p>That’s how you can integrate the Swift Logging library into a framework or application.</p><p>You’ve learned a lot about logging in this article, including log levels, metadata and custom logging subsystems via environment variables.</p><p>If you want to learn a bit more about other logging and debugging solutions, you can also <a href='https://theswiftdev.com/logging-for-beginners-in-swift/' target='_blank' rel='external nofollow noopener ugc'>read this article</a>, which contains some useful snippets &amp; examples.</p></section><div style='display: none;' id='swiftinit-tooltips'><a href='/docc/swift-crypto/ccryptoboringssl.setenv(_:_:_:)'><pre><code><span class='xk'>func</span> <span class='xv'>setenv</span>(<span class='xi'></span>_ <span class='xb'>__name</span>: <span class='xt'>UnsafePointer</span>&lt;<span class='xt'>CChar</span>&gt;!, <span class='xi'></span>_ <span class='xb'>__value</span>: <span class='xt'>UnsafePointer</span>&lt;<span class='xt'>CChar</span>&gt;, <span class='xi'></span>_ <span class='xb'>__replace</span>: <span class='xt'>Int32</span><wbr>) -&gt; <span class='xt'>Int32</span></code></pre></a></div>
+</span>swift run MyApp</code></pre><p>Provide the environmental variables using a single command before the <code>swift run MyApp</code> action.</p><p>The <code>export</code> command can be used to export variables, making them available in the environment of subsequently executed commands.</p><h2 id='Summary'><a href='#Summary'>Summary</a></h2><p>That’s how you can integrate the Swift Logging library into a framework or application.</p><p>You’ve learned a lot about logging in this article, including log levels, metadata and custom logging subsystems via environment variables.</p><p>If you want to learn a bit more about other logging and debugging solutions, you can also <a href='https://theswiftdev.com/logging-for-beginners-in-swift/' target='_blank' rel='external nofollow noopener ugc'>read this article</a>, which contains some useful snippets &amp; examples.</p></section><div style='display: none;' id='swiftinit-tooltips'><a href='/hist/swift-crypto:3.10.0/ccryptoboringssl.setenv(_:_:_:)'><pre><code><span class='xk'>func</span> <span class='xv'>setenv</span>(<span class='xi'></span>_ <span class='xb'>__name</span>: <span class='xt'>UnsafePointer</span>&lt;<span class='xt'>CChar</span>&gt;!, <span class='xi'></span>_ <span class='xb'>__value</span>: <span class='xt'>UnsafePointer</span>&lt;<span class='xt'>CChar</span>&gt;, <span class='xi'></span>_ <span class='xb'>__replace</span>: <span class='xt'>Int32</span><wbr>) -&gt; <span class='xt'>Int32</span></code></pre></a></div>
                     
                 </section>
     
@@ -471,7 +471,7 @@
                     
                     <div class="author-list">
                         <a href="https://swiftonserver.com/authors/tibor-bodecs/">
-                        <img class="small rounded" src="/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                        <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                         <span class="name">Tibor Bödecs</span>
                         </a>
                     </div>
@@ -490,12 +490,35 @@
                             
                             <div class="author-list">
                                 <a href="https://swiftonserver.com/authors/joannis-orlandos/">
-                                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                                 </a>
                             </div>
                             <div class="meta">
-                                <time datetime="2024/10/27">2024/10/27</time>
-                                 &middot; <span class="reading-time">3 min read</span>
+                                <time datetime="2024-01-16">2024-01-16</time>
+                                    &middot; <span class="reading-time">2 min read</span>
+                            </div>
+                            
+                            <h2 class="title"><a href="https://swiftonserver.com/developing-with-swift-in-visual-studio-code/" target="">Developing with Swift in Visual Studio Code</a></h2>
+                            <p>Learn how to set up your Visual Studio Code for Swift development using Docker, Dev Containers and the Swift for VS Code extension.</p>
+                        
+                            <div class="spacer"></div>
+                        
+                            <div class="tag-list">
+                                <a href="https://swiftonserver.com/tags/utilities/"><small>Utilities</small></a>
+        <a href="https://swiftonserver.com/tags/vscode/"><small>VSCode</small></a>
+                            </div>
+                        </div>
+                    <div class="card">
+                            
+                            
+                            <div class="author-list">
+                                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                </a>
+                            </div>
+                            <div class="meta">
+                                <time datetime="2024-10-27">2024-10-27</time>
+                                    &middot; <span class="reading-time">3 min read</span>
                             </div>
                             
                             <h2 class="title"><a href="https://swiftonserver.com/getting-started-with-swift-package-manager/" target="">Getting Started with Swift Package Manager</a></h2>
@@ -512,12 +535,12 @@
                             
                             <div class="author-list">
                                 <a href="https://swiftonserver.com/authors/dianna-ma/">
-                                <img class="small rounded" src="/assets/authors/dianna-ma/tayloraswift.jpeg" alt="Dianna Ma">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/dianna-ma/tayloraswift.jpeg" alt="Dianna Ma">
                                 </a>
                             </div>
                             <div class="meta">
-                                <time datetime="2024/09/17">2024/09/17</time>
-                                 &middot; <span class="reading-time">10 min read</span>
+                                <time datetime="2024-09-17">2024-09-17</time>
+                                    &middot; <span class="reading-time">10 min read</span>
                             </div>
                             
                             <h2 class="title"><a href="https://swiftonserver.com/getting-started-with-swiftpm-snippets/" target="">Getting Started with SwiftPM Snippets</a></h2>
@@ -534,12 +557,36 @@
                             
                             <div class="author-list">
                                 <a href="https://swiftonserver.com/authors/tibor-bodecs/">
-                                <img class="small rounded" src="/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                                 </a>
                             </div>
                             <div class="meta">
-                                <time datetime="2024/04/10">2024/04/10</time>
-                                 &middot; <span class="reading-time">13 min read</span>
+                                <time datetime="2024-02-13">2024-02-13</time>
+                                    &middot; <span class="reading-time">13 min read</span>
+                            </div>
+                            
+                            <h2 class="title"><a href="https://swiftonserver.com/logging-for-server-side-swift-apps/" target="">Logging for server-side Swift apps</a></h2>
+                            <p>Discover how to integrate the Logging library into an application, use various log levels, and tailor the unified logging API for backend projects.</p>
+                        
+                            <div class="spacer"></div>
+                        
+                            <div class="tag-list">
+                                <a href="https://swiftonserver.com/tags/documentation/"><small>Documentation</small></a>
+        <a href="https://swiftonserver.com/tags/observability/"><small>Observability</small></a>
+        <a href="https://swiftonserver.com/tags/utilities/"><small>Utilities</small></a>
+                            </div>
+                        </div>
+                    <div class="card">
+                            
+                            
+                            <div class="author-list">
+                                <a href="https://swiftonserver.com/authors/tibor-bodecs/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                                </a>
+                            </div>
+                            <div class="meta">
+                                <time datetime="2024-04-10">2024-04-10</time>
+                                    &middot; <span class="reading-time">13 min read</span>
                             </div>
                             
                             <h2 class="title"><a href="https://swiftonserver.com/useful-scripts-for-server-side-swift-libraries/" target="">Useful scripts for server-side Swift</a></h2>
@@ -551,42 +598,17 @@
                                 <a href="https://swiftonserver.com/tags/utilities/"><small>Utilities</small></a>
                             </div>
                         </div>
-                    <div class="card">
-                            
-                            
-                            <div class="author-list">
-                                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
-                                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
-                                </a>
-                            </div>
-                            <div class="meta">
-                                <time datetime="2024/03/05">2024/03/05</time>
-                                 &middot; <span class="reading-time">7 min read</span>
-                            </div>
-                            
-                            <h2 class="title"><a href="https://swiftonserver.com/using-openapi-with-hummingbird/" target="">Using OpenAPI Generator with Hummingbird</a></h2>
-                            <p>Learn how to use OpenAPI Generator to create Swift APIs with Hummingbird.</p>
-                        
-                            <div class="spacer"></div>
-                        
-                            <div class="tag-list">
-                                <a href="https://swiftonserver.com/tags/documentation/"><small>Documentation</small></a>
-        <a href="https://swiftonserver.com/tags/hummingbird/"><small>Hummingbird</small></a>
-        <a href="https://swiftonserver.com/tags/openapi/"><small>OpenAPI</small></a>
-        <a href="https://swiftonserver.com/tags/server/"><small>Server</small></a>
-                            </div>
-                        </div>
                     <div class="card featured">
                             <span class="featured">featured</span>
                             
                             <div class="author-list">
                                 <a href="https://swiftonserver.com/authors/tibor-bodecs/">
-                                <img class="small rounded" src="/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                                 </a>
                             </div>
                             <div class="meta">
-                                <time datetime="2024/03/12">2024/03/12</time>
-                                 &middot; <span class="reading-time">7 min read</span>
+                                <time datetime="2024-03-12">2024-03-12</time>
+                                    &middot; <span class="reading-time">7 min read</span>
                             </div>
                             
                             <h2 class="title"><a href="https://swiftonserver.com/using-environment-variables-in-swift/" target="">Environment Variables in Swift</a></h2>
@@ -599,29 +621,6 @@
         <a href="https://swiftonserver.com/tags/utilities/"><small>Utilities</small></a>
                             </div>
                         </div>
-                    <div class="card">
-                            
-                            
-                            <div class="author-list">
-                                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
-                                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
-                                </a>
-                            </div>
-                            <div class="meta">
-                                <time datetime="2024/01/16">2024/01/16</time>
-                                 &middot; <span class="reading-time">2 min read</span>
-                            </div>
-                            
-                            <h2 class="title"><a href="https://swiftonserver.com/developing-with-swift-in-visual-studio-code/" target="">Developing with Swift in Visual Studio Code</a></h2>
-                            <p>Learn how to set up your Visual Studio Code for Swift development using Docker, Dev Containers and the Swift for VS Code extension.</p>
-                        
-                            <div class="spacer"></div>
-                        
-                            <div class="tag-list">
-                                <a href="https://swiftonserver.com/tags/utilities/"><small>Utilities</small></a>
-        <a href="https://swiftonserver.com/tags/vscode/"><small>VSCode</small></a>
-                            </div>
-                        </div>
                     </div>
                 </section>
     
@@ -631,7 +630,7 @@
         <div>
             <div class="support">
                 <a href="https://swiftcraft.uk/" target="_blank">
-                    <img src="/images/logos/swiftcraft.png" alt="SwiftCraft logo">
+                    <img src="https://swiftonserver.com/images/logos/swiftcraft.png" alt="SwiftCraft logo">
                 </a>
                 <h4>
                     <a href="https://swiftcraft.uk/" target="_blank">SwiftCraft</a>
@@ -650,17 +649,41 @@
                     <li class="first-level">
                         <a href="#How%20to%20use%20the%20Logging%20library">How to use the Logging library</a>
                         <ul>
-                            <li><a href="#The%20basics">The basics</a></li>
-                <li><a href="#Log%20levels">Log levels</a></li>
-                <li><a href="#Log%20Metadata">Log Metadata</a></li>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#The%20basics">The basics</a>
+                        <ul>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Log%20levels">Log levels</a>
+                        <ul>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Log%20Metadata">Log Metadata</a>
+                        <ul>
                         </ul>
                     </li>
         <li class="first-level">
                         <a href="#A%20practical%20example">A practical example</a>
                         <ul>
-                            <li><a href="#Logging%20in%20libraries">Logging in libraries</a></li>
-                <li><a href="#Logging%20in%20executables">Logging in executables</a></li>
-                <li><a href="#Environment-based%20logs">Environment-based logs</a></li>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Logging%20in%20libraries">Logging in libraries</a>
+                        <ul>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Logging%20in%20executables">Logging in executables</a>
+                        <ul>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Environment-based%20logs">Environment-based logs</a>
+                        <ul>
                         </ul>
                     </li>
         <li class="first-level">
@@ -682,12 +705,12 @@
             <figure>
                 <picture>
                     <source
-                        srcset="/images/logos/logo~dark.png"
+                        srcset="https://swiftonserver.com/images/logos/logo~dark.png"
                         media="(prefers-color-scheme: dark)"
                     >
                     <img
                         id="logo-image"
-                        src="/images/logos/logo.png"
+                        src="https://swiftonserver.com/images/logos/logo.png"
                         alt="Logo of Swift on server"
                         title="Swift on server"
                     >
@@ -708,7 +731,7 @@
             
             <div>
                 <a href="/authors/joannis-orlandos/">
-                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                 </a>
                 <h4><a href="/authors/joannis-orlandos/">Joannis Orlandos</a></h4>
                 <p><small><a href="https://unbeatable.software/" target="_blank">Unbeatable Software B.V.</a></small></p>
@@ -722,7 +745,7 @@
             
             <div>
                 <a href="/authors/tibor-bodecs/">
-                <img class="small rounded" src="/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                 </a>
                 <h4><a href="/authors/tibor-bodecs/">Tibor Bödecs</a></h4>
                 <p><small><a href="https://binarybirds.com/" target="_blank">Binary Birds Kft.</a></small></p>

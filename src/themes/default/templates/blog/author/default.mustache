@@ -3,11 +3,11 @@
 <div id="author-page">
     
     <header>
-        {{#page.imageUrl}}<img class="large rounded" src="{{page.imageUrl}}" alt="{{page.title}}">{{/page.imageUrl}}
+        {{#page.image}}<img class="large rounded" src="{{page.image}}" alt="{{page.title}}">{{/page.image}}
         <h1>{{page.title}}</h1>
-        {{#company}}<a href="{{url}}">{{name}}</a>{{/company}}
-        {{& page.contents}}
-        {{#cta}}<a class="cta" href="{{url}}">{{label}}</a>{{/cta}}
+        {{#page.companyName}}<a href="{{page.companyUrl}}">{{page.companyName}}</a>{{/page.companyName}}
+        {{& page.contents.html}}
+        {{#page.ctaUrl}}<a class="cta" href="{{page.ctaUrl}}">{{page.ctaLabel}}</a>{{/page.ctaUrl}}
     </header>
     
     <p><br>{{count(page.posts)}} posts</p>

@@ -1,3 +1,4 @@
+type: post
 title: "Hummingbird and CORS"
 description: "Learn how to use Hummingbird and CORS in Swift"
 image: ./assets/cover.jpg

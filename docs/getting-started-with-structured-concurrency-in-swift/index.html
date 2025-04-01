@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="canonical" href="https://swiftonserver.com/getting-started-with-structured-concurrency-in-swift/">
-    <link rel="prev" href="https://swiftonserver.com/getting-started-with-mongokitten/">
-    <link rel="next" href="https://swiftonserver.com/getting-started-with-swift-package-manager/">
+    <link rel="prev" href="https://swiftonserver.com/building-swiftnio-clients/">
+    <link rel="next" href="https://swiftonserver.com/advanced-async-sequences/">
 
     <title>Getting Started: Swift&#39;s Structured Concurrency - Swift on server</title>
     <meta name="description" content="Learn how to apply structured concurrency in your applications, using task groups and other structured concepts.">
@@ -15,37 +15,37 @@
     <meta property="og:url" content="https://swiftonserver.com/getting-started-with-structured-concurrency-in-swift/">
     <meta property="og:title" content="Getting Started: Swift&#39;s Structured Concurrency - Swift on server">
     <meta property="og:description" content="Learn how to apply structured concurrency in your applications, using task groups and other structured concepts.">
-    <meta property="og:image" content="/assets/getting-started-with-structured-concurrency-in-swift/cover.jpg" />
+    <meta property="og:image" content="https://swiftonserver.com/assets/getting-started-with-structured-concurrency-in-swift/cover.jpg" />
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Getting Started: Swift&#39;s Structured Concurrency - Swift on server">
     <meta name="twitter:description" content="Learn how to apply structured concurrency in your applications, using task groups and other structured concepts.">
-    <meta name="twitter:image" content="/assets/getting-started-with-structured-concurrency-in-swift/cover.jpg">
+    <meta name="twitter:image" content="https://swiftonserver.com/assets/getting-started-with-structured-concurrency-in-swift/cover.jpg">
 
-    <link rel="stylesheet" href="/css/modern-normalize.css">
-    <link rel="stylesheet" href="/css/modern-base.css">
-    <link rel="stylesheet" href="/css/variables.css">
-    <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/css/grid.css">
-    <link rel="stylesheet" href="/css/navigation.css">
-    <link rel="stylesheet" href="/css/footer.css">
-    <link rel="stylesheet" href="/css/syntax.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/modern-normalize.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/modern-base.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/variables.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/base.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/grid.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/navigation.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/footer.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/syntax.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/style.css">
 
     
 
-    <link rel="shortcut icon" href="/images/icons/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="/images/icons/icon-320.png" type="image/png">
+    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/icon-320.png" type="image/png">
     
-    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/images/icons/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon-180x180.png">
+    <link rel="apple-touch-icon" href="https://swiftonserver.com/images/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://swiftonserver.com/images/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://swiftonserver.com/images/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://swiftonserver.com/images/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://swiftonserver.com/images/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://swiftonserver.com/images/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://swiftonserver.com/images/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://swiftonserver.com/images/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://swiftonserver.com/images/icons/apple-touch-icon-180x180.png">
 
     <link
         rel="stylesheet"
@@ -88,11 +88,11 @@
             <figure>
                 <picture>
                     <source
-                        srcset="/images/logos/logo~dark.png"
+                        srcset="https://swiftonserver.com/logos/logo~dark.png"
                         media="(prefers-color-scheme: dark)"
                     >
                     <img
-                        src="/images/logos/logo.png"
+                        src="https://swiftonserver.com/images/logos/logo.png"
                         alt="Logo of Swift on server"
                         title="Swift on server"
                     >
@@ -123,7 +123,7 @@
         <div>
             <article class="post">
                 <div class="meta">
-                    <time datetime="2024/03/19">2024/03/19</time>
+                    <time datetime="2024-03-19">2024-03-19</time>
                      &middot; <span class="reading-time">22 min read</span>
                      &middot; <span class="featured">featured</span>
                 </div>
@@ -262,7 +262,7 @@
 </span>    <span class='xc'>// ...</span><span class='newline'>
 </span>}</code></pre><h3 id='Task%20Cancellation'><a href='#Task%20Cancellation'>Task Cancellation</a></h3><p>In structured concurrency, tasks are automatically cancelled when their parent task is cancelled. This is a powerful feature, as it allows you to cancel all of a task’s dependencies at once. This is especially helpful when you’re writing a server.</p><p>Let’s say you’re writing a web server, where your route generates a huge excel file. If the client cancels the request, you’ll want to cancel the generation of the excel file. Continuing to generate the file is a waste of resources, and can lead to intentional and unintentional denial of service attacks.</p><p>In structured concurrency, you can use the <code><a href='https://swiftinit.org/docs/swift/_concurrency/task' target='_blank' rel='external'>Task</a></code> object to cancel a task. This is a structured way to cancel a task, and it’s clear when the task is cancelled. You can also use the <code><a href='https://swiftinit.org/docs/swift/_concurrency/task' target='_blank' rel='external'>Task</a></code> object to check if a task is cancelled, and to handle the cancellation.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>if</span> <span class='xv'>Task</span>.<span class='xv'>isCancelled</span> {<span class='newline'>
 </span>    <span class='xk'>return</span><span class='newline'>
-</span>}</code></pre><p>This is a structured way to check if a task is cancelled, and to handle the cancellation. It’s clear when the task is cancelled, and you can handle the cancellation in a structured way.</p><p>You can also check if a task is cancelled using the <code><a href='https://swiftinit.org/docs/swift/_concurrency/task.checkcancellation' target='_blank' rel='external'>checkCancellation</a></code> method. This is a structured way to check if a task is cancelled, and to handle the cancellation. It’s clear when the task is cancelled, and you can handle the cancellation in a structured way.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>try</span> <span class='xv'>Task</span>.<span class='xv'>checkCancellation</span>()</code></pre><p>This will throw a <code><a href='https://swiftinit.org/docs/swift/_concurrency/cancellationerror' target='_blank' rel='external'>CancellationError</a></code> if the task is cancelled. You can catch this error and handle the cancellation in a structured way.</p><h3 id='Blocking%20and%20Sleeping%20Tasks'><a href='#Blocking%20and%20Sleeping%20Tasks'>Blocking and Sleeping Tasks</a></h3><p>If you have blocking or heavy work that you want to run concurrently, you’ll need to do so outside of the structured concurrency model. This is because blocking or heavy work can cause a performance bottleneck in the global concurrent executor. SwiftNIO has the <code><a href='https://swiftinit.org/docs/swift-nio/nioposix/niothreadpool' target='_blank' rel='external'>NIOThreadPool</a></code> that you can use to run blocking work concurrently. For iOS users, it may be wise to use a <code><a href='https://swiftinit.org/docs/swift/dispatch/dispatchqueue' target='_blank' rel='external'>DispatchQueue</a></code> for these scenarios.</p><p>If you do decide to add computationally heavy code in structured concurrency, you can use <code>await Task.yield()</code> to yield the current task. This will allow your Task Executor to run other tasks. Doing so can prevent lag spikes, such as UI freezes those that happen on iOS when blocking the main thread.</p><p><strong>Note:</strong> Swift 6 will be able to address these issues, through the addition of custom Task Executors. More on that later.</p><p>When finding yourself in a situation where you need to delay a task, you can use the <code>Task.sleep</code> method. It’s similar to your regular <code>sleep</code> function, but rather than blocking the entire thread, it only suspends the task.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>Task</span>.<span class='xv'>sleep</span>(<span class='xv'>for</span>: .<span class='xv'>seconds</span>(<span class='xn'>10</span>))</code></pre><p>An extra feature of <code>Task.sleep</code> is that it can be cancelled. If the task is cancelled while it’s sleeping, the sleep will be interrupted and throw a <code><a href='https://swiftinit.org/docs/swift/_concurrency/cancellationerror' target='_blank' rel='external'>CancellationError</a></code>.</p><h3 id='Cancellation%20Handlers'><a href='#Cancellation%20Handlers'>Cancellation Handlers</a></h3><p>When a task is cancelled, you might want to clean up resources or perform some other action to handle the cancellation. You can use a cancellation handler to do this. A cancellation handler is a piece of code that is run when a task is cancelled.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>func</span> <span class='xv'>getData</span>() <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <span class='xt'>HTTPResponse</span> {<span class='newline'>
+</span>}</code></pre><p>This is a structured way to check if a task is cancelled, and to handle the cancellation. It’s clear when the task is cancelled, and you can handle the cancellation in a structured way.</p><p>You can also check if a task is cancelled using the <code><a href='https://swiftinit.org/docs/swift/_concurrency/task.checkcancellation' target='_blank' rel='external'>checkCancellation</a></code> method. This is a structured way to check if a task is cancelled, and to handle the cancellation. It’s clear when the task is cancelled, and you can handle the cancellation in a structured way.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>try</span> <span class='xv'>Task</span>.<span class='xv'>checkCancellation</span>()</code></pre><p>This will throw a <code><a href='https://swiftinit.org/docs/swift/_concurrency/cancellationerror' target='_blank' rel='external'>CancellationError</a></code> if the task is cancelled. You can catch this error and handle the cancellation in a structured way.</p><h3 id='Blocking%20and%20Sleeping%20Tasks'><a href='#Blocking%20and%20Sleeping%20Tasks'>Blocking and Sleeping Tasks</a></h3><p>If you have blocking or heavy work that you want to run concurrently, you’ll need to do so outside of the structured concurrency model. This is because blocking or heavy work can cause a performance bottleneck in the global concurrent executor. SwiftNIO has the <code><a href='https://swiftinit.org/hist/swift-nio:2.79.0/nioposix/niothreadpool' target='_blank' rel='external'>NIOThreadPool</a></code> that you can use to run blocking work concurrently. For iOS users, it may be wise to use a <code><a href='https://swiftinit.org/docs/swift/dispatch/dispatchqueue' target='_blank' rel='external'>DispatchQueue</a></code> for these scenarios.</p><p>If you do decide to add computationally heavy code in structured concurrency, you can use <code>await Task.yield()</code> to yield the current task. This will allow your Task Executor to run other tasks. Doing so can prevent lag spikes, such as UI freezes those that happen on iOS when blocking the main thread.</p><p><strong>Note:</strong> Swift 6 will be able to address these issues, through the addition of custom Task Executors. More on that later.</p><p>When finding yourself in a situation where you need to delay a task, you can use the <code>Task.sleep</code> method. It’s similar to your regular <code>sleep</code> function, but rather than blocking the entire thread, it only suspends the task.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>Task</span>.<span class='xv'>sleep</span>(<span class='xv'>for</span>: .<span class='xv'>seconds</span>(<span class='xn'>10</span>))</code></pre><p>An extra feature of <code>Task.sleep</code> is that it can be cancelled. If the task is cancelled while it’s sleeping, the sleep will be interrupted and throw a <code><a href='https://swiftinit.org/docs/swift/_concurrency/cancellationerror' target='_blank' rel='external'>CancellationError</a></code>.</p><h3 id='Cancellation%20Handlers'><a href='#Cancellation%20Handlers'>Cancellation Handlers</a></h3><p>When a task is cancelled, you might want to clean up resources or perform some other action to handle the cancellation. You can use a cancellation handler to do this. A cancellation handler is a piece of code that is run when a task is cancelled.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>func</span> <span class='xv'>getData</span>() <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <span class='xt'>HTTPResponse</span> {<span class='newline'>
 </span>    <span class='xk'>let</span> <span class='xv'>httpClient</span> = <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>HTTPClient</span>.<span class='xv'>connect</span>(<span class='xv'>to</span>: <span class='xs'>"https://api.example.com"</span>)<span class='newline'>
 </span>    <span class='xk'>return</span> <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>withTaskCancellationHandler</span> {<span class='newline'>
 </span>        <span class='xc'>// This will run normally, and does the actual work</span><span class='newline'>
@@ -300,7 +300,7 @@
 </span>            <span class='xv'>books</span>.<span class='xv'>append</span>(<span class='xv'>book</span>)<span class='newline'>
 </span>        }<span class='newline'>
 </span>    }<span class='newline'>
-</span>}</code></pre><h3 id='Discarding%20Task%20Groups'><a href='#Discarding%20Task%20Groups'>Discarding Task Groups</a></h3><p>In some cases, you might not be interested in the result of the task group. For example, you might want to run a number of tasks concurrently, but these tasks don’t return results. In that case, you can use <code><a href='https://swiftinit.org/docs/swift/_concurrency.withdiscardingtaskgroup(returning:isolation:body:)' target='_blank' rel='external'>withDiscardingTaskGroup(returning:isolation:body:)</a></code> and <code><a href='https://swiftinit.org/docs/swift/_concurrency.withthrowingdiscardingtaskgroup(returning:isolation:body:)' target='_blank' rel='external'>withThrowingDiscardingTaskGroup(returning:isolation:body:)</a></code> from iOS 17 and macOS 14. This is a structured way to run multiple pieces of work concurrently, without needing to retain results.</p><p>The regular task groups create a collection of results, which you can then iterate over. In some cases, such as a TCP server, this collection of results is not needed and grow indefinitely. In that case, you’ll want to use a discarding task group to prevent an ever-growing collection of results. Note that <code>Void</code> results are still stored and occupy a small amount of memory!</p><h2 id='Conclusion'><a href='#Conclusion'>Conclusion</a></h2><p>Structured concurrency is a powerful feature that was introduced with Swift 5.5. When writing your concurrenct code in a structured way, it’s easier to reason about your code and maintain it.</p><p>Almost every application that you write will also have some form of shared state. In the next article, <a href='../structured-concurrency-and-shared-state-in-swift'>Sendable and Shared Mutable State</a>, we’ll cover how Swift’s actors, actor isolation and Sendable checking empower you to write race-condition free code.</p></section><div style='display: none;' id='swiftinit-tooltips'><a href='/docs/swift/dispatch/dispatchqueue'><pre><code><span class='xk'>class</span> <span class='xv'>DispatchQueue</span></code></pre></a><a href='/docs/swift/foundation/operationqueue'><pre><code><span class='xk'>class</span> <span class='xv'>OperationQueue</span></code></pre></a><a href='/docs/swift/dispatch/dispatchqueue.global(qos:)'><pre><code><span class='xk'>class</span> <span class='xk'>func</span> <span class='xv'>global</span>(<span class='xi'></span><span class='xv'>qos</span>: <span class='xt'>DispatchQoS</span>.<span class='xt'>QoSClass</span> = .<span class='xv'>default</span><wbr>) -&gt; <span class='xt'>DispatchQueue</span></code></pre></a><a href='/docs/swift/dispatch/dispatchqueue.async(group:qos:flags:execute:)'><pre><code><span class='xk'>func</span> <span class='xv'>async</span>(<span class='xi'></span><span class='xv'>group</span>: <span class='xt'>DispatchGroup</span>? = <span class='xk'>nil</span>, <span class='xi'></span><span class='xv'>qos</span>: <span class='xt'>DispatchQoS</span> = .<span class='xv'>unspecified</span>, <span class='xi'></span><span class='xv'>flags</span>: <span class='xt'>DispatchWorkItemFlags</span> = [], <span class='xi'></span><span class='xv'>execute</span> <span class='xb'>work</span>: <span class='xa'>@escaping</span> () -&gt; <span class='xt'>Void</span><wbr>)</code></pre><p>Submits a work item to a dispatch queue and optionally associates it with a dispatch group. The dispatch group may be used to wait for the completion of the work items it references.</p></a><a href='/docs/swift/foundationessentials/url'><pre><code><span class='xk'>struct</span> <span class='xv'>URL</span></code></pre><p>A URL is a type that can potentially contain the location of a resource on a remote server, the path of a local file on disk, or even an arbitrary piece of encoded data.</p></a><a href='/docs/swift/swift/result'><pre><code><span class='xa'>@frozen</span> <span class='xk'>enum</span> <span class='xv'>Result</span>&lt;<span class='xu'>Success</span>, <span class='xu'>Failure</span>&gt; <span class='xk'>where</span> <span class='xt'>Failure</span> : <span class='xt'>Error</span>, <span class='xt'>Success</span> : <span class='xo'>~</span><span class='xt'>Copyable</span></code></pre><p>A value that represents either a success or a failure, including an associated value in each case.</p></a><a href='/docs/swift/swift/error'><pre><code><span class='xk'>protocol</span> <span class='xv'>Error</span> : <span class='xt'>Sendable</span></code></pre><p>A type representing an error value that can be thrown.</p></a><a href='/docs/swift/swift/void'><pre><code><span class='xk'>typealias</span> <span class='xv'>Void</span> = ()</code></pre><p>The return type of functions that don’t explicitly specify a return type, that is, an empty tuple <code>()</code>.</p></a><a href='/docs/swift/foundationnetworking/urlsession'><pre><code><span class='xk'>class</span> <span class='xv'>URLSession</span></code></pre></a><a href='/docs/swift/foundationnetworking/urlsession.shared'><pre><code><span class='xk'>class</span> <span class='xk'>var</span> <span class='xv'>shared</span>: <span class='xt'>URLSession</span> { <span class='xk'>get</span> }</code></pre></a><a href='/docs/swift/foundationnetworking/urlsession.datatask(with:completionhandler:)?hash=78Y9O'><pre><code><span class='xk'>func</span> <span class='xv'>dataTask</span>(<span class='xi'></span><span class='xv'>with</span> <span class='xb'>url</span>: <span class='xt'>URL</span>, <span class='xi'></span><span class='xv'>completionHandler</span>: <span class='xa'>@escaping</span> (<span class='xt'>Data</span>?, <span class='xt'>URLResponse</span>?, (<span class='xk'>any</span> <span class='xt'>Error</span>)?) -&gt; <span class='xt'>Void</span><wbr>) -&gt; <span class='xt'>URLSessionDataTask</span></code></pre></a><a href='/docs/swift/swift/result.failure(_:)'><pre><code><span class='xk'>case</span> <span class='xv'>failure</span>(<span class='xt'>Failure</span>)</code></pre><p>A failure, storing a <code>Failure</code> value.</p></a><a href='/docs/swift/swift/result.success(_:)'><pre><code><span class='xk'>case</span> <span class='xv'>success</span>(<span class='xt'>Success</span>)</code></pre><p>A success, storing a <code>Success</code> value.</p></a><a href='/docs/swift/foundation/nslock'><pre><code><span class='xk'>class</span> <span class='xv'>NSLock</span></code></pre></a><a href='/docs/swift/foundation/nslock.lock'><pre><code><span class='xk'>func</span> <span class='xv'>lock</span>(<wbr>)</code></pre></a><a href='/docs/swift/foundation/nslock.unlock'><pre><code><span class='xk'>func</span> <span class='xv'>unlock</span>(<wbr>)</code></pre></a><a href='/docs/swift/swift/dictionary.subscript(_:)?hash=8RFQL'><pre><code><span class='xk'>subscript</span>(<span class='xi'></span><span class='xv'>key</span>: <span class='xt'>Key</span><wbr>) -&gt; <span class='xt'>Value</span>? { <span class='xk'>get</span> <span class='xk'>set</span> }</code></pre><p>Accesses the value associated with the given key for reading and writing.</p></a><a href='/docs/swift/swift/dictionary.keys'><pre><code><span class='xk'>var</span> <span class='xv'>keys</span>: <span class='xt'>Dictionary</span>&lt;<span class='xt'>Key</span>, <span class='xt'>Value</span>&gt;.<span class='xt'>Keys</span> { <span class='xk'>get</span> }</code></pre><p>A collection containing just the keys of the dictionary.</p></a><a href='/docs/swift/swift/sequence.contains(_:)'><pre><code><span class='xk'>func</span> <span class='xv'>contains</span>(<span class='xi'></span>_ <span class='xb'>element</span>: <span class='xk'>Self</span>.<span class='xt'>Element</span><wbr>) -&gt; <span class='xt'>Bool</span></code></pre><p>Returns a Boolean value indicating whether the sequence contains the given element.</p></a><a href='/docs/swift/swift/floatingpoint.%3C=(_:_:)'><pre><code><span class='xk'>static</span> <span class='xk'>func</span> <span class='xo'>&lt;=</span> (<span class='xi'></span><span class='xv'>lhs</span>: <span class='xk'>Self</span>, <span class='xi'></span><span class='xv'>rhs</span>: <span class='xk'>Self</span><wbr>) -&gt; <span class='xt'>Bool</span></code></pre></a><a href='/docs/swift/swift/double.-=(_:_:)'><pre><code><span class='xk'>static</span> <span class='xk'>func</span> <span class='xo'>-=</span> (<span class='xi'></span><span class='xv'>lhs</span>: <span class='xk'>inout</span> <span class='xt'>Double</span>, <span class='xi'></span><span class='xv'>rhs</span>: <span class='xt'>Double</span><wbr>)</code></pre></a><a href='/docs/swift/swift/array.append(_:)'><pre><code><span class='xk'>mutating</span> <span class='xk'>func</span> <span class='xv'>append</span>(<span class='xi'></span>_ <span class='xb'>newElement</span>: <span class='xt'>Element</span><wbr>)</code></pre><p>Adds a new element at the end of the array.</p></a><a href='/docs/swift/_concurrency/asyncstream'><pre><code><span class='xk'>struct</span> <span class='xv'>AsyncStream</span>&lt;<span class='xu'>Element</span>&gt;</code></pre><p>An asynchronous sequence generated from a closure that calls a continuation to produce new elements.</p></a><a href='/docs/swift/_concurrency/asyncsequence'><pre><code><span class='xk'>protocol</span> <span class='xv'>AsyncSequence</span>&lt;<span class='xv'>Element</span>, <span class='xv'>Failure</span>&gt;</code></pre><p>A type that provides asynchronous, sequential, iterated access to its elements.</p></a><a href='/docs/swift/_concurrency/asynciteratorprotocol'><pre><code><span class='xk'>protocol</span> <span class='xv'>AsyncIteratorProtocol</span>&lt;<span class='xv'>Element</span>, <span class='xv'>Failure</span>&gt;</code></pre><p>A type that asynchronously supplies the values of a sequence one at a time.</p></a><a href='/docs/swift/swift/int.==(_:_:)'><pre><code><span class='xk'>static</span> <span class='xk'>func</span> <span class='xo'>==</span> (<span class='xi'></span><span class='xv'>lhs</span>: <span class='xt'>Int</span>, <span class='xi'></span><span class='xv'>rhs</span>: <span class='xt'>Int</span><wbr>) -&gt; <span class='xt'>Bool</span></code></pre></a><a href='/docs/swift/swift/array.count'><pre><code><span class='xk'>var</span> <span class='xv'>count</span>: <span class='xt'>Int</span> { <span class='xk'>get</span> }</code></pre><p>The number of elements in the array.</p></a><a href='/docs/swift/swift/array.subscript(_:)?hash=25IAT'><pre><code><span class='xk'>subscript</span>(<span class='xi'></span><span class='xv'>index</span>: <span class='xt'>Int</span><wbr>) -&gt; <span class='xt'>Element</span> { <span class='xk'>get</span> <span class='xk'>set</span> }</code></pre><p>Accesses the element at the specified position.</p></a><a href='/docs/swift/swift/int.+=(_:_:)'><pre><code><span class='xk'>static</span> <span class='xk'>func</span> <span class='xo'>+=</span> (<span class='xi'></span><span class='xv'>lhs</span>: <span class='xk'>inout</span> <span class='xt'>Int</span>, <span class='xi'></span><span class='xv'>rhs</span>: <span class='xt'>Int</span><wbr>)</code></pre><p>Adds two values and stores the result in the left-hand-side variable.</p></a><a href='/hist/swift-on-server.articles:main/articles/using-swiftnio-channels'><p>SwiftNIO revolves around networking. In SwiftNIO, reads and writes happen using a <code>Channel</code>.</p></a><a href='/hist/swift-on-server.articles:main/articles/advanced-async-sequences'><p><code>AsyncSequence</code>s are very prevalent in Server-Side Swift, and are becoming more prominent in macOS and iOS apps as well.</p></a><a href='/docs/swift/_concurrency/task'><pre><code><span class='xa'>@frozen</span> <span class='xk'>struct</span> <span class='xv'>Task</span>&lt;<span class='xu'>Success</span>, <span class='xu'>Failure</span>&gt; <span class='xk'>where</span> <span class='xt'>Success</span> : <span class='xt'>Sendable</span>, <span class='xt'>Failure</span> : <span class='xt'>Error</span></code></pre><p>A unit of asynchronous work.</p></a><a href='/docs/swift/_concurrency/task.checkcancellation'><pre><code><span class='xk'>static</span> <span class='xk'>func</span> <span class='xv'>checkCancellation</span>(<wbr>) <span class='xk'>throws</span></code></pre><p>Throws an error if the task was canceled.</p></a><a href='/docs/swift/_concurrency/cancellationerror'><pre><code><span class='xk'>struct</span> <span class='xv'>CancellationError</span></code></pre><p>An error that indicates a task was canceled.</p></a><a href='/docs/swift-nio/nioposix/niothreadpool'><pre><code><span class='xk'>final</span> <span class='xk'>class</span> <span class='xv'>NIOThreadPool</span></code></pre><p>A thread pool that should be used if some (kernel thread) blocking work needs to be performed for which no non-blocking API exists.</p></a><a href='/docs/swift/_concurrency/taskgroup'><pre><code><span class='xa'>@frozen</span> <span class='xk'>struct</span> <span class='xv'>TaskGroup</span>&lt;<span class='xu'>ChildTaskResult</span>&gt; <span class='xk'>where</span> <span class='xt'>ChildTaskResult</span> : <span class='xt'>Sendable</span></code></pre><p>A group that contains dynamically created child tasks.</p></a><a href='/docs/swift/_concurrency.withtaskgroup(of:returning:isolation:body:)'><pre><code><span class='xa'>@backDeployed</span>(<span class='xk'>before</span>: <span class='xk'>macOS</span> <span class='xn'>15</span>.<span class='xn'>0</span>, <span class='xk'>iOS</span> <span class='xn'>18</span>.<span class='xn'>0</span>, <span class='xk'>watchOS</span> <span class='xn'>11</span>.<span class='xn'>0</span>, <span class='xk'>tvOS</span> <span class='xn'>18</span>.<span class='xn'>0</span>, <span class='xk'>visionOS</span> <span class='xn'>2</span>.<span class='xn'>0</span>)
+</span>}</code></pre><h3 id='Discarding%20Task%20Groups'><a href='#Discarding%20Task%20Groups'>Discarding Task Groups</a></h3><p>In some cases, you might not be interested in the result of the task group. For example, you might want to run a number of tasks concurrently, but these tasks don’t return results. In that case, you can use <code><a href='https://swiftinit.org/docs/swift/_concurrency.withdiscardingtaskgroup(returning:isolation:body:)' target='_blank' rel='external'>withDiscardingTaskGroup(returning:isolation:body:)</a></code> and <code><a href='https://swiftinit.org/docs/swift/_concurrency.withthrowingdiscardingtaskgroup(returning:isolation:body:)' target='_blank' rel='external'>withThrowingDiscardingTaskGroup(returning:isolation:body:)</a></code> from iOS 17 and macOS 14. This is a structured way to run multiple pieces of work concurrently, without needing to retain results.</p><p>The regular task groups create a collection of results, which you can then iterate over. In some cases, such as a TCP server, this collection of results is not needed and grow indefinitely. In that case, you’ll want to use a discarding task group to prevent an ever-growing collection of results. Note that <code>Void</code> results are still stored and occupy a small amount of memory!</p><h2 id='Conclusion'><a href='#Conclusion'>Conclusion</a></h2><p>Structured concurrency is a powerful feature that was introduced with Swift 5.5. When writing your concurrenct code in a structured way, it’s easier to reason about your code and maintain it.</p><p>Almost every application that you write will also have some form of shared state. In the next article, <a href='../structured-concurrency-and-shared-state-in-swift'>Sendable and Shared Mutable State</a>, we’ll cover how Swift’s actors, actor isolation and Sendable checking empower you to write race-condition free code.</p></section><div style='display: none;' id='swiftinit-tooltips'><a href='/docs/swift/dispatch/dispatchqueue'><pre><code><span class='xk'>class</span> <span class='xv'>DispatchQueue</span></code></pre></a><a href='/docs/swift/foundation/operationqueue'><pre><code><span class='xk'>class</span> <span class='xv'>OperationQueue</span></code></pre></a><a href='/docs/swift/dispatch/dispatchqueue.global(qos:)'><pre><code><span class='xk'>class</span> <span class='xk'>func</span> <span class='xv'>global</span>(<span class='xi'></span><span class='xv'>qos</span>: <span class='xt'>DispatchQoS</span>.<span class='xt'>QoSClass</span> = .<span class='xv'>default</span><wbr>) -&gt; <span class='xt'>DispatchQueue</span></code></pre></a><a href='/docs/swift/dispatch/dispatchqueue.async(group:qos:flags:execute:)'><pre><code><span class='xk'>func</span> <span class='xv'>async</span>(<span class='xi'></span><span class='xv'>group</span>: <span class='xt'>DispatchGroup</span>? = <span class='xk'>nil</span>, <span class='xi'></span><span class='xv'>qos</span>: <span class='xt'>DispatchQoS</span> = .<span class='xv'>unspecified</span>, <span class='xi'></span><span class='xv'>flags</span>: <span class='xt'>DispatchWorkItemFlags</span> = [], <span class='xi'></span><span class='xv'>execute</span> <span class='xb'>work</span>: <span class='xa'>@escaping</span> () -&gt; <span class='xt'>Void</span><wbr>)</code></pre><p>Submits a work item to a dispatch queue and optionally associates it with a dispatch group. The dispatch group may be used to wait for the completion of the work items it references.</p></a><a href='/docs/swift/foundationessentials/url'><pre><code><span class='xk'>struct</span> <span class='xv'>URL</span></code></pre><p>A URL is a type that can potentially contain the location of a resource on a remote server, the path of a local file on disk, or even an arbitrary piece of encoded data.</p></a><a href='/docs/swift/swift/result'><pre><code><span class='xa'>@frozen</span> <span class='xk'>enum</span> <span class='xv'>Result</span>&lt;<span class='xu'>Success</span>, <span class='xu'>Failure</span>&gt; <span class='xk'>where</span> <span class='xt'>Failure</span> : <span class='xt'>Error</span>, <span class='xt'>Success</span> : <span class='xo'>~</span><span class='xt'>Copyable</span></code></pre><p>A value that represents either a success or a failure, including an associated value in each case.</p></a><a href='/docs/swift/swift/error'><pre><code><span class='xk'>protocol</span> <span class='xv'>Error</span> : <span class='xt'>Sendable</span></code></pre><p>A type representing an error value that can be thrown.</p></a><a href='/docs/swift/swift/void'><pre><code><span class='xk'>typealias</span> <span class='xv'>Void</span> = ()</code></pre><p>The return type of functions that don’t explicitly specify a return type, that is, an empty tuple <code>()</code>.</p></a><a href='/docs/swift/foundationnetworking/urlsession'><pre><code><span class='xk'>class</span> <span class='xv'>URLSession</span></code></pre></a><a href='/docs/swift/foundationnetworking/urlsession.shared'><pre><code><span class='xk'>class</span> <span class='xk'>var</span> <span class='xv'>shared</span>: <span class='xt'>URLSession</span> { <span class='xk'>get</span> }</code></pre></a><a href='/docs/swift/foundationnetworking/urlsession.datatask(with:completionhandler:)?hash=78Y9O'><pre><code><span class='xk'>func</span> <span class='xv'>dataTask</span>(<span class='xi'></span><span class='xv'>with</span> <span class='xb'>url</span>: <span class='xt'>URL</span>, <span class='xi'></span><span class='xv'>completionHandler</span>: <span class='xa'>@escaping</span> (<span class='xt'>Data</span>?, <span class='xt'>URLResponse</span>?, (<span class='xk'>any</span> <span class='xt'>Error</span>)?) -&gt; <span class='xt'>Void</span><wbr>) -&gt; <span class='xt'>URLSessionDataTask</span></code></pre></a><a href='/docs/swift/swift/result.failure(_:)'><pre><code><span class='xk'>case</span> <span class='xv'>failure</span>(<span class='xt'>Failure</span>)</code></pre><p>A failure, storing a <code>Failure</code> value.</p></a><a href='/docs/swift/swift/result.success(_:)'><pre><code><span class='xk'>case</span> <span class='xv'>success</span>(<span class='xt'>Success</span>)</code></pre><p>A success, storing a <code>Success</code> value.</p></a><a href='/docs/swift/foundation/nslock'><pre><code><span class='xk'>class</span> <span class='xv'>NSLock</span></code></pre></a><a href='/docs/swift/foundation/nslock.lock'><pre><code><span class='xk'>func</span> <span class='xv'>lock</span>(<wbr>)</code></pre></a><a href='/docs/swift/foundation/nslock.unlock'><pre><code><span class='xk'>func</span> <span class='xv'>unlock</span>(<wbr>)</code></pre></a><a href='/docs/swift/swift/dictionary.subscript(_:)?hash=8RFQL'><pre><code><span class='xk'>subscript</span>(<span class='xi'></span><span class='xv'>key</span>: <span class='xt'>Key</span><wbr>) -&gt; <span class='xt'>Value</span>? { <span class='xk'>get</span> <span class='xk'>set</span> }</code></pre><p>Accesses the value associated with the given key for reading and writing.</p></a><a href='/docs/swift/swift/dictionary.keys'><pre><code><span class='xk'>var</span> <span class='xv'>keys</span>: <span class='xt'>Dictionary</span>&lt;<span class='xt'>Key</span>, <span class='xt'>Value</span>&gt;.<span class='xt'>Keys</span> { <span class='xk'>get</span> }</code></pre><p>A collection containing just the keys of the dictionary.</p></a><a href='/docs/swift/swift/sequence.contains(_:)'><pre><code><span class='xk'>func</span> <span class='xv'>contains</span>(<span class='xi'></span>_ <span class='xb'>element</span>: <span class='xk'>Self</span>.<span class='xt'>Element</span><wbr>) -&gt; <span class='xt'>Bool</span></code></pre><p>Returns a Boolean value indicating whether the sequence contains the given element.</p></a><a href='/docs/swift/swift/floatingpoint.%3C=(_:_:)'><pre><code><span class='xk'>static</span> <span class='xk'>func</span> <span class='xo'>&lt;=</span> (<span class='xi'></span><span class='xv'>lhs</span>: <span class='xk'>Self</span>, <span class='xi'></span><span class='xv'>rhs</span>: <span class='xk'>Self</span><wbr>) -&gt; <span class='xt'>Bool</span></code></pre></a><a href='/docs/swift/swift/double.-=(_:_:)'><pre><code><span class='xk'>static</span> <span class='xk'>func</span> <span class='xo'>-=</span> (<span class='xi'></span><span class='xv'>lhs</span>: <span class='xk'>inout</span> <span class='xt'>Double</span>, <span class='xi'></span><span class='xv'>rhs</span>: <span class='xt'>Double</span><wbr>)</code></pre></a><a href='/docs/swift/swift/array.append(_:)'><pre><code><span class='xk'>mutating</span> <span class='xk'>func</span> <span class='xv'>append</span>(<span class='xi'></span>_ <span class='xb'>newElement</span>: <span class='xt'>Element</span><wbr>)</code></pre><p>Adds a new element at the end of the array.</p></a><a href='/docs/swift/_concurrency/asyncstream'><pre><code><span class='xk'>struct</span> <span class='xv'>AsyncStream</span>&lt;<span class='xu'>Element</span>&gt;</code></pre><p>An asynchronous sequence generated from a closure that calls a continuation to produce new elements.</p></a><a href='/docs/swift/_concurrency/asyncsequence'><pre><code><span class='xk'>protocol</span> <span class='xv'>AsyncSequence</span>&lt;<span class='xv'>Element</span>, <span class='xv'>Failure</span>&gt;</code></pre><p>A type that provides asynchronous, sequential, iterated access to its elements.</p></a><a href='/docs/swift/_concurrency/asynciteratorprotocol'><pre><code><span class='xk'>protocol</span> <span class='xv'>AsyncIteratorProtocol</span>&lt;<span class='xv'>Element</span>, <span class='xv'>Failure</span>&gt;</code></pre><p>A type that asynchronously supplies the values of a sequence one at a time.</p></a><a href='/docs/swift/swift/int.==(_:_:)'><pre><code><span class='xk'>static</span> <span class='xk'>func</span> <span class='xo'>==</span> (<span class='xi'></span><span class='xv'>lhs</span>: <span class='xt'>Int</span>, <span class='xi'></span><span class='xv'>rhs</span>: <span class='xt'>Int</span><wbr>) -&gt; <span class='xt'>Bool</span></code></pre></a><a href='/docs/swift/swift/array.count'><pre><code><span class='xk'>var</span> <span class='xv'>count</span>: <span class='xt'>Int</span> { <span class='xk'>get</span> }</code></pre><p>The number of elements in the array.</p></a><a href='/docs/swift/swift/array.subscript(_:)?hash=25IAT'><pre><code><span class='xk'>subscript</span>(<span class='xi'></span><span class='xv'>index</span>: <span class='xt'>Int</span><wbr>) -&gt; <span class='xt'>Element</span> { <span class='xk'>get</span> <span class='xk'>set</span> }</code></pre><p>Accesses the element at the specified position.</p></a><a href='/docs/swift/swift/int.+=(_:_:)'><pre><code><span class='xk'>static</span> <span class='xk'>func</span> <span class='xo'>+=</span> (<span class='xi'></span><span class='xv'>lhs</span>: <span class='xk'>inout</span> <span class='xt'>Int</span>, <span class='xi'></span><span class='xv'>rhs</span>: <span class='xt'>Int</span><wbr>)</code></pre><p>Adds two values and stores the result in the left-hand-side variable.</p></a><a href='/hist/swift-on-server.articles:main/articles/using-swiftnio-channels'><p>SwiftNIO revolves around networking. In SwiftNIO, reads and writes happen using a <code>Channel</code>.</p></a><a href='/hist/swift-on-server.articles:main/articles/advanced-async-sequences'><p><code>AsyncSequence</code>s are very prevalent in Server-Side Swift, and are becoming more prominent in macOS and iOS apps as well.</p></a><a href='/docs/swift/_concurrency/task'><pre><code><span class='xa'>@frozen</span> <span class='xk'>struct</span> <span class='xv'>Task</span>&lt;<span class='xu'>Success</span>, <span class='xu'>Failure</span>&gt; <span class='xk'>where</span> <span class='xt'>Success</span> : <span class='xt'>Sendable</span>, <span class='xt'>Failure</span> : <span class='xt'>Error</span></code></pre><p>A unit of asynchronous work.</p></a><a href='/docs/swift/_concurrency/task.checkcancellation'><pre><code><span class='xk'>static</span> <span class='xk'>func</span> <span class='xv'>checkCancellation</span>(<wbr>) <span class='xk'>throws</span></code></pre><p>Throws an error if the task was canceled.</p></a><a href='/docs/swift/_concurrency/cancellationerror'><pre><code><span class='xk'>struct</span> <span class='xv'>CancellationError</span></code></pre><p>An error that indicates a task was canceled.</p></a><a href='/hist/swift-nio:2.79.0/nioposix/niothreadpool'><pre><code><span class='xk'>final</span> <span class='xk'>class</span> <span class='xv'>NIOThreadPool</span></code></pre><p>A thread pool that should be used if some (kernel thread) blocking work needs to be performed for which no non-blocking API exists.</p></a><a href='/docs/swift/_concurrency/taskgroup'><pre><code><span class='xa'>@frozen</span> <span class='xk'>struct</span> <span class='xv'>TaskGroup</span>&lt;<span class='xu'>ChildTaskResult</span>&gt; <span class='xk'>where</span> <span class='xt'>ChildTaskResult</span> : <span class='xt'>Sendable</span></code></pre><p>A group that contains dynamically created child tasks.</p></a><a href='/docs/swift/_concurrency.withtaskgroup(of:returning:isolation:body:)'><pre><code><span class='xa'>@backDeployed</span>(<span class='xk'>before</span>: <span class='xk'>macOS</span> <span class='xn'>15</span>.<span class='xn'>0</span>, <span class='xk'>iOS</span> <span class='xn'>18</span>.<span class='xn'>0</span>, <span class='xk'>watchOS</span> <span class='xn'>11</span>.<span class='xn'>0</span>, <span class='xk'>tvOS</span> <span class='xn'>18</span>.<span class='xn'>0</span>, <span class='xk'>visionOS</span> <span class='xn'>2</span>.<span class='xn'>0</span>)
 <span class='xk'>func</span> <span class='xv'>withTaskGroup</span>&lt;<span class='xu'>ChildTaskResult</span>, <span class='xu'>GroupResult</span>&gt;(<span class='xi'></span><span class='xv'>of</span> <span class='xb'>childTaskResultType</span>: <span class='xt'>ChildTaskResult</span>.<span class='xk'>Type</span>, <span class='xi'></span><span class='xv'>returning</span> <span class='xb'>returnType</span>: <span class='xt'>GroupResult</span>.<span class='xk'>Type</span> = <span class='xv'>GroupResult</span>.<span class='xk'>self</span>, <span class='xi'></span><span class='xv'>isolation</span>: <span class='xk'>isolated</span> (<span class='xk'>any</span> <span class='xt'>Actor</span>)? = #<span class='xv'>isolation</span>, <span class='xi'></span><span class='xv'>body</span>: (<span class='xk'>inout</span> <span class='xt'>TaskGroup</span>&lt;<span class='xt'>ChildTaskResult</span>&gt;) <span class='xk'>async</span> -&gt; <span class='xt'>GroupResult</span><wbr>) <span class='xk'>async</span> -&gt; <span class='xt'>GroupResult</span> <span class='xk'>where</span> <span class='xt'>ChildTaskResult</span> : <span class='xt'>Sendable</span></code></pre><p>Starts a new scope that can contain a dynamic number of child tasks.</p></a><a href='/docs/swift/_concurrency.withdiscardingtaskgroup(returning:isolation:body:)'><pre><code><span class='xa'>@backDeployed</span>(<span class='xk'>before</span>: <span class='xk'>macOS</span> <span class='xn'>15</span>.<span class='xn'>0</span>, <span class='xk'>iOS</span> <span class='xn'>18</span>.<span class='xn'>0</span>, <span class='xk'>watchOS</span> <span class='xn'>11</span>.<span class='xn'>0</span>, <span class='xk'>tvOS</span> <span class='xn'>18</span>.<span class='xn'>0</span>, <span class='xk'>visionOS</span> <span class='xn'>2</span>.<span class='xn'>0</span>)
 <span class='xk'>func</span> <span class='xv'>withDiscardingTaskGroup</span>&lt;<span class='xu'>GroupResult</span>&gt;(<span class='xi'></span><span class='xv'>returning</span> <span class='xb'>returnType</span>: <span class='xt'>GroupResult</span>.<span class='xk'>Type</span> = <span class='xv'>GroupResult</span>.<span class='xk'>self</span>, <span class='xi'></span><span class='xv'>isolation</span>: <span class='xk'>isolated</span> (<span class='xk'>any</span> <span class='xt'>Actor</span>)? = #<span class='xv'>isolation</span>, <span class='xi'></span><span class='xv'>body</span>: (<span class='xk'>inout</span> <span class='xt'>DiscardingTaskGroup</span>) <span class='xk'>async</span> -&gt; <span class='xt'>GroupResult</span><wbr>) <span class='xk'>async</span> -&gt; <span class='xt'>GroupResult</span></code></pre><p>Starts a new scope that can contain a dynamic number of child tasks.</p></a><a href='/docs/swift/_concurrency.withthrowingdiscardingtaskgroup(returning:isolation:body:)'><pre><code><span class='xa'>@backDeployed</span>(<span class='xk'>before</span>: <span class='xk'>macOS</span> <span class='xn'>15</span>.<span class='xn'>0</span>, <span class='xk'>iOS</span> <span class='xn'>18</span>.<span class='xn'>0</span>, <span class='xk'>watchOS</span> <span class='xn'>11</span>.<span class='xn'>0</span>, <span class='xk'>tvOS</span> <span class='xn'>18</span>.<span class='xn'>0</span>, <span class='xk'>visionOS</span> <span class='xn'>2</span>.<span class='xn'>0</span>)
 <span class='xk'>func</span> <span class='xv'>withThrowingDiscardingTaskGroup</span>&lt;<span class='xu'>GroupResult</span>&gt;(<span class='xi'></span><span class='xv'>returning</span> <span class='xb'>returnType</span>: <span class='xt'>GroupResult</span>.<span class='xk'>Type</span> = <span class='xv'>GroupResult</span>.<span class='xk'>self</span>, <span class='xi'></span><span class='xv'>isolation</span>: <span class='xk'>isolated</span> (<span class='xk'>any</span> <span class='xt'>Actor</span>)? = #<span class='xv'>isolation</span>, <span class='xi'></span><span class='xv'>body</span>: (<span class='xk'>inout</span> <span class='xt'>ThrowingDiscardingTaskGroup</span>&lt;<span class='xk'>any</span> <span class='xt'>Error</span>&gt;) <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <span class='xt'>GroupResult</span><wbr>) <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <span class='xt'>GroupResult</span></code></pre><p>Starts a new scope that can contain a dynamic number of child tasks.</p></a><a href='/hist/swift-on-server.articles:main/articles/structured-concurrency-and-shared-state-in-swift'><p>When working with concurrent code, you’ll often need to share state between tasks. Using reference types such as a <code>class</code> allows you to share state between different threads and tasks. This can lead to race conditions where two tasks are trying to access the same state at the same time.</p></a></div>
@@ -314,7 +314,7 @@
                     
                     <div class="author-list">
                         <a href="https://swiftonserver.com/authors/joannis-orlandos/">
-                        <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                        <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                         <span class="name">Joannis Orlandos</span>
                         </a>
                     </div>
@@ -331,12 +331,12 @@
                             
                             <div class="author-list">
                                 <a href="https://swiftonserver.com/authors/joannis-orlandos/">
-                                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                                 </a>
                             </div>
                             <div class="meta">
-                                <time datetime="2024/07/02">2024/07/02</time>
-                                 &middot; <span class="reading-time">16 min read</span>
+                                <time datetime="2024-07-02">2024-07-02</time>
+                                    &middot; <span class="reading-time">16 min read</span>
                             </div>
                             
                             <h2 class="title"><a href="https://swiftonserver.com/advanced-async-sequences/" target="">Advanced Async Sequences</a></h2>
@@ -353,12 +353,34 @@
                             
                             <div class="author-list">
                                 <a href="https://swiftonserver.com/authors/joannis-orlandos/">
-                                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                                 </a>
                             </div>
                             <div class="meta">
-                                <time datetime="2024/03/25">2024/03/25</time>
-                                 &middot; <span class="reading-time">26 min read</span>
+                                <time datetime="2024-03-19">2024-03-19</time>
+                                    &middot; <span class="reading-time">22 min read</span>
+                            </div>
+                            
+                            <h2 class="title"><a href="https://swiftonserver.com/getting-started-with-structured-concurrency-in-swift/" target="">Getting Started: Swift&#39;s Structured Concurrency</a></h2>
+                            <p>Learn how to apply structured concurrency in your applications, using task groups and other structured concepts.</p>
+                        
+                            <div class="spacer"></div>
+                        
+                            <div class="tag-list">
+                                <a href="https://swiftonserver.com/tags/structured-concurrency/"><small>Structured Concurrency</small></a>
+                            </div>
+                        </div>
+                    <div class="card featured">
+                            <span class="featured">featured</span>
+                            
+                            <div class="author-list">
+                                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                </a>
+                            </div>
+                            <div class="meta">
+                                <time datetime="2024-03-25">2024-03-25</time>
+                                    &middot; <span class="reading-time">26 min read</span>
                             </div>
                             
                             <h2 class="title"><a href="https://swiftonserver.com/structured-concurrency-and-shared-state-in-swift/" target="">Using Structured Concurrency and Shared State</a></h2>
@@ -379,7 +401,7 @@
         <div>
             <div class="support">
                 <a href="https://swiftcraft.uk/" target="_blank">
-                    <img src="/images/logos/swiftcraft.png" alt="SwiftCraft logo">
+                    <img src="https://swiftonserver.com/images/logos/swiftcraft.png" alt="SwiftCraft logo">
                 </a>
                 <h4>
                     <a href="https://swiftcraft.uk/" target="_blank">SwiftCraft</a>
@@ -398,36 +420,76 @@
                     <li class="first-level">
                         <a href="#What%20is%20Concurrency?">What is Concurrency?</a>
                         <ul>
-                            <li><a href="#Pre-Swift%205.5%20Concurrency">Pre-Swift 5.5 Concurrency</a></li>
-                <li><a href="#Race%20Conditions">Race Conditions</a></li>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Pre-Swift%205.5%20Concurrency">Pre-Swift 5.5 Concurrency</a>
+                        <ul>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Race%20Conditions">Race Conditions</a>
+                        <ul>
                         </ul>
                     </li>
         <li class="first-level">
                         <a href="#Structured%20Concurrency">Structured Concurrency</a>
                         <ul>
-                            <li><a href="#Async%20Functions">Async Functions</a></li>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Async%20Functions">Async Functions</a>
+                        <ul>
                         </ul>
                     </li>
         <li class="first-level">
                         <a href="#Structured%20Tasks">Structured Tasks</a>
                         <ul>
-                            <li><a href="#Sequences">Sequences</a></li>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Sequences">Sequences</a>
+                        <ul>
                         </ul>
                     </li>
         <li class="first-level">
                         <a href="#Tasks">Tasks</a>
                         <ul>
-                            <li><a href="#The%20Task%20Hierarchy">The Task Hierarchy</a></li>
-                <li><a href="#Task%20Local%20Values">Task Local Values</a></li>
-                <li><a href="#Task%20Cancellation">Task Cancellation</a></li>
-                <li><a href="#Blocking%20and%20Sleeping%20Tasks">Blocking and Sleeping Tasks</a></li>
-                <li><a href="#Cancellation%20Handlers">Cancellation Handlers</a></li>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#The%20Task%20Hierarchy">The Task Hierarchy</a>
+                        <ul>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Task%20Local%20Values">Task Local Values</a>
+                        <ul>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Task%20Cancellation">Task Cancellation</a>
+                        <ul>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Blocking%20and%20Sleeping%20Tasks">Blocking and Sleeping Tasks</a>
+                        <ul>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Cancellation%20Handlers">Cancellation Handlers</a>
+                        <ul>
                         </ul>
                     </li>
         <li class="first-level">
                         <a href="#Task%20Groups">Task Groups</a>
                         <ul>
-                            <li><a href="#Discarding%20Task%20Groups">Discarding Task Groups</a></li>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Discarding%20Task%20Groups">Discarding Task Groups</a>
+                        <ul>
                         </ul>
                     </li>
         <li class="first-level">
@@ -449,12 +511,12 @@
             <figure>
                 <picture>
                     <source
-                        srcset="/images/logos/logo~dark.png"
+                        srcset="https://swiftonserver.com/images/logos/logo~dark.png"
                         media="(prefers-color-scheme: dark)"
                     >
                     <img
                         id="logo-image"
-                        src="/images/logos/logo.png"
+                        src="https://swiftonserver.com/images/logos/logo.png"
                         alt="Logo of Swift on server"
                         title="Swift on server"
                     >
@@ -475,7 +537,7 @@
             
             <div>
                 <a href="/authors/joannis-orlandos/">
-                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                 </a>
                 <h4><a href="/authors/joannis-orlandos/">Joannis Orlandos</a></h4>
                 <p><small><a href="https://unbeatable.software/" target="_blank">Unbeatable Software B.V.</a></small></p>
@@ -489,7 +551,7 @@
             
             <div>
                 <a href="/authors/tibor-bodecs/">
-                <img class="small rounded" src="/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                 </a>
                 <h4><a href="/authors/tibor-bodecs/">Tibor Bödecs</a></h4>
                 <p><small><a href="https://binarybirds.com/" target="_blank">Binary Birds Kft.</a></small></p>

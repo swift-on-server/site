@@ -1,10 +1,10 @@
 <aside id="toc">
-    {{#empty(page.toc)}}
-    {{/empty(page.toc)}}
-    {{^empty(page.toc)}}
+    {{#empty(page.contents.outline)}}
+    {{/empty(page.contents.outline)}}
+    {{^empty(page.contents.outline)}}
     <h4>On this page</h4>
     <ul>
-    {{#page.toc}}
+    {{#page.contents.outline}}
         <li class="first-level">
             <a href="#{{fragment}}">{{text}}</a>
             <ul>
@@ -13,7 +13,7 @@
             {{/children}}
             </ul>
         </li>
-    {{/page.toc}}
+    {{/page.contents.outline}}
     </ul>
-    {{/empty(page.toc)}}
+    {{/empty(page.contents.outline)}}
 </aside>

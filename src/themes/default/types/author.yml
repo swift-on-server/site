@@ -1,19 +1,30 @@
 id: author
-location: blog/authors
-template: blog.author.default
+paths: 
+    - blog/authors
 
-context:
-    site:
-        authors:
-            sort: title
-            order: asc
-            pagination:
-                limit: 10
-        
-    local:
-        posts:
-            references: post
-            foreignKey: authors
-            sort: title
-            order: asc
-            limit: 10
+properties:
+    companyName:
+        type: string
+        required: false
+    companyUrl:
+        type: string
+        required: false
+
+    ctaLabel:
+        type: string
+        required: false
+    ctaUrl:
+        type: string
+        required: false
+
+queries:
+    posts:
+        contentType: post
+        scope: detail
+        filter:
+            key: authors
+            operator: contains
+            value: "{{id}}"
+        orderBy:
+            - key: title
+              direction: asc

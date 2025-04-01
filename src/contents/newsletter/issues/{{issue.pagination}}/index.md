@@ -1,6 +1,6 @@
 ---
-type: "pagination"
-slug: "newsletter/issues/page/{{number}}"
+type: page
+slug: newsletter/issues/page/{{issue.pagination}}
 title: "Newsletter issues - {{number}} / {{total}}"
 description: "Newsletter issues page - {{number}} / {{total}}"
 template: "newsletter.issues"

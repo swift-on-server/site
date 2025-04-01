@@ -1,30 +1,30 @@
 {{<html}}
 {{$main}}
 
-{{& page.contents}}
+{{& page.contents.html}}
 
 <div id="issues" class="wrapper">
 
-    {{#empty(pagination.data.issue)}}
+    {{#empty(iterator.items)}}
     Empty.
-    {{/empty(pagination.data.issue)}}
-    {{^empty(pagination.data.issue)}}
+    {{/empty(iterator.items)}}
+    {{^empty(iterator.items)}}
     <div class="">
-    {{#pagination.data.issue}}
+    {{#iterator.items}}
         {{> partials.newsletter.issue}}
-    {{/pagination.data.issue}}
+    {{/iterator.items}}
     </div>
-    {{/empty(pagination.data.issue)}}
+    {{/empty(iterator.items)}}
     
-    {{#empty(pagination.links.issue)}}
-    {{/empty(pagination.links.issue)}}
-    {{^empty(pagination.links.issue)}}
+    {{#empty(iterator.links)}}
+    {{/empty(iterator.links)}}
+    {{^empty(iterator.links)}}
     <div class="pagination">
-    {{#pagination.links.issue}}
+    {{#iterator.links}}
         {{> partials.pagination}}
-    {{/pagination.links.issue}}
+    {{/iterator.links}}
     </div>
-    {{/empty(pagination.links.issue)}}
+    {{/empty(iterator.links)}}
 
 </div>
 

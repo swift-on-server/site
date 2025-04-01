@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="canonical" href="https://swiftonserver.com/introduction-to-swift-service-lifecycle/">
-    <link rel="prev" href="https://swiftonserver.com/hummingbird-and-cors/">
-    <link rel="next" href="https://swiftonserver.com/jwt-kit/">
+    <link rel="prev" href="https://swiftonserver.com/async-http-client-by-example/">
+    <link rel="next" href="https://swiftonserver.com/advanced-async-sequences/">
 
     <title>Introduction to Swift Service Lifecycle - Swift on server</title>
     <meta name="description" content="This article offers practical examples to introduce the Swift Service Lifecycle library.">
@@ -15,37 +15,37 @@
     <meta property="og:url" content="https://swiftonserver.com/introduction-to-swift-service-lifecycle/">
     <meta property="og:title" content="Introduction to Swift Service Lifecycle - Swift on server">
     <meta property="og:description" content="This article offers practical examples to introduce the Swift Service Lifecycle library.">
-    <meta property="og:image" content="/assets/introduction-to-swift-service-lifecycle/cover.jpg" />
+    <meta property="og:image" content="https://swiftonserver.com/assets/introduction-to-swift-service-lifecycle/cover.jpg" />
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Introduction to Swift Service Lifecycle - Swift on server">
     <meta name="twitter:description" content="This article offers practical examples to introduce the Swift Service Lifecycle library.">
-    <meta name="twitter:image" content="/assets/introduction-to-swift-service-lifecycle/cover.jpg">
+    <meta name="twitter:image" content="https://swiftonserver.com/assets/introduction-to-swift-service-lifecycle/cover.jpg">
 
-    <link rel="stylesheet" href="/css/modern-normalize.css">
-    <link rel="stylesheet" href="/css/modern-base.css">
-    <link rel="stylesheet" href="/css/variables.css">
-    <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/css/grid.css">
-    <link rel="stylesheet" href="/css/navigation.css">
-    <link rel="stylesheet" href="/css/footer.css">
-    <link rel="stylesheet" href="/css/syntax.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/modern-normalize.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/modern-base.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/variables.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/base.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/grid.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/navigation.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/footer.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/syntax.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/style.css">
 
     
 
-    <link rel="shortcut icon" href="/images/icons/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="/images/icons/icon-320.png" type="image/png">
+    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/icon-320.png" type="image/png">
     
-    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/images/icons/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon-180x180.png">
+    <link rel="apple-touch-icon" href="https://swiftonserver.com/images/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://swiftonserver.com/images/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://swiftonserver.com/images/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://swiftonserver.com/images/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://swiftonserver.com/images/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://swiftonserver.com/images/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://swiftonserver.com/images/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://swiftonserver.com/images/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://swiftonserver.com/images/icons/apple-touch-icon-180x180.png">
 
     <link
         rel="stylesheet"
@@ -88,11 +88,11 @@
             <figure>
                 <picture>
                     <source
-                        srcset="/images/logos/logo~dark.png"
+                        srcset="https://swiftonserver.com/logos/logo~dark.png"
                         media="(prefers-color-scheme: dark)"
                     >
                     <img
-                        src="/images/logos/logo.png"
+                        src="https://swiftonserver.com/images/logos/logo.png"
                         alt="Logo of Swift on server"
                         title="Swift on server"
                     >
@@ -123,7 +123,7 @@
         <div>
             <article class="post">
                 <div class="meta">
-                    <time datetime="2024/05/22">2024/05/22</time>
+                    <time datetime="2024-05-22">2024-05-22</time>
                      &middot; <span class="reading-time">7 min read</span>
                     
                 </div>
@@ -148,7 +148,7 @@
 </span>            ]<span class='newline'>
 </span>        ),<span class='newline'>
 </span>    ]<span class='newline'>
-</span>)</code></pre><p>Before the actual implementation, it is important to understand the basic building blocks of the Service Lifecycle library.</p><p>Long-running work should be modeled as services that implement the <code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle/service' target='_blank' rel='external'>Service</a></code> protocol. This protocol requires only one function: a simple asynchronous throwing <code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle/service.run' target='_blank' rel='external'>run</a></code> method.</p><p>The <code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle/servicegroup' target='_blank' rel='external'>ServiceGroup</a></code> is used to orchestrate multiple services. A child task is spawned for each service, and the respective run method is called in the child task. Additionally, signal listeners are set up for the configured signals, triggering a graceful shutdown for each service.</p><p>A <code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle/servicegroup' target='_blank' rel='external'>ServiceGroup</a></code> manages the execution of multiple services, handles signal processing, and signals graceful shutdowns to the services.</p><p>While a service is typically a long-running task, it can also be a simple task that returns immediately. By default, if one service returns or throws an error, the entire group is canceled. This behavior can be customized by providing a custom <code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle/servicegroupconfiguration/serviceconfiguration.successterminationbehavior' target='_blank' rel='external'>successTerminationBehavior</a></code> parameter for the service group, as detailed <a href='https://swiftpackageindex.com/swift-server/swift-service-lifecycle/main/documentation/servicelifecycle/how-to-adopt-servicelifecycle-in-applications#Customizing-the-behavior-when-a-service-returns-or-throws' target='_blank' rel='external nofollow noopener ugc'>here</a>.</p><p>The following example illustrates a simple service and a service group with customized termination behavior:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>import</span> <span class='xv'>ServiceLifecycle</span><span class='newline'>
+</span>)</code></pre><p>Before the actual implementation, it is important to understand the basic building blocks of the Service Lifecycle library.</p><p>Long-running work should be modeled as services that implement the <code><a href='https://swiftinit.org/hist/swift-service-lifecycle:2.6.3/servicelifecycle/service' target='_blank' rel='external'>Service</a></code> protocol. This protocol requires only one function: a simple asynchronous throwing <code><a href='https://swiftinit.org/hist/swift-service-lifecycle:2.6.3/servicelifecycle/service.run' target='_blank' rel='external'>run</a></code> method.</p><p>The <code><a href='https://swiftinit.org/hist/swift-service-lifecycle:2.6.3/servicelifecycle/servicegroup' target='_blank' rel='external'>ServiceGroup</a></code> is used to orchestrate multiple services. A child task is spawned for each service, and the respective run method is called in the child task. Additionally, signal listeners are set up for the configured signals, triggering a graceful shutdown for each service.</p><p>A <code><a href='https://swiftinit.org/hist/swift-service-lifecycle:2.6.3/servicelifecycle/servicegroup' target='_blank' rel='external'>ServiceGroup</a></code> manages the execution of multiple services, handles signal processing, and signals graceful shutdowns to the services.</p><p>While a service is typically a long-running task, it can also be a simple task that returns immediately. By default, if one service returns or throws an error, the entire group is canceled. This behavior can be customized by providing a custom <code><a href='https://swiftinit.org/hist/swift-service-lifecycle:2.6.3/servicelifecycle/servicegroupconfiguration/serviceconfiguration.successterminationbehavior' target='_blank' rel='external'>successTerminationBehavior</a></code> parameter for the service group, as detailed <a href='https://swiftpackageindex.com/swift-server/swift-service-lifecycle/main/documentation/servicelifecycle/how-to-adopt-servicelifecycle-in-applications#Customizing-the-behavior-when-a-service-returns-or-throws' target='_blank' rel='external nofollow noopener ugc'>here</a>.</p><p>The following example illustrates a simple service and a service group with customized termination behavior:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>import</span> <span class='xv'>ServiceLifecycle</span><span class='newline'>
 
 </span><span class='xk'>struct</span> <span class='xv'>BasicService</span>: <span class='xt'>Service</span> {<span class='newline'>
 </span>    <span class='xc'>// 1.</span><span class='newline'>
@@ -182,7 +182,7 @@
 </span>        <span class='xc'>// 5.</span><span class='newline'>
 </span>        <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>serviceGroup</span>.<span class='xv'>run</span>()<span class='newline'>
 </span>    }<span class='newline'>
-</span>}</code></pre><ol><li><p>This is the implementation of the run function required by the <code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle/service' target='_blank' rel='external'>Service</a></code> protocol.</p></li><li><p>The <code>BasicService</code> instance is created, it’s going to be used in the group.</p></li><li><p>A <code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle/servicegroup' target='_blank' rel='external'>ServiceGroup</a></code> is initialized with the service instances, using a custom configuration.</p></li><li><p>The service group configuration ignores service termination behavior for the basic service.</p></li><li><p>The <code>serviceGroup.run()</code> method is called to run the service group, with the configured services.</p></li></ol><h2 id='Graceful%20shutdown%20and%20cancellation%20signals'><a href='#Graceful%20shutdown%20and%20cancellation%20signals'>Graceful shutdown and cancellation signals</a></h2><p>Rather than setting a custom termination behavior, it is also possible to wait for a cancellation signal and then shut down service resources when that event occurs. The <code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle.gracefulshutdown' target='_blank' rel='external'>gracefulShutdown</a></code> function is designed to suspend the caller until a graceful shutdown is initiated.</p><p>A graceful shutdown is when an application closes down in an orderly way. Instead of stopping suddenly, it finishes its current tasks and cleans up resources like open files or network connections. This matters because it prevents data loss, avoids corruption, and ensures that the system remains stable and reliable. By shutting down gracefully, applications can stop safely without causing problems for users or other systems they interact with.</p><p>The following code snippet illustrates this approach:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>import</span> <span class='xv'>ServiceLifecycle</span><span class='newline'>
+</span>}</code></pre><ol><li><p>This is the implementation of the run function required by the <code><a href='https://swiftinit.org/hist/swift-service-lifecycle:2.6.3/servicelifecycle/service' target='_blank' rel='external'>Service</a></code> protocol.</p></li><li><p>The <code>BasicService</code> instance is created, it’s going to be used in the group.</p></li><li><p>A <code><a href='https://swiftinit.org/hist/swift-service-lifecycle:2.6.3/servicelifecycle/servicegroup' target='_blank' rel='external'>ServiceGroup</a></code> is initialized with the service instances, using a custom configuration.</p></li><li><p>The service group configuration ignores service termination behavior for the basic service.</p></li><li><p>The <code>serviceGroup.run()</code> method is called to run the service group, with the configured services.</p></li></ol><h2 id='Graceful%20shutdown%20and%20cancellation%20signals'><a href='#Graceful%20shutdown%20and%20cancellation%20signals'>Graceful shutdown and cancellation signals</a></h2><p>Rather than setting a custom termination behavior, it is also possible to wait for a cancellation signal and then shut down service resources when that event occurs. The <code><a href='https://swiftinit.org/hist/swift-service-lifecycle:2.6.3/servicelifecycle.gracefulshutdown' target='_blank' rel='external'>gracefulShutdown</a></code> function is designed to suspend the caller until a graceful shutdown is initiated.</p><p>A graceful shutdown is when an application closes down in an orderly way. Instead of stopping suddenly, it finishes its current tasks and cleans up resources like open files or network connections. This matters because it prevents data loss, avoids corruption, and ensures that the system remains stable and reliable. By shutting down gracefully, applications can stop safely without causing problems for users or other systems they interact with.</p><p>The following code snippet illustrates this approach:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>import</span> <span class='xv'>ServiceLifecycle</span><span class='newline'>
 
 </span><span class='xk'>struct</span> <span class='xv'>BasicService</span>: <span class='xt'>Service</span> {<span class='newline'>
 
@@ -217,7 +217,7 @@
 </span>        )<span class='newline'>
 </span>        <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>serviceGroup</span>.<span class='xv'>run</span>()<span class='newline'>
 </span>    }<span class='newline'>
-</span>}</code></pre><ol><li><p>Ignore cancellation error, waits for the service until it’s cancelled</p></li><li><p>Configure the service using the default success termination behavior</p></li><li><p>Set the cancellation signals to <code>SIGTERM</code> &amp; <code>SIGINT</code></p></li></ol><p>Run the application from the command line with the following command:</p><pre class='snippet'><code class='language-sh'><span class='newline'></span>swift run</code></pre><p>To halt execution and send a <code>SIGINT</code> signal to the application, press <code>CTRL+C</code>. Any code following the <code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle.gracefulshutdown' target='_blank' rel='external'>gracefulShutdown</a></code> function call within the run method will be executed upon receiving any of the cancellation signals.</p><h2 id='Service%20composition'><a href='#Service%20composition'>Service composition</a></h2><p>It’s feasible to utilize one service within another. For instance, we could create an asynchronous HTTP client-based service, potentially with a pool of HTTP clients. The provided code snippet demonstrates this concept:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>import</span> <span class='xv'>ServiceLifecycle</span><span class='newline'>
+</span>}</code></pre><ol><li><p>Ignore cancellation error, waits for the service until it’s cancelled</p></li><li><p>Configure the service using the default success termination behavior</p></li><li><p>Set the cancellation signals to <code>SIGTERM</code> &amp; <code>SIGINT</code></p></li></ol><p>Run the application from the command line with the following command:</p><pre class='snippet'><code class='language-sh'><span class='newline'></span>swift run</code></pre><p>To halt execution and send a <code>SIGINT</code> signal to the application, press <code>CTRL+C</code>. Any code following the <code><a href='https://swiftinit.org/hist/swift-service-lifecycle:2.6.3/servicelifecycle.gracefulshutdown' target='_blank' rel='external'>gracefulShutdown</a></code> function call within the run method will be executed upon receiving any of the cancellation signals.</p><h2 id='Service%20composition'><a href='#Service%20composition'>Service composition</a></h2><p>It’s feasible to utilize one service within another. For instance, we could create an asynchronous HTTP client-based service, potentially with a pool of HTTP clients. The provided code snippet demonstrates this concept:</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xk'>import</span> <span class='xv'>ServiceLifecycle</span><span class='newline'>
 </span><span class='xk'>import</span> <span class='xv'>AsyncHTTPClient</span><span class='newline'>
 
 </span><span class='xc'>// 1.</span><span class='newline'>
@@ -313,7 +313,7 @@
 
 </span>        <span class='xk'>try</span> <span class='xk'>await</span> <span class='xv'>serviceGroup</span>.<span class='xv'>run</span>()<span class='newline'>
 </span>    }<span class='newline'>
-</span>}</code></pre><ol><li><p>Defines an <code>AsyncHTTPClientService</code> actor that initializes an HTTP client and implements the run method to handle graceful shutdown by shutting down the HTTP client.</p></li><li><p>Defines a <code>PingService</code> actor that relies on the <code>AsyncHTTPClientService</code> for making HTTP requests.</p></li><li><p>Uses <code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle.withgracefulshutdownhandler(isolation:operation:ongracefulshutdown:)' target='_blank' rel='external'>withGracefulShutdownHandler(isolation:operation:onGracefulShutdown:)</a></code> to handle graceful shutdown within the <code>PingService</code> actor’s run method.</p></li><li><p>Initiates a loop for sending HTTP requests to apple.com and prints the result.</p></li><li><p>Executes an HTTP request asynchronously using the AsyncHTTPClientService and handles the response.</p></li><li><p>Delays execution for one second before the next iteration of the loop.</p></li><li><p>Defines a closure to be executed on graceful shutdown within the <code>PingService</code> actor.</p></li><li><p>In the <code>Application</code> struct’s main function, initializes the <code>AsyncHTTPClientService</code> and <code>PingService</code>, and creates a <code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle/servicegroup' target='_blank' rel='external'>ServiceGroup</a></code> to manage their lifecycles.</p></li><li><p>Configures the <code><a href='https://swiftinit.org/docs/swift-service-lifecycle/servicelifecycle/servicegroup' target='_blank' rel='external'>ServiceGroup</a></code> with appropriate termination behaviors for each service and initiates its execution.</p></li></ol><h2 id='Conclusion'><a href='#Conclusion'>Conclusion</a></h2><p>In summary, Swift Service Lifecycle simplifies application startup and shutdown, ensuring efficient resource management. It encapsulates critical startup and shutdown workflows in a reusable, framework-agnostic manner, enhancing application robustness.</p><p>The library’s seamless integration with Structured Concurrency simplifies the management of concurrent tasks, including first-class support for async sequences and facilitating efficient resource utilization.</p><p>The detailed documentation, intended for both <a href='https://swiftpackageindex.com/swift-server/swift-service-lifecycle/main/documentation/servicelifecycle/how-to-adopt-servicelifecycle-in-applications' target='_blank' rel='external nofollow noopener ugc'>application</a> and <a href='https://swiftpackageindex.com/swift-server/swift-service-lifecycle/main/documentation/servicelifecycle/how-to-adopt-servicelifecycle-in-libraries' target='_blank' rel='external nofollow noopener ugc'>library</a> developers, includes examples demonstrating how to use the features, which helps developers grasp the core concepts of the Swift Service Lifecycle library.</p></section><div style='display: none;' id='swiftinit-tooltips'><a href='/docs/swift-service-lifecycle/servicelifecycle/service'><pre><code><span class='xk'>protocol</span> <span class='xv'>Service</span> : <span class='xt'>Sendable</span></code></pre><p>This is the basic protocol that a service has to implement.</p></a><a href='/docs/swift-service-lifecycle/servicelifecycle/service.run'><pre><code><span class='xk'>func</span> <span class='xv'>run</span>(<wbr>) <span class='xk'>async</span> <span class='xk'>throws</span></code></pre><p>This method is called when the <code>ServiceGroup</code> is starting all the services.</p></a><a href='/docs/swift-service-lifecycle/servicelifecycle/servicegroup'><pre><code><span class='xk'>actor</span> <span class='xv'>ServiceGroup</span></code></pre><p>A <code>ServiceGroup</code> is responsible for running a number of services, setting up signal handling and signalling graceful shutdown to the services.</p></a><a href='/docs/swift-service-lifecycle/servicelifecycle/servicegroupconfiguration/serviceconfiguration.successterminationbehavior'><pre><code><span class='xk'>var</span> <span class='xv'>successTerminationBehavior</span>: <span class='xt'>TerminationBehavior</span></code></pre><p>The behavior when the service returns from its <code>run</code> method.</p></a><a href='/docs/swift-service-lifecycle/servicelifecycle.gracefulshutdown'><pre><code><span class='xk'>func</span> <span class='xv'>gracefulShutdown</span>(<wbr>) <span class='xk'>async</span> <span class='xk'>throws</span></code></pre><p>Waits until graceful shutdown is triggered.</p></a><a href='/docs/swift-service-lifecycle/servicelifecycle.withgracefulshutdownhandler(isolation:operation:ongracefulshutdown:)'><pre><code><span class='xk'>func</span> <span class='xv'>withGracefulShutdownHandler</span>&lt;<span class='xu'>T</span>&gt;(<span class='xi'></span><span class='xv'>isolation</span>: <span class='xk'>isolated</span> (<span class='xk'>any</span> <span class='xt'>Actor</span>)? = #<span class='xv'>isolation</span>, <span class='xi'></span><span class='xv'>operation</span>: () <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <span class='xt'>T</span>, <span class='xi'></span><span class='xv'>onGracefulShutdown</span> <span class='xb'>handler</span>: <span class='xa'>@escaping</span> () -&gt; <span class='xt'>Void</span><wbr>) <span class='xk'>async</span> <span class='xk'>rethrows</span> -&gt; <span class='xt'>T</span></code></pre><p>Execute an operation with a graceful shutdown handler that’s immediately invoked if the current task is shutting down gracefully.</p></a></div>
+</span>}</code></pre><ol><li><p>Defines an <code>AsyncHTTPClientService</code> actor that initializes an HTTP client and implements the run method to handle graceful shutdown by shutting down the HTTP client.</p></li><li><p>Defines a <code>PingService</code> actor that relies on the <code>AsyncHTTPClientService</code> for making HTTP requests.</p></li><li><p>Uses <code><a href='https://swiftinit.org/hist/swift-service-lifecycle:2.6.3/servicelifecycle.withgracefulshutdownhandler(isolation:operation:ongracefulshutdown:)' target='_blank' rel='external'>withGracefulShutdownHandler(isolation:operation:onGracefulShutdown:)</a></code> to handle graceful shutdown within the <code>PingService</code> actor’s run method.</p></li><li><p>Initiates a loop for sending HTTP requests to apple.com and prints the result.</p></li><li><p>Executes an HTTP request asynchronously using the AsyncHTTPClientService and handles the response.</p></li><li><p>Delays execution for one second before the next iteration of the loop.</p></li><li><p>Defines a closure to be executed on graceful shutdown within the <code>PingService</code> actor.</p></li><li><p>In the <code>Application</code> struct’s main function, initializes the <code>AsyncHTTPClientService</code> and <code>PingService</code>, and creates a <code><a href='https://swiftinit.org/hist/swift-service-lifecycle:2.6.3/servicelifecycle/servicegroup' target='_blank' rel='external'>ServiceGroup</a></code> to manage their lifecycles.</p></li><li><p>Configures the <code><a href='https://swiftinit.org/hist/swift-service-lifecycle:2.6.3/servicelifecycle/servicegroup' target='_blank' rel='external'>ServiceGroup</a></code> with appropriate termination behaviors for each service and initiates its execution.</p></li></ol><h2 id='Conclusion'><a href='#Conclusion'>Conclusion</a></h2><p>In summary, Swift Service Lifecycle simplifies application startup and shutdown, ensuring efficient resource management. It encapsulates critical startup and shutdown workflows in a reusable, framework-agnostic manner, enhancing application robustness.</p><p>The library’s seamless integration with Structured Concurrency simplifies the management of concurrent tasks, including first-class support for async sequences and facilitating efficient resource utilization.</p><p>The detailed documentation, intended for both <a href='https://swiftpackageindex.com/swift-server/swift-service-lifecycle/main/documentation/servicelifecycle/how-to-adopt-servicelifecycle-in-applications' target='_blank' rel='external nofollow noopener ugc'>application</a> and <a href='https://swiftpackageindex.com/swift-server/swift-service-lifecycle/main/documentation/servicelifecycle/how-to-adopt-servicelifecycle-in-libraries' target='_blank' rel='external nofollow noopener ugc'>library</a> developers, includes examples demonstrating how to use the features, which helps developers grasp the core concepts of the Swift Service Lifecycle library.</p></section><div style='display: none;' id='swiftinit-tooltips'><a href='/hist/swift-service-lifecycle:2.6.3/servicelifecycle/service'><pre><code><span class='xk'>protocol</span> <span class='xv'>Service</span> : <span class='xt'>Sendable</span></code></pre><p>This is the basic protocol that a service has to implement.</p></a><a href='/hist/swift-service-lifecycle:2.6.3/servicelifecycle/service.run'><pre><code><span class='xk'>func</span> <span class='xv'>run</span>(<wbr>) <span class='xk'>async</span> <span class='xk'>throws</span></code></pre><p>This method is called when the <code>ServiceGroup</code> is starting all the services.</p></a><a href='/hist/swift-service-lifecycle:2.6.3/servicelifecycle/servicegroup'><pre><code><span class='xk'>actor</span> <span class='xv'>ServiceGroup</span></code></pre><p>A <code>ServiceGroup</code> is responsible for running a number of services, setting up signal handling and signalling graceful shutdown to the services.</p></a><a href='/hist/swift-service-lifecycle:2.6.3/servicelifecycle/servicegroupconfiguration/serviceconfiguration.successterminationbehavior'><pre><code><span class='xk'>var</span> <span class='xv'>successTerminationBehavior</span>: <span class='xt'>TerminationBehavior</span></code></pre><p>The behavior when the service returns from its <code>run</code> method.</p></a><a href='/hist/swift-service-lifecycle:2.6.3/servicelifecycle.gracefulshutdown'><pre><code><span class='xk'>func</span> <span class='xv'>gracefulShutdown</span>(<wbr>) <span class='xk'>async</span> <span class='xk'>throws</span></code></pre><p>Waits until graceful shutdown is triggered.</p></a><a href='/hist/swift-service-lifecycle:2.6.3/servicelifecycle.withgracefulshutdownhandler(isolation:operation:ongracefulshutdown:)'><pre><code><span class='xk'>func</span> <span class='xv'>withGracefulShutdownHandler</span>&lt;<span class='xu'>T</span>&gt;(<span class='xi'></span><span class='xv'>isolation</span>: <span class='xk'>isolated</span> (<span class='xk'>any</span> <span class='xt'>Actor</span>)? = #<span class='xv'>isolation</span>, <span class='xi'></span><span class='xv'>operation</span>: () <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <span class='xt'>T</span>, <span class='xi'></span><span class='xv'>onGracefulShutdown</span> <span class='xb'>handler</span>: <span class='xa'>@escaping</span> () -&gt; <span class='xt'>Void</span><wbr>) <span class='xk'>async</span> <span class='xk'>rethrows</span> -&gt; <span class='xt'>T</span></code></pre><p>Execute an operation with a graceful shutdown handler that’s immediately invoked if the current task is shutting down gracefully.</p></a></div>
                     
                 </section>
     
@@ -324,7 +324,7 @@
                     
                     <div class="author-list">
                         <a href="https://swiftonserver.com/authors/tibor-bodecs/">
-                        <img class="small rounded" src="/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                        <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                         <span class="name">Tibor Bödecs</span>
                         </a>
                     </div>
@@ -341,12 +341,35 @@
                             
                             <div class="author-list">
                                 <a href="https://swiftonserver.com/authors/tibor-bodecs/">
-                                <img class="small rounded" src="/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                                 </a>
                             </div>
                             <div class="meta">
-                                <time datetime="2024/10/22">2024/10/22</time>
-                                 &middot; <span class="reading-time">10 min read</span>
+                                <time datetime="2024-04-03">2024-04-03</time>
+                                    &middot; <span class="reading-time">13 min read</span>
+                            </div>
+                            
+                            <h2 class="title"><a href="https://swiftonserver.com/async-http-client-by-example/" target="">AsyncHTTPClient by example</a></h2>
+                            <p>This article offers practical examples to introduce the Swift AsyncHTTPClient library.</p>
+                        
+                            <div class="spacer"></div>
+                        
+                            <div class="tag-list">
+                                <a href="https://swiftonserver.com/tags/networking/"><small>Networking</small></a>
+        <a href="https://swiftonserver.com/tags/package-highlight/"><small>Package Highlight</small></a>
+                            </div>
+                        </div>
+                    <div class="card">
+                            
+                            
+                            <div class="author-list">
+                                <a href="https://swiftonserver.com/authors/tibor-bodecs/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                                </a>
+                            </div>
+                            <div class="meta">
+                                <time datetime="2024-10-22">2024-10-22</time>
+                                    &middot; <span class="reading-time">10 min read</span>
                             </div>
                             
                             <h2 class="title"><a href="https://swiftonserver.com/beginners-guide-to-protocol-buffers-and-grpc-with-swift/" target="">Beginner&#39;s Guide to Protocol Buffers and gRPC with Swift</a></h2>
@@ -364,17 +387,17 @@
                             
                             
                             <div class="author-list">
-                                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
-                                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                <a href="https://swiftonserver.com/authors/tibor-bodecs/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                                 </a>
                             </div>
                             <div class="meta">
-                                <time datetime="2024/05/14">2024/05/14</time>
-                                 &middot; <span class="reading-time">3 min read</span>
+                                <time datetime="2024-05-22">2024-05-22</time>
+                                    &middot; <span class="reading-time">7 min read</span>
                             </div>
                             
-                            <h2 class="title"><a href="https://swiftonserver.com/templating-with-swift-mustache/" target="">Templating with Swift-Mustache</a></h2>
-                            <p>Learn how to template emails and web pages with Swift-Mustache.</p>
+                            <h2 class="title"><a href="https://swiftonserver.com/introduction-to-swift-service-lifecycle/" target="">Introduction to Swift Service Lifecycle</a></h2>
+                            <p>This article offers practical examples to introduce the Swift Service Lifecycle library.</p>
                         
                             <div class="spacer"></div>
                         
@@ -386,23 +409,22 @@
                             
                             
                             <div class="author-list">
-                                <a href="https://swiftonserver.com/authors/tibor-bodecs/">
-                                <img class="small rounded" src="/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                                 </a>
                             </div>
                             <div class="meta">
-                                <time datetime="2024/04/03">2024/04/03</time>
-                                 &middot; <span class="reading-time">13 min read</span>
+                                <time datetime="2024-05-14">2024-05-14</time>
+                                    &middot; <span class="reading-time">3 min read</span>
                             </div>
                             
-                            <h2 class="title"><a href="https://swiftonserver.com/async-http-client-by-example/" target="">AsyncHTTPClient by example</a></h2>
-                            <p>This article offers practical examples to introduce the Swift AsyncHTTPClient library.</p>
+                            <h2 class="title"><a href="https://swiftonserver.com/templating-with-swift-mustache/" target="">Templating with Swift-Mustache</a></h2>
+                            <p>Learn how to template emails and web pages with Swift-Mustache.</p>
                         
                             <div class="spacer"></div>
                         
                             <div class="tag-list">
-                                <a href="https://swiftonserver.com/tags/networking/"><small>Networking</small></a>
-        <a href="https://swiftonserver.com/tags/package-highlight/"><small>Package Highlight</small></a>
+                                <a href="https://swiftonserver.com/tags/package-highlight/"><small>Package Highlight</small></a>
                             </div>
                         </div>
                     </div>
@@ -414,7 +436,7 @@
         <div>
             <div class="support">
                 <a href="https://swiftcraft.uk/" target="_blank">
-                    <img src="/images/logos/swiftcraft.png" alt="SwiftCraft logo">
+                    <img src="https://swiftonserver.com/images/logos/swiftcraft.png" alt="SwiftCraft logo">
                 </a>
                 <h4>
                     <a href="https://swiftcraft.uk/" target="_blank">SwiftCraft</a>
@@ -464,12 +486,12 @@
             <figure>
                 <picture>
                     <source
-                        srcset="/images/logos/logo~dark.png"
+                        srcset="https://swiftonserver.com/images/logos/logo~dark.png"
                         media="(prefers-color-scheme: dark)"
                     >
                     <img
                         id="logo-image"
-                        src="/images/logos/logo.png"
+                        src="https://swiftonserver.com/images/logos/logo.png"
                         alt="Logo of Swift on server"
                         title="Swift on server"
                     >
@@ -490,7 +512,7 @@
             
             <div>
                 <a href="/authors/joannis-orlandos/">
-                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                 </a>
                 <h4><a href="/authors/joannis-orlandos/">Joannis Orlandos</a></h4>
                 <p><small><a href="https://unbeatable.software/" target="_blank">Unbeatable Software B.V.</a></small></p>
@@ -504,7 +526,7 @@
             
             <div>
                 <a href="/authors/tibor-bodecs/">
-                <img class="small rounded" src="/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                 </a>
                 <h4><a href="/authors/tibor-bodecs/">Tibor Bödecs</a></h4>
                 <p><small><a href="https://binarybirds.com/" target="_blank">Binary Birds Kft.</a></small></p>

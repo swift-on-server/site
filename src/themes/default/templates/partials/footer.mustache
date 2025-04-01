@@ -4,12 +4,12 @@
         <figure>
             <picture>
                 <source
-                    srcset="/images/logos/logo~dark.png"
+                    srcset="{{site.baseUrl}}/images/logos/logo~dark.png"
                     media="(prefers-color-scheme: dark)"
                 >
                 <img
                     id="logo-image"
-                    src="/images/logos/logo.png"
+                    src="{{site.baseUrl}}/images/logos/logo.png"
                     alt="Logo of {{site.title}}"
                     title="{{site.title}}"
                 >
@@ -30,7 +30,7 @@
         
         <div>
             <a href="/authors/joannis-orlandos/">
-            <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+            <img class="small rounded" src="{{site.baseUrl}}/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
             </a>
             <h4><a href="/authors/joannis-orlandos/">Joannis Orlandos</a></h4>
             <p><small><a href="https://unbeatable.software/" target="_blank">Unbeatable Software B.V.</a></small></p>
@@ -44,7 +44,7 @@
         
         <div>
             <a href="/authors/tibor-bodecs/">
-            <img class="small rounded" src="/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+            <img class="small rounded" src="{{site.baseUrl}}/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
             </a>
             <h4><a href="/authors/tibor-bodecs/">Tibor Bödecs</a></h4>
             <p><small><a href="https://binarybirds.com/" target="_blank">Binary Birds Kft.</a></small></p>
@@ -59,7 +59,7 @@
     </div>
     
     <section class="grid grid-221">
-        <small>{{site.title}} &copy; 2022 - {{year}}</small>
+        <small>{{site.title}} &copy; 2022 - {{site.generation.formats.year}}</small>
         <small>This site was generated using <a href="https://swift.org/" target="_blank">Swift</a> & <a href="https://github.com/binarybirds/toucan" target="_blank">Toucan</a>.</small>
     </section>
 </footer>

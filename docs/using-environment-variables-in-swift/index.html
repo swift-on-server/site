@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="canonical" href="https://swiftonserver.com/using-environment-variables-in-swift/">
-    <link rel="prev" href="https://swiftonserver.com/useful-scripts-for-server-side-swift-libraries/">
-    <link rel="next" href="https://swiftonserver.com/using-hummingbird-request-context/">
+    <link rel="prev" href="https://swiftonserver.com/building-swiftnio-clients/">
+    <link rel="next" href="https://swiftonserver.com/advanced-async-sequences/">
 
     <title>Environment Variables in Swift - Swift on server</title>
     <meta name="description" content="Explore the importance of environment variables in Swift and how to use them.">
@@ -15,37 +15,37 @@
     <meta property="og:url" content="https://swiftonserver.com/using-environment-variables-in-swift/">
     <meta property="og:title" content="Environment Variables in Swift - Swift on server">
     <meta property="og:description" content="Explore the importance of environment variables in Swift and how to use them.">
-    <meta property="og:image" content="/assets/using-environment-variables-in-swift/cover.jpg" />
+    <meta property="og:image" content="https://swiftonserver.com/assets/using-environment-variables-in-swift/cover.jpg" />
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Environment Variables in Swift - Swift on server">
     <meta name="twitter:description" content="Explore the importance of environment variables in Swift and how to use them.">
-    <meta name="twitter:image" content="/assets/using-environment-variables-in-swift/cover.jpg">
+    <meta name="twitter:image" content="https://swiftonserver.com/assets/using-environment-variables-in-swift/cover.jpg">
 
-    <link rel="stylesheet" href="/css/modern-normalize.css">
-    <link rel="stylesheet" href="/css/modern-base.css">
-    <link rel="stylesheet" href="/css/variables.css">
-    <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/css/grid.css">
-    <link rel="stylesheet" href="/css/navigation.css">
-    <link rel="stylesheet" href="/css/footer.css">
-    <link rel="stylesheet" href="/css/syntax.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/modern-normalize.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/modern-base.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/variables.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/base.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/grid.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/navigation.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/footer.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/syntax.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/style.css">
 
     
 
-    <link rel="shortcut icon" href="/images/icons/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="/images/icons/icon-320.png" type="image/png">
+    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/icon-320.png" type="image/png">
     
-    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/images/icons/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon-180x180.png">
+    <link rel="apple-touch-icon" href="https://swiftonserver.com/images/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://swiftonserver.com/images/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://swiftonserver.com/images/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://swiftonserver.com/images/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://swiftonserver.com/images/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://swiftonserver.com/images/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://swiftonserver.com/images/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://swiftonserver.com/images/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://swiftonserver.com/images/icons/apple-touch-icon-180x180.png">
 
     <link
         rel="stylesheet"
@@ -88,11 +88,11 @@
             <figure>
                 <picture>
                     <source
-                        srcset="/images/logos/logo~dark.png"
+                        srcset="https://swiftonserver.com/logos/logo~dark.png"
                         media="(prefers-color-scheme: dark)"
                     >
                     <img
-                        src="/images/logos/logo.png"
+                        src="https://swiftonserver.com/images/logos/logo.png"
                         alt="Logo of Swift on server"
                         title="Swift on server"
                     >
@@ -123,7 +123,7 @@
         <div>
             <article class="post">
                 <div class="meta">
-                    <time datetime="2024/03/12">2024/03/12</time>
+                    <time datetime="2024-03-12">2024-03-12</time>
                      &middot; <span class="reading-time">7 min read</span>
                      &middot; <span class="featured">featured</span>
                 </div>
@@ -168,31 +168,31 @@
 </span><a class='xv' href='https://swiftinit.org/docs/swift/swift.print(_:separator:terminator:)' target='_blank' rel='external'>print</a>(<span class='xv'>value</span>)<span class='newline'>
 
 </span><span class='xk'>func</span> <span class='xv'>buildApplication</span>(<span class='newline'>
-</span>    <span class='xv'>configuration</span>: <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbird/applicationconfiguration' target='_blank' rel='external'>ApplicationConfiguration</a><span class='newline'>
-</span>) <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <span class='xk'>some</span> <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbird/applicationprotocol' target='_blank' rel='external'>ApplicationProtocol</a> {<span class='newline'>
+</span>    <span class='xv'>configuration</span>: <a class='xt' href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/applicationconfiguration' target='_blank' rel='external'>ApplicationConfiguration</a><span class='newline'>
+</span>) <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <span class='xk'>some</span> <a class='xt' href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/applicationprotocol' target='_blank' rel='external'>ApplicationProtocol</a> {<span class='newline'>
 </span>    <span class='xk'>var</span> <span class='xv'>logger</span> = <a class='xt' href='https://swiftinit.org/docs/swift-log/logging/logger' target='_blank' rel='external'>Logger</a>(<span class='xv'>label</span>: <span class='xs'>"hummingbird-logger"</span>)<span class='newline'>
 </span>    <span class='xv'>logger</span>.<a class='xv' href='https://swiftinit.org/docs/swift-log/logging/logger.loglevel' target='_blank' rel='external'>logLevel</a> = .<a class='xv' href='https://swiftinit.org/docs/swift-log/logging/logger/level.trace' target='_blank' rel='external'>trace</a><span class='newline'>
 
-</span>    <span class='xk'>let</span> <span class='xv'>env</span> = <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbird/environment' target='_blank' rel='external'>Environment</a>()<span class='newline'>
+</span>    <span class='xk'>let</span> <span class='xv'>env</span> = <a class='xt' href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/environment' target='_blank' rel='external'>Environment</a>()<span class='newline'>
 </span>    <span class='xc'>// let env = try await Environment.dotEnv()</span><span class='newline'>
-</span>    <span class='xk'>let</span> <span class='xv'>logLevel</span> = <span class='xv'>env</span>.<a class='xv' href='https://swiftinit.org/docs/hummingbird/hummingbird/environment.get(_:)' target='_blank' rel='external'>get</a>(<span class='xs'>"LOG_LEVEL"</span>)<span class='newline'>
+</span>    <span class='xk'>let</span> <span class='xv'>logLevel</span> = <span class='xv'>env</span>.<a class='xv' href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/environment.get(_:)' target='_blank' rel='external'>get</a>(<span class='xs'>"LOG_LEVEL"</span>)<span class='newline'>
 
 </span>    <span class='xk'>if</span> <span class='xk'>let</span> <span class='xv'>logLevel</span>, <span class='xk'>let</span> <span class='xv'>logLevel</span> = <a class='xt' href='https://swiftinit.org/docs/swift-log/logging/logger' target='_blank' rel='external'>Logger</a>.<a class='xt' href='https://swiftinit.org/docs/swift-log/logging/logger/level' target='_blank' rel='external'>Level</a>(<span class='xv'>rawValue</span>: <span class='xv'>logLevel</span>) {<span class='newline'>
 </span>        <span class='xv'>logger</span>.<a class='xv' href='https://swiftinit.org/docs/swift-log/logging/logger.loglevel' target='_blank' rel='external'>logLevel</a> = <span class='xv'>logLevel</span><span class='newline'>
 </span>    }<span class='newline'>
 
-</span>    <span class='xk'>let</span> <span class='xv'>router</span> = <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbird/router' target='_blank' rel='external'>Router</a>()<span class='newline'>
-</span>    <span class='xv'>router</span>.<a class='xv' href='https://swiftinit.org/docs/hummingbird/hummingbird/routermethods.get(_:use:)' target='_blank' rel='external'>get</a>(<a class='xs' href='https://swiftinit.org/docs/hummingbird/hummingbird/routerpath.init(stringliteral:)' target='_blank' rel='external'>"/"</a>) { _, _ <span class='xk'>in</span><span class='newline'>
+</span>    <span class='xk'>let</span> <span class='xv'>router</span> = <a class='xt' href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/router' target='_blank' rel='external'>Router</a>()<span class='newline'>
+</span>    <span class='xv'>router</span>.<a class='xv' href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/routermethods.get(_:use:)' target='_blank' rel='external'>get</a>(<a class='xs' href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/routerpath.init(stringliteral:)' target='_blank' rel='external'>"/"</a>) { _, _ <span class='xk'>in</span><span class='newline'>
 </span>        <span class='xs'>"Hello"</span><span class='newline'>
 </span>    }<span class='newline'>
 
-</span>    <span class='xk'>let</span> <span class='xv'>app</span> = <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbird/application' target='_blank' rel='external'>Application</a>(<span class='newline'>
+</span>    <span class='xk'>let</span> <span class='xv'>app</span> = <a class='xt' href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/application' target='_blank' rel='external'>Application</a>(<span class='newline'>
 </span>        <span class='xv'>router</span>: <span class='xv'>router</span>,<span class='newline'>
 </span>        <span class='xv'>configuration</span>: <span class='xv'>configuration</span>,<span class='newline'>
 </span>        <span class='xv'>logger</span>: <span class='xv'>logger</span><span class='newline'>
 </span>    )<span class='newline'>
 </span>    <span class='xk'>return</span> <span class='xv'>app</span><span class='newline'>
-</span>}</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/environment.swift#L4' target='_blank' class='source github'><span class='file'>environment.swift</span>:<span class='line'>4</span></a><p>If you run the project from Xcode, make sure you set a custom working directory, otherwise the framework won’t be able to locate your dotenv file.</p><h2 id='What%E2%80%99s%20next?'><a href='#What%E2%80%99s%20next?'>What’s next?</a></h2><p>Environment variables are crucial for modifying application behavior without code changes, offering flexibility across environments. They’re commonly used for feature flags, secrets, and other configuration purposes. In our next article we will discover how to store secrets and API credentials in a secure way.</p></section><div style='display: none;' id='swiftinit-tooltips'><a href='/hist/swift-on-server.articles:main/articles/logging-for-server-side-swift-apps'><p>Logging is an essential practice that helps you understand what happens within your program.</p></a><a href='/docs/swift/foundationessentials/processinfo'><pre><code><span class='xk'>final</span> <span class='xk'>class</span> <span class='xv'>ProcessInfo</span></code></pre><p>A collection of information about the current process.</p></a><a href='/hist/swift-on-server.articles:main/articles/developing-with-swift-in-visual-studio-code'><p>Swift is a great language for developing applications for Apple platforms, and is easily set up using Xcode. However, Xcode is only available for macOS, and does not support a wide variety of extensions.</p></a><a href='/docs/swift/foundationessentials/processinfo.processinfo'><pre><code><span class='xk'>static</span> <span class='xk'>let</span> <span class='xv'>processInfo</span>: <span class='xt'>ProcessInfo</span></code></pre></a><a href='/docs/swift/foundationessentials/processinfo.environment'><pre><code><span class='xk'>var</span> <span class='xv'>environment</span>: [<span class='xt'>String</span> : <span class='xt'>String</span>] { <span class='xk'>get</span> }</code></pre><p>The variable names (keys) and their values in the environment from which the process was launched.</p></a><a href='/docs/swift/swift/dictionary.subscript(_:)?hash=8RFQL'><pre><code><span class='xk'>subscript</span>(<span class='xi'></span><span class='xv'>key</span>: <span class='xt'>Key</span><wbr>) -&gt; <span class='xt'>Value</span>? { <span class='xk'>get</span> <span class='xk'>set</span> }</code></pre><p>Accesses the value associated with the given key for reading and writing.</p></a><a href='/docs/swift/swift.%3F%3F(_:_:)?hash=9XJZE'><pre><code><span class='xk'>func</span> <span class='xo'>??</span> &lt;<span class='xu'>T</span>&gt;(<span class='xi'></span><span class='xv'>optional</span>: <span class='xk'>consuming</span> <span class='xt'>T</span>?, <span class='xi'></span><span class='xv'>defaultValue</span>: <span class='xa'>@autoclosure</span> () <span class='xk'>throws</span> -&gt; <span class='xt'>T</span><wbr>) <span class='xk'>rethrows</span> -&gt; <span class='xt'>T</span> <span class='xk'>where</span> <span class='xt'>T</span> : <span class='xo'>~</span><span class='xt'>Copyable</span></code></pre><p>Performs a nil-coalescing operation, returning the wrapped value of an <code>Optional</code> instance or a default value.</p></a><a href='/docs/swift/swift.print(_:separator:terminator:)'><pre><code><span class='xk'>func</span> <span class='xv'>print</span>(<span class='xi'></span>_ <span class='xb'>items</span>: <span class='xk'>Any</span>..., <span class='xi'></span><span class='xv'>separator</span>: <span class='xt'>String</span> = <span class='xs'>" "</span>, <span class='xi'></span><span class='xv'>terminator</span>: <span class='xt'>String</span> = <span class='xs'>"\n"</span><wbr>)</code></pre><p>Writes the textual representations of the given items into the standard output.</p></a><a href='/docs/hummingbird/hummingbird/applicationconfiguration'><pre><code><span class='xk'>struct</span> <span class='xv'>ApplicationConfiguration</span></code></pre><p>Application configuration</p></a><a href='/docs/hummingbird/hummingbird/applicationprotocol'><pre><code><span class='xk'>protocol</span> <span class='xv'>ApplicationProtocol</span> : <span class='xt'>Service</span></code></pre><p>Protocol for an Application. Brings together all the components of Hummingbird together</p></a><a href='/docs/swift-log/logging/logger'><pre><code><span class='xk'>struct</span> <span class='xv'>Logger</span></code></pre><p>A <code>Logger</code> is the central type in <code>SwiftLog</code>. Its central function is to emit log messages using one of the methods corresponding to a log level.</p></a><a href='/docs/swift-log/logging/logger.loglevel'><pre><code><span class='xk'>var</span> <span class='xv'>logLevel</span>: <span class='xt'>Logger</span>.<span class='xt'>Level</span> { <span class='xk'>get</span> <span class='xk'>set</span> }</code></pre><p>Get or set the log level configured for this <code>Logger</code>.</p></a><a href='/docs/swift-log/logging/logger/level.trace'><pre><code><span class='xk'>case</span> <span class='xv'>trace</span></code></pre><p>Appropriate for messages that contain information normally of use only when tracing the execution of a program.</p></a><a href='/docs/hummingbird/hummingbird/environment'><pre><code><span class='xk'>struct</span> <span class='xv'>Environment</span></code></pre><p>Access environment variables</p></a><a href='/docs/hummingbird/hummingbird/environment.get(_:)'><pre><code><span class='xk'>func</span> <span class='xv'>get</span>(<span class='xi'></span>_ <span class='xb'>s</span>: <span class='xt'>String</span><wbr>) -&gt; <span class='xt'>String</span>?</code></pre><p>Get environment variable with name</p></a><a href='/docs/swift-log/logging/logger/level'><pre><code><span class='xk'>enum</span> <span class='xv'>Level</span></code></pre><p>The log level.</p></a><a href='/docs/hummingbird/hummingbird/router'><pre><code><span class='xk'>final</span> <span class='xk'>class</span> <span class='xv'>Router</span>&lt;<span class='xu'>Context</span>&gt; <span class='xk'>where</span> <span class='xt'>Context</span> : <span class='xt'>RequestContext</span></code></pre><p>Create rules for routing requests and then create <code>Responder</code> that will follow these rules.</p></a><a href='/docs/hummingbird/hummingbird/routermethods.get(_:use:)'><pre><code><span class='xa'>@discardableResult</span> <span class='xk'>func</span> <span class='xv'>get</span>(<span class='xi'></span>_ <span class='xb'>path</span>: <span class='xt'>RouterPath</span> = <span class='xs'>""</span>, <span class='xi'></span><span class='xv'>use</span> <span class='xb'>handler</span>: <span class='xa'>@escaping</span> (<span class='xt'>Request</span>, <span class='xt'>Context</span>) <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <span class='xk'>some</span> <span class='xt'>ResponseGenerator</span><wbr>) -&gt; <span class='xk'>Self</span></code></pre><p>GET path for async closure returning type conforming to ResponseGenerator</p></a><a href='/docs/hummingbird/hummingbird/routerpath.init(stringliteral:)'><pre><code><span class='xk'>init</span>(<span class='xi'></span><span class='xv'>stringLiteral</span> <span class='xb'>value</span>: <span class='xt'>String</span><wbr>)</code></pre><p>Initialize RouterPath from String literal</p></a><a href='/docs/hummingbird/hummingbird/application'><pre><code><span class='xk'>struct</span> <span class='xv'>Application</span>&lt;<span class='xu'>Responder</span>&gt; <span class='xk'>where</span> <span class='xt'>Responder</span> : <span class='xt'>HTTPResponder</span>, <span class='xt'>Responder</span>.<span class='xt'>Context</span> : <span class='xt'>InitializableFromSource</span>, <span class='xt'>Responder</span>.<span class='xt'>Context</span>.<span class='xt'>Source</span> <span class='xo'>==</span> <span class='xt'>ApplicationRequestContextSource</span></code></pre><p>Application class. Brings together all the components of Hummingbird together</p></a></div>
+</span>}</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/environment.swift#L4' target='_blank' class='source github'><span class='file'>environment.swift</span>:<span class='line'>4</span></a><p>If you run the project from Xcode, make sure you set a custom working directory, otherwise the framework won’t be able to locate your dotenv file.</p><h2 id='What%E2%80%99s%20next?'><a href='#What%E2%80%99s%20next?'>What’s next?</a></h2><p>Environment variables are crucial for modifying application behavior without code changes, offering flexibility across environments. They’re commonly used for feature flags, secrets, and other configuration purposes. In our next article we will discover how to store secrets and API credentials in a secure way.</p></section><div style='display: none;' id='swiftinit-tooltips'><a href='/hist/swift-on-server.articles:main/articles/logging-for-server-side-swift-apps'><p>Logging is an essential practice that helps you understand what happens within your program.</p></a><a href='/docs/swift/foundationessentials/processinfo'><pre><code><span class='xk'>final</span> <span class='xk'>class</span> <span class='xv'>ProcessInfo</span></code></pre><p>A collection of information about the current process.</p></a><a href='/hist/swift-on-server.articles:main/articles/developing-with-swift-in-visual-studio-code'><p>Swift is a great language for developing applications for Apple platforms, and is easily set up using Xcode. However, Xcode is only available for macOS, and does not support a wide variety of extensions.</p></a><a href='/docs/swift/foundationessentials/processinfo.processinfo'><pre><code><span class='xk'>static</span> <span class='xk'>let</span> <span class='xv'>processInfo</span>: <span class='xt'>ProcessInfo</span></code></pre></a><a href='/docs/swift/foundationessentials/processinfo.environment'><pre><code><span class='xk'>var</span> <span class='xv'>environment</span>: [<span class='xt'>String</span> : <span class='xt'>String</span>] { <span class='xk'>get</span> }</code></pre><p>The variable names (keys) and their values in the environment from which the process was launched.</p></a><a href='/docs/swift/swift/dictionary.subscript(_:)?hash=8RFQL'><pre><code><span class='xk'>subscript</span>(<span class='xi'></span><span class='xv'>key</span>: <span class='xt'>Key</span><wbr>) -&gt; <span class='xt'>Value</span>? { <span class='xk'>get</span> <span class='xk'>set</span> }</code></pre><p>Accesses the value associated with the given key for reading and writing.</p></a><a href='/docs/swift/swift.%3F%3F(_:_:)?hash=9XJZE'><pre><code><span class='xk'>func</span> <span class='xo'>??</span> &lt;<span class='xu'>T</span>&gt;(<span class='xi'></span><span class='xv'>optional</span>: <span class='xk'>consuming</span> <span class='xt'>T</span>?, <span class='xi'></span><span class='xv'>defaultValue</span>: <span class='xa'>@autoclosure</span> () <span class='xk'>throws</span> -&gt; <span class='xt'>T</span><wbr>) <span class='xk'>rethrows</span> -&gt; <span class='xt'>T</span> <span class='xk'>where</span> <span class='xt'>T</span> : <span class='xo'>~</span><span class='xt'>Copyable</span></code></pre><p>Performs a nil-coalescing operation, returning the wrapped value of an <code>Optional</code> instance or a default value.</p></a><a href='/docs/swift/swift.print(_:separator:terminator:)'><pre><code><span class='xk'>func</span> <span class='xv'>print</span>(<span class='xi'></span>_ <span class='xb'>items</span>: <span class='xk'>Any</span>..., <span class='xi'></span><span class='xv'>separator</span>: <span class='xt'>String</span> = <span class='xs'>" "</span>, <span class='xi'></span><span class='xv'>terminator</span>: <span class='xt'>String</span> = <span class='xs'>"\n"</span><wbr>)</code></pre><p>Writes the textual representations of the given items into the standard output.</p></a><a href='/hist/hummingbird:2.6.2/hummingbird/applicationconfiguration'><pre><code><span class='xk'>struct</span> <span class='xv'>ApplicationConfiguration</span></code></pre><p>Application configuration</p></a><a href='/hist/hummingbird:2.6.2/hummingbird/applicationprotocol'><pre><code><span class='xk'>protocol</span> <span class='xv'>ApplicationProtocol</span> : <span class='xt'>Service</span></code></pre><p>Protocol for an Application. Brings together all the components of Hummingbird together</p></a><a href='/docs/swift-log/logging/logger'><pre><code><span class='xk'>struct</span> <span class='xv'>Logger</span></code></pre><p>A <code>Logger</code> is the central type in <code>SwiftLog</code>. Its central function is to emit log messages using one of the methods corresponding to a log level.</p></a><a href='/docs/swift-log/logging/logger.loglevel'><pre><code><span class='xk'>var</span> <span class='xv'>logLevel</span>: <span class='xt'>Logger</span>.<span class='xt'>Level</span> { <span class='xk'>get</span> <span class='xk'>set</span> }</code></pre><p>Get or set the log level configured for this <code>Logger</code>.</p></a><a href='/docs/swift-log/logging/logger/level.trace'><pre><code><span class='xk'>case</span> <span class='xv'>trace</span></code></pre><p>Appropriate for messages that contain information normally of use only when tracing the execution of a program.</p></a><a href='/hist/hummingbird:2.6.2/hummingbird/environment'><pre><code><span class='xk'>struct</span> <span class='xv'>Environment</span></code></pre><p>Access environment variables</p></a><a href='/hist/hummingbird:2.6.2/hummingbird/environment.get(_:)'><pre><code><span class='xk'>func</span> <span class='xv'>get</span>(<span class='xi'></span>_ <span class='xb'>s</span>: <span class='xt'>String</span><wbr>) -&gt; <span class='xt'>String</span>?</code></pre><p>Get environment variable with name</p></a><a href='/docs/swift-log/logging/logger/level'><pre><code><span class='xk'>enum</span> <span class='xv'>Level</span></code></pre><p>The log level.</p></a><a href='/hist/hummingbird:2.6.2/hummingbird/router'><pre><code><span class='xk'>final</span> <span class='xk'>class</span> <span class='xv'>Router</span>&lt;<span class='xu'>Context</span>&gt; <span class='xk'>where</span> <span class='xt'>Context</span> : <span class='xt'>RequestContext</span></code></pre><p>Create rules for routing requests and then create <code>Responder</code> that will follow these rules.</p></a><a href='/hist/hummingbird:2.6.2/hummingbird/routermethods.get(_:use:)'><pre><code><span class='xa'>@discardableResult</span> <span class='xk'>func</span> <span class='xv'>get</span>(<span class='xi'></span>_ <span class='xb'>path</span>: <span class='xt'>RouterPath</span> = <span class='xs'>""</span>, <span class='xi'></span><span class='xv'>use</span> <span class='xb'>handler</span>: <span class='xa'>@escaping</span> (<span class='xt'>Request</span>, <span class='xt'>Context</span>) <span class='xk'>async</span> <span class='xk'>throws</span> -&gt; <span class='xk'>some</span> <span class='xt'>ResponseGenerator</span><wbr>) -&gt; <span class='xk'>Self</span></code></pre><p>GET path for async closure returning type conforming to ResponseGenerator</p></a><a href='/hist/hummingbird:2.6.2/hummingbird/routerpath.init(stringliteral:)'><pre><code><span class='xk'>init</span>(<span class='xi'></span><span class='xv'>stringLiteral</span> <span class='xb'>value</span>: <span class='xt'>String</span><wbr>)</code></pre><p>Initialize RouterPath from String literal</p></a><a href='/hist/hummingbird:2.6.2/hummingbird/application'><pre><code><span class='xk'>struct</span> <span class='xv'>Application</span>&lt;<span class='xu'>Responder</span>&gt; <span class='xk'>where</span> <span class='xt'>Responder</span> : <span class='xt'>HTTPResponder</span>, <span class='xt'>Responder</span>.<span class='xt'>Context</span> : <span class='xt'>InitializableFromSource</span>, <span class='xt'>Responder</span>.<span class='xt'>Context</span>.<span class='xt'>Source</span> <span class='xo'>==</span> <span class='xt'>ApplicationRequestContextSource</span></code></pre><p>Application class. Brings together all the components of Hummingbird together</p></a></div>
                     
                 </section>
     
@@ -203,7 +203,7 @@
                     
                     <div class="author-list">
                         <a href="https://swiftonserver.com/authors/tibor-bodecs/">
-                        <img class="small rounded" src="/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                        <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                         <span class="name">Tibor Bödecs</span>
                         </a>
                     </div>
@@ -221,12 +221,35 @@
                             
                             <div class="author-list">
                                 <a href="https://swiftonserver.com/authors/joannis-orlandos/">
-                                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                                 </a>
                             </div>
                             <div class="meta">
-                                <time datetime="2024/10/27">2024/10/27</time>
-                                 &middot; <span class="reading-time">3 min read</span>
+                                <time datetime="2024-01-16">2024-01-16</time>
+                                    &middot; <span class="reading-time">2 min read</span>
+                            </div>
+                            
+                            <h2 class="title"><a href="https://swiftonserver.com/developing-with-swift-in-visual-studio-code/" target="">Developing with Swift in Visual Studio Code</a></h2>
+                            <p>Learn how to set up your Visual Studio Code for Swift development using Docker, Dev Containers and the Swift for VS Code extension.</p>
+                        
+                            <div class="spacer"></div>
+                        
+                            <div class="tag-list">
+                                <a href="https://swiftonserver.com/tags/utilities/"><small>Utilities</small></a>
+        <a href="https://swiftonserver.com/tags/vscode/"><small>VSCode</small></a>
+                            </div>
+                        </div>
+                    <div class="card">
+                            
+                            
+                            <div class="author-list">
+                                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                </a>
+                            </div>
+                            <div class="meta">
+                                <time datetime="2024-10-27">2024-10-27</time>
+                                    &middot; <span class="reading-time">3 min read</span>
                             </div>
                             
                             <h2 class="title"><a href="https://swiftonserver.com/getting-started-with-swift-package-manager/" target="">Getting Started with Swift Package Manager</a></h2>
@@ -243,34 +266,12 @@
                             
                             <div class="author-list">
                                 <a href="https://swiftonserver.com/authors/tibor-bodecs/">
-                                <img class="small rounded" src="/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                                 </a>
                             </div>
                             <div class="meta">
-                                <time datetime="2024/04/10">2024/04/10</time>
-                                 &middot; <span class="reading-time">13 min read</span>
-                            </div>
-                            
-                            <h2 class="title"><a href="https://swiftonserver.com/useful-scripts-for-server-side-swift-libraries/" target="">Useful scripts for server-side Swift</a></h2>
-                            <p>Learn about shell scripts to enforce coding standards and conduct checks for backend Swift projects.</p>
-                        
-                            <div class="spacer"></div>
-                        
-                            <div class="tag-list">
-                                <a href="https://swiftonserver.com/tags/utilities/"><small>Utilities</small></a>
-                            </div>
-                        </div>
-                    <div class="card">
-                            
-                            
-                            <div class="author-list">
-                                <a href="https://swiftonserver.com/authors/tibor-bodecs/">
-                                <img class="small rounded" src="/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
-                                </a>
-                            </div>
-                            <div class="meta">
-                                <time datetime="2024/02/13">2024/02/13</time>
-                                 &middot; <span class="reading-time">13 min read</span>
+                                <time datetime="2024-02-13">2024-02-13</time>
+                                    &middot; <span class="reading-time">13 min read</span>
                             </div>
                             
                             <h2 class="title"><a href="https://swiftonserver.com/logging-for-server-side-swift-apps/" target="">Logging for server-side Swift apps</a></h2>
@@ -288,23 +289,45 @@
                             
                             
                             <div class="author-list">
-                                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
-                                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                <a href="https://swiftonserver.com/authors/tibor-bodecs/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                                 </a>
                             </div>
                             <div class="meta">
-                                <time datetime="2024/01/16">2024/01/16</time>
-                                 &middot; <span class="reading-time">2 min read</span>
+                                <time datetime="2024-04-10">2024-04-10</time>
+                                    &middot; <span class="reading-time">13 min read</span>
                             </div>
                             
-                            <h2 class="title"><a href="https://swiftonserver.com/developing-with-swift-in-visual-studio-code/" target="">Developing with Swift in Visual Studio Code</a></h2>
-                            <p>Learn how to set up your Visual Studio Code for Swift development using Docker, Dev Containers and the Swift for VS Code extension.</p>
+                            <h2 class="title"><a href="https://swiftonserver.com/useful-scripts-for-server-side-swift-libraries/" target="">Useful scripts for server-side Swift</a></h2>
+                            <p>Learn about shell scripts to enforce coding standards and conduct checks for backend Swift projects.</p>
                         
                             <div class="spacer"></div>
                         
                             <div class="tag-list">
                                 <a href="https://swiftonserver.com/tags/utilities/"><small>Utilities</small></a>
-        <a href="https://swiftonserver.com/tags/vscode/"><small>VSCode</small></a>
+                            </div>
+                        </div>
+                    <div class="card featured">
+                            <span class="featured">featured</span>
+                            
+                            <div class="author-list">
+                                <a href="https://swiftonserver.com/authors/tibor-bodecs/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                                </a>
+                            </div>
+                            <div class="meta">
+                                <time datetime="2024-03-12">2024-03-12</time>
+                                    &middot; <span class="reading-time">7 min read</span>
+                            </div>
+                            
+                            <h2 class="title"><a href="https://swiftonserver.com/using-environment-variables-in-swift/" target="">Environment Variables in Swift</a></h2>
+                            <p>Explore the importance of environment variables in Swift and how to use them.</p>
+                        
+                            <div class="spacer"></div>
+                        
+                            <div class="tag-list">
+                                <a href="https://swiftonserver.com/tags/observability/"><small>Observability</small></a>
+        <a href="https://swiftonserver.com/tags/utilities/"><small>Utilities</small></a>
                             </div>
                         </div>
                     </div>
@@ -316,7 +339,7 @@
         <div>
             <div class="support">
                 <a href="https://swiftcraft.uk/" target="_blank">
-                    <img src="/images/logos/swiftcraft.png" alt="SwiftCraft logo">
+                    <img src="https://swiftonserver.com/images/logos/swiftcraft.png" alt="SwiftCraft logo">
                 </a>
                 <h4>
                     <a href="https://swiftcraft.uk/" target="_blank">SwiftCraft</a>
@@ -340,9 +363,21 @@
         <li class="first-level">
                         <a href="#How%20to%20set%20environment%20variables?">How to set environment variables?</a>
                         <ul>
-                            <li><a href="#Setting%20env%20vars%20using%20the%20command%20line">Setting env vars using the command line</a></li>
-                <li><a href="#Setting%20env%20vars%20using%20Xcode">Setting env vars using Xcode</a></li>
-                <li><a href="#Setting%20env%20vars%20using%20Visual%20Studio%20Code">Setting env vars using Visual Studio Code</a></li>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Setting%20env%20vars%20using%20the%20command%20line">Setting env vars using the command line</a>
+                        <ul>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Setting%20env%20vars%20using%20Xcode">Setting env vars using Xcode</a>
+                        <ul>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Setting%20env%20vars%20using%20Visual%20Studio%20Code">Setting env vars using Visual Studio Code</a>
+                        <ul>
                         </ul>
                     </li>
         <li class="first-level">
@@ -379,12 +414,12 @@
             <figure>
                 <picture>
                     <source
-                        srcset="/images/logos/logo~dark.png"
+                        srcset="https://swiftonserver.com/images/logos/logo~dark.png"
                         media="(prefers-color-scheme: dark)"
                     >
                     <img
                         id="logo-image"
-                        src="/images/logos/logo.png"
+                        src="https://swiftonserver.com/images/logos/logo.png"
                         alt="Logo of Swift on server"
                         title="Swift on server"
                     >
@@ -405,7 +440,7 @@
             
             <div>
                 <a href="/authors/joannis-orlandos/">
-                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                 </a>
                 <h4><a href="/authors/joannis-orlandos/">Joannis Orlandos</a></h4>
                 <p><small><a href="https://unbeatable.software/" target="_blank">Unbeatable Software B.V.</a></small></p>
@@ -419,7 +454,7 @@
             
             <div>
                 <a href="/authors/tibor-bodecs/">
-                <img class="small rounded" src="/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                 </a>
                 <h4><a href="/authors/tibor-bodecs/">Tibor Bödecs</a></h4>
                 <p><small><a href="https://binarybirds.com/" target="_blank">Binary Birds Kft.</a></small></p>

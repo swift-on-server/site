@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="canonical" href="https://swiftonserver.com/beginners-guide-to-protocol-buffers-and-grpc-with-swift/">
-    <link rel="prev" href="https://swiftonserver.com/async-http-client-by-example/">
-    <link rel="next" href="https://swiftonserver.com/building-swiftnio-clients/">
+    <link rel="prev" href="https://swiftonserver.com/advanced-async-sequences/">
+    <link rel="next" href="https://swiftonserver.com/getting-started-with-mongokitten/">
 
     <title>Beginner&#39;s Guide to Protocol Buffers and gRPC with Swift - Swift on server</title>
     <meta name="description" content="Learn Protocol Buffers and gRPC with Swift in this easy, step-by-step beginner&#39;s guide.">
@@ -15,37 +15,37 @@
     <meta property="og:url" content="https://swiftonserver.com/beginners-guide-to-protocol-buffers-and-grpc-with-swift/">
     <meta property="og:title" content="Beginner&#39;s Guide to Protocol Buffers and gRPC with Swift - Swift on server">
     <meta property="og:description" content="Learn Protocol Buffers and gRPC with Swift in this easy, step-by-step beginner&#39;s guide.">
-    <meta property="og:image" content="/assets/beginners-guide-to-protocol-buffers-and-grpc-with-swift/cover.jpg" />
+    <meta property="og:image" content="https://swiftonserver.com/assets/beginners-guide-to-protocol-buffers-and-grpc-with-swift/cover.jpg" />
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Beginner&#39;s Guide to Protocol Buffers and gRPC with Swift - Swift on server">
     <meta name="twitter:description" content="Learn Protocol Buffers and gRPC with Swift in this easy, step-by-step beginner&#39;s guide.">
-    <meta name="twitter:image" content="/assets/beginners-guide-to-protocol-buffers-and-grpc-with-swift/cover.jpg">
+    <meta name="twitter:image" content="https://swiftonserver.com/assets/beginners-guide-to-protocol-buffers-and-grpc-with-swift/cover.jpg">
 
-    <link rel="stylesheet" href="/css/modern-normalize.css">
-    <link rel="stylesheet" href="/css/modern-base.css">
-    <link rel="stylesheet" href="/css/variables.css">
-    <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/css/grid.css">
-    <link rel="stylesheet" href="/css/navigation.css">
-    <link rel="stylesheet" href="/css/footer.css">
-    <link rel="stylesheet" href="/css/syntax.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/modern-normalize.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/modern-base.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/variables.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/base.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/grid.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/navigation.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/footer.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/syntax.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/style.css">
 
     
 
-    <link rel="shortcut icon" href="/images/icons/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="/images/icons/icon-320.png" type="image/png">
+    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/icon-320.png" type="image/png">
     
-    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/images/icons/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon-180x180.png">
+    <link rel="apple-touch-icon" href="https://swiftonserver.com/images/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://swiftonserver.com/images/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://swiftonserver.com/images/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://swiftonserver.com/images/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://swiftonserver.com/images/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://swiftonserver.com/images/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://swiftonserver.com/images/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://swiftonserver.com/images/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://swiftonserver.com/images/icons/apple-touch-icon-180x180.png">
 
     <link
         rel="stylesheet"
@@ -88,11 +88,11 @@
             <figure>
                 <picture>
                     <source
-                        srcset="/images/logos/logo~dark.png"
+                        srcset="https://swiftonserver.com/logos/logo~dark.png"
                         media="(prefers-color-scheme: dark)"
                     >
                     <img
-                        src="/images/logos/logo.png"
+                        src="https://swiftonserver.com/images/logos/logo.png"
                         alt="Logo of Swift on server"
                         title="Swift on server"
                     >
@@ -123,7 +123,7 @@
         <div>
             <article class="post">
                 <div class="meta">
-                    <time datetime="2024/10/22">2024/10/22</time>
+                    <time datetime="2024-10-22">2024-10-22</time>
                      &middot; <span class="reading-time">10 min read</span>
                     
                 </div>
@@ -322,7 +322,7 @@
                     
                     <div class="author-list">
                         <a href="https://swiftonserver.com/authors/tibor-bodecs/">
-                        <img class="small rounded" src="/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                        <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                         <span class="name">Tibor Bödecs</span>
                         </a>
                     </div>
@@ -340,22 +340,46 @@
                             
                             
                             <div class="author-list">
-                                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
-                                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                <a href="https://swiftonserver.com/authors/tibor-bodecs/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                                 </a>
                             </div>
                             <div class="meta">
-                                <time datetime="2025/01/20">2025/01/20</time>
-                                 &middot; <span class="reading-time">3 min read</span>
+                                <time datetime="2024-04-03">2024-04-03</time>
+                                    &middot; <span class="reading-time">13 min read</span>
                             </div>
                             
-                            <h2 class="title"><a href="https://swiftonserver.com/hummingbird-and-cors/" target="">Hummingbird and CORS</a></h2>
-                            <p>Learn how to use Hummingbird and CORS in Swift</p>
+                            <h2 class="title"><a href="https://swiftonserver.com/async-http-client-by-example/" target="">AsyncHTTPClient by example</a></h2>
+                            <p>This article offers practical examples to introduce the Swift AsyncHTTPClient library.</p>
                         
                             <div class="spacer"></div>
                         
                             <div class="tag-list">
-                                <a href="https://swiftonserver.com/tags/hummingbird/"><small>Hummingbird</small></a>
+                                <a href="https://swiftonserver.com/tags/networking/"><small>Networking</small></a>
+        <a href="https://swiftonserver.com/tags/package-highlight/"><small>Package Highlight</small></a>
+                            </div>
+                        </div>
+                    <div class="card">
+                            
+                            
+                            <div class="author-list">
+                                <a href="https://swiftonserver.com/authors/tibor-bodecs/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                                </a>
+                            </div>
+                            <div class="meta">
+                                <time datetime="2024-10-22">2024-10-22</time>
+                                    &middot; <span class="reading-time">10 min read</span>
+                            </div>
+                            
+                            <h2 class="title"><a href="https://swiftonserver.com/beginners-guide-to-protocol-buffers-and-grpc-with-swift/" target="">Beginner&#39;s Guide to Protocol Buffers and gRPC with Swift</a></h2>
+                            <p>Learn Protocol Buffers and gRPC with Swift in this easy, step-by-step beginner&#39;s guide.</p>
+                        
+                            <div class="spacer"></div>
+                        
+                            <div class="tag-list">
+                                <a href="https://swiftonserver.com/tags/networking/"><small>Networking</small></a>
+        <a href="https://swiftonserver.com/tags/package-highlight/"><small>Package Highlight</small></a>
         <a href="https://swiftonserver.com/tags/server/"><small>Server</small></a>
                             </div>
                         </div>
@@ -364,45 +388,22 @@
                             
                             <div class="author-list">
                                 <a href="https://swiftonserver.com/authors/joannis-orlandos/">
-                                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                                 </a>
                             </div>
                             <div class="meta">
-                                <time datetime="2024/10/01">2024/10/01</time>
-                                 &middot; <span class="reading-time">6 min read</span>
+                                <time datetime="2024-02-20">2024-02-20</time>
+                                    &middot; <span class="reading-time">11 min read</span>
                             </div>
                             
-                            <h2 class="title"><a href="https://swiftonserver.com/using-hummingbird-request-context/" target="">Using Hummingbird&#39;s Request Contexts</a></h2>
-                            <p>Learn about request contexts in Hummingbird and how to use them.</p>
+                            <h2 class="title"><a href="https://swiftonserver.com/building-swiftnio-clients/" target="">Building an HTTP client using SwiftNIO</a></h2>
+                            <p>Learn how to build a simple HTTP client using SwiftNIO and structured concurrency.</p>
                         
                             <div class="spacer"></div>
                         
                             <div class="tag-list">
-                                <a href="https://swiftonserver.com/tags/hummingbird/"><small>Hummingbird</small></a>
-        <a href="https://swiftonserver.com/tags/server/"><small>Server</small></a>
-                            </div>
-                        </div>
-                    <div class="card">
-                            
-                            
-                            <div class="author-list">
-                                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
-                                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
-                                </a>
-                            </div>
-                            <div class="meta">
-                                <time datetime="2024/09/30">2024/09/30</time>
-                                 &middot; <span class="reading-time">9 min read</span>
-                            </div>
-                            
-                            <h2 class="title"><a href="https://swiftonserver.com/how-to-build-a-proxy-server-with-hummingbird/" target="">How to Build a Proxy Server with Hummingbird</a></h2>
-                            <p>Learn how to leverage the flexibility and performance of Hummingbird to build a proxy server.</p>
-                        
-                            <div class="spacer"></div>
-                        
-                            <div class="tag-list">
-                                <a href="https://swiftonserver.com/tags/hummingbird/"><small>Hummingbird</small></a>
-        <a href="https://swiftonserver.com/tags/server/"><small>Server</small></a>
+                                <a href="https://swiftonserver.com/tags/networking/"><small>Networking</small></a>
+        <a href="https://swiftonserver.com/tags/swiftnio/"><small>SwiftNIO</small></a>
                             </div>
                         </div>
                     <div class="card featured">
@@ -410,12 +411,12 @@
                             
                             <div class="author-list">
                                 <a href="https://swiftonserver.com/authors/joannis-orlandos/">
-                                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                                 </a>
                             </div>
                             <div class="meta">
-                                <time datetime="2024/09/24">2024/09/24</time>
-                                 &middot; <span class="reading-time">7 min read</span>
+                                <time datetime="2024-09-24">2024-09-24</time>
+                                    &middot; <span class="reading-time">7 min read</span>
                             </div>
                             
                             <h2 class="title"><a href="https://swiftonserver.com/getting-started-with-hummingbird/" target="">Getting Started with Hummingbird</a></h2>
@@ -433,23 +434,22 @@
                             
                             <div class="author-list">
                                 <a href="https://swiftonserver.com/authors/joannis-orlandos/">
-                                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                                 </a>
                             </div>
                             <div class="meta">
-                                <time datetime="2024/08/29">2024/08/29</time>
-                                 &middot; <span class="reading-time">5 min read</span>
+                                <time datetime="2024-09-30">2024-09-30</time>
+                                    &middot; <span class="reading-time">9 min read</span>
                             </div>
                             
-                            <h2 class="title"><a href="https://swiftonserver.com/working-with-udp-in-swiftnio/" target="">Working with UDP in SwiftNIO</a></h2>
-                            <p>Create UDP servers and clients using SwiftNIO and structured concurrency</p>
+                            <h2 class="title"><a href="https://swiftonserver.com/how-to-build-a-proxy-server-with-hummingbird/" target="">How to Build a Proxy Server with Hummingbird</a></h2>
+                            <p>Learn how to leverage the flexibility and performance of Hummingbird to build a proxy server.</p>
                         
                             <div class="spacer"></div>
                         
                             <div class="tag-list">
-                                <a href="https://swiftonserver.com/tags/networking/"><small>Networking</small></a>
+                                <a href="https://swiftonserver.com/tags/hummingbird/"><small>Hummingbird</small></a>
         <a href="https://swiftonserver.com/tags/server/"><small>Server</small></a>
-        <a href="https://swiftonserver.com/tags/swiftnio/"><small>SwiftNIO</small></a>
                             </div>
                         </div>
                     <div class="card">
@@ -457,22 +457,21 @@
                             
                             <div class="author-list">
                                 <a href="https://swiftonserver.com/authors/tibor-bodecs/">
-                                <img class="small rounded" src="/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                                 </a>
                             </div>
                             <div class="meta">
-                                <time datetime="2024/06/27">2024/06/27</time>
-                                 &middot; <span class="reading-time">19 min read</span>
+                                <time datetime="2024-05-22">2024-05-22</time>
+                                    &middot; <span class="reading-time">7 min read</span>
                             </div>
                             
-                            <h2 class="title"><a href="https://swiftonserver.com/websockets-tutorial-using-swift-and-hummingbird/" target="">Using WebSockets in Hummingbird</a></h2>
-                            <p>In this article, you will learn about WebSockets and how to use them with the Hummingbird framework in a straightforward, easy-to-follow manner.</p>
+                            <h2 class="title"><a href="https://swiftonserver.com/introduction-to-swift-service-lifecycle/" target="">Introduction to Swift Service Lifecycle</a></h2>
+                            <p>This article offers practical examples to introduce the Swift Service Lifecycle library.</p>
                         
                             <div class="spacer"></div>
                         
                             <div class="tag-list">
-                                <a href="https://swiftonserver.com/tags/hummingbird/"><small>Hummingbird</small></a>
-        <a href="https://swiftonserver.com/tags/server/"><small>Server</small></a>
+                                <a href="https://swiftonserver.com/tags/package-highlight/"><small>Package Highlight</small></a>
                             </div>
                         </div>
                     </div>
@@ -484,7 +483,7 @@
         <div>
             <div class="support">
                 <a href="https://swiftcraft.uk/" target="_blank">
-                    <img src="/images/logos/swiftcraft.png" alt="SwiftCraft logo">
+                    <img src="https://swiftonserver.com/images/logos/swiftcraft.png" alt="SwiftCraft logo">
                 </a>
                 <h4>
                     <a href="https://swiftcraft.uk/" target="_blank">SwiftCraft</a>
@@ -503,8 +502,16 @@
                     <li class="first-level">
                         <a href="#What%20are%20Protocol%20Buffers?">What are Protocol Buffers?</a>
                         <ul>
-                            <li><a href="#The%20Protobuf%20language">The Protobuf language</a></li>
-                <li><a href="#The%20Protocol%20Buffer%20Compiler">The Protocol Buffer Compiler</a></li>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#The%20Protobuf%20language">The Protobuf language</a>
+                        <ul>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#The%20Protocol%20Buffer%20Compiler">The Protocol Buffer Compiler</a>
+                        <ul>
                         </ul>
                     </li>
         <li class="first-level">
@@ -536,12 +543,12 @@
             <figure>
                 <picture>
                     <source
-                        srcset="/images/logos/logo~dark.png"
+                        srcset="https://swiftonserver.com/images/logos/logo~dark.png"
                         media="(prefers-color-scheme: dark)"
                     >
                     <img
                         id="logo-image"
-                        src="/images/logos/logo.png"
+                        src="https://swiftonserver.com/images/logos/logo.png"
                         alt="Logo of Swift on server"
                         title="Swift on server"
                     >
@@ -562,7 +569,7 @@
             
             <div>
                 <a href="/authors/joannis-orlandos/">
-                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                 </a>
                 <h4><a href="/authors/joannis-orlandos/">Joannis Orlandos</a></h4>
                 <p><small><a href="https://unbeatable.software/" target="_blank">Unbeatable Software B.V.</a></small></p>
@@ -576,7 +583,7 @@
             
             <div>
                 <a href="/authors/tibor-bodecs/">
-                <img class="small rounded" src="/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                 </a>
                 <h4><a href="/authors/tibor-bodecs/">Tibor Bödecs</a></h4>
                 <p><small><a href="https://binarybirds.com/" target="_blank">Binary Birds Kft.</a></small></p>

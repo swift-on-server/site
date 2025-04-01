@@ -1,5 +1,5 @@
 name: grid
-params:
+parameters:
   - label: desktop
     default: "2"
   - label: tablet
