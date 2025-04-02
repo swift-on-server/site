@@ -1,5 +1,4 @@
 baseUrl: "https://swiftonserver.com/"
-#baseUrl: "http://localhost:3000/"
 locale: "en-US"
 title: "Swift on server"
 navigation:
