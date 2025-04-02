@@ -3,17 +3,17 @@
 
         <loc>https://swiftonserver.com/authors/</loc>
         <lastmod>2025-03-28</lastmod>
-        <loc>https://swiftonserver.com/posts/page/1/</loc>
-        <lastmod>2025-04-01</lastmod>
-        <loc>https://swiftonserver.com/posts/page/2/</loc>
-        <lastmod>2025-04-01</lastmod>
-        <loc>https://swiftonserver.com/tags/</loc>
-        <lastmod>2025-03-28</lastmod>
         <loc>https://swiftonserver.com</loc>
         <lastmod>2025-04-01</lastmod>
         <loc>https://swiftonserver.com/newsletter/</loc>
         <lastmod>2025-04-01</lastmod>
         <loc>https://swiftonserver.com/newsletter/issues/page/1/</loc>
+        <lastmod>2025-04-01</lastmod>
+        <loc>https://swiftonserver.com/tags/</loc>
+        <lastmod>2025-03-28</lastmod>
+        <loc>https://swiftonserver.com/posts/page/1/</loc>
+        <lastmod>2025-04-01</lastmod>
+        <loc>https://swiftonserver.com/posts/page/2/</loc>
         <lastmod>2025-04-01</lastmod>
 
         <loc>https://swiftonserver.com/advanced-async-sequences/</loc>
@@ -38,8 +38,12 @@
         <lastmod>2025-03-28</lastmod>
         <loc>https://swiftonserver.com/how-to-build-a-proxy-server-with-hummingbird/</loc>
         <lastmod>2025-03-28</lastmod>
+        <loc>https://swiftonserver.com/hummingbird-and-cors/</loc>
+        <lastmod>2025-04-01</lastmod>
         <loc>https://swiftonserver.com/introduction-to-swift-service-lifecycle/</loc>
         <lastmod>2025-03-28</lastmod>
+        <loc>https://swiftonserver.com/jwt-kit/</loc>
+        <lastmod>2025-04-01</lastmod>
         <loc>https://swiftonserver.com/logging-for-server-side-swift-apps/</loc>
         <lastmod>2025-03-28</lastmod>
         <loc>https://swiftonserver.com/realtime-mongodb-updates-with-changestreams-and-websockets/</loc>
@@ -66,10 +70,6 @@
         <lastmod>2025-03-28</lastmod>
         <loc>https://swiftonserver.com/working-with-udp-in-swiftnio/</loc>
         <lastmod>2025-03-28</lastmod>
-        <loc>https://swiftonserver.com/hummingbird-and-cors/</loc>
-        <lastmod>2025-04-01</lastmod>
-        <loc>https://swiftonserver.com/jwt-kit/</loc>
-        <lastmod>2025-04-01</lastmod>
 
         <loc>https://swiftonserver.com/authors/dianna-ma/</loc>
         <lastmod>2025-03-28</lastmod>
