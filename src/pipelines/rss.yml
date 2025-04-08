@@ -1,0 +1,27 @@
+id: rss
+
+queries:
+    posts:
+        contentType: post
+        scope: list
+        orderBy:
+            - key: lastUpdate
+              direction: desc
+
+contentTypes: 
+    include:
+        - rss
+    lastUpdate:
+        - post
+
+engine: 
+    id: mustache
+    options:
+        contentTypes: 
+            rss:
+                template: "rss"
+
+output:
+    path: ""
+    file: rss
+    ext: xml

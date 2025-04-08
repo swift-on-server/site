@@ -1,7 +1,6 @@
 baseUrl: "https://swiftonserver.com/"
-language: "en-US"
+locale: "en-US"
 title: "Swift on server"
-dateFormat: "yyyy/MM/dd"
 navigation:
     - label: "Posts"
       url: "/posts/page/1/"

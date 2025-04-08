@@ -1,22 +1,22 @@
 {{<html}}
 {{$main}}
 
-{{& page.contents}}
+{{& page.contents.html}}
 
 
 <section class="group">
     <h4>Featured posts</h4>
 
-    {{#empty(site.context.featured)}}
+    {{#empty(context.featured)}}
     Empty.
-    {{/empty(site.context.featured)}}
-    {{^empty(site.context.featured)}}
+    {{/empty(context.featured)}}
+    {{^empty(context.featured)}}
     <div class="grid grid-221">
-    {{#site.context.featured}}
+    {{#context.featured}}
         {{> partials.blog.post}}
-    {{/site.context.featured}}
+    {{/context.featured}}
     </div>
-    {{/empty(site.context.featured)}}
+    {{/empty(context.featured)}}
 </section>
 
 
@@ -24,16 +24,16 @@
 
     <h4>Latest posts</h4>
 
-    {{#empty(site.context.posts)}}
+    {{#empty(context.posts)}}
     Empty.
-    {{/empty(site.context.posts)}}
-    {{^empty(site.context.posts)}}
+    {{/empty(context.posts)}}
+    {{^empty(context.posts)}}
     <div class="grid grid-321">
-    {{#site.context.posts}}
+    {{#context.posts}}
         {{> partials.blog.post}}
-    {{/site.context.posts}}
+    {{/context.posts}}
     </div>
-    {{/empty(site.context.posts)}}
+    {{/empty(context.posts)}}
 </section>
 
 {{/main}}

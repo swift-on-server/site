@@ -3,10 +3,28 @@
     {{/empty(urls)}}
     {{^empty(urls)}}
     <url>
-    {{#urls}}
-        <loc>{{location}}</loc>
-        <lastmod>{{lastModification}}</lastmod>
-    {{/urls}}
-    </url>
+
+    {{#context.pages}}
+        <loc>{{permalink}}</loc>
+        <lastmod>{{lastUpdate.formats.sitemap}}</lastmod>
+    {{/context.pages}}
+
+    {{#context.posts}}
+        <loc>{{permalink}}</loc>
+        <lastmod>{{lastUpdate.formats.sitemap}}</lastmod>
+    {{/context.posts}}
+
+    {{#context.authors}}
+        <loc>{{permalink}}</loc>
+        <lastmod>{{lastUpdate.formats.sitemap}}</lastmod>
+    {{/context.authors}}
+
+    {{#context.tags}}
+        <loc>{{permalink}}</loc>
+        <lastmod>{{lastUpdate.formats.sitemap}}</lastmod>
+    {{/context.tags}}
+
     {{/empty(urls)}}
+
+    </url>
 </urlset>

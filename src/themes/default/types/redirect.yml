@@ -1,0 +1,11 @@
+id: redirect
+
+properties:
+    to: 
+        type: string
+        required: true
+    code:
+        type: int
+        required: false
+        default: 301
+

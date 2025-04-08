@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="canonical" href="https://swiftonserver.com/templating-with-swift-mustache/">
-    <link rel="prev" href="https://swiftonserver.com/structured-concurrency-and-shared-state-in-swift/">
-    <link rel="next" href="https://swiftonserver.com/useful-scripts-for-server-side-swift-libraries/">
+    <link rel="prev" href="https://swiftonserver.com/useful-scripts-for-server-side-swift-libraries/">
+    <link rel="next" href="https://swiftonserver.com/introduction-to-swift-service-lifecycle/">
 
     <title>Templating with Swift-Mustache - Swift on server</title>
     <meta name="description" content="Learn how to template emails and web pages with Swift-Mustache.">
@@ -15,37 +15,37 @@
     <meta property="og:url" content="https://swiftonserver.com/templating-with-swift-mustache/">
     <meta property="og:title" content="Templating with Swift-Mustache - Swift on server">
     <meta property="og:description" content="Learn how to template emails and web pages with Swift-Mustache.">
-    <meta property="og:image" content="/assets/templating-with-swift-mustache/cover.jpg" />
+    <meta property="og:image" content="https://swiftonserver.com/assets/templating-with-swift-mustache/cover.jpg" />
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Templating with Swift-Mustache - Swift on server">
     <meta name="twitter:description" content="Learn how to template emails and web pages with Swift-Mustache.">
-    <meta name="twitter:image" content="/assets/templating-with-swift-mustache/cover.jpg">
+    <meta name="twitter:image" content="https://swiftonserver.com/assets/templating-with-swift-mustache/cover.jpg">
 
-    <link rel="stylesheet" href="/css/modern-normalize.css">
-    <link rel="stylesheet" href="/css/modern-base.css">
-    <link rel="stylesheet" href="/css/variables.css">
-    <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/css/grid.css">
-    <link rel="stylesheet" href="/css/navigation.css">
-    <link rel="stylesheet" href="/css/footer.css">
-    <link rel="stylesheet" href="/css/syntax.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/modern-normalize.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/modern-base.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/variables.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/base.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/grid.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/navigation.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/footer.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/syntax.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/style.css">
 
     
 
-    <link rel="shortcut icon" href="/images/icons/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="/images/icons/icon-320.png" type="image/png">
+    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/icon-320.png" type="image/png">
     
-    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/images/icons/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon-180x180.png">
+    <link rel="apple-touch-icon" href="https://swiftonserver.com/images/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://swiftonserver.com/images/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://swiftonserver.com/images/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://swiftonserver.com/images/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://swiftonserver.com/images/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://swiftonserver.com/images/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://swiftonserver.com/images/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://swiftonserver.com/images/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://swiftonserver.com/images/icons/apple-touch-icon-180x180.png">
 
     <link
         rel="stylesheet"
@@ -88,11 +88,11 @@
             <figure>
                 <picture>
                     <source
-                        srcset="/images/logos/logo~dark.png"
+                        srcset="https://swiftonserver.com/logos/logo~dark.png"
                         media="(prefers-color-scheme: dark)"
                     >
                     <img
-                        src="/images/logos/logo.png"
+                        src="https://swiftonserver.com/images/logos/logo.png"
                         alt="Logo of Swift on server"
                         title="Swift on server"
                     >
@@ -123,7 +123,7 @@
         <div>
             <article class="post">
                 <div class="meta">
-                    <time datetime="2024/05/14">2024/05/14</time>
+                    <time datetime="2024-05-14">2024-05-14</time>
                      &middot; <span class="reading-time">3 min read</span>
                     
                 </div>
@@ -182,7 +182,7 @@
                     
                     <div class="author-list">
                         <a href="https://swiftonserver.com/authors/joannis-orlandos/">
-                        <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                        <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                         <span class="name">Joannis Orlandos</span>
                         </a>
                     </div>
@@ -199,12 +199,12 @@
                             
                             <div class="author-list">
                                 <a href="https://swiftonserver.com/authors/tibor-bodecs/">
-                                <img class="small rounded" src="/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                                 </a>
                             </div>
                             <div class="meta">
-                                <time datetime="2024/10/22">2024/10/22</time>
-                                 &middot; <span class="reading-time">10 min read</span>
+                                <time datetime="2024-10-22">2024-10-22</time>
+                                    &middot; <span class="reading-time">10 min read</span>
                             </div>
                             
                             <h2 class="title"><a href="https://swiftonserver.com/beginners-guide-to-protocol-buffers-and-grpc-with-swift/" target="">Beginner&#39;s Guide to Protocol Buffers and gRPC with Swift</a></h2>
@@ -223,12 +223,12 @@
                             
                             <div class="author-list">
                                 <a href="https://swiftonserver.com/authors/tibor-bodecs/">
-                                <img class="small rounded" src="/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                                 </a>
                             </div>
                             <div class="meta">
-                                <time datetime="2024/05/22">2024/05/22</time>
-                                 &middot; <span class="reading-time">7 min read</span>
+                                <time datetime="2024-05-22">2024-05-22</time>
+                                    &middot; <span class="reading-time">7 min read</span>
                             </div>
                             
                             <h2 class="title"><a href="https://swiftonserver.com/introduction-to-swift-service-lifecycle/" target="">Introduction to Swift Service Lifecycle</a></h2>
@@ -244,13 +244,35 @@
                             
                             
                             <div class="author-list">
-                                <a href="https://swiftonserver.com/authors/tibor-bodecs/">
-                                <img class="small rounded" src="/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                                 </a>
                             </div>
                             <div class="meta">
-                                <time datetime="2024/04/03">2024/04/03</time>
-                                 &middot; <span class="reading-time">13 min read</span>
+                                <time datetime="2024-05-14">2024-05-14</time>
+                                    &middot; <span class="reading-time">3 min read</span>
+                            </div>
+                            
+                            <h2 class="title"><a href="https://swiftonserver.com/templating-with-swift-mustache/" target="">Templating with Swift-Mustache</a></h2>
+                            <p>Learn how to template emails and web pages with Swift-Mustache.</p>
+                        
+                            <div class="spacer"></div>
+                        
+                            <div class="tag-list">
+                                <a href="https://swiftonserver.com/tags/package-highlight/"><small>Package Highlight</small></a>
+                            </div>
+                        </div>
+                    <div class="card">
+                            
+                            
+                            <div class="author-list">
+                                <a href="https://swiftonserver.com/authors/tibor-bodecs/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                                </a>
+                            </div>
+                            <div class="meta">
+                                <time datetime="2024-04-03">2024-04-03</time>
+                                    &middot; <span class="reading-time">13 min read</span>
                             </div>
                             
                             <h2 class="title"><a href="https://swiftonserver.com/async-http-client-by-example/" target="">AsyncHTTPClient by example</a></h2>
@@ -272,7 +294,7 @@
         <div>
             <div class="support">
                 <a href="https://swiftcraft.uk/" target="_blank">
-                    <img src="/images/logos/swiftcraft.png" alt="SwiftCraft logo">
+                    <img src="https://swiftonserver.com/images/logos/swiftcraft.png" alt="SwiftCraft logo">
                 </a>
                 <h4>
                     <a href="https://swiftcraft.uk/" target="_blank">SwiftCraft</a>
@@ -306,7 +328,11 @@
         <li class="first-level">
                         <a href="#Arrays">Arrays</a>
                         <ul>
-                            <li><a href="#Empty%20Arrays">Empty Arrays</a></li>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Empty%20Arrays">Empty Arrays</a>
+                        <ul>
                         </ul>
                     </li>
                 </ul>
@@ -323,12 +349,12 @@
             <figure>
                 <picture>
                     <source
-                        srcset="/images/logos/logo~dark.png"
+                        srcset="https://swiftonserver.com/images/logos/logo~dark.png"
                         media="(prefers-color-scheme: dark)"
                     >
                     <img
                         id="logo-image"
-                        src="/images/logos/logo.png"
+                        src="https://swiftonserver.com/images/logos/logo.png"
                         alt="Logo of Swift on server"
                         title="Swift on server"
                     >
@@ -349,7 +375,7 @@
             
             <div>
                 <a href="/authors/joannis-orlandos/">
-                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                 </a>
                 <h4><a href="/authors/joannis-orlandos/">Joannis Orlandos</a></h4>
                 <p><small><a href="https://unbeatable.software/" target="_blank">Unbeatable Software B.V.</a></small></p>
@@ -363,7 +389,7 @@
             
             <div>
                 <a href="/authors/tibor-bodecs/">
-                <img class="small rounded" src="/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                 </a>
                 <h4><a href="/authors/tibor-bodecs/">Tibor Bödecs</a></h4>
                 <p><small><a href="https://binarybirds.com/" target="_blank">Binary Birds Kft.</a></small></p>

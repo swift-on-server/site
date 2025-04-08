@@ -1,0 +1,104 @@
+id: html
+
+queries: 
+
+    posts:
+        contentType: post
+        scope: detail
+        limit: 9
+        orderBy:
+            - key: publication
+              direction: desc
+    featured:
+        contentType: post
+        scope: detail
+        limit: 9
+        filter:
+            key: featured
+            operator: equals
+            value: true
+        orderBy:
+            - key: publication
+              direction: desc
+
+    authors:
+        contentType: author
+        scope: detail
+        limit: 10
+        orderBy:
+            - key: title
+              direction: asc
+
+    tags:
+        contentType: tag
+        scope: detail
+        limit: 10
+        orderBy:
+            - key: title
+              direction: asc
+
+    issues:
+        contentType: issue
+        scope: detail
+        limit: 3
+        orderBy:
+            - key: publication
+              direction: desc
+
+contentTypes: 
+    include:
+        - page
+        - author
+        - tag
+        - post
+        - issue
+
+iterators:
+    post.pagination:
+        contentType: post
+        scope: detail
+        limit: 24
+        orderBy:
+            - key: publication
+              direction: desc
+    issue.pagination:
+        contentType: issue
+        scope: detail
+        limit: 24
+        orderBy:
+            - key: publication
+              direction: desc
+
+transformers:
+    post:
+        run: 
+            - name: swiftinit
+              url: src/transformers
+              arguments: {}
+        isMarkdownResult: false
+    issue:
+        run: 
+            - name: issue
+              url: src/transformers
+              arguments: {}
+        isMarkdownResult: false
+
+engine: 
+    id: mustache
+    options:
+        contentTypes: 
+            page:
+                template: "pages.default"
+            author:
+                template: "blog.author.default"
+            tag:
+                template: "blog.tag.default"
+            post:
+                template: "blog.post.default"
+            issue:
+                template: "newsletter.issue.default"
+
+output:
+    path: "{{slug}}"
+    file: index
+    ext: html

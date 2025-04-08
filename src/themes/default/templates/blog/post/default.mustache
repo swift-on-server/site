@@ -5,13 +5,13 @@
     <div>
         <article class="post">
             <div class="meta">
-                <time datetime="{{page.publication.html}}">{{page.publication.html}}</time>
-                {{#page.readingTime}} &middot; <span class="reading-time">{{page.readingTime}} min read</span>{{/page.readingTime}}
+                <time datetime="{{page.publication.formats.sitemap}}">{{page.publication.formats.sitemap}}</time>
+                {{#page.contents.readingTime}} &middot; <span class="reading-time">{{page.contents.readingTime}} min read</span>{{/page.contents.readingTime}}
                 {{#page.featured}} &middot; <span class="featured">featured</span>{{/page.featured}}
             </div>
             <section>
             
-            {{& page.contents}}
+            {{& page.contents.html}}
                 
             </section>
 
@@ -23,7 +23,7 @@
                 <div class="author-list">
                 {{#page.authors}}
                     <a href="{{permalink}}">
-                    {{#imageUrl}}<img class="small rounded" src="{{imageUrl}}" alt="{{title}}">{{/imageUrl}}
+                    {{#image}}<img class="small rounded" src="{{image}}" alt="{{title}}">{{/image}}
                     <span class="name">{{title}}</span>
                     </a>
                 {{/page.authors}}
@@ -54,7 +54,7 @@
     <div>
         <div class="support">
             <a href="https://swiftcraft.uk/" target="_blank">
-                <img src="/images/logos/swiftcraft.png" alt="SwiftCraft logo">
+                <img src="{{site.baseUrl}}/images/logos/swiftcraft.png" alt="SwiftCraft logo">
             </a>
             <h4>
                 <a href="https://swiftcraft.uk/" target="_blank">SwiftCraft</a>
@@ -67,7 +67,7 @@
             <a class="cta" href="https://swiftcraft.uk/" target="_blank">Get Tickets</a>
         </div>
         
-        {{> partials.toc }}
+        {{> partials.outline }}
 
     </div>
 </div>

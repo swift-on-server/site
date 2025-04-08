@@ -3,11 +3,11 @@
         <figure>
             <picture>
                 <source
-                    srcset="/images/logos/logo~dark.png"
+                    srcset="{{site.baseUrl}}/logos/logo~dark.png"
                     media="(prefers-color-scheme: dark)"
                 >
                 <img
-                    src="/images/logos/logo.png"
+                    src="{{site.baseUrl}}/images/logos/logo.png"
                     alt="Logo of {{site.title}}"
                     title="{{site.title}}"
                 >
@@ -24,9 +24,9 @@
             </svg>
         </label>
         <div class="menu-items">
-            {{#navigation}}
+            {{#site.navigation}}
             <a href="{{url}}"{{#class}} class="{{.}}"{{/class}}>{{label}}</a>
-            {{/navigation}}
+            {{/site.navigation}}
         </div>
     </nav>
 </header>

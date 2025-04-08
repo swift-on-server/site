@@ -1,0 +1,16 @@
+id: redirect
+contentTypes: 
+    include:
+        - redirect
+
+engine: 
+    id: mustache
+    options:
+        contentTypes: 
+            redirect:
+                template: "redirect"
+
+output:
+    path: "{{slug}}"
+    file: index
+    ext: html

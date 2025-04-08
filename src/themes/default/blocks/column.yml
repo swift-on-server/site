@@ -1,5 +1,5 @@
 name: column
-params:
+parameters:
   - label: class
     default: ""
 requiresParentDirective: grid

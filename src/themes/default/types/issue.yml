@@ -1,17 +1,11 @@
 id: issue
-location: newsletter/issues
-template: newsletter.issue.default
+paths: 
+    - newsletter/issues
 
-pagination:
-    bundle: newsletter/pagination
-    sort: publication
-    order: desc
-    limit: 10
-
-context:
-    site:
-        issues:
-            sort: publication
-            order: desc
-            limit: 3
-
+properties:
+    title:
+        type: string
+        required: true
+    publication:
+        type: date
+        required: true

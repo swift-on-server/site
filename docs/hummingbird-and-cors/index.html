@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="canonical" href="https://swiftonserver.com/hummingbird-and-cors/">
-    <link rel="prev" href="https://swiftonserver.com/how-to-build-a-proxy-server-with-hummingbird/">
-    <link rel="next" href="https://swiftonserver.com/introduction-to-swift-service-lifecycle/">
+    <link rel="prev" href="https://swiftonserver.com/jwt-kit/">
+    
 
     <title>Hummingbird and CORS - Swift on server</title>
     <meta name="description" content="Learn how to use Hummingbird and CORS in Swift">
@@ -15,37 +15,37 @@
     <meta property="og:url" content="https://swiftonserver.com/hummingbird-and-cors/">
     <meta property="og:title" content="Hummingbird and CORS - Swift on server">
     <meta property="og:description" content="Learn how to use Hummingbird and CORS in Swift">
-    <meta property="og:image" content="/assets/hummingbird-and-cors/cover.jpg" />
+    <meta property="og:image" content="https://swiftonserver.com/assets/hummingbird-and-cors/cover.jpg" />
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Hummingbird and CORS - Swift on server">
     <meta name="twitter:description" content="Learn how to use Hummingbird and CORS in Swift">
-    <meta name="twitter:image" content="/assets/hummingbird-and-cors/cover.jpg">
+    <meta name="twitter:image" content="https://swiftonserver.com/assets/hummingbird-and-cors/cover.jpg">
 
-    <link rel="stylesheet" href="/css/modern-normalize.css">
-    <link rel="stylesheet" href="/css/modern-base.css">
-    <link rel="stylesheet" href="/css/variables.css">
-    <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/css/grid.css">
-    <link rel="stylesheet" href="/css/navigation.css">
-    <link rel="stylesheet" href="/css/footer.css">
-    <link rel="stylesheet" href="/css/syntax.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/modern-normalize.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/modern-base.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/variables.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/base.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/grid.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/navigation.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/footer.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/syntax.css">
+    <link rel="stylesheet" href="https://swiftonserver.com/css/style.css">
 
     
 
-    <link rel="shortcut icon" href="/images/icons/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="/images/icons/icon-320.png" type="image/png">
+    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://swiftonserver.com/images/icons/icon-320.png" type="image/png">
     
-    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/images/icons/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon-180x180.png">
+    <link rel="apple-touch-icon" href="https://swiftonserver.com/images/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://swiftonserver.com/images/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://swiftonserver.com/images/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://swiftonserver.com/images/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://swiftonserver.com/images/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://swiftonserver.com/images/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://swiftonserver.com/images/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://swiftonserver.com/images/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://swiftonserver.com/images/icons/apple-touch-icon-180x180.png">
 
     <link
         rel="stylesheet"
@@ -88,11 +88,11 @@
             <figure>
                 <picture>
                     <source
-                        srcset="/images/logos/logo~dark.png"
+                        srcset="https://swiftonserver.com/logos/logo~dark.png"
                         media="(prefers-color-scheme: dark)"
                     >
                     <img
-                        src="/images/logos/logo.png"
+                        src="https://swiftonserver.com/images/logos/logo.png"
                         alt="Logo of Swift on server"
                         title="Swift on server"
                     >
@@ -123,19 +123,19 @@
         <div>
             <article class="post">
                 <div class="meta">
-                    <time datetime="2025/01/20">2025/01/20</time>
+                    <time datetime="2025-01-20">2025-01-20</time>
                      &middot; <span class="reading-time">3 min read</span>
                     
                 </div>
                 <section>
                 
-                <section class='introduction'><h1>Hummingbird and CORS</h1></section><section class='details literature'><p>If you’ve stumbled upon this tutorial, you’ve likely seen a browser error that looks something like this:</p><pre class='snippet'><code><span class='newline'></span>Access to fetch at 'http://localhost:8080/api' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.</code></pre><p>CORS (Cross-Origin Resource Sharing) is a security feature that’s implemented by web browsers. It prevents malicious websites from making requests to other websites.</p><h3 id='How%20does%20CORS%20work?'><a href='#How%20does%20CORS%20work?'>How does CORS work?</a></h3><p>Before a browser makes the request to a server, it sends a preflight (OPTIONS) request to the server to ask for permission to make the request. The server then responds with a list of allowed origins, methods, and headers. If the browser’s request matches the server’s response, the browser will make the request.</p><p>While this is a great security feature, it’s often confusing the first time it blocks requests.</p><h2 id='How%20to%20handle%20CORS%20in%20Hummingbird'><a href='#How%20to%20handle%20CORS%20in%20Hummingbird'>How to handle CORS in Hummingbird</a></h2><p>Hummingbird has built-in support for CORS through <code><a href='https://swiftinit.org/docs/hummingbird/hummingbird/corsmiddleware' target='_blank' rel='external'>CORSMiddleware</a></code>. <!-- TODO: Middleware tutorial --> Because CORSMiddleware is a <code><a href='https://swiftinit.org/docs/hummingbird/hummingbird/routermiddleware' target='_blank' rel='external'>RouterMiddleware</a></code>, it can be applies to all - or just a subset of routes.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xv'>router</span>.<a class='xv' href='https://swiftinit.org/docs/hummingbird/hummingbird/router.add(middleware:)' target='_blank' rel='external'>add</a>(<span class='xv'>middleware</span>: <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbird/corsmiddleware' target='_blank' rel='external'>CORSMiddleware</a>())</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/hummingbird-and-cors.swift#L5' target='_blank' class='source github'><span class='file'>hummingbird-and-cors.swift</span>:<span class='line'>5</span></a><p>In the above example, the middleware is configured in its default configuration. This setup will allow all origins to make requests using a set of standard HTTP headers and methods.</p><p>This is a great starting point, and allows you to make most API requests. However, you may want to configure the middleware to be more restrictive or permissive.</p><h3 id='Configuring%20the%20CORSMiddleware'><a href='#Configuring%20the%20CORSMiddleware'>Configuring the CORSMiddleware</a></h3><p>The <code><a href='https://swiftinit.org/docs/hummingbird/hummingbird/corsmiddleware' target='_blank' rel='external'>CORSMiddleware</a></code> initializer has a few parameters that you can use to configure it. The first one is the <code><a href='https://swiftinit.org/docs/hummingbird/hummingbird/corsmiddleware/alloworigin' target='_blank' rel='external'>AllowOrigin</a></code> parameter.</p><p>There are three standard cases:</p><ul><li><p><code><a href='https://swiftinit.org/docs/hummingbird/hummingbird/corsmiddleware/alloworigin' target='_blank' rel='external'>AllowOrigin</a>.<a href='https://swiftinit.org/docs/hummingbird/hummingbird/corsmiddleware/alloworigin.all' target='_blank' rel='external'>all</a></code>: Allows all origins to make requests.</p></li><li><p><code><a href='https://swiftinit.org/docs/hummingbird/hummingbird/corsmiddleware/alloworigin' target='_blank' rel='external'>AllowOrigin</a>.<a href='https://swiftinit.org/docs/hummingbird/hummingbird/corsmiddleware/alloworigin.custom(_:)' target='_blank' rel='external'>custom(_:)</a></code>: Allows requests from a specific origin.</p></li><li><p><code><a href='https://swiftinit.org/docs/hummingbird/hummingbird/corsmiddleware/alloworigin' target='_blank' rel='external'>AllowOrigin</a>.<a href='https://swiftinit.org/docs/hummingbird/hummingbird/corsmiddleware/alloworigin.none' target='_blank' rel='external'>none</a></code>: Allows no origins to make requests.</p></li></ul><p>This <code><a href='https://swiftinit.org/docs/hummingbird/hummingbird/corsmiddleware/alloworigin' target='_blank' rel='external'>AllowOrigin</a></code> parameter is used to specify which origins are allowed to make requests.</p><p>The other variables are:</p><ul><li><p><code>allowHeaders</code>, which specifies what headers are allowed to be sent with the request. This is an array of <code><a href='https://swiftinit.org/docs/swift-http-types/httptypes/httpfield' target='_blank' rel='external'>HTTPField</a>.<a href='https://swiftinit.org/docs/swift-http-types/httptypes/httpfield/name' target='_blank' rel='external'>Name</a></code> values.</p></li><li><p><code>allowMethods</code>, specifying what HTTP methods are allowed to be used when making requests. This is an array of <code><a href='https://swiftinit.org/docs/swift-http-types/httptypes/httprequest' target='_blank' rel='external'>HTTPRequest</a>.<a href='https://swiftinit.org/docs/swift-http-types/httptypes/httprequest/method' target='_blank' rel='external'>Method</a></code> values.</p></li><li><p><code>allowCredentials</code>, which specifies if users credentials (cookies, TLS client certificates, authorization headers, etc.) are allowed to be sent with the request. This is a boolean value.</p></li><li><p><code>maxAge</code>, which specifies the maximum amount of time (in seconds) that the browser can cache the preflight response. This is a <code><a href='https://swiftinit.org/docs/swift-nio/niocore/timeamount' target='_blank' rel='external'>TimeAmount</a></code> value.</p></li></ul><h3 id='Example'><a href='#Example'>Example</a></h3><p>Let’s look at an example of how to configure the middleware.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xv'>router</span>.<a class='xv' href='https://swiftinit.org/docs/hummingbird/hummingbird/router.add(middleware:)' target='_blank' rel='external'>add</a>(<span class='xv'>middleware</span>: <a class='xt' href='https://swiftinit.org/docs/hummingbird/hummingbird/corsmiddleware' target='_blank' rel='external'>CORSMiddleware</a>(<span class='newline'>
-</span>    <span class='xv'>allowOrigin</span>: .<a class='xv' href='https://swiftinit.org/docs/hummingbird/hummingbird/corsmiddleware/alloworigin.custom(_:)' target='_blank' rel='external'>custom</a>(<span class='xs'>"http://example.com"</span>),<span class='newline'>
+                <section class='introduction'><h1>Hummingbird and CORS</h1></section><section class='details literature'><p>If you’ve stumbled upon this tutorial, you’ve likely seen a browser error that looks something like this:</p><pre class='snippet'><code><span class='newline'></span>Access to fetch at 'http://localhost:8080/api' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.</code></pre><p>CORS (Cross-Origin Resource Sharing) is a security feature that’s implemented by web browsers. It prevents malicious websites from making requests to other websites.</p><h3 id='How%20does%20CORS%20work?'><a href='#How%20does%20CORS%20work?'>How does CORS work?</a></h3><p>Before a browser makes the request to a server, it sends a preflight (OPTIONS) request to the server to ask for permission to make the request. The server then responds with a list of allowed origins, methods, and headers. If the browser’s request matches the server’s response, the browser will make the request.</p><p>While this is a great security feature, it’s often confusing the first time it blocks requests.</p><h2 id='How%20to%20handle%20CORS%20in%20Hummingbird'><a href='#How%20to%20handle%20CORS%20in%20Hummingbird'>How to handle CORS in Hummingbird</a></h2><p>Hummingbird has built-in support for CORS through <code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/corsmiddleware' target='_blank' rel='external'>CORSMiddleware</a></code>. <!-- TODO: Middleware tutorial --> Because CORSMiddleware is a <code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/routermiddleware' target='_blank' rel='external'>RouterMiddleware</a></code>, it can be applies to all - or just a subset of routes.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xv'>router</span>.<a class='xv' href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/router.add(middleware:)' target='_blank' rel='external'>add</a>(<span class='xv'>middleware</span>: <a class='xt' href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/corsmiddleware' target='_blank' rel='external'>CORSMiddleware</a>())</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/hummingbird-and-cors.swift#L5' target='_blank' class='source github'><span class='file'>hummingbird-and-cors.swift</span>:<span class='line'>5</span></a><p>In the above example, the middleware is configured in its default configuration. This setup will allow all origins to make requests using a set of standard HTTP headers and methods.</p><p>This is a great starting point, and allows you to make most API requests. However, you may want to configure the middleware to be more restrictive or permissive.</p><h3 id='Configuring%20the%20CORSMiddleware'><a href='#Configuring%20the%20CORSMiddleware'>Configuring the CORSMiddleware</a></h3><p>The <code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/corsmiddleware' target='_blank' rel='external'>CORSMiddleware</a></code> initializer has a few parameters that you can use to configure it. The first one is the <code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/corsmiddleware/alloworigin' target='_blank' rel='external'>AllowOrigin</a></code> parameter.</p><p>There are three standard cases:</p><ul><li><p><code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/corsmiddleware/alloworigin' target='_blank' rel='external'>AllowOrigin</a>.<a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/corsmiddleware/alloworigin.all' target='_blank' rel='external'>all</a></code>: Allows all origins to make requests.</p></li><li><p><code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/corsmiddleware/alloworigin' target='_blank' rel='external'>AllowOrigin</a>.<a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/corsmiddleware/alloworigin.custom(_:)' target='_blank' rel='external'>custom(_:)</a></code>: Allows requests from a specific origin.</p></li><li><p><code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/corsmiddleware/alloworigin' target='_blank' rel='external'>AllowOrigin</a>.<a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/corsmiddleware/alloworigin.none' target='_blank' rel='external'>none</a></code>: Allows no origins to make requests.</p></li></ul><p>This <code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/corsmiddleware/alloworigin' target='_blank' rel='external'>AllowOrigin</a></code> parameter is used to specify which origins are allowed to make requests.</p><p>The other variables are:</p><ul><li><p><code>allowHeaders</code>, which specifies what headers are allowed to be sent with the request. This is an array of <code><a href='https://swiftinit.org/docs/swift-http-types/httptypes/httpfield' target='_blank' rel='external'>HTTPField</a>.<a href='https://swiftinit.org/docs/swift-http-types/httptypes/httpfield/name' target='_blank' rel='external'>Name</a></code> values.</p></li><li><p><code>allowMethods</code>, specifying what HTTP methods are allowed to be used when making requests. This is an array of <code><a href='https://swiftinit.org/docs/swift-http-types/httptypes/httprequest' target='_blank' rel='external'>HTTPRequest</a>.<a href='https://swiftinit.org/docs/swift-http-types/httptypes/httprequest/method' target='_blank' rel='external'>Method</a></code> values.</p></li><li><p><code>allowCredentials</code>, which specifies if users credentials (cookies, TLS client certificates, authorization headers, etc.) are allowed to be sent with the request. This is a boolean value.</p></li><li><p><code>maxAge</code>, which specifies the maximum amount of time (in seconds) that the browser can cache the preflight response. This is a <code><a href='https://swiftinit.org/hist/swift-nio:2.79.0/niocore/timeamount' target='_blank' rel='external'>TimeAmount</a></code> value.</p></li></ul><h3 id='Example'><a href='#Example'>Example</a></h3><p>Let’s look at an example of how to configure the middleware.</p><pre class='snippet'><code class='language-swift'><span class='newline'></span><span class='xv'>router</span>.<a class='xv' href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/router.add(middleware:)' target='_blank' rel='external'>add</a>(<span class='xv'>middleware</span>: <a class='xt' href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/corsmiddleware' target='_blank' rel='external'>CORSMiddleware</a>(<span class='newline'>
+</span>    <span class='xv'>allowOrigin</span>: .<a class='xv' href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/corsmiddleware/alloworigin.custom(_:)' target='_blank' rel='external'>custom</a>(<span class='xs'>"http://example.com"</span>),<span class='newline'>
 </span>    <span class='xv'>allowHeaders</span>: [.<a class='xv' href='https://swiftinit.org/docs/swift-http-types/httptypes/httpfield/name.accept' target='_blank' rel='external'>accept</a>, .<a class='xv' href='https://swiftinit.org/docs/swift-http-types/httptypes/httpfield/name.contenttype' target='_blank' rel='external'>contentType</a>],<span class='newline'>
 </span>    <span class='xv'>allowMethods</span>: [.<a class='xv' href='https://swiftinit.org/docs/swift-http-types/httptypes/httprequest/method.get' target='_blank' rel='external'>get</a>, .<a class='xv' href='https://swiftinit.org/docs/swift-http-types/httptypes/httprequest/method.post' target='_blank' rel='external'>post</a>],<span class='newline'>
 </span>    <span class='xv'>allowCredentials</span>: <span class='xk'>true</span>,<span class='newline'>
-</span>    <span class='xv'>maxAge</span>: .<a class='xv' href='https://swiftinit.org/docs/swift-nio/niocore/timeamount.seconds(_:)' target='_blank' rel='external'>seconds</a>(<span class='xn'>3600</span>))<span class='newline'>
-</span>)</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/hummingbird-and-cors.swift#L9' target='_blank' class='source github'><span class='file'>hummingbird-and-cors.swift</span>:<span class='line'>9</span></a><p>In the above example, the middleware is configured to allow requests from <code>http://example.com</code> using the <code>GET</code> and <code>POST</code> methods. It allows the <code>Accept</code> and <code>Content-Type</code> headers and sets the maximum age of the preflight response to 1 hour.</p><h2 id='Summary'><a href='#Summary'>Summary</a></h2><p>CORS is a security feature that’s implemented by web browsers. It prevents malicious websites from making requests to other websites. Hummingbird has built-in support for CORS through <code><a href='https://swiftinit.org/docs/hummingbird/hummingbird/corsmiddleware' target='_blank' rel='external'>CORSMiddleware</a></code>.</p><p>When you inevitably run into CORS errors, you now know how to configure <code><a href='https://swiftinit.org/docs/hummingbird/hummingbird/corsmiddleware' target='_blank' rel='external'>CORSMiddleware</a></code> to allow requests from your frontends.</p></section><div style='display: none;' id='swiftinit-tooltips'><a href='/docs/hummingbird/hummingbird/corsmiddleware'><pre><code><span class='xk'>struct</span> <span class='xv'>CORSMiddleware</span>&lt;<span class='xu'>Context</span>&gt; <span class='xk'>where</span> <span class='xt'>Context</span> : <span class='xt'>RequestContext</span></code></pre><p>Middleware implementing Cross-Origin Resource Sharing (CORS) headers.</p></a><a href='/docs/hummingbird/hummingbird/routermiddleware'><pre><code><span class='xk'>protocol</span> <span class='xv'>RouterMiddleware</span>&lt;<span class='xv'>Context</span>&gt; : <span class='xt'>MiddlewareProtocol</span> <span class='xk'>where</span> <span class='xk'>Self</span>.<span class='xt'>Input</span> <span class='xo'>==</span> <span class='xt'>Request</span>, <span class='xk'>Self</span>.<span class='xt'>Output</span> <span class='xo'>==</span> <span class='xt'>Response</span></code></pre><p>Middleware protocol with Request as input and Response as output</p></a><a href='/docs/hummingbird/hummingbird/router.add(middleware:)'><pre><code><span class='xa'>@discardableResult</span> <span class='xk'>func</span> <span class='xv'>add</span>(<span class='xi'></span><span class='xv'>middleware</span>: <span class='xk'>any</span> <span class='xt'>MiddlewareProtocol</span>&lt;<span class='xt'>Request</span>, <span class='xt'>Response</span>, <span class='xt'>Context</span>&gt;<wbr>) -&gt; <span class='xk'>Self</span></code></pre><p>Add middleware to Router</p></a><a href='/docs/hummingbird/hummingbird/corsmiddleware/alloworigin'><pre><code><span class='xk'>enum</span> <span class='xv'>AllowOrigin</span></code></pre><p>Defines what origins are allowed</p></a><a href='/docs/hummingbird/hummingbird/corsmiddleware/alloworigin.all'><pre><code><span class='xk'>case</span> <span class='xv'>all</span></code></pre></a><a href='/docs/hummingbird/hummingbird/corsmiddleware/alloworigin.custom(_:)'><pre><code><span class='xk'>case</span> <span class='xv'>custom</span>(<span class='xt'>String</span>)</code></pre></a><a href='/docs/hummingbird/hummingbird/corsmiddleware/alloworigin.none'><pre><code><span class='xk'>case</span> <span class='xv'>none</span></code></pre></a><a href='/docs/swift-http-types/httptypes/httpfield/name'><pre><code><span class='xk'>struct</span> <span class='xv'>Name</span></code></pre><p>A case-insensitive but case-preserving ASCII string with an allowed character set defined in RFC 9110.</p></a><a href='/docs/swift-http-types/httptypes/httpfield'><pre><code><span class='xk'>struct</span> <span class='xv'>HTTPField</span></code></pre><p>A name-value pair with additional metadata.</p></a><a href='/docs/swift-http-types/httptypes/httprequest/method'><pre><code><span class='xk'>struct</span> <span class='xv'>Method</span></code></pre><p>The HTTP request method</p></a><a href='/docs/swift-http-types/httptypes/httprequest'><pre><code><span class='xk'>struct</span> <span class='xv'>HTTPRequest</span></code></pre><p>An HTTP request message consisting of pseudo header fields and header fields.</p></a><a href='/docs/swift-nio/niocore/timeamount'><pre><code><span class='xk'>struct</span> <span class='xv'>TimeAmount</span></code></pre><p>Represents a time <em>interval</em>.</p></a><a href='/docs/swift-http-types/httptypes/httpfield/name.accept'><pre><code><span class='xk'>static</span> <span class='xk'>var</span> <span class='xv'>accept</span>: <span class='xt'>`Self`</span> { <span class='xk'>get</span> }</code></pre><p>Accept</p></a><a href='/docs/swift-http-types/httptypes/httpfield/name.contenttype'><pre><code><span class='xk'>static</span> <span class='xk'>var</span> <span class='xv'>contentType</span>: <span class='xt'>`Self`</span> { <span class='xk'>get</span> }</code></pre><p>Content-Type</p></a><a href='/docs/swift-http-types/httptypes/httprequest/method.get'><pre><code><span class='xk'>static</span> <span class='xk'>var</span> <span class='xv'>get</span>: <span class='xt'>`Self`</span> { <span class='xk'>get</span> }</code></pre><p>GET</p></a><a href='/docs/swift-http-types/httptypes/httprequest/method.post'><pre><code><span class='xk'>static</span> <span class='xk'>var</span> <span class='xv'>post</span>: <span class='xt'>`Self`</span> { <span class='xk'>get</span> }</code></pre><p>POST</p></a><a href='/docs/swift-nio/niocore/timeamount.seconds(_:)'><pre><code><span class='xk'>static</span> <span class='xk'>func</span> <span class='xv'>seconds</span>(<span class='xi'></span>_ <span class='xb'>amount</span>: <span class='xt'>Int64</span><wbr>) -&gt; <span class='xt'>TimeAmount</span></code></pre><p>Creates a new <code>TimeAmount</code> for the given amount of seconds.</p></a></div>
+</span>    <span class='xv'>maxAge</span>: .<a class='xv' href='https://swiftinit.org/hist/swift-nio:2.79.0/niocore/timeamount.seconds(_:)' target='_blank' rel='external'>seconds</a>(<span class='xn'>3600</span>))<span class='newline'>
+</span>)</code></pre><a rel='ugc' href='https://github.com/swift-on-server/articles/blob/main/Snippets/hummingbird-and-cors.swift#L9' target='_blank' class='source github'><span class='file'>hummingbird-and-cors.swift</span>:<span class='line'>9</span></a><p>In the above example, the middleware is configured to allow requests from <code>http://example.com</code> using the <code>GET</code> and <code>POST</code> methods. It allows the <code>Accept</code> and <code>Content-Type</code> headers and sets the maximum age of the preflight response to 1 hour.</p><h2 id='Summary'><a href='#Summary'>Summary</a></h2><p>CORS is a security feature that’s implemented by web browsers. It prevents malicious websites from making requests to other websites. Hummingbird has built-in support for CORS through <code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/corsmiddleware' target='_blank' rel='external'>CORSMiddleware</a></code>.</p><p>When you inevitably run into CORS errors, you now know how to configure <code><a href='https://swiftinit.org/hist/hummingbird:2.6.2/hummingbird/corsmiddleware' target='_blank' rel='external'>CORSMiddleware</a></code> to allow requests from your frontends.</p></section><div style='display: none;' id='swiftinit-tooltips'><a href='/hist/hummingbird:2.6.2/hummingbird/corsmiddleware'><pre><code><span class='xk'>struct</span> <span class='xv'>CORSMiddleware</span>&lt;<span class='xu'>Context</span>&gt; <span class='xk'>where</span> <span class='xt'>Context</span> : <span class='xt'>RequestContext</span></code></pre><p>Middleware implementing Cross-Origin Resource Sharing (CORS) headers.</p></a><a href='/hist/hummingbird:2.6.2/hummingbird/routermiddleware'><pre><code><span class='xk'>protocol</span> <span class='xv'>RouterMiddleware</span>&lt;<span class='xv'>Context</span>&gt; : <span class='xt'>MiddlewareProtocol</span> <span class='xk'>where</span> <span class='xk'>Self</span>.<span class='xt'>Input</span> <span class='xo'>==</span> <span class='xt'>Request</span>, <span class='xk'>Self</span>.<span class='xt'>Output</span> <span class='xo'>==</span> <span class='xt'>Response</span></code></pre><p>Middleware protocol with Request as input and Response as output</p></a><a href='/hist/hummingbird:2.6.2/hummingbird/router.add(middleware:)'><pre><code><span class='xa'>@discardableResult</span> <span class='xk'>func</span> <span class='xv'>add</span>(<span class='xi'></span><span class='xv'>middleware</span>: <span class='xk'>any</span> <span class='xt'>MiddlewareProtocol</span>&lt;<span class='xt'>Request</span>, <span class='xt'>Response</span>, <span class='xt'>Context</span>&gt;<wbr>) -&gt; <span class='xk'>Self</span></code></pre><p>Add middleware to Router</p></a><a href='/hist/hummingbird:2.6.2/hummingbird/corsmiddleware/alloworigin'><pre><code><span class='xk'>enum</span> <span class='xv'>AllowOrigin</span></code></pre><p>Defines what origins are allowed</p></a><a href='/hist/hummingbird:2.6.2/hummingbird/corsmiddleware/alloworigin.all'><pre><code><span class='xk'>case</span> <span class='xv'>all</span></code></pre></a><a href='/hist/hummingbird:2.6.2/hummingbird/corsmiddleware/alloworigin.custom(_:)'><pre><code><span class='xk'>case</span> <span class='xv'>custom</span>(<span class='xt'>String</span>)</code></pre></a><a href='/hist/hummingbird:2.6.2/hummingbird/corsmiddleware/alloworigin.none'><pre><code><span class='xk'>case</span> <span class='xv'>none</span></code></pre></a><a href='/docs/swift-http-types/httptypes/httpfield/name'><pre><code><span class='xk'>struct</span> <span class='xv'>Name</span></code></pre><p>A case-insensitive but case-preserving ASCII string with an allowed character set defined in RFC 9110.</p></a><a href='/docs/swift-http-types/httptypes/httpfield'><pre><code><span class='xk'>struct</span> <span class='xv'>HTTPField</span></code></pre><p>A name-value pair with additional metadata.</p></a><a href='/docs/swift-http-types/httptypes/httprequest/method'><pre><code><span class='xk'>struct</span> <span class='xv'>Method</span></code></pre><p>The HTTP request method</p></a><a href='/docs/swift-http-types/httptypes/httprequest'><pre><code><span class='xk'>struct</span> <span class='xv'>HTTPRequest</span></code></pre><p>An HTTP request message consisting of pseudo header fields and header fields.</p></a><a href='/hist/swift-nio:2.79.0/niocore/timeamount'><pre><code><span class='xk'>struct</span> <span class='xv'>TimeAmount</span></code></pre><p>Represents a time <em>interval</em>.</p></a><a href='/docs/swift-http-types/httptypes/httpfield/name.accept'><pre><code><span class='xk'>static</span> <span class='xk'>var</span> <span class='xv'>accept</span>: <span class='xt'>`Self`</span> { <span class='xk'>get</span> }</code></pre><p>Accept</p></a><a href='/docs/swift-http-types/httptypes/httpfield/name.contenttype'><pre><code><span class='xk'>static</span> <span class='xk'>var</span> <span class='xv'>contentType</span>: <span class='xt'>`Self`</span> { <span class='xk'>get</span> }</code></pre><p>Content-Type</p></a><a href='/docs/swift-http-types/httptypes/httprequest/method.get'><pre><code><span class='xk'>static</span> <span class='xk'>var</span> <span class='xv'>get</span>: <span class='xt'>`Self`</span> { <span class='xk'>get</span> }</code></pre><p>GET</p></a><a href='/docs/swift-http-types/httptypes/httprequest/method.post'><pre><code><span class='xk'>static</span> <span class='xk'>var</span> <span class='xv'>post</span>: <span class='xt'>`Self`</span> { <span class='xk'>get</span> }</code></pre><p>POST</p></a><a href='/hist/swift-nio:2.79.0/niocore/timeamount.seconds(_:)'><pre><code><span class='xk'>static</span> <span class='xk'>func</span> <span class='xv'>seconds</span>(<span class='xi'></span>_ <span class='xb'>amount</span>: <span class='xt'>Int64</span><wbr>) -&gt; <span class='xt'>TimeAmount</span></code></pre><p>Creates a new <code>TimeAmount</code> for the given amount of seconds.</p></a></div>
                     
                 </section>
     
@@ -146,7 +146,7 @@
                     
                     <div class="author-list">
                         <a href="https://swiftonserver.com/authors/joannis-orlandos/">
-                        <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                        <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                         <span class="name">Joannis Orlandos</span>
                         </a>
                     </div>
@@ -164,12 +164,35 @@
                             
                             <div class="author-list">
                                 <a href="https://swiftonserver.com/authors/joannis-orlandos/">
-                                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                                 </a>
                             </div>
                             <div class="meta">
-                                <time datetime="2024/12/28">2024/12/28</time>
-                                 &middot; <span class="reading-time">8 min read</span>
+                                <time datetime="2025-01-20">2025-01-20</time>
+                                    &middot; <span class="reading-time">3 min read</span>
+                            </div>
+                            
+                            <h2 class="title"><a href="https://swiftonserver.com/hummingbird-and-cors/" target="">Hummingbird and CORS</a></h2>
+                            <p>Learn how to use Hummingbird and CORS in Swift</p>
+                        
+                            <div class="spacer"></div>
+                        
+                            <div class="tag-list">
+                                <a href="https://swiftonserver.com/tags/hummingbird/"><small>Hummingbird</small></a>
+        <a href="https://swiftonserver.com/tags/server/"><small>Server</small></a>
+                            </div>
+                        </div>
+                    <div class="card">
+                            
+                            
+                            <div class="author-list">
+                                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                </a>
+                            </div>
+                            <div class="meta">
+                                <time datetime="2024-12-28">2024-12-28</time>
+                                    &middot; <span class="reading-time">8 min read</span>
                             </div>
                             
                             <h2 class="title"><a href="https://swiftonserver.com/realtime-mongodb-updates-with-changestreams-and-websockets/" target="">Realtime MongoDB Updates with ChangeStreams and WebSockets</a></h2>
@@ -187,12 +210,12 @@
                             
                             <div class="author-list">
                                 <a href="https://swiftonserver.com/authors/tibor-bodecs/">
-                                <img class="small rounded" src="/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                                 </a>
                             </div>
                             <div class="meta">
-                                <time datetime="2024/10/22">2024/10/22</time>
-                                 &middot; <span class="reading-time">10 min read</span>
+                                <time datetime="2024-10-22">2024-10-22</time>
+                                    &middot; <span class="reading-time">10 min read</span>
                             </div>
                             
                             <h2 class="title"><a href="https://swiftonserver.com/beginners-guide-to-protocol-buffers-and-grpc-with-swift/" target="">Beginner&#39;s Guide to Protocol Buffers and gRPC with Swift</a></h2>
@@ -211,12 +234,12 @@
                             
                             <div class="author-list">
                                 <a href="https://swiftonserver.com/authors/joannis-orlandos/">
-                                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                                 </a>
                             </div>
                             <div class="meta">
-                                <time datetime="2024/10/01">2024/10/01</time>
-                                 &middot; <span class="reading-time">6 min read</span>
+                                <time datetime="2024-10-01">2024-10-01</time>
+                                    &middot; <span class="reading-time">6 min read</span>
                             </div>
                             
                             <h2 class="title"><a href="https://swiftonserver.com/using-hummingbird-request-context/" target="">Using Hummingbird&#39;s Request Contexts</a></h2>
@@ -234,12 +257,12 @@
                             
                             <div class="author-list">
                                 <a href="https://swiftonserver.com/authors/joannis-orlandos/">
-                                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                                 </a>
                             </div>
                             <div class="meta">
-                                <time datetime="2024/09/30">2024/09/30</time>
-                                 &middot; <span class="reading-time">9 min read</span>
+                                <time datetime="2024-09-30">2024-09-30</time>
+                                    &middot; <span class="reading-time">9 min read</span>
                             </div>
                             
                             <h2 class="title"><a href="https://swiftonserver.com/how-to-build-a-proxy-server-with-hummingbird/" target="">How to Build a Proxy Server with Hummingbird</a></h2>
@@ -257,12 +280,12 @@
                             
                             <div class="author-list">
                                 <a href="https://swiftonserver.com/authors/joannis-orlandos/">
-                                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                                 </a>
                             </div>
                             <div class="meta">
-                                <time datetime="2024/09/24">2024/09/24</time>
-                                 &middot; <span class="reading-time">7 min read</span>
+                                <time datetime="2024-09-24">2024-09-24</time>
+                                    &middot; <span class="reading-time">7 min read</span>
                             </div>
                             
                             <h2 class="title"><a href="https://swiftonserver.com/getting-started-with-hummingbird/" target="">Getting Started with Hummingbird</a></h2>
@@ -275,30 +298,6 @@
         <a href="https://swiftonserver.com/tags/server/"><small>Server</small></a>
                             </div>
                         </div>
-                    <div class="card">
-                            
-                            
-                            <div class="author-list">
-                                <a href="https://swiftonserver.com/authors/joannis-orlandos/">
-                                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
-                                </a>
-                            </div>
-                            <div class="meta">
-                                <time datetime="2024/08/29">2024/08/29</time>
-                                 &middot; <span class="reading-time">5 min read</span>
-                            </div>
-                            
-                            <h2 class="title"><a href="https://swiftonserver.com/working-with-udp-in-swiftnio/" target="">Working with UDP in SwiftNIO</a></h2>
-                            <p>Create UDP servers and clients using SwiftNIO and structured concurrency</p>
-                        
-                            <div class="spacer"></div>
-                        
-                            <div class="tag-list">
-                                <a href="https://swiftonserver.com/tags/networking/"><small>Networking</small></a>
-        <a href="https://swiftonserver.com/tags/server/"><small>Server</small></a>
-        <a href="https://swiftonserver.com/tags/swiftnio/"><small>SwiftNIO</small></a>
-                            </div>
-                        </div>
                     </div>
                 </section>
     
@@ -308,7 +307,7 @@
         <div>
             <div class="support">
                 <a href="https://swiftcraft.uk/" target="_blank">
-                    <img src="/images/logos/swiftcraft.png" alt="SwiftCraft logo">
+                    <img src="https://swiftonserver.com/images/logos/swiftcraft.png" alt="SwiftCraft logo">
                 </a>
                 <h4>
                     <a href="https://swiftcraft.uk/" target="_blank">SwiftCraft</a>
@@ -332,8 +331,16 @@
         <li class="first-level">
                         <a href="#How%20to%20handle%20CORS%20in%20Hummingbird">How to handle CORS in Hummingbird</a>
                         <ul>
-                            <li><a href="#Configuring%20the%20CORSMiddleware">Configuring the CORSMiddleware</a></li>
-                <li><a href="#Example">Example</a></li>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Configuring%20the%20CORSMiddleware">Configuring the CORSMiddleware</a>
+                        <ul>
+                        </ul>
+                    </li>
+        <li class="first-level">
+                        <a href="#Example">Example</a>
+                        <ul>
                         </ul>
                     </li>
         <li class="first-level">
@@ -355,12 +362,12 @@
             <figure>
                 <picture>
                     <source
-                        srcset="/images/logos/logo~dark.png"
+                        srcset="https://swiftonserver.com/images/logos/logo~dark.png"
                         media="(prefers-color-scheme: dark)"
                     >
                     <img
                         id="logo-image"
-                        src="/images/logos/logo.png"
+                        src="https://swiftonserver.com/images/logos/logo.png"
                         alt="Logo of Swift on server"
                         title="Swift on server"
                     >
@@ -381,7 +388,7 @@
             
             <div>
                 <a href="/authors/joannis-orlandos/">
-                <img class="small rounded" src="/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
+                <img class="small rounded" src="https://swiftonserver.com/assets/authors/joannis-orlandos/joannis-orlandos.jpeg" alt="Joannis Orlandos">
                 </a>
                 <h4><a href="/authors/joannis-orlandos/">Joannis Orlandos</a></h4>
                 <p><small><a href="https://unbeatable.software/" target="_blank">Unbeatable Software B.V.</a></small></p>
@@ -395,7 +402,7 @@
             
             <div>
                 <a href="/authors/tibor-bodecs/">
-                <img class="small rounded" src="/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
+                <img class="small rounded" src="https://swiftonserver.com/assets/authors/tibor-bodecs/tibor-bodecs.jpeg" alt="Tibor Bödecs">
                 </a>
                 <h4><a href="/authors/tibor-bodecs/">Tibor Bödecs</a></h4>
                 <p><small><a href="https://binarybirds.com/" target="_blank">Binary Birds Kft.</a></small></p>
