@@ -2,10 +2,10 @@
 <html {{#site.locale}}lang="{{.}}"{{/site.locale}}>
   <meta charset="utf-8">
   <title>Redirecting&hellip;</title>
-  <link rel="canonical" href="{{url}}">
-  <script>location="{{url}}"</script>
-  <meta http-equiv="refresh" content="0; url={{url}}">
+  <link rel="canonical" href="{{site.baseUrl}}/{{page.to}}">
+  <script>location="{{site.baseUrl}}/{{page.to}}"</script>
+  <meta http-equiv="refresh" content="0; url={{site.baseUrl}}/{{page.to}}">
   <meta name="robots" content="noindex">
   <h1>Redirecting&hellip;</h1>
-  <a href="{{url}}">Click here if you are not redirected.</a>
+  <a href="{{site.baseUrl}}/{{page.to}}">Click here if you are not redirected.</a>
 </html>

@@ -17,15 +17,15 @@ relations:
     authors:
         references: author
         type: many
-        order: 
-            key: title
-            direction: asc
+        orderBy: 
+            - key: title
+              direction: asc
     tags:
         references: tag
         type: many
-        order: 
-            key: title
-            direction: asc
+        orderBy: 
+            - key: title
+              direction: asc
 
 queries:
                 
@@ -36,9 +36,9 @@ queries:
             key: publication
             operator: lessThan
             value: "{{publication}}"
-        order: 
-            key: publication
-            direction: desc
+        orderBy: 
+            - key: publication
+              direction: desc
 
     next:
         contentType: post
@@ -47,9 +47,9 @@ queries:
             key: publication
             operator: greaterThan
             value: "{{publication}}"
-        order: 
-            key: publication
-            direction: asc
+        orderBy: 
+            - key: publication
+              direction: asc
 
     related:
         contentType: post
@@ -59,9 +59,9 @@ queries:
             key: tags
             operator: matching
             value: "{{tags}}"
-        order: 
-            key: publication
-            direction: desc
+        orderBy: 
+            - key: publication
+              direction: desc
 
     moreByAuthors:
         contentType: post
@@ -71,6 +71,6 @@ queries:
             key: authors
             operator: matching
             value: "{{authors}}"
-        order: 
-            key: publication
-            direction: desc
+        orderBy: 
+            - key: publication
+              direction: desc
