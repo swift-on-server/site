@@ -1,4 +1,5 @@
 id: rss
+definesType: true
 
 queries:
     posts:

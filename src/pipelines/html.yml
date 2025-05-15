@@ -1,5 +1,28 @@
 id: html
 
+assets:
+    behaviors:
+        - id: copy
+    properties:
+        - action: add
+          property: css
+          resolvePath: true
+          input:
+                name: "style" 
+                ext: "css"
+        - action: add
+          property: js
+          resolvePath: true
+          input:
+                name: "main" 
+                ext: "js"
+        - action: set
+          property: image
+          resolvePath: true
+          input:
+                name: "cover" 
+                ext: "jpg"
+
 queries: 
 
     posts:
@@ -73,13 +96,13 @@ transformers:
     post:
         run: 
             - name: swiftinit
-              url: src/transformers
+              path: src/transformers
               arguments: {}
         isMarkdownResult: false
     issue:
         run: 
             - name: issue
-              url: src/transformers
+              path: src/transformers
               arguments: {}
         isMarkdownResult: false
 
