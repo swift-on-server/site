@@ -1,7 +1,5 @@
 SHELL=/bin/bash
 
-# brew install optipng jpegoptim
-
 dev:
 	toucan generate ./src ./docs --base-url http://localhost:3000/
 
