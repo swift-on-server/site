@@ -2,110 +2,110 @@
     <url>
 
         <loc>https://swiftonserver.com/</loc>
-        <lastmod>2025-05-20</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/authors/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/newsletter/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/newsletter/issues/page/1/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/tags/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/posts/page/1/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/posts/page/2/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
 
         <loc>https://swiftonserver.com/advanced-async-sequences/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/async-http-client-by-example/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/beginners-guide-to-protocol-buffers-and-grpc-with-swift/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/building-swiftnio-clients/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/developing-with-swift-in-visual-studio-code/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/getting-started-with-hummingbird/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/getting-started-with-mongokitten/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/getting-started-with-structured-concurrency-in-swift/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/getting-started-with-swift-package-manager/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/getting-started-with-swiftpm-snippets/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/how-to-build-a-proxy-server-with-hummingbird/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/hummingbird-and-cors/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/introduction-to-swift-service-lifecycle/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/jwt-kit/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/logging-for-server-side-swift-apps/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/realtime-mongodb-updates-with-changestreams-and-websockets/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/structured-concurrency-and-shared-state-in-swift/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/templating-with-swift-mustache/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/useful-scripts-for-server-side-swift-libraries/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/using-environment-variables-in-swift/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/using-hummingbird-request-context/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/using-openapi-with-hummingbird/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/using-swiftnio-channels/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/using-swiftnio-fundamentals/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/websockets-tutorial-using-swift-and-hummingbird/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/whats-new-in-hummingbird-2/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/working-with-udp-in-swiftnio/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
 
         <loc>https://swiftonserver.com/authors/dianna-ma/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/authors/joannis-orlandos/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/authors/paul-toffoloni/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/authors/tibor-bodecs/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
 
         <loc>https://swiftonserver.com/tags/authentication/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/tags/databases/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/tags/documentation/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/tags/hummingbird/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/tags/networking/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/tags/observability/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/tags/openapi/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/tags/package-highlight/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/tags/server/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/tags/structured-concurrency/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/tags/swiftnio/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/tags/utilities/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
         <loc>https://swiftonserver.com/tags/vscode/</loc>
-        <lastmod>2025-04-15</lastmod>
+        <lastmod>2025-05-22</lastmod>
 
 
     </url>

@@ -1,12 +1,29 @@
 # Swift on server
 
-Source code of the [swiftonserver.com](https://swiftonserver.com/) site.
+This repository contains the source code of the [swiftonserver.com](https://swiftonserver.com/) website.
 
+## Dependencies
+
+To enable image compression, install the following tools:
+
+```sh
+brew install optipng jpegoptim
+```
 
 ## Environment variables
 
+Set the required environment variables:
+
 ```sh
-SWIFTINIT_ACCOUNT="XXX"
-SWIFTINIT_API_KEY="XXX"
-SWIFTINIT_TARGET="swift-on-server.articles:main/Articles"
+export SWIFTINIT_ACCOUNT="XXX"
+export SWIFTINIT_API_KEY="XXX"
+export SWIFTINIT_TARGET="swift-on-server.articles:main/Articles"
+```
+
+## Build
+
+Run the following command to create a release build:
+
+```sh
+make dist
 ```
