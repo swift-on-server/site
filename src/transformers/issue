@@ -49,6 +49,6 @@ if test -f "$CACHE_FILE"; then
    exit 0
 fi
 
-curl "https://raw.githubusercontent.com/swift-on-server/newsletter/refs/heads/main/issue-${NEWSLETTER_ID}.html" >> "${CACHE_FILE}"
+curl -k "https://raw.githubusercontent.com/swift-on-server/newsletter/refs/heads/main/issue-${NEWSLETTER_ID}.html" >> "${CACHE_FILE}"
 
 echo "✅ Rendering: ${NEWSLETTER_ID}."

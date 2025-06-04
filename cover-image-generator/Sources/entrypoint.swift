@@ -86,7 +86,7 @@ struct CoverView: View {
 struct Entrypoint: AsyncParsableCommand {
 
     @Argument(help: "The input directory.")
-    var input: String = "../src/content/blog/posts"
+    var input: String = "../src/contents/blog/posts"
     
     @MainActor
     mutating func run() async throws {
