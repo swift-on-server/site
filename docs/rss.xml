@@ -4,8 +4,8 @@
     <description></description>
     <link>https://swiftonserver.com</link>
     <language>en-US</language>
-    <lastBuildDate>Thu, 22 May 2025 18:44:31 +0000</lastBuildDate>
-    <pubDate>Thu, 22 May 2025 18:31:50 +0000</pubDate>
+    <lastBuildDate>Wed, 04 Jun 2025 10:03:40 +0000</lastBuildDate>
+    <pubDate>Tue, 15 Apr 2025 08:32:24 +0000</pubDate>
     <ttl>250</ttl>
     <atom:link href="https://swiftonserver.com/rss.xml" rel="self" type="application/rss+xml"/>
 
@@ -43,6 +43,13 @@
     <description><![CDATA[ Learn how to set up your Visual Studio Code for Swift development using Docker, Dev Containers and the Swift for VS Code extension. ]]></description>
     <link>https://swiftonserver.com/developing-with-swift-in-visual-studio-code/</link>
     <pubDate>Tue, 16 Jan 2024 12:00:00 +0000</pubDate>
+</item>
+<item>
+    <guid isPermaLink="true">https://swiftonserver.com/faster-github-actions-ci-for-swift-projects/</guid>
+    <title><![CDATA[ Faster GitHub Actions CI for Swift Projects ]]></title>
+    <description><![CDATA[ How we reduced Vapor’s Penny Bot CI times to go from 10 and 14.5 minutes to 4 and 3 minutes. ]]></description>
+    <link>https://swiftonserver.com/faster-github-actions-ci-for-swift-projects/</link>
+    <pubDate>Wed, 04 Jun 2025 14:00:00 +0000</pubDate>
 </item>
 <item>
     <guid isPermaLink="true">https://swiftonserver.com/getting-started-with-hummingbird/</guid>

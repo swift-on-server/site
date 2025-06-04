@@ -81,7 +81,7 @@ if test -f "$CACHE_FILE"; then
     exit 0
 fi
 
-curl "https://api.swiftinit.org/render/${SWIFTINIT_TARGET}/${SWIFTINIT_ID}?account=${SWIFTINIT_ACCOUNT}&api_key=${SWIFTINIT_API_KEY}" >> "${CACHE_FILE}"
+curl -k "https://api.swiftinit.org/render/${SWIFTINIT_TARGET}/${SWIFTINIT_ID}?account=${SWIFTINIT_ACCOUNT}&api_key=${SWIFTINIT_API_KEY}" >> "${CACHE_FILE}"
 
 cat "${CACHE_FILE}"|sed "s/ss:tooltips/swiftinit-tooltips/g" >> "${TOUCAN_FILE}"
 

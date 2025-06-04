@@ -25,7 +25,7 @@
         </label>
         <div class="menu-items">
             {{#site.navigation}}
-            <a href="{{url}}"{{#class}} class="{{.}}"{{/class}}>{{label}}</a>
+            <a href="{{site.baseUrl}}{{url}}"{{#class}} class="{{.}}"{{/class}}>{{label}}</a>
             {{/site.navigation}}
         </div>
     </nav>
