@@ -50,5 +50,5 @@ if test -f "$CACHE_FILE"; then
 fi
 
 curl -k "https://raw.githubusercontent.com/swift-on-server/newsletter/refs/heads/main/issue-${NEWSLETTER_ID}.html" >> "${CACHE_FILE}"
-
+cat "${CACHE_FILE}" >> "${TOUCAN_FILE}"
 echo "✅ Rendering: ${NEWSLETTER_ID}."
