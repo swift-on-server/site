@@ -1,0 +1,11 @@
+type: post
+title: "Faster GitHub Actions CI for Swift Projects"
+description: "How we reduced Vapor’s Penny Bot CI times to go from 10 and 14.5 minutes to 4 and 3 minutes."
+image: ./assets/cover.jpg
+publication: "2025/06/04 14:00:00"
+featured: true
+tags:
+    - server
+    - utilities
+authors:
+    - mahdi-bahrami
