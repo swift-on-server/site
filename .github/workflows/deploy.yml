@@ -49,7 +49,9 @@ jobs:
             -e SWIFTINIT_API_KEY=${{ secrets.SWIFTINIT_API_KEY }} \
             -e SWIFTINIT_TARGET=${{ secrets.SWIFTINIT_TARGET }} \
             --name toucan-build \
-            toucansites/toucan generate ./src /tmp/output
+            toucansites/toucan generate \
+            ./src \
+            /tmp/output
 
           docker start --attach toucan-build
 
