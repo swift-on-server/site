@@ -6,12 +6,6 @@ on:
       - 'v*'
       - '[0-9]*'
 
-on:
-  push:
-    tags:
-      - 'v*'
-      - '[0-9]*'
-
 jobs:
   deploy-page:
     uses: toucansites/github-workflows/.github/workflows/deploy.yml@main
