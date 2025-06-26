@@ -1,0 +1,17 @@
+name: "swiftonserver.com website"
+description: "Public website of swiftonserver.com"
+url: "https://github.com/swift-on-server/site"
+version: "1.0.0-beta.5"
+generatorVersions:
+    - "1.0.0-beta.5"
+
+demo:
+    url: "https://swiftonserver.com/"
+
+license:
+    name: "MIT license"
+    url: "https://github.com/swift-on-server/site?tab=MIT-1-ov-file"
+
+tags:
+    - "swiftonserver"
+    - "site"

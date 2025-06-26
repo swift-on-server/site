@@ -2,7 +2,9 @@ name: Build and Deploy with Toucan
 
 on:
   push:
-    branches: [main]
+    tags:
+      - 'v*'
+      - '[0-9]*'
 
 permissions:
   contents: read
@@ -36,8 +38,8 @@ jobs:
         run: |
           mkdir -p ./cache
           chmod -R 777 ./cache
-          mkdir -p ./docs
-          chmod -R 777 ./docs
+          mkdir -p ./dist
+          chmod -R 777 ./dist
 
       - name: Run Toucan container and build site
         run: |
@@ -49,21 +51,21 @@ jobs:
             -e SWIFTINIT_API_KEY=${{ secrets.SWIFTINIT_API_KEY }} \
             -e SWIFTINIT_TARGET=${{ secrets.SWIFTINIT_TARGET }} \
             --name toucan-build \
-            toucansites/toucan generate \
-            ./src \
-            /tmp/output
+            toucansites/toucan:latest generate \
+            . \
+            --target live
 
           docker start --attach toucan-build
 
       - name: Copy generated site from container to host
         run: |
-          docker cp toucan-build:/tmp/output/. ./docs
+          docker cp toucan-build:/tmp/output/. ./dist
           docker rm toucan-build
 
       - name: Upload static site to GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./docs
+          path: ./dist
 
   deploy-page:
     needs: build-page

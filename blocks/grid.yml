@@ -1,0 +1,16 @@
+name: grid
+parameters:
+  - label: desktop
+    defaultValue: "2"
+  - label: tablet
+    defaultValue: "2"
+  - label: mobile
+    defaultValue: "1"
+  - label: class
+    defaultValue: ""
+#requiresParentDirective: faq
+#output: "<div>{{contents}} - {{desktop}}</div>" 
+tag: div
+attributes:
+  - name: class
+    value: "grid grid-{{desktop}}{{tablet}}{{mobile}} {{class}}"

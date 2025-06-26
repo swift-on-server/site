@@ -1,0 +1,11 @@
+title: "Swift on server"
+language: "en-US"
+navigation:
+    - label: "Posts"
+      url: "/posts/page/1/"
+    - label: "Tags"
+      url: "/tags/"
+    - label: "Authors"
+      url: "/authors/"
+    - label: "Newsletter"
+      url: "/newsletter/"

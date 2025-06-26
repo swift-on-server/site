@@ -9,3 +9,4 @@ cache
 cover-image-generator/.build
 cover-image-generator/.swiftpm
 /docs
+/dist
