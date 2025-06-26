@@ -1,0 +1,11 @@
+<div class="issue">
+    <h2 class="title"><a href="{{permalink}}" target="_blank">{{title}}</a></h2>
+    <div class="meta">
+
+        <time datetime="{{publication.iso8601}}">{{publication.date.medium}}</time>
+
+        {{#contents.readingTime}} 
+            &middot; <span class="reading-time">{{.}} min read</span>
+        {{/contents.readingTime}}
+    </div>
+</div>

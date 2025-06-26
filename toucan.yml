@@ -1,0 +1,7 @@
+targets:
+    - name: dev
+      default: true
+
+    - name: live
+      output: /tmp/output
+      url: "https://swiftonserver.com/"

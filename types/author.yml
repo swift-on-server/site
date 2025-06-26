@@ -1,0 +1,33 @@
+id: author
+paths: 
+    - blog/authors
+
+properties:
+    companyName:
+        type: string
+        required: false
+    companyUrl:
+        type: string
+        required: false
+
+    ctaLabel:
+        type: string
+        required: false
+    ctaUrl:
+        type: string
+        required: false
+    image:
+        type: asset
+        required: false
+
+queries:
+    posts:
+        contentType: post
+        scope: detail
+        filter:
+            key: authors
+            operator: contains
+            value: "{{id}}"
+        orderBy:
+            - key: title
+              direction: asc

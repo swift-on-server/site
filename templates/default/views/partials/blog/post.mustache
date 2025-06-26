@@ -1,0 +1,28 @@
+<div class="card{{#featured}} featured{{/featured}}">
+    {{#featured}}<span class="featured">featured</span>{{/featured}}
+    
+    <div class="author-list">
+    {{#authors}}
+        <a href="{{permalink}}">
+        {{#image}}<img class="small rounded" src="{{image}}" alt="{{title}}">{{/image}}
+        </a>
+    {{/authors}}
+    </div>
+    <div class="meta">
+        <time datetime="{{publication.iso8601}}">{{publication.date.medium}}</time>
+        {{#contents.readingTime}} 
+            &middot; <span class="reading-time">{{.}} min read</span>
+        {{/contents.readingTime}}
+    </div>
+    
+    <h2 class="title"><a href="{{permalink}}" target="">{{title}}</a></h2>
+    <p>{{description}}</p>
+
+    <div class="spacer"></div>
+
+    <div class="tag-list">
+    {{#tags}}
+        <a href="{{permalink}}"><small>{{title}}</small></a>
+    {{/tags}}
+    </div>
+</div>

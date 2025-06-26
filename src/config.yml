@@ -1,6 +1,0 @@
-dateFormats:
-    input: 
-        format: "yyyy-MM-dd HH:mm:ss"
-    output:
-        year:
-            format: "y"

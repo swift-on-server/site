@@ -1,22 +1,22 @@
 SHELL=/bin/bash
 
 dev:
-	toucan generate ./src ./docs --base-url http://localhost:3000/
+	toucan generate .
 
-dist: cover
-	toucan generate ./src ./docs
+dist:
+	toucan generate . --target live
+
+diff:
+	diff --color=always -r docs-v4 docs --exclude=api || true
 
 watch:
-	toucan watch ./src ./docs --base-url http://localhost:3000/
+	toucan watch .
 
 serve:
 	toucan serve ./docs -p 3000
 
 png:
-	find ./src/* -type f -name '*.png' -exec optipng -o7 {} \;
+	find ./* -type f -name '*.png' -exec optipng -o7 {} \;
 
 jpg:
-	find ./src/* -type f -name '*.jpg' | xargs jpegoptim --all-progressive '*.jpg'
-
-cover:
-	cd cover-image-generator && swift run cover-image-generator && cd .. && make jpg
+	find ./* -type f -name '*.jpg' | xargs jpegoptim --all-progressive '*.jpg'

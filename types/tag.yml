@@ -1,0 +1,25 @@
+id: tag
+paths: 
+    - blog/tags
+
+properties:
+    title:
+        type: string
+        required: true
+    image:
+        type: asset
+        required: false
+
+relations:
+
+queries:
+    posts:
+        contentType: post
+        scope: detail
+        filter:
+            key: tags
+            operator: contains
+            value: "{{id}}"
+        orderBy:
+            - key: publication
+              direction: asc           

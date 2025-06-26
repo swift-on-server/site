@@ -2,76 +2,26 @@ name: Build and Deploy with Toucan
 
 on:
   push:
-    branches: [main]
+    tags:
+      - 'v*'
+      - '[0-9]*'
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+on:
+  push:
+    tags:
+      - 'v*'
+      - '[0-9]*'
 
 jobs:
-  build-page:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Validate required secrets
-        run: |
-          if [ -z "${{ secrets.SWIFTINIT_ACCOUNT }}" ]; then
-            echo "❌ Missing secret: SWIFTINIT_ACCOUNT"
-            exit 1
-          fi
-          if [ -z "${{ secrets.SWIFTINIT_API_KEY }}" ]; then
-            echo "❌ Missing secret: SWIFTINIT_API_KEY"
-            exit 1
-          fi
-          if [ -z "${{ secrets.SWIFTINIT_TARGET }}" ]; then
-            echo "❌ Missing secret: SWIFTINIT_TARGET"
-            exit 1
-          fi
-          echo "✅ All required secrets are present."
-
-      - name: Prepare cache and output directories
-        run: |
-          mkdir -p ./cache
-          chmod -R 777 ./cache
-          mkdir -p ./docs
-          chmod -R 777 ./docs
-
-      - name: Run Toucan container and build site
-        run: |
-          docker create \
-            --mount type=bind,source=${{ github.workspace }},target=/site \
-            --mount type=bind,source=${{ github.workspace }}/cache,target=/site/cache \
-            -w /site \
-            -e SWIFTINIT_ACCOUNT=${{ secrets.SWIFTINIT_ACCOUNT }} \
-            -e SWIFTINIT_API_KEY=${{ secrets.SWIFTINIT_API_KEY }} \
-            -e SWIFTINIT_TARGET=${{ secrets.SWIFTINIT_TARGET }} \
-            --name toucan-build \
-            toucansites/toucan generate \
-            ./src \
-            /tmp/output
-
-          docker start --attach toucan-build
-
-      - name: Copy generated site from container to host
-        run: |
-          docker cp toucan-build:/tmp/output/. ./docs
-          docker rm toucan-build
-
-      - name: Upload static site to GitHub Pages
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./docs
-
   deploy-page:
-    needs: build-page
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+    uses: toucansites/github-workflows/.github/workflows/deploy.yml@main
+    with:
+      target: "live"
+      config: |
+        SWIFTINIT_ACCOUNT=${{ secrets.SWIFTINIT_ACCOUNT }}
+        SWIFTINIT_API_KEY=${{ secrets.SWIFTINIT_API_KEY }}
+        SWIFTINIT_TARGET=${{ secrets.SWIFTINIT_TARGET }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
