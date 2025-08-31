@@ -13,7 +13,7 @@ watch:
 	toucan watch .
 
 serve:
-	toucan serve ./docs -p 3000
+	toucan serve -p 3000
 
 png:
 	find ./* -type f -name '*.png' -exec optipng -o7 {} \;

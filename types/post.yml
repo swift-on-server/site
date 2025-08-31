@@ -17,15 +17,15 @@ relations:
     authors:
         references: author
         type: many
-        orderBy: 
-            - key: title
-              direction: asc
+        order: 
+            key: title
+            direction: asc
     tags:
         references: tag
         type: many
-        orderBy: 
-            - key: title
-              direction: asc
+        order: 
+            key: title
+            direction: asc
 
 queries:
                 
@@ -56,9 +56,13 @@ queries:
         scope: detail
         limit: 6
         filter:
-            key: tags
-            operator: matching
-            value: "{{tags}}"
+            and:
+                - key: tags
+                  operator: matching
+                  value: "{{tags}}"
+                - key: slug
+                  operator: notEquals
+                  value: "{{slug}}"
         orderBy: 
             - key: publication
               direction: desc
@@ -68,9 +72,13 @@ queries:
         scope: detail
         limit: 6
         filter:
-            key: authors
-            operator: matching
-            value: "{{authors}}"
+            and:
+                - key: authors
+                  operator: matching
+                  value: "{{authors}}"
+                - key: slug
+                  operator: notEquals
+                  value: "{{slug}}"
         orderBy: 
             - key: publication
               direction: desc

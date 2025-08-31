@@ -7,5 +7,5 @@ properties:
     code:
         type: int
         required: false
-        default: 301
+        defaultValue: 301
 

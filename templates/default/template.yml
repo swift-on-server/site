@@ -1,9 +1,11 @@
 name: "swiftonserver.com website"
 description: "Public website of swiftonserver.com"
 url: "https://github.com/swift-on-server/site"
-version: "1.0.0-beta.5"
+version: "1.0.0-beta.6"
 generatorVersions:
     - "1.0.0-beta.5"
+    - "1.0.0-beta.6"
+    - "1.0.0-rc.1"
 
 demo:
     url: "https://swiftonserver.com/"
