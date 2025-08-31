@@ -97,13 +97,11 @@ transformers:
         run: 
             - name: swiftinit
               path: transformers
-              arguments: {}
         isMarkdownResult: false
     issue:
         run: 
             - name: issue
               path: transformers
-              arguments: {}
         isMarkdownResult: false
 
 engine: 

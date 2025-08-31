@@ -3,6 +3,9 @@ paths:
     - blog/authors
 
 properties:
+    title:
+        type: string
+        required: true
     companyName:
         type: string
         required: false
