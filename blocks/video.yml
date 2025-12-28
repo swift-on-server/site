@@ -1,0 +1,13 @@
+name: video
+#parameters:
+#  - label: autoplay
+#    defaultValue: false
+removesChildParagraph: true
+output: |
+    <video autoplay loop muted>
+        <source src="{{contents}}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+# width="10" height="240" controls
+# <!-- source src="movie.ogg" type="video/ogg" -->

@@ -56,7 +56,9 @@ brew install wendylabsinc/wendy
 
 To install the WendyOS, first connect your SD card or NVME drive to your computer.
 
-<video src="pi-5-insert-card-into-macbook.mp4" autoplay loop muted></video>
+@Video {
+    /assets/wendyos-setting-up-embedded-linux/pi-5-insert-card-into-macbook.mp4
+}
 
 Then, run the following command:
 
@@ -77,11 +79,15 @@ Once ready, plug the disk into your device and boot it up.
 
 By default, WendyOS devices don't know what WiFi network to connect to. However, you can connect to your device via USB to get started!
 
-<video src="pi-5-usb-c-to-macbook.mp4" autoplay loop muted></video>
+@Video {
+    /assets/wendyos-setting-up-embedded-linux/pi-5-usb-c-to-macbook.mp4
+}
 
 More powerful devices like the Jetson Orin Nano will require both USB for data and a separate power supply.
 
-<video src="jetson-power-cable-insertion.mp4" autoplay loop muted></video>
+@Video {
+    /assets/wendyos-setting-up-embedded-linux/jetson-power-cable-insertion.mp4
+}
 
 Let's check if the device is connected to your computer!
 

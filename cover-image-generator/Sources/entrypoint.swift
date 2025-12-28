@@ -95,9 +95,13 @@ struct Entrypoint: AsyncParsableCommand {
         let workUrl = URL(fileURLWithPath: currentDir)
             .appendingPathComponent(input)
         
-        let list = FileManager.default.recursivelyListDirectory(at: workUrl).filter {
-            $0.hasSuffix("/index.yml") || $0.hasSuffix("/index.yaml")
-        }
+        let list = FileManager.default.recursivelyListDirectory(at: workUrl)
+            .filter {
+                !$0.contains("{{") && !$0.contains("}}")
+            }
+            .filter {
+                $0.hasSuffix("/index.md") || $0.hasSuffix("/index.markdown")
+            }
         
         let decoder = YAMLDecoder()
         
@@ -127,6 +131,18 @@ struct Entrypoint: AsyncParsableCommand {
             }
 
             let yml = try String(contentsOf: url)
+                .split(separator: "---")
+                .first?
+                .map(String.init)
+                .joined()
+                .trimmingCharacters(
+                    in: .whitespacesAndNewlines
+                )
+
+            guard let yml else {
+                continue
+            }
+            
             let meta = try decoder.decode(Meta.self, from: yml)
 
             try? FileManager.default.createDirectory(
