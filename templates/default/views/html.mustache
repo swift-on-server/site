@@ -32,7 +32,6 @@
     <link rel="stylesheet" href="{{baseUrl}}/css/grid.css">
     <link rel="stylesheet" href="{{baseUrl}}/css/navigation.css">
     <link rel="stylesheet" href="{{baseUrl}}/css/footer.css">
-    <link rel="stylesheet" href="{{baseUrl}}/css/syntax.css">
     <link rel="stylesheet" href="{{baseUrl}}/css/style.css">
 
     {{#page.css}}<link rel="stylesheet" href="{{.}}">{{/page.css}}
@@ -41,35 +40,31 @@
 
     <link
         rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
-        media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)">
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github.min.css"
+        media="(prefers-color-scheme: light)">
+
     <link
         rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-dark.min.css"
         media="(prefers-color-scheme: dark)"
     >
-
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"
+    ></script>
     <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-          const container = document.querySelector("div#swiftinit-tooltips");
-          if (container !== null) {
-              container.querySelectorAll('pre code').forEach((el) => {
-                  el.classList.add('nohighlight');
-              });
-          }
-        });
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-          document.querySelectorAll('section pre code:not(.language-swift').forEach((el) => {
-              hljs.highlightElement(el);
-          });
-        });
+    hljs.addPlugin({
+        'after:highlightElement': ({ el, result }) => {
+          el.classList.replace(`language-${result.language}`, result.language);
+        }
+    });
+    hljs.highlightAll();
     </script>
 
-    <script defer data-domain="swiftonserver.com" src="https://plausible.io/js/script.js"></script>
-
+    <script
+        defer
+        data-domain="swiftonserver.com"
+        src="https://plausible.io/js/script.js"
+    ></script>
 </head>
 
 <body>
@@ -89,6 +84,5 @@
 
     {{#page.js}}<script src="{{.}}" async></script>{{/page.js}}
 
-    <script type="text/javascript" src="/js/tooltips.js" async=""></script>
 </body>
 </html>

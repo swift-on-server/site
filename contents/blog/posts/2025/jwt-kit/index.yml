@@ -1,9 +1,0 @@
-title: "Introduction to JWTs in Swift"
-description: "Learn how to use JWTs in Swift to secure your API"
-image: ./assets/cover.jpg
-publication: "2025/01/09 9:00:00"
-featured: false
-tags:
-    - authentication
-authors:
-    - paul-toffoloni
