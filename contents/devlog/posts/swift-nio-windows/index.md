@@ -4,7 +4,6 @@ title: "SwiftNIO on Windows"
 description: "Covering my journey of getting SwiftNIO to work on Windows"
 image: ./assets/cover.jpg
 publication: "2025/12/29 9:00:00"
-featured: false
 tags:
     - swiftnio
 authors:
