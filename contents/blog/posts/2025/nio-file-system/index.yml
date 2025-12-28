@@ -1,9 +1,0 @@
-title: "Practical Guide to Working with the SwiftNIO File System"
-description: "Learn SwiftNIO's async file system API for non-blocking operations, including file and directory handling, reading, writing, and advanced use cases."
-image: ./assets/cover.jpg
-publication: "2025/09/03 9:00:00"
-featured: true
-tags:
-    - server
-authors:
-    - tibor-bodecs

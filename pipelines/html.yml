@@ -8,22 +8,22 @@ assets:
           property: css
           resolvePath: true
           input:
-                name: "style" 
+                name: "style"
                 ext: "css"
         - action: add
           property: js
           resolvePath: true
           input:
-                name: "main" 
+                name: "main"
                 ext: "js"
         - action: set
           property: image
           resolvePath: true
           input:
-                name: "cover" 
+                name: "cover"
                 ext: "jpg"
 
-queries: 
+queries:
 
     posts:
         contentType: post
@@ -68,7 +68,7 @@ queries:
             - key: publication
               direction: desc
 
-contentTypes: 
+contentTypes:
     include:
         - page
         - author
@@ -93,21 +93,16 @@ iterators:
               direction: desc
 
 transformers:
-    post:
-        run: 
-            - name: swiftinit
-              path: transformers
-        isMarkdownResult: false
     issue:
-        run: 
+        run:
             - name: issue
               path: transformers
         isMarkdownResult: false
 
-engine: 
+engine:
     id: mustache
     options:
-        contentTypes: 
+        contentTypes:
             page:
                 view: "pages.default"
             author:

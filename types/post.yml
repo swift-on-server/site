@@ -1,5 +1,5 @@
 id: post
-paths: 
+paths:
     - blog/posts
 
 properties:
@@ -12,23 +12,24 @@ properties:
     featured:
         type: bool
         required: true
+        defaultValue: false
 
 relations:
     authors:
         references: author
         type: many
-        order: 
+        order:
             key: title
             direction: asc
     tags:
         references: tag
         type: many
-        order: 
+        order:
             key: title
             direction: asc
 
 queries:
-                
+
     prev:
         contentType: post
         limit: 1
@@ -36,7 +37,7 @@ queries:
             key: publication
             operator: lessThan
             value: "{{publication}}"
-        orderBy: 
+        orderBy:
             - key: publication
               direction: desc
 
@@ -47,7 +48,7 @@ queries:
             key: publication
             operator: greaterThan
             value: "{{publication}}"
-        orderBy: 
+        orderBy:
             - key: publication
               direction: asc
 
@@ -63,7 +64,7 @@ queries:
                 - key: slug
                   operator: notEquals
                   value: "{{slug}}"
-        orderBy: 
+        orderBy:
             - key: publication
               direction: desc
 
@@ -79,6 +80,6 @@ queries:
                 - key: slug
                   operator: notEquals
                   value: "{{slug}}"
-        orderBy: 
+        orderBy:
             - key: publication
               direction: desc
