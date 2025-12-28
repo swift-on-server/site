@@ -3,6 +3,8 @@ language: "en-US"
 navigation:
     - label: "Posts"
       url: "/posts/page/1/"
+    - label: "Devlog"
+      url: "/devlog/page/1/"
     - label: "Tags"
       url: "/tags/"
     - label: "Authors"

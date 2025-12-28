@@ -1,0 +1,81 @@
+id: devlog
+paths:
+    - devlog/posts
+
+properties:
+    title:
+        type: string
+        required: true
+    publication:
+        type: date
+        required: true
+
+relations:
+    authors:
+        references: author
+        type: many
+        order: 
+            key: title
+            direction: asc
+    tags:
+        references: tag
+        type: many
+        order: 
+            key: title
+            direction: asc
+
+queries:
+                
+    prev:
+        contentType: devlog
+        limit: 1
+        filter:
+            key: publication
+            operator: lessThan
+            value: "{{publication}}"
+        orderBy: 
+            - key: publication
+              direction: desc
+
+    next:
+        contentType: devlog
+        limit: 1
+        filter:
+            key: publication
+            operator: greaterThan
+            value: "{{publication}}"
+        orderBy: 
+            - key: publication
+              direction: asc
+
+    related:
+        contentType: devlog
+        scope: detail
+        limit: 6
+        filter:
+            and:
+                - key: tags
+                  operator: matching
+                  value: "{{tags}}"
+                - key: slug
+                  operator: notEquals
+                  value: "{{slug}}"
+        orderBy: 
+            - key: publication
+              direction: desc
+
+    moreByAuthors:
+        contentType: devlog
+        scope: detail
+        limit: 6
+        filter:
+            and:
+                - key: authors
+                  operator: matching
+                  value: "{{authors}}"
+                - key: slug
+                  operator: notEquals
+                  value: "{{slug}}"
+        orderBy: 
+            - key: publication
+              direction: desc
