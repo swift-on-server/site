@@ -10,5 +10,5 @@ func main() {
 }
 ```
 
-Go back to the <a href="https://swiftonserver.com/">home page</a>. 🤔
+Go back to the [home page](/). 🤔
 
