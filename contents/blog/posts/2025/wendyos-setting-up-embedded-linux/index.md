@@ -1,6 +1,6 @@
 ---
-title: "Setting up Embedded Linux with WendyOS"
-description: "TODO"
+title: "Developing for Embedded Linux with WendyOS"
+description: "Learn to build your first Embedded Linux application in Swift."
 image: ./assets/cover.jpg
 publication: "2025/12/28 9:00:00"
 featured: true
