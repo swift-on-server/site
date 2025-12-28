@@ -10,16 +10,16 @@
                 {{#page.featured}} &middot; <span class="featured">featured</span>{{/page.featured}}
             </div>
             <section>
-            
+
             {{& page.contents.html}}
-                
+
             </section>
 
             <footer>
                 <br>
                 <time datetime="{{page.date}}">{{page.date}}</time>
 
-                
+
                 <div class="author-list">
                 {{#page.authors}}
                     <a href="{{permalink}}">
@@ -34,12 +34,12 @@
                 {{/page.tags}}
                 </div>
             </footer>
-                        
+
             <section class="group">
                 {{#empty(page.related)}}
                 {{/empty(page.related)}}
                 {{^empty(page.related)}}
-                <h4>Related posts</h4>                
+                <h4>Related posts</h4>
                 <div class="grid grid-221">
                 {{#page.related}}
                     {{> partials.blog.post}}
@@ -50,23 +50,18 @@
 
         </article>
     </div>
-    
+
     <div>
         <div class="support">
-            <a href="https://www.serversideswift.info/" target="_blank">
-                <img src="{{baseUrl}}/images/logos/serversideswift.png" alt="ServerSide.swift logo">
+            <a href="https://theswiftdev.gumroad.com/l/practical-server-side-swift" target="_blank">
+                <img src="https://theswiftdev.com/assets/practical-server-side-swift/cover.png" alt="Practical Server Side Swift Book Cover">
             </a>
-            <h4>
-                <a href="https://www.serversideswift.info/" target="_blank">ServerSide.swift</a>
-            </h4>
             <p>
-                <b>Server-Side Swift Conference</b>
-                <br>
-                2nd-3rd October 2025. London, UK
+                Learn how to build a modular blog engine using Vapor 4.
             </p>
-            <a class="cta" href="https://www.serversideswift.info/tickets/" target="_blank">Get Tickets</a>
+            <a class="cta" href="https://theswiftdev.gumroad.com/l/practical-server-side-swift" target="_blank">Buy on Gumroad</a>
         </div>
-        
+
         {{> partials.outline }}
 
     </div>
