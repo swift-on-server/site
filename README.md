@@ -61,7 +61,7 @@ brew install optipng jpegoptim
 To optimize your image assets, run the following command:
 
 ```sh
-make png && make jpg
+make opt
 ```
 
 This uses `optipng` and `jpegoptim` to compress your PNG and JPEG files, respectively.
