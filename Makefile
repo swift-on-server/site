@@ -20,5 +20,6 @@ png:
 
 jpg:
 	find ./* -type f -name '*.jpg' | xargs jpegoptim --all-progressive '*.jpg'
+
 cover:
 	cd ./cover-image-generator/ && swift run
