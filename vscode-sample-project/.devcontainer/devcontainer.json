@@ -1,0 +1,48 @@
+{
+    "name": "Swift on Server Dev Container",
+    "dockerComposeFile": [
+        "../docker-compose.devcontainer.yml",
+        "../docker-compose.mongo.yml"
+    ],
+    "service": "server-dev",
+    "workspaceFolder": "/workspace/",
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "installZsh": "true",
+            "username": "vscode",
+            "userUid": "1000",
+            "userGid": "1000",
+            "upgradePackages": "false"
+        },
+        "ghcr.io/devcontainers/features/git:1": {
+            "version": "os-provided",
+            "ppa": "false"
+        },
+        "ghcr.io/devcontainers-contrib/features/act:1": {}
+    },
+    // Configure tool-specific properties.
+    "customizations": {
+        // Configure properties specific to VS Code.
+        "vscode": {
+            // Set *default* container specific settings.json values on container create.
+            "settings": {
+                "lldb.library": "/usr/lib/liblldb.so",
+                "terminal.integrated.defaultProfile.linux": "zsh",
+                "apple-swift-format.onlyEnableWithConfig": true
+            },
+            // Add the IDs of extensions you want installed when the container is created.
+            "extensions": [
+                "sswg.swift-lang",
+                "vknabel.vscode-apple-swift-format",
+                "github.vscode-github-actions",
+                "mongodb.mongodb-vscode",
+                "42Crunch.vscode-openapi"
+            ]
+        }
+    },
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    // "forwardPorts": [8080], // VS Code automatically forwards any ports that the server uses, so this isn't necessary.
+    // Use 'postCreateCommand' to run commands after the container is created.
+    "postCreateCommand": "swift --version && swift-format --version",
+    "remoteUser": "vscode"
+}

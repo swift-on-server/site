@@ -1,5 +1,4 @@
 ---
-type: post
 title: "Faster GitHub Actions CI for Swift Projects"
 description: "How we reduced Vapor’s Penny Bot CI times to go from 10 and 14.5 minutes to 4 and 3 minutes."
 image: ./assets/cover.jpg

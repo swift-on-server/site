@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:sample-mongo-project}",
+            "name": "Debug sample-project",
+            "program": "${workspaceFolder:sample-mongo-project}/.build/debug/sample-project",
+            "preLaunchTask": "swift: Build Debug sample-project"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:sample-mongo-project}",
+            "name": "Release sample-project",
+            "program": "${workspaceFolder:sample-mongo-project}/.build/release/sample-project",
+            "preLaunchTask": "swift: Build Release sample-project"
+        }
+    ]
+}
