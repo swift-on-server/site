@@ -14,6 +14,12 @@ queries:
         orderBy:
             - key: lastUpdate
               direction: desc
+    devlog:
+        contentType: devlog
+        scope: list
+        orderBy:
+            - key: lastUpdate
+              direction: desc
     authors:
         contentType: author
         scope: list
@@ -34,6 +40,13 @@ contentTypes:
 iterators:
     post.pagination:
         contentType: post
+        scope: detail
+        limit: 24
+        orderBy:
+            - key: publication
+              direction: desc
+    devlog.pagination:
+        contentType: devlog
         scope: detail
         limit: 24
         orderBy:

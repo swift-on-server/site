@@ -23,15 +23,15 @@ assets:
                 name: "cover"
                 ext: "jpg"
 
-queries:
-
-    posts:
-        contentType: post
+queries: 
+    devlog:
+        contentType: devlog
         scope: detail
         limit: 9
         orderBy:
             - key: publication
               direction: desc
+
     featured:
         contentType: post
         scope: detail
@@ -40,6 +40,14 @@ queries:
             key: featured
             operator: equals
             value: true
+        orderBy:
+            - key: publication
+              direction: desc
+    
+    posts:
+        contentType: post
+        scope: detail
+        limit: 9
         orderBy:
             - key: publication
               direction: desc
@@ -71,6 +79,7 @@ queries:
 contentTypes:
     include:
         - page
+        - devlog
         - author
         - tag
         - post
@@ -79,6 +88,13 @@ contentTypes:
 iterators:
     post.pagination:
         contentType: post
+        scope: detail
+        limit: 24
+        orderBy:
+            - key: publication
+              direction: desc
+    devlog.pagination:
+        contentType: devlog
         scope: detail
         limit: 24
         orderBy:
@@ -105,6 +121,8 @@ engine:
         contentTypes:
             page:
                 view: "pages.default"
+            devlog:
+                view: "blog.post.default"
             author:
                 view: "blog.author.default"
             tag:
