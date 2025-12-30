@@ -15,10 +15,13 @@ watch:
 serve:
 	toucan serve -p 3000
 
+opt: png jpg
+
 png:
-	find ./* -type f -name '*.png' -exec optipng -o7 {} \;
+	find . -path ./dist -prune -o -type f -iname '*.png' -exec optipng -o7 {} \;
 
 jpg:
-	find ./* -type f -name '*.jpg' | xargs jpegoptim --all-progressive '*.jpg'
+	find . -path ./dist -prune -o -type f -iname '*.jp*g' | xargs jpegoptim --all-progressive '*.jpg'
+
 cover:
 	cd ./cover-image-generator/ && swift run
